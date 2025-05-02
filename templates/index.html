@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AI-Посредник</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Ваш AI-ассистент</h1>
+			<div class="chat-container">
+				<div id="chat-history"></div>
+				<div class="input-area">
+					<input id="user-input" type="text" placeholder="Введите ваш запрос..." />
+					<button id="send-btn">Отправить</button>
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	</body>
+</html>
