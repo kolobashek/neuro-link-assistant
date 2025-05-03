@@ -25,16 +25,30 @@ logger = logging.getLogger(__name__)
 # Словарь с командами и соответствующими функциями
 COMMANDS = {
     "свернуть все окна": "minimize_all_windows",
+    "сверни все окна": "minimize_all_windows",
     "открыть браузер": "open_browser",
+    "открой браузер": "open_browser",
     "сделать скриншот": "take_screenshot",
+    "сделай скриншот": "take_screenshot",
     "громкость выше": "volume_up",
+    "увеличь громкость": "volume_up",
     "громкость ниже": "volume_down",
+    "уменьши громкость": "volume_down",
     "открыть блокнот": "open_notepad",
+    "открой блокнот": "open_notepad",
     "сказать": "speak_text",
+    "скажи": "speak_text",
     "выключить компьютер": "shutdown_computer",
+    "выключи компьютер": "shutdown_computer",
     "перезагрузить компьютер": "restart_computer",
+    "перезагрузи компьютер": "restart_computer",
     "поставить на паузу": "media_pause",
+    "поставь на паузу": "media_pause",
     "следующий трек": "media_next",
+    "следующая песня": "media_next",
+    # Добавьте новые команды здесь
+    "открыть калькулятор": "open_calculator",
+    "открой калькулятор": "open_calculator",
 }
 
 def get_ai_response(text, max_retries=3, retry_delay=2):
@@ -95,21 +109,10 @@ def minimize_all_windows():
     """Свернуть все окна (Win+D)"""
     logger.info("Начало выполнения функции minimize_all_windows()")
     try:
-        # Проверим, что pyautogui доступен и работает
-        logger.info("Текущая позиция курсора: " + str(pyautogui.position()))
-        
-        # Добавим небольшую задержку перед нажатием клавиш
-        logger.info("Ожидание 1 секунду перед нажатием клавиш...")
-        time.sleep(1)
-        
-        # Попробуем нажать комбинацию клавиш
-        logger.info("Попытка нажатия комбинации Win+D")
-        pyautogui.hotkey('win', 'd')
-        logger.info("Комбинация клавиш Win+D нажата")
-        
-        # Добавим еще одну задержку после нажатия
-        time.sleep(0.5)
-        logger.info("Функция minimize_all_windows() завершена успешно")
+        # Метод с использованием PowerShell
+        logger.info("Попытка использования PowerShell для сворачивания всех окон")
+        os.system('powershell -command "(New-Object -ComObject Shell.Application).MinimizeAll()"')
+        logger.info("Команда PowerShell выполнена")
         
         return "Все окна свернуты"
     except Exception as e:
@@ -120,7 +123,10 @@ def open_browser():
     """Открыть браузер по умолчанию"""
     os.system("start https://www.google.com")
     return "Браузер открыт"
-
+def open_calculator():
+    """Открыть калькулятор"""
+    os.system("calc")
+    return "Калькулятор открыт"
 def take_screenshot():
     """Сделать скриншот и сохранить в папку проекта"""
     screenshot_path = os.path.join(os.getcwd(), "static", "screenshots")
@@ -185,12 +191,30 @@ def execute_python_code(code):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Группируем команды по функциям
+    commands_grouped = {}
+    for command_text, function_name in COMMANDS.items():
+        if function_name not in commands_grouped:
+            commands_grouped[function_name] = []
+        commands_grouped[function_name].append(command_text)
+    
+    # Создаем список команд для отображения
+    # Для каждой функции берем первую команду как основную и остальные как альтернативные
+    display_commands = []
+    for function_name, command_list in commands_grouped.items():
+        main_command = command_list[0]
+        alt_commands = command_list[1:] if len(command_list) > 1 else []
+        display_commands.append({
+            'main': main_command,
+            'alternatives': alt_commands,
+            'function': function_name
+        })
+    
+    return render_template('index.html', commands=display_commands)
 
 @app.route('/query', methods=['POST'])
 def query():
     user_input = request.json.get('input', '').lower()
-    # user_input = request.json[0].get('input', '').lower()
     
     # Определение типа команды и генерация ответа
     response, code = process_command(user_input)
@@ -205,7 +229,6 @@ def query():
         'code': code,
         'execution_result': execution_result
     })
-
 def process_command(text):
     """Анализ команды и генерация соответствующего кода"""
     text = text.lower()

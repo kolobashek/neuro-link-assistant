@@ -3,20 +3,49 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>AI-Посредник</title>
+		<title>Нейро-ассистент</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 	</head>
 	<body>
 		<div class="container">
-			<h1>Ваш AI-ассистент</h1>
-			<div class="chat-container">
-				<div id="chat-history"></div>
-				<div class="input-area">
-					<input id="user-input" type="text" placeholder="Введите ваш запрос..." />
-					<button id="send-btn">Отправить</button>
+			<h1>Нейро-ассистент для управления компьютером</h1>
+
+			<div class="command-selector">
+				<h3>Доступные команды:</h3>
+				<div class="command-buttons">
+					{% for cmd in commands %}
+					<button
+						class="command-btn"
+						data-command="{{ cmd.main }}"
+						title="Альтернативные команды: {% if cmd.alternatives %}{{ cmd.alternatives|join(', ') }}{% else %}нет{% endif %}"
+					>
+						{{ cmd.main }}
+					</button>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="input-container">
+				<input type="text" id="command-input" placeholder="Введите команду..." />
+				<button id="send-btn">Отправить</button>
+			</div>
+
+			<div class="response-container">
+				<h3>Ответ:</h3>
+				<div id="response-text"></div>
+
+				<div id="code-container" style="display: none">
+					<h4>Сгенерированный код:</h4>
+					<pre id="code-block"></pre>
+				</div>
+
+				<div id="execution-result" style="display: none">
+					<h4>Результат выполнения:</h4>
+					<div id="execution-text"></div>
 				</div>
 			</div>
 		</div>
+
 		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 	</body>
 </html>

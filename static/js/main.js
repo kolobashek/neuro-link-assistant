@@ -1,98 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
-	const userInput = document.getElementById('user-input')
-	const sendButton = document.getElementById('send-btn')
-	const chatHistory = document.getElementById('chat-history')
+	const commandInput = document.getElementById('command-input')
+	const sendBtn = document.getElementById('send-btn')
+	const responseText = document.getElementById('response-text')
+	const codeContainer = document.getElementById('code-container')
+	const codeBlock = document.getElementById('code-block')
+	const executionResult = document.getElementById('execution-result')
+	const executionText = document.getElementById('execution-text')
+	const commandButtons = document.querySelectorAll('.command-btn')
 
-	// Функция для отправки запроса
-	function sendMessage() {
-		const message = userInput.value.trim()
-		if (message === '') return
+	// Обработчик для кнопок предустановленных команд
+	commandButtons.forEach((button) => {
+		button.addEventListener('click', function () {
+			const command = this.getAttribute('data-command')
+			commandInput.value = command
+			sendCommand()
+		})
+	})
 
-		// Добавляем сообщение пользователя в историю
-		addMessageToChat('user', message)
+	// Обработчик для кнопки отправки
+	sendBtn.addEventListener('click', sendCommand)
 
-		// Показываем индикатор загрузки
-		const loadingMsg = addMessageToChat('ai', 'Обрабатываю запрос...')
+	// Обработчик для нажатия Enter в поле ввода
+	commandInput.addEventListener('keypress', function (e) {
+		if (e.key === 'Enter') {
+			sendCommand()
+		}
+	})
 
-		// Очищаем поле ввода
-		userInput.value = ''
+	function sendCommand() {
+		const command = commandInput.value.trim()
 
-		// Отправляем запрос на сервер
+		if (command === '') {
+			return
+		}
+
+		// Очистка предыдущих результатов
+		responseText.textContent = 'Обработка команды...'
+		codeContainer.style.display = 'none'
+		executionResult.style.display = 'none'
+
+		// Отправка запроса на сервер
 		fetch('/query', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ input: message }),
+			body: JSON.stringify({ input: command }),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				// Удаляем индикатор загрузки
-				chatHistory.removeChild(loadingMsg)
+				// Отображение ответа
+				responseText.textContent = data.response
 
-				// Добавляем ответ AI в историю
-				let responseText = data.response
-
-				// Если есть результат выполнения кода, добавляем его
-				if (data.execution_result) {
-					responseText += '\n\nРезультат выполнения: ' + data.execution_result
+				// Отображение кода, если он есть
+				if (data.code) {
+					codeBlock.textContent = data.code
+					codeContainer.style.display = 'block'
 				}
 
-				addMessageToChat('ai', responseText)
-
-				// Если есть код, отображаем его в отдельном блоке
-				if (data.code) {
-					addCodeToChat(data.code)
+				// Отображение результата выполнения, если он есть
+				if (data.execution_result) {
+					executionText.textContent = data.execution_result
+					executionResult.style.display = 'block'
 				}
 			})
 			.catch((error) => {
-				// Удаляем индикатор загрузки
-				chatHistory.removeChild(loadingMsg)
-
-				console.error('Ошибка:', error)
-				addMessageToChat('ai', 'Произошла ошибка при обработке запроса.')
+				responseText.textContent = 'Ошибка при обработке запроса: ' + error
 			})
 	}
-
-	// Функция для добавления сообщения в историю чата
-	function addMessageToChat(sender, text) {
-		const messageDiv = document.createElement('div')
-		messageDiv.className = `message ${sender === 'user' ? 'user-message' : 'ai-message'}`
-
-		// Преобразуем переносы строк в HTML-переносы
-		text = text.replace(/\n/g, '<br>')
-
-		messageDiv.innerHTML = text
-		chatHistory.appendChild(messageDiv)
-
-		// Прокручиваем историю вниз
-		chatHistory.scrollTop = chatHistory.scrollHeight
-
-		return messageDiv
-	}
-
-	// Функция для добавления блока кода в чат
-	function addCodeToChat(code) {
-		const codeDiv = document.createElement('div')
-		codeDiv.className = 'code-block'
-
-		const preElement = document.createElement('pre')
-		const codeElement = document.createElement('code')
-		codeElement.textContent = code
-
-		preElement.appendChild(codeElement)
-		codeDiv.appendChild(preElement)
-		chatHistory.appendChild(codeDiv)
-
-		// Прокручиваем историю вниз
-		chatHistory.scrollTop = chatHistory.scrollHeight
-	}
-
-	// Обработчики событий
-	sendButton.addEventListener('click', sendMessage)
-	userInput.addEventListener('keypress', function (e) {
-		if (e.key === 'Enter') {
-			sendMessage()
-		}
-	})
 })
