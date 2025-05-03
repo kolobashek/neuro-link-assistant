@@ -182,6 +182,10 @@ __pycache__/
 
 # Файлы окружения
 .env
+.command_summary.txt
+.detailed_command_log.txt
 
 # Другие файлы
 .DS_Store
+command_summary.txt
+detailed_command_log.txt
