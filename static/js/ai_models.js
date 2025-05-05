@@ -1,10 +1,36 @@
 /**
  * Функция для обновления статуса нейросетей
  */
+let updateStatusTimeout = null
+
+function debouncedUpdateAIModelsStatus() {
+	if (updateStatusTimeout) {
+		clearTimeout(updateStatusTimeout)
+	}
+	updateStatusTimeout = setTimeout(() => {
+		updateAIModelsStatus()
+		updateStatusTimeout = null
+	}, 300)
+}
+
 function updateAIModelsStatus() {
 	console.log('Обновление статуса нейросетей...')
+	const modelsContainer = document.getElementById('ai-models-list')
+	if (!modelsContainer) {
+		console.error('Элемент #ai-models-list не найден')
+		return
+	}
+
+	// Показываем индикатор загрузки
+	modelsContainer.innerHTML = '<div class="loading">Загрузка данных о нейросетях...</div>'
+
 	fetch('/api/ai_models')
-		.then((response) => response.json())
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`)
+			}
+			return response.json()
+		})
 		.then((data) => {
 			console.log('Получены данные о нейросетях:', data)
 			const modelsContainer = document.getElementById('ai-models-list')
@@ -98,10 +124,35 @@ function updateAIModelsStatus() {
 			console.error('Ошибка при получении статуса нейросетей:', error)
 			const modelsContainer = document.getElementById('ai-models-list')
 			if (modelsContainer) {
-				modelsContainer.innerHTML =
-					'<div class="error">Ошибка при получении статуса нейросетей</div>'
+				let errorMessage = 'Ошибка при получении статуса нейросетей'
+
+				// Более информативные сообщения об ошибках
+				if (!navigator.onLine) {
+					errorMessage = 'Отсутствует подключение к интернету'
+				} else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+					errorMessage = 'Не удалось соединиться с сервером'
+				}
+
+				modelsContainer.innerHTML = `<div class="error">${errorMessage}</div>`
 			}
 		})
+}
+
+/**
+ * Вспомогательная функция для обработки состояния кнопки во время запроса
+ * @param {HTMLElement} button - Кнопка
+ * @param {string} loadingText - Текст во время загрузки
+ * @param {Function} action - Функция, выполняющая запрос
+ */
+function handleButtonAction(button, loadingText, action) {
+	const originalContent = button.innerHTML
+	button.innerHTML = `<span class="spinner"></span> ${loadingText || ''}`
+	button.disabled = true
+
+	return action().finally(() => {
+		button.innerHTML = originalContent
+		button.disabled = false
+	})
 }
 
 /**
@@ -110,33 +161,25 @@ function updateAIModelsStatus() {
 function checkAIModelsAvailability() {
 	const checkBtn = document.getElementById('check-ai-models-btn')
 	if (checkBtn) {
-		// Добавляем спиннер и блокируем кнопку
-		const originalContent = checkBtn.innerHTML
-		checkBtn.innerHTML = '<span class="spinner"></span> Проверка...'
-		checkBtn.disabled = true
-
-		fetch('/api/check_ai_models', {
-			method: 'POST',
+		handleButtonAction(checkBtn, 'Проверка...', () => {
+			return fetch('/api/check_ai_models', {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.success) {
+						showNotification('Проверка нейросетей запущена', 'info')
+						// Обновляем статус через 2 секунды
+						setTimeout(updateAIModelsStatus, 2000)
+					} else {
+						showNotification(data.message || 'Ошибка при проверке нейросетей', 'error')
+					}
+				})
+				.catch((error) => {
+					console.error('Ошибка при проверке нейросетей:', error)
+					showNotification('Ошибка при проверке нейросетей', 'error')
+				})
 		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.success) {
-					showNotification('Проверка нейросетей запущена', 'info')
-					// Обновляем статус через 2 секунды
-					setTimeout(updateAIModelsStatus, 2000)
-				} else {
-					showNotification(data.message || 'Ошибка при проверке нейросетей', 'error')
-				}
-			})
-			.catch((error) => {
-				console.error('Ошибка при проверке нейросетей:', error)
-				showNotification('Ошибка при проверке нейросетей', 'error')
-			})
-			.finally(() => {
-				// Восстанавливаем кнопку
-				checkBtn.innerHTML = originalContent
-				checkBtn.disabled = false
-			})
 	}
 }
 
