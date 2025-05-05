@@ -18,7 +18,6 @@ def setup_loggers():
     # Подробный логгер
     detailed_logger = logging.getLogger('detailed_log')
     detailed_logger.setLevel(logging.INFO)
-    # Добавляем encoding='utf-8'
     detailed_handler = logging.FileHandler(Config.DETAILED_LOG_FILE, encoding='utf-8')
     detailed_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
     detailed_logger.addHandler(detailed_handler)
@@ -26,7 +25,6 @@ def setup_loggers():
     # Краткий логгер
     summary_logger = logging.getLogger('summary_log')
     summary_logger.setLevel(logging.INFO)
-    # Добавляем encoding='utf-8'
     summary_handler = logging.FileHandler(Config.SUMMARY_LOG_FILE, encoding='utf-8')
     summary_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
     summary_logger.addHandler(summary_handler)

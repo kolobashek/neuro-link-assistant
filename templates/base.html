@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Нейро-Линк Ассистент{% endblock %}</title>
+
+		<!-- Общие стили -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+
+		{% block extra_css %}{% endblock %}
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Нейро-Ассистент</h1>
+				<p>Интеллектуальный помощник для управления компьютером</p>
+			</header>
+
+			{% block content %}{% endblock %}
+		</div>
+
+		<!-- Общие скрипты -->
+		<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+		{% block extra_js %}{% endblock %}
+	</body>
+</html>

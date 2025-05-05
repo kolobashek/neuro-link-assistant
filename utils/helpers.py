@@ -1,22 +1,34 @@
 import re
-import os
+import logging
 import time
-from config import Config
+
+logger = logging.getLogger('neuro_assistant')
 
 def extract_code_from_response(response):
     """Извлекает код Python из ответа нейросети"""
+    if not response:
+        return None
+        
+    # Ищем код между тройными обратными кавычками
     code_start = response.find("")
     if code_start != -1:
         code_start += 9  # длина "python"
-        code_end = response.find("```", code_start)
+        code_end = response.find("", code_start)
         if code_end != -1:
             return response[code_start:code_end].strip()
+    
+    # Если не нашли с указанием языка, ищем просто между тройными кавычками
+    code_start = response.find("")
+    if code_start != -1:
+        code_start += 3  # длина ""
+        code_end = response.find("", code_start)
+        if code_end != -1:
+            return response[code_start:code_end].strip()
+    
     return None
 
 def extract_math_expression(text):
     """Извлекает математическое выражение из текста"""
-    import re
-    
     # Ищем числа и математические операторы
     pattern = r'(\d+\s*[\+\-\*\/]\s*\d+)'
     matches = re.findall(pattern, text)
@@ -29,35 +41,38 @@ def extract_math_expression(text):
 def add_interrupt_checks(code):
     """
     Добавляет проверки прерывания в код
+    
+    Вставляет проверки check_interrupt() после каждого вызова time.sleep()
+    и в начало каждого цикла for/while
     """
-    # Разбиваем код на строки
-    lines = code.split('\n')
-    modified_lines = []
-    
-    # Добавляем импорт time в начало, если его нет
-    if not any('import time' in line for line in lines):
-        modified_lines.append('import time')
-    
-    # Добавляем проверку прерывания перед каждым циклом и после каждой операции ожидания
-    for line in lines:
-        modified_lines.append(line)
+    if not code:
+        return code
         
-        # Добавляем проверку после time.sleep
-        if 'time.sleep' in line:
-            indent = len(line) - len(line.lstrip())
-            check_line = ' ' * indent + 'if check_interrupt(): return "Выполнение прервано пользователем"'
-            modified_lines.append(check_line)
-        
-        # Добавляем проверку в начало циклов
-        if any(keyword in line for keyword in ['for ', 'while ']):
-            if not line.strip().startswith('#'):  # Игнорируем комментарии
-                indent = len(line) - len(line.lstrip())
-                next_indent = indent + 4  # Стандартный отступ Python
-                check_line = ' ' * next_indent + 'if check_interrupt(): return "Выполнение прервано пользователем"'
-                modified_lines.append(check_line)
+    # Добавляем проверку после каждого time.sleep()
+    code = re.sub(
+        r'(time\.sleep\([^)]+\))',
+        r'\1\n    if check_interrupt(): return "Выполнение прервано пользователем"',
+        code
+    )
     
-    # Собираем модифицированный код
-    return '\n'.join(modified_lines)
+    # Добавляем проверку в начало каждого цикла for
+    code = re.sub(
+        r'(for\s+[^:]+:)',
+        r'\1\n    if check_interrupt(): return "Выполнение прервано пользователем"',
+        code
+    )
+    
+    # Добавляем проверку в начало каждого цикла while
+    code = re.sub(
+        r'(while\s+[^:]+:)',
+        r'\1\n    if check_interrupt(): return "Выполнение прервано пользователем"',
+        code
+    )
+    
+    # Добавляем проверку в начало кода
+    code = "if check_interrupt(): return \"Выполнение прервано пользователем\"\n" + code
+    
+    return code
 
 def check_interrupt_during_operation(operation_name, interval=0.5, max_time=30):
     """

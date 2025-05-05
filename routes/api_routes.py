@@ -1,5 +1,7 @@
 import datetime
 import logging
+import os
+from config import Config
 from flask import Blueprint, request, jsonify, current_app
 from globals import command_interrupt_flag  # Импортируем из globals
 from services.command_service import (
@@ -9,6 +11,10 @@ from services.command_service import (
 from utils.helpers import extract_code_from_response
 from utils.logging_utils import log_execution_summary
 from models.command_models import CommandStep, CommandExecution
+from services.ai_service import (
+    get_ai_models, get_current_ai_model, 
+    check_ai_model_availability, select_ai_model
+)
 
 api_bp = Blueprint('api', __name__)
 logger = logging.getLogger('neuro_assistant')
@@ -186,9 +192,32 @@ def interrupt_command():
 def get_history():
     """Возвращает историю выполненных команд"""
     try:
-        # Читаем краткий журнал команд
-        with open('command_summary.txt', 'r', encoding='utf-8') as f:
-            summary_content = f.read()
+        # Проверяем, существует ли файл журнала
+        if not os.path.exists(Config.SUMMARY_LOG_FILE):
+            return jsonify({
+                'history': [],
+                'count': 0,
+                'message': 'История команд пуста'
+            })
+            
+        # Пробуем различные кодировки для чтения файла
+        encodings = ['utf-8', 'cp1251', 'latin-1']
+        summary_content = None
+        
+        for encoding in encodings:
+            try:
+                with open(Config.SUMMARY_LOG_FILE, 'r', encoding=encoding) as f:
+                    summary_content = f.read()
+                break  # Если успешно прочитали, выходим из цикла
+            except UnicodeDecodeError:
+                continue  # Если ошибка декодирования, пробуем следующую кодировку
+        
+        # Если не удалось прочитать файл ни с одной кодировкой
+        if summary_content is None:
+            # Пробуем прочитать в бинарном режиме и декодировать с игнорированием ошибок
+            with open(Config.SUMMARY_LOG_FILE, 'rb') as f:
+                binary_content = f.read()
+                summary_content = binary_content.decode('utf-8', errors='ignore')
         
         # Разбиваем на отдельные записи
         entries = []
@@ -222,6 +251,7 @@ def get_history():
             'count': len(entries)
         })
     except Exception as e:
+        logger.error(f"Ошибка при чтении истории: {str(e)}")
         return jsonify({
             'error': f"Ошибка при чтении истории: {str(e)}",
             'history': []
@@ -257,3 +287,29 @@ def get_detailed_history(command_timestamp):
             'error': f"Ошибка при чтении подробной истории: {str(e)}",
             'details': []
         })
+@api_bp.route('/ai_models/check', methods=['POST'])
+def check_ai_models():
+    """Проверяет доступность нейросетей"""
+    # Получаем ID модели из запроса (если есть)
+    model_id = request.json.get('model_id', None) if request.json else None
+    
+    # Проверяем доступность
+    results = check_ai_model_availability(model_id)
+    
+    return jsonify(results)
+@api_bp.route('/ai_models/select', methods=['POST'])
+def select_ai_model_route():
+    """Выбирает нейросеть для использования"""
+    # Получаем ID модели из запроса
+    model_id = request.json.get('model_id', None) if request.json else None
+    
+    if not model_id:
+        return jsonify({
+            'success': False,
+            'message': "Не указан ID нейросети"
+        })
+    
+    # Выбираем нейросеть
+    result = select_ai_model(model_id)
+    
+    return jsonify(result)

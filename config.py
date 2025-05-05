@@ -25,3 +25,9 @@ class Config:
     
     # Пути для скриншотов
     SCREENSHOT_DIR = os.path.join('static', 'screenshots')
+
+    # Максимальное время ожидания ответа от API (в секундах)
+    API_TIMEOUT = 10
+    
+    # Максимальное время ожидания загрузки страницы в браузере (в секундах)
+    BROWSER_TIMEOUT = 10

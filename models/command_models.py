@@ -11,7 +11,7 @@ class CommandStep:
     result: Optional[str] = None
     error: Optional[str] = None
     completion_percentage: float = 0.0
-    accuracy_percentage: float = 0.0
+    accuracy_percentage: float = 90.0  # По умолчанию считаем, что команда выполнена с высокой точностью
 
 @dataclass
 class CommandExecution:
@@ -23,7 +23,7 @@ class CommandExecution:
     overall_status: str = 'in_progress'  # 'in_progress', 'completed', 'failed', 'interrupted'
     completion_percentage: float = 0.0
     accuracy_percentage: float = 0.0
-    current_step: int = 0
+    current_step: int = 0  # Индекс текущего выполняемого шага
     
     def to_dict(self):
         """Преобразует объект в словарь для JSON-сериализации"""

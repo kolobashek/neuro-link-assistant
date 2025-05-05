@@ -1,0 +1,29 @@
+<!-- Модальное окно для отображения подробностей команды -->
+<div id="details-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close-modal">&times;</span>
+			<h2>Подробности выполнения команды</h2>
+		</div>
+		<div class="modal-body">
+			<pre id="command-details">Загрузка подробностей...</pre>
+		</div>
+	</div>
+</div>
+
+<!-- Модальное окно для подтверждения действий -->
+<div id="confirm-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close-modal">&times;</span>
+			<h2>Подтверждение действия</h2>
+		</div>
+		<div class="modal-body">
+			<p id="confirm-message">Вы уверены, что хотите выполнить это действие?</p>
+			<div class="modal-actions">
+				<button id="confirm-yes" class="btn btn-primary">Да</button>
+				<button id="confirm-no" class="btn btn-secondary">Нет</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<div class="command-form-container">
+	<form id="query-form" class="query-form">
+		<div class="input-group">
+			<input
+				type="text"
+				id="user-input"
+				class="user-input"
+				placeholder="Введите команду..."
+				autocomplete="off"
+			/>
+			<button type="submit" class="submit-btn">
+				<i class="fas fa-paper-plane"></i>
+			</button>
+			<button type="button" id="interrupt-btn" class="interrupt-btn">
+				<i class="fas fa-stop"></i> Прервать
+			</button>
+		</div>
+	</form>
+
+	<div class="response-container">
+		<div id="response" class="response"></div>
+		<div id="code-container" class="code-container">
+			<pre id="code-display" class="code-display"></pre>
+		</div>
+		<div id="execution-result" class="execution-result"></div>
+	</div>
+
+	<div class="available-commands">
+		<h3>Доступные команды</h3>
+		<div class="commands-list">
+			{% for command in commands %}
+			<div class="command-item">
+				<div class="command-main">{{ command.main }}</div>
+				{% if command.alternatives %}
+				<div class="command-alternatives">Также: {{ command.alternatives|join(', ') }}</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
