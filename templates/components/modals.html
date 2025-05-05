@@ -1,16 +1,3 @@
-<!-- Модальное окно для отображения подробностей команды -->
-<div id="details-modal" class="modal">
-	<div class="modal-content">
-		<div class="modal-header">
-			<span class="close-modal">&times;</span>
-			<h2>Подробности выполнения команды</h2>
-		</div>
-		<div class="modal-body">
-			<pre id="command-details">Загрузка подробностей...</pre>
-		</div>
-	</div>
-</div>
-
 <!-- Модальное окно для подтверждения действий -->
 <div id="confirm-modal" class="modal">
 	<div class="modal-content">
@@ -24,6 +11,22 @@
 				<button id="confirm-yes" class="btn btn-primary">Да</button>
 				<button id="confirm-no" class="btn btn-secondary">Нет</button>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Модальное окно для отображения подробностей команды -->
+<div id="details-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close-modal">&times;</span>
+			<h2>Подробности выполнения команды</h2>
+		</div>
+		<div class="modal-body">
+			<div id="command-details" class="log-container"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="close-modal btn">Закрыть</button>
 		</div>
 	</div>
 </div>

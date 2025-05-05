@@ -76,14 +76,14 @@ function updateCommandHistory() {
 			})
 
 			// Добавляем обработчики для кнопок
-			document.querySelectorAll('.view-details').forEach((btn) => {
+			document.querySelectorAll('.view-details-btn').forEach((btn) => {
 				btn.addEventListener('click', function () {
 					const timestamp = this.getAttribute('data-timestamp')
 					showCommandDetails(timestamp)
 				})
 			})
 
-			document.querySelectorAll('.repeat-command').forEach((btn) => {
+			document.querySelectorAll('.repeat-command-btn').forEach((btn) => {
 				btn.addEventListener('click', function () {
 					const command = this.getAttribute('data-command')
 					document.getElementById('user-input').value = command
@@ -92,9 +92,180 @@ function updateCommandHistory() {
 			})
 		})
 		.catch((error) => {
-			console.error('Ошибка при загрузке истории:', error)
-			historyContainer.innerHTML = `<tr><td colspan="6" class="empty-history">Ошибка загрузки истории: ${error.message}</td></tr>`
+			console.error('Ошибка при получении истории команд:', error)
+			const historyContainer = document.getElementById('history-list')
+			if (historyContainer) {
+				historyContainer.innerHTML =
+					'<tr><td colspan="6" class="error">Ошибка при получении истории команд</td></tr>'
+			}
 		})
+}
+
+/**
+ * Функция для форматирования логов в HTML
+ * @param {Array} logLines - Массив строк лога
+ * @returns {string} - Отформатированный HTML
+ */
+function formatLogLines(logLines) {
+	if (!logLines || logLines.length === 0) {
+		return '<div class="empty-log">Нет данных для отображения</div>'
+	}
+
+	let html = ''
+	let inStepSection = false
+	let currentStepHtml = ''
+
+	logLines.forEach((line) => {
+		// Пропускаем пустые строки
+		if (!line.trim()) return
+
+		// Обрабатываем заголовок лога
+		if (line.includes('Детальное выполнение команды')) {
+			html += `<div class="log-entry">`
+			const parts = line.split(' - ')
+			if (parts.length > 1) {
+				html += `<div class="log-timestamp">${parts[0]}</div>`
+				html += `<div class="log-title">${parts[1]}</div>`
+			} else {
+				html += `<div class="log-title">${line}</div>`
+			}
+			return
+		}
+
+		// Обрабатываем команду
+		if (line.startsWith('Команда:')) {
+			const command = line.replace('Команда:', '').trim()
+			html += `<div class="log-command">${command}</div>`
+			return
+		}
+
+		// Обрабатываем время начала и окончания
+		if (line.startsWith('Время начала:') || line.startsWith('Время окончания:')) {
+			const parts = line.split(':')
+			const label = parts[0] + ':'
+			const value = parts.slice(1).join(':').trim()
+			html += `<div class="log-time"><span class="log-label">${label}</span> ${value}</div>`
+			return
+		}
+
+		// Обрабатываем статус
+		if (line.startsWith('Статус:')) {
+			const status = line.replace('Статус:', '').trim().toLowerCase()
+			const statusClass = status.includes('completed')
+				? 'completed'
+				: status.includes('failed')
+				? 'failed'
+				: status.includes('interrupted')
+				? 'interrupted'
+				: 'in-progress'
+
+			html += `<div class="log-status ${statusClass}">${line}</div>`
+			return
+		}
+
+		// Обрабатываем проценты выполнения и точности
+		if (line.startsWith('Выполнение:') || line.startsWith('Точность:')) {
+			html += `<div class="log-percentage">${line}</div>`
+			return
+		}
+
+		// Обрабатываем начало секции шагов
+		if (line === 'Шаги выполнения:') {
+			html += `<div class="log-steps-title">${line}</div>`
+			html += `<div class="log-steps">`
+			inStepSection = true
+			return
+		}
+
+		// Обрабатываем шаги
+		if (inStepSection) {
+			// Начало нового шага
+			if (line.trim().startsWith('Шаг ')) {
+				// Если у нас уже есть данные о текущем шаге, добавляем их
+				if (currentStepHtml) {
+					html += `<div class="log-step">${currentStepHtml}</div>`
+					currentStepHtml = ''
+				}
+
+				currentStepHtml = `<div class="log-step-header">${line.trim()}</div>`
+				currentStepHtml += `<div class="log-step-details">`
+				return
+			}
+
+			// Обрабатываем содержимое шага
+			if (currentStepHtml) {
+				// Конец шага
+				if (line.trim() === '---') {
+					currentStepHtml += `</div>`
+					html += `<div class="log-step">${currentStepHtml}</div>`
+					currentStepHtml = ''
+					return
+				}
+
+				// Обрабатываем статус шага
+				if (line.trim().startsWith('Статус:')) {
+					const status = line.replace('Статус:', '').trim().toLowerCase()
+					const statusClass = status.includes('completed')
+						? 'completed'
+						: status.includes('failed')
+						? 'failed'
+						: status.includes('interrupted')
+						? 'interrupted'
+						: 'in-progress'
+
+					currentStepHtml += `<div class="log-status ${statusClass}">${line.trim()}</div>`
+					return
+				}
+
+				// Обрабатываем результат шага
+				if (line.trim().startsWith('Результат:')) {
+					currentStepHtml += `<div class="log-result">${line.trim()}</div>`
+					return
+				}
+
+				// Обрабатываем ошибку шага
+				if (line.trim().startsWith('Ошибка:')) {
+					currentStepHtml += `<div class="log-error">${line.trim()}</div>`
+					return
+				}
+
+				// Другие строки шага
+				currentStepHtml += `<div>${line.trim()}</div>`
+				return
+			}
+		}
+
+		// Обрабатываем разделитель
+		if (line.startsWith('-'.repeat(10))) {
+			// Если мы были в секции шагов, закрываем её
+			if (inStepSection) {
+				// Добавляем последний шаг, если он есть
+				if (currentStepHtml) {
+					html += `<div class="log-step">${currentStepHtml}</div>`
+					currentStepHtml = ''
+				}
+				html += `</div>` // Закрываем .log-steps
+				inStepSection = false
+			}
+
+			html += `<div class="log-divider"></div>`
+			html += `</div>` // Закрываем .log-entry
+			return
+		}
+
+		// Другие строки
+		html += `<div>${line}</div>`
+	})
+
+	// Если остался незакрытый шаг или секция
+	if (inStepSection) {
+		if (currentStepHtml) {
+			html += `<div class="log-step">${currentStepHtml}</div>`
+		}
+		html += `</div>` // Закрываем .log-steps
+	}
+
+	return html
 }
 
 /**
@@ -102,6 +273,7 @@ function updateCommandHistory() {
  * @param {string} timestamp - Временная метка команды
  */
 function showCommandDetails(timestamp) {
+	// Показываем индикатор загрузки в модальном окне
 	const modal = document.getElementById('details-modal')
 	const detailsContent = document.getElementById('command-details')
 
@@ -110,36 +282,110 @@ function showCommandDetails(timestamp) {
 		return
 	}
 
-	detailsContent.textContent = 'Загрузка подробностей...'
+	detailsContent.innerHTML = '<div class="loading">Загрузка подробностей...</div>'
 	modal.style.display = 'block'
 
 	fetch(`/api/detailed_history/${timestamp}`)
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`)
-			}
-
-			// Проверка типа контента
-			const contentType = response.headers.get('content-type')
-			if (!contentType || !contentType.includes('application/json')) {
-				throw new Error('Получен неверный формат данных (не JSON)')
-			}
-
-			return response.json()
-		})
+		.then((response) => response.json())
 		.then((data) => {
 			if (data.error) {
-				detailsContent.textContent = `Ошибка: ${data.error}`
-			} else if (data.details && data.details.length > 0) {
-				detailsContent.textContent = data.details.join('\n')
+				detailsContent.innerHTML = `<div class="error">${data.error}</div>`
+			} else if (!data.details || data.details.length === 0) {
+				detailsContent.innerHTML =
+					'<div class="empty-log">Подробная информация о команде не найдена</div>'
 			} else {
-				detailsContent.textContent = 'Подробная информация отсутствует'
+				// Форматируем детальную информацию
+				detailsContent.innerHTML = formatLogLines(data.details)
 			}
 		})
 		.catch((error) => {
 			console.error('Ошибка при получении подробностей команды:', error)
-			detailsContent.textContent = `Ошибка загрузки подробностей: ${error.message}`
+			detailsContent.innerHTML = `<div class="error">Ошибка при получении подробностей команды: ${error.message}</div>`
 		})
+}
+
+/**
+ * Функция для экспорта логов в файл
+ * @param {string} type - Тип логов (history, detailed)
+ */
+function exportLogs(type) {
+	// Показываем уведомление о начале экспорта
+	showNotification('Подготовка логов для экспорта...', 'info')
+
+	// Определяем URL в зависимости от типа логов
+	const url = type === 'detailed' ? '/api/export_detailed_logs' : '/api/export_history_logs'
+
+	fetch(url)
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`)
+			}
+			return response.blob()
+		})
+		.then((blob) => {
+			// Создаем ссылку для скачивания
+			const url = window.URL.createObjectURL(blob)
+			const a = document.createElement('a')
+			a.style.display = 'none'
+			a.href = url
+
+			// Определяем имя файла
+			const date = new Date().toISOString().replace(/[:.]/g, '-')
+			a.download = type === 'detailed' ? `detailed_logs_${date}.txt` : `command_history_${date}.txt`
+
+			// Добавляем ссылку в DOM, кликаем по ней и удаляем
+			document.body.appendChild(a)
+			a.click()
+			window.URL.revokeObjectURL(url)
+			document.body.removeChild(a)
+
+			showNotification('Логи успешно экспортированы', 'success')
+		})
+		.catch((error) => {
+			console.error('Ошибка при экспорте логов:', error)
+			showNotification(`Ошибка при экспорте логов: ${error.message}`, 'error')
+		})
+}
+
+/**
+ * Функция для очистки истории команд
+ * @param {boolean} backupOnly - Только создать резервную копию без очистки
+ */
+function clearHistory(backupOnly = false) {
+	const action = backupOnly ? 'создать резервную копию' : 'очистить'
+	const confirmMessage = backupOnly
+		? 'Создать резервную копию истории команд?'
+		: 'Вы уверены, что хотите полностью очистить историю команд? Это действие нельзя отменить.'
+
+	if (confirm(confirmMessage)) {
+		// Показываем уведомление о начале процесса
+		showNotification(`Выполняется запрос: ${action} историю команд...`, 'info')
+
+		fetch('/api/clear_history', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ backup_only: backupOnly }),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.status === 'success') {
+					showNotification(data.message, 'success')
+
+					// Если это была полная очистка, обновляем отображение истории
+					if (!backupOnly) {
+						updateCommandHistory()
+					}
+				} else {
+					showNotification(`Ошибка: ${data.error}`, 'error')
+				}
+			})
+			.catch((error) => {
+				console.error(`Ошибка при выполнении операции: ${action} историю`, error)
+				showNotification(`Ошибка: ${error.message}`, 'error')
+			})
+	}
 }
 
 /**
@@ -243,6 +489,75 @@ function initHistoryHandlers() {
 		}
 	})
 }
+
+// Добавляем обработчики для кнопок экспорта
+document.addEventListener('DOMContentLoaded', function () {
+	// Кнопка экспорта истории
+	const exportHistoryBtn = document.getElementById('export-history')
+	if (exportHistoryBtn) {
+		exportHistoryBtn.addEventListener('click', function () {
+			exportLogs('history')
+		})
+	}
+
+	// Добавляем кнопку экспорта детальных логов в модальное окно
+	const detailsModal = document.getElementById('details-modal')
+	if (detailsModal) {
+		const modalFooter = detailsModal.querySelector('.modal-footer')
+		if (modalFooter) {
+			// Проверяем, не добавлена ли уже кнопка
+			if (!modalFooter.querySelector('#export-detailed')) {
+				const exportBtn = document.createElement('button')
+				exportBtn.id = 'export-detailed'
+				exportBtn.className = 'btn'
+				exportBtn.innerHTML = '<span class="material-icons">download</span> Экспорт логов'
+				exportBtn.addEventListener('click', function () {
+					exportLogs('detailed')
+				})
+
+				// Вставляем кнопку перед кнопкой закрытия
+				modalFooter.insertBefore(exportBtn, modalFooter.firstChild)
+			}
+		}
+	}
+})
+
+// Добавляем обработчики для кнопок управления историей
+document.addEventListener('DOMContentLoaded', function () {
+	// Кнопка обновления истории
+	const refreshHistoryBtn = document.getElementById('refresh-history')
+	if (refreshHistoryBtn) {
+		refreshHistoryBtn.addEventListener('click', updateCommandHistory)
+	}
+
+	// Кнопка очистки отображения истории
+	const clearHistoryDisplayBtn = document.getElementById('clear-history-display')
+	if (clearHistoryDisplayBtn) {
+		clearHistoryDisplayBtn.addEventListener('click', function () {
+			const historyList = document.getElementById('history-list')
+			if (historyList) {
+				historyList.innerHTML =
+					'<tr><td colspan="6" class="empty-history">История очищена</td></tr>'
+			}
+		})
+	}
+
+	// Кнопка создания резервной копии истории
+	const backupHistoryBtn = document.getElementById('backup-history')
+	if (backupHistoryBtn) {
+		backupHistoryBtn.addEventListener('click', function () {
+			clearHistory(true) // true = только резервная копия
+		})
+	}
+
+	// Кнопка полной очистки истории
+	const clearHistoryBtn = document.getElementById('clear-history')
+	if (clearHistoryBtn) {
+		clearHistoryBtn.addEventListener('click', function () {
+			clearHistory(false) // false = полная очистка
+		})
+	}
+})
 
 // Экспортируем функции для использования в других модулях
 window.historyModule = {

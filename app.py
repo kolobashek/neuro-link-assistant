@@ -1,32 +1,41 @@
 from flask import Flask
 from routes.main_routes import main_bp
 from routes.api_routes import api_bp
-from utils.logging_utils import setup_loggers
-
-# Инициализация логгеров
-logger, detailed_logger, summary_logger = setup_loggers()
-
-# Создание приложения Flask
-app = Flask(__name__)
-
-# Регистрация маршрутов
-app.register_blueprint(main_bp)
-app.register_blueprint(api_bp, url_prefix='/api')
+from utils.logging_utils import setup_logging
 
 # Глобальная переменная для отслеживания прерывания команды
 command_interrupt_flag = False
+            
+# Создание приложения Flask
+app = Flask(__name__)
 
 def init_app():
     """Инициализация приложения"""
     global command_interrupt_flag
-    
+
+    # Инициализация системы логирования
+    from utils.logging_utils import init_logging_system
+    init_logging_system()
+
+    # Регистрация маршрутов
+    app.register_blueprint(main_bp)
+    app.register_blueprint(api_bp, url_prefix='/api')
+
+    # Настройка логирования
+    history_logger, detailed_logger, system_logger = setup_logging(app)
+
+    # Создаем необходимые файлы логов
+    from utils.log_maintenance import ensure_log_files_exist
+    ensure_log_files_exist()
+
+    # Настройка конфигурации приложения
+    app.config.from_object('config.Config')
+
     # Сбрасываем флаг прерывания
     command_interrupt_flag = False
     
     # Логируем запуск приложения
-    logger.info("Приложение запущено")
-    detailed_logger.info("Приложение запущено")
-    summary_logger.info("Приложение запущено")
+    system_logger.info("Приложение запущено")
 
 if __name__ == '__main__':
     init_app()

@@ -261,43 +261,35 @@ def get_history():
 def get_detailed_history(command_timestamp):
     """Возвращает подробную информацию о выполнении команды"""
     try:
-        import os
-        
-        log_file_path = 'detailed_command_log.txt'
-        
-        # Проверяем существование файла
-        if not os.path.exists(log_file_path):
-            # Создаем пустой файл
-            with open(log_file_path, 'w', encoding='utf-8') as f:
-                f.write('')
-            
+        # Проверяем, существует ли файл журнала
+        if not os.path.exists(Config.DETAILED_LOG_FILE):
             return jsonify({
                 'command_timestamp': command_timestamp,
                 'details': [],
-                'message': 'История команд пуста'
+                'message': 'Детальная история команд пуста'
             })
         
         # Читаем подробный журнал команд
-        with open(log_file_path, 'r', encoding='utf-8') as f:
+        with open(Config.DETAILED_LOG_FILE, 'r', encoding='utf-8') as f:
             log_content = f.read()
         
         # Ищем записи, соответствующие указанной временной метке
-        entries = []
-        command_found = False
         command_details = []
+        command_found = False
         
         lines = log_content.split('\n')
         for line in lines:
-            if command_timestamp in line:
+            if command_timestamp in line and "Детальное выполнение команды" in line:
                 command_found = True
                 command_details.append(line)
-            elif command_found and line.strip():
+            elif command_found:
                 command_details.append(line)
+                if line.startswith('-' * 50):  # Конец записи
+                    break
         
         return jsonify({
             'command_timestamp': command_timestamp,
-            'details': command_details,
-            'message': 'Подробная информация о команде' if command_details else 'Информация о команде не найдена'
+            'details': command_details
         })
     except Exception as e:
         logger.error(f"Ошибка при чтении подробной истории: {str(e)}")
@@ -333,45 +325,46 @@ def select_ai_model_route():
     return jsonify(result)
 
 @api_bp.route('/ensure_log_files_exist', methods=['POST'])
-def ensure_log_files_exist():
-    """Создает необходимые файлы журнала, если они не существуют"""
+def ensure_log_files_exist_route():
+    """Создает необходимые файлы логов, если они не существуют"""
     try:
-        import os
+        from utils.log_maintenance import ensure_log_files_exist
         
-        # Список файлов журнала, которые должны существовать
-        log_files = [
-            'detailed_command_log.txt',
-            Config.SUMMARY_LOG_FILE  # Используем путь из конфигурации
-        ]
-        
-        created_files = []
-        
-        # Создаем каждый файл, если он не существует
-        for log_file in log_files:
-            if not os.path.exists(log_file):
-                # Создаем директории, если они не существуют
-                directory = os.path.dirname(log_file)
-                if directory and not os.path.exists(directory):
-                    os.makedirs(directory, exist_ok=True)
-                
-                # Создаем пустой файл
-                with open(log_file, 'w', encoding='utf-8') as f:
-                    f.write('')
-                
-                created_files.append(log_file)
-                logger.info(f"Создан пустой файл журнала: {log_file}")
+        ensure_log_files_exist()
         
         return jsonify({
             'success': True,
-            'message': 'Проверка файлов журнала выполнена',
-            'created_files': created_files
+            'message': 'Проверка файлов логов выполнена'
         })
     except Exception as e:
-        logger.error(f"Ошибка при создании файлов журнала: {str(e)}")
+        logger.error(f"Ошибка при создании файлов логов: {str(e)}")
         return jsonify({
             'success': False,
-            'error': f"Ошибка при создании файлов журнала: {str(e)}"
+            'error': f"Ошибка при создании файлов логов: {str(e)}"
         })
+
+@api_bp.route('/clean_old_logs', methods=['POST'])
+def clean_old_logs_route():
+    """Удаляет старые файлы логов"""
+    try:
+        from utils.log_maintenance import clean_old_logs
+        
+        # Получаем максимальный возраст файлов из запроса или используем значение по умолчанию
+        max_age_days = request.json.get('max_age_days', 30) if request.json else 30
+        
+        clean_old_logs(max_age_days)
+        
+        return jsonify({
+            'success': True,
+            'message': f'Удалены логи старше {max_age_days} дней'
+        })
+    except Exception as e:
+        logger.error(f"Ошибка при удалении старых логов: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f"Ошибка при удалении старых логов: {str(e)}"
+        })
+
 @api_bp.route('/ai_models', methods=['GET'])
 def get_ai_models_route():
     """Возвращает список доступных нейросетей и их статус"""
@@ -386,3 +379,96 @@ def get_ai_models_route():
             'error': f"Ошибка при получении списка нейросетей: {str(e)}",
             'models': []
         })
+
+@api_bp.route('/export_history_logs', methods=['GET'])
+def export_history_logs():
+    """Экспортирует историю команд в файл"""
+    try:
+        if not os.path.exists(Config.SUMMARY_LOG_FILE):
+            return jsonify({
+                'error': 'Файл истории команд не найден'
+            }), 404
+        
+        # Читаем содержимое файла
+        with open(Config.SUMMARY_LOG_FILE, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Создаем ответ с файлом
+        response = make_response(content)
+        response.headers['Content-Type'] = 'text/plain'
+        response.headers['Content-Disposition'] = 'attachment; filename=command_history.txt'
+        
+        return response
+    except Exception as e:
+        logger.error(f"Ошибка при экспорте истории команд: {str(e)}")
+        return jsonify({
+            'error': f"Ошибка при экспорте истории команд: {str(e)}"
+        }), 500
+
+@api_bp.route('/export_detailed_logs', methods=['GET'])
+def export_detailed_logs():
+    """Экспортирует детальные логи в файл"""
+    try:
+        if not os.path.exists(Config.DETAILED_LOG_FILE):
+            return jsonify({
+                'error': 'Файл детальных логов не найден'
+            }), 404
+        
+        # Читаем содержимое файла
+        with open(Config.DETAILED_LOG_FILE, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Создаем ответ с файлом
+        response = make_response(content)
+        response.headers['Content-Type'] = 'text/plain'
+        response.headers['Content-Disposition'] = 'attachment; filename=detailed_logs.txt'
+        
+        return response
+    except Exception as e:
+        logger.error(f"Ошибка при экспорте детальных логов: {str(e)}")
+        return jsonify({
+            'error': f"Ошибка при экспорте детальных логов: {str(e)}"
+        }), 500
+
+@api_bp.route('/system_logs', methods=['GET'])
+def get_system_logs():
+    """
+    Возвращает системные логи (только для разработчиков)
+    Требует аутентификации разработчика
+    """
+    # Проверка, является ли пользователь разработчиком
+    developer_mode = request.args.get('developer_mode') == 'true'
+    developer_key = request.args.get('developer_key', '')
+    
+    # Простая проверка ключа разработчика (в реальном приложении нужна более надежная аутентификация)
+    if not developer_mode or developer_key != Config.DEVELOPER_KEY:
+        return jsonify({
+            'error': 'Доступ запрещен. Требуется ключ разработчика.'
+        }), 403
+    
+    try:
+        if not os.path.exists(Config.SYSTEM_LOG_FILE):
+            return jsonify({
+                'logs': [],
+                'message': 'Системные логи пусты'
+            })
+        
+        # Читаем последние N строк лога
+        max_lines = int(request.args.get('max_lines', 100))
+        
+        with open(Config.SYSTEM_LOG_FILE, 'r', encoding='utf-8') as f:
+            # Читаем все строки и берем последние max_lines
+            lines = f.readlines()
+            last_lines = lines[-max_lines:] if len(lines) > max_lines else lines
+        
+        return jsonify({
+            'logs': last_lines,
+            'count': len(last_lines),
+            'total_lines': len(lines)
+        })
+    except Exception as e:
+        logger.error(f"Ошибка при чтении системных логов: {str(e)}")
+        return jsonify({
+            'error': f"Ошибка при чтении системных логов: {str(e)}",
+            'logs': []
+        }), 500

@@ -12,10 +12,17 @@ class Config:
     HOST = os.getenv('HOST', '127.0.0.1')
     PORT = int(os.getenv('PORT', 5000))
     
-    # Пути к файлам журналов
-    LOG_DIR = os.getenv('LOG_DIR', 'logs')
-    DETAILED_LOG_FILE = os.path.join(LOG_DIR, 'detailed_command_log.txt')
-    SUMMARY_LOG_FILE = os.path.join(LOG_DIR, 'command_summary.txt')
+    # Настройки логирования
+    LOGS_DIR = 'logs'  # Директория для хранения логов
+    SUMMARY_LOG_FILE = os.path.join(LOGS_DIR, 'command_history.log')  # История команд для пользователя
+    DETAILED_LOG_FILE = os.path.join(LOGS_DIR, 'detailed_command.log')  # Детальные логи для разработчика
+    SYSTEM_LOG_FILE = os.path.join(LOGS_DIR, 'system.log')  # Системные логи для разработчика
+    
+    # Максимальный размер файла лога перед ротацией (10 МБ)
+    MAX_LOG_SIZE = 10 * 1024 * 1024
+    
+    # Количество файлов для ротации
+    LOG_BACKUP_COUNT = 5
     
     # API ключи
     HUGGINGFACE_API_KEY = os.getenv('HUGGINGFACE_API_KEY', '')
@@ -31,3 +38,6 @@ class Config:
     
     # Максимальное время ожидания загрузки страницы в браузере (в секундах)
     BROWSER_TIMEOUT = 10
+
+    # Ключ для доступа к функциям разработчика
+    DEVELOPER_KEY = os.environ.get('DEVELOPER_KEY', 'dev_key_12345')
