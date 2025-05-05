@@ -83,10 +83,19 @@ function updateAIModelsStatus() {
 				}
 
 				modelItem.innerHTML = `
-					<div class="model-name">${escapeHtml(model.name)}</div>
-					<div class="model-status">${statusText}</div>
-					${model.is_current ? '<div class="current-badge">Текущая</div>' : ''}
-					${model.error ? `<div class="error-message">${escapeHtml(model.error)}</div>` : ''}
+					<div class="model-info">
+						<div class="model-name">${escapeHtml(model.name)}</div>
+						<div class="model-status">${statusText}</div>
+						${
+							model.api_type
+								? `<div class="model-api-type">${
+										model.api_type === 'openai' ? 'OpenAI API' : 'Hugging Face'
+								  }</div>`
+								: ''
+						}
+						${model.is_current ? '<div class="current-badge">Текущая</div>' : ''}
+						${model.error ? `<div class="error-message">${escapeHtml(model.error)}</div>` : ''}
+					</div>
 					<div class="model-actions">
 						<button class="check-model-btn" data-model-id="${model.id}">Проверить</button>
 						${
@@ -533,15 +542,49 @@ function generateChatResponse(messages, maxLength = 1000, modelId = null) {
 	})
 }
 
+/**
+ * Функция для обновления списка моделей с Hugging Face Hub
+ */
+function updateModelsFromHuggingFace() {
+	const updateBtn = document.getElementById('update-models-btn')
+	if (updateBtn) {
+		handleButtonAction(updateBtn, 'Обновление...', () => {
+			return fetch('/api/ai_models/update_from_huggingface', {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.success) {
+						showNotification(
+							`Список моделей обновлен. Добавлено ${data.added_count} новых моделей.`,
+							'success'
+						)
+						// Обновляем отображение моделей
+						updateAIModelsStatus()
+					} else {
+						showNotification(data.message || 'Ошибка при обновлении списка моделей', 'error')
+					}
+				})
+				.catch((error) => {
+					console.error('Ошибка при обновлении списка моделей:', error)
+					showNotification('Ошибка при обновлении списка моделей', 'error')
+				})
+		})
+	}
+}
+
 // Инициализация интерфейса управления моделями
 document.addEventListener('DOMContentLoaded', function () {
-	// Обновляем статус моделей при загрузке страницы
 	updateAIModelsStatus()
 
-	// Добавляем обработчик для кнопки проверки всех моделей
 	const checkAllBtn = document.getElementById('check-ai-models-btn')
 	if (checkAllBtn) {
 		checkAllBtn.addEventListener('click', checkAIModelsAvailability)
+	}
+
+	const updateModelsBtn = document.getElementById('update-models-btn')
+	if (updateModelsBtn) {
+		updateModelsBtn.addEventListener('click', updateModelsFromHuggingFace)
 	}
 
 	// Добавляем обработчик для формы поиска моделей

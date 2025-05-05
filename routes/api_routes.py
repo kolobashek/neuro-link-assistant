@@ -15,7 +15,8 @@ from services.ai_service import (
     get_ai_models, get_current_ai_model, 
     check_ai_model_availability, select_ai_model,
     search_models, add_model, remove_model,
-    generate_text, generate_chat_response
+    generate_text, generate_chat_response,
+    update_models_from_huggingface  # Добавляем импорт новой функции
 )
 
 api_bp = Blueprint('api', __name__)
@@ -474,3 +475,77 @@ def get_system_logs():
             'error': f"Ошибка при чтении системных логов: {str(e)}",
             'logs': []
         }), 500
+
+@api_bp.route('/check_ai_model/<model_id>', methods=['POST'])
+def check_single_ai_model(model_id):
+    """Проверяет доступность конкретной нейросети"""
+    try:
+        # Проверяем доступность
+        result = check_ai_model_availability(model_id)
+        
+        return jsonify(result)
+    except Exception as e:
+        logger.error(f"Ошибка при проверке модели {model_id}: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f"Ошибка при проверке модели: {str(e)}"
+        })
+
+@api_bp.route('/ai_models/update_from_huggingface', methods=['POST'])
+def update_models_from_huggingface_route():
+    """Обновляет список моделей, добавляя популярные модели с Hugging Face Hub"""
+    try:
+        # Вызываем функцию обновления моделей
+        result = update_models_from_huggingface()
+        
+        return jsonify(result)
+    except Exception as e:
+        logger.error(f"Ошибка при обновлении списка моделей: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f"Ошибка при обновлении списка моделей: {str(e)}"
+        })
+
+@api_bp.route('/search_models', methods=['GET'])
+def search_models_route():
+    """Поиск моделей на Hugging Face Hub"""
+    try:
+        # Получаем параметр запроса
+        query = request.args.get('query', '')
+        
+        if not query:
+            return jsonify({
+                'success': False,
+                'message': 'Не указан поисковый запрос'
+            })
+        
+        # Вызываем функцию поиска моделей
+        # Предполагается, что функция search_models определена в services/ai_service.py
+        models = search_models(query)
+        
+        return jsonify({
+            'success': True,
+            'models': models,
+            'count': len(models)
+        })
+    except Exception as e:
+        logger.error(f"Ошибка при поиске моделей: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f"Ошибка при поиске моделей: {str(e)}"
+        })
+
+@api_bp.route('/select_ai_model/<model_id>', methods=['POST'])
+def select_ai_model_by_id(model_id):
+    """Выбирает нейросеть для использования по ID"""
+    try:
+        # Выбираем нейросеть
+        result = select_ai_model(model_id)
+        
+        return jsonify(result)
+    except Exception as e:
+        logger.error(f"Ошибка при выборе модели {model_id}: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f"Ошибка при выборе модели: {str(e)}"
+        })

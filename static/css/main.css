@@ -139,3 +139,13 @@ h3 {
     color: #666;
     font-style: italic;
 }
+
+.model-api-type {
+    font-size: 12px;
+    color: #666;
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 4px;
+}

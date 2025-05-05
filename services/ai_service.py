@@ -3,6 +3,7 @@ import json
 import logging
 from config import Config
 from services.huggingface_service import HuggingFaceService
+from huggingface_hub import HfApi
 
 logger = logging.getLogger('neuro_assistant')
 
@@ -69,73 +70,182 @@ def get_current_ai_model():
 
 def check_ai_model_availability(model_id=None):
     """
-    Проверяет доступность AI-модели
+
+    Проверяет доступность нейросетей
     
     Args:
-        model_id: Идентификатор модели для проверки (если None, проверяются все модели)
+
+        model_id: ID конкретной модели для проверки (опционально)
         
     Returns:
-        Словарь с результатами проверки
+
+        dict: Результат проверки
     """
     try:
         # Получаем список моделей
         models_data = get_ai_models()
+        models = models_data.get("models", [])
         
-        if 'error' in models_data:
-            return {'success': False, 'message': models_data['error']}
-        
-        models = models_data.get('models', [])
-        
+
+
+
+
+
         # Если указан конкретный ID модели
         if model_id:
-            # Ищем модель с указанным ID
-            model = next((m for m in models if m['id'] == model_id), None)
+
+
+            # Находим модель по ID
+            model = next((m for m in models if m["id"] == model_id), None)
             
             if not model:
-                return {'success': False, 'message': f"Модель с ID {model_id} не найдена"}
+
+                return {
+                    "success": False,
+                    "message": f"Модель с ID {model_id} не найдена"
+                }
             
-            # Проверяем доступность модели
-            availability = hf_service.check_model_availability(model['huggingface_id'])
+
+
+            # Проверяем, является ли это моделью OpenAI
+            if model.get("api_type") == "openai" or "openai" in model.get("huggingface_id", "").lower():
+                # Проверяем наличие API ключа OpenAI
+                if not os.environ.get("OPENAI_API_KEY"):
+                    model["status"] = "unavailable"
+                    model["error"] = "API ключ OpenAI не найден. Установите переменную окружения OPENAI_API_KEY."
+                    
+                    # Сохраняем обновленный статус
+                    save_ai_models(models_data)
+                    
+                    return {
+                        "success": False,
+                        "model_name": model["name"],
+                        "message": model["error"]
+                    }
+                
+                # Здесь можно добавить тестовый запрос к API OpenAI
+                # Для простоты просто отметим модель как доступную
+                model["status"] = "ready"
+                model["error"] = None
+                
+                # Сохраняем обновленный статус
+                save_ai_models(models_data)
+                
+                return {
+                    "success": True,
+                    "model_name": model["name"],
+                    "message": f"Модель {model['name']} доступна через API OpenAI"
+                }
             
-            # Обновляем статус модели
-            update_model_status(model_id, 
-                                'ready' if availability['available'] else 'unavailable',
-                                availability['error'] if not availability['available'] else None)
-            
-            return {
-                'success': True,
-                'model_id': model_id,
-                'model_name': model['name'],
-                'available': availability['available'],
-                'message': f"Проверка модели {model['name']} выполнена"
-            }
-        else:
-            # Проверяем все модели
-            results = []
-            
-            for model in models:
+
+
+
+
+
+
+
+
+
+
+
+
+            # Для моделей Hugging Face Hub
+            try:
                 # Проверяем доступность модели
-                availability = hf_service.check_model_availability(model['huggingface_id'])
+                from huggingface_hub import model_info
                 
-                # Обновляем статус модели
-                update_model_status(model['id'], 
-                                    'ready' if availability['available'] else 'unavailable',
-                                    availability['error'] if not availability['available'] else None)
+                # Получаем информацию о модели
+                info = model_info(model["huggingface_id"])
                 
-                results.append({
-                    'model_id': model['id'],
-                    'model_name': model['name'],
-                    'available': availability['available']
-                })
-            
-            return {
-                'success': True,
-                'results': results,
-                'message': "Проверка всех моделей выполнена"
-            }
+                if info:
+                    model["status"] = "ready"
+                    model["error"] = None
+                else:
+                    model["status"] = "unavailable"
+                    model["error"] = "Модель не найдена на Hugging Face Hub"
+                
+                # Сохраняем обновленный статус
+                save_ai_models(models_data)
+                
+                return {
+                    "success": True,
+                    "model_name": model["name"],
+                    "message": f"Модель {model['name']} {'доступна' if model['status'] == 'ready' else 'недоступна'}"
+                }
+            except Exception as e:
+                model["status"] = "unavailable"
+                model["error"] = str(e)
+                
+                # Сохраняем обновленный статус
+                save_ai_models(models_data)
+                
+                return {
+                    "success": False,
+                    "model_name": model["name"],
+                    "message": f"Ошибка при проверке модели {model['name']}: {str(e)}"
+                }
+        
+        # Если ID не указан, проверяем все модели
+        results = {
+            "success": True,
+            "message": "Проверка моделей выполнена",
+            "models_checked": 0,
+            "models_available": 0,
+            "models_unavailable": 0
+        }
+        
+        for model in models:
+            try:
+                # Проверяем модели OpenAI
+                if model.get("api_type") == "openai" or "openai" in model.get("huggingface_id", "").lower():
+                    if not os.environ.get("OPENAI_API_KEY"):
+                        model["status"] = "unavailable"
+                        model["error"] = "API ключ OpenAI не найден"
+                        results["models_unavailable"] += 1
+                    else:
+                        model["status"] = "ready"
+                        model["error"] = None
+                        results["models_available"] += 1
+                
+                # Проверяем модели Hugging Face Hub
+                else:
+                    try:
+                        from huggingface_hub import model_info
+                        
+                        # Получаем информацию о модели
+                        info = model_info(model["huggingface_id"])
+                        
+                        if info:
+                            model["status"] = "ready"
+                            model["error"] = None
+                            results["models_available"] += 1
+                        else:
+                            model["status"] = "unavailable"
+                            model["error"] = "Модель не найдена на Hugging Face Hub"
+                            results["models_unavailable"] += 1
+                    except Exception as e:
+                        model["status"] = "unavailable"
+                        model["error"] = str(e)
+                        results["models_unavailable"] += 1
+                
+                results["models_checked"] += 1
+            except Exception as e:
+                logger.error(f"Ошибка при проверке модели {model.get('name', 'unknown')}: {str(e)}")
+                model["status"] = "unavailable"
+                model["error"] = str(e)
+                results["models_unavailable"] += 1
+                results["models_checked"] += 1
+        
+        # Сохраняем обновленный статус
+        save_ai_models(models_data)
+        
+        return results
     except Exception as e:
-        logger.error(f"Ошибка при проверке доступности AI-моделей: {str(e)}")
-        return {'success': False, 'message': f"Ошибка при проверке доступности AI-моделей: {str(e)}"}
+        logger.error(f"Ошибка при проверке доступности моделей: {str(e)}")
+        return {
+            "success": False,
+            "message": f"Ошибка при проверке доступности моделей: {str(e)}"
+        }
 
 def select_ai_model(model_id):
     """
@@ -247,11 +357,12 @@ def create_default_models_file():
                 {
                     "id": "gpt-3.5-turbo",
                     "name": "GPT-3.5 Turbo",
-                    "description": "Модель OpenAI GPT-3.5 Turbo",
+                    "description": "Модель OpenAI GPT-3.5 Turbo (требует API ключ OpenAI)",
                     "huggingface_id": "openai/gpt-3.5-turbo",
                     "type": "chat",
                     "status": "unavailable",
-                    "is_current": True
+                    "is_current": True,
+                    "api_type": "openai"  # Добавляем тип API
                 },
                 {
                     "id": "llama-2-7b",
@@ -283,13 +394,28 @@ def create_default_models_file():
             ]
         }
         
-        # Сохраняем информацию в файл
-        with open(MODELS_INFO_FILE, 'w', encoding='utf-8') as f:
-            json.dump(default_models, f, ensure_ascii=False, indent=2)
+        # Пытаемся получить популярные модели с Hugging Face Hub
+        try:
+            huggingface_models = get_available_huggingface_models(limit=5)
+            
+            # Добавляем модели в список, если они не дублируют существующие
+            existing_ids = {model["huggingface_id"] for model in default_models["models"]}
+            
+            for model in huggingface_models:
+                if model["huggingface_id"] not in existing_ids:
+                    default_models["models"].append(model)
+        except Exception as e:
+            logger.warning(f"Не удалось получить модели с Hugging Face Hub: {str(e)}")
         
-        logger.info(f"Создан файл с информацией о моделях по умолчанию: {MODELS_INFO_FILE}")
+        # Записываем в файл
+        with open(MODELS_INFO_FILE, 'w', encoding='utf-8') as f:
+            json.dump(default_models, f, ensure_ascii=False, indent=4)
+            
+        logger.info(f"Создан файл с информацией о моделях: {MODELS_INFO_FILE}")
+        return True
     except Exception as e:
-        logger.error(f"Ошибка при создании файла с информацией о моделях: {str(e)}")
+        logger.error(f"Ошибка при создании файла с моделями: {str(e)}")
+        return False
 
 def generate_text(prompt, max_length=1000, model_id=None):
     """
@@ -455,7 +581,7 @@ def generate_chat_response(messages, max_length=1000, model_id=None):
         logger.error(f"Ошибка при генерации ответа в чате: {str(e)}")
         return f"Ошибка при генерации ответа: {str(e)}"
 
-def search_models(query, limit=10):
+def search_models(query, limit=20):
     """
     Поиск моделей на Hugging Face Hub
     
@@ -464,28 +590,39 @@ def search_models(query, limit=10):
         limit: Максимальное количество результатов
         
     Returns:
-        Список найденных моделей
+        list: Список найденных моделей
     """
     try:
-        # Формируем критерии поиска
-        filter_criteria = {
-            "search": query,
-            "sort": "downloads",
-            "direction": -1,
-            "limit": limit
-        }
+        # Инициализируем API
+        from huggingface_hub import HfApi
+        api = HfApi()
         
-        # Выполняем поиск
-        models = hf_service.list_available_models(filter_criteria)
+        # Выполняем поиск моделей
+        models = api.list_models(
+            search=query,  # Поисковый запрос
+            filter="text-generation",  # Фильтр по типу модели
+            sort="downloads",  # Сортировка по количеству загрузок
+            direction=-1,  # Сортировка по убыванию
+            limit=limit  # Ограничение количества результатов
+        )
         
-        return {
-            'success': True,
-            'models': models,
-            'count': len(models)
-        }
+        # Преобразуем результаты в удобный формат
+        result = []
+        for model in models:
+            result.append({
+                "id": model.id,
+                "name": model.id.split('/')[-1],
+                "author": model.id.split('/')[0] if '/' in model.id else "Unknown",
+                "description": model.card_data.get("description", "") if model.card_data else "",
+                "tags": model.tags,
+                "downloads": model.downloads,
+                "likes": model.likes
+            })
+        
+        return result
     except Exception as e:
         logger.error(f"Ошибка при поиске моделей: {str(e)}")
-        return {'success': False, 'message': f"Ошибка при поиске моделей: {str(e)}"}
+        return []
 
 def add_model(model_data):
     """
@@ -642,3 +779,111 @@ def get_ai_response(prompt, system_message=None):
     except Exception as e:
         logger.error(f"Ошибка при получении ответа от AI: {str(e)}")
         return f"Ошибка при получении ответа от AI: {str(e)}"
+
+def get_available_huggingface_models(filter_criteria=None, limit=20):
+    """
+    Получает список доступных моделей с Hugging Face Hub
+    
+    Args:
+        filter_criteria: Критерии фильтрации моделей (опционально)
+        limit: Максимальное количество моделей для получения
+        
+    Returns:
+        Список моделей
+    """
+    try:
+        # Инициализируем API
+        api = HfApi()
+        
+        # Получаем список моделей
+        models = api.list_models(
+            filter=filter_criteria or "text-generation",  # Фильтр по типу модели
+            sort="downloads",  # Сортировка по количеству загрузок
+            direction=-1,  # Сортировка по убыванию
+            limit=limit  # Ограничение количества результатов
+        )
+        
+        # Преобразуем результаты в удобный формат
+        result = []
+        for model in models:
+            model_id = model.id.replace('/', '-').lower()  # Создаем безопасный ID
+            result.append({
+                "id": model_id,
+                "name": model.id.split('/')[-1],
+                "description": model.card_data.get("description", "") if model.card_data else f"Модель {model.id}",
+                "huggingface_id": model.id,
+                "type": "completion",  # По умолчанию считаем, что это модель для завершения текста
+                "status": "unavailable",
+                "is_current": False
+            })
+        
+        return result
+    except Exception as e:
+        logger.error(f"Ошибка при получении списка моделей с Hugging Face Hub: {str(e)}")
+        return []
+
+def update_models_from_huggingface():
+    """
+    Обновляет список моделей, добавляя популярные модели с Hugging Face Hub
+    
+    Returns:
+        dict: Результат операции
+    """
+    try:
+        # Проверяем существование файла с моделями
+        if not os.path.exists(MODELS_INFO_FILE):
+            create_default_models_file()
+        
+        # Получаем текущий список моделей
+        with open(MODELS_INFO_FILE, 'r', encoding='utf-8') as f:
+            models_data = json.load(f)
+        
+        current_models = models_data.get("models", [])
+        
+        # Получаем список популярных моделей с Hugging Face Hub
+        huggingface_models = get_available_huggingface_models(limit=10)
+        
+        # Создаем словарь существующих моделей для быстрого поиска
+        existing_models = {model["huggingface_id"]: True for model in current_models}
+        
+        # Добавляем новые модели, если их еще нет в списке
+        added_count = 0
+        for hf_model in huggingface_models:
+            if hf_model["huggingface_id"] not in existing_models:
+                current_models.append(hf_model)
+                added_count += 1
+        
+        # Сохраняем обновленный список моделей
+        with open(MODELS_INFO_FILE, 'w', encoding='utf-8') as f:
+            json.dump({"models": current_models}, f, ensure_ascii=False, indent=4)
+        
+        return {
+            "success": True,
+            "message": f"Список моделей обновлен. Добавлено {added_count} новых моделей.",
+            "added_count": added_count,
+            "total_models": len(current_models)
+        }
+    except Exception as e:
+        logger.error(f"Ошибка при обновлении списка моделей: {str(e)}")
+        return {
+            "success": False,
+            "message": f"Ошибка при обновлении списка моделей: {str(e)}"
+        }
+
+def save_ai_models(models_data):
+    """
+    Сохраняет информацию о моделях в файл
+    
+    Args:
+        models_data: Данные о моделях для сохранения
+    
+    Returns:
+        bool: Результат операции
+    """
+    try:
+        with open(MODELS_INFO_FILE, 'w', encoding='utf-8') as f:
+            json.dump(models_data, f, ensure_ascii=False, indent=4)
+        return True
+    except Exception as e:
+        logger.error(f"Ошибка при сохранении информации о моделях: {str(e)}")
+        return False
