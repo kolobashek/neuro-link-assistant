@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from routes.main_routes import main_bp
 from routes.api_routes import api_bp
 from utils.logging_utils import setup_logging
@@ -8,6 +8,11 @@ command_interrupt_flag = False
             
 # Создание приложения Flask
 app = Flask(__name__)
+
+@app.route('/ai_models')
+def ai_models_page():
+    """Страница управления нейросетями"""
+    return render_template('ai_models.html')
 
 def init_app():
     """Инициализация приложения"""

@@ -232,18 +232,336 @@ function selectModel(modelId) {
 }
 
 /**
- * Инициализация обработчиков событий для нейросетей
+ * Функция для поиска моделей на Hugging Face Hub
+ * @param {string} query - Поисковый запрос
  */
-function initAIModelsHandlers() {
-	// Обработчик для кнопки проверки всех нейросетей
+function searchModels(query) {
+	const searchContainer = document.getElementById('search-results')
+	if (!searchContainer) {
+		console.error('Элемент #search-results не найден')
+		return
+	}
+
+	// Показываем индикатор загрузки
+	searchContainer.innerHTML = '<div class="loading">Поиск моделей...</div>'
+
+	fetch(`/api/search_models?query=${encodeURIComponent(query)}`)
+		.then((response) => response.json())
+		.then((data) => {
+			if (!data.success) {
+				searchContainer.innerHTML = `<div class="error">${
+					data.message || 'Ошибка при поиске моделей'
+				}</div>`
+				return
+			}
+
+			if (!data.models || data.models.length === 0) {
+				searchContainer.innerHTML = '<div class="empty">Модели не найдены</div>'
+				return
+			}
+
+			// Очищаем контейнер
+			searchContainer.innerHTML = ''
+
+			// Создаем таблицу результатов
+			const table = document.createElement('table')
+			table.className = 'search-results-table'
+
+			// Добавляем заголовок таблицы
+			const thead = document.createElement('thead')
+			thead.innerHTML = `
+				<tr>
+					<th>Название</th>
+					<th>Автор</th>
+					<th>Теги</th>
+					<th>Загрузки</th>
+					<th>Действия</th>
+				</tr>
+			`
+			table.appendChild(thead)
+
+			// Добавляем тело таблицы
+			const tbody = document.createElement('tbody')
+
+			data.models.forEach((model) => {
+				const row = document.createElement('tr')
+
+				// Форматируем теги
+				const tags = model.tags ? model.tags.join(', ') : ''
+
+				row.innerHTML = `
+					<td>${escapeHtml(model.name)}</td>
+					<td>${escapeHtml(model.author)}</td>
+					<td>${escapeHtml(tags)}</td>
+					<td>${model.downloads || 0}</td>
+					<td>
+						<button class="add-model-btn" data-model-id="${model.id}">Добавить</button>
+					</td>
+				`
+
+				tbody.appendChild(row)
+			})
+
+			table.appendChild(tbody)
+			searchContainer.appendChild(table)
+
+			// Добавляем обработчики для кнопок
+			document.querySelectorAll('.add-model-btn').forEach((btn) => {
+				btn.addEventListener('click', function () {
+					const modelId = this.getAttribute('data-model-id')
+					showAddModelForm(modelId)
+				})
+			})
+		})
+		.catch((error) => {
+			console.error('Ошибка при поиске моделей:', error)
+			searchContainer.innerHTML = `<div class="error">Ошибка при поиске моделей: ${error.message}</div>`
+		})
+}
+
+/**
+ * Функция для отображения формы добавления модели
+ * @param {string} huggingfaceId - ID модели на Hugging Face
+ */
+function showAddModelForm(huggingfaceId) {
+	// Создаем модальное окно
+	const modal = document.createElement('div')
+	modal.className = 'modal'
+	modal.id = 'add-model-modal'
+
+	// Создаем содержимое модального окна
+	modal.innerHTML = `
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Добавление новой модели</h2>
+				<span class="close-modal">&times;</span>
+			</div>
+			<div class="modal-body">
+				<form id="add-model-form">
+					<div class="form-group">
+						<label for="model-id">ID модели:</label>
+						<input type="text" id="model-id" name="id" required>
+						<small>Уникальный идентификатор модели в системе</small>
+					</div>
+					<div class="form-group">
+						<label for="model-name">Название модели:</label>
+						<input type="text" id="model-name" name="name" required>
+					</div>
+					<div class="form-group">
+						<label for="model-description">Описание:</label>
+						<textarea id="model-description" name="description"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="model-huggingface-id">Hugging Face ID:</label>
+						<input type="text" id="model-huggingface-id" name="huggingface_id" value="${
+							huggingfaceId || ''
+						}" required>
+						<small>Например: "google/gemma-7b"</small>
+					</div>
+					<div class="form-group">
+						<label for="model-type">Тип модели:</label>
+						<select id="model-type" name="type" required>
+							<option value="chat">Чат</option>
+							<option value="completion">Завершение текста</option>
+							<option value="embedding">Эмбеддинги</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="add-model-submit" class="btn primary">Добавить</button>
+				<button id="add-model-cancel" class="btn">Отмена</button>
+			</div>
+		</div>
+	`
+
+	// Добавляем модальное окно в DOM
+	document.body.appendChild(modal)
+
+	// Добавляем обработчики событий
+	document.querySelector('#add-model-modal .close-modal').addEventListener('click', function () {
+		document.body.removeChild(modal)
+	})
+
+	document.getElementById('add-model-cancel').addEventListener('click', function () {
+		document.body.removeChild(modal)
+	})
+
+	document.getElementById('add-model-submit').addEventListener('click', function () {
+		// Собираем данные формы
+		const form = document.getElementById('add-model-form')
+		const formData = {
+			id: form.elements['id'].value,
+			name: form.elements['name'].value,
+			description: form.elements['description'].value,
+			huggingface_id: form.elements['huggingface_id'].value,
+			type: form.elements['type'].value,
+		}
+
+		// Отправляем запрос на добавление модели
+		addModel(formData)
+
+		// Закрываем модальное окно
+		document.body.removeChild(modal)
+	})
+}
+
+/**
+ * Функция для добавления новой модели
+ * @param {Object} modelData - Данные о модели
+ */
+function addModel(modelData) {
+	fetch('/api/add_model', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(modelData),
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.success) {
+				showNotification(data.message, 'success')
+				// Обновляем список моделей
+				updateAIModelsStatus()
+			} else {
+				showNotification(data.message || 'Ошибка при добавлении модели', 'error')
+			}
+		})
+		.catch((error) => {
+			console.error('Ошибка при добавлении модели:', error)
+			showNotification('Ошибка при добавлении модели: ' + error.message, 'error')
+		})
+}
+
+/**
+ * Функция для удаления модели
+ * @param {string} modelId - ID модели
+ */
+function removeModel(modelId) {
+	// Запрашиваем подтверждение
+	if (!confirm('Вы уверены, что хотите удалить эту модель?')) {
+		return
+	}
+
+	fetch(`/api/remove_model/${modelId}`, {
+		method: 'POST',
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.success) {
+				showNotification(data.message, 'success')
+				// Обновляем список моделей
+				updateAIModelsStatus()
+			} else {
+				showNotification(data.message || 'Ошибка при удалении модели', 'error')
+			}
+		})
+		.catch((error) => {
+			console.error('Ошибка при удалении модели:', error)
+			showNotification('Ошибка при удалении модели: ' + error.message, 'error')
+		})
+}
+
+/**
+ * Функция для генерации текста с использованием модели
+ * @param {string} prompt - Запрос для генерации
+ * @param {number} maxLength - Максимальная длина генерируемого текста
+ * @param {string} modelId - ID модели (опционально)
+ * @returns {Promise<string>} - Сгенерированный текст
+ */
+function generateText(prompt, maxLength = 1000, modelId = null) {
+	return new Promise((resolve, reject) => {
+		fetch('/api/generate_text', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				prompt: prompt,
+				max_length: maxLength,
+				model_id: modelId,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.generated_text) {
+					resolve(data.generated_text)
+				} else {
+					reject(new Error(data.error || 'Ошибка при генерации текста'))
+				}
+			})
+			.catch((error) => {
+				console.error('Ошибка при генерации текста:', error)
+				reject(error)
+			})
+	})
+}
+
+/**
+ * Функция для генерации ответа в формате чата
+ * @param {Array} messages - Список сообщений в формате [{role: "user", content: "..."}, ...]
+ * @param {number} maxLength - Максимальная длина генерируемого текста
+ * @param {string} modelId - ID модели (опционально)
+ * @returns {Promise<string>} - Сгенерированный ответ
+ */
+function generateChatResponse(messages, maxLength = 1000, modelId = null) {
+	return new Promise((resolve, reject) => {
+		fetch('/api/generate_chat_response', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				messages: messages,
+				max_length: maxLength,
+				model_id: modelId,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.response) {
+					resolve(data.response)
+				} else {
+					reject(new Error(data.error || 'Ошибка при генерации ответа'))
+				}
+			})
+			.catch((error) => {
+				console.error('Ошибка при генерации ответа:', error)
+				reject(error)
+			})
+	})
+}
+
+// Инициализация интерфейса управления моделями
+document.addEventListener('DOMContentLoaded', function () {
+	// Обновляем статус моделей при загрузке страницы
+	updateAIModelsStatus()
+
+	// Добавляем обработчик для кнопки проверки всех моделей
 	const checkAllBtn = document.getElementById('check-ai-models-btn')
 	if (checkAllBtn) {
 		checkAllBtn.addEventListener('click', checkAIModelsAvailability)
 	}
 
-	// Первоначальное обновление статуса
-	updateAIModelsStatus()
-}
+	// Добавляем обработчик для формы поиска моделей
+	const searchForm = document.getElementById('search-models-form')
+	if (searchForm) {
+		searchForm.addEventListener('submit', function (e) {
+			e.preventDefault()
+			const query = document.getElementById('search-query').value
+			searchModels(query)
+		})
+	}
+
+	// Добавляем обработчик для кнопки добавления новой модели
+	const addModelBtn = document.getElementById('add-model-btn')
+	if (addModelBtn) {
+		addModelBtn.addEventListener('click', function () {
+			showAddModelForm()
+		})
+	}
+})
 
 // Экспортируем функции для использования в других модулях
 window.aiModelsModule = {

@@ -41,3 +41,12 @@ class Config:
 
     # Ключ для доступа к функциям разработчика
     DEVELOPER_KEY = os.environ.get('DEVELOPER_KEY', 'dev_key_12345')
+
+    # Настройки Hugging Face
+    HUGGINGFACE_TOKEN = os.environ.get('HUGGINGFACE_TOKEN', '')
+    
+    # Директория для хранения моделей
+    MODELS_DIR = os.path.join('BASE_DIR', 'models')
+    
+    # Директория для хранения данных
+    DATA_DIR = os.path.join('BASE_DIR', 'data')

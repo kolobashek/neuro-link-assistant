@@ -1,11 +1,55 @@
-<div class="ai-models-status">
-	<div class="ai-models-header">
-		<h3>Статус нейросетей</h3>
-		<button id="check-ai-models-btn" class="check-btn">
-			<i class="fas fa-sync-alt"></i> Проверить доступность
-		</button>
-	</div>
+<div class="models-container">
+	<h3>Доступные модели</h3>
 	<div id="ai-models-list" class="ai-models-list">
-		<div class="loading">Загрузка информации о нейросетях...</div>
+		<div class="loading">Загрузка данных о нейросетях...</div>
+	</div>
+</div>
+
+<div class="search-models-container">
+	<h3>Поиск моделей на Hugging Face Hub</h3>
+	<form id="search-models-form" class="search-form">
+		<div class="search-input-group">
+			<input type="text" id="search-query" placeholder="Введите запрос для поиска моделей..." />
+			<button type="submit" class="btn primary">
+				<span class="material-icons">search</span> Поиск
+			</button>
+		</div>
+	</form>
+
+	<div id="search-results" class="search-results">
+		<div class="empty">Введите запрос для поиска моделей</div>
+	</div>
+</div>
+
+<div class="models-info">
+	<h3>Информация о работе с моделями</h3>
+	<div class="info-card">
+		<h4>Что такое Hugging Face?</h4>
+		<p>
+			Hugging Face - это платформа для обмена моделями машинного обучения, которая предоставляет
+			доступ к тысячам предобученных моделей для различных задач обработки естественного языка и
+			компьютерного зрения.
+		</p>
+	</div>
+
+	<div class="info-card">
+		<h4>Как добавить модель?</h4>
+		<p>Для добавления модели вы можете:</p>
+		<ol>
+			<li>Найти модель через поиск на Hugging Face Hub</li>
+			<li>Нажать кнопку "Добавить" рядом с найденной моделью</li>
+			<li>Заполнить форму с информацией о модели</li>
+			<li>Нажать кнопку "Добавить" для сохранения модели в системе</li>
+		</ol>
+	</div>
+
+	<div class="info-card">
+		<h4>Требования к моделям</h4>
+		<p>Для корректной работы с системой модели должны соответствовать следующим требованиям:</p>
+		<ul>
+			<li>Быть доступными на Hugging Face Hub</li>
+			<li>Поддерживать генерацию текста (для моделей типа "chat" и "completion")</li>
+			<li>Иметь совместимый с transformers формат</li>
+		</ul>
 	</div>
 </div>

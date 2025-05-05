@@ -2,7 +2,7 @@ import datetime
 import logging
 import os
 from config import Config
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify, make_response
 from globals import command_interrupt_flag  # Импортируем из globals
 from services.command_service import (
     process_command, execute_python_code, execute_command_with_error_handling,
@@ -13,7 +13,9 @@ from utils.logging_utils import log_execution_summary
 from models.command_models import CommandStep, CommandExecution
 from services.ai_service import (
     get_ai_models, get_current_ai_model, 
-    check_ai_model_availability, select_ai_model
+    check_ai_model_availability, select_ai_model,
+    search_models, add_model, remove_model,
+    generate_text, generate_chat_response
 )
 
 api_bp = Blueprint('api', __name__)
