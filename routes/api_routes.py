@@ -261,8 +261,24 @@ def get_history():
 def get_detailed_history(command_timestamp):
     """Возвращает подробную информацию о выполнении команды"""
     try:
+        import os
+        
+        log_file_path = 'detailed_command_log.txt'
+        
+        # Проверяем существование файла
+        if not os.path.exists(log_file_path):
+            # Создаем пустой файл
+            with open(log_file_path, 'w', encoding='utf-8') as f:
+                f.write('')
+            
+            return jsonify({
+                'command_timestamp': command_timestamp,
+                'details': [],
+                'message': 'История команд пуста'
+            })
+        
         # Читаем подробный журнал команд
-        with open('detailed_command_log.txt', 'r', encoding='utf-8') as f:
+        with open(log_file_path, 'r', encoding='utf-8') as f:
             log_content = f.read()
         
         # Ищем записи, соответствующие указанной временной метке
@@ -280,9 +296,11 @@ def get_detailed_history(command_timestamp):
         
         return jsonify({
             'command_timestamp': command_timestamp,
-            'details': command_details
+            'details': command_details,
+            'message': 'Подробная информация о команде' if command_details else 'Информация о команде не найдена'
         })
     except Exception as e:
+        logger.error(f"Ошибка при чтении подробной истории: {str(e)}")
         return jsonify({
             'error': f"Ошибка при чтении подробной истории: {str(e)}",
             'details': []
@@ -313,3 +331,58 @@ def select_ai_model_route():
     result = select_ai_model(model_id)
     
     return jsonify(result)
+
+@api_bp.route('/ensure_log_files_exist', methods=['POST'])
+def ensure_log_files_exist():
+    """Создает необходимые файлы журнала, если они не существуют"""
+    try:
+        import os
+        
+        # Список файлов журнала, которые должны существовать
+        log_files = [
+            'detailed_command_log.txt',
+            Config.SUMMARY_LOG_FILE  # Используем путь из конфигурации
+        ]
+        
+        created_files = []
+        
+        # Создаем каждый файл, если он не существует
+        for log_file in log_files:
+            if not os.path.exists(log_file):
+                # Создаем директории, если они не существуют
+                directory = os.path.dirname(log_file)
+                if directory and not os.path.exists(directory):
+                    os.makedirs(directory, exist_ok=True)
+                
+                # Создаем пустой файл
+                with open(log_file, 'w', encoding='utf-8') as f:
+                    f.write('')
+                
+                created_files.append(log_file)
+                logger.info(f"Создан пустой файл журнала: {log_file}")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Проверка файлов журнала выполнена',
+            'created_files': created_files
+        })
+    except Exception as e:
+        logger.error(f"Ошибка при создании файлов журнала: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f"Ошибка при создании файлов журнала: {str(e)}"
+        })
+@api_bp.route('/ai_models', methods=['GET'])
+def get_ai_models_route():
+    """Возвращает список доступных нейросетей и их статус"""
+    try:
+        # Получаем данные о моделях из сервиса
+        models_data = get_ai_models()
+        
+        return jsonify(models_data)
+    except Exception as e:
+        logger.error(f"Ошибка при получении списка нейросетей: {str(e)}")
+        return jsonify({
+            'error': f"Ошибка при получении списка нейросетей: {str(e)}",
+            'models': []
+        })

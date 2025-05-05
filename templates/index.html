@@ -6,7 +6,17 @@
 {% endblock %} {% block content %} {% include "components/command_form.html" %} {% include
 "components/ai_models.html" %} {% include "components/command_history.html" %} {% include
 "components/modals.html" %} {% endblock %} {% block extra_js %}
-<script src="{{ url_for('static', filename='js/ai_models.js') }}"></script>
-<script src="{{ url_for('static', filename='js/history.js') }}"></script>
-<script src="{{ url_for('static', filename='js/command_form.js') }}"></script>
+<!-- Сначала подключаем утилиты -->
+<script src="/static/js/utils.js"></script>
+
+<!-- Затем подключаем модули -->
+<script src="/static/js/history.js"></script>
+<script src="/static/js/ai_models.js"></script>
+<script src="/static/js/command_form.js"></script>
+
+<!-- Затем подключаем исправления -->
+<script src="/static/js/fixes.js"></script>
+
+<!-- В конце подключаем главный файл -->
+<script src="/static/js/main.js"></script>
 {% endblock %}

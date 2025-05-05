@@ -1,4 +1,8 @@
 /**
+ * Утилиты для работы с интерфейсом и данными
+ */
+
+/**
  * Функция для отображения уведомлений
  * @param {string} message - Текст уведомления
  * @param {string} type - Тип уведомления (success, error, warning, info)
@@ -71,15 +75,42 @@ function formatDateTime(dateString) {
 	if (!dateString) return 'Н/Д'
 
 	try {
-		const date = new Date(dateString)
-		return date.toLocaleString('ru-RU', {
-			day: '2-digit',
-			month: '2-digit',
-			year: 'numeric',
-			hour: '2-digit',
-			minute: '2-digit',
-			second: '2-digit',
-		})
+		// Если это ISO строка, преобразуем в более читаемый формат
+		if (typeof dateString === 'string') {
+			// Удаляем миллисекунды, если они есть
+			dateString = dateString.split('.')[0]
+
+			// Преобразуем формат даты
+			const parts = dateString.split(' - ')
+			if (parts.length > 0) {
+				const datePart = parts[0]
+
+				// Пробуем разные форматы даты
+				let date
+				if (datePart.includes('T')) {
+					// ISO формат
+					date = new Date(datePart)
+				} else {
+					// Формат логгера
+					const [year, month, day, time] = datePart.split(/[-\s:]/)
+					date = new Date(`${year}-${month}-${day}T${time}`)
+				}
+
+				if (!isNaN(date.getTime())) {
+					return date.toLocaleString('ru-RU', {
+						year: 'numeric',
+						month: '2-digit',
+						day: '2-digit',
+						hour: '2-digit',
+						minute: '2-digit',
+						second: '2-digit',
+					})
+				}
+			}
+		}
+
+		// Если не удалось преобразовать, возвращаем как есть
+		return dateString
 	} catch (e) {
 		console.error('Ошибка форматирования даты:', e)
 		return dateString
@@ -100,4 +131,72 @@ function escapeHtml(text) {
 		.replace(/>/g, '&gt;')
 		.replace(/"/g, '&quot;')
 		.replace(/'/g, '&#039;')
+}
+
+/**
+ * Функция для получения текущего времени в формате ЧЧ:ММ
+ * @returns {string} - Текущее время
+ */
+function getCurrentTime() {
+	const now = new Date()
+	return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+/**
+ * Функция для получения текстового описания типа сообщения
+ * @param {string} type - Тип сообщения
+ * @returns {string} - Текстовое описание
+ */
+function getMessageTypeText(type) {
+	switch (type) {
+		case 'user':
+			return 'Вы'
+		case 'assistant':
+			return 'Ассистент'
+		case 'system':
+			return 'Система'
+		case 'error':
+			return 'Ошибка'
+		default:
+			return type
+	}
+}
+
+/**
+ * Функция для получения текстового описания статуса
+ * @param {string} status - Статус
+ * @returns {string} - Текстовое описание
+ */
+function getStatusText(status) {
+	switch (status) {
+		case 'completed':
+			return 'Выполнено'
+		case 'failed':
+			return 'Ошибка'
+		case 'interrupted':
+			return 'Прервано'
+		case 'in_progress':
+			return 'Выполняется'
+		case 'pending':
+			return 'Ожидание'
+		default:
+			return status
+	}
+}
+
+/**
+ * Вспомогательная функция для обработки состояния кнопки во время запроса
+ * @param {HTMLElement} button - Кнопка
+ * @param {string} loadingText - Текст во время загрузки
+ * @param {Function} action - Функция, выполняющая запрос
+ */
+function handleButtonAction(button, loadingText, action) {
+	const originalContent = button.innerHTML
+	button.innerHTML = `<span class="spinner"></span> ${loadingText || ''}`
+	button.disabled = true
+
+	return action().finally(() => {
+		button.innerHTML = originalContent
+		button.disabled = false
+	})
 }

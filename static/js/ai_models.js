@@ -1,8 +1,13 @@
 /**
- * Функция для обновления статуса нейросетей
+ * Функции для работы с нейросетями
  */
+
+// Переменная для отслеживания таймаута обновления статуса
 let updateStatusTimeout = null
 
+/**
+ * Функция для отложенного обновления статуса нейросетей (с дебаунсингом)
+ */
 function debouncedUpdateAIModelsStatus() {
 	if (updateStatusTimeout) {
 		clearTimeout(updateStatusTimeout)
@@ -13,6 +18,9 @@ function debouncedUpdateAIModelsStatus() {
 	}, 300)
 }
 
+/**
+ * Функция для обновления статуса нейросетей
+ */
 function updateAIModelsStatus() {
 	console.log('Обновление статуса нейросетей...')
 	const modelsContainer = document.getElementById('ai-models-list')
@@ -33,11 +41,6 @@ function updateAIModelsStatus() {
 		})
 		.then((data) => {
 			console.log('Получены данные о нейросетях:', data)
-			const modelsContainer = document.getElementById('ai-models-list')
-			if (!modelsContainer) {
-				console.error('Элемент #ai-models-list не найден')
-				return
-			}
 
 			if (data.error) {
 				modelsContainer.innerHTML = `<div class="error">${data.error}</div>`
@@ -80,27 +83,21 @@ function updateAIModelsStatus() {
 				}
 
 				modelItem.innerHTML = `
-                    <div class="model-name">${escapeHtml(model.name)}</div>
-                    <div class="model-status">${statusText}</div>
-                    ${model.is_current ? '<div class="current-badge">Текущая</div>' : ''}
-                    ${
-											model.error
-												? `<div class="error-message">${escapeHtml(model.error)}</div>`
-												: ''
-										}
-                    <div class="model-actions">
-                        <button class="check-model-btn" data-model-id="${
-													model.id
-												}">Проверить</button>
-                        ${
-													!model.is_current
-														? `<button class="select-model-btn" data-model-id="${model.id}" ${
-																model.status.toLowerCase() === 'unavailable' ? 'disabled' : ''
-														  }>Выбрать</button>`
-														: ''
-												}
-                    </div>
-                `
+					<div class="model-name">${escapeHtml(model.name)}</div>
+					<div class="model-status">${statusText}</div>
+					${model.is_current ? '<div class="current-badge">Текущая</div>' : ''}
+					${model.error ? `<div class="error-message">${escapeHtml(model.error)}</div>` : ''}
+					<div class="model-actions">
+						<button class="check-model-btn" data-model-id="${model.id}">Проверить</button>
+						${
+							!model.is_current
+								? `<button class="select-model-btn" data-model-id="${model.id}" ${
+										model.status.toLowerCase() === 'unavailable' ? 'disabled' : ''
+								  }>Выбрать</button>`
+								: ''
+						}
+					</div>
+				`
 
 				modelsContainer.appendChild(modelItem)
 			})
@@ -122,19 +119,17 @@ function updateAIModelsStatus() {
 		})
 		.catch((error) => {
 			console.error('Ошибка при получении статуса нейросетей:', error)
-			const modelsContainer = document.getElementById('ai-models-list')
-			if (modelsContainer) {
-				let errorMessage = 'Ошибка при получении статуса нейросетей'
 
-				// Более информативные сообщения об ошибках
-				if (!navigator.onLine) {
-					errorMessage = 'Отсутствует подключение к интернету'
-				} else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-					errorMessage = 'Не удалось соединиться с сервером'
-				}
+			let errorMessage = 'Ошибка при получении статуса нейросетей'
 
-				modelsContainer.innerHTML = `<div class="error">${errorMessage}</div>`
+			// Более информативные сообщения об ошибках
+			if (!navigator.onLine) {
+				errorMessage = 'Отсутствует подключение к интернету'
+			} else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+				errorMessage = 'Не удалось соединиться с сервером'
 			}
+
+			modelsContainer.innerHTML = `<div class="error">${errorMessage}</div>`
 		})
 }
 
@@ -190,33 +185,25 @@ function checkAIModelsAvailability() {
 function checkModelAvailability(modelId) {
 	const btn = document.querySelector(`.check-model-btn[data-model-id="${modelId}"]`)
 	if (btn) {
-		// Добавляем спиннер и блокируем кнопку
-		const originalContent = btn.innerHTML
-		btn.innerHTML = '<span class="spinner"></span>'
-		btn.disabled = true
-
-		fetch(`/api/check_ai_model/${modelId}`, {
-			method: 'POST',
+		handleButtonAction(btn, '', () => {
+			return fetch(`/api/check_ai_model/${modelId}`, {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.success) {
+						showNotification(`Проверка модели ${data.model_name} запущена`, 'info')
+						// Обновляем статус через 2 секунды
+						setTimeout(updateAIModelsStatus, 2000)
+					} else {
+						showNotification(data.message || 'Ошибка при проверке модели', 'error')
+					}
+				})
+				.catch((error) => {
+					console.error('Ошибка при проверке модели:', error)
+					showNotification('Ошибка при проверке модели', 'error')
+				})
 		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.success) {
-					showNotification(`Проверка модели ${data.model_name} запущена`, 'info')
-					// Обновляем статус через 2 секунды
-					setTimeout(updateAIModelsStatus, 2000)
-				} else {
-					showNotification(data.message || 'Ошибка при проверке модели', 'error')
-				}
-			})
-			.catch((error) => {
-				console.error('Ошибка при проверке модели:', error)
-				showNotification('Ошибка при проверке модели', 'error')
-			})
-			.finally(() => {
-				// Восстанавливаем кнопку
-				btn.innerHTML = originalContent
-				btn.disabled = false
-			})
 	}
 }
 
@@ -242,4 +229,27 @@ function selectModel(modelId) {
 			console.error('Ошибка при выборе модели:', error)
 			showNotification('Ошибка при выборе модели', 'error')
 		})
+}
+
+/**
+ * Инициализация обработчиков событий для нейросетей
+ */
+function initAIModelsHandlers() {
+	// Обработчик для кнопки проверки всех нейросетей
+	const checkAllBtn = document.getElementById('check-ai-models-btn')
+	if (checkAllBtn) {
+		checkAllBtn.addEventListener('click', checkAIModelsAvailability)
+	}
+
+	// Первоначальное обновление статуса
+	updateAIModelsStatus()
+}
+
+// Экспортируем функции для использования в других модулях
+window.aiModelsModule = {
+	updateAIModelsStatus,
+	checkAIModelsAvailability,
+	checkModelAvailability,
+	selectModel,
+	initAIModelsHandlers,
 }
