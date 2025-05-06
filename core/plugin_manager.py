@@ -1,65 +1,237 @@
 import os
-import importlib
-import sys
+import importlib.util
+import inspect
 
 class PluginManager:
     """
     Менеджер плагинов.
-    Предоставляет функционал для загрузки и управления плагинами.
+    Предоставляет функции для загрузки и управления плагинами.
     """
     
-    def __init__(self, registry, plugins_dir='plugins'):
-        self.registry = registry
-        self.plugins_dir = plugins_dir
-        self.error_handler = registry.get('error_handler')
+    def __init__(self, plugin_dir="plugins"):
+        """
+        Инициализация менеджера плагинов.
+        
+        Args:
+            plugin_dir (str): Директория с плагинами
+        """
+        self.plugin_dir = plugin_dir
         self.plugins = {}
+        self.active_plugins = {}
+        
+        # Создаем директорию для плагинов, если она не существует
+        if not os.path.exists(plugin_dir):
+            os.makedirs(plugin_dir)
     
     def discover_plugins(self):
-        """Обнаруживает доступные плагины"""
-        try:
-            if not os.path.exists(self.plugins_dir):
-                os.makedirs(self.plugins_dir)
+        """
+        Обнаруживает доступные плагины в директории плагинов.
+        
+        Returns:
+            list: Список обнаруженных плагинов
+        """
+        discovered_plugins = []
+        
+        # Проверяем, что директория существует
+        if not os.path.exists(self.plugin_dir):
+            return discovered_plugins
+        
+        # Ищем Python-файлы в директории плагинов
+        for filename in os.listdir(self.plugin_dir):
+            if filename.endswith(".py") and not filename.startswith("__"):
+                plugin_path = os.path.join(self.plugin_dir, filename)
+                plugin_name = os.path.splitext(filename)[0]
                 
-            plugin_names = []
-            
-            # Ищем все директории в plugins_dir, содержащие __init__.py
-            for item in os.listdir(self.plugins_dir):
-                plugin_path = os.path.join(self.plugins_dir, item)
-                if os.path.isdir(plugin_path) and os.path.exists(os.path.join(plugin_path, '__init__.py')):
-                    plugin_names.append(item)
-            
-            return plugin_names
-        except Exception as e:
-            if self.error_handler:
-                self.error_handler.log_error("Ошибка при обнаружении плагинов", e)
-            return []
+                discovered_plugins.append({
+                    "name": plugin_name,
+                    "path": plugin_path
+                })
+        
+        return discovered_plugins
     
-    def load_plugin(self, plugin_name):
-        """Загружает плагин"""
+    def load_plugin(self, plugin_info):
+        """
+        Загружает плагин.
+        
+        Args:
+            plugin_info (dict): Информация о плагине (name, path)
+            
+        Returns:
+            bool: True в случае успешной загрузки
+        """
         try:
+            plugin_name = plugin_info["name"]
+            plugin_path = plugin_info["path"]
+            
+            # Проверяем, не загружен ли уже плагин
             if plugin_name in self.plugins:
-                return self.plugins[plugin_name]
+                print(f"Plugin {plugin_name} is already loaded")
+                return False
             
-            # Добавляем директорию плагинов в sys.path, если её там нет
-            plugins_abs_path = os.path.abspath(self.plugins_dir)
-            if plugins_abs_path not in sys.path:
-                sys.path.append(plugins_abs_path)
+            # Загружаем модуль плагина
+            spec = importlib.util.spec_from_file_location(plugin_name, plugin_path)
+            plugin_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(plugin_module)
             
-            # Импортируем модуль плагина
-            plugin_module = importlib.import_module(f"{plugin_name}")
+            # Ищем класс плагина
+            plugin_class = None
+            for name, obj in inspect.getmembers(plugin_module):
+                if inspect.isclass(obj) and hasattr(obj, "plugin_info"):
+                    plugin_class = obj
+                    break
+            
+            if plugin_class is None:
+                print(f"No valid plugin class found in {plugin_name}")
+                return False
             
             # Создаем экземпляр плагина
-            plugin_class = getattr(plugin_module, plugin_name.capitalize())
-            plugin_instance = plugin_class(self.registry)
+            plugin_instance = plugin_class()
             
-            # Регистрируем плагин
-            self.plugins[plugin_name] = plugin_instance
-            self.registry.register(f"plugin_{plugin_name}", plugin_instance)
+            # Сохраняем информацию о плагине
+            self.plugins[plugin_name] = {
+                "instance": plugin_instance,
+                "info": plugin_instance.plugin_info,
+                "module": plugin_module
+            }
             
-            if self.error_handler:
-                self.error_handler.log_info(f"Плагин {plugin_name} успешно загружен")
-            return plugin_instance
+            print(f"Plugin {plugin_name} loaded successfully")
+            return True
         except Exception as e:
-            if self.error_handler:
-                self.error_handler.log_error(f"Ошибка при загрузке плагина {plugin_name}", e)
+            print(f"Error loading plugin {plugin_info['name']}: {e}")
+            return False
+    
+    def load_all_plugins(self):
+        """
+        Загружает все доступные плагины.
+        
+        Returns:
+            int: Количество успешно загруженных плагинов
+        """
+        discovered_plugins = self.discover_plugins()
+        loaded_count = 0
+        
+        for plugin_info in discovered_plugins:
+            if self.load_plugin(plugin_info):
+                loaded_count += 1
+        
+        return loaded_count
+    
+    def activate_plugin(self, plugin_name):
+        """
+        Активирует плагин.
+        
+        Args:
+            plugin_name (str): Имя плагина
+            
+        Returns:
+            bool: True в случае успешной активации
+        """
+        if plugin_name not in self.plugins:
+            print(f"Plugin {plugin_name} is not loaded")
+            return False
+        
+        if plugin_name in self.active_plugins:
+            print(f"Plugin {plugin_name} is already active")
+            return True
+        
+        plugin = self.plugins[plugin_name]
+        
+        try:
+            # Вызываем метод активации плагина
+            if hasattr(plugin["instance"], "activate"):
+                plugin["instance"].activate()
+            
+            # Отмечаем плагин как активный
+            self.active_plugins[plugin_name] = plugin
+            
+            print(f"Plugin {plugin_name} activated successfully")
+            return True
+        except Exception as e:
+            print(f"Error activating plugin {plugin_name}: {e}")
+            return False
+    
+    def deactivate_plugin(self, plugin_name):
+        """
+        Деактивирует плагин.
+        
+        Args:
+            plugin_name (str): Имя плагина
+            
+        Returns:
+            bool: True в случае успешной деактивации
+        """
+        if plugin_name not in self.active_plugins:
+            print(f"Plugin {plugin_name} is not active")
+            return False
+        
+        plugin = self.active_plugins[plugin_name]
+        
+        try:
+            # Вызываем метод деактивации плагина
+            if hasattr(plugin["instance"], "deactivate"):
+                plugin["instance"].deactivate()
+            
+            # Удаляем плагин из списка активных
+            del self.active_plugins[plugin_name]
+            
+            print(f"Plugin {plugin_name} deactivated successfully")
+            return True
+        except Exception as e:
+            print(f"Error deactivating plugin {plugin_name}: {e}")
+            return False
+    
+    def get_plugin_info(self, plugin_name):
+        """
+        Получает информацию о плагине.
+        
+        Args:
+            plugin_name (str): Имя плагина
+            
+        Returns:
+            dict: Информация о плагине или None, если плагин не найден
+        """
+        if plugin_name not in self.plugins:
             return None
+        
+        return self.plugins[plugin_name]["info"]
+    
+    def get_all_plugins(self):
+        """
+        Получает информацию о всех загруженных плагинах.
+        
+        Returns:
+            dict: Словарь с информацией о плагинах
+        """
+        result = {}
+        
+        for plugin_name, plugin_data in self.plugins.items():
+            result[plugin_name] = {
+                "info": plugin_data["info"],
+                "active": plugin_name in self.active_plugins
+            }
+        
+        return result
+    
+    def unload_plugin(self, plugin_name):
+        """
+        Выгружает плагин.
+        
+        Args:
+            plugin_name (str): Имя плагина
+            
+        Returns:
+            bool: True в случае успешной выгрузки
+        """
+        if plugin_name not in self.plugins:
+            print(f"Plugin {plugin_name} is not loaded")
+            return False
+        
+        # Деактивируем плагин, если он активен
+        if plugin_name in self.active_plugins:
+            self.deactivate_plugin(plugin_name)
+        
+        # Удаляем плагин из списка загруженных
+        del self.plugins[plugin_name]
+        
+        print(f"Plugin {plugin_name} unloaded successfully")
+        return True
