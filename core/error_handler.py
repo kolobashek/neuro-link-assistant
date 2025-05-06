@@ -1,127 +1,143 @@
 import logging
 import traceback
 import sys
-import os
-from datetime import datetime
 
 class ErrorHandler:
     """
-    Обработчик ошибок.
-    Предоставляет функции для логирования и обработки ошибок.
+    Обработчик ошибок и логирования.
+    Предоставляет функции для обработки ошибок и логирования сообщений.
     """
     
-    def __init__(self, log_dir="logs"):
+    def __init__(self, log_level=logging.INFO, log_file=None):
         """
         Инициализация обработчика ошибок.
         
         Args:
-            log_dir (str): Директория для хранения логов
+            log_level (int, optional): Уровень логирования
+            log_file (str, optional): Путь к файлу логов
         """
-        self.log_dir = log_dir
+        # Настраиваем логирование
+        self.logger = logging.getLogger('neuro-link-assistant')
+        self.logger.setLevel(log_level)
         
-        # Создаем директорию для логов, если она не существует
-        if not os.path.exists(log_dir):
-            os.makedirs(log_dir)
+        # Создаем форматтер для логов
+        formatter = logging.Formatter('%(levelname)-8s %(name)s:%(filename)s:%(lineno)d %(message)s')
         
-        # Настраиваем логгер
-        self.logger = logging.getLogger("neuro-link-assistant")
-        self.logger.setLevel(logging.DEBUG)
-        
-        # Обработчик для консоли
+        # Добавляем обработчик для вывода в консоль
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.INFO)
-        console_format = logging.Formatter('%(levelname)s: %(message)s')
-        console_handler.setFormatter(console_format)
-        
-        # Обработчик для файла
-        log_file = os.path.join(log_dir, f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
-        file_handler = logging.FileHandler(log_file)
-        file_handler.setLevel(logging.DEBUG)
-        file_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        file_handler.setFormatter(file_format)
-        
-        # Добавляем обработчики к логгеру
+        console_handler.setFormatter(formatter)
         self.logger.addHandler(console_handler)
-        self.logger.addHandler(file_handler)
         
-        # Устанавливаем обработчик исключений
-        sys.excepthook = self.handle_exception
+        # Если указан файл логов, добавляем обработчик для записи в файл
+        if log_file:
+            file_handler = logging.FileHandler(log_file)
+            file_handler.setFormatter(formatter)
+            self.logger.addHandler(file_handler)
+    
+    def handle_error(self, exception, context=None, callback=None):
+        """
+        Обрабатывает исключение.
+        
+        Args:
+            exception (Exception): Исключение для обработки
+            context (str, optional): Контекст, в котором произошла ошибка
+            callback (callable, optional): Функция обратного вызова для дополнительной обработки
+            
+        Returns:
+            bool: False, так как произошла ошибка
+        """
+        # Форматируем сообщение об ошибке
+        error_message = self.format_error_message(exception, context)
+        
+        # Логируем ошибку
+        self.logger.error(error_message)
+        logging.error(error_message)
+        
+        # Выводим ошибку в stderr
+        print(f"ERROR: {error_message}", file=sys.stderr)
+        
+        # Если указан callback, вызываем его только с аргументом exception
+        if callback:
+            try:
+                callback(exception)  # Изменено: передаем только exception
+            except Exception as callback_error:
+                self.logger.error(f"Error in error callback: {callback_error}")
+        
+        return False
+    
+    def handle_warning(self, message, context=None):
+        """
+        Обрабатывает предупреждение.
+        
+        Args:
+            message (str): Сообщение предупреждения
+            context (str, optional): Контекст, в котором произошло предупреждение
+            
+        Returns:
+            bool: True, так как это только предупреждение
+        """
+        # Форматируем сообщение предупреждения
+        if context:
+            warning_message = f"{context}: {message}"
+        else:
+            warning_message = message
+        
+        # Логируем предупреждение
+        self.logger.warning(warning_message)
+        logging.warning(warning_message)
+        
+        # Выводим предупреждение в stderr
+        print(f"WARNING: {warning_message}", file=sys.stderr)
+        
+        return True
     
     def log_info(self, message):
         """
         Логирует информационное сообщение.
         
         Args:
-            message (str): Сообщение для логирования
+            message (str): Информационное сообщение
         """
         self.logger.info(message)
-    
-    def log_warning(self, message):
-        """
-        Логирует предупреждение.
+        logging.info(message)
         
-        Args:
-            message (str): Сообщение для логирования
-        """
-        self.logger.warning(message)
-    
-    def log_error(self, message, exc_info=None):
-        """
-        Логирует ошибку.
-        
-        Args:
-            message (str): Сообщение для логирования
-            exc_info (Exception, optional): Информация об исключении
-        """
-        if exc_info:
-            self.logger.error(f"{message}: {exc_info}", exc_info=True)
-        else:
-            self.logger.error(message)
+        # Выводим информацию в stderr (для наглядности в тестах)
+        print(f"INFO: {message}", file=sys.stderr)
     
     def log_debug(self, message):
         """
         Логирует отладочное сообщение.
         
         Args:
-            message (str): Сообщение для логирования
+            message (str): Отладочное сообщение
         """
         self.logger.debug(message)
+        logging.debug(message)
     
-    def handle_exception(self, exc_type, exc_value, exc_traceback):
+    def format_exception(self, exception):
         """
-        Обрабатывает необработанное исключение.
+        Форматирует исключение в строку с трассировкой стека.
         
         Args:
-            exc_type: Тип исключения
-            exc_value: Значение исключения
-            exc_traceback: Трассировка исключения
+            exception (Exception): Исключение для форматирования
+            
+        Returns:
+            str: Отформатированная строка с трассировкой стека
         """
-        if issubclass(exc_type, KeyboardInterrupt):
-            # Стандартная обработка для KeyboardInterrupt
-            sys.__excepthook__(exc_type, exc_value, exc_traceback)
-            return
-        
-        # Логируем исключение
-        self.logger.critical("Необработанное исключение", exc_info=(exc_type, exc_value, exc_traceback))
+        return ''.join(traceback.format_exception(type(exception), exception, exception.__traceback__))
     
-    def handle_error(self, error, message=None):
+    def format_error_message(self, exception, context=None):
         """
-        Обрабатывает ошибку.
+        Форматирует сообщение об ошибке.
         
         Args:
-            error (Exception): Объект исключения
-            message (str, optional): Дополнительное сообщение
+            exception (Exception): Исключение
+            context (str, optional): Контекст, в котором произошла ошибка
+            
+        Returns:
+            str: Отформатированное сообщение об ошибке
         """
-        if message:
-            self.log_error(f"{message}: {error}", exc_info=error)
+        if context:
+            return f"{context}: {type(exception).__name__}: {str(exception)}"
         else:
-            self.log_error(str(error), exc_info=error)
-    
-    def handle_warning(self, message):
-        """
-        Обрабатывает предупреждение.
-        
-        Args:
-            message (str): Сообщение предупреждения
-        """
-        self.log_warning(message)
+            return f"{type(exception).__name__}: {str(exception)}"

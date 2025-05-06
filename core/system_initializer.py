@@ -1,7 +1,7 @@
 class SystemInitializer:
     """
     Инициализатор системы.
-    Отвечает за инициализацию и настройку компонентов системы.
+    Отвечает за инициализацию и завершение работы системы.
     """
     
     def __init__(self, registry):
@@ -9,63 +9,48 @@ class SystemInitializer:
         Инициализация инициализатора системы.
         
         Args:
-            registry: Реестр компонентов
+            registry (ComponentRegistry): Реестр компонентов системы
         """
-        self.registry = registry
-        self.initialized = False
+        self._registry = registry
+        self._initialized = False
     
-    def initialize(self, config=None):
+    def initialize(self):
         """
         Инициализирует систему.
         
-        Args:
-            config (dict, optional): Конфигурация системы
-            
         Returns:
-            bool: True в случае успешной инициализации
+            bool: True в случае успешной инициализации, иначе False
         """
-        if self.initialized:
-            print("System is already initialized")
-            return True
-        
         try:
             # Проверяем наличие необходимых компонентов
             required_components = ["error_handler", "plugin_manager"]
             for component_name in required_components:
-                if not self.registry.has(component_name):
-                    print(f"Required component {component_name} is not registered")
+                if not self._registry.has(component_name):
+                    print(f"Missing required component: {component_name}")
                     return False
             
-            # Получаем компоненты
-            error_handler = self.registry.get("error_handler")
-            plugin_manager = self.registry.get("plugin_manager")
+            # Получаем обработчик ошибок
+            error_handler = self._registry.get("error_handler")
             
-            # Логируем начало инициализации
-            error_handler.log_info("Starting system initialization")
+            # Получаем менеджер плагинов
+            plugin_manager = self._registry.get("plugin_manager")
             
             # Загружаем плагины
-            plugin_count = plugin_manager.load_all_plugins()
-            error_handler.log_info(f"Loaded {plugin_count} plugins")
-            
-            # Активируем основные плагины
-            if config and "active_plugins" in config:
-                for plugin_name in config["active_plugins"]:
-                    if plugin_manager.activate_plugin(plugin_name):
-                        error_handler.log_info(f"Activated plugin: {plugin_name}")
-                    else:
-                        error_handler.log_warning(f"Failed to activate plugin: {plugin_name}")
+            plugin_manager.load_plugins()
             
             # Отмечаем систему как инициализированную
-            self.initialized = True
+            self._initialized = True
             
-            error_handler.log_info("System initialization completed successfully")
             return True
         except Exception as e:
-            if self.registry.has("error_handler"):
-                error_handler = self.registry.get("error_handler")
-                error_handler.log_error(f"Error during system initialization: {e}", exc_info=e)
-            else:
-                print(f"Error during system initialization: {e}")
+            # Если есть обработчик ошибок, используем его
+            try:
+                error_handler = self._registry.get("error_handler", None)
+                if error_handler:
+                    error_handler.handle_error(e, "Error initializing system")
+            except:
+                # Если не удалось обработать ошибку, просто выводим ее
+                print(f"Error initializing system: {e}")
             
             return False
     
@@ -74,44 +59,28 @@ class SystemInitializer:
         Завершает работу системы.
         
         Returns:
-            bool: True в случае успешного завершения
+            bool: True в случае успешного завершения, иначе False
         """
-        if not self.initialized:
-            print("System is not initialized")
-            return True
-        
         try:
-            # Проверяем наличие необходимых компонентов
-            if not self.registry.has("error_handler") or not self.registry.has("plugin_manager"):
-                print("Required components are not registered")
-                return False
+            # Получаем менеджер плагинов
+            plugin_manager = self._registry.get("plugin_manager")
             
-            # Получаем компоненты
-            error_handler = self.registry.get("error_handler")
-            plugin_manager = self.registry.get("plugin_manager")
+            # Выгружаем плагины
+            plugin_manager.unload_plugins()
             
-            # Логируем начало завершения работы
-            error_handler.log_info("Starting system shutdown")
+            # Отмечаем систему как неинициализированную
+            self._initialized = False
             
-            # Деактивируем все активные плагины
-            active_plugins = list(plugin_manager.active_plugins.keys())
-            for plugin_name in active_plugins:
-                if plugin_manager.deactivate_plugin(plugin_name):
-                    error_handler.log_info(f"Deactivated plugin: {plugin_name}")
-                else:
-                    error_handler.log_warning(f"Failed to deactivate plugin: {plugin_name}")
-            
-            # Отмечаем систему как не инициализированную
-            self.initialized = False
-            
-            error_handler.log_info("System shutdown completed successfully")
             return True
         except Exception as e:
-            if self.registry.has("error_handler"):
-                error_handler = self.registry.get("error_handler")
-                error_handler.log_error(f"Error during system shutdown: {e}", exc_info=e)
-            else:
-                print(f"Error during system shutdown: {e}")
+            # Если есть обработчик ошибок, используем его
+            try:
+                error_handler = self._registry.get("error_handler", None)
+                if error_handler:
+                    error_handler.handle_error(e, "Error shutting down system")
+            except:
+                # Если не удалось обработать ошибку, просто выводим ее
+                print(f"Error shutting down system: {e}")
             
             return False
     
@@ -120,9 +89,9 @@ class SystemInitializer:
         Проверяет, инициализирована ли система.
         
         Returns:
-            bool: True, если система инициализирована
+            bool: True, если система инициализирована, иначе False
         """
-        return self.initialized
+        return self._initialized
     
     def register_core_components(self):
         """

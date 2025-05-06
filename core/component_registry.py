@@ -1,7 +1,7 @@
 class ComponentRegistry:
     """
-    Реестр компонентов.
-    Предоставляет централизованный механизм регистрации и получения компонентов.
+    Реестр компонентов системы.
+    Предоставляет централизованный доступ к компонентам по их именам.
     """
     
     def __init__(self):
@@ -16,42 +16,35 @@ class ComponentRegistry:
             name (str): Имя компонента
             component (object): Экземпляр компонента
             
-        Returns:
-            bool: True в случае успешной регистрации, False если компонент уже зарегистрирован
+        Raises:
+            ValueError: Если компонент с таким именем уже зарегистрирован
         """
         if name in self._components:
-            return False
+            raise ValueError(f"Компонент с именем '{name}' уже зарегистрирован")
         
         self._components[name] = component
-        return True
     
-    def unregister(self, name):
+    def get(self, name, default=None):
         """
-        Удаляет компонент из реестра.
+        Получает компонент из реестра по имени.
         
         Args:
             name (str): Имя компонента
+            default (object, optional): Значение по умолчанию, если компонент не найден
             
         Returns:
-            bool: True в случае успешного удаления, False если компонент не найден
-        """
-        if name not in self._components:
-            return False
-        
-        del self._components[name]
-        return True
-    
-    def get(self, name):
-        """
-        Получает компонент из реестра.
-        
-        Args:
-            name (str): Имя компонента
+            object: Экземпляр компонента или значение по умолчанию
             
-        Returns:
-            object: Экземпляр компонента или None, если компонент не найден
+        Raises:
+            KeyError: Если компонент не найден и значение по умолчанию не указано
         """
-        return self._components.get(name)
+        if name in self._components:
+            return self._components[name]
+        
+        if default is not None:
+            return default
+        
+        raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
     
     def has(self, name):
         """
@@ -65,11 +58,26 @@ class ComponentRegistry:
         """
         return name in self._components
     
+    def remove(self, name):
+        """
+        Удаляет компонент из реестра.
+        
+        Args:
+            name (str): Имя компонента
+            
+        Raises:
+            KeyError: Если компонент с указанным именем не найден
+        """
+        if name not in self._components:
+            raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
+        
+        del self._components[name]
+    
     def get_all(self):
         """
         Получает все зарегистрированные компоненты.
         
         Returns:
-            dict: Словарь всех зарегистрированных компонентов
+            dict: Словарь всех компонентов {имя: компонент}
         """
         return self._components.copy()
