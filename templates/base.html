@@ -5,30 +5,61 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{% block title %}Нейро-Линк Ассистент{% endblock %}</title>
 
-		<!-- Общие стили -->
+		<!-- Шрифты и иконки -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 		/>
+
+		<!-- Основные стили -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 
 		{% block extra_css %}{% endblock %}
 	</head>
 	<body>
-		<div class="container">
-			<header>
-				<h1>Нейро-Ассистент</h1>
-				<p>Интеллектуальный помощник для управления компьютером</p>
+		<div class="app-container">
+			<header class="app-header">
+				<div class="logo-container">
+					<i class="fas fa-robot logo-icon"></i>
+					<h1>Нейро-Ассистент</h1>
+				</div>
+				<p class="app-description">Интеллектуальный помощник для управления компьютером</p>
+				<nav class="main-nav">
+					<ul>
+						<li>
+							<a href="/" class="nav-link active"><i class="fas fa-home"></i> Главная</a>
+						</li>
+						<li>
+							<a href="/ai_models" class="nav-link"><i class="fas fa-brain"></i> Модели ИИ</a>
+						</li>
+						<li>
+							<a href="/settings" class="nav-link"><i class="fas fa-cog"></i> Настройки</a>
+						</li>
+					</ul>
+				</nav>
 			</header>
 
-			{% block content %}{% endblock %}
+			<main class="app-content">{% block content %}{% endblock %}</main>
+
+			<footer class="app-footer">
+				<p>
+					&copy; 2023 Нейро-Линк Ассистент |
+					<a href="https://github.com/kolobashek/neuro-link-assistant" target="_blank">GitHub</a>
+				</p>
+			</footer>
 		</div>
 
-		<!-- Общие скрипты -->
-		<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+		<!-- Уведомления -->
+		<div id="notification-container"></div>
 
+		<!-- Базовые скрипты -->
 		{% block extra_js %}{% endblock %}
 	</body>
 </html>

@@ -343,7 +343,7 @@ function showAddModelForm(huggingfaceId) {
 		<div class="modal-content">
 			<div class="modal-header">
 				<h2>Добавление новой модели</h2>
-				<span class="close-modal">&times;</span>
+				<span class="close-modal">×</span>
 			</div>
 			<div class="modal-body">
 				<form id="add-model-form">
@@ -605,6 +605,35 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	}
 })
+
+// Функция для инициализации обработчиков событий AI-моделей
+function initAIModelsHandlers() {
+	// Инициализация обработчиков событий для страницы AI-моделей
+	const modelItems = document.querySelectorAll('.model-item')
+	modelItems.forEach((item) => {
+		item.addEventListener('click', function () {
+			// Обработка клика по модели
+			const modelId = this.getAttribute('data-model-id')
+			if (modelId) {
+				selectModel(modelId)
+			}
+		})
+	})
+
+	// Другие обработчики...
+	console.log('Обработчики страницы AI-моделей инициализированы')
+}
+
+// Вспомогательная функция для экранирования HTML
+function escapeHtml(text) {
+	if (!text) return ''
+	return text
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;')
+}
 
 // Экспортируем функции для использования в других модулях
 window.aiModelsModule = {

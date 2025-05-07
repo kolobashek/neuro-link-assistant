@@ -1,15 +1,31 @@
-<div class="models-container">
-	<h3>Доступные модели</h3>
-	<div class="models-controls">
-		<button id="check-ai-models-btn" class="btn primary">
-			<span class="material-icons">sync</span> Проверить все модели
-		</button>
-		<button id="update-models-btn" class="btn">
-			<span class="material-icons">cloud_download</span> Обновить с Hugging Face
-		</button>
+<div class="ai-models-container">
+	<div class="section-header">
+		<h3><i class="fas fa-brain"></i> Модели ИИ</h3>
+		<div class="section-actions">
+			<button
+				id="check-ai-models-btn"
+				class="btn btn-primary btn-sm"
+				title="Проверить доступность всех моделей"
+			>
+				<i class="fas fa-sync"></i> Проверить
+			</button>
+			<button
+				id="update-models-btn"
+				class="btn btn-secondary btn-sm"
+				title="Обновить модели с Hugging Face"
+			>
+				<i class="fas fa-cloud-download-alt"></i> Обновить
+			</button>
+		</div>
 	</div>
+
 	<div id="ai-models-list" class="ai-models-list">
 		<div class="loading">Загрузка данных о нейросетях...</div>
+	</div>
+
+	<div class="current-model-info">
+		<div class="info-label">Текущая модель:</div>
+		<div id="current-model-name" class="info-value">Загрузка...</div>
 	</div>
 </div>
 

@@ -1,40 +1,64 @@
 <div class="command-form-container">
+	<div class="command-form-header">
+		<h2><i class="fas fa-terminal"></i> Командная консоль</h2>
+	</div>
+
+	<div class="chat-container">
+		<div id="messages" class="messages-container"></div>
+	</div>
+
+	<div class="command-controls" style="display: none">
+		<div class="progress-container">
+			<div class="progress-bar-label">
+				Выполнение команды: <span id="progress-percentage">0%</span>
+			</div>
+			<div class="progress-bar">
+				<div class="progress-bar-fill" style="width: 0%"></div>
+			</div>
+		</div>
+		<button id="interrupt-btn" class="btn btn-danger"><i class="fas fa-stop"></i> Прервать</button>
+	</div>
+
 	<form id="query-form" class="query-form">
 		<div class="input-group">
 			<input
 				type="text"
 				id="user-input"
 				class="user-input"
-				placeholder="Введите команду..."
+				placeholder="Введите команду или вопрос..."
 				autocomplete="off"
 			/>
-			<button type="submit" class="submit-btn">
+			<button type="submit" class="submit-btn" title="Отправить команду">
 				<i class="fas fa-paper-plane"></i>
-			</button>
-			<button type="button" id="interrupt-btn" class="interrupt-btn">
-				<i class="fas fa-stop"></i> Прервать
 			</button>
 		</div>
 	</form>
 
-	<div class="response-container">
-		<div id="response" class="response"></div>
-		<div id="code-container" class="code-container">
-			<pre id="code-display" class="code-display"></pre>
-		</div>
-		<div id="execution-result" class="execution-result"></div>
-	</div>
-
 	<div class="available-commands">
 		<h3>Доступные команды</h3>
-		<div class="commands-list">
-			{% for command in commands %}
-			<div class="command-item">
-				<div class="command-main">{{ command.main }}</div>
-				{% if command.alternatives %}
-				<div class="command-alternatives">Также: {{ command.alternatives|join(', ') }}</div>
-				{% endif %}
+		<div class="commands-filter">
+			<div class="search-filter">
+				<i class="fas fa-search"></i>
+				<input type="text" id="command-filter" placeholder="Поиск команд..." />
 			</div>
+		</div>
+		<div class="commands-grid" id="commands-grid">
+			{% for command in commands %}
+			<button
+				class="command-button"
+				data-command="{{ command.main }}"
+				title="{{ command.description }}"
+			>
+				<div class="command-icon">
+					<i class="fas fa-{{ command.icon|default('terminal') }}"></i>
+				</div>
+				<div class="command-content">
+					<div class="command-title">{{ command.main }}</div>
+					{% if command.alternatives %}
+					<div class="command-alternatives">{{ command.alternatives|join(', ') }}</div>
+					{% endif %}
+				</div>
+			</button>
 			{% endfor %}
 		</div>
 	</div>

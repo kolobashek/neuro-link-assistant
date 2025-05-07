@@ -2,15 +2,15 @@
 <div id="confirm-modal" class="modal">
 	<div class="modal-content">
 		<div class="modal-header">
-			<span class="close-modal">&times;</span>
 			<h2>Подтверждение действия</h2>
+			<button class="close-modal" title="Закрыть">&times;</button>
 		</div>
 		<div class="modal-body">
 			<p id="confirm-message">Вы уверены, что хотите выполнить это действие?</p>
-			<div class="modal-actions">
-				<button id="confirm-yes" class="btn btn-primary">Да</button>
-				<button id="confirm-no" class="btn btn-secondary">Нет</button>
-			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="confirm-yes" class="btn btn-primary">Да</button>
+			<button id="confirm-no" class="btn btn-secondary">Нет</button>
 		</div>
 	</div>
 </div>
@@ -19,14 +19,41 @@
 <div id="details-modal" class="modal">
 	<div class="modal-content">
 		<div class="modal-header">
-			<span class="close-modal">&times;</span>
 			<h2>Подробности выполнения команды</h2>
+			<button class="close-modal" title="Закрыть">&times;</button>
 		</div>
 		<div class="modal-body">
 			<div id="command-details" class="log-container"></div>
 		</div>
 		<div class="modal-footer">
-			<button class="close-modal btn">Закрыть</button>
+			<button class="btn btn-primary close-modal">Закрыть</button>
+		</div>
+	</div>
+</div>
+
+<!-- Модальное окно для настройки модели -->
+<div id="model-settings-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2>Настройки модели</h2>
+			<button class="close-modal" title="Закрыть">&times;</button>
+		</div>
+		<div class="modal-body">
+			<form id="model-settings-form">
+				<div class="form-group">
+					<label for="model-temperature">Температура</label>
+					<input type="range" id="model-temperature" min="0" max="2" step="0.1" value="0.7" />
+					<span id="temperature-value">0.7</span>
+				</div>
+				<div class="form-group">
+					<label for="model-max-tokens">Максимальное количество токенов</label>
+					<input type="number" id="model-max-tokens" min="100" max="4096" value="1024" />
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button id="save-model-settings" class="btn btn-primary">Сохранить</button>
+			<button class="btn btn-secondary close-modal">Отмена</button>
 		</div>
 	</div>
 </div>

@@ -108,6 +108,29 @@ document.addEventListener('DOMContentLoaded', function () {
 	console.log('Приложение инициализировано')
 })
 
+// Функции для управления элементами интерфейса
+function showCommandControls(show = true) {
+	const commandControls = document.querySelector('.command-controls')
+	if (commandControls) {
+		commandControls.style.display = show ? 'flex' : 'none'
+	} else {
+		console.warn('Элемент .command-controls не найден')
+	}
+}
+
+function hideCommandControls() {
+	showCommandControls(false)
+}
+
+function updateProgressBar(percentage) {
+	const progressBar = document.querySelector('.progress-bar-fill')
+	if (progressBar) {
+		progressBar.style.width = `${percentage}%`
+	} else {
+		console.warn('Элемент .progress-bar-fill не найден')
+	}
+}
+
 // Экспортируем функции для использования в других модулях
 window.mainModule = {
 	showCommandControls,

@@ -1,22 +1,33 @@
 {% extends "base.html" %} {% block title %}Нейро-Линк Ассистент{% endblock %} {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/ai_models.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/command_form.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ai_models.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/modals.css') }}" />
-{% endblock %} {% block content %} {% include "components/command_form.html" %} {% include
-"components/ai_models.html" %} {% include "components/command_history.html" %} {% include
-"components/modals.html" %} {% endblock %} {% block extra_js %}
-<!-- Сначала подключаем утилиты -->
-<script src="/static/js/utils.js"></script>
+{% endblock %} {% block content %}
+<div class="dashboard-layout">
+	<!-- Левая панель - Ввод команд и ответы -->
+	<section class="dashboard-main">{% include "components/command_form.html" %}</section>
 
-<!-- Затем подключаем модули -->
-<script src="/static/js/history.js"></script>
-<script src="/static/js/ai_models.js"></script>
-<script src="/static/js/command_form.js"></script>
+	<!-- Правая панель - Модели и история -->
+	<aside class="dashboard-sidebar">
+		<div class="sidebar-section">{% include "components/ai_models.html" %}</div>
+		<div class="sidebar-section">{% include "components/command_history.html" %}</div>
+	</aside>
+</div>
 
-<!-- Затем подключаем исправления -->
-<script src="/static/js/fixes.js"></script>
+{% include "components/modals.html" %} {% endblock %} {% block extra_js %}
+<!-- Правильный порядок подключения скриптов -->
+<!-- 1. Утилиты и базовые функции -->
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
 
-<!-- В конце подключаем главный файл -->
-<script src="/static/js/main.js"></script>
+<!-- 2. Основной файл с определениями функций -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<!-- 3. Модули, которые могут зависеть от main.js -->
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ai_models.js') }}"></script>
+<script src="{{ url_for('static', filename='js/command_form.js') }}"></script>
+
+<!-- 4. Исправления и дополнения -->
+<script src="{{ url_for('static', filename='js/fixes.js') }}"></script>
 {% endblock %}

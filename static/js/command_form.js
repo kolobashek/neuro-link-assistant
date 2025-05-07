@@ -192,11 +192,22 @@ function displayCompoundCommandProgress(data) {
  * @param {string} type - Тип сообщения (user, assistant, system, error)
  * @param {Object} data - Дополнительные данные (для составных команд)
  */
-function addMessage(message, type, data = null) {
+function addMessage(message, type) {
 	const messagesContainer = document.getElementById('messages')
+
 	if (!messagesContainer) {
-		console.error('Элемент #messages не найден')
-		return
+		console.warn('Элемент #messages не найден')
+		// Создаем контейнер, если его нет
+		const chatContainer = document.querySelector('.chat-container')
+		if (chatContainer) {
+			const newContainer = document.createElement('div')
+			newContainer.id = 'messages'
+			chatContainer.appendChild(newContainer)
+			return addMessage(message, type) // Рекурсивный вызов после создания
+		} else {
+			console.error('Невозможно создать контейнер сообщений: .chat-container не найден')
+			return
+		}
 	}
 
 	const messageElement = document.createElement('div')

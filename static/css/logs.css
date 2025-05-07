@@ -1,76 +1,191 @@
 /* Стили для отображения логов */
-.log-container {
-    font-family: monospace;
-    white-space: pre-wrap;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 4px;
-    max-height: 500px;
+.logs-container {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logs-header {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--divider-color);
+    background-color: var(--primary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logs-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logs-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.logs-filter {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--divider-color);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.filter-group select {
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+}
+
+.logs-content {
+    flex: 1;
     overflow-y: auto;
+    padding: var(--spacing-md);
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: var(--background-color);
 }
 
 .log-entry {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid transparent;
+    background-color: var(--surface-color);
+}
+
+.log-entry:last-child {
+    margin-bottom: 0;
+}
+
+.log-entry.info {
+    border-left-color: var(--primary-color);
+}
+
+.log-entry.warning {
+    border-left-color: var(--warning-color);
+}
+
+.log-entry.error {
+    border-left-color: var(--accent-color);
+}
+
+.log-entry.debug {
+    border-left-color: var(--secondary-color);
 }
 
 .log-timestamp {
-    color: #666;
-    font-weight: bold;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-right: var(--spacing-sm);
 }
 
-.log-command {
-    color: #0066cc;
-    font-weight: bold;
+.log-level {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: var(--spacing-sm);
 }
 
-.log-status {
-    font-weight: bold;
+.log-level.info {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
 }
 
-.log-status.completed {
-    color: #4caf50;
+.log-level.warning {
+    background-color: #fef7e0;
+    color: var(--warning-dark);
 }
 
-.log-status.failed {
-    color: #f44336;
+.log-level.error {
+    background-color: #fce8e6;
+    color: var(--accent-dark);
 }
 
-.log-status.interrupted {
-    color: #ff9800;
+.log-level.debug {
+    background-color: #e6f4ea;
+    color: var(--secondary-dark);
 }
 
-.log-status.in-progress {
-    color: #2196f3;
+.log-message {
+    color: var(--text-primary);
+    word-break: break-word;
 }
 
-.log-percentage {
-    color: #555;
+.log-details {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    white-space: pre-wrap;
 }
 
-.log-error {
-    color: #f44336;
-    background-color: rgba(244, 67, 54, 0.1);
-    padding: 5px;
-    border-left: 3px solid #f44336;
-    margin: 5px 0;
+.logs-pagination {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--divider-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.log-step {
-    margin-left: 20px;
-    padding: 5px 0;
+.pagination-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
-.log-step-header {
-    font-weight: bold;
+.pagination-controls {
+    display: flex;
+    gap: var(--spacing-sm);
 }
 
-.log-step-details {
-    margin-left: 20px;
+.pagination-btn {
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.log-divider {
-    border-top: 1px dashed #ccc;
-    margin: 10px 0;
+.pagination-btn:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+}
+
+.pagination-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
 }
