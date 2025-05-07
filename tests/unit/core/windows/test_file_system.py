@@ -9,7 +9,7 @@ class TestFileSystem:
     @pytest.fixture
     def file_system(self):
         """Создает экземпляр FileSystem с мок-зависимостями"""
-        from core.windows.file_system import FileSystem
+        from core.filesystem import get_file_system FileSystem
         return FileSystem()
     
     @pytest.fixture

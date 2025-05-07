@@ -7,7 +7,7 @@ import logging
 try:
     from core.component_registry import ComponentRegistry
     from core.system_initializer import SystemInitializer
-    from core.error_handler import ErrorHandler
+    from core.common.error_handler import ErrorHandler
     from core.plugin_manager import PluginManager
 except ImportError:
     # Создаем заглушки для тестирования, если модули еще не реализованы

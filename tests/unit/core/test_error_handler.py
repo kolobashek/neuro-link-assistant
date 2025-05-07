@@ -8,7 +8,7 @@ class TestErrorHandler:
     @pytest.fixture
     def error_handler(self):
         """Создает экземпляр ErrorHandler"""
-        from core.error_handler import ErrorHandler
+        from core.common.error_handler import ErrorHandler
         return ErrorHandler()
     
     @patch('logging.error')

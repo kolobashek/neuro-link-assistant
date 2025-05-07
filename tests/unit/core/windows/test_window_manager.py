@@ -7,7 +7,7 @@ class TestWindowManager:
     @pytest.fixture
     def window_manager(self):
         """Создает экземпляр WindowManager"""
-        from core.windows.window_manager import WindowManager
+        from core.window import get_window_manager WindowManager
         return WindowManager()
     
     @patch('win32gui.EnumWindows')

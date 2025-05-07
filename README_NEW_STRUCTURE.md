@@ -1,0 +1,122 @@
+
+# Новая структура проекта neuro-link-assistant
+
+Проект был реорганизован для устранения дублирования и улучшения модульности. Ниже описана новая структура проекта.
+
+## Основные изменения
+
+1. **Разделение на платформо-зависимый и платформо-независимый код**
+   - Общие интерфейсы и абстракции: `core/common/`
+   - Платформо-зависимая реализация: `core/platform/windows/`
+
+2. **Устранение дублирования**
+   - Объединены модули файловой системы
+   - Объединены обработчики ошибок
+   - Объединены модули эмуляции ввода (клавиатура и мышь)
+   - Объединены модули управления процессами
+   - Объединены модули управления окнами
+
+3. **Фабрики для доступа к реализациям**
+   - `core/filesystem/__init__.py` - получение реализации файловой системы
+   - `core/input/__init__.py` - получение контроллера ввода
+   - `core/process/__init__.py` - получение менеджера процессов
+   - `core/window/__init__.py` - получение менеджера окон
+
+## Новая структура каталогов
+
+## Примеры использования новой структуры
+
+### Работа с файловой системой
+
+
+from core.filesystem import get_file_system
+
+# Получение экземпляра файловой системы
+fs = get_file_system()
+
+# Использование методов
+if fs.file_exists('path/to/file.txt'):
+    content = fs.read_file('path/to/file.txt')
+    print(content)
+
+from core.input import get_input_controller
+
+# Получение контроллера ввода
+input_ctrl = get_input_controller()
+
+# Эмуляция клавиатуры
+input_ctrl.keyboard.type_text('Hello, World!')
+input_ctrl.keyboard.hotkey('ctrl', 'a')
+
+# Эмуляция мыши
+input_ctrl.mouse.move_to(100, 100)
+input_ctrl.mouse.click()
+
+from core.process import get_process_manager
+
+# Получение менеджера процессов
+proc_mgr = get_process_manager()
+
+# Запуск процесса
+pid = proc_mgr.start_process('notepad.exe')
+
+# Проверка запущенных процессов
+if proc_mgr.is_process_running('notepad.exe'):
+    print('Notepad запущен')
+
+# Завершение процесса
+proc_mgr.kill_process(pid)
+
+from core.window import get_window_manager
+
+# Получение менеджера окон
+win_mgr = get_window_manager()
+
+# Получение окна по заголовку
+notepad_window = win_mgr.get_window_by_title('Блокнот')
+
+if notepad_window:
+    # Активация окна
+    win_mgr.activate_window(notepad_window)
+    
+    # Максимизация окна
+    win_mgr.maximize_window(notepad_window)
+    
+    # Закрытие окна
+    win_mgr.close_window(notepad_window)
+
+from core.common.error_handler import handle_error, handle_llm_error
+
+# Общая обработка ошибок
+try:
+    # Какой-то код
+    pass
+except Exception as e:
+    handle_error("Произошла ошибка", e, module='my_module')
+
+# Обработка ошибок LLM
+try:
+    # Работа с нейросетью
+    pass
+except Exception as e:
+    handle_llm_error("Ошибка при работе с LLM", e, model="gpt-4", prompt="Текст промпта")
+
+                      # Было
+from core.windows.file_system import FileSystem
+fs = FileSystem()
+
+# Стало
+from core.filesystem import get_file_system
+fs = get_file_system()
+                     
+                     # Было
+from core.input.keyboard_controller import KeyboardController
+from core.input.mouse_controller import MouseController
+kb = KeyboardController()
+mouse = MouseController()
+
+# Стало
+from core.input import get_input_controller
+input_ctrl = get_input_controller()
+# Далее используйте input_ctrl.keyboard и input_ctrl.mouse
+                     

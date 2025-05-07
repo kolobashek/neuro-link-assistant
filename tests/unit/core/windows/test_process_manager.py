@@ -8,7 +8,7 @@ class TestProcessManager:
     @pytest.fixture
     def process_manager(self):
         """Создает экземпляр ProcessManager"""
-        from core.windows.process_manager import ProcessManager
+        from core.process import get_process_manager ProcessManager
         return ProcessManager()
     
     @patch('subprocess.Popen')

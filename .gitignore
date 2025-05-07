@@ -189,3 +189,6 @@ __pycache__/
 .DS_Store
 command_summary.txt
 detailed_command_log.txt
+
+# Папки резервных копий
+backup_*/

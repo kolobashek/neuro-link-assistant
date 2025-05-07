@@ -102,7 +102,7 @@ class SystemInitializer:
         """
         try:
             # Создаем и регистрируем обработчик ошибок
-            from core.error_handler import ErrorHandler
+            from core.common.error_handler import ErrorHandler
             error_handler = ErrorHandler()
             self.registry.register("error_handler", error_handler)
             
@@ -112,12 +112,12 @@ class SystemInitializer:
             self.registry.register("plugin_manager", plugin_manager)
             
             # Создаем и регистрируем менеджер окон
-            from core.windows.window_manager import WindowManager
+            from core.window import get_window_manager WindowManager
             window_manager = WindowManager()
             self.registry.register("window_manager", window_manager)
             
             # Создаем и регистрируем менеджер процессов
-            from core.windows.process_manager import ProcessManager
+            from core.process import get_process_manager ProcessManager
             process_manager = ProcessManager()
             self.registry.register("process_manager", process_manager)
             

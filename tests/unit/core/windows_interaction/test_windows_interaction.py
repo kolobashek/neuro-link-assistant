@@ -2,7 +2,7 @@ import pytest
 import os
 import time
 import subprocess
-from core.windows.window_manager import WindowManager
+from core.window import get_window_manager WindowManager
 from core.windows.system_info import SystemInfo
 
 class TestWindowManagement:
@@ -99,7 +99,7 @@ class TestFileSystem:
     
     def test_create_file(self):
         """Тест создания файла"""
-        from core.windows.file_system import FileSystem
+        from core.filesystem import get_file_system FileSystem
         file_system = FileSystem()
         
         result = file_system.create_file(self.test_file, "Test content")
@@ -109,7 +109,7 @@ class TestFileSystem:
     
     def test_read_file(self):
         """Тест чтения файла"""
-        from core.windows.file_system import FileSystem
+        from core.filesystem import get_file_system FileSystem
         file_system = FileSystem()
         
         # Создаем файл для чтения
@@ -121,7 +121,7 @@ class TestFileSystem:
     
     def test_write_file(self):
         """Тест записи в файл"""
-        from core.windows.file_system import FileSystem
+        from core.filesystem import get_file_system FileSystem
         file_system = FileSystem()
         
         # Создаем файл
@@ -138,7 +138,7 @@ class TestFileSystem:
     
     def test_delete_file(self):
         """Тест удаления файла"""
-        from core.windows.file_system import FileSystem
+        from core.filesystem import get_file_system FileSystem
         file_system = FileSystem()
         
         # Создаем файл для удаления
@@ -165,7 +165,7 @@ class TestProcessManagement:
     
     def test_start_process(self):
         """Тест запуска процесса"""
-        from core.windows.process_manager import ProcessManager
+        from core.process import get_process_manager ProcessManager
         process_manager = ProcessManager()
         
         process_info = process_manager.start_process("notepad.exe")
@@ -178,7 +178,7 @@ class TestProcessManagement:
     
     def test_terminate_process(self):
         """Тест завершения процесса"""
-        from core.windows.process_manager import ProcessManager
+        from core.process import get_process_manager ProcessManager
         process_manager = ProcessManager()
         
         # Запускаем процесс напрямую через subprocess
@@ -195,7 +195,7 @@ class TestProcessManagement:
     
     def test_is_process_running(self):
         """Тест проверки запущенного процесса"""
-        from core.windows.process_manager import ProcessManager
+        from core.process import get_process_manager ProcessManager
         process_manager = ProcessManager()
         
         # Запускаем процесс напрямую через subprocess
