@@ -102,31 +102,50 @@ class SystemInitializer:
         """
         try:
             # Создаем и регистрируем обработчик ошибок
-            from core.common.error_handler import ErrorHandler
-            error_handler = ErrorHandler()
-            self.registry.register("error_handler", error_handler)
+            try:
+                from core.common.error_handler import ErrorHandler
+                error_handler = ErrorHandler()
+                self._registry.register("error_handler", error_handler)
+            except ImportError:
+                # Пробуем альтернативный путь импорта
+                try:
+                    from core.error_handler import ErrorHandler
+                    error_handler = ErrorHandler()
+                    self._registry.register("error_handler", error_handler)
+                except ImportError:
+                    print("Не удалось импортировать ErrorHandler")
             
             # Создаем и регистрируем менеджер плагинов
-            from core.plugin_manager import PluginManager
-            plugin_manager = PluginManager()
-            self.registry.register("plugin_manager", plugin_manager)
+            try:
+                from core.plugin_manager import PluginManager
+                plugin_manager = PluginManager()
+                self._registry.register("plugin_manager", plugin_manager)
+            except ImportError:
+                print("Не удалось импортировать PluginManager")
             
-            # Создаем и регистрируем менеджер окон
-            from core.window import get_window_manager WindowManager
-            window_manager = WindowManager()
-            self.registry.register("window_manager", window_manager)
-            
-            # Создаем и регистрируем менеджер процессов
-            from core.process import get_process_manager ProcessManager
-            process_manager = ProcessManager()
-            self.registry.register("process_manager", process_manager)
-            
-            # Создаем и регистрируем системную информацию
-            from core.windows.system_info import SystemInfo
-            system_info = SystemInfo()
-            self.registry.register("system_info", system_info)
+            # Регистрируем дополнительные компоненты, если они доступны
+            self._register_optional_components()
             
             return True
         except Exception as e:
             print(f"Error registering core components: {e}")
             return False
+    
+    def _register_optional_components(self):
+        """
+        Регистрирует дополнительные компоненты, если они доступны.
+        """
+        # Список возможных компонентов для регистрации
+        optional_components = [
+            # (имя_импорта, имя_класса, имя_регистрации)
+            ("core.windows.system_info", "SystemInfo", "system_info"),
+        ]
+        
+        for import_path, class_name, register_name in optional_components:
+            try:
+                module = __import__(import_path, fromlist=[class_name])
+                component_class = getattr(module, class_name)
+                component = component_class()
+                self._registry.register(register_name, component)
+            except (ImportError, AttributeError) as e:
+                print(f"Не удалось зарегистрировать компонент {register_name}: {e}")

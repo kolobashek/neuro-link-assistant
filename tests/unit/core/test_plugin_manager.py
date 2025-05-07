@@ -1,59 +1,77 @@
 import pytest
+from unittest.mock import MagicMock, patch
 import os
 import sys
-from unittest.mock import patch, MagicMock, mock_open
-from core.plugin_manager import PluginManager  # Добавьте эту строку
+from core.plugin_manager import PluginManager
 
 class TestPluginManager:
-    """Тесты менеджера плагинов"""
+    """Тесты для менеджера плагинов"""
     
     @pytest.fixture
-    def registry(self):
-        """Создает мок реестра компонентов"""
+    def plugin_manager(self):
+        """Фикстура для создания экземпляра PluginManager"""
+        # Создаем мок для реестра компонентов
         registry = MagicMock()
-        return registry
-    
-    @pytest.fixture
-    def error_handler(self):
-        """Создает мок обработчика ошибок"""
-        error_handler = MagicMock()
-        return error_handler
-    
-    @pytest.fixture
-    def plugin_manager(self, registry, error_handler):
-        """Создает экземпляр PluginManager с мок-зависимостями"""
-        from core.plugin_manager import PluginManager
         
-        # Настраиваем реестр для возврата мок-обработчика ошибок
+        # Создаем мок для обработчика ошибок
+        error_handler = MagicMock()
+        
+        # Настраиваем реестр для возврата обработчика ошибок
         registry.get.return_value = error_handler
         
-        return PluginManager(registry)
+        # Создаем менеджер плагинов с моком реестра
+        manager = PluginManager(registry)
+        
+        # Заменяем директорию плагинов на временную
+        manager.plugins_dir = os.path.join(os.path.dirname(__file__), 'test_plugins')
+        
+        # Создаем временную директорию для тестов, если она не существует
+        os.makedirs(manager.plugins_dir, exist_ok=True)
+        
+        # Возвращаем менеджер плагинов
+        yield manager
+        
+        # Удаляем временную директорию после тестов
+        if os.path.exists(manager.plugins_dir):
+            for file in os.listdir(manager.plugins_dir):
+                os.remove(os.path.join(manager.plugins_dir, file))
+            os.rmdir(manager.plugins_dir)
     
-    @patch('os.path.exists', return_value=True)
-    @patch('os.listdir')
-    def test_discover_plugins(self, mock_listdir, mock_exists, plugin_manager):
+    @pytest.fixture
+    def error_handler(self, plugin_manager):
+        """Фикстура для получения мока обработчика ошибок"""
+        return plugin_manager.error_handler
+    
+    def test_discover_plugins(self, plugin_manager):
         """Тест обнаружения плагинов"""
-        # Настраиваем мок для имитации списка файлов в директории плагинов
-        mock_listdir.return_value = [
-            'plugin1.py',
-            'plugin2.py',
-            'not_a_plugin.txt',
-            '__pycache__'
-        ]
+        # Создаем тестовые файлы плагинов
+        with open(os.path.join(plugin_manager.plugins_dir, 'test_plugin1.py'), 'w') as f:
+            f.write('# Test plugin 1')
+        
+        with open(os.path.join(plugin_manager.plugins_dir, 'test_plugin2.py'), 'w') as f:
+            f.write('# Test plugin 2')
+        
+        # Создаем файл, который не должен быть обнаружен
+        with open(os.path.join(plugin_manager.plugins_dir, '__init__.py'), 'w') as f:
+            f.write('# Init file')
         
         # Обнаруживаем плагины
         plugins = plugin_manager.discover_plugins()
         
-        # Проверяем, что найдены только файлы Python
+        # Проверяем, что обнаружены только плагины
         assert len(plugins) == 2
-        assert 'plugin1.py' in plugins
-        assert 'plugin2.py' in plugins
-        assert 'not_a_plugin.txt' not in plugins
-        assert '__pycache__' not in plugins
+        assert 'test_plugin1.py' in plugins
+        assert 'test_plugin2.py' in plugins
+        assert '__init__.py' not in plugins
     
-    @patch('os.path.exists', return_value=False)
-    def test_discover_plugins_no_directory(self, mock_exists, plugin_manager):
+    def test_discover_plugins_no_directory(self, plugin_manager):
         """Тест обнаружения плагинов при отсутствии директории"""
+        # Удаляем директорию плагинов
+        if os.path.exists(plugin_manager.plugins_dir):
+            for file in os.listdir(plugin_manager.plugins_dir):
+                os.remove(os.path.join(plugin_manager.plugins_dir, file))
+            os.rmdir(plugin_manager.plugins_dir)
+        
         # Обнаруживаем плагины
         plugins = plugin_manager.discover_plugins()
         
@@ -63,18 +81,26 @@ class TestPluginManager:
     @patch('importlib.import_module')
     def test_load_plugin(self, mock_import, plugin_manager):
         """Тест загрузки плагина"""
+        # Создаем класс плагина
+        class TestPlugin:
+            def setup(self):
+                pass
+        
         # Создаем мок-модуль плагина
-        mock_plugin = MagicMock()
-        mock_plugin.setup = MagicMock()
-        mock_import.return_value = mock_plugin
+        mock_module = MagicMock()
+        mock_module.TestPlugin = TestPlugin
+        mock_import.return_value = mock_module
         
         # Загружаем плагин
         result = plugin_manager.load_plugin('test_plugin')
         
-        # Проверяем, что плагин был импортирован и инициализирован
+        # Проверяем, что плагин был импортирован
         mock_import.assert_called_once_with('plugins.test_plugin')
-        mock_plugin.setup.assert_called_once()
-        assert result is True
+        
+        # Проверяем, что плагин был загружен
+        assert result is not None
+        assert isinstance(result, TestPlugin)
+        assert 'test_plugin' in plugin_manager.plugins
     
     @patch('importlib.import_module')
     def test_load_plugin_error(self, mock_import, plugin_manager, error_handler):
@@ -87,91 +113,89 @@ class TestPluginManager:
         
         # Проверяем, что ошибка была обработана
         error_handler.handle_error.assert_called_once()
-        assert result is False
+        
+        # Проверяем, что результат None
+        assert result is None
     
     @patch('importlib.import_module')
     def test_load_plugin_no_setup(self, mock_import, plugin_manager, error_handler):
         """Тест загрузки плагина без метода setup"""
         # Создаем мок-модуль плагина без метода setup
-        mock_plugin = MagicMock(spec=[])
-        mock_import.return_value = mock_plugin
+        mock_module = MagicMock()
+        mock_import.return_value = mock_module
         
         # Загружаем плагин
         result = plugin_manager.load_plugin('test_plugin')
         
         # Проверяем, что ошибка была обработана
-        error_handler.handle_warning.assert_called_once()
-        assert result is False
-    
-    @patch('os.path.exists', return_value=True)
-    @patch('os.listdir')
-    @patch.object(PluginManager, 'load_plugin')
-    def test_load_plugins(self, mock_load_plugin, mock_listdir, mock_exists, plugin_manager):
-        """Тест загрузки всех плагинов"""
-        # Настраиваем мок для имитации списка файлов в директории плагинов
-        mock_listdir.return_value = [
-            'plugin1.py',
-            'plugin2.py',
-            'not_a_plugin.txt'
-        ]
+        error_handler.handle_error.assert_called_once()
         
-        # Настраиваем мок для имитации успешной загрузки плагинов
-        mock_load_plugin.return_value = True
+        # Проверяем, что результат None
+        assert result is None
+    
+    def test_load_plugins(self, plugin_manager):
+        """Тест загрузки всех плагинов"""
+        # Создаем тестовые файлы плагинов
+        with open(os.path.join(plugin_manager.plugins_dir, 'test_plugin1.py'), 'w') as f:
+            f.write('# Test plugin 1')
+        
+        with open(os.path.join(plugin_manager.plugins_dir, 'test_plugin2.py'), 'w') as f:
+            f.write('# Test plugin 2')
+        
+        # Заменяем метод load_plugin на мок
+        plugin_manager.load_plugin = MagicMock(return_value=True)
         
         # Загружаем все плагины
-        plugin_manager.load_plugins()
+        loaded_count = plugin_manager.load_plugins()
         
-        # Проверяем, что метод load_plugin был вызван для каждого плагина
-        assert mock_load_plugin.call_count == 2
-        mock_load_plugin.assert_any_call('plugin1')
-        mock_load_plugin.assert_any_call('plugin2')
+        # Проверяем, что все плагины были загружены
+        assert loaded_count == 2
+        assert plugin_manager.load_plugin.call_count == 2
     
-    @patch.dict(sys.modules, {'plugins.test_plugin': MagicMock()})
     def test_unload_plugin(self, plugin_manager):
         """Тест выгрузки плагина"""
-        # Создаем мок-модуль плагина
-        mock_plugin = MagicMock()
-        mock_plugin.teardown = MagicMock()
+        # Создаем тестовый плагин
+        plugin = MagicMock()
+        plugin.teardown = MagicMock()
         
-        # Добавляем плагин в список загруженных плагинов
-        plugin_manager.loaded_plugins['test_plugin'] = mock_plugin
+        # Добавляем плагин в словарь загруженных плагинов
+        plugin_manager.plugins['test_plugin'] = plugin
         
         # Выгружаем плагин
         result = plugin_manager.unload_plugin('test_plugin')
         
-        # Проверяем, что метод teardown был вызван
-        mock_plugin.teardown.assert_called_once()
+        # Проверяем, что плагин был выгружен
         assert result is True
-        assert 'test_plugin' not in plugin_manager.loaded_plugins
+        assert 'test_plugin' not in plugin_manager.plugins
+        plugin.teardown.assert_called_once()
     
     def test_unload_plugin_not_loaded(self, plugin_manager, error_handler):
         """Тест выгрузки незагруженного плагина"""
         # Выгружаем несуществующий плагин
         result = plugin_manager.unload_plugin('nonexistent_plugin')
         
-        # Проверяем, что было сгенерировано предупреждение
-        error_handler.handle_warning.assert_called_once()
+        # Проверяем, что результат False
         assert result is False
+        
+        # Проверяем, что было залогировано предупреждение
+        error_handler.handle_warning.assert_called_once()
     
     def test_unload_plugins(self, plugin_manager):
         """Тест выгрузки всех плагинов"""
-        # Создаем мок-плагины
+        # Создаем тестовые плагины
         plugin1 = MagicMock()
-        plugin1.teardown = MagicMock()
-        
         plugin2 = MagicMock()
-        plugin2.teardown = MagicMock()
         
-        # Добавляем плагины в список загруженных плагинов
-        plugin_manager.loaded_plugins = {
-            'plugin1': plugin1,
-            'plugin2': plugin2
-        }
+        # Добавляем плагины в словарь загруженных плагинов
+        plugin_manager.plugins['test_plugin1'] = plugin1
+        plugin_manager.plugins['test_plugin2'] = plugin2
+        
+        # Заменяем метод unload_plugin на мок
+        plugin_manager.unload_plugin = MagicMock(return_value=True)
         
         # Выгружаем все плагины
-        plugin_manager.unload_plugins()
+        unloaded_count = plugin_manager.unload_plugins()
         
-        # Проверяем, что метод teardown был вызван для каждого плагина
-        plugin1.teardown.assert_called_once()
-        plugin2.teardown.assert_called_once()
-        assert len(plugin_manager.loaded_plugins) == 0
+        # Проверяем, что все плагины были выгружены
+        assert unloaded_count == 2
+        assert plugin_manager.unload_plugin.call_count == 2

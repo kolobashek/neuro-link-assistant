@@ -35,11 +35,18 @@ class ComponentRegistry:
             
         Returns:
             object: Экземпляр компонента или значение по умолчанию
+            
+        Raises:
+            KeyError: Если компонент не найден и default не указан
         """
         if name in self._components:
             return self._components[name]
         
-        return default  # Просто возвращаем значение по умолчанию
+        if default is not None:
+            return default
+            
+        # Если компонент не найден и default не указан, вызываем исключение
+        raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
     
     def has(self, name):
         """

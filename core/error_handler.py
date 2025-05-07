@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
+# Р РµСЌРєСЃРїРѕСЂС‚ РёР· РЅРѕРІРѕРіРѕ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЏ
+from core.common.error_handler import handle_error, handle_warning, handle_llm_error, ErrorHandler
 
-# Реэкспорт из нового местоположения
-from core.common.error_handler import handle_error, handle_llm_error
-
-# Для обеспечения обратной совместимости
-__all__ = ['handle_error', 'handle_llm_error']
+# Р”Р»СЏ РѕР±РµСЃРїРµС‡РµРЅРёСЏ РѕР±СЂР°С‚РЅРѕР№ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё
+__all__ = ['handle_error', 'handle_warning', 'handle_llm_error', 'ErrorHandler']

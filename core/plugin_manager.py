@@ -10,19 +10,19 @@ class PluginManager:
     Предоставляет функции для обнаружения, загрузки и выгрузки плагинов.
     """
     
-    def __init__(self, registry):
+    def __init__(self, registry=None):
         """
         Инициализация менеджера плагинов.
         
         Args:
-            registry (ComponentRegistry): Реестр компонентов системы
+            registry (ComponentRegistry, optional): Реестр компонентов системы
         """
         self.registry = registry
         self.plugins = {}  # Словарь загруженных плагинов
         self.plugins_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'plugins')
         
-        # Получаем обработчик ошибок из реестра
-        self.error_handler = registry.get('ErrorHandler')
+        # Получаем обработчик ошибок из реестра, если он доступен
+        self.error_handler = registry.get('ErrorHandler') if registry else None
     
     def discover_plugins(self):
         """
@@ -46,23 +46,54 @@ class PluginManager:
         
         return plugins
     
-    def load_plugin(self, plugin_name, plugin_class):
+    def load_plugin(self, plugin_name):
         """
         Загружает плагин.
         
         Args:
             plugin_name (str): Имя плагина
-            plugin_class (class): Класс плагина
             
         Returns:
-            object: Экземпляр плагина
+            object: Экземпляр плагина или None в случае ошибки
         """
         try:
+            # Формируем путь к модулю плагина
+            module_name = f'plugins.{plugin_name}'
+            
+            # Импортируем модуль плагина
+            module = importlib.import_module(module_name)
+            
+            # Ищем класс плагина в модуле
+            plugin_class = None
+            for name, obj in inspect.getmembers(module):
+                if inspect.isclass(obj) and hasattr(obj, 'setup'):
+                    plugin_class = obj
+                    break
+            
+            if not plugin_class:
+                if self.error_handler:
+                    self.error_handler.handle_error(
+                        Exception(f"Plugin class not found in {plugin_name}"),
+                        f"Plugin class not found in {plugin_name}"
+                    )
+                return None
+            
+            # Создаем экземпляр плагина
             plugin = plugin_class()
+            
+            # Вызываем метод setup, если он существует
+            if hasattr(plugin, 'setup'):
+                plugin.setup()
+            
+            # Сохраняем плагин в словаре загруженных плагинов
             self.plugins[plugin_name] = plugin
+            
             return plugin
         except Exception as e:
-            self.error_handler.handle_error(e, {"plugin": plugin_name})
+            if self.error_handler:
+                self.error_handler.handle_error(e, f"Error loading plugin {plugin_name}")
+            else:
+                print(f"Error loading plugin {plugin_name}: {e}")
             return None
     
     def load_plugins(self):
@@ -115,7 +146,8 @@ class PluginManager:
         # Проверяем, загружен ли плагин
         if plugin_name not in self.plugins:
             print(f"Plugin {plugin_name} is not loaded")
-            self.error_handler.handle_warning(f"Plugin {plugin_name} is not loaded")
+            if self.error_handler:
+                self.error_handler.handle_warning(f"Plugin {plugin_name} is not loaded")
             return False
         
         try:
@@ -136,7 +168,10 @@ class PluginManager:
             
             return True
         except Exception as e:
-            self.error_handler.handle_error(e, f"Error unloading plugin {plugin_name}")
+            if self.error_handler:
+                self.error_handler.handle_error(e, f"Error unloading plugin {plugin_name}")
+            else:
+                print(f"Error unloading plugin {plugin_name}: {e}")
             return False
     
     def unload_plugins(self):
