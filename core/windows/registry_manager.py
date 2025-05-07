@@ -13,81 +13,59 @@ class RegistryManager:
     HKEY_USERS = winreg.HKEY_USERS
     HKEY_CURRENT_CONFIG = winreg.HKEY_CURRENT_CONFIG
     
-    # Константы для типов данных реестра
-    REG_SZ = winreg.REG_SZ
-    REG_BINARY = winreg.REG_BINARY
-    REG_DWORD = winreg.REG_DWORD
-    REG_QWORD = winreg.REG_QWORD
-    REG_MULTI_SZ = winreg.REG_MULTI_SZ
-    REG_EXPAND_SZ = winreg.REG_EXPAND_SZ
-    
-    def read_value(self, root_key, key_path, value_name):
+    def read_value(self, hkey, key_path, value_name):
         """
         Читает значение из реестра.
         
         Args:
-            root_key (int): Корневой ключ реестра
+            hkey (int): Корневой ключ (HKEY_*)
             key_path (str): Путь к ключу
             value_name (str): Имя значения
             
         Returns:
-            tuple: (значение, тип) или (None, None) в случае ошибки
+            any: Значение из реестра или None, если значение не найдено
         """
         try:
-            key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_READ)
-            value, value_type = winreg.QueryValueEx(key, value_name)
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_READ)
+            value, _ = winreg.QueryValueEx(key, value_name)
             winreg.CloseKey(key)
-            return value, value_type
+            return value
+        except FileNotFoundError:
+            # Ключ или значение не найдены
+            return None
         except Exception as e:
-            print(f"Error reading registry value: {e}")
-            return None, None
+            print(f"Error reading registry value {key_path}\\{value_name}: {e}")
+            return None
     
-    def write_value(self, root_key, key_path, value_name, value, value_type=None):
+    def write_value(self, hkey, key_path, value_name, value, value_type=winreg.REG_SZ):
         """
         Записывает значение в реестр.
         
         Args:
-            root_key (int): Корневой ключ реестра
+            hkey (int): Корневой ключ (HKEY_*)
             key_path (str): Путь к ключу
             value_name (str): Имя значения
-            value: Значение для записи
-            value_type (int, optional): Тип значения
+            value (any): Значение для записи
+            value_type (int, optional): Тип значения (REG_*)
             
         Returns:
             bool: True в случае успешной записи
         """
         try:
-            # Если тип не указан, определяем его автоматически
-            if value_type is None:
-                if isinstance(value, str):
-                    value_type = winreg.REG_SZ
-                elif isinstance(value, int):
-                    value_type = winreg.REG_DWORD
-                elif isinstance(value, bytes):
-                    value_type = winreg.REG_BINARY
-                else:
-                    value_type = winreg.REG_SZ
-                    value = str(value)
-            
-            # Создаем ключ, если он не существует
-            try:
-                key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_WRITE)
-            except:
-                key = winreg.CreateKey(root_key, key_path)
-            
+            key = winreg.CreateKey(hkey, key_path)
             winreg.SetValueEx(key, value_name, 0, value_type, value)
             winreg.CloseKey(key)
             return True
         except Exception as e:
-            print(f"Error writing registry value: {e}")
+            print(f"Error writing registry value {key_path}\\{value_name}: {e}")
             return False
     
-    def delete_value(self, root_key, key_path, value_name):
+    def delete_value(self, hkey, key_path, value_name):
         """
         Удаляет значение из реестра.
         
         Args:
-            root_key (int): Корневой ключ реестра
+            hkey (int): Корневой ключ (HKEY_*)
             key_path (str): Путь к ключу
             value_name (str): Имя значения
             
@@ -95,113 +73,68 @@ class RegistryManager:
             bool: True в случае успешного удаления
         """
         try:
-            key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_WRITE)
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_WRITE)
             winreg.DeleteValue(key, value_name)
             winreg.CloseKey(key)
             return True
+        except FileNotFoundError:
+            # Ключ или значение не найдены
+            return False
         except Exception as e:
-            print(f"Error deleting registry value: {e}")
+            print(f"Error deleting registry value {key_path}\\{value_name}: {e}")
             return False
     
-    def create_key(self, root_key, key_path):
+    def list_values(self, hkey, key_path):
         """
-        Создает ключ реестра.
+        Получает список всех значений в ключе реестра.
         
         Args:
-            root_key (int): Корневой ключ реестра
+            hkey (int): Корневой ключ (HKEY_*)
             key_path (str): Путь к ключу
             
         Returns:
-            bool: True в случае успешного создания
+            list: Список словарей с информацией о значениях
         """
         try:
-            key = winreg.CreateKey(root_key, key_path)
-            winreg.CloseKey(key)
-            return True
-        except Exception as e:
-            print(f"Error creating registry key: {e}")
-            return False
-    
-    def delete_key(self, root_key, key_path):
-        """
-        Удаляет ключ реестра.
-        
-        Args:
-            root_key (int): Корневой ключ реестра
-            key_path (str): Путь к ключу
-            
-        Returns:
-            bool: True в случае успешного удаления
-        """
-        try:
-            # Проверяем, есть ли подключи
-            try:
-                key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_READ)
-                subkey_count = winreg.QueryInfoKey(key)[0]
-                winreg.CloseKey(key)
-                
-                # Если есть подключи, удаляем их рекурсивно
-                if subkey_count > 0:
-                    key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_READ)
-                    for i in range(subkey_count):
-                        # Получаем имя подключа (всегда берем индекс 0, так как после удаления индексы смещаются)
-                        subkey_name = winreg.EnumKey(key, 0)
-                        # Рекурсивно удаляем подключ
-                        self.delete_key(root_key, f"{key_path}\\{subkey_name}")
-                    winreg.CloseKey(key)
-            except WindowsError:
-                pass
-            
-            # Удаляем сам ключ
-            winreg.DeleteKey(root_key, key_path)
-            return True
-        except Exception as e:
-            print(f"Error deleting registry key: {e}")
-            return False
-    
-    def list_values(self, root_key, key_path):
-        """
-        Получает список значений ключа реестра.
-        
-        Args:
-            root_key (int): Корневой ключ реестра
-            key_path (str): Путь к ключу
-            
-        Returns:
-            list: Список кортежей (имя, значение, тип)
-        """
-        try:
-            key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_READ)
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_READ)
             values = []
             
             i = 0
             while True:
                 try:
-                    name, value, value_type = winreg.EnumValue(key, i)
-                    values.append((name, value, value_type))
+                    name, data, type_id = winreg.EnumValue(key, i)
+                    values.append({
+                        "name": name,
+                        "data": data,
+                        "type": type_id
+                    })
                     i += 1
                 except WindowsError:
+                    # Достигнут конец списка значений
                     break
             
             winreg.CloseKey(key)
             return values
+        except FileNotFoundError:
+            # Ключ не найден
+            return []
         except Exception as e:
-            print(f"Error listing registry values: {e}")
+            print(f"Error listing registry values in {key_path}: {e}")
             return []
     
-    def list_keys(self, root_key, key_path):
+    def list_keys(self, hkey, key_path):
         """
-        Получает список подключей ключа реестра.
+        Получает список всех подключей в ключе реестра.
         
         Args:
-            root_key (int): Корневой ключ реестра
+            hkey (int): Корневой ключ (HKEY_*)
             key_path (str): Путь к ключу
             
         Returns:
             list: Список имен подключей
         """
         try:
-            key = winreg.OpenKey(root_key, key_path, 0, winreg.KEY_READ)
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_READ)
             keys = []
             
             i = 0
@@ -211,10 +144,111 @@ class RegistryManager:
                     keys.append(subkey)
                     i += 1
                 except WindowsError:
+                    # Достигнут конец списка подключей
                     break
             
             winreg.CloseKey(key)
             return keys
-        except Exception as e:
-            print(f"Error listing registry keys: {e}")
+        except FileNotFoundError:
+            # Ключ не найден
             return []
+        except Exception as e:
+            print(f"Error listing registry subkeys in {key_path}: {e}")
+            return []
+    
+    def create_key(self, hkey, key_path):
+        """
+        Создает ключ реестра.
+        
+        Args:
+            hkey (int): Корневой ключ (HKEY_*)
+            key_path (str): Путь к ключу
+            
+        Returns:
+            bool: True в случае успешного создания
+        """
+        try:
+            key = winreg.CreateKey(hkey, key_path)
+            winreg.CloseKey(key)
+            return True
+        except Exception as e:
+            print(f"Error creating registry key {key_path}: {e}")
+            return False
+    
+    def delete_key(self, hkey, key_path):
+        """
+        Удаляет ключ реестра.
+        
+        Args:
+            hkey (int): Корневой ключ (HKEY_*)
+            key_path (str): Путь к ключу
+            
+        Returns:
+            bool: True в случае успешного удаления
+        """
+        try:
+            # Разделяем путь на родительский ключ и имя удаляемого ключа
+            parent_path, key_name = key_path.rsplit('\\', 1) if '\\' in key_path else ('', key_path)
+            
+            # Открываем родительский ключ
+            parent_key = winreg.OpenKey(hkey, parent_path, 0, winreg.KEY_WRITE)
+            
+            # Удаляем ключ
+            winreg.DeleteKey(parent_key, key_name)
+            
+            winreg.CloseKey(parent_key)
+            return True
+        except FileNotFoundError:
+            # Ключ не найден
+            return False
+        except Exception as e:
+            print(f"Error deleting registry key {key_path}: {e}")
+            return False
+    
+    def key_exists(self, hkey, key_path):
+        """
+        Проверяет существование ключа реестра.
+        
+        Args:
+            hkey (int): Корневой ключ (HKEY_*)
+            key_path (str): Путь к ключу
+            
+        Returns:
+            bool: True, если ключ существует
+        """
+        try:
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_READ)
+            winreg.CloseKey(key)
+            return True
+        except FileNotFoundError:
+            return False
+        except Exception as e:
+            print(f"Error checking registry key {key_path}: {e}")
+            return False
+    
+    def value_exists(self, hkey, key_path, value_name):
+        """
+        Проверяет существование значения в реестре.
+        
+        Args:
+            hkey (int): Корневой ключ (HKEY_*)
+            key_path (str): Путь к ключу
+            value_name (str): Имя значения
+            
+        Returns:
+            bool: True, если значение существует
+        """
+        try:
+            key = winreg.OpenKey(hkey, key_path, 0, winreg.KEY_READ)
+            try:
+                winreg.QueryValueEx(key, value_name)
+                exists = True
+            except FileNotFoundError:
+                exists = False
+            winreg.CloseKey(key)
+            return exists
+        except FileNotFoundError:
+            return False
+        except Exception as e:
+            print(f"Error checking registry value {key_path}\\{value_name}: {e}")
+            return False

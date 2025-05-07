@@ -141,3 +141,14 @@ class ErrorHandler:
             return f"{context}: {type(exception).__name__}: {str(exception)}"
         else:
             return f"{type(exception).__name__}: {str(exception)}"
+    
+    def test_system_initialization(self):
+        """Тест успешной инициализации системы"""
+        registry = ComponentRegistry()
+        # Регистрируем необходимые компоненты
+        mock_error_handler = MagicMock()
+        registry.register("error_handler", mock_error_handler)
+        
+        initializer = SystemInitializer(registry)
+        result = initializer.initialize()
+        assert result is True

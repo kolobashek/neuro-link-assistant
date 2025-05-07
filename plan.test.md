@@ -2,9 +2,21 @@
 
 ## 1. Модульные тесты (Unit Tests)
 
+```bash
+python -m pytest tests/unit/ -v
+```
+
 ### 1.1 Тесты ядра системы
 
+```bash
+python -m pytest tests/unit/core/ -v
+```
+
 #### 1.1.1 Тесты архитектуры
+
+```bash
+python -m pytest tests/unit/core/test_component_registry.py tests/unit/core/test_system_initializer.py tests/unit/core/test_error_handler.py tests/unit/core/test_plugin_manager.py -v
+```
 
 - [x] Тест регистрации и получения компонентов
   ```bash
@@ -24,6 +36,10 @@
   ```
 
 #### 1.1.2 Тесты LLM-интеграции
+
+```bash
+python -m pytest tests/unit/core/llm/ -v
+```
 
 - [ ] Тест подключения к LLM API
   ```bash
@@ -48,19 +64,23 @@
 
 #### 1.1.3 Тесты взаимодействия с Windows
 
+```bash
+python -m pytest tests/unit/core/windows/ -v
+```
+
 - [x] Тест управления окнами (поиск, активация, закрытие)
   ```bash
   python -m pytest tests/unit/core/windows/test_window_manager.py -v
   ```
-- [ ] Тест операций с файловой системой (создание, чтение, запись)
+- [x] Тест операций с файловой системой (создание, чтение, запись)
   ```bash
   python -m pytest tests/unit/core/windows/test_file_system.py -v
   ```
-- [ ] Тест управления процессами (запуск, завершение)
+- [x] Тест управления процессами (запуск, завершение)
   ```bash
   python -m pytest tests/unit/core/windows/test_process_manager.py -v
   ```
-- [ ] Тест получения системной информации
+- [x] Тест получения системной информации
   ```bash
   python -m pytest tests/unit/core/windows/test_system_info.py -v
   ```
@@ -71,7 +91,15 @@
 
 ### 1.2 Тесты функциональных модулей
 
+```bash
+python -m pytest tests/unit/core/vision/ tests/unit/core/web/ tests/unit/core/input/ -v
+```
+
 #### 1.2.1 Тесты компьютерного зрения
+
+```bash
+python -m pytest tests/unit/core/vision/ -v
+```
 
 - [ ] Тест захвата скриншотов
   ```bash
@@ -95,6 +123,10 @@
   ```
 
 #### 1.2.2 Тесты веб-взаимодействия
+
+```bash
+python -m pytest tests/unit/core/web/ -v
+```
 
 - [ ] Тест инициализации браузера
   ```bash
@@ -123,6 +155,10 @@
 
 #### 1.2.3 Тесты эмуляции пользовательского ввода
 
+```bash
+python -m pytest tests/unit/core/input/ -v
+```
+
 - [ ] Тест эмуляции клавиатуры (нажатия клавиш, комбинации)
   ```bash
   python -m pytest tests/unit/core/input/test_keyboard_controller.py -v
@@ -142,7 +178,15 @@
 
 ### 1.3 Тесты специализированных возможностей
 
+```bash
+python -m pytest tests/unit/core/installation/ tests/unit/core/files/ tests/unit/core/decision/ -v
+```
+
 #### 1.3.1 Тесты установки программ
+
+```bash
+python -m pytest tests/unit/core/installation/ -v
+```
 
 - [ ] Тест работы с пакетными менеджерами
   ```bash
@@ -163,6 +207,10 @@
 
 #### 1.3.2 Тесты работы с файлами и документами
 
+```bash
+python -m pytest tests/unit/core/files/ -v
+```
+
 - [ ] Тест операций с различными типами файлов
   ```bash
   python -m pytest tests/unit/core/files/test_file_operations.py -v
@@ -181,6 +229,10 @@
   ```
 
 #### 1.3.3 Тесты системы принятия решений
+
+```bash
+python -m pytest tests/unit/core/decision/ -v
+```
 
 - [ ] Тест выбора оптимального способа взаимодействия
   ```bash
@@ -201,9 +253,21 @@
 
 ## 2. Интеграционные тесты (Integration Tests)
 
+```bash
+python -m pytest tests/integration/ -v
+```
+
 ### 2.1 Тесты взаимодействия компонентов
 
+```bash
+python -m pytest tests/integration/llm_actions/ tests/integration/vision_input/ tests/integration/web_system/ -v
+```
+
 #### 2.1.1 Тесты интеграции LLM и системы действий
+
+```bash
+python -m pytest tests/integration/llm_actions/ -v
+```
 
 - [ ] Тест преобразования намерений в конкретные действия
   ```bash
@@ -220,6 +284,10 @@
 
 #### 2.1.2 Тесты интеграции компьютерного зрения и ввода
 
+```bash
+python -m pytest tests/integration/vision_input/ -v
+```
+
 - [ ] Тест распознавания и взаимодействия с элементами
   ```bash
   python -m pytest tests/integration/vision_input/test_element_interaction.py -v
@@ -234,6 +302,10 @@
   ```
 
 #### 2.1.3 Тесты интеграции веб и системных компонентов
+
+```bash
+python -m pytest tests/integration/web_system/ -v
+```
 
 - [ ] Тест загрузки файлов из веб в систему
   ```bash
@@ -250,7 +322,15 @@
 
 ### 2.2 Тесты гибридной системы
 
+```bash
+python -m pytest tests/integration/hybrid/ tests/integration/programming/ -v
+```
+
 #### 2.2.1 Тесты переключения методов взаимодействия
+
+```bash
+python -m pytest tests/integration/hybrid/ -v
+```
 
 - [ ] Тест выбора между DOM и CV для веб-страниц
   ```bash
@@ -267,6 +347,10 @@
 
 #### 2.2.2 Тесты программирования и отладки
 
+```bash
+python -m pytest tests/integration/programming/ -v
+```
+
 - [ ] Тест генерации кода
   ```bash
   python -m pytest tests/integration/programming/test_code_generation.py -v
@@ -282,9 +366,21 @@
 
 ## 3. Системные тесты (System Tests)
 
+```bash
+python -m pytest tests/system/ -v
+```
+
 ### 3.1 Тесты сценариев использования
 
+```bash
+python -m pytest tests/system/basic/ tests/system/complex/ -v
+```
+
 #### 3.1.1 Тесты базовых задач
+
+```bash
+python -m pytest tests/system/basic/ -v
+```
 
 - [ ] Тест работы с файлами и папками
   ```bash
@@ -304,6 +400,10 @@
   ```
 
 #### 3.1.2 Тесты сложных сценариев
+
+```bash
+python -m pytest tests/system/complex/ -v
+```
 
 - [ ] Тест установки и настройки среды разработки
   ```bash
@@ -560,6 +660,9 @@
 ### Критерии успешности
 
 - Все тесты проходят успешно
+  ```bash
+  python -m pytest tests/
+  ```
 - Покрытие кода тестами не менее 80%
   ```bash
   python -m pytest --cov=core tests/ --cov-report=html
@@ -569,3 +672,32 @@
   time python -m pytest tests/
   ```
 - Отсутствие ложноположительных и ложноотрицательных результатов
+  ```bash
+  python -m pytest tests/ -v --no-header --no-summary
+  ```
+
+## Отчеты о состоянии тестирования
+
+### Общий отчет о прохождении всех тестов
+
+```bash
+python -m pytest tests/ -v --html=report.html --self-contained-html
+```
+
+### Отчет о покрытии кода тестами
+
+```bash
+python -m pytest --cov=core tests/ --cov-report=html --cov-report=term
+```
+
+### Отчет о непройденных тестах
+
+```bash
+python -m pytest tests/ -v --tb=short -k "not passed"
+```
+
+### Отчет о времени выполнения тестов
+
+```bash
+python -m pytest tests/ --durations=0
+```

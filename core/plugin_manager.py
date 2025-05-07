@@ -46,35 +46,24 @@ class PluginManager:
         
         return plugins
     
-    def load_plugin(self, plugin_name):
+    def load_plugin(self, plugin_name, plugin_class):
         """
         Загружает плагин.
         
         Args:
             plugin_name (str): Имя плагина
+            plugin_class (class): Класс плагина
             
         Returns:
-            bool: True в случае успешной загрузки
+            object: Экземпляр плагина
         """
         try:
-            # Импортируем модуль плагина
-            plugin_module = importlib.import_module(f'plugins.{plugin_name}')
-            
-            # Проверяем наличие метода setup
-            if not hasattr(plugin_module, 'setup'):
-                self.error_handler.handle_warning(f"Plugin {plugin_name} does not have a setup method")
-                return False
-            
-            # Вызываем метод setup
-            plugin_module.setup()
-            
-            # Сохраняем плагин в словаре загруженных плагинов
-            self.plugins[plugin_name] = plugin_module
-            
-            return True
+            plugin = plugin_class()
+            self.plugins[plugin_name] = plugin
+            return plugin
         except Exception as e:
-            self.error_handler.handle_error(e, f"Error loading plugin {plugin_name}")
-            return False
+            self.error_handler.handle_error(e, {"plugin": plugin_name})
+            return None
     
     def load_plugins(self):
         """
@@ -165,3 +154,15 @@ class PluginManager:
                 unloaded_count += 1
         
         return unloaded_count
+
+    def get_plugin(self, plugin_name):
+        """
+        Получает плагин по имени.
+        
+        Args:
+            plugin_name (str): Имя плагина
+        
+        Returns:
+            object: Экземпляр плагина или None, если плагин не найден
+        """
+        return self.plugins.get(plugin_name)

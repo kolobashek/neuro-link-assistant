@@ -14,15 +14,16 @@ class ComponentRegistry:
         
         Args:
             name (str): Имя компонента
-            component (object): Экземпляр компонента
-            
-        Raises:
-            ValueError: Если компонент с таким именем уже зарегистрирован
+            component (object): Объект компонента
+        
+        Returns:
+            bool: True в случае успешной регистрации
         """
         if name in self._components:
             raise ValueError(f"Компонент с именем '{name}' уже зарегистрирован")
         
         self._components[name] = component
+        return True
     
     def get(self, name, default=None):
         """
@@ -34,17 +35,11 @@ class ComponentRegistry:
             
         Returns:
             object: Экземпляр компонента или значение по умолчанию
-            
-        Raises:
-            KeyError: Если компонент не найден и значение по умолчанию не указано
         """
         if name in self._components:
             return self._components[name]
         
-        if default is not None:
-            return default
-        
-        raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
+        return default  # Просто возвращаем значение по умолчанию
     
     def has(self, name):
         """

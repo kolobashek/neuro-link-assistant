@@ -161,33 +161,64 @@ class ProcessManager:
     
     def get_process_info(self, pid):
         """
-        Получает информацию о процессе по его PID.
+        Получает подробную информацию о процессе.
         
         Args:
             pid (int): Идентификатор процесса
-            
+        
         Returns:
-            dict: Информация о процессе или None, если процесс не найден
+            dict: Словарь с информацией о процессе или None, если процесс не найден
         """
         try:
-            process = psutil.Process(pid)
+            proc = psutil.Process(pid)
             
-            return {
-                "pid": process.pid,
-                "name": process.name(),
-                "exe": process.exe(),
-                "status": process.status(),
-                "cpu_percent": process.cpu_percent(),
-                "memory_percent": process.memory_percent(),
-                "create_time": process.create_time(),
-                "username": process.username(),
-                "cmdline": process.cmdline()
+            # Получаем базовую информацию
+            info = {
+                'pid': proc.pid,
+                'name': proc.name(),
+                'status': proc.status(),
+                'create_time': proc.create_time(),
+                'cpu_percent': proc.cpu_percent(interval=0.1),
+                'memory_percent': proc.memory_percent(),
+                'num_threads': proc.num_threads(),
+                'exe': proc.exe(),
+                'cwd': proc.cwd()
             }
-        except psutil.NoSuchProcess:
-            print(f"Process with PID {pid} does not exist")
+            
+            # Получаем приоритет процесса
+            priority_map = {
+                psutil.REALTIME_PRIORITY_CLASS: 'realtime',
+                psutil.HIGH_PRIORITY_CLASS: 'high',
+                psutil.ABOVE_NORMAL_PRIORITY_CLASS: 'above_normal',
+                psutil.NORMAL_PRIORITY_CLASS: 'normal',
+                psutil.BELOW_NORMAL_PRIORITY_CLASS: 'below_normal',
+                psutil.IDLE_PRIORITY_CLASS: 'idle'
+            }
+            
+            try:
+                nice = proc.nice()
+                info['priority'] = priority_map.get(nice, 'normal')
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                info['priority'] = 'unknown'
+            
+            # Добавляем информацию о пользователе
+            try:
+                info['username'] = proc.username()
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                info['username'] = 'unknown'
+            
+            # Добавляем информацию о командной строке
+            try:
+                info['cmdline'] = proc.cmdline()
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                info['cmdline'] = []
+            
+            return info
+        except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
+            print(f"Error getting process info for PID {pid}: {e}")
             return None
         except Exception as e:
-            print(f"Error getting process info: {e}")
+            print(f"Unexpected error getting process info for PID {pid}: {e}")
             return None
     
     def find_process_by_name(self, name):
@@ -249,35 +280,38 @@ class ProcessManager:
         
         Args:
             pid (int): Идентификатор процесса
-            priority (str): Приоритет ('high', 'above_normal', 'normal', 'below_normal', 'low')
-            
+            priority (str): Приоритет процесса ('realtime', 'high', 'above_normal', 
+                        'normal', 'below_normal', 'idle')
+        
         Returns:
             bool: True в случае успешной установки приоритета
         """
         try:
-            # Словарь соответствия строковых приоритетов и констант Windows
+            proc = psutil.Process(pid)
+            
+            # Словарь соответствия строковых приоритетов и значений psutil
             priority_map = {
-                'high': win32process.HIGH_PRIORITY_CLASS,
-                'above_normal': win32process.ABOVE_NORMAL_PRIORITY_CLASS,
-                'normal': win32process.NORMAL_PRIORITY_CLASS,
-                'below_normal': win32process.BELOW_NORMAL_PRIORITY_CLASS,
-                'low': win32process.IDLE_PRIORITY_CLASS
+                'realtime': psutil.REALTIME_PRIORITY_CLASS,
+                'high': psutil.HIGH_PRIORITY_CLASS,
+                'above_normal': psutil.ABOVE_NORMAL_PRIORITY_CLASS,
+                'normal': psutil.NORMAL_PRIORITY_CLASS,
+                'below_normal': psutil.BELOW_NORMAL_PRIORITY_CLASS,
+                'idle': psutil.IDLE_PRIORITY_CLASS
             }
             
-            # Проверяем, что указан допустимый приоритет
+            # Проверяем, что указанный приоритет допустим
             if priority not in priority_map:
                 print(f"Invalid priority: {priority}")
                 return False
             
-            # Получаем хэндл процесса
-            handle = win32process.OpenProcess(win32con.PROCESS_ALL_ACCESS, False, pid)
-            
             # Устанавливаем приоритет
-            win32process.SetPriorityClass(handle, priority_map[priority])
-            
+            proc.nice(priority_map[priority])
             return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
+            print(f"Error setting priority for process {pid}: {e}")
+            return False
         except Exception as e:
-            print(f"Error setting process priority: {e}")
+            print(f"Unexpected error setting priority for process {pid}: {e}")
             return False
     
     def get_all_processes(self):
