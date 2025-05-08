@@ -2,6 +2,7 @@ import pytest
 import os
 import shutil
 from unittest.mock import patch, MagicMock
+from core.windows.file_system import FileSystem
 
 class TestFileSystem:
     """Тесты класса файловой системы Windows"""
@@ -9,9 +10,7 @@ class TestFileSystem:
     @pytest.fixture
     def file_system(self):
         """Создает экземпляр FileSystem с мок-зависимостями"""
-        from core.filesystem import get_file_system FileSystem
-        return FileSystem()
-    
+        return FileSystem()    
     @pytest.fixture
     def test_dir(self, tmp_path):
         """Создает временную директорию для тестов"""

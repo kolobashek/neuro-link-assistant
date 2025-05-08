@@ -3,6 +3,7 @@ import os
 import shutil
 import tempfile
 from unittest.mock import patch, MagicMock
+from core.windows.filesystem_manager import FileSystemManager
 
 class TestFileSystemManager:
     """Тесты класса управления файловой системой Windows"""
@@ -19,9 +20,7 @@ class TestFileSystemManager:
     @pytest.fixture
     def filesystem_manager(self):
         """Создает экземпляр FileSystemManager"""
-        from core.filesystem import get_file_system FileSystemManager
-        return FileSystemManager()
-    
+        return FileSystemManager()    
     def test_list_directory(self, temp_dir, filesystem_manager):
         """Тест получения списка файлов и директорий"""
         # Создаем тестовые файлы и директории

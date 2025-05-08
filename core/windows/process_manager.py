@@ -233,23 +233,34 @@ class ProcessManager:
         """
         result = []
         
-        for process in psutil.process_iter(['pid', 'name', 'exe', 'cmdline']):
+        for process in psutil.process_iter(['pid', 'name']):
             try:
                 process_info = process.info
                 
                 # Проверяем соответствие имени
                 if name.lower() in process_info['name'].lower():
-                    result.append({
+                    # Создаем базовую информацию
+                    proc_data = {
                         "pid": process_info['pid'],
-                        "name": process_info['name'],
-                        "exe": process_info['exe'],
-                        "cmdline": process_info['cmdline']
-                    })
+                        "name": process_info['name']
+                    }
+                    
+                    # Добавляем дополнительную информацию, если она доступна
+                    try:
+                        proc_data["exe"] = process.exe()
+                    except (psutil.AccessDenied, psutil.NoSuchProcess):
+                        proc_data["exe"] = ""
+                    
+                    try:
+                        proc_data["cmdline"] = process.cmdline()
+                    except (psutil.AccessDenied, psutil.NoSuchProcess):
+                        proc_data["cmdline"] = []
+                    
+                    result.append(proc_data)
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                pass
+                continue
         
-        return result
-    
+        return result    
     def wait_for_process_exit(self, pid, timeout=None):
         """
         Ожидает завершения процесса.

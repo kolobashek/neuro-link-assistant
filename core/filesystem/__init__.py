@@ -1,13 +1,12 @@
-
-# Модуль файловой системы
+  # РњРѕРґСѓР»СЊ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹
 import platform
 
 def get_file_system():
-    """Возвращает платформо-зависимую реализацию файловой системы"""
+    """Р’РѕР·РІСЂР°С‰Р°РµС‚ РїР»Р°С‚С„РѕСЂРјРѕ-Р·Р°РІРёСЃРёРјСѓСЋ СЂРµР°Р»РёР·Р°С†РёСЋ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹"""
     system = platform.system().lower()
     
     if system == 'windows':
-        from core.platform.windows.file_system import WindowsFileSystem
-        return WindowsFileSystem()
+        from core.windows.file_system import FileSystem
+        return FileSystem()
     else:
-        raise NotImplementedError(f"Платформа {system} не поддерживается")
+        raise NotImplementedError(f"РџР»Р°С‚С„РѕСЂРјР° {system} РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ")

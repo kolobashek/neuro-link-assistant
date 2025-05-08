@@ -1,74 +1,68 @@
+from typing import Dict, Any, Optional
+import os
+
 class PromptProcessor:
     """
-    Процессор промптов для языковой модели.
-    Позволяет создавать и обрабатывать шаблоны промптов.
+    Процессор для работы с промптами.
     """
     
-    def __init__(self):
-        """Инициализация процессора промптов."""
-        self.templates = {}
-    
-    def add_template(self, name, template):
+    def __init__(self, error_handler=None):
         """
-        Добавляет шаблон промпта.
+        Инициализация процессора промптов.
         
         Args:
-            name (str): Имя шаблона
-            template (str): Текст шаблона с плейсхолдерами в формате {variable}
-            
-        Returns:
-            bool: True в случае успешного добавления
+            error_handler (object, optional): Обработчик ошибок
         """
-        self.templates[name] = template
-        return True
+        self.error_handler = error_handler
     
-    def process_prompt(self, template_name, variables=None):
+    def format_prompt(self, template: str, variables: Dict[str, Any]) -> str:
         """
-        Обрабатывает шаблон промпта, подставляя переменные.
+        Форматирование промпта с подстановкой переменных.
         
         Args:
-            template_name (str): Имя шаблона
-            variables (dict, optional): Словарь с переменными для подстановки
-            
+            template (str): Шаблон промпта
+            variables (Dict[str, Any]): Словарь переменных для подстановки
+        
         Returns:
-            str: Обработанный текст промпта
+            str: Отформатированный промпт
+        """
+        try:
+            return template.format(**variables)
+        except KeyError as e:
+            # Обрабатываем ошибку отсутствующей переменной
+            if self.error_handler:
+                self.error_handler.handle_warning(
+                    f"Missing variable in prompt template: {e}",
+                    "prompt_processor"
+                )
+            else:
+                print(f"Warning: Missing variable in prompt template: {e}")
             
-        Raises:
-            ValueError: Если шаблон с указанным именем не найден
-        """
-        if template_name not in self.templates:
-            raise ValueError(f"Template {template_name} not found")
-        
-        template = self.templates[template_name]
-        
-        # Если переменные предоставлены, подставляем их в шаблон
-        if variables:
-            for key, value in variables.items():
-                placeholder = f"{{{key}}}"
-                template = template.replace(placeholder, str(value))
-        
-        return template
+            # Заменяем отсутствующие переменные пустыми строками
+            for key in e.args:
+                if key not in variables:
+                    variables[key] = ""
+            
+            return template.format(**variables)
     
-    def load_templates_from_file(self, file_path):
+    def load_prompt_template(self, template_path: str) -> Optional[str]:
         """
-        Загружает шаблоны из JSON-файла.
+        Загрузка шаблона промпта из файла.
         
         Args:
-            file_path (str): Путь к файлу с шаблонами
-            
-        Returns:
-            bool: True в случае успешной загрузки
-            
-        Raises:
-            FileNotFoundError: Если файл не найден
-            json.JSONDecodeError: Если файл содержит некорректный JSON
-        """
-        import json
+            template_path (str): Путь к файлу шаблона
         
-        with open(file_path, 'r', encoding='utf-8') as file:
-            templates = json.load(file)
+        Returns:
+            Optional[str]: Содержимое шаблона или None в случае ошибки
+        """
+        try:
+            with open(template_path, mode="r", encoding="utf-8") as file:
+                return file.read()
+        except Exception as e:
+            # Обрабатываем ошибку
+            if self.error_handler:
+                self.error_handler.handle_error(e, f"Error loading prompt template from {template_path}")
+            else:
+                print(f"Error loading prompt template from {template_path}: {e}")
             
-            for name, template in templates.items():
-                self.add_template(name, template)
-                
-        return True
+            return None

@@ -1,5 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
+from core.windows import WindowManager
 
 class TestWindowManager:
     """Тесты менеджера окон Windows"""
@@ -7,7 +8,6 @@ class TestWindowManager:
     @pytest.fixture
     def window_manager(self):
         """Создает экземпляр WindowManager"""
-        from core.window import get_window_manager WindowManager
         return WindowManager()
     
     @patch('win32gui.EnumWindows')
