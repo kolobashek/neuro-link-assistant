@@ -1,4 +1,5 @@
 import winreg
+from core.common.error_handler import handle_error
 
 class RegistryManager:
     """
@@ -34,7 +35,7 @@ class RegistryManager:
             # Ключ или значение не найдены
             return None
         except Exception as e:
-            print(f"Error reading registry value {key_path}\\{value_name}: {e}")
+            handle_error(f"Error reading registry value {key_path}\\{value_name}: {e}", e, module='registry')
             return None
     
     def write_value(self, hkey, key_path, value_name, value, value_type=winreg.REG_SZ):
@@ -57,7 +58,7 @@ class RegistryManager:
             winreg.CloseKey(key)
             return True
         except Exception as e:
-            print(f"Error writing registry value {key_path}\\{value_name}: {e}")
+            handle_error(f"Error writing registry value {key_path}\\{value_name}: {e}", e, module='registry')
             return False
     
     def delete_value(self, hkey, key_path, value_name):
@@ -81,7 +82,7 @@ class RegistryManager:
             # Ключ или значение не найдены
             return False
         except Exception as e:
-            print(f"Error deleting registry value {key_path}\\{value_name}: {e}")
+            handle_error(f"Error deleting registry value {key_path}\\{value_name}: {e}", e, module='registry')
             return False
     
     def list_values(self, hkey, key_path):
@@ -119,7 +120,7 @@ class RegistryManager:
             # Ключ не найден
             return []
         except Exception as e:
-            print(f"Error listing registry values in {key_path}: {e}")
+            handle_error(f"Error listing registry values in {key_path}: {e}", e, module='registry')
             return []
     
     def list_keys(self, hkey, key_path):
@@ -153,7 +154,7 @@ class RegistryManager:
             # Ключ не найден
             return []
         except Exception as e:
-            print(f"Error listing registry subkeys in {key_path}: {e}")
+            handle_error(f"Error listing registry subkeys in {key_path}: {e}", e, module='registry')
             return []
     
     def create_key(self, hkey, key_path):
@@ -172,7 +173,7 @@ class RegistryManager:
             winreg.CloseKey(key)
             return True
         except Exception as e:
-            print(f"Error creating registry key {key_path}: {e}")
+            handle_error(f"Error creating registry key {key_path}: {e}", e, module='registry')
             return False
     
     def delete_key(self, hkey, key_path):
@@ -202,7 +203,7 @@ class RegistryManager:
             # Ключ не найден
             return False
         except Exception as e:
-            print(f"Error deleting registry key {key_path}: {e}")
+            handle_error(f"Error deleting registry key {key_path}: {e}", e, module='registry')
             return False
     
     def key_exists(self, hkey, key_path):
@@ -223,7 +224,7 @@ class RegistryManager:
         except FileNotFoundError:
             return False
         except Exception as e:
-            print(f"Error checking registry key {key_path}: {e}")
+            handle_error(f"Error checking registry key {key_path}: {e}", e, module='registry')
             return False
     
     def value_exists(self, hkey, key_path, value_name):
@@ -250,5 +251,5 @@ class RegistryManager:
         except FileNotFoundError:
             return False
         except Exception as e:
-            print(f"Error checking registry value {key_path}\\{value_name}: {e}")
+            handle_error(f"Error checking registry value {key_path}\\{value_name}: {e}", e, module='registry')
             return False
