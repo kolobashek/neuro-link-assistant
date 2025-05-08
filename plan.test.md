@@ -84,7 +84,7 @@ python -m pytest tests/unit/core/windows/ -v
   ```bash
   python -m pytest tests/unit/core/windows/test_system_info.py -v
   ```
-- [ ] Тест работы с реестром Windows
+- [x] Тест работы с реестром Windows
   ```bash
   python -m pytest tests/unit/core/windows/test_registry_manager.py -v
   ```
@@ -105,19 +105,19 @@ python -m pytest tests/unit/core/vision/ -v
   ```bash
   python -m pytest tests/unit/core/vision/test_screen_capture.py -v
   ```
-- [ ] Тест распознавания элементов интерфейса
+- [x] Тест распознавания элементов интерфейса
   ```bash
   python -m pytest tests/unit/core/vision/test_element_recognition.py -v
   ```
-- [ ] Тест локализации элементов на экране
+- [x] Тест локализации элементов на экране
   ```bash
   python -m pytest tests/unit/core/vision/test_element_localization.py -v
   ```
-- [ ] Тест сравнения изображений
+- [x] Тест сравнения изображений
   ```bash
   python -m pytest tests/unit/core/vision/test_image_comparison.py -v
   ```
-- [ ] Тест обработки изменений на экране
+- [x] Тест обработки изменений на экране
   ```bash
   python -m pytest tests/unit/core/vision/test_screen_changes.py -v
   ```

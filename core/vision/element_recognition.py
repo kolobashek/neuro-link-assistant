@@ -1,259 +1,231 @@
-import cv2
 import numpy as np
-import pyautogui
-from .screen_capture import ScreenCapture
+import cv2
+import pytesseract
+from core.vision.screen_capture import ScreenCapture
+from core.common.error_handler import handle_error
 
 class ElementRecognition:
     """
-    Класс для распознавания элементов интерфейса на экране.
+    Класс для распознавания элементов интерфейса.
     """
     
-    def __init__(self):
-        """Инициализация класса распознавания элементов."""
-        self.screen_capture = ScreenCapture()
-    
-    def find_template(self, template, screenshot=None, threshold=0.8, region=None):
+    def __init__(self, screen_capture=None):
         """
-        Находит шаблон на скриншоте.
+        Инициализация распознавателя элементов.
         
         Args:
-            template (str or numpy.ndarray): Путь к файлу шаблона или изображение шаблона
-            screenshot (numpy.ndarray, optional): Скриншот для поиска
-            threshold (float, optional): Порог соответствия (0-1)
-            region (tuple, optional): Область поиска (left, top, width, height)
-            
+            screen_capture (ScreenCapture, optional): Экземпляр класса для захвата экрана
+        """
+        self.screen_capture = screen_capture or ScreenCapture()
+        
+        # Настройка Tesseract OCR
+        try:
+            # Путь к исполняемому файлу Tesseract (если не в PATH)
+            # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+            pass
+        except Exception as e:
+            handle_error(f"Ошибка при настройке Tesseract OCR: {e}", e, module='vision')
+    
+    def find_template(self, screenshot, template, threshold=0.8):
+        """
+        Ищет шаблон на изображении
+        
+        Args:
+            screenshot (numpy.ndarray или str): Изображение, на котором ищем
+            template (numpy.ndarray или str): Шаблон или путь к файлу шаблона
+            threshold (float): Порог уверенности (0-1)
+        
         Returns:
-            tuple: (x, y, width, height) найденного элемента или None
+            tuple: Координаты найденного шаблона (x, y, width, height, confidence) или None
         """
         try:
-            # Загружаем шаблон, если передан путь к файлу
+            # Если screenshot - это путь к файлу, загружаем его
+            if isinstance(screenshot, str):
+                screenshot_img = cv2.imread(screenshot)
+                if screenshot_img is None:
+                    handle_error(f"Не удалось загрузить изображение из файла: {screenshot}", module='vision')
+                    return None
+            else:
+                # Иначе используем переданный numpy массив
+                screenshot_img = screenshot
+            
+            # Если template - это путь к файлу, загружаем его
             if isinstance(template, str):
                 template_img = cv2.imread(template)
+                if template_img is None:
+                    handle_error(f"Не удалось загрузить шаблон из файла: {template}", module='vision')
+                    return None
             else:
+                # Иначе используем переданный numpy массив
                 template_img = template
-            
-            # Если скриншот не передан, делаем новый
-            if screenshot is None:
-                screenshot = self.screen_capture.capture_screen(region)
             
             # Получаем размеры шаблона
             h, w = template_img.shape[:2]
             
-            # Выполняем шаблонное сопоставление
-            result = cv2.matchTemplate(screenshot, template_img, cv2.TM_CCOEFF_NORMED)
+            # Ищем шаблон на изображении
+            result = cv2.matchTemplate(screenshot_img, template_img, cv2.TM_CCOEFF_NORMED)
             
-            # Находим позиции, где соответствие превышает порог
-            locations = np.where(result >= threshold)
+            # Находим позицию с максимальным значением
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
             
-            # Если найдены соответствия
-            if len(locations[0]) > 0:
-                # Берем первое (наилучшее) соответствие
-                min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-                top_left = max_loc
-                
-                # Если был указан регион, корректируем координаты
-                if region:
-                    top_left = (top_left[0] + region[0], top_left[1] + region[1])
-                
-                return (top_left[0], top_left[1], w, h)
+            # Если максимальное значение больше порога, считаем, что шаблон найден
+            if max_val >= threshold:
+                x, y = max_loc
+                return (x, y, w, h, max_val)
             
             return None
         except Exception as e:
-            print(f"Error finding template: {e}")
+            handle_error(f"Ошибка при поиске шаблона: {e}", e, module='vision')
             return None
     
-    def find_all_templates(self, template, screenshot=None, threshold=0.8, region=None):
+    def find_all_templates(self, screenshot, template, threshold=0.8, max_results=10):
         """
-        Находит все вхождения шаблона на скриншоте.
+        Ищет все вхождения шаблона на скриншоте.
         
         Args:
-            template (str or numpy.ndarray): Путь к файлу шаблона или изображение шаблона
-            screenshot (numpy.ndarray, optional): Скриншот для поиска
-            threshold (float, optional): Порог соответствия (0-1)
-            region (tuple, optional): Область поиска (left, top, width, height)
+            screenshot (numpy.ndarray): Скриншот, на котором ищем
+            template (numpy.ndarray): Шаблон, который ищем
+            threshold (float, optional): Порог уверенности (0-1)
+            max_results (int, optional): Максимальное количество результатов
             
         Returns:
-            list: Список кортежей (x, y, width, height) найденных элементов
+            list: Список координат найденных элементов [(x, y, width, height, confidence), ...]
         """
         try:
-            # Загружаем шаблон, если передан путь к файлу
-            if isinstance(template, str):
-                template_img = cv2.imread(template)
-            else:
-                template_img = template
-            
-            # Если скриншот не передан, делаем новый
-            if screenshot is None:
-                screenshot = self.screen_capture.capture_screen(region)
+            # Проверяем, что скриншот и шаблон не пустые
+            if screenshot is None or template is None:
+                return []
             
             # Получаем размеры шаблона
-            h, w = template_img.shape[:2]
+            h, w = template.shape[:2]
             
-            # Выполняем шаблонное сопоставление
-            result = cv2.matchTemplate(screenshot, template_img, cv2.TM_CCOEFF_NORMED)
+            # Ищем шаблон на скриншоте
+            result = cv2.matchTemplate(screenshot, template, cv2.TM_CCOEFF_NORMED)
             
-            # Находим позиции, где соответствие превышает порог
+            # Находим все позиции, где значение выше порога
             locations = np.where(result >= threshold)
             
-            # Преобразуем в список координат
-            points = list(zip(*locations[::-1]))
+            # Формируем список координат
+            matches = []
+            for pt in zip(*locations[::-1]):  # Переворачиваем, т.к. numpy возвращает (y, x)
+                x, y = pt
+                confidence = result[y, x]
+                matches.append((x, y, w, h, confidence))
             
-            # Группируем близкие точки
-            rect_list = []
-            for point in points:
-                # Если был указан регион, корректируем координаты
-                if region:
-                    point = (point[0] + region[0], point[1] + region[1])
-                
-                # Проверяем, не перекрывается ли с уже найденными
-                overlap = False
-                for rect in rect_list:
-                    if (abs(rect[0] - point[0]) < w // 2 and 
-                        abs(rect[1] - point[1]) < h // 2):
-                        overlap = True
-                        break
-                
-                if not overlap:
-                    rect_list.append((point[0], point[1], w, h))
+            # Сортируем по уверенности (от большей к меньшей)
+            matches.sort(key=lambda x: x[4], reverse=True)
             
-            return rect_list
+            # Ограничиваем количество результатов
+            return matches[:max_results]
         except Exception as e:
-            print(f"Error finding all templates: {e}")
+            handle_error(f"Ошибка при поиске всех шаблонов: {e}", e, module='vision')
             return []
     
-    def find_text(self, text, screenshot=None, region=None):
+    def find_text(self, screenshot, lang='eng'):
         """
-        Находит текст на скриншоте с помощью OCR.
+        Распознает текст на скриншоте.
         
         Args:
-            text (str): Текст для поиска
-            screenshot (numpy.ndarray, optional): Скриншот для поиска
-            region (tuple, optional): Область поиска (left, top, width, height)
+            screenshot (numpy.ndarray): Скриншот, на котором ищем текст
+            lang (str, optional): Язык текста
             
         Returns:
-            list: Список кортежей (x, y, width, height) найденных текстовых блоков
+            str: Распознанный текст
         """
         try:
-            # Для этой функции требуется pytesseract
-            import pytesseract
-            pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-            
-            # Если скриншот не передан, делаем новый
+            # Проверяем, что скриншот не пустой
             if screenshot is None:
-                screenshot = self.screen_capture.capture_screen(region)
+                return ""
             
-            # Конвертируем в grayscale для лучшего распознавания
+            # Конвертируем в grayscale
             gray = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
             
-            # Применяем пороговую фильтрацию для улучшения контраста
-            _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-            
             # Распознаем текст
-            data = pytesseract.image_to_data(thresh, output_type=pytesseract.Output.DICT)
+            text = pytesseract.image_to_string(gray, lang=lang)
             
-            # Ищем вхождения искомого текста
-            results = []
-            for i in range(len(data['text'])):
-                if text.lower() in data['text'][i].lower():
-                    x = data['left'][i]
-                    y = data['top'][i]
-                    w = data['width'][i]
-                    h = data['height'][i]
-                    
-                    # Если был указан регион, корректируем координаты
-                    if region:
-                        x += region[0]
-                        y += region[1]
-                    
-                    results.append((x, y, w, h))
-            
-            return results
-        except ImportError:
-            print("pytesseract is not installed. Please install it using: pip install pytesseract")
-            return []
+            return text
         except Exception as e:
-            print(f"Error finding text: {e}")
-            return []
+            handle_error(f"Ошибка при распознавании текста: {e}", e, module='vision')
+            return ""
     
-    def find_color(self, color, screenshot=None, threshold=10, region=None):
+    def find_color(self, screenshot, color, tolerance=10):
         """
-        Находит области указанного цвета на скриншоте.
+        Ищет заданный цвет на скриншоте.
         
         Args:
+            screenshot (numpy.ndarray): Скриншот, на котором ищем
             color (tuple): Цвет в формате BGR (B, G, R)
-            screenshot (numpy.ndarray, optional): Скриншот для поиска
-            threshold (int, optional): Допустимое отклонение цвета
-            region (tuple, optional): Область поиска (left, top, width, height)
+            tolerance (int, optional): Допустимое отклонение
             
         Returns:
-            list: Список кортежей (x, y, width, height) найденных областей
+            list: Список координат найденных пикселей [(x, y), ...]
         """
         try:
-            # Если скриншот не передан, делаем новый
+            # Проверяем, что скриншот не пустой
             if screenshot is None:
-                screenshot = self.screen_capture.capture_screen(region)
+                return []
             
-            # Создаем нижнюю и верхнюю границы цвета
-            lower_bound = np.array([max(0, c - threshold) for c in color], dtype=np.uint8)
-            upper_bound = np.array([min(255, c + threshold) for c in color], dtype=np.uint8)
+            # Создаем маску для заданного цвета с учетом допуска
+            lower = np.array([max(0, c - tolerance) for c in color])
+            upper = np.array([min(255, c + tolerance) for c in color])
+            mask = cv2.inRange(screenshot, lower, upper)
             
-            # Создаем маску для выделения областей указанного цвета
-            mask = cv2.inRange(screenshot, lower_bound, upper_bound)
+            # Находим координаты пикселей, соответствующих маске
+            coordinates = np.column_stack(np.where(mask.T > 0))
             
-            # Находим контуры областей
-            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            
-            # Преобразуем контуры в прямоугольники
-            rects = []
-            for contour in contours:
-                x, y, w, h = cv2.boundingRect(contour)
-                
-                # Если был указан регион, корректируем координаты
-                if region:
-                    x += region[0]
-                    y += region[1]
-                
-                rects.append((x, y, w, h))
-            
-            return rects
+            # Преобразуем в список кортежей (x, y)
+            return [(x, y) for x, y in coordinates]
         except Exception as e:
-            print(f"Error finding color: {e}")
+            handle_error(f"Ошибка при поиске цвета: {e}", e, module='vision')
             return []
     
-    def get_element_center(self, rect):
+    def get_element_center(self, element):
         """
         Получает координаты центра элемента.
         
         Args:
-            rect (tuple): Прямоугольник элемента (x, y, width, height)
+            element (tuple): Координаты элемента (x, y, width, height)
             
         Returns:
-            tuple: (x, y) координаты центра
+            tuple: Координаты центра элемента (x, y)
         """
-        if rect is None:
-            return None
-        
-        x, y, w, h = rect
-        return (x + w // 2, y + h // 2)
+        try:
+            x, y, w, h = element[:4]
+            center_x = x + w // 2
+            center_y = y + h // 2
+            return (center_x, center_y)
+        except Exception as e:
+            handle_error(f"Ошибка при получении центра элемента: {e}", e, module='vision')
+            return (0, 0)
     
-    def highlight_element(self, screenshot, rect, color=(0, 255, 0), thickness=2):
+    def highlight_element(self, screenshot, element, color=(0, 255, 0), thickness=2):
         """
         Выделяет элемент на скриншоте.
         
         Args:
             screenshot (numpy.ndarray): Скриншот
-            rect (tuple): Прямоугольник элемента (x, y, width, height)
-            color (tuple, optional): Цвет рамки в формате BGR
+            element (tuple): Координаты элемента (x, y, width, height)
+            color (tuple, optional): Цвет рамки (B, G, R)
             thickness (int, optional): Толщина рамки
             
         Returns:
             numpy.ndarray: Скриншот с выделенным элементом
         """
-        if rect is None or screenshot is None:
+        try:
+            # Проверяем, что скриншот не пустой
+            if screenshot is None:
+                return None
+            
+            # Создаем копию скриншота
+            result = screenshot.copy()
+            
+            # Получаем координаты элемента
+            x, y, w, h = element[:4]
+            
+            # Рисуем прямоугольник
+            cv2.rectangle(result, (x, y), (x + w, y + h), color, thickness)
+            
+            return result
+        except Exception as e:
+            handle_error(f"Ошибка при выделении элемента: {e}", e, module='vision')
             return screenshot
-        
-        result = screenshot.copy()
-        x, y, w, h = rect
-        cv2.rectangle(result, (x, y), (x + w, y + h), color, thickness)
-        
-        return result
