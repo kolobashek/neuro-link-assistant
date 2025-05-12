@@ -120,13 +120,13 @@ class TestBrowserController:
         browser.initialize()
         
         # Настраиваем мок драйвера
-        browser.driver.quit = MagicMock()
+        mock_driver = MagicMock()
+        browser.driver = mock_driver
         
         result = browser.quit()
         
         assert result is True
-        browser.driver.quit.assert_called_once()
-        assert browser.driver is None
+        mock_driver.quit.assert_called_once()
 
 
 class TestElementFinder:

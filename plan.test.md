@@ -128,7 +128,7 @@ python -m pytest tests/unit/core/vision/ -v
 python -m pytest tests/unit/core/web/ -v
 ```
 
-- [ ] Тест инициализации браузера
+- [x] Тест инициализации браузера
   ```bash
   python -m pytest tests/unit/core/web/test_browser_init.py -v
   ```
