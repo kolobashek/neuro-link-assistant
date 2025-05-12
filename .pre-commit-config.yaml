@@ -1,5 +1,5 @@
 default_stages: [pre-commit]
-fail_fast: false  # Продолжить другие хуки даже если один не прошел
+fail_fast: false
 
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -10,11 +10,14 @@ repos:
     -   id: check-yaml
     -   id: check-added-large-files
 
-# Временно закомментируйте flake8
-# -   repo: https://github.com/pycqa/flake8
-#     rev: 6.1.0
-#     hooks:
-#     -   id: flake8
+# Запускаем только базовые проверки стиля кода
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+    -   id: flake8
+        args:
+        - --max-line-length=120
+        - --ignore=E203,W503,E501,D100,D101,D102,D103,D200,D400,D107
 
 # Временно отключаем pytest хуки до решения проблем с зависимостями
 # -   repo: local
