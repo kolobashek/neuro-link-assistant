@@ -140,11 +140,11 @@ python -m pytest tests/unit/core/web/ -v
   ```bash
   python -m pytest tests/unit/core/web/test_dom_search.py -v
   ```
-- [ ] Тест взаимодействия с формами
+- [x] Тест взаимодействия с формами
   ```bash
   python -m pytest tests/unit/core/web/test_form_interaction.py -v
   ```
-- [ ] Тест обработки JavaScript-событий
+- [x] Тест обработки JavaScript-событий
   ```bash
   python -m pytest tests/unit/core/web/test_js_events.py -v
   ```
