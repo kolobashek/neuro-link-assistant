@@ -12,8 +12,8 @@ class TestFileManager:
     @pytest.fixture
     def file_manager(self):
         """Создает экземпляр FileManager"""
-        from core.filesystem import get_file_system FileManager
-        return FileManager()
+        from core.filesystem import get_file_system
+        return get_file_system()
     
     @pytest.fixture
     def temp_dir(self):

@@ -11,7 +11,7 @@ class TestKeyboardController:
     def keyboard_controller(self):
         """Создает экземпляр KeyboardController с мокнутым контроллером pynput"""
         with patch('core.input.keyboard_controller.Controller') as mock_controller:
-            from core.input import get_input_controller KeyboardController
+            # from core.input import get_input_controller, KeyboardController
             controller = KeyboardController(human_like=False)
             controller.keyboard = mock_controller.return_value
             yield controller
@@ -142,7 +142,7 @@ class TestMouseController:
         """Создает экземпляр MouseController с мокнутыми контроллерами"""
         with patch('core.input.mouse_controller.Controller') as mock_controller, \
              patch('core.input.mouse_controller.pyautogui') as mock_pyautogui:
-            from core.input import get_input_controller MouseController
+            # from core.input import get_input_controller, MouseController
             controller = MouseController(human_like=False)
             controller.mouse = mock_controller.return_value
             controller.mouse.position = (100, 100)  # Устанавливаем начальную позицию

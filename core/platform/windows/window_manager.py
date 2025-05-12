@@ -1,153 +1,205 @@
-
-# Windows-специфичная реализация управления окнами
+  # Windows-СЃРїРµС†РёС„РёС‡РЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ СѓРїСЂР°РІР»РµРЅРёСЏ РѕРєРЅР°РјРё
 import time
 try:
-    import pygetwindow as gw
+      import pygetwindow as gw
 except ImportError:
-    gw = None
+      gw = None
 
 from core.common.error_handler import handle_error
 
 class WindowsWindowManager:
-    """Управление окнами в Windows"""
+      """РЈРїСЂР°РІР»РµРЅРёРµ РѕРєРЅР°РјРё РІ Windows"""
     
-    def __init__(self):
-        if gw is None:
-            handle_error("PyGetWindow не установлен. Установите его: pip install pygetwindow", 
-                        module='window')
+      def __init__(self):
+          if gw is None:
+              handle_error("PyGetWindow РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РµРіРѕ: pip install pygetwindow", 
+                          module='window')
     
-    def get_all_windows(self):
-        """
-        Получить список всех окон
+      def get_all_windows(self):
+          """
+          РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІСЃРµС… РѕРєРѕРЅ
         
-        Returns:
-            list: Список объектов окон
-        """
-        try:
-            if gw:
-                return gw.getAllWindows()
-            return []
-        except Exception as e:
-            handle_error(f"Ошибка при получении списка окон: {e}", e, module='window')
-            return []
+          Returns:
+              list: РЎРїРёСЃРѕРє РѕР±СЉРµРєС‚РѕРІ РѕРєРѕРЅ
+          """
+          try:
+              if gw:
+                  return gw.getAllWindows()
+              return []
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЃРїРёСЃРєР° РѕРєРѕРЅ: {e}", e, module='window')
+              return []
     
-    def get_window_by_title(self, title):
-        """
-        Найти окно по заголовку (частичное совпадение)
+      def get_window_by_title(self, title):
+          """
+          РќР°Р№С‚Рё РѕРєРЅРѕ РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ (С‡Р°СЃС‚РёС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ)
         
-        Args:
-            title (str): Заголовок окна
+          Args:
+              title (str): Р—Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
         
-        Returns:
-            object: Объект окна или None, если окно не найдено
-        """
-        try:
-            if gw:
-                matching_windows = gw.getWindowsWithTitle(title)
-                if matching_windows:
-                    return matching_windows[0]
-            return None
-        except Exception as e:
-            handle_error(f"Ошибка при поиске окна '{title}': {e}", e, module='window')
-            return None
+          Returns:
+              object: РћР±СЉРµРєС‚ РѕРєРЅР° РёР»Рё None, РµСЃР»Рё РѕРєРЅРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
+          """
+          try:
+              if gw:
+                  matching_windows = gw.getWindowsWithTitle(title)
+                  if matching_windows:
+                      return matching_windows[0]
+              return None
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕРёСЃРєРµ РѕРєРЅР° '{title}': {e}", e, module='window')
+              return None
     
-    def activate_window(self, window):
-        """
-        Активировать окно
+      def activate_window(self, window):
+          """
+          РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ РѕРєРЅРѕ
         
-        Args:
-            window: Объект окна
+          Args:
+              window: РћР±СЉРµРєС‚ РѕРєРЅР°
         
-        Returns:
-            bool: True, если окно успешно активировано
-        """
-        try:
-            if window:
-                window.activate()
-                # Даем время на активацию окна
-                time.sleep(0.5)
-                return True
-            return False
-        except Exception as e:
-            handle_error(f"Ошибка при активации окна: {e}", e, module='window')
-            return False
+          Returns:
+              bool: True, РµСЃР»Рё РѕРєРЅРѕ СѓСЃРїРµС€РЅРѕ Р°РєС‚РёРІРёСЂРѕРІР°РЅРѕ
+          """
+          try:
+              if window:
+                  window.activate()
+                  # Р”Р°РµРј РІСЂРµРјСЏ РЅР° Р°РєС‚РёРІР°С†РёСЋ РѕРєРЅР°
+                  time.sleep(0.5)
+                  return True
+              return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё Р°РєС‚РёРІР°С†РёРё РѕРєРЅР°: {e}", e, module='window')
+              return False
     
-    def close_window(self, window):
-        """
-        Закрыть окно
+      def close_window(self, window):
+          """
+          Р—Р°РєСЂС‹С‚СЊ РѕРєРЅРѕ
         
-        Args:
-            window: Объект окна
+          Args:
+              window: РћР±СЉРµРєС‚ РѕРєРЅР°
         
-        Returns:
-            bool: True, если окно успешно закрыто
-        """
-        try:
-            if window:
-                window.close()
-                return True
-            return False
-        except Exception as e:
-            handle_error(f"Ошибка при закрытии окна: {e}", e, module='window')
-            return False
+          Returns:
+              bool: True, РµСЃР»Рё РѕРєРЅРѕ СѓСЃРїРµС€РЅРѕ Р·Р°РєСЂС‹С‚Рѕ
+          """
+          try:
+              if window:
+                  window.close()
+                  return True
+              return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё Р·Р°РєСЂС‹С‚РёРё РѕРєРЅР°: {e}", e, module='window')
+              return False
     
-    def minimize_window(self, window):
-        """
-        Свернуть окно
+      def minimize_window(self, window):
+          """
+          РЎРІРµСЂРЅСѓС‚СЊ РѕРєРЅРѕ
         
-        Args:
-            window: Объект окна
+          Args:
+              window: РћР±СЉРµРєС‚ РѕРєРЅР°
         
-        Returns:
-            bool: True, если окно успешно свернуто
-        """
-        try:
-            if window:
-                window.minimize()
-                return True
-            return False
-        except Exception as e:
-            handle_error(f"Ошибка при сворачивании окна: {e}", e, module='window')
-            return False
+          Returns:
+              bool: True, РµСЃР»Рё РѕРєРЅРѕ СѓСЃРїРµС€РЅРѕ СЃРІРµСЂРЅСѓС‚Рѕ
+          """
+          try:
+              if window:
+                  window.minimize()
+                  return True
+              return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё СЃРІРѕСЂР°С‡РёРІР°РЅРёРё РѕРєРЅР°: {e}", e, module='window')
+              return False
     
-    def maximize_window(self, window):
-        """
-        Развернуть окно
+      def maximize_window(self, window):
+          """
+          Р Р°Р·РІРµСЂРЅСѓС‚СЊ РѕРєРЅРѕ
         
-        Args:
-            window: Объект окна
+          Args:
+              window: РћР±СЉРµРєС‚ РѕРєРЅР°
         
-        Returns:
-            bool: True, если окно успешно развернуто
-        """
-        try:
-            if window:
-                window.maximize()
-                return True
-            return False
-        except Exception as e:
-            handle_error(f"Ошибка при разворачивании окна: {e}", e, module='window')
-            return False
+          Returns:
+              bool: True, РµСЃР»Рё РѕРєРЅРѕ СѓСЃРїРµС€РЅРѕ СЂР°Р·РІРµСЂРЅСѓС‚Рѕ
+          """
+          try:
+              if window:
+                  window.maximize()
+                  return True
+              return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё СЂР°Р·РІРѕСЂР°С‡РёРІР°РЅРёРё РѕРєРЅР°: {e}", e, module='window')
+              return False
     
-    def wait_for_window(self, title, timeout=10):
-        """
-        Ждать появления окна с заданным заголовком
+      def wait_for_window(self, title, timeout=10):
+          """
+          Р–РґР°С‚СЊ РїРѕСЏРІР»РµРЅРёСЏ РѕРєРЅР° СЃ Р·Р°РґР°РЅРЅС‹Рј Р·Р°РіРѕР»РѕРІРєРѕРј
         
-        Args:
-            title (str): Заголовок окна
-            timeout (int): Таймаут в секундах
+          Args:
+              title (str): Р—Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
+              timeout (int): РўР°Р№РјР°СѓС‚ РІ СЃРµРєСѓРЅРґР°С…
         
-        Returns:
-            object: Объект окна или None, если окно не появилось за указанное время
-        """
-        try:
-            start_time = time.time()
-            while time.time() - start_time < timeout:
-                window = self.get_window_by_title(title)
-                if window:
-                    return window
-                time.sleep(0.5)
-            return None
-        except Exception as e:
-            handle_error(f"Ошибка при ожидании окна '{title}': {e}", e, module='window')
-            return None
+          Returns:
+              object: РћР±СЉРµРєС‚ РѕРєРЅР° РёР»Рё None, РµСЃР»Рё РѕРєРЅРѕ РЅРµ РїРѕСЏРІРёР»РѕСЃСЊ Р·Р° СѓРєР°Р·Р°РЅРЅРѕРµ РІСЂРµРјСЏ
+          """
+          try:
+              start_time = time.time()
+              while time.time() - start_time < timeout:
+                  window = self.get_window_by_title(title)
+                  if window:
+                      return window
+                  time.sleep(0.5)
+              return None
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РѕР¶РёРґР°РЅРёРё РѕРєРЅР° '{title}': {e}", e, module='window')
+              return None
+
+      def find_window(self, title=None, process_name=None):
+          """
+          РќР°Р№С‚Рё РѕРєРЅРѕ РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ РёР»Рё РёРјРµРЅРё РїСЂРѕС†РµСЃСЃР°
+        
+          Args:
+              title (str, optional): Р—Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
+              process_name (str, optional): РРјСЏ РїСЂРѕС†РµСЃСЃР°
+        
+          Returns:
+              object: РћР±СЉРµРєС‚ РѕРєРЅР° РёР»Рё None, РµСЃР»Рё РѕРєРЅРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
+          """
+          try:
+              if title:
+                  return self.get_window_by_title(title)
+              elif process_name:
+                  # Р—РґРµСЃСЊ РјС‹ РёС‰РµРј РѕРєРЅРѕ РїРѕ РёРјРµРЅРё РїСЂРѕС†РµСЃСЃР°
+                  # Р­С‚Рѕ СѓРїСЂРѕС‰РµРЅРЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ, РІ СЂРµР°Р»СЊРЅРѕСЃС‚Рё РЅСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
+                  # Р±РѕР»РµРµ СЃР»РѕР¶РЅСѓСЋ Р»РѕРіРёРєСѓ РґР»СЏ РїРѕРёСЃРєР° РѕРєРЅР° РїРѕ РёРјРµРЅРё РїСЂРѕС†РµСЃСЃР°
+                  import psutil
+                  for proc in psutil.process_iter(['pid', 'name']):
+                      if process_name.lower() in proc.info['name'].lower():
+                          # РџРѕР»СѓС‡Р°РµРј РІСЃРµ РѕРєРЅР°
+                          all_windows = self.get_all_windows()
+                          # РС‰РµРј РѕРєРЅРѕ, РїСЂРёРЅР°РґР»РµР¶Р°С‰РµРµ СЌС‚РѕРјСѓ РїСЂРѕС†РµСЃСЃСѓ
+                          for window in all_windows:
+                              try:
+                                  if window._hWnd:  # РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РѕРєРЅРѕ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+                                      return window
+                              except:
+                                  pass
+              return None
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕРёСЃРєРµ РѕРєРЅР°: {e}", e, module='window')
+              return None
+
+      def get_window_text(self, window):
+          """
+          РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСЃС‚ РѕРєРЅР°
+        
+          Args:
+              window: РћР±СЉРµРєС‚ РѕРєРЅР°
+        
+          Returns:
+              str: РўРµРєСЃС‚ РѕРєРЅР° РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР° РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
+          """
+          try:
+              if window:
+                  return window.title
+              return ""
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё С‚РµРєСЃС‚Р° РѕРєРЅР°: {e}", e, module='window')
+              return ""

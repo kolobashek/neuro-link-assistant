@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, PropertyMock
 
 class TestNavigation:
     """Тесты навигации по веб-страницам"""
@@ -62,8 +62,9 @@ class TestNavigation:
     
     def test_get_current_url_with_exception(self):
         """Тест обработки исключений при получении текущего URL"""
-        # Настраиваем мок для имитации ошибки
-        type(self.mock_driver).current_url = property(side_effect=Exception("Test error"))
+        # Используем PropertyMock для имитации ошибки при доступе к свойству
+        current_url_mock = PropertyMock(side_effect=Exception("Test error"))
+        type(self.mock_driver).current_url = current_url_mock
         
         # Вызываем метод get_current_url
         url = self.browser.get_current_url()
@@ -159,8 +160,9 @@ class TestNavigation:
     
     def test_get_page_title_with_exception(self):
         """Тест обработки исключений при получении заголовка страницы"""
-        # Настраиваем мок для имитации ошибки
-        type(self.mock_driver).title = property(side_effect=Exception("Test error"))
+        # Используем PropertyMock для имитации ошибки при доступе к свойству
+        title_mock = PropertyMock(side_effect=Exception("Test error"))
+        type(self.mock_driver).title = title_mock
         
         # Вызываем метод get_page_title
         title = self.browser.get_page_title()

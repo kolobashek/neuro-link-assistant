@@ -132,11 +132,11 @@ python -m pytest tests/unit/core/web/ -v
   ```bash
   python -m pytest tests/unit/core/web/test_browser_init.py -v
   ```
-- [ ] Тест навигации по веб-страницам
+- [x] Тест навигации по веб-страницам
   ```bash
   python -m pytest tests/unit/core/web/test_navigation.py -v
   ```
-- [ ] Тест поиска элементов DOM
+- [x] Тест поиска элементов DOM
   ```bash
   python -m pytest tests/unit/core/web/test_dom_search.py -v
   ```

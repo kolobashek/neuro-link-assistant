@@ -1,10 +1,10 @@
 
-# Модуль ввода
+# 2025. All rights reserved.
 import platform
 from core.common.input.base import InputController
 
 def get_input_controller():
-    """Возвращает платформо-зависимый контроллер ввода"""
+    """Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РІРІРѕРґР°"""
     system = platform.system().lower()
     
     if system == 'windows':
@@ -12,4 +12,4 @@ def get_input_controller():
         from core.platform.windows.input.mouse import WindowsMouse
         return InputController(WindowsKeyboard(), WindowsMouse())
     else:
-        raise NotImplementedError(f"Платформа {system} не поддерживается")
+        raise NotImplementedError(f"РЎРёСЃС‚РµРјР° {system} РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ")
