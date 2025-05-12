@@ -1,0 +1,58 @@
+default_stages: [pre-commit]
+fail_fast: false  # Продолжить другие хуки даже если один не прошел
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+
+# Временно закомментируйте flake8
+# -   repo: https://github.com/pycqa/flake8
+#     rev: 6.1.0
+#     hooks:
+#     -   id: flake8
+
+# Временно отключаем pytest хуки до решения проблем с зависимостями
+# -   repo: local
+#     hooks:
+#     -   id: pytest-critical
+#         name: pytest (критические тесты)
+#         entry: pytest
+#         args: [tests/unit/core/, -v]
+#         language: python  # Вместо system используем python
+#         # Расширенный список зависимостей:
+#         additional_dependencies: [
+#             pytest,
+#             pytest-cov,
+#             pynput,
+#             requests,
+#             selenium,
+#             pyautogui,
+#             numpy,
+#             opencv-python,
+#             pywin32,
+#             pillow,
+#             psutil
+#         ]
+#         pass_filenames: false
+#         always_run: true
+#         # Настраиваем переменные окружения, чтобы добавить текущий каталог в PYTHONPATH
+#         # для правильного импорта модуля 'core'
+#         # Примечание: в Windows pre-commit может иметь проблемы с установкой env
+#         # если это не сработает, попробуйте другой подход
+#         files: ^$  # Не запускать для файлов
+#         stages: [pre-commit]
+
+#     -   id: pytest-affected
+#         name: pytest (только измененные файлы)
+#         entry: python
+#         args: [scripts/run_affected_tests.py]
+#         language: python  # Вместо system используем python
+#         # Для второго хука тоже указываем зависимости:
+#         additional_dependencies: [pytest, pytest-cov]
+#         pass_filenames: true
+#         stages: [pre-commit]

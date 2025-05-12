@@ -1,5 +1,4 @@
-
-# Windows-специфичная реализация управления процессами
+  # Windows-СЃРїРµС†РёС„РёС‡РЅС‹Р№ РјРµРЅРµРґР¶РµСЂ СѓРїСЂР°РІР»РµРЅРёСЏ РїСЂРѕС†РµСЃСЃР°РјРё
 import os
 import subprocess
 import psutil
@@ -7,109 +6,109 @@ import time
 from core.common.error_handler import handle_error
 
 class WindowsProcessManager:
-    """Управление процессами в Windows"""
-    
-    def start_process(self, command, shell=True, cwd=None, env=None):
-        """
-        Запустить процесс
-        
-        Args:
-            command (str): Команда для запуска
-            shell (bool): Использовать ли оболочку
-            cwd (str, optional): Рабочая директория
-            env (dict, optional): Переменные окружения
-        
-        Returns:
-            int: ID процесса или None в случае ошибки
-        """
-        try:
-            process = subprocess.Popen(
-                command, 
-                shell=shell, 
-                cwd=cwd, 
-                env=env
-            )
-            return process.pid
-        except Exception as e:
-            handle_error(f"Ошибка при запуске процесса '{command}': {e}", e, module='process')
-            return None
-    
-    def kill_process(self, pid):
-        """
-        Завершить процесс по ID
-        
-        Args:
-            pid (int): ID процесса
-        
-        Returns:
-            bool: True, если процесс успешно завершен
-        """
-        try:
-            if psutil.pid_exists(pid):
-                process = psutil.Process(pid)
-                process.terminate()
-                
-                # Ждем завершения процесса
-                gone, still_alive = psutil.wait_procs([process], timeout=3)
-                if still_alive:
-                    # Если процесс не завершился, убиваем его
-                    process.kill()
-                return True
-            else:
-                handle_error(f"Процесс с ID {pid} не найден", module='process', log_level='warning')
-                return False
-        except Exception as e:
-            handle_error(f"Ошибка при завершении процесса {pid}: {e}", e, module='process')
-            return False
-    
-    def is_process_running(self, name):
-        """
-        Проверить, запущен ли процесс с указанным именем
-        
-        Args:
-            name (str): Имя процесса
-        
-        Returns:
-            bool: True, если процесс запущен
-        """
-        try:
-            for proc in psutil.process_iter(['pid', 'name']):
-                if name.lower() in proc.info['name'].lower():
-                    return True
-            return False
-        except Exception as e:
-            handle_error(f"Ошибка при проверке процесса {name}: {e}", e, module='process')
-            return False
-    
-    def get_process_by_name(self, name):
-        """
-        Получить список процессов с указанным именем
-        
-        Args:
-            name (str): Имя процесса
-        
-        Returns:
-            list: Список объектов процессов
-        """
-        try:
-            matching_processes = []
-            for proc in psutil.process_iter(['pid', 'name']):
-                if name.lower() in proc.info['name'].lower():
-                    matching_processes.append(proc)
-            return matching_processes
-        except Exception as e:
-            handle_error(f"Ошибка при получении процесса {name}: {e}", e, module='process')
-            return []
-    
-    def get_all_processes(self):
-        """
-        Получить список всех запущенных процессов
-        
-        Returns:
-            list: Список объектов процессов
-        """
-        try:
-            return list(psutil.process_iter(['pid', 'name', 'username']))
-        except Exception as e:
-            handle_error(f"Ошибка при получении списка процессов: {e}", e, module='process')
-            return []
+      """РЈРїСЂР°РІР»РµРЅРёРµ РїСЂРѕС†РµСЃСЃР°РјРё РІ Windows"""
+
+      def start_process(self, command, shell=True, cwd=None, env=None):
+          """
+          Р—Р°РїСѓСЃРєР°РµС‚ РїСЂРѕС†РµСЃСЃ
+
+          Args:
+              command (str): РљРѕРјР°РЅРґР° РґР»СЏ Р·Р°РїСѓСЃРєР°
+              shell (bool): РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р»Рё РѕР±РѕР»РѕС‡РєСѓ
+              cwd (str, optional): Р Р°Р±РѕС‡Р°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ
+              env (dict, optional): РџРµСЂРµРјРµРЅРЅС‹Рµ РѕРєСЂСѓР¶РµРЅРёСЏ
+
+          Returns:
+              int: ID РїСЂРѕС†РµСЃСЃР° РёР»Рё None РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
+          """
+          try:
+              process = subprocess.Popen(
+                  command,
+                  shell=shell,
+                  cwd=cwd,
+                  env=env
+              )
+              return process.pid
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРѕС†РµСЃСЃР° '{command}': {e}", e, module='process')
+              return None
+
+      def kill_process(self, pid):
+          """
+          Р—Р°РІРµСЂС€Р°РµС‚ РїСЂРѕС†РµСЃСЃ РїРѕ ID
+
+          Args:
+              pid (int): ID РїСЂРѕС†РµСЃСЃР°
+
+          Returns:
+              bool: True, РµСЃР»Рё РїСЂРѕС†РµСЃСЃ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅ
+          """
+          try:
+              if psutil.pid_exists(pid):
+                  process = psutil.Process(pid)
+                  process.terminate()
+
+                  # Р–РґРµРј Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕС†РµСЃСЃР°
+                  gone, still_alive = psutil.wait_procs([process], timeout=3)
+                  if still_alive:
+                      # Р•СЃР»Рё РїСЂРѕС†РµСЃСЃ РЅРµ Р·Р°РІРµСЂС€РёР»СЃСЏ, СѓР±РёРІР°РµРј РµРіРѕ
+                      process.kill()
+                  return True
+              else:
+                  handle_error(f"РџСЂРѕС†РµСЃСЃ СЃ ID {pid} РЅРµ РЅР°Р№РґРµРЅ", module='process', log_level='warning')
+                  return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё РїСЂРѕС†РµСЃСЃР° {pid}: {e}", e, module='process')
+              return False
+
+      def is_process_running(self, name):
+          """
+          РџСЂРѕРІРµСЂСЏРµС‚, Р·Р°РїСѓС‰РµРЅ Р»Рё РїСЂРѕС†РµСЃСЃ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РёРјРµРЅРµРј
+
+          Args:
+              name (str): РРјСЏ РїСЂРѕС†РµСЃСЃР°
+
+          Returns:
+              bool: True, РµСЃР»Рё РїСЂРѕС†РµСЃСЃ Р·Р°РїСѓС‰РµРЅ
+          """
+          try:
+              for proc in psutil.process_iter(['pid', 'name']):
+                  if name.lower() in proc.info['name'].lower():
+                      return True
+              return False
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµСЂРєРµ РїСЂРѕС†РµСЃСЃР° {name}: {e}", e, module='process')
+              return False
+
+      def get_process_by_name(self, name):
+          """
+          РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РїСЂРѕС†РµСЃСЃРѕРІ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РёРјРµРЅРµРј
+
+          Args:
+              name (str): РРјСЏ РїСЂРѕС†РµСЃСЃР°
+
+          Returns:
+              list: РЎРїРёСЃРѕРє РЅР°Р№РґРµРЅРЅС‹С… РїСЂРѕС†РµСЃСЃРѕРІ
+          """
+          try:
+              matching_processes = []
+              for proc in psutil.process_iter(['pid', 'name']):
+                  if name.lower() in proc.info['name'].lower():
+                      matching_processes.append(proc)
+              return matching_processes
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РїСЂРѕС†РµСЃСЃР° {name}: {e}", e, module='process')
+              return []
+
+      def get_all_processes(self):
+          """
+          РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… Р·Р°РїСѓС‰РµРЅРЅС‹С… РїСЂРѕС†РµСЃСЃРѕРІ
+
+          Returns:
+              list: РЎРїРёСЃРѕРє С‚РµРєСѓС‰РёС… РїСЂРѕС†РµСЃСЃРѕРІ
+          """
+          try:
+              return list(psutil.process_iter(['pid', 'name', 'username']))
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СЃРїРёСЃРєР° РїСЂРѕС†РµСЃСЃРѕРІ: {e}", e, module='process')
+              return []

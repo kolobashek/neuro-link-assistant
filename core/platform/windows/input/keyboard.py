@@ -1,5 +1,4 @@
-
-# Windows-специфичная реализация эмуляции клавиатуры
+  # Windows-СЃРїРµС†РёС„РёС‡РЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ СЌРјСѓР»СЏС†РёРё РєР»Р°РІРёР°С‚СѓСЂС‹
 import time
 try:
     import pyautogui
@@ -10,49 +9,49 @@ from core.common.input.base import AbstractKeyboard
 from core.common.error_handler import handle_error
 
 class WindowsKeyboard(AbstractKeyboard):
-    """Реализация эмуляции клавиатуры для Windows с использованием PyAutoGUI"""
-    
-    def __init__(self):
-        if pyautogui is None:
-            handle_error("PyAutoGUI не установлен. Установите его: pip install pyautogui", 
-                        module='keyboard')
-    
-    def press_key(self, key):
-        """Нажать клавишу"""
-        try:
-            if pyautogui:
-                pyautogui.keyDown(key)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при нажатии клавиши {key}: {e}", e, module='keyboard')
-            return False
-    
-    def release_key(self, key):
-        """Отпустить клавишу"""
-        try:
-            if pyautogui:
-                pyautogui.keyUp(key)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при отпускании клавиши {key}: {e}", e, module='keyboard')
-            return False
-    
-    def type_text(self, text):
-        """Напечатать текст"""
-        try:
-            if pyautogui:
-                pyautogui.write(text)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при вводе текста: {e}", e, module='keyboard')
-            return False
-    
-    def hotkey(self, *keys):
-        """Нажать комбинацию клавиш"""
-        try:
-            if pyautogui:
-                pyautogui.hotkey(*keys)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при нажатии комбинации клавиш {keys}: {e}", e, module='keyboard')
-            return False
+      """Р РµР°Р»РёР·Р°С†РёСЏ СЌРјСѓР»СЏС†РёРё РєР»Р°РІРёР°С‚СѓСЂС‹ РґР»СЏ Windows СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј PyAutoGUI"""
+
+      def __init__(self):
+          if pyautogui is None:
+              handle_error("PyAutoGUI РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РµРіРѕ: pip install pyautogui",
+                          module='keyboard')
+
+      def press_key(self, key):
+          """РќР°Р¶Р°С‚СЊ РєР»Р°РІРёС€Сѓ"""
+          try:
+              if pyautogui:
+                  pyautogui.keyDown(key)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё {key}: {e}", e, module='keyboard')
+              return False
+
+      def release_key(self, key):
+          """РћС‚РїСѓСЃС‚РёС‚СЊ РєР»Р°РІРёС€Сѓ"""
+          try:
+              if pyautogui:
+                  pyautogui.keyUp(key)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РѕС‚РїСѓСЃРєР°РЅРёРё РєР»Р°РІРёС€Рё {key}: {e}", e, module='keyboard')
+              return False
+
+      def type_text(self, text):
+          """РќР°РїРµС‡Р°С‚Р°С‚СЊ С‚РµРєСЃС‚"""
+          try:
+              if pyautogui:
+                  pyautogui.write(text)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РІРІРѕРґРµ С‚РµРєСЃС‚Р°: {e}", e, module='keyboard')
+              return False
+
+      def hotkey(self, *keys):
+          """РќР°Р¶Р°С‚СЊ РєРѕРјР±РёРЅР°С†РёСЋ РєР»Р°РІРёС€"""
+          try:
+              if pyautogui:
+                  pyautogui.hotkey(*keys)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РЅР°Р¶Р°С‚РёРё РєРѕРјР±РёРЅР°С†РёРё РєР»Р°РІРёС€ {keys}: {e}", e, module='keyboard')
+              return False

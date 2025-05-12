@@ -1,5 +1,4 @@
-
-# Windows-специфичная реализация эмуляции мыши
+  # Windows-СЃРїРµС†РёС„РёС‡РЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»СЏ РјС‹С€Рё
 import time
 try:
     import pyautogui
@@ -10,64 +9,64 @@ from core.common.input.base import AbstractMouse
 from core.common.error_handler import handle_error
 
 class WindowsMouse(AbstractMouse):
-    """Реализация эмуляции мыши для Windows с использованием PyAutoGUI"""
-    
-    def __init__(self):
-        if pyautogui is None:
-            handle_error("PyAutoGUI не установлен. Установите его: pip install pyautogui", 
-                        module='mouse')
-        
-        # Настройка параметров
-        self.duration = 0.1  # Длительность движения мыши
-    
-    def move_to(self, x, y):
-        """Переместить курсор в указанные координаты"""
-        try:
-            if pyautogui:
-                pyautogui.moveTo(x, y, duration=self.duration)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при перемещении мыши на координаты ({x}, {y}): {e}", 
-                        e, module='mouse')
-            return False
-    
-    def click(self, button='left'):
-        """Кликнуть указанной кнопкой мыши"""
-        try:
-            if pyautogui:
-                pyautogui.click(button=button)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при клике мышью ({button}): {e}", e, module='mouse')
-            return False
-    
-    def double_click(self, button='left'):
-        """Сделать двойной клик"""
-        try:
-            if pyautogui:
-                pyautogui.doubleClick(button=button)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при двойном клике мышью ({button}): {e}", e, module='mouse')
-            return False
-    
-    def drag_to(self, x, y, button='left'):
-        """Перетащить с зажатой кнопкой мыши"""
-        try:
-            if pyautogui:
-                pyautogui.dragTo(x, y, duration=self.duration, button=button)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при перетаскивании мышью на координаты ({x}, {y}): {e}", 
-                        e, module='mouse')
-            return False
-    
-    def scroll(self, amount):
-        """Прокрутить колесо мыши"""
-        try:
-            if pyautogui:
-                pyautogui.scroll(amount)
-            return True
-        except Exception as e:
-            handle_error(f"Ошибка при прокрутке колеса мыши: {e}", e, module='mouse')
-            return False
+      """Р РµР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»СЏ РјС‹С€Рё РґР»СЏ Windows СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј PyAutoGUI"""
+
+      def __init__(self):
+          if pyautogui is None:
+              handle_error("PyAutoGUI РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ. РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РµРіРѕ: pip install pyautogui",
+                          module='mouse')
+
+          # РќР°СЃС‚СЂРѕР№РєР° РїР°СЂР°РјРµС‚СЂРѕРІ
+          self.duration = 0.1  # РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р°РЅРёРјР°С†РёРё РјС‹С€Рё
+
+      def move_to(self, x, y):
+          """РџРµСЂРµРјРµС‰РµРЅРёРµ РєСѓСЂСЃРѕСЂР° Рє СѓРєР°Р·Р°РЅРЅС‹Рј РєРѕРѕСЂРґРёРЅР°С‚Р°Рј"""
+          try:
+              if pyautogui:
+                  pyautogui.moveTo(x, y, duration=self.duration)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё РјС‹С€Рё РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј ({x}, {y}): {e}",
+                          e, module='mouse')
+              return False
+
+      def click(self, button='left'):
+          """РћРґРёРЅРѕС‡РЅС‹Р№ РєР»РёРє РєРЅРѕРїРєРѕР№ РјС‹С€Рё"""
+          try:
+              if pyautogui:
+                  pyautogui.click(button=button)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РєР»РёРєРµ РјС‹С€СЊСЋ ({button}): {e}", e, module='mouse')
+              return False
+
+      def double_click(self, button='left'):
+          """Р”РІРѕР№РЅРѕР№ РєР»РёРє РјС‹С€Рё"""
+          try:
+              if pyautogui:
+                  pyautogui.doubleClick(button=button)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РґРІРѕР№РЅРѕРј РєР»РёРєРµ РјС‹С€СЊСЋ ({button}): {e}", e, module='mouse')
+              return False
+
+      def drag_to(self, x, y, button='left'):
+          """РџРµСЂРµС‚Р°С‰РёС‚СЊ СЃ Р·Р°Р¶Р°С‚РѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё"""
+          try:
+              if pyautogui:
+                  pyautogui.dragTo(x, y, duration=self.duration, button=button)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїРµСЂРµС‚Р°СЃРєРёРІР°РЅРёРё РјС‹С€СЊСЋ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј ({x}, {y}): {e}",
+                          e, module='mouse')
+              return False
+
+      def scroll(self, amount):
+          """РџСЂРѕРєСЂСѓС‚РёС‚СЊ РєРѕР»РµСЃРѕ РјС‹С€Рё"""
+          try:
+              if pyautogui:
+                  pyautogui.scroll(amount)
+              return True
+          except Exception as e:
+              handle_error(f"РћС€РёР±РєР° РїСЂРё РїСЂРѕРєСЂСѓС‚РєРµ РєРѕР»РµСЃР° РјС‹С€Рё: {e}", e, module='mouse')
+              return False

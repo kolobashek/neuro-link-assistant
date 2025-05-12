@@ -148,7 +148,7 @@ python -m pytest tests/unit/core/web/ -v
   ```bash
   python -m pytest tests/unit/core/web/test_js_events.py -v
   ```
-- [ ] Тест извлечения данных со страницы
+- [x] Тест извлечения данных со страницы
   ```bash
   python -m pytest tests/unit/core/web/test_data_extraction.py -v
   ```
@@ -701,3 +701,177 @@ python -m pytest tests/ -v --tb=short -k "not passed"
 ```bash
 python -m pytest tests/ --durations=0
 ```
+
+## Детализация ключевых модульных тестов
+
+### Тест регистрации и получения компонентов (test_component_registry.py)
+
+- **test_register_component**: Регистрация нового компонента
+  - Регистрация компонента с корректным ID и реализацией
+  - Попытка регистрации компонента с дублирующим ID (ожидается ошибка)
+  - Регистрация компонента с зависимостями
+- **test_get_component**: Получение зарегистрированного компонента
+  - Получение существующего компонента по ID
+  - Попытка получения несуществующего компонента (ожидается None или ошибка)
+  - Получение компонента с разрешением зависимостей
+- **test_component_lifecyle**: Проверка жизненного цикла компонентов
+  - Инициализация компонента при получении
+  - Корректное завершение работы компонента при остановке системы
+  - Повторная инициализация компонента после перезапуска
+
+### Тест инициализации системы (test_system_initializer.py)
+
+- **test_system_startup**: Запуск системы
+  - Корректная загрузка компонентов при старте
+  - Разрешение зависимостей между компонентами
+  - Проверка порядка инициализации компонентов
+- **test_system_shutdown**: Остановка системы
+  - Корректное завершение всех компонентов
+  - Освобождение ресурсов
+  - Сохранение состояния при необходимости
+- **test_system_recovery**: Восстановление после сбоев
+  - Перезапуск компонента после сбоя
+  - Восстановление состояния системы
+  - Логирование информации о сбое
+
+### Тест управления окнами (test_window_manager.py)
+
+- **test_find_window**: Поиск окна
+  - Поиск окна по заголовку
+  - Поиск окна по классу
+  - Поиск окна по процессу
+  - Поиск несуществующего окна (ожидается пустой результат)
+- **test_activate_window**: Активация окна
+  - Активация существующего окна
+  - Проверка, что окно стало активным
+  - Попытка активации несуществующего окна (ожидается ошибка)
+- **test_window_info**: Получение информации об окне
+  - Получение заголовка окна
+  - Получение размеров окна
+  - Получение состояния окна (свернуто, развернуто)
+- **test_window_operations**: Операции с окном
+  - Изменение размера окна
+  - Перемещение окна
+  - Сворачивание/разворачивание окна
+  - Закрытие окна
+
+## Руководство по использованию моков в TDD
+
+### Основные принципы моков
+
+1. **Изолируйте тестируемый компонент** от внешних зависимостей
+2. **Имитируйте только необходимые для теста методы** и поведение
+3. **Проверяйте не только результаты, но и взаимодействия** с моками
+4. **Создавайте моки по уровням** - от полных заглушек до сложных имитаций поведения
+
+### Типы моков для проекта
+
+1. **Dummy** - объекты-заполнители для параметров, которые не используются в тесте
+2. **Stub** - объекты с предопределенными ответами на вызовы
+3. **Spy** - объекты, отслеживающие вызовы методов и их параметры
+4. **Mock** - программируемые объекты с ожиданиями о вызовах
+5. **Fake** - упрощенные реализации реальных компонентов
+
+### Примеры использования моков
+
+#### Мок браузера для тестирования ElementFinder
+
+```python
+def test_find_element_by_id():
+    # Создаем мок-драйвер
+    mock_driver = MagicMock()
+    mock_element = MagicMock()
+    mock_driver.find_element.return_value = mock_element
+
+    # Создаем мок контроллера браузера
+    mock_browser_controller = MagicMock()
+    mock_browser_controller.driver = mock_driver
+
+    # Создаем тестируемый объект с моком в качестве зависимости
+    element_finder = ElementFinder(mock_browser_controller)
+
+    # Вызываем тестируемый метод
+    element = element_finder.find_element_by_id("test-id")
+
+    # Проверяем взаимодействие с моком
+    mock_driver.find_element.assert_called_once_with(By.ID, "test-id")
+
+    # Проверяем результат
+    assert element is mock_element
+```
+
+#### Мок контроллера мыши для тестирования UI-взаимодействия
+
+```python
+def test_ui_action():
+    # Создаем мок контроллера мыши
+    mock_mouse = MagicMock()
+
+    # Настраиваем поведение мока
+    mock_mouse.click.return_value = True
+
+    # Создаем тестируемый объект
+    ui_action = UIAction(mouse_controller=mock_mouse)
+
+    # Вызываем тестируемый метод
+    result = ui_action.click_button((100, 200))
+
+    # Проверяем взаимодействие с моком
+    mock_mouse.move_to.assert_called_once_with(100, 200)
+    mock_mouse.click.assert_called_once()
+
+    # Проверяем результат
+    assert result is True
+```
+
+### Рекомендации по работе с моками
+
+1. **Используйте патчинг** для замены глобальных объектов:
+
+   ```python
+   @patch('module.ClassName')
+   def test_function(mock_class):
+       mock_class.return_value.method.return_value = 'test'
+       result = function_to_test()
+       assert result == 'test'
+   ```
+
+2. **Создавайте фабрики моков** для часто используемых зависимостей:
+
+   ```python
+   def create_browser_mock():
+       mock_browser = MagicMock()
+       mock_browser.driver.find_element.return_value = MagicMock()
+       return mock_browser
+   ```
+
+3. **Используйте контекстные менеджеры** для временного патчинга:
+
+   ```python
+   def test_function():
+       with patch('module.function') as mock_function:
+           mock_function.return_value = 'test'
+           result = function_to_test()
+           assert result == 'test'
+   ```
+
+4. **Отдавайте предпочтение моку методов**, а не объектов целиком:
+
+   ```python
+   # Предпочтительно
+   real_object.method = MagicMock(return_value='test')
+
+   # Менее предпочтительно
+   mock_object = MagicMock()
+   mock_object.method.return_value = 'test'
+   ```
+
+5. **Создавайте автомоки для сложных объектов**:
+   ```python
+   class BrowserAutoMock:
+       def __init__(self):
+           self.driver = MagicMock()
+           self.driver.find_element.return_value = MagicMock()
+           self.driver.find_elements.return_value = [MagicMock(), MagicMock()]
+           self.driver.execute_script.return_value = None
+   ```
