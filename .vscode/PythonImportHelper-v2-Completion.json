@@ -423,14 +423,6 @@
         "documentation": {}
     },
     {
-        "label": "Type",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -1809,6 +1801,15 @@
         "documentation": {}
     },
     {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
         "label": "MagicMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
@@ -2191,15 +2192,6 @@
         "importPath": "pytest",
         "description": "pytest",
         "detail": "pytest",
-        "documentation": {}
-    },
-    {
-        "label": "tempfile",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tempfile",
-        "description": "tempfile",
-        "detail": "tempfile",
         "documentation": {}
     },
     {
@@ -5274,7 +5266,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str, plugin_class: Type) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы",
+        "peekOfCode": "class ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -5283,7 +5275,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str, plugin_class: Type) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore",
+        "peekOfCode": "class IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -5292,7 +5284,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class IPluginManager:\n    def load_plugin(self, name: str, plugin_class: Type) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore\n    from core.component_registry import ComponentRegistry  # type: ignore\n    from core.plugin_manager import PluginManager  # type: ignore\n    from core.system_initializer import SystemInitializer  # type: ignore\nexcept ImportError:",
+        "peekOfCode": "class IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore\n    from core.component_registry import ComponentRegistry  # type: ignore\n    from core.plugin_manager import PluginManager  # type: ignore\n    from core.system_initializer import SystemInitializer  # type: ignore\nexcept ImportError:",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -5310,7 +5302,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class TestSystemInitialization:\n    \"\"\"Тесты инициализации системы\"\"\"\n    def test_system_initialization(self):\n        \"\"\"Тест успешной инициализации системы\"\"\"\n        registry = ComponentRegistry()\n        initializer = SystemInitializer(registry)\n        result = initializer.initialize()\n        assert result is True\n        assert initializer.initialized is True\n    @patch.object(SystemInitializer, \"initialize\")",
+        "peekOfCode": "class TestSystemInitialization:\n    \"\"\"Тесты инициализации системы\"\"\"\n    def test_system_initialization(self):\n        \"\"\"Тест успешной инициализации системы\"\"\"\n        registry = ComponentRegistry()\n        # Создаем обработчик ошибок\n        error_handler = ErrorHandler()\n        # Регистрируем его дважды - с разными именами\n        registry.register(\"error_handler\", error_handler)  # Для SystemInitializer\n        registry.register(\"ErrorHandler\", error_handler)  # Для PluginManager",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -5328,7 +5320,25 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class TestPluginSystem:\n    \"\"\"Тесты расширяемости через плагины\"\"\"\n    def test_load_plugin(self):\n        \"\"\"Тест загрузки плагина\"\"\"\n        registry = ComponentRegistry()\n        plugin_manager = PluginManager(registry)\n        class TestPlugin:\n            def __init__(self):\n                self.initialized = True\n        plugin = plugin_manager.load_plugin(\"test_plugin\", TestPlugin)",
+        "peekOfCode": "class TestPluginSystem:\n    \"\"\"Тесты расширяемости через плагины\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка к каждому тесту\"\"\"\n        # Создаем временную директорию для плагинов\n        self.temp_plugins_dir = tempfile.mkdtemp()\n        # Сохраняем оригинальный путь к плагинам\n        self.original_plugins_dir = None\n    def teardown_method(self):\n        \"\"\"Очистка после каждого теста\"\"\"",
+        "detail": "tests.unit.core.architecture.test_architecture",
+        "documentation": {}
+    },
+    {
+        "label": "TestPlugin",
+        "kind": 6,
+        "importPath": "tests.unit.core.architecture.test_architecture",
+        "description": "tests.unit.core.architecture.test_architecture",
+        "peekOfCode": "class TestPlugin:\n    def __init__(self):\n        self.initialized = True\n    def setup(self):\n        self.setup_called = True\n        return True\n\"\"\"\n        self.create_test_plugin(\"test_plugin\", plugin_code)\n        # Создаем реестр и регистрируем обработчик ошибок\n        registry = ComponentRegistry()",
+        "detail": "tests.unit.core.architecture.test_architecture",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrationPlugin",
+        "kind": 6,
+        "importPath": "tests.unit.core.architecture.test_architecture",
+        "description": "tests.unit.core.architecture.test_architecture",
+        "peekOfCode": "class IntegrationPlugin:\n    def __init__(self):\n        self.registry = None\n    def setup(self):\n        pass\n    def integrate(self, registry):\n        self.registry = registry\n        return True\n\"\"\"\n        self.create_test_plugin(\"integration_plugin\", plugin_code)",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },

@@ -48,12 +48,13 @@ class FileSystem:
             print(f"Error deleting directory {path}: {e}")
             return False
 
-    def list_directory(self, path):
+    def list_directory(self, path, pattern="*"):
         """
         Получает список файлов и директорий в указанной директории.
 
         Args:
             path (str): Путь к директории
+            pattern (str, optional): Шаблон для фильтрации файлов. Defaults to "*".
 
         Returns:
             list: Список имен файлов и директорий
@@ -62,8 +63,12 @@ class FileSystem:
             if not os.path.exists(path):
                 return []
 
-            # Получаем список файлов и директорий
-            items = os.listdir(path)
+            if pattern == "*":
+                # Если шаблон по умолчанию, используем более быстрый os.listdir
+                items = os.listdir(path)
+            else:
+                # Если указан шаблон, используем glob для фильтрации
+                items = [os.path.basename(f) for f in glob.glob(os.path.join(path, pattern))]
 
             # Возвращаем только имена файлов и директорий (без полных путей)
             return items

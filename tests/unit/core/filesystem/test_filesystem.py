@@ -60,7 +60,8 @@ class TestFileManager:
         with open(test_file, "w") as f:
             f.write(initial_content)
 
-        result = file_manager.append_to_file(test_file, append_content)
+        # Используем правильное имя метода append_file вместо append_to_file
+        result = file_manager.append_file(test_file, append_content)
 
         assert result is True
 
