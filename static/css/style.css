@@ -14,7 +14,7 @@
 --text-disabled: #9aa0a6;
 --border-color: #dadce0;
 --shadow-color: rgba(0, 0, 0, 0.1);
-    
+
 --border-radius: 8px;
 --transition-speed: 0.3s;
 }
@@ -660,19 +660,19 @@ footer {
   .container {
       padding: 10px;
   }
-    
+
   .commands-grid {
       grid-template-columns: 1fr;
   }
-    
+
   .history-controls {
       flex-direction: column;
   }
-    
+
   .control-btn {
       width: 100%;
   }
-    
+
   .modal-content {
       width: 95%;
       margin: 5% auto;

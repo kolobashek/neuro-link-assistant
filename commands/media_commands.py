@@ -1,14 +1,127 @@
-import pyautogui
 import logging
 
-logger = logging.getLogger('neuro_assistant')
+import pyautogui
+
+logger = logging.getLogger("neuro_assistant")
+
 
 def media_pause():
     """Пауза/воспроизведение медиа"""
-    pyautogui.press('playpause')
+    pyautogui.press("playpause")
     return "Управление воспроизведением"
+
 
 def media_next():
     """Следующий трек"""
-    pyautogui.press('nexttrack')
+    pyautogui.press("nexttrack")
     return "Переключение на следующий трек"
+
+
+# Управление воспроизведением
+def media_play():
+    """Начать воспроизведение медиа"""
+
+
+def media_stop():
+    """Остановить воспроизведение медиа"""
+
+
+def media_previous():
+    """Перейти к предыдущему треку"""
+
+
+def media_fast_forward(seconds=10):
+    """Перемотка вперед"""
+
+
+def media_rewind(seconds=10):
+    """Перемотка назад"""
+
+
+# Управление громкостью медиа
+def media_volume_up():
+    """Увеличить громкость медиа"""
+
+
+def media_volume_down():
+    """Уменьшить громкость медиа"""
+
+
+def media_mute():
+    """Отключить звук медиа"""
+
+
+# Плейлисты и файлы
+def open_media_file(file_path):
+    """Открыть медиа-файл в плеере по умолчанию"""
+
+
+def create_playlist(files, name=None):
+    """Создать плейлист из файлов"""
+
+
+def save_playlist(playlist, path):
+    """Сохранить плейлист в файл"""
+
+
+def load_playlist(path):
+    """Загрузить плейлист из файла"""
+
+
+def get_commands():
+    return {
+        "начать воспроизведение": media_play,
+        "пауза": media_pause,
+        "стоп": media_stop,
+        "следующий трек": media_next,
+        "предыдущий трек": media_previous,
+        "перемотать вперед": media_fast_forward,
+        "перемотать назад": media_rewind,
+        "увеличить громкость медиа": media_volume_up,
+        "уменьшить громкость медиа": media_volume_down,
+        "отключить звук медиа": media_mute,
+        "открыть медиафайл": open_media_file,
+        "создать плейлист": create_playlist,
+        "сохранить плейлист": save_playlist,
+        "загрузить плейлист": load_playlist,
+    }
+
+
+def get_aliases():
+    return {
+        "следующая песня": "следующий трек",
+        "следующая композиция": "следующий трек",
+        "пауза воспроизведения": "пауза",
+        "плей": "начать воспроизведение",
+        "пуск": "начать воспроизведение",
+        "остановить": "стоп",
+    }
+
+
+def get_intents():
+    return {
+        "управление_медиа": [
+            "начать воспроизведение",
+            "пауза",
+            "стоп",
+            "следующий трек",
+            "предыдущий трек",
+            "перемотать вперед",
+            "перемотать назад",
+        ],
+        "управление_звуком_медиа": [
+            "увеличить громкость медиа",
+            "уменьшить громкость медиа",
+            "отключить звук медиа",
+        ],
+        "плейлисты": [
+            "открыть медиафайл",
+            "создать плейлист",
+            "сохранить плейлист",
+            "загрузить плейлист",
+        ],
+    }
+
+
+def get_categories():
+    return {"Медиа": ["управление_медиа", "управление_звуком_медиа", "плейлисты"]}

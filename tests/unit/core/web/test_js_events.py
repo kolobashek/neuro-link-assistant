@@ -1,9 +1,12 @@
+from unittest.mock import MagicMock
+
 import pytest
-from unittest.mock import MagicMock, patch
+
 
 @pytest.fixture
 def mock_driver():
     return MagicMock()
+
 
 @pytest.fixture
 def js_event_handler(mock_driver):
@@ -30,6 +33,7 @@ def js_event_handler(mock_driver):
 
     return JSEventHandler(mock_driver)
 
+
 def test_trigger_custom_event(js_event_handler, mock_driver):
     element = MagicMock()
     js_event_handler.trigger_event(element, "focus")
@@ -38,15 +42,20 @@ def test_trigger_custom_event(js_event_handler, mock_driver):
     assert "dispatchEvent" in args[0]
     assert element in args
 
+
 def test_trigger_click(js_event_handler, mock_driver):
     element = MagicMock()
     js_event_handler.trigger_click(element)
     mock_driver.execute_script.assert_called_once_with("arguments[0].click();", element)
 
+
 def test_set_value_via_js(js_event_handler, mock_driver):
     element = MagicMock()
     js_event_handler.set_value_via_js(element, "hello")
-    mock_driver.execute_script.assert_called_once_with("arguments[0].value = arguments[1];", element, "hello")
+    mock_driver.execute_script.assert_called_once_with(
+        "arguments[0].value = arguments[1];", element, "hello"
+    )
+
 
 def test_get_inner_text_via_js(js_event_handler, mock_driver):
     element = MagicMock()
@@ -54,6 +63,7 @@ def test_get_inner_text_via_js(js_event_handler, mock_driver):
     result = js_event_handler.get_inner_text_via_js(element)
     mock_driver.execute_script.assert_called_once_with("return arguments[0].innerText;", element)
     assert result == "текст"
+
 
 def test_trigger_event_js_error(js_event_handler, mock_driver):
     element = MagicMock()

@@ -1,15 +1,20 @@
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Controller, Key
+
 
 class KeyboardController:
     """
     Класс для эмуляции клавиатурного ввода.
     """
 
-    def __init__(self):
+    def __init__(self, human_like=True):
         """
         Инициализация контроллера клавиатуры.
+
+        Args:
+            human_like (bool, optional): Эмулировать человеческий ввод с клавиатуры
         """
         self.controller = Controller()
+        self.human_like = human_like
 
     def type_text(self, text):
         """
@@ -77,6 +82,7 @@ class KeyboardController:
             bool: True в случае успешного нажатия и удержания
         """
         import time
+
         try:
             self.controller.press(key)
             time.sleep(duration)
@@ -129,7 +135,7 @@ class KeyboardController:
         Returns:
             bool: True в случае успешного нажатия
         """
-        return self.press_special_key('enter')
+        return self.press_special_key("enter")
 
     def press_backspace(self):
         """
@@ -138,7 +144,7 @@ class KeyboardController:
         Returns:
             bool: True в случае успешного нажатия
         """
-        return self.press_special_key('backspace')
+        return self.press_special_key("backspace")
 
     def press_arrow(self, direction):
         """
@@ -151,12 +157,7 @@ class KeyboardController:
             bool: True в случае успешного нажатия
         """
         try:
-            key_map = {
-                'up': Key.up,
-                'down': Key.down,
-                'left': Key.left,
-                'right': Key.right
-            }
+            key_map = {"up": Key.up, "down": Key.down, "left": Key.left, "right": Key.right}
 
             if direction not in key_map:
                 raise ValueError(f"Неизвестное направление: {direction}")
@@ -175,7 +176,7 @@ class KeyboardController:
         Returns:
             bool: True в случае успешного нажатия
         """
-        return self.press_hotkey(Key.ctrl, 'c')
+        return self.press_hotkey(Key.ctrl, "c")
 
     def get_key_object(self, key_name):
         """
@@ -188,36 +189,36 @@ class KeyboardController:
             Key: Объект клавиши
         """
         key_map = {
-            'enter': Key.enter,
-            'backspace': Key.backspace,
-            'tab': Key.tab,
-            'space': Key.space,
-            'esc': Key.esc,
-            'escape': Key.esc,
-            'delete': Key.delete,
-            'shift': Key.shift,
-            'ctrl': Key.ctrl,
-            'alt': Key.alt,
-            'up': Key.up,
-            'down': Key.down,
-            'left': Key.left,
-            'right': Key.right,
-            'home': Key.home,
-            'end': Key.end,
-            'page_up': Key.page_up,
-            'page_down': Key.page_down,
-            'f1': Key.f1,
-            'f2': Key.f2,
-            'f3': Key.f3,
-            'f4': Key.f4,
-            'f5': Key.f5,
-            'f6': Key.f6,
-            'f7': Key.f7,
-            'f8': Key.f8,
-            'f9': Key.f9,
-            'f10': Key.f10,
-            'f11': Key.f11,
-            'f12': Key.f12
+            "enter": Key.enter,
+            "backspace": Key.backspace,
+            "tab": Key.tab,
+            "space": Key.space,
+            "esc": Key.esc,
+            "escape": Key.esc,
+            "delete": Key.delete,
+            "shift": Key.shift,
+            "ctrl": Key.ctrl,
+            "alt": Key.alt,
+            "up": Key.up,
+            "down": Key.down,
+            "left": Key.left,
+            "right": Key.right,
+            "home": Key.home,
+            "end": Key.end,
+            "page_up": Key.page_up,
+            "page_down": Key.page_down,
+            "f1": Key.f1,
+            "f2": Key.f2,
+            "f3": Key.f3,
+            "f4": Key.f4,
+            "f5": Key.f5,
+            "f6": Key.f6,
+            "f7": Key.f7,
+            "f8": Key.f8,
+            "f9": Key.f9,
+            "f10": Key.f10,
+            "f11": Key.f11,
+            "f12": Key.f12,
         }
 
         if key_name in key_map:

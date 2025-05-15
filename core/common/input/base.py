@@ -1,95 +1,100 @@
-
-# Базовые абстрактные классы ввода
+п»ї# РђР±СЃС‚СЂР°РєС‚РЅС‹Рµ РєР»Р°СЃСЃС‹ РІРІРѕРґР° РґР°РЅРЅС‹С…
 class AbstractKeyboard:
-    """Абстрактный класс для эмуляции клавиатуры"""
-    
+    """РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СЌРјСѓР»СЏС†РёРё РєР»Р°РІРёР°С‚СѓСЂС‹"""
+
     def press_key(self, key):
-        """Нажать клавишу"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
+        """РќР°Р¶Р°С‚СЊ РєР»Р°РІРёС€Сѓ"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
     def release_key(self, key):
-        """Отпустить клавишу"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
+        """РћС‚РїСѓСЃС‚РёС‚СЊ РєР»Р°РІРёС€Сѓ"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
     def press_and_release(self, key):
-        """Нажать и отпустить клавишу"""
+        """РќР°Р¶Р°С‚СЊ Рё РѕС‚РїСѓСЃС‚РёС‚СЊ РєР»Р°РІРёС€Сѓ"""
         self.press_key(key)
         self.release_key(key)
-    
+
     def type_text(self, text):
-        """Напечатать текст"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
+        """РќР°РїРµС‡Р°С‚Р°С‚СЊ С‚РµРєСЃС‚"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
     def hotkey(self, *keys):
-        """Нажать комбинацию клавиш"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+        """РќР°Р¶Р°С‚СЊ РєРѕРјР±РёРЅР°С†РёСЋ РєР»Р°РІРёС€"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
 
 
 class AbstractMouse:
-    """Абстрактный класс для эмуляции мыши"""
-    
+    """РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СЌРјСѓР»СЏС†РёРё РјС‹С€Рё"""
+
     def move_to(self, x, y):
-        """Переместить курсор в указанные координаты"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
-    def click(self, button='left'):
-        """Кликнуть указанной кнопкой мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
-    def double_click(self, button='left'):
-        """Сделать двойной клик"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
-    def drag_to(self, x, y, button='left'):
-        """Перетащить с зажатой кнопкой мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-    
+        """РџРµСЂРµРјРµСЃС‚РёС‚СЊ РєСѓСЂСЃРѕСЂ РІ СѓРєР°Р·Р°РЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
+    def click(self, button="left"):
+        """РљР»РёРєРЅСѓС‚СЊ СѓРєР°Р·Р°РЅРЅРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
+    def double_click(self, button="left"):
+        """Р”РІРѕР№РЅРѕР№ РєР»РёРє РјС‹С€Рё"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
+    def drag_to(self, x, y, button="left"):
+        """РџРµСЂРµС‚Р°С‰РёС‚СЊ СЃ Р·Р°Р¶Р°С‚РѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
+
     def scroll(self, amount):
-        """Прокрутить колесо мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+        """РџСЂРѕРєСЂСѓС‚РёС‚СЊ РєРѕР»РµСЃРѕ РјС‹С€Рё"""
+        raise NotImplementedError("РњРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РІ РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ")
 
 
 class InputController:
-    """Контроллер ввода, объединяющий клавиатуру и мышь"""
-    
+    """РљРѕРЅС‚СЂРѕР»Р»РµСЂ РІРІРѕРґР°, РѕР±СЉРµРґРёРЅСЏСЋС‰РёР№ РєР»Р°РІРёР°С‚СѓСЂСѓ Рё РјС‹С€СЊ"""
+
     def __init__(self, keyboard, mouse):
+        """
+        РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РІРІРѕРґР°.
+
+        Args:
+            keyboard: РљРѕРЅС‚СЂРѕР»Р»РµСЂ РєР»Р°РІРёР°С‚СѓСЂС‹
+            mouse: РљРѕРЅС‚СЂРѕР»Р»РµСЂ РјС‹С€Рё
+        """
         self.keyboard = keyboard
         self.mouse = mouse
-    
+
     def perform_action(self, action_type, **params):
         """
-        Выполнить действие ввода
-        
+        Р’С‹РїРѕР»РЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІРІРѕРґР°
+
         Args:
-            action_type (str): Тип действия ('key_press', 'mouse_click', и т.д.)
-            **params: Параметры действия
-        
+            action_type (str): РўРёРї РґРµР№СЃС‚РІРёСЏ ('key_press', 'mouse_click', Рё С‚.Рґ.)
+            **params: РџР°СЂР°РјРµС‚СЂС‹ РґРµР№СЃС‚РІРёСЏ
+
         Returns:
-            bool: True, если действие выполнено успешно
+            bool: True, РµСЃР»Рё РґРµР№СЃС‚РІРёРµ РІС‹РїРѕР»РЅРµРЅРѕ СѓСЃРїРµС€РЅРѕ
         """
-        if action_type == 'key_press':
-            return self.keyboard.press_key(params.get('key'))
-        elif action_type == 'key_release':
-            return self.keyboard.release_key(params.get('key'))
-        elif action_type == 'type_text':
-            return self.keyboard.type_text(params.get('text'))
-        elif action_type == 'hotkey':
-            return self.keyboard.hotkey(*params.get('keys', []))
-        elif action_type == 'mouse_move':
-            return self.mouse.move_to(params.get('x'), params.get('y'))
-        elif action_type == 'mouse_click':
-            return self.mouse.click(params.get('button', 'left'))
-        elif action_type == 'mouse_double_click':
-            return self.mouse.double_click(params.get('button', 'left'))
-        elif action_type == 'mouse_drag':
+        if action_type == "key_press":
+            return self.keyboard.press_key(params.get("key"))
+        elif action_type == "key_release":
+            return self.keyboard.release_key(params.get("key"))
+        elif action_type == "type_text":
+            return self.keyboard.type_text(params.get("text"))
+        elif action_type == "hotkey":
+            return self.keyboard.hotkey(*params.get("keys", []))
+        elif action_type == "mouse_move":
+            return self.mouse.move_to(params.get("x"), params.get("y"))
+        elif action_type == "mouse_click":
+            return self.mouse.click(params.get("button", "left"))
+        elif action_type == "mouse_double_click":
+            return self.mouse.double_click(params.get("button", "left"))
+        elif action_type == "mouse_drag":
             return self.mouse.drag_to(
-                params.get('x'), 
-                params.get('y'),
-                params.get('button', 'left')
+                params.get("x"), params.get("y"), params.get("button", "left")
             )
-        elif action_type == 'mouse_scroll':
-            return self.mouse.scroll(params.get('amount'))
+        elif action_type == "mouse_scroll":
+            return self.mouse.scroll(params.get("amount"))
         else:
             from core.common.error_handler import handle_error
-            handle_error(f"Неизвестный тип действия: {action_type}", module='input')
+
+            handle_error(f"РќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї РґРµР№СЃС‚РІРёСЏ: {action_type}", module="input")
             return False

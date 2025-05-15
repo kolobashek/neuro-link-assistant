@@ -1,3 +1,23 @@
 {
-	"cody.codebase": "https://github.com/kolobashek/neuro-link-assistant"
+	"cody.codebase": "https://github.com/kolobashek/neuro-link-assistant",
+	"python.testing.pytestEnabled": true,
+	"python.testing.unittestEnabled": false,
+	"python.testing.pytestArgs": [
+			"tests"
+	],
+	"python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+	"python.envFile": "${workspaceFolder}/.env",
+	"editor.formatOnSave": true,
+	"python.terminal.activateEnvironment": true,
+	"terminal.integrated.env.windows": {
+			"PYTHONPATH": "${workspaceFolder}"
+	},
+	"[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+  },
+  "isort.args":["--profile", "black"],
 }

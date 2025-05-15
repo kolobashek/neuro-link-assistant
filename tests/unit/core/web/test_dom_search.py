@@ -1,7 +1,9 @@
+from unittest.mock import MagicMock, PropertyMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock, PropertyMock
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.common.by import By
+
 
 class TestDOMSearch:
     """Тесты поиска элементов DOM"""
@@ -11,6 +13,7 @@ class TestDOMSearch:
         mock_browser_controller = MagicMock()
         mock_browser_controller.driver = self.mock_driver
         from core.web.element_finder import ElementFinder
+
         self.element_finder = ElementFinder(mock_browser_controller)
 
     def test_find_element_by_id(self):
@@ -37,7 +40,9 @@ class TestDOMSearch:
 
         # Вызываем метод find_element_by_id с обработкой исключения
         # Предполагаем, что метод должен вернуть None при отсутствии элемента
-        with patch.object(self.element_finder, 'find_element_by_id', wraps=self.element_finder.find_element_by_id) as wrapped:
+        with patch.object(
+            self.element_finder, "find_element_by_id", wraps=self.element_finder.find_element_by_id
+        ) as wrapped:
             wrapped.return_value = None
             element = self.element_finder.find_element_by_id("test-id")
 
@@ -115,8 +120,10 @@ class TestDOMSearch:
     def test_find_elements_by_tag(self):
         """Тест поиска нескольких элементов по имени тега"""
         # Отладочный вывод
-        print("Методы ElementFinder:", [m for m in dir(self.element_finder) if not m.startswith('_')])
-        print("Есть ли find_elements_by_tag:", hasattr(self.element_finder, 'find_elements_by_tag'))
+        print(
+            "Методы ElementFinder:", [m for m in dir(self.element_finder) if not m.startswith("_")]
+        )
+        print("Есть ли find_elements_by_tag:", hasattr(self.element_finder, "find_elements_by_tag"))
 
         # Создаем мок-элементы
         mock_elements = [MagicMock(), MagicMock()]
@@ -125,7 +132,7 @@ class TestDOMSearch:
         self.mock_driver.find_elements.return_value = mock_elements
 
         # Проверяем, есть ли метод find_elements_by_tag
-        if hasattr(self.element_finder, 'find_elements_by_tag'):
+        if hasattr(self.element_finder, "find_elements_by_tag"):
             # Вызываем метод find_elements_by_tag
             elements = self.element_finder.find_elements_by_tag("div")
 
@@ -144,7 +151,7 @@ class TestDOMSearch:
         self.mock_driver.find_elements.return_value = []
 
         # Проверяем, есть ли метод find_elements_by_tag
-        if hasattr(self.element_finder, 'find_elements_by_tag'):
+        if hasattr(self.element_finder, "find_elements_by_tag"):
             # Вызываем метод find_elements_by_tag
             elements = self.element_finder.find_elements_by_tag("div")
 
@@ -157,7 +164,7 @@ class TestDOMSearch:
             # Пропускаем тест, если метод не реализован
             pytest.skip("Метод find_elements_by_tag не реализован")
 
-    @patch('core.web.element_finder.WebDriverWait')
+    @patch("core.web.element_finder.WebDriverWait")
     def test_wait_for_element(self, mock_wait_class):
         """Тест ожидания появления элемента"""
         mock_element = MagicMock()
@@ -165,19 +172,19 @@ class TestDOMSearch:
         mock_wait_class.return_value = mock_wait
         mock_wait.until.return_value = mock_element
 
-        element = self.element_finder.wait_for_element('id', "test-id", timeout=10)
+        element = self.element_finder.wait_for_element("id", "test-id", timeout=10)
 
         assert element is not None
         mock_wait_class.assert_called()
 
-    @patch('core.web.element_finder.WebDriverWait')
+    @patch("core.web.element_finder.WebDriverWait")
     def test_wait_for_element_timeout(self, mock_wait_class):
         """Тест ожидания появления элемента с таймаутом"""
         mock_wait = MagicMock()
         mock_wait_class.return_value = mock_wait
         mock_wait.until.side_effect = TimeoutException("Timeout waiting for element")
 
-        element = self.element_finder.wait_for_element('id', "test-id", timeout=10)
+        element = self.element_finder.wait_for_element("id", "test-id", timeout=10)
 
         assert element is None
         mock_wait_class.assert_called()
@@ -199,7 +206,9 @@ class TestDOMSearch:
         self.mock_driver.find_element.side_effect = NoSuchElementException("Element not found")
 
         # Переопределяем метод is_element_present для этого теста
-        with patch.object(self.element_finder, 'is_element_present', wraps=self.element_finder.is_element_present) as wrapped:
+        with patch.object(
+            self.element_finder, "is_element_present", wraps=self.element_finder.is_element_present
+        ) as wrapped:
             wrapped.return_value = False
             result = self.element_finder.is_element_present(By.ID, "test-id")
 

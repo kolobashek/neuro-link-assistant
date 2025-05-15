@@ -1,7 +1,8 @@
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+
 
 class ElementFinder:
     """
@@ -22,7 +23,8 @@ class ElementFinder:
         Находит элемент на странице.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+                                    'tag', 'link_text', 'partial_link_text')
             value (str): Значение для поиска
             timeout (int, optional): Таймаут ожидания в секундах
 
@@ -54,7 +56,8 @@ class ElementFinder:
         Находит все элементы на странице, соответствующие критериям.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+                                    'tag', 'link_text', 'partial_link_text')
             value (str): Значение для поиска
             timeout (int, optional): Таймаут ожидания в секундах
 
@@ -95,7 +98,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('id', id, timeout)
+        return self.find_element("id", id, timeout)
 
     def find_element_by_name(self, name, timeout=10):
         """
@@ -108,7 +111,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('name', name, timeout)
+        return self.find_element("name", name, timeout)
 
     def find_element_by_xpath(self, xpath, timeout=10):
         """
@@ -121,7 +124,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('xpath', xpath, timeout)
+        return self.find_element("xpath", xpath, timeout)
 
     def find_element_by_css(self, css, timeout=10):
         """
@@ -134,7 +137,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('css', css, timeout)
+        return self.find_element("css", css, timeout)
 
     def find_element_by_class(self, class_name, timeout=10):
         """
@@ -147,7 +150,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('class', class_name, timeout)
+        return self.find_element("class", class_name, timeout)
 
     def find_element_by_tag(self, tag_name, timeout=10):
         """
@@ -160,7 +163,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('tag', tag_name, timeout)
+        return self.find_element("tag", tag_name, timeout)
 
     def find_elements_by_tag(self, tag_name, timeout=10):
         """
@@ -173,7 +176,7 @@ class ElementFinder:
         Returns:
             list: Список найденных элементов или пустой список
         """
-        return self.find_elements('tag', tag_name, timeout)
+        return self.find_elements("tag", tag_name, timeout)
 
     def find_element_by_link_text(self, link_text, timeout=10):
         """
@@ -186,7 +189,7 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('link_text', link_text, timeout)
+        return self.find_element("link_text", link_text, timeout)
 
     def find_element_by_partial_link_text(self, partial_link_text, timeout=10):
         """
@@ -199,14 +202,15 @@ class ElementFinder:
         Returns:
             WebElement: Найденный элемент или None
         """
-        return self.find_element('partial_link_text', partial_link_text, timeout)
+        return self.find_element("partial_link_text", partial_link_text, timeout)
 
-    def wait_for_element(self, by, value, timeout=10, condition='presence'):
+    def wait_for_element(self, by, value, timeout=10, condition="presence"):
         """
         Ожидает появления элемента на странице.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+                                    'tag', 'link_text', 'partial_link_text')
             value (str): Значение для поиска
             timeout (int, optional): Таймаут ожидания в секундах
             condition (str, optional): Условие ожидания ('presence', 'visibility', 'clickable')
@@ -222,9 +226,9 @@ class ElementFinder:
             by_method = self._get_by_method(by)
 
             # Выбираем условие ожидания
-            if condition == 'visibility':
+            if condition == "visibility":
                 wait_condition = EC.visibility_of_element_located((by_method, value))
-            elif condition == 'clickable':
+            elif condition == "clickable":
                 wait_condition = EC.element_to_be_clickable((by_method, value))
             else:  # 'presence' по умолчанию
                 wait_condition = EC.presence_of_element_located((by_method, value))
@@ -245,7 +249,8 @@ class ElementFinder:
         Ожидает появления текста в элементе.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+                                    'tag', 'link_text', 'partial_link_text')
             value (str): Значение для поиска
             text (str): Ожидаемый текст
             timeout (int, optional): Таймаут ожидания в секундах
@@ -278,7 +283,8 @@ class ElementFinder:
         Проверяет наличие элемента на странице.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+            'tag', 'link_text', 'partial_link_text')
             value (str): Значение для поиска
 
         Returns:
@@ -386,28 +392,29 @@ class ElementFinder:
         Преобразует строковый метод поиска в константу By.
 
         Args:
-            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class', 'tag', 'link_text', 'partial_link_text')
+            by (str): Метод поиска ('id', 'name', 'xpath', 'css', 'class',
+            'tag', 'link_text', 'partial_link_text')
 
         Returns:
             By: Константа By для указанного метода
         """
         by = by.lower()
 
-        if by == 'id':
+        if by == "id":
             return By.ID
-        elif by == 'name':
+        elif by == "name":
             return By.NAME
-        elif by == 'xpath':
+        elif by == "xpath":
             return By.XPATH
-        elif by == 'css':
+        elif by == "css":
             return By.CSS_SELECTOR
-        elif by == 'class':
+        elif by == "class":
             return By.CLASS_NAME
-        elif by == 'tag':
+        elif by == "tag":
             return By.TAG_NAME
-        elif by == 'link_text':
+        elif by == "link_text":
             return By.LINK_TEXT
-        elif by == 'partial_link_text':
+        elif by == "partial_link_text":
             return By.PARTIAL_LINK_TEXT
         else:
             raise ValueError(f"Unsupported locator method: {by}")

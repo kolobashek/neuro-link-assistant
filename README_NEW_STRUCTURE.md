@@ -1,122 +1,120 @@
+  # РћР±С‰Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РїСЂРѕРµРєС‚Р° neuro-assistant
 
-# Новая структура проекта neuro-link-assistant
+  РџСЂРѕРµРєС‚ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјРѕР№ Рё РІРЅРµС€РЅРёРјРё РёРЅС‚РµСЂС„РµР№СЃР°РјРё. РќРёР¶Рµ РѕРїРёСЃР°РЅР° РѕР±С‰Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РїСЂРѕРµРєС‚Р°.
 
-Проект был реорганизован для устранения дублирования и улучшения модульности. Ниже описана новая структура проекта.
+  ## РћСЃРЅРѕРІРЅС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹
 
-## Основные изменения
+  1. **Р Р°Р·РґРµР»РµРЅРёРµ РЅР° РїР»Р°С‚С„РѕСЂРјРѕ-Р·Р°РІРёСЃРёРјС‹Рµ Рё РїР»Р°С‚С„РѕСЂРјРѕ-РЅРµР·Р°РІРёСЃРёРјС‹Рµ API**
+   - РћР±С‰РёРµ РєРѕРјРїРѕРЅРµРЅС‚С‹ Рё РёРЅС‚РµСЂС„РµР№СЃС‹: `core/common/`
+   - РџР»Р°С‚С„РѕСЂРјРѕ-Р·Р°РІРёСЃРёРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹: `core/platform/windows/`
 
-1. **Разделение на платформо-зависимый и платформо-независимый код**
-   - Общие интерфейсы и абстракции: `core/common/`
-   - Платформо-зависимая реализация: `core/platform/windows/`
+  2. **РћСЃРЅРѕРІРЅС‹Рµ РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹**
+   - РљРѕРЅС‚СЂРѕР»Р»РµСЂ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹
+   - РљРѕРЅС‚СЂРѕР»Р»РµСЂ РєР»Р°РІРёР°С‚СѓСЂС‹ Рё РјС‹С€Рё
+   - РљРѕРЅС‚СЂРѕР»Р»РµСЂ СЂР°Р±РѕС‚С‹ РІРЅРµС€РЅРёС… СЃР»СѓР¶Р± (РїСЂРёР»РѕР¶РµРЅРёР№ Рё РѕРєРѕРЅ)
+   - РљРѕРЅС‚СЂРѕР»Р»РµСЂ СЂР°Р±РѕС‚С‹ СЃРёСЃС‚РµРјРЅС‹С… РїСЂРѕС†РµСЃСЃРѕРІ
+   - РљРѕРЅС‚СЂРѕР»Р»РµСЂ СЂР°Р±РѕС‚С‹ СЃРёСЃС‚РµРјРЅС‹С… РѕС€РёР±РѕРє
 
-2. **Устранение дублирования**
-   - Объединены модули файловой системы
-   - Объединены обработчики ошибок
-   - Объединены модули эмуляции ввода (клавиатура и мышь)
-   - Объединены модули управления процессами
-   - Объединены модули управления окнами
+  3. **РњРѕРґСѓР»Рё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРёСЃС‚РµРјРѕР№**
+   - `core/filesystem/__init__.py` - РћРїРµСЂР°С†РёРё С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹
+   - `core/input/__init__.py` - РћРїРµСЂР°С†РёРё РєР»Р°РІРёР°С‚СѓСЂС‹ Рё РјС‹С€Рё
+   - `core/process/__init__.py` - РћРїРµСЂР°С†РёРё СЃРёСЃС‚РµРјРЅС‹С… РїСЂРѕС†РµСЃСЃРѕРІ
+   - `core/window/__init__.py` - РћРїРµСЂР°С†РёРё СЃРёСЃС‚РµРјРЅС‹С… РѕРєРѕРЅ
 
-3. **Фабрики для доступа к реализациям**
-   - `core/filesystem/__init__.py` - получение реализации файловой системы
-   - `core/input/__init__.py` - получение контроллера ввода
-   - `core/process/__init__.py` - получение менеджера процессов
-   - `core/window/__init__.py` - получение менеджера окон
+  ## РћР±С‰Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РёРЅС‚РµСЂС„РµР№СЃР°
 
-## Новая структура каталогов
+  ## РџСЂРёРјРµСЂС‹ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РІСЃРµС… РјРѕРґСѓР»РµР№
 
-## Примеры использования новой структуры
-
-### Работа с файловой системой
+  ### Р Р°Р±РѕС‚Р° СЃ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјРѕР№
 
 
-from core.filesystem import get_file_system
+  from core.filesystem import get_file_system
 
-# Получение экземпляра файловой системы
-fs = get_file_system()
+  # РџРѕР»СѓС‡РµРЅРёРµ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹
+  fs = get_file_system()
 
-# Использование методов
-if fs.file_exists('path/to/file.txt'):
-    content = fs.read_file('path/to/file.txt')
-    print(content)
+  # РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃРёСЃС‚РµРјС‹
+  if fs.file_exists('path/to/file.txt'):
+      content = fs.read_file('path/to/file.txt')
+      print(content)
 
-from core.input import get_input_controller
+  from core.input import get_input_controller
 
-# Получение контроллера ввода
-input_ctrl = get_input_controller()
+  # РџРѕР»СѓС‡РµРЅРёРµ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РІРІРѕРґР°
+  input_ctrl = get_input_controller()
 
-# Эмуляция клавиатуры
-input_ctrl.keyboard.type_text('Hello, World!')
-input_ctrl.keyboard.hotkey('ctrl', 'a')
+  # Р”РµР№СЃС‚РІРёСЏ РєР»Р°РІРёР°С‚СѓСЂС‹
+  input_ctrl.keyboard.type_text('Hello, World!')
+  input_ctrl.keyboard.hotkey('ctrl', 'a')
 
-# Эмуляция мыши
-input_ctrl.mouse.move_to(100, 100)
-input_ctrl.mouse.click()
+  # Р”РµР№СЃС‚РІРёСЏ РјС‹С€Рё
+  input_ctrl.mouse.move_to(100, 100)
+  input_ctrl.mouse.click()
 
-from core.process import get_process_manager
+  from core.process import get_process_manager
 
-# Получение менеджера процессов
-proc_mgr = get_process_manager()
+  # РџРѕР»СѓС‡РµРЅРёРµ РјРµРЅРµРґР¶РµСЂР° РїСЂРѕС†РµСЃСЃРѕРІ
+  proc_mgr = get_process_manager()
 
-# Запуск процесса
-pid = proc_mgr.start_process('notepad.exe')
+  # Р—Р°РїСѓСЃРє РїСЂРѕС†РµСЃСЃР°
+  pid = proc_mgr.start_process('notepad.exe')
 
-# Проверка запущенных процессов
-if proc_mgr.is_process_running('notepad.exe'):
-    print('Notepad запущен')
+  # РџСЂРѕРІРµСЂРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РїСЂРѕС†РµСЃСЃР°
+  if proc_mgr.is_process_running('notepad.exe'):
+      print('Notepad Р·Р°РїСѓС‰РµРЅ')
 
-# Завершение процесса
-proc_mgr.kill_process(pid)
+  # Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕС†РµСЃСЃР°
+  proc_mgr.kill_process(pid)
 
-from core.window import get_window_manager
+  from core.window import get_window_manager
 
-# Получение менеджера окон
-win_mgr = get_window_manager()
+  # РџРѕР»СѓС‡РµРЅРёРµ РјРµРЅРµРґР¶РµСЂР° РѕРєРѕРЅ
+  win_mgr = get_window_manager()
 
-# Получение окна по заголовку
-notepad_window = win_mgr.get_window_by_title('Блокнот')
+  # РџРѕР»СѓС‡РµРЅРёРµ РѕРєРЅР° РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ
+  notepad_window = win_mgr.get_window_by_title('Р‘Р»РѕРєРЅРѕС‚')
 
-if notepad_window:
-    # Активация окна
-    win_mgr.activate_window(notepad_window)
-    
-    # Максимизация окна
-    win_mgr.maximize_window(notepad_window)
-    
-    # Закрытие окна
-    win_mgr.close_window(notepad_window)
+  if notepad_window:
+      # РђРєС‚РёРІР°С†РёСЏ РѕРєРЅР°
+      win_mgr.activate_window(notepad_window)
 
-from core.common.error_handler import handle_error, handle_llm_error
+      # РњР°РєСЃРёРјРёР·Р°С†РёСЏ РѕРєРЅР°
+      win_mgr.maximize_window(notepad_window)
 
-# Общая обработка ошибок
-try:
-    # Какой-то код
-    pass
-except Exception as e:
-    handle_error("Произошла ошибка", e, module='my_module')
+      # Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР°
+      win_mgr.close_window(notepad_window)
 
-# Обработка ошибок LLM
-try:
-    # Работа с нейросетью
-    pass
-except Exception as e:
-    handle_llm_error("Ошибка при работе с LLM", e, model="gpt-4", prompt="Текст промпта")
+  from core.common.error_handler import handle_error, handle_llm_error
 
-                      # Было
-from core.windows.file_system import FileSystem
-fs = FileSystem()
+  # РћР±С‰Р°СЏ РѕР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
+  try:
+      # РєР°РєРѕР№-С‚Рѕ РєРѕРґ
+      pass
+  except Exception as e:
+      handle_error("РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°", e, module='my_module')
 
-# Стало
-from core.filesystem import get_file_system
-fs = get_file_system()
-                     
-                     # Было
-from core.input.keyboard_controller import KeyboardController
-from core.input.mouse_controller import MouseController
-kb = KeyboardController()
-mouse = MouseController()
+  # РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє LLM
+  try:
+      # СЂР°Р±РѕС‚Р° СЃ РЅРµР№СЂРѕСЃРµС‚СЊСЋ
+      pass
+  except Exception as e:
+      handle_llm_error("РћС€РёР±РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЃ LLM", e, model="gpt-4", prompt="С‚РµРєСЃС‚ Р·Р°РїСЂРѕСЃР°")
 
-# Стало
-from core.input import get_input_controller
-input_ctrl = get_input_controller()
-# Далее используйте input_ctrl.keyboard и input_ctrl.mouse
-                     
+                        # Р‘С‹Р»Рѕ
+  from core.windows.file_system import FileSystem
+  fs = FileSystem()
+
+  # РЎС‚Р°Р»Рѕ
+  from core.filesystem import get_file_system
+  fs = get_file_system()
+
+                     # Р‘С‹Р»Рѕ
+  from core.input.keyboard_controller import KeyboardController
+  from core.input.mouse_controller import MouseController
+  kb = KeyboardController()
+  mouse = MouseController()
+
+  # РЎС‚Р°Р»Рѕ
+  from core.input import get_input_controller
+  input_ctrl = get_input_controller()
+  # Р”Р°Р»РµРµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ input_ctrl.keyboard Рё input_ctrl.mouse
