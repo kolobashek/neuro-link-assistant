@@ -271,6 +271,8 @@ class FileSystem:
                 "modified": stats.st_mtime,
                 "accessed": stats.st_atime,
                 "is_directory": os.path.isdir(path),
+                "is_file": os.path.isfile(path),
+                "extension": os.path.splitext(path)[1],
             }
 
             return info
@@ -343,3 +345,83 @@ class FileSystem:
         except Exception as e:
             print(f"Error getting drive info: {e}")
             return {}
+
+    def rename_file(self, path, new_name):
+        """
+        Переименовывает файл.
+
+        Args:
+            path (str): Путь к файлу
+            new_name (str): Новое имя файла (без пути)
+
+        Returns:
+            bool: True в случае успешного переименования
+        """
+        try:
+            if not os.path.exists(path):
+                return False
+
+            directory = os.path.dirname(path)
+            new_path = os.path.join(directory, new_name)
+
+            os.rename(path, new_path)
+            return True
+        except Exception as e:
+            print(f"Error renaming file {path}: {e}")
+            return False
+
+    def zip_files(self, file_paths, zip_path):
+        """
+        Создает ZIP-архив из указанных файлов.
+
+        Args:
+            file_paths (list): Список путей к файлам
+            zip_path (str): Путь к создаваемому ZIP-архиву
+
+        Returns:
+            bool: True в случае успешного создания архива
+        """
+        try:
+            # Создаем директорию для архива, если она не существует
+            zip_dir = os.path.dirname(zip_path)
+            if zip_dir and not os.path.exists(zip_dir):
+                os.makedirs(zip_dir, exist_ok=True)
+
+            import zipfile
+
+            with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+                for file_path in file_paths:
+                    if os.path.exists(file_path):
+                        # Добавляем файл в архив с именем файла (без пути)
+                        zipf.write(file_path, os.path.basename(file_path))
+
+            return True
+        except Exception as e:
+            print(f"Error creating ZIP archive: {e}")
+            return False
+
+    def unzip_file(self, zip_path, extract_to):
+        """
+        Распаковывает ZIP-архив.
+
+        Args:
+            zip_path (str): Путь к ZIP-архиву
+            extract_to (str): Путь для распаковки
+
+        Returns:
+            bool: True в случае успешной распаковки
+        """
+        try:
+            # Создаем директорию для распаковки, если она не существует
+            if not os.path.exists(extract_to):
+                os.makedirs(extract_to, exist_ok=True)
+
+            import zipfile
+
+            with zipfile.ZipFile(zip_path, "r") as zipf:
+                zipf.extractall(extract_to)
+
+            return True
+        except Exception as e:
+            print(f"Error extracting ZIP archive: {e}")
+            return False
