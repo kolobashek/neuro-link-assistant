@@ -1,12 +1,11 @@
 import os
 import shutil
 import tempfile
+from unittest.mock import patch
 
 import pytest
 
 from core.windows.filesystem_manager import FileSystemManager
-
-# from unittest.mock import MagicMock, patch
 
 
 class TestFileSystemManager:
@@ -77,13 +76,20 @@ class TestFileSystemManager:
         assert os.path.exists(new_dir)
         assert os.path.isdir(new_dir)
 
-    def test_create_directory_error(self, filesystem_manager):
+    @patch("os.makedirs")
+    def test_create_directory_error(self, mock_makedirs, filesystem_manager):
         """Тест создания директории с ошибкой"""
-        # Пытаемся создать директорию в недоступном месте
-        result = filesystem_manager.create_directory("C:\\Windows\\System32\\InaccessibleDir")
+        # Настраиваем мок для выброса исключения
+        mock_makedirs.side_effect = PermissionError("Доступ запрещен")
+
+        # Пытаемся создать директорию
+        result = filesystem_manager.create_directory("C:\\Test\\InaccessibleDir")
 
         # Проверяем результат
         assert result is False
+
+        # Проверяем, что os.makedirs был вызван с правильными аргументами
+        mock_makedirs.assert_called_once_with("C:\\Test\\InaccessibleDir")
 
     def test_delete_directory(self, temp_dir, filesystem_manager):
         """Тест удаления директории"""
@@ -157,15 +163,22 @@ class TestFileSystemManager:
             content = f.read()
         assert content == "New content"
 
-    def test_write_file_error(self, filesystem_manager):
+    @patch("builtins.open")
+    def test_write_file_error(self, mock_open, filesystem_manager):
         """Тест записи в файл с ошибкой"""
-        # Пытаемся записать в файл в недоступном месте
+        # Настраиваем мок для вызова исключения
+        mock_open.side_effect = PermissionError("Доступ запрещен")
+
+        # Пытаемся записать в файл
         result = filesystem_manager.write_file(
             "C:\\Windows\\System32\\InaccessibleFile.txt", "Content"
         )
 
         # Проверяем результат
         assert result is False
+
+        # Проверяем, что open был вызван с правильными аргументами
+        mock_open.assert_called_once_with("C:\\Windows\\System32\\InaccessibleFile.txt", "w")
 
     def test_append_to_file(self, temp_dir, filesystem_manager):
         """Тест добавления в файл"""

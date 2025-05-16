@@ -2294,6 +2294,14 @@
         "documentation": {}
     },
     {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
         "label": "MagicMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
@@ -5388,15 +5396,6 @@
         "documentation": {}
     },
     {
-        "label": "main",
-        "kind": 2,
-        "importPath": "core.cli",
-        "description": "core.cli",
-        "peekOfCode": "def main():\n    print(\"Neuro Link Assistant запущен!\")\n    return 0\nif __name__ == \"__main__\":\n    main()",
-        "detail": "core.cli",
-        "documentation": {}
-    },
-    {
         "label": "ComponentRegistry",
         "kind": 6,
         "importPath": "core.component_registry",
@@ -6364,7 +6363,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.web.test_browser_init",
         "description": "tests.unit.core.web.test_browser_init",
-        "peekOfCode": "class TestBrowserInitialization:\n    \"\"\"Тесты инициализации различных браузеров\"\"\"\n    @patch(\"core.web.browser_controller.webdriver.Chrome\")\n    @patch(\"core.web.browser_controller.Service\")\n    @patch(\"core.web.browser_controller.ChromeDriverManager\")\n    def test_initialize_chrome(self, mock_chrome_driver_manager, mock_service, mock_webdriver):\n        \"\"\"Тест инициализации Chrome браузера\"\"\"\n        from core.web.browser_controller import BrowserController\n        # Настраиваем моки\n        mock_instance = MagicMock()",
+        "peekOfCode": "class TestBrowserInitialization:\n    \"\"\"Тесты инициализации различных браузеров\"\"\"\n    @patch(\"core.web.browser_controller.webdriver.Chrome\")\n    @patch(\"core.web.browser_controller.ChromeService\")\n    @patch(\"core.web.browser_controller.ChromeDriverManager\")\n    def test_initialize_chrome(self, mock_chrome_driver_manager, mock_service, mock_webdriver):\n        \"\"\"Тест инициализации Chrome браузера\"\"\"\n        from core.web.browser_controller import BrowserController\n        # Настраиваем моки\n        mock_instance = MagicMock()",
         "detail": "tests.unit.core.web.test_browser_init",
         "documentation": {}
     },

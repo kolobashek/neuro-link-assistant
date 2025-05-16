@@ -26,9 +26,8 @@
       "description": "Модель Mistral AI (7B параметров)",
       "huggingface_id": "mistralai/Mistral-7B-v0.1",
       "type": "completion",
-      "status": "ready",
-      "is_current": true,
-      "error": null
+      "status": "busy",
+      "is_current": true
     },
     {
       "id": "gemma-7b",

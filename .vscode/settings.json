@@ -7,7 +7,6 @@
 			"--no-header",
 			"--tb=native"
 	],
-	"python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
 	"python.envFile": "${workspaceFolder}/.env",
 	"editor.formatOnSave": true,
 	"python.terminal.activateEnvironment": true,

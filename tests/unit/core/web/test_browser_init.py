@@ -5,7 +5,7 @@ class TestBrowserInitialization:
     """Тесты инициализации различных браузеров"""
 
     @patch("core.web.browser_controller.webdriver.Chrome")
-    @patch("core.web.browser_controller.Service")
+    @patch("core.web.browser_controller.ChromeService")
     @patch("core.web.browser_controller.ChromeDriverManager")
     def test_initialize_chrome(self, mock_chrome_driver_manager, mock_service, mock_webdriver):
         """Тест инициализации Chrome браузера"""
@@ -33,7 +33,7 @@ class TestBrowserInitialization:
         mock_webdriver.assert_called_once()
 
     @patch("core.web.browser_controller.webdriver.Firefox")
-    @patch("core.web.browser_controller.Service")
+    @patch("core.web.browser_controller.FirefoxService")
     @patch("core.web.browser_controller.webdriver.firefox.options.Options")
     @patch("webdriver_manager.firefox.GeckoDriverManager")
     def test_initialize_firefox(
@@ -65,7 +65,7 @@ class TestBrowserInitialization:
         mock_webdriver.assert_called_once()
 
     @patch("core.web.browser_controller.webdriver.Edge")
-    @patch("core.web.browser_controller.Service")
+    @patch("core.web.browser_controller.EdgeService")
     @patch("core.web.browser_controller.webdriver.edge.options.Options")
     @patch("webdriver_manager.microsoft.EdgeChromiumDriverManager")
     def test_initialize_edge(
@@ -109,7 +109,7 @@ class TestBrowserInitialization:
         assert browser.driver is None
 
     @patch("core.web.browser_controller.webdriver.Chrome")
-    @patch("core.web.browser_controller.Service")
+    @patch("core.web.browser_controller.ChromeService")
     @patch("core.web.browser_controller.ChromeDriverManager")
     def test_initialize_with_exception(
         self, mock_chrome_driver_manager, mock_service, mock_webdriver
