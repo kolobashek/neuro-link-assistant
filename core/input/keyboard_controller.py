@@ -1,3 +1,6 @@
+import random
+import time
+
 from pynput.keyboard import Controller, Key
 
 
@@ -16,21 +19,50 @@ class KeyboardController:
         self.controller = Controller()
         self.human_like = human_like
 
-    def type_text(self, text):
+    def type_text(self, text, interval=0.0, delay=None):
         """
-        Печатает текст.
+        Вводит указанный текст с заданным интервалом между символами.
 
         Args:
             text (str): Текст для ввода
+            interval (float, optional): Интервал между нажатиями клавиш в секундах
+            delay (float, optional): Альтернативное название для интервала (для совместимости с тестами)
 
         Returns:
             bool: True в случае успешного ввода
         """
+        # Если указан delay, используем его вместо interval
+        if delay is not None:
+            interval = delay
+
         try:
-            self.controller.type(text)
+            if self.human_like:
+                # Имитация человеческого ввода с вариациями интервалов
+                for char in text:
+                    # Рассчитываем случайный интервал
+                    random_interval = interval
+                    if interval > 0:
+                        # Добавляем случайную вариацию ±30%
+                        variation = interval * 0.3 * (random.random() * 2 - 1)
+                        random_interval = max(0, interval + variation)
+
+                    # Вводим символ
+                    self.controller.press(char)
+                    self.controller.release(char)
+
+                    # Делаем паузу между нажатиями
+                    if random_interval > 0:
+                        time.sleep(random_interval)
+            else:
+                # Для совместимости с тестами используем последовательные вызовы press/release
+                # вместо единичного вызова type()
+                for char in text:
+                    self.controller.press(char)
+                    self.controller.release(char)
+
             return True
         except Exception as e:
-            print(f"Ошибка при вводе текста: {e}")
+            print(f"Error typing text: {e}")
             return False
 
     def press_key(self, key):
@@ -38,14 +70,15 @@ class KeyboardController:
         Нажимает клавишу.
 
         Args:
-            key (str): Символ клавиши
+            key (str): Символ клавиши или имя специальной клавиши
 
         Returns:
             bool: True в случае успешного нажатия
         """
         try:
-            self.controller.press(key)
-            self.controller.release(key)
+            key_obj = self.get_key_object(key) if isinstance(key, str) else key
+            self.controller.press(key_obj)
+            self.controller.release(key_obj)
             return True
         except Exception as e:
             print(f"Ошибка при нажатии клавиши: {e}")
@@ -104,11 +137,11 @@ class KeyboardController:
         """
         try:
             for key in keys:
-                key_obj = key if isinstance(key, str) else self.get_key_object(key)
+                key_obj = self.get_key_object(key) if isinstance(key, str) else key
                 self.controller.press(key_obj)
 
             for key in reversed(keys):
-                key_obj = key if isinstance(key, str) else self.get_key_object(key)
+                key_obj = self.get_key_object(key) if isinstance(key, str) else key
                 self.controller.release(key_obj)
 
             return True
@@ -183,11 +216,15 @@ class KeyboardController:
         Получает объект клавиши по её имени.
 
         Args:
-            key_name (str): Имя клавиши
+            key_name (str or Key): Имя клавиши или объект Key
 
         Returns:
             Key: Объект клавиши
         """
+        # Если уже передан объект Key, просто возвращаем его
+        if isinstance(key_name, Key):
+            return key_name
+
         key_map = {
             "enter": Key.enter,
             "backspace": Key.backspace,

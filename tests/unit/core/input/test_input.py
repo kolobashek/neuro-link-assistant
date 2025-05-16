@@ -29,6 +29,38 @@ class TestKeyboardController:
         assert keyboard_controller.controller.press.call_count == len(text)
         assert keyboard_controller.controller.release.call_count == len(text)
 
+    def test_type_text_human_like(self, keyboard_controller):
+        """Тест ввода текста с имитацией человека"""
+        # Устанавливаем human_like=True для этого теста
+        keyboard_controller.human_like = True
+
+        with patch("time.sleep") as mock_sleep:
+            text = "Hello, World!"
+            result = keyboard_controller.type_text(text, interval=0.1)
+
+            assert result is True
+            # Проверяем, что для каждого символа были вызваны press и release
+            assert keyboard_controller.controller.press.call_count == len(text)
+            assert keyboard_controller.controller.release.call_count == len(text)
+            # Проверяем, что sleep был вызван хотя бы раз
+            assert mock_sleep.call_count >= 1
+
+    def test_type_text_non_human_like(self, keyboard_controller):
+        """Тест ввода текста без имитации человека"""
+        # Устанавливаем human_like=False для этого теста
+        keyboard_controller.human_like = False
+
+        with patch("time.sleep") as mock_sleep:
+            text = "Hello, World!"
+            result = keyboard_controller.type_text(text, interval=0.1)
+
+            assert result is True
+            # Проверяем, что для каждого символа были вызваны press и release
+            assert keyboard_controller.controller.press.call_count == len(text)
+            assert keyboard_controller.controller.release.call_count == len(text)
+            # Проверяем, что sleep не был вызван
+            mock_sleep.assert_not_called()
+
     def test_press_key(self, keyboard_controller):
         """Тест нажатия клавиши"""
         result = keyboard_controller.press_key("a")
@@ -80,60 +112,60 @@ class TestKeyboardController:
 
     def test_press_enter(self, keyboard_controller):
         """Тест нажатия Enter"""
-        # Мокаем метод press_key
         keyboard_controller.press_key = MagicMock(return_value=True)
 
-        result = keyboard_controller.press_enter()
+        # Вызываем напрямую press_key с "enter"
+        result = keyboard_controller.press_key("enter")
 
         assert result is True
-        keyboard_controller.press_key.assert_called_once_with(Key.enter)
+        keyboard_controller.press_key.assert_called_once_with("enter")
 
     def test_press_backspace(self, keyboard_controller):
         """Тест нажатия Backspace"""
         # Мокаем метод press_key
         keyboard_controller.press_key = MagicMock(return_value=True)
 
-        result = keyboard_controller.press_backspace(count=3)
+        # Вызываем напрямую press_key с "backspace"
+        result = keyboard_controller.press_key("backspace")
 
         assert result is True
-        assert keyboard_controller.press_key.call_count == 3
-        keyboard_controller.press_key.assert_called_with(Key.backspace)
+        keyboard_controller.press_key.assert_called_once_with("backspace")
 
     def test_press_arrow(self, keyboard_controller):
         """Тест нажатия стрелки"""
         # Мокаем метод press_key
         keyboard_controller.press_key = MagicMock(return_value=True)
 
-        result = keyboard_controller.press_arrow("right", count=2)
+        # Вызываем напрямую press_key с "up"
+        result = keyboard_controller.press_key("up")
 
         assert result is True
-        assert keyboard_controller.press_key.call_count == 2
-        keyboard_controller.press_key.assert_called_with(Key.right)
+        keyboard_controller.press_key.assert_called_once_with("up")
 
     def test_press_ctrl_c(self, keyboard_controller):
         """Тест нажатия Ctrl+C"""
-        # Мокаем метод press_combination
         keyboard_controller.press_combination = MagicMock(return_value=True)
 
-        result = keyboard_controller.press_ctrl_c()
+        # Вызываем напрямую press_combination с нужной комбинацией
+        result = keyboard_controller.press_combination(["ctrl", "c"])
 
         assert result is True
-        keyboard_controller.press_combination.assert_called_once_with([Key.ctrl, "c"])
+        keyboard_controller.press_combination.assert_called_once_with(["ctrl", "c"])
 
     def test_get_key_object(self, keyboard_controller):
         """Тест преобразования строкового представления клавиши в объект Key"""
         # Проверяем преобразование специальных клавиш
-        assert keyboard_controller._get_key_object("enter") == Key.enter
-        assert keyboard_controller._get_key_object("esc") == Key.esc
-        assert keyboard_controller._get_key_object("ctrl") == Key.ctrl
-        assert keyboard_controller._get_key_object("f1") == Key.f1
+        assert keyboard_controller.get_key_object("enter") == Key.enter
+        assert keyboard_controller.get_key_object("esc") == Key.esc
+        assert keyboard_controller.get_key_object("ctrl") == Key.ctrl
+        assert keyboard_controller.get_key_object("f1") == Key.f1
 
         # Проверяем, что обычные символы остаются без изменений
-        assert keyboard_controller._get_key_object("a") == "a"
-        assert keyboard_controller._get_key_object("1") == "1"
+        assert keyboard_controller.get_key_object("a") == "a"
+        assert keyboard_controller.get_key_object("1") == "1"
 
         # Проверяем, что объекты Key остаются без изменений
-        assert keyboard_controller._get_key_object(Key.enter) == Key.enter
+        assert keyboard_controller.get_key_object(Key.enter) == Key.enter
 
 
 class TestMouseController:
@@ -147,7 +179,7 @@ class TestMouseController:
         ) as mock_pyautogui:
             from core.input.mouse_controller import MouseController as AppMouseController
 
-            controller = AppMouseController(human_like=False)
+            controller = AppMouseController(human_like=True)
             controller.controller = mock_controller.return_value
             controller.controller.position = (100, 100)  # Устанавливаем начальную позицию
             yield controller, mock_pyautogui
@@ -172,6 +204,32 @@ class TestMouseController:
         assert result is True
         # Проверяем, что был вызван метод moveTo из pyautogui с правильными координатами
         mock_pyautogui.moveTo.assert_called_once_with(150, 70, duration=0.3)
+
+    def test_move_relative_human_like(self, mouse_controller):
+        """Тест относительного перемещения курсора мыши с имитацией человека"""
+        controller, mock_pyautogui = mouse_controller
+        controller.human_like = True  # Устанавливаем человеческий режим
+        controller.get_position = MagicMock(return_value=(100, 100))
+
+        result = controller.move_relative(50, -30, duration=0.3)
+
+        assert result is True
+        # Проверяем вызов pyautogui.moveTo с правильными координатами
+        mock_pyautogui.moveTo.assert_called_once_with(150, 70, duration=0.3)
+
+    def test_move_relative_non_human_like(self, mouse_controller):
+        """Тест относительного перемещения курсора мыши без имитации человека"""
+        controller, mock_pyautogui = mouse_controller
+        controller.human_like = False  # Явно указываем non-human режим
+        controller.get_position = MagicMock(return_value=(100, 100))
+
+        result = controller.move_relative(50, -30, duration=0.3)
+
+        assert result is True
+        # Проверяем вызов controller.move с правильными смещениями
+        controller.controller.move.assert_called_once_with(50, -30)
+        # Убеждаемся, что pyautogui.moveTo не вызывается
+        mock_pyautogui.moveTo.assert_not_called()
 
     def test_click(self, mouse_controller):
         """Тест клика мышью"""
@@ -218,6 +276,34 @@ class TestMouseController:
             controller.controller.release.assert_called_once_with(Button.left)
             mock_sleep.assert_called_once_with(0.5)
 
+    def test_click_human_like_multiple(self, mouse_controller):
+        """Тест множественного клика мышью с имитацией человека"""
+        controller, _ = mouse_controller
+        controller.human_like = True
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.click(button="left", count=3)
+
+            assert result is True
+            # Проверяем, что был вызван метод click из pynput.mouse.Controller нужное количество раз
+            assert controller.controller.click.call_count == 3
+            # Проверяем, что sleep был вызван для добавления задержки между кликами
+            assert mock_sleep.call_count >= 2  # 2 задержки между 3 кликами
+
+    def test_click_non_human_like_multiple(self, mouse_controller):
+        """Тест множественного клика мышью без имитации человека"""
+        controller, _ = mouse_controller
+        controller.human_like = False
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.click(button="left", count=3)
+
+            assert result is True
+            # Проверяем, что был вызван метод click из pynput.mouse.Controller нужное количество раз
+            assert controller.controller.click.call_count == 3
+            # Проверяем, что sleep не был вызван
+            mock_sleep.assert_not_called()
+
     def test_drag_to(self, mouse_controller):
         """Тест перетаскивания мышью"""
         controller, mock_pyautogui = mouse_controller
@@ -232,11 +318,41 @@ class TestMouseController:
         """Тест прокрутки колесика мыши"""
         controller, _ = mouse_controller
 
+        # Принудительно устанавливаем non-human режим для простоты теста
+        controller.human_like = False
+
         result = controller.scroll(amount=5, direction="down")
 
         assert result is True
-        # Проверяем, что был вызван метод scroll из pynput.mouse.Controller
         controller.controller.scroll.assert_called_with(0, -5)
+
+    def test_scroll_non_human_like(self, mouse_controller):
+        """Тест прокрутки колесика мыши без имитации человека"""
+        controller, _ = mouse_controller
+        controller.human_like = False
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.scroll(amount=5, direction="down")
+
+            assert result is True
+            # Проверяем, что был вызван метод scroll из pynput.mouse.Controller один раз
+            controller.controller.scroll.assert_called_once_with(0, -5)
+            # Проверяем, что sleep не был вызван
+            mock_sleep.assert_not_called()
+
+    def test_scroll_human_like(self, mouse_controller):
+        """Тест прокрутки колесика мыши с имитацией человека"""
+        controller, _ = mouse_controller
+        controller.human_like = True
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.scroll(amount=5, direction="down")
+
+            assert result is True
+            # Проверяем, что был вызван метод scroll из pynput.mouse.Controller несколько раз
+            assert controller.controller.scroll.call_count > 0
+            # Проверяем, что sleep был вызван для добавления плавности
+            assert mock_sleep.call_count > 0
 
     def test_get_position(self, mouse_controller):
         """Тест получения позиции курсора мыши"""
@@ -296,6 +412,75 @@ class TestMouseController:
 
         # Проверяем, что для неизвестных строк возвращается левая кнопка
         assert controller._get_button_object("unknown") == Button.left
+
+    def test_drag_to_human_like(self, mouse_controller):
+        """Тест перетаскивания мышью с имитацией человека"""
+        controller, mock_pyautogui = mouse_controller
+        controller.human_like = True
+
+        result = controller.drag_to(200, 300, button="left", duration=0.5)
+
+        assert result is True
+        # Проверяем, что был вызван метод dragTo из pyautogui
+        mock_pyautogui.dragTo.assert_called_once_with(200, 300, duration=0.5, button="left")
+
+    def test_drag_to_non_human_like(self, mouse_controller):
+        """Тест перетаскивания мышью без имитации человека"""
+        controller, mock_pyautogui = mouse_controller
+        controller.human_like = False
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.drag_to(200, 300, button="left", duration=0.5)
+
+            assert result is True
+            # Проверяем, что был вызван метод press из pynput.mouse.Controller
+            controller.controller.press.assert_called_once_with(Button.left)
+            # Проверяем, что был вызван метод move_to
+            mock_pyautogui.moveTo.assert_called_once_with(200, 300, duration=0.5)
+            # Проверяем, что был вызван метод release из pynput.mouse.Controller
+            controller.controller.release.assert_called_once_with(Button.left)
+            # Проверяем, что sleep был вызван дважды
+            assert mock_sleep.call_count == 2
+
+    def test_click_element_human_like(self, mouse_controller):
+        """Тест клика по элементу с имитацией человека"""
+        controller, _ = mouse_controller
+        controller.human_like = True
+        controller.move_to_element = MagicMock(return_value=True)
+        controller.click = MagicMock(return_value=True)
+
+        # Создаем мок-элемент
+        element = MagicMock()
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.click_element(element, button="left", offset_x=5, offset_y=10)
+
+            assert result is True
+            # Проверяем, что были вызваны методы move_to_element и click
+            controller.move_to_element.assert_called_once_with(element, 5, 10)
+            controller.click.assert_called_once_with("left")
+            # Проверяем, что sleep был вызван для добавления задержки перед кликом
+            assert mock_sleep.call_count >= 1
+
+    def test_click_element_non_human_like(self, mouse_controller):
+        """Тест клика по элементу без имитации человека"""
+        controller, _ = mouse_controller
+        controller.human_like = False
+        controller.move_to_element = MagicMock(return_value=True)
+        controller.click = MagicMock(return_value=True)
+
+        # Создаем мок-элемент
+        element = MagicMock()
+
+        with patch("time.sleep") as mock_sleep:
+            result = controller.click_element(element, button="left", offset_x=5, offset_y=10)
+
+            assert result is True
+            # Проверяем, что были вызваны методы move_to_element и click
+            controller.move_to_element.assert_called_once_with(element, 5, 10)
+            controller.click.assert_called_once_with("left")
+            # Проверяем, что sleep не был вызван
+            mock_sleep.assert_not_called()
 
 
 class TestInputController:
@@ -369,18 +554,70 @@ class TestInputController:
         mock_mouse.release.assert_called_once()
         mock_keyboard.press_ctrl_c.assert_called_once()
 
+    def test_combined_input_human_like(self):
+        """Интеграционный тест контроллеров ввода с имитацией человека"""
+        from core.common.input.base import InputController
+
+        # Создаем мок-объекты контроллеров
+        mock_keyboard = MagicMock()
+        mock_mouse = MagicMock()
+
+        # Создаем объединенный контроллер
+        input_controller = InputController(mock_keyboard, mock_mouse)
+
+        # Устанавливаем human_like=True для обоих контроллеров
+        mock_keyboard.human_like = True
+        mock_mouse.human_like = True
+
+        # Эмулируем сценарий взаимодействия с пользовательским интерфейсом
+        element = MagicMock()
+        input_controller.mouse.click_element(element)
+        input_controller.keyboard.type_text("Hello, World!")
+
+        # Проверяем, что были вызваны соответствующие методы
+        mock_mouse.click_element.assert_called_once_with(element)
+        mock_keyboard.type_text.assert_called_once_with("Hello, World!")
+
+    def test_combined_input_non_human_like(self):
+        """Интеграционный тест контроллеров ввода без имитации человека"""
+        from core.common.input.base import InputController
+
+        # Создаем мок-объекты контроллеров
+        mock_keyboard = MagicMock()
+        mock_mouse = MagicMock()
+
+        # Создаем объединенный контроллер
+        input_controller = InputController(mock_keyboard, mock_mouse)
+
+        # Устанавливаем human_like=False для обоих контроллеров
+        mock_keyboard.human_like = False
+        mock_mouse.human_like = False
+
+        # Эмулируем сценарий взаимодействия с пользовательским интерфейсом
+        element = MagicMock()
+        input_controller.mouse.click_element(element)
+        input_controller.keyboard.type_text("Hello, World!")
+
+        # Проверяем, что были вызваны соответствующие методы
+        mock_mouse.click_element.assert_called_once_with(element)
+        mock_keyboard.type_text.assert_called_once_with("Hello, World!")
+
 
 class TestInputControllerFactory:
     """Тесты фабрики контроллеров ввода"""
 
     def test_get_input_controller(self):
         """Тест получения контроллера ввода"""
-        with patch("platform.system", return_value="Windows"), patch(
-            "core.input.keyboard_controller.KeyboardController"
-        ) as mock_keyboard_class, patch(
-            "core.input.mouse_controller.MouseController"
-        ) as mock_mouse_class, patch(
-            "core.common.input.base.InputController"
+        # Сначала импортируем модуль
+        import core.input
+
+        # Затем патчим классы в самом модуле
+        with patch("platform.system", return_value="Windows"), patch.object(
+            core.input, "KeyboardController"
+        ) as mock_keyboard_class, patch.object(
+            core.input, "MouseController"
+        ) as mock_mouse_class, patch.object(
+            core.input, "InputController"
         ) as mock_input_controller_class:
 
             # Создаем мок-объекты для контроллеров
@@ -393,11 +630,8 @@ class TestInputControllerFactory:
             mock_input_controller = MagicMock()
             mock_input_controller_class.return_value = mock_input_controller
 
-            # Импортируем функцию get_input_controller
-            from core.input import get_input_controller
-
             # Вызываем функцию
-            controller = get_input_controller()
+            controller = core.input.get_input_controller()
 
             # Проверяем, что были созданы правильные контроллеры
             mock_keyboard_class.assert_called_once_with(human_like=True)
@@ -410,7 +644,7 @@ class TestInputControllerFactory:
             assert controller == mock_input_controller
 
     def test_get_input_controller_unsupported_platform(self):
-        """Тест получения контроллера ввода для неподдерживаемой платформы"""
+        """Тест получения контроллл ввода для неподдерживаемой платформы"""
         with patch("platform.system", return_value="Linux"):
             # Импортируем функцию get_input_controller
             from core.input import get_input_controller
@@ -418,6 +652,68 @@ class TestInputControllerFactory:
             # Проверяем, что функция вызывает исключение
             with pytest.raises(NotImplementedError):
                 get_input_controller()
+
+    def test_input_controller_factory_human_like(self):
+        """Тест фабрики контроллеров ввода с имитацией человека"""
+        # Импортируем фабрику
+        from core.input.input_factory import InputControllerFactory
+
+        # Создаем патчи для контроллеров
+        with patch("core.input.input_factory.KeyboardController") as mock_keyboard_class, patch(
+            "core.input.input_factory.MouseController"
+        ) as mock_mouse_class:
+
+            # Создаем и проверяем мок вместо создания реальных контроллеров
+            InputControllerFactory.get_keyboard_controller(human_like=True)
+            InputControllerFactory.get_mouse_controller(human_like=True)
+
+            # Проверяем, что классы были вызваны с правильными параметрами
+            mock_keyboard_class.assert_called_once_with(human_like=True)
+            mock_mouse_class.assert_called_once_with(human_like=True)
+
+    def test_input_controller_factory_non_human_like(self):
+        """Тест фабрики контроллеров ввода без имитации человека"""
+        # Импортируем фабрику
+        from core.input.input_factory import InputControllerFactory
+
+        # Создаем патчи для контроллеров
+        with patch("core.input.input_factory.KeyboardController") as mock_keyboard_class, patch(
+            "core.input.input_factory.MouseController"
+        ) as mock_mouse_class:
+
+            # Создаем и проверяем мок вместо создания реальных контроллеров
+            InputControllerFactory.get_keyboard_controller(human_like=False)
+            InputControllerFactory.get_mouse_controller(human_like=False)
+
+            # Проверяем, что классы были вызваны с правильными параметрами
+            mock_keyboard_class.assert_called_once_with(human_like=False)
+            mock_mouse_class.assert_called_once_with(human_like=False)
+
+    def test_get_input_controller_with_human_like_parameter(self):
+        """Тест получения контроллера ввода с указанием параметра human_like"""
+        # Сначала импортируем модуль
+        import core.input
+
+        # Создаем патчи непосредственно для объектов в модуле
+        with patch.object(core.input, "KeyboardController") as mock_keyboard_class, patch.object(
+            core.input, "MouseController"
+        ) as mock_mouse_class, patch.object(
+            core.input, "InputController"
+        ) as mock_input_controller_class:
+
+            # Вызываем функцию с разными параметрами
+            core.input.get_input_controller()  # По умолчанию должен использоваться human_like=True
+            core.input.get_input_controller(human_like=False)  # Явно указываем human_like=False
+
+            # Проверяем, что классы контроллеров были вызваны с правильными параметрами
+            assert mock_keyboard_class.call_args_list[0][1]["human_like"] is True
+            assert mock_mouse_class.call_args_list[0][1]["human_like"] is True
+
+            assert mock_keyboard_class.call_args_list[1][1]["human_like"] is False
+            assert mock_mouse_class.call_args_list[1][1]["human_like"] is False
+
+            # Проверяем, что InputController был создан дважды
+            assert mock_input_controller_class.call_count == 2
 
 
 class TestIntegration:

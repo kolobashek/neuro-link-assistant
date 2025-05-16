@@ -425,3 +425,258 @@ class FileSystem:
         except Exception as e:
             print(f"Error extracting ZIP archive: {e}")
             return False
+
+    def read_json(self, path):
+        """
+        Читает JSON-файл.
+
+        Args:
+            path (str): Путь к JSON-файлу
+
+        Returns:
+            dict: Данные из JSON-файла или None в случае ошибки
+        """
+        try:
+            if not os.path.exists(path):
+                return None
+
+            import json
+
+            with open(path, "r", encoding="utf-8") as file:
+                return json.load(file)
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+            return None
+
+    def write_json(self, path, data, indent=4):
+        """
+        Записывает данные в JSON-файл.
+
+        Args:
+            path (str): Путь к JSON-файлу
+            data (dict): Данные для записи
+            indent (int, optional): Отступ для форматирования JSON
+
+        Returns:
+            bool: True в случае успешной записи
+        """
+        try:
+            # Создаем директорию, если она не существует
+            directory = os.path.dirname(path)
+            if directory and not os.path.exists(directory):
+                os.makedirs(directory, exist_ok=True)
+
+            import json
+
+            with open(path, "w", encoding="utf-8") as file:
+                json.dump(data, file, indent=indent)
+
+            return True
+        except Exception as e:
+            print(f"Error writing JSON file: {e}")
+            return False
+
+    def read_csv(self, path, delimiter=","):
+        """
+        Читает CSV-файл.
+
+        Args:
+            path (str): Путь к CSV-файлу
+            delimiter (str, optional): Разделитель полей
+
+        Returns:
+            list: Данные из CSV-файла или None в случае ошибки
+        """
+        try:
+            if not os.path.exists(path):
+                return None
+
+            import csv
+
+            data = []
+            with open(path, "r", encoding="utf-8", newline="") as file:
+                csv_reader = csv.reader(file, delimiter=delimiter)
+                for row in csv_reader:
+                    data.append(row)
+
+            return data
+        except Exception as e:
+            print(f"Error reading CSV file: {e}")
+            return None
+
+    def write_csv(self, path, data, delimiter=","):
+        """
+        Записывает данные в CSV-файл.
+
+        Args:
+            path (str): Путь к CSV-файлу
+            data (list): Данные для записи (список списков)
+            delimiter (str, optional): Разделитель полей
+
+        Returns:
+            bool: True в случае успешной записи
+        """
+        try:
+            # Создаем директорию, если она не существует
+            directory = os.path.dirname(path)
+            if directory and not os.path.exists(directory):
+                os.makedirs(directory, exist_ok=True)
+
+            import csv
+
+            with open(path, "w", encoding="utf-8", newline="") as file:
+                csv_writer = csv.writer(file, delimiter=delimiter)
+                csv_writer.writerows(data)
+
+            return True
+        except Exception as e:
+            print(f"Error writing CSV file: {e}")
+            return False
+
+    def read_binary(self, path):
+        """
+        Читает бинарный файл.
+
+        Args:
+            path (str): Путь к файлу
+
+        Returns:
+            bytes: Содержимое файла или None в случае ошибки
+        """
+        try:
+            if not os.path.exists(path):
+                return None
+
+            with open(path, "rb") as file:
+                return file.read()
+        except Exception as e:
+            print(f"Error reading binary file: {e}")
+            return None
+
+    def write_binary(self, path, data):
+        """
+        Записывает данные в бинарный файл.
+
+        Args:
+            path (str): Путь к файлу
+            data (bytes): Данные для записи
+
+        Returns:
+            bool: True в случае успешной записи
+        """
+        try:
+            # Создаем директорию, если она не существует
+            directory = os.path.dirname(path)
+            if directory and not os.path.exists(directory):
+                os.makedirs(directory, exist_ok=True)
+
+            with open(path, "wb") as file:
+                file.write(data)
+
+            return True
+        except Exception as e:
+            print(f"Error writing binary file: {e}")
+            return False
+
+    def read_pickle(self, path):
+        """
+        Читает объект из файла pickle.
+
+        Args:
+            path (str): Путь к файлу
+
+        Returns:
+            object: Объект из файла или None в случае ошибки
+        """
+        try:
+            if not os.path.exists(path):
+                return None
+
+            import pickle
+
+            with open(path, "rb") as file:
+                return pickle.load(file)
+        except Exception as e:
+            print(f"Error reading pickle file: {e}")
+            return None
+
+    def write_pickle(self, path, data):
+        """
+        Записывает объект в файл pickle.
+
+        Args:
+            path (str): Путь к файлу
+            data (object): Объект для записи
+
+        Returns:
+            bool: True в случае успешной записи
+        """
+        try:
+            # Создаем директорию, если она не существует
+            directory = os.path.dirname(path)
+            if directory and not os.path.exists(directory):
+                os.makedirs(directory, exist_ok=True)
+
+            import pickle
+
+            with open(path, "wb") as file:
+                pickle.dump(data, file)
+
+            return True
+        except Exception as e:
+            print(f"Error writing pickle file: {e}")
+            return False
+
+    def is_file_exists(self, path):
+        """
+        Проверяет существование файла.
+
+        Args:
+            path (str): Путь к файлу
+
+        Returns:
+            bool: True, если файл существует
+        """
+        return os.path.isfile(path)
+
+    def is_directory_exists(self, path):
+        """
+        Проверяет существование директории.
+
+        Args:
+            path (str): Путь к директории
+
+        Returns:
+            bool: True, если директория существует
+        """
+        return os.path.isdir(path)
+
+    def get_file_size(self, path):
+        """
+        Получает размер файла в байтах.
+
+        Args:
+            path (str): Путь к файлу
+
+        Returns:
+            int: Размер файла в байтах или -1 в случае ошибки
+        """
+        try:
+            if os.path.isfile(path):
+                return os.path.getsize(path)
+            return -1
+        except Exception as e:
+            print(f"Error getting file size: {e}")
+            return -1
+
+    def get_file_extension(self, path):
+        """
+        Получает расширение файла.
+
+        Args:
+            path (str): Путь к файлу или имя файла
+
+        Returns:
+            str: Расширение файла с точкой или пустая строка, если расширение отсутствует
+        """
+        return os.path.splitext(path)[1]
