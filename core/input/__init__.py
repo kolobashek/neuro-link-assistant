@@ -1,23 +1,23 @@
 # 2025. All rights reserved.
-import platform
+"""
+Модуль для работы с устройствами ввода (клавиатура и мышь).
+Предоставляет унифицированный интерфейс для управления клавиатурой и мышью.
+"""
 
-from core.common.input.base import InputController
-from core.input.input_factory import InputControllerFactory
-from core.input.keyboard_controller import KeyboardController
-from core.input.mouse_controller import MouseController
-
-# Экспортируем методы фабрики для создания отдельных контроллеров
-get_keyboard_controller = InputControllerFactory.get_keyboard_controller
-get_mouse_controller = InputControllerFactory.get_mouse_controller
+from core.common.input.base import AbstractKeyboard, AbstractMouse, InputController
+from core.input.factory import get_keyboard, get_mouse
 
 
-def get_input_controller(human_like: bool = True):
+# Переопределяем документацию функции get_input_controller для лучшей читаемости
+def get_input_controller(human_like: bool = True, new_instance: bool = False):
     """
     Возвращает объект контроллера ввода для текущей платформы.
 
     Args:
         human_like (bool, optional): Флаг, указывающий, должен ли контроллер
                                     имитировать человеческое поведение. По умолчанию True.
+        new_instance (bool, optional): Флаг, указывающий, нужно ли создать новый
+                                      экземпляр. По умолчанию False.
 
     Returns:
         InputController: Экземпляр комбинированного контроллера ввода.
@@ -25,14 +25,16 @@ def get_input_controller(human_like: bool = True):
     Raises:
         NotImplementedError: Если текущая платформа не поддерживается.
     """
-    system = platform.system().lower()
+    from core.input.factory import get_input_controller as factory_get_input_controller
 
-    if system == "windows":
-        # Создаем контроллеры клавиатуры и мыши
-        keyboard = KeyboardController(human_like=human_like)
-        mouse = MouseController(human_like=human_like)
+    return factory_get_input_controller(human_like, new_instance)
 
-        # Создаем и возвращаем комбинированный контроллер
-        return InputController(keyboard, mouse)
-    else:
-        raise NotImplementedError(f"Система {system} не поддерживается")
+
+__all__ = [
+    "AbstractKeyboard",
+    "AbstractMouse",
+    "InputController",
+    "get_keyboard",
+    "get_mouse",
+    "get_input_controller",
+]

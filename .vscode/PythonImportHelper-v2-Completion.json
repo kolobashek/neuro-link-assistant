@@ -149,6 +149,94 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "operator",
         "kind": 6,
         "isExtraImport": true,
@@ -412,47 +500,211 @@
         "documentation": {}
     },
     {
-        "label": "csv",
-        "kind": 6,
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "importPath": "csv",
-        "description": "csv",
-        "detail": "csv",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
+        "label": "# Table",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "pickle",
-        "kind": 6,
+        "label": "; UniqueConstraint",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "importPath": "pickle",
-        "description": "pickle",
-        "detail": "pickle",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "zipfile",
-        "kind": 6,
+        "label": "JSON",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "importPath": "zipfile",
-        "description": "zipfile",
-        "detail": "zipfile",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "pathlib",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "desc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -629,6 +881,306 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy.sql",
+        "description": "sqlalchemy.sql",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.sql",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -1407,11 +1959,27 @@
         "documentation": {}
     },
     {
-        "label": "expected_conditions",
-        "importPath": "selenium.webdriver.support",
-        "description": "selenium.webdriver.support",
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
         "isExtraImport": true,
-        "detail": "selenium.webdriver.support",
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
         "documentation": {}
     },
     {
@@ -1508,6 +2076,62 @@
         "description": "selenium.webdriver.support",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
         "documentation": {}
     },
     {
@@ -2054,6 +2678,400 @@
         "documentation": {}
     },
     {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "DataError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_model_by_id",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_models",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_by_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_id",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_username",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_task_status",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_with_pagination",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "alembic.config",
+        "description": "alembic.config",
+        "isExtraImport": true,
+        "detail": "alembic.config",
+        "documentation": {}
+    },
+    {
+        "label": "MigrationContext",
+        "importPath": "alembic.runtime.migration",
+        "description": "alembic.runtime.migration",
+        "isExtraImport": true,
+        "detail": "alembic.runtime.migration",
+        "documentation": {}
+    },
+    {
+        "label": "ScriptDirectory",
+        "importPath": "alembic.script",
+        "description": "alembic.script",
+        "isExtraImport": true,
+        "detail": "alembic.script",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowRepository",
+        "importPath": "core.db.repository.workflow_repository",
+        "description": "core.db.repository.workflow_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.workflow_repository",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jwt",
+        "description": "jwt",
+        "detail": "jwt",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "decode_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "hash_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "isExtraImport": true,
+        "detail": "core.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "PermissionService",
+        "importPath": "core.services.permission_service",
+        "description": "core.services.permission_service",
+        "isExtraImport": true,
+        "detail": "core.services.permission_service",
+        "documentation": {}
+    },
+    {
+        "label": "TransactionManager",
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "isExtraImport": true,
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "transaction",
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "isExtraImport": true,
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "AIModelService",
+        "importPath": "core.services.ai_model_service",
+        "description": "core.services.ai_model_service",
+        "isExtraImport": true,
+        "detail": "core.services.ai_model_service",
+        "documentation": {}
+    },
+    {
+        "label": "TaskService",
+        "importPath": "core.services.task_service",
+        "description": "core.services.task_service",
+        "isExtraImport": true,
+        "detail": "core.services.task_service",
+        "documentation": {}
+    },
+    {
+        "label": "UserService",
+        "importPath": "core.services.user_service",
+        "description": "core.services.user_service",
+        "isExtraImport": true,
+        "detail": "core.services.user_service",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
         "label": "MagicMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
@@ -2438,12 +3456,43 @@
         "documentation": {}
     },
     {
-        "label": "pytest",
-        "kind": 6,
+        "label": "restart_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
         "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "run_command",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "show_db_logs",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "start_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "stop_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
         "documentation": {}
     },
     {
@@ -5123,6 +6172,276 @@
         "documentation": {}
     },
     {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "def get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "DATABASE_URL = os.environ.get(\n    \"DATABASE_URL\", \"postgresql://postgres:postgres@localhost/neurolink_db\"\n)\n# Создаем движок SQLAlchemy\nengine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "Base = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:\n        yield db\n    finally:",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def create_user(db: Session, **kwargs) -> User:\n    \"\"\"Создает нового пользователя в базе данных\"\"\"\n    user = User(**kwargs)\n    db.add(user)\n    db.commit()\n    db.refresh(user)\n    return user\ndef get_user_by_id(db: Session, user_id: int) -> Optional[User]:\n    \"\"\"Получает пользователя по ID\"\"\"\n    return db.query(User).filter(User.id == user_id).first()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_id",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_user_by_id(db: Session, user_id: int) -> Optional[User]:\n    \"\"\"Получает пользователя по ID\"\"\"\n    return db.query(User).filter(User.id == user_id).first()\ndef get_user_by_username(db: Session, username: str) -> Optional[User]:\n    \"\"\"Получает пользователя по имени пользователя\"\"\"\n    return db.query(User).filter(User.username == username).first()\ndef get_user_by_email(db: Session, email: str) -> Optional[User]:\n    \"\"\"Получает пользователя по email\"\"\"\n    return db.query(User).filter(User.email == email).first()\ndef update_user(db: Session, user_id: int, **kwargs) -> Optional[User]:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_username",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_user_by_username(db: Session, username: str) -> Optional[User]:\n    \"\"\"Получает пользователя по имени пользователя\"\"\"\n    return db.query(User).filter(User.username == username).first()\ndef get_user_by_email(db: Session, email: str) -> Optional[User]:\n    \"\"\"Получает пользователя по email\"\"\"\n    return db.query(User).filter(User.email == email).first()\ndef update_user(db: Session, user_id: int, **kwargs) -> Optional[User]:\n    \"\"\"Обновляет данные пользователя\"\"\"\n    user = get_user_by_id(db, user_id)\n    if not user:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_email",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_user_by_email(db: Session, email: str) -> Optional[User]:\n    \"\"\"Получает пользователя по email\"\"\"\n    return db.query(User).filter(User.email == email).first()\ndef update_user(db: Session, user_id: int, **kwargs) -> Optional[User]:\n    \"\"\"Обновляет данные пользователя\"\"\"\n    user = get_user_by_id(db, user_id)\n    if not user:\n        return None\n    for key, value in kwargs.items():\n        setattr(user, key, value)",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_user",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def update_user(db: Session, user_id: int, **kwargs) -> Optional[User]:\n    \"\"\"Обновляет данные пользователя\"\"\"\n    user = get_user_by_id(db, user_id)\n    if not user:\n        return None\n    for key, value in kwargs.items():\n        setattr(user, key, value)\n    db.commit()\n    db.refresh(user)\n    return user",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def create_ai_model(db: Session, **kwargs) -> AIModel:\n    \"\"\"Создает новую модель ИИ в базе данных\"\"\"\n    model = AIModel(**kwargs)\n    db.add(model)\n    db.commit()\n    db.refresh(model)\n    return model\ndef get_ai_model_by_id(db: Session, model_id: int) -> Optional[AIModel]:\n    \"\"\"Получает модель ИИ по ID\"\"\"\n    return db.query(AIModel).filter(AIModel.id == model_id).first()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_model_by_id",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_ai_model_by_id(db: Session, model_id: int) -> Optional[AIModel]:\n    \"\"\"Получает модель ИИ по ID\"\"\"\n    return db.query(AIModel).filter(AIModel.id == model_id).first()\ndef get_ai_models(db: Session, is_api: Optional[bool] = None) -> List[AIModel]:\n    \"\"\"Получает список моделей ИИ с возможностью фильтрации\"\"\"\n    query = db.query(AIModel)\n    if is_api is not None:\n        query = query.filter(AIModel.is_api == is_api)\n    return query.all()\ndef update_ai_model(db: Session, model_id: int, **kwargs) -> Optional[AIModel]:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_models",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_ai_models(db: Session, is_api: Optional[bool] = None) -> List[AIModel]:\n    \"\"\"Получает список моделей ИИ с возможностью фильтрации\"\"\"\n    query = db.query(AIModel)\n    if is_api is not None:\n        query = query.filter(AIModel.is_api == is_api)\n    return query.all()\ndef update_ai_model(db: Session, model_id: int, **kwargs) -> Optional[AIModel]:\n    \"\"\"Обновляет данные модели ИИ\"\"\"\n    model = get_ai_model_by_id(db, model_id)\n    if not model:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_ai_model",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def update_ai_model(db: Session, model_id: int, **kwargs) -> Optional[AIModel]:\n    \"\"\"Обновляет данные модели ИИ\"\"\"\n    model = get_ai_model_by_id(db, model_id)\n    if not model:\n        return None\n    for key, value in kwargs.items():\n        setattr(model, key, value)\n    db.commit()\n    db.refresh(model)\n    return model",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def create_task(db: Session, **kwargs) -> Task:\n    \"\"\"Создает новую задачу в базе данных\"\"\"\n    task = Task(**kwargs)\n    db.add(task)\n    db.commit()\n    db.refresh(task)\n    return task\ndef get_task_by_id(db: Session, task_id: int) -> Optional[Task]:\n    \"\"\"Получает задачу по ID\"\"\"\n    return db.query(Task).filter(Task.id == task_id).first()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_task_by_id",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_task_by_id(db: Session, task_id: int) -> Optional[Task]:\n    \"\"\"Получает задачу по ID\"\"\"\n    return db.query(Task).filter(Task.id == task_id).first()\ndef get_tasks_by_user(db: Session, user_id: int) -> List[Task]:\n    \"\"\"Получает список задач пользователя\"\"\"\n    return db.query(Task).filter(Task.user_id == user_id).all()\ndef update_task(db: Session, task_id: int, **kwargs) -> Optional[Task]:\n    \"\"\"Обновляет данные задачи\"\"\"\n    task = get_task_by_id(db, task_id)\n    if not task:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_by_user",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_tasks_by_user(db: Session, user_id: int) -> List[Task]:\n    \"\"\"Получает список задач пользователя\"\"\"\n    return db.query(Task).filter(Task.user_id == user_id).all()\ndef update_task(db: Session, task_id: int, **kwargs) -> Optional[Task]:\n    \"\"\"Обновляет данные задачи\"\"\"\n    task = get_task_by_id(db, task_id)\n    if not task:\n        return None\n    for key, value in kwargs.items():\n        setattr(task, key, value)",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_task",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def update_task(db: Session, task_id: int, **kwargs) -> Optional[Task]:\n    \"\"\"Обновляет данные задачи\"\"\"\n    task = get_task_by_id(db, task_id)\n    if not task:\n        return None\n    for key, value in kwargs.items():\n        setattr(task, key, value)\n    db.commit()\n    db.refresh(task)\n    return task",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_task_status",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def update_task_status(db: Session, task_id: int, status: str) -> Optional[Task]:\n    \"\"\"Обновляет статус задачи\"\"\"\n    task = get_task_by_id(db, task_id)\n    if not task:\n        return None\n    # SQLAlchemy позволяет присваивать обычные значения колонкам,\n    # несмотря на проблемы с типизацией\n    task.status = status  # type: ignore\n    # Используем безопасную проверку на None\n    if status == \"completed\" and task.completed_at is None:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "delete_task",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def delete_task(db: Session, task_id: int) -> bool:\n    \"\"\"Удаляет задачу\"\"\"\n    task = get_task_by_id(db, task_id)\n    if not task:\n        return False\n    db.delete(task)\n    db.commit()\n    return True\n# Функции CRUD для рабочих процессов (Workflow)\ndef create_workflow(db: Session, **kwargs) -> Workflow:",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_workflow",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def create_workflow(db: Session, **kwargs) -> Workflow:\n    \"\"\"Создает новый рабочий процесс в базе данных\"\"\"\n    workflow = Workflow(**kwargs)\n    db.add(workflow)\n    db.commit()\n    db.refresh(workflow)\n    return workflow\ndef get_workflow_by_id(db: Session, workflow_id: int) -> Optional[Workflow]:\n    \"\"\"Получает рабочий процесс по ID\"\"\"\n    return db.query(Workflow).filter(Workflow.id == workflow_id).first()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_workflow_by_id",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_workflow_by_id(db: Session, workflow_id: int) -> Optional[Workflow]:\n    \"\"\"Получает рабочий процесс по ID\"\"\"\n    return db.query(Workflow).filter(Workflow.id == workflow_id).first()\ndef get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_workflows_by_user",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    display_name = Column(String(100))\n    bio = Column(Text)\n    avatar_url = Column(String(255))\n    is_active = Column(Boolean, default=True)",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class AIModel(Base):\n    __tablename__ = \"ai_models\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(100), nullable=False)\n    provider = Column(String(100), nullable=False)\n    is_api = Column(Boolean, default=True)\n    base_url = Column(String(255))\n    api_key_name = Column(String(100))\n    is_active = Column(Boolean, default=True)\n    configuration = Column(JSON)",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class Task(Base):\n    __tablename__ = \"tasks\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(255), nullable=False)\n    description = Column(Text)\n    status = Column(String(50), default=\"created\")\n    priority = Column(Integer, default=1)\n    due_date = Column(DateTime(timezone=True))\n    created_at = Column(DateTime(timezone=True), server_default=func.now())",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "TaskExecution",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class TaskExecution(Base):\n    __tablename__ = \"task_executions\"\n    id = Column(Integer, primary_key=True, index=True)\n    task_id = Column(Integer, ForeignKey(\"tasks.id\"), nullable=False)\n    model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    input_data = Column(Text)\n    output_data = Column(Text)\n    status = Column(String(50))\n    started_at = Column(DateTime(timezone=True), server_default=func.now())\n    completed_at = Column(DateTime(timezone=True))",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class Workflow(Base):\n    __tablename__ = \"workflows\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    is_active = Column(Boolean, default=True)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())\n    updated_at = Column(DateTime(timezone=True), onupdate=func.now())\n    steps = relationship(\"WorkflowStep\", back_populates=\"workflow\", cascade=\"all, delete-orphan\")",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class WorkflowStep(Base):\n    __tablename__ = \"workflow_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    workflow_id = Column(Integer, ForeignKey(\"workflows.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    order = Column(Integer, nullable=False)\n    configuration = Column(JSON)\n    workflow = relationship(\"Workflow\", back_populates=\"steps\")\nclass RoutingRule(Base):",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "RoutingRule",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class RoutingRule(Base):\n    __tablename__ = \"routing_rules\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    rule_type = Column(String(50), nullable=False)\n    pattern = Column(String(255), nullable=False)\n    target_model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    priority = Column(Integer, default=0)\n    is_active = Column(Boolean, default=True)",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "FileManager",
         "kind": 6,
         "importPath": "core.filesystem.file_manager",
@@ -5681,6 +7000,96 @@
         "documentation": {}
     },
     {
+        "label": "run_command",
+        "kind": 2,
+        "importPath": "scripts.db",
+        "description": "scripts.db",
+        "peekOfCode": "def run_command(command, cwd=PROJECT_ROOT):\n    \"\"\"Запускает shell-команду и выводит результат\"\"\"\n    print(f\"Выполняем: {command}\")\n    process = subprocess.run(\n        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd\n    )\n    print(process.stdout)\n    if process.returncode != 0:\n        print(f\"Ошибка: {process.stderr}\")\n        sys.exit(process.returncode)",
+        "detail": "scripts.db",
+        "documentation": {}
+    },
+    {
+        "label": "run_migrations",
+        "kind": 2,
+        "importPath": "scripts.db",
+        "description": "scripts.db",
+        "peekOfCode": "def run_migrations():\n    \"\"\"Запускает миграции Alembic\"\"\"\n    run_command(\"alembic upgrade head\")\n    print(\"Миграции успешно применены!\")\ndef seed_database():\n    \"\"\"Заполняет базу данных начальными данными\"\"\"\n    # Этот скрипт должен быть создан в вашем проекте\n    run_command(\"python -m core.db.seed\")\n    print(\"База данных заполнена начальными данными!\")\nif __name__ == \"__main__\":",
+        "detail": "scripts.db",
+        "documentation": {}
+    },
+    {
+        "label": "seed_database",
+        "kind": 2,
+        "importPath": "scripts.db",
+        "description": "scripts.db",
+        "peekOfCode": "def seed_database():\n    \"\"\"Заполняет базу данных начальными данными\"\"\"\n    # Этот скрипт должен быть создан в вашем проекте\n    run_command(\"python -m core.db.seed\")\n    print(\"База данных заполнена начальными данными!\")\nif __name__ == \"__main__\":\n    if len(sys.argv) > 1:\n        command = sys.argv[1]\n        if command == \"migrate\":\n            run_migrations()",
+        "detail": "scripts.db",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_ROOT",
+        "kind": 5,
+        "importPath": "scripts.db",
+        "description": "scripts.db",
+        "peekOfCode": "PROJECT_ROOT = Path(__file__).parent.parent\ndef run_command(command, cwd=PROJECT_ROOT):\n    \"\"\"Запускает shell-команду и выводит результат\"\"\"\n    print(f\"Выполняем: {command}\")\n    process = subprocess.run(\n        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd\n    )\n    print(process.stdout)\n    if process.returncode != 0:\n        print(f\"Ошибка: {process.stderr}\")",
+        "detail": "scripts.db",
+        "documentation": {}
+    },
+    {
+        "label": "run_command",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def run_command(command, cwd=PROJECT_ROOT):\n    \"\"\"Запускает shell-команду и выводит результат\"\"\"\n    print(f\"Выполняем: {command}\")\n    process = subprocess.Popen(\n        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd\n    )\n    # Выводим вывод команды в реальном времени\n    if process.stdout:  # Проверяем, что stdout не None\n        for line in process.stdout:\n            print(line.strip())",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "start_db",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def start_db():\n    \"\"\"Запускает контейнеры базы данных\"\"\"\n    run_command(\"docker-compose up -d\")\n    print(\"База данных запущена!\")\n    print(\"pgAdmin доступен по адресу: http://localhost:5050\")\n    print(\"Данные для входа в pgAdmin: admin@example.com / admin_password\")\ndef stop_db():\n    \"\"\"Останавливает контейнеры базы данных\"\"\"\n    run_command(\"docker-compose down\")\n    print(\"База данных остановлена\")",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "stop_db",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def stop_db():\n    \"\"\"Останавливает контейнеры базы данных\"\"\"\n    run_command(\"docker-compose down\")\n    print(\"База данных остановлена\")\ndef restart_db():\n    \"\"\"Перезапускает контейнеры базы данных\"\"\"\n    stop_db()\n    start_db()\ndef show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "restart_db",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def restart_db():\n    \"\"\"Перезапускает контейнеры базы данных\"\"\"\n    stop_db()\n    start_db()\ndef show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\nif __name__ == \"__main__\":\n    # Для возможности запуска напрямую из командной строки\n    if len(sys.argv) > 1:",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "show_db_logs",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\nif __name__ == \"__main__\":\n    # Для возможности запуска напрямую из командной строки\n    if len(sys.argv) > 1:\n        command = sys.argv[1]\n        if command == \"start\":\n            start_db()\n        elif command == \"stop\":",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_ROOT",
+        "kind": 5,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "PROJECT_ROOT = Path(__file__).parent.parent\ndef run_command(command, cwd=PROJECT_ROOT):\n    \"\"\"Запускает shell-команду и выводит результат\"\"\"\n    print(f\"Выполняем: {command}\")\n    process = subprocess.Popen(\n        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd\n    )\n    # Выводим вывод команды в реальном времени\n    if process.stdout:  # Проверяем, что stdout не None\n        for line in process.stdout:",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
         "label": "get_test_path",
         "kind": 2,
         "importPath": "scripts.run_affected_tests",
@@ -6047,6 +7456,213 @@
         "description": "services.huggingface_service",
         "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\nclass HuggingFaceService:\n    def __init__(self):\n        self.api = HfApi()\n        self.token = os.environ.get(\"HUGGINGFACE_TOKEN\") or Config.HUGGINGFACE_TOKEN\n        self.models_cache = {}\n        self.tokenizers_cache = {}\n        # Установка токена для доступа к приватным моделям\n        if self.token:\n            HfFolder.save_token(self.token)",
         "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "TestDatabaseConnection",
+        "kind": 6,
+        "importPath": "tests.db.test_connection",
+        "description": "tests.db.test_connection",
+        "peekOfCode": "class TestDatabaseConnection:\n    def test_connection(self, db_engine):\n        \"\"\"Проверяем подключение к БД\"\"\"\n        connection = db_engine.connect()\n        assert connection is not None\n        connection.close()\n    def test_tables_exist(self, db_engine):\n        \"\"\"Проверяем, что все необходимые таблицы созданы\"\"\"\n        inspector = inspect(db_engine)\n        tables = inspector.get_table_names()",
+        "detail": "tests.db.test_connection",
+        "documentation": {}
+    },
+    {
+        "label": "db_engine",
+        "kind": 2,
+        "importPath": "tests.db.test_connection",
+        "description": "tests.db.test_connection",
+        "peekOfCode": "def db_engine():\n    \"\"\"Создает тестовый движок БД\"\"\"\n    # Используем тестовую БД или ту же с другой схемой\n    test_db_url = DATABASE_URL.replace(\"/neurolink_db\", \"/neurolink_test_db\")\n    engine = create_engine(test_db_url)\n    # Создаем все таблицы\n    Base.metadata.create_all(engine)\n    yield engine\n    # Удаляем таблицы после тестов\n    Base.metadata.drop_all(engine)",
+        "detail": "tests.db.test_connection",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.db.test_connection",
+        "description": "tests.db.test_connection",
+        "peekOfCode": "def db_session(db_engine):\n    \"\"\"Создает сессию БД для тестов\"\"\"\n    connection = db_engine.connect()\n    # Запускаем транзакцию\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session\n    # Откатываем изменения после теста\n    session.close()\n    transaction.rollback()",
+        "detail": "tests.db.test_connection",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserCRUD",
+        "kind": 6,
+        "importPath": "tests.db.test_crud",
+        "description": "tests.db.test_crud",
+        "peekOfCode": "class TestUserCRUD:\n    def test_create_user(self, db_session):\n        \"\"\"Тест создания пользователя\"\"\"\n        user_data = {\n            \"username\": \"testuser\",\n            \"email\": \"test@example.com\",\n            \"password_hash\": \"hashed_password\",\n        }\n        user = create_user(db_session, **user_data)\n        assert user.id is not None",
+        "detail": "tests.db.test_crud",
+        "documentation": {}
+    },
+    {
+        "label": "TestAIModelCRUD",
+        "kind": 6,
+        "importPath": "tests.db.test_crud",
+        "description": "tests.db.test_crud",
+        "peekOfCode": "class TestAIModelCRUD:\n    def test_create_ai_model(self, db_session):\n        \"\"\"Тест создания модели ИИ\"\"\"\n        model_data = {\n            \"name\": \"Test GPT\",\n            \"provider\": \"OpenAI\",\n            \"is_api\": True,\n            \"base_url\": \"https://api.example.com\",\n            \"configuration\": {\"model\": \"test-model\"},\n        }",
+        "detail": "tests.db.test_crud",
+        "documentation": {}
+    },
+    {
+        "label": "TestTaskCRUD",
+        "kind": 6,
+        "importPath": "tests.db.test_crud",
+        "description": "tests.db.test_crud",
+        "peekOfCode": "class TestTaskCRUD:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя\"\"\"\n        user = create_user(\n            db_session, username=\"taskuser\", email=\"task@example.com\", password_hash=\"hash\"\n        )\n        return user\n    def test_create_task(self, db_session, test_user):\n        \"\"\"Тест создания задачи\"\"\"",
+        "detail": "tests.db.test_crud",
+        "documentation": {}
+    },
+    {
+        "label": "TestMigrations",
+        "kind": 6,
+        "importPath": "tests.db.test_migrations",
+        "description": "tests.db.test_migrations",
+        "peekOfCode": "class TestMigrations:\n    @pytest.fixture\n    def alembic_config(self):\n        \"\"\"Создает конфигурацию Alembic\"\"\"\n        config = Config(\"alembic.ini\")\n        return config\n    def test_migrations_history(self, alembic_config):\n        \"\"\"Проверяет, что история миграций непрерывна\"\"\"\n        script = ScriptDirectory.from_config(alembic_config)\n        # Получаем все ревизии",
+        "detail": "tests.db.test_migrations",
+        "documentation": {}
+    },
+    {
+        "label": "TestPaginationAndFiltering",
+        "kind": 6,
+        "importPath": "tests.db.test_pagination",
+        "description": "tests.db.test_pagination",
+        "peekOfCode": "class TestPaginationAndFiltering:\n    def test_basic_pagination(self, db_session, user_with_many_tasks):\n        \"\"\"Тест базовой пагинации\"\"\"\n        user = user_with_many_tasks\n        # Первая страница (10 элементов)\n        page1 = get_tasks_with_pagination(db_session, user_id=user.id, page=1, per_page=10)\n        assert len(page1.items) == 10\n        assert page1.total == 50\n        assert page1.pages == 5\n        assert page1.has_next == True",
+        "detail": "tests.db.test_pagination",
+        "documentation": {}
+    },
+    {
+        "label": "user_with_many_tasks",
+        "kind": 2,
+        "importPath": "tests.db.test_pagination",
+        "description": "tests.db.test_pagination",
+        "peekOfCode": "def user_with_many_tasks(db_session):\n    \"\"\"Создает пользователя с большим количеством задач для тестов пагинации\"\"\"\n    user = create_user(\n        db_session, username=\"pageuser\", email=\"page@example.com\", password_hash=\"hash\"\n    )\n    # Создаем 50 задач разных типов\n    for i in range(50):\n        status = \"completed\" if i % 5 == 0 else \"in_progress\" if i % 3 == 0 else \"created\"\n        priority = (i % 3) + 1  # приоритеты 1, 2, 3\n        create_task(",
+        "detail": "tests.db.test_pagination",
+        "documentation": {}
+    },
+    {
+        "label": "TestDatabasePerformance",
+        "kind": 6,
+        "importPath": "tests.db.test_performance",
+        "description": "tests.db.test_performance",
+        "peekOfCode": "class TestDatabasePerformance:\n    @pytest.fixture\n    def populated_db(self, db_session):\n        \"\"\"Создает набор тестовых данных\"\"\"\n        # Создаем пользователя\n        user = create_user(\n            db_session, username=\"perftest\", email=\"perf@example.com\", password_hash=\"hash\"\n        )\n        # Создаем моделb ИИ\n        model = create_ai_model(db_session, name=\"Perf Model\", provider=\"Test\", is_api=True)",
+        "detail": "tests.db.test_performance",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserRepository",
+        "kind": 6,
+        "importPath": "tests.db.test_repository",
+        "description": "tests.db.test_repository",
+        "peekOfCode": "class TestUserRepository:\n    def test_user_repository_operations(self, db_session):\n        \"\"\"Тест операций репозитория пользователей\"\"\"\n        user_repo = UserRepository(db_session)\n        # Создаем пользователя\n        user = user_repo.create(\n            username=\"repo_user\",\n            email=\"repo@example.com\",\n            password_hash=\"hashed_password\",\n            display_name=\"Repository Test User\",",
+        "detail": "tests.db.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TestTaskRepository",
+        "kind": 6,
+        "importPath": "tests.db.test_repository",
+        "description": "tests.db.test_repository",
+        "peekOfCode": "class TestTaskRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для задач\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"task_repo_user\", email=\"taskrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_task_repository_basic_operations(self, db_session, test_user):\n        \"\"\"Тест основных операций репозитория задач\"\"\"",
+        "detail": "tests.db.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TestWorkflowRepository",
+        "kind": 6,
+        "importPath": "tests.db.test_repository",
+        "description": "tests.db.test_repository",
+        "peekOfCode": "class TestWorkflowRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для рабочих процессов\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"workflow_repo_user\", email=\"workflowrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_workflow_repository_operations(self, db_session, test_user):\n        \"\"\"Тест операций репозитория рабочих процессов\"\"\"",
+        "detail": "tests.db.test_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TestPasswordSecurity",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestPasswordSecurity:\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования и проверки паролей\"\"\"\n        # Хешируем пароль\n        password = \"secure_password123\"\n        hashed = hash_password(password)\n        # Проверяем, что хеш отличается от исходного пароля\n        assert hashed != password\n        # Проверяем корректный пароль\n        assert verify_password(password, hashed) is True",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestJWTTokens",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestJWTTokens:\n    def test_jwt_token_creation_and_verification(self):\n        \"\"\"Тест создания и проверки JWT токенов\"\"\"\n        # Создаем JWT токен\n        user_data = {\"user_id\": 123, \"username\": \"testuser\", \"role\": \"user\"}\n        token = create_access_token(user_data)\n        # Проверяем, что токен создан\n        assert token is not None\n        assert isinstance(token, str)\n        # Декодируем токен",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestAuthorizationSecurity",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestAuthorizationSecurity:\n    @pytest.fixture\n    def auth_service(self, db_session):\n        \"\"\"Создает сервис аутентификации\"\"\"\n        user_repo = UserRepository(db_session)\n        return AuthService(db_session, user_repo)\n    @pytest.fixture\n    def permission_service(self, db_session):\n        \"\"\"Создает сервис управления разрешениями\"\"\"\n        return PermissionService(db_session)",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestTransactions",
+        "kind": 6,
+        "importPath": "tests.db.test_transactions",
+        "description": "tests.db.test_transactions",
+        "peekOfCode": "class TestTransactions:\n    @pytest.fixture\n    def repositories(self, db_session):\n        \"\"\"Создает репозитории для тестирования\"\"\"\n        return {\n            \"user_repo\": UserRepository(db_session),\n            \"task_repo\": TaskRepository(db_session),\n            \"transaction\": TransactionManager(db_session),\n        }\n    def test_successful_transaction(self, db_session, repositories):",
+        "detail": "tests.db.test_transactions",
+        "documentation": {}
+    },
+    {
+        "label": "TestDataValidation",
+        "kind": 6,
+        "importPath": "tests.db.test_validation",
+        "description": "tests.db.test_validation",
+        "peekOfCode": "class TestDataValidation:\n    def test_required_fields(self, db_session):\n        \"\"\"Тест обязательных полей\"\"\"\n        # Проверка пользователя без обязательного поля\n        with pytest.raises(IntegrityError):\n            db_session.add(User(email=\"missing_username@example.com\", password_hash=\"hash\"))\n            db_session.flush()\n        db_session.rollback()\n        # Проверка задачи без обязательного поля\n        with pytest.raises(IntegrityError):",
+        "detail": "tests.db.test_validation",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserService",
+        "kind": 6,
+        "importPath": "tests.integration.test_db_services",
+        "description": "tests.integration.test_db_services",
+        "peekOfCode": "class TestUserService:\n    def test_user_registration(self, db_session):\n        \"\"\"Тест интеграции сервиса регистрации пользователей с БД\"\"\"\n        user_service = UserService(db_session)\n        user_data = {\n            \"username\": \"integration_user\",\n            \"email\": \"integration@example.com\",\n            \"password\": \"secure_password123\",  # Будет хешироваться в сервисе\n        }\n        # Регистрируем пользователя",
+        "detail": "tests.integration.test_db_services",
+        "documentation": {}
+    },
+    {
+        "label": "TestTaskService",
+        "kind": 6,
+        "importPath": "tests.integration.test_db_services",
+        "description": "tests.integration.test_db_services",
+        "peekOfCode": "class TestTaskService:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для сервиса задач\"\"\"\n        user_service = UserService(db_session)\n        return user_service.register_user(\n            username=\"task_service_user\", email=\"task_service@example.com\", password=\"password\"\n        )\n    def test_task_creation_and_retrieval(self, db_session, test_user):\n        \"\"\"Тест создания и получения задач через сервис\"\"\"",
+        "detail": "tests.integration.test_db_services",
+        "documentation": {}
+    },
+    {
+        "label": "TestAIModelService",
+        "kind": 6,
+        "importPath": "tests.integration.test_db_services",
+        "description": "tests.integration.test_db_services",
+        "peekOfCode": "class TestAIModelService:\n    def test_model_registration_and_usage(self, db_session):\n        \"\"\"Тест регистрации и использования моделей ИИ\"\"\"\n        ai_service = AIModelService(db_session)\n        # Регистрируем модель\n        model = ai_service.register_model(\n            name=\"GPT-3.5-Turbo\",\n            provider=\"OpenAI\",\n            is_api=True,\n            base_url=\"https://api.openai.com/v1\",",
+        "detail": "tests.integration.test_db_services",
+        "documentation": {}
+    },
+    {
+        "label": "TestDockerScripts",
+        "kind": 6,
+        "importPath": "tests.scripts.test_docker",
+        "description": "tests.scripts.test_docker",
+        "peekOfCode": "class TestDockerScripts:\n    def test_run_command_success(self, mock_subprocess_popen):\n        \"\"\"Тест успешного выполнения команды\"\"\"\n        mock_popen, process_mock = mock_subprocess_popen\n        # Вызов функции\n        run_command(\"docker-compose up -d\")\n        # Проверка, что Popen был вызван с правильными аргументами\n        mock_popen.assert_called_once()\n        args, kwargs = mock_popen.call_args\n        assert \"docker-compose up -d\" in args[0]",
+        "detail": "tests.scripts.test_docker",
+        "documentation": {}
+    },
+    {
+        "label": "mock_subprocess_popen",
+        "kind": 2,
+        "importPath": "tests.scripts.test_docker",
+        "description": "tests.scripts.test_docker",
+        "peekOfCode": "def mock_subprocess_popen():\n    \"\"\"Фикстура для мокирования subprocess.Popen\"\"\"\n    with patch(\"subprocess.Popen\") as mock_popen:\n        # Настройка мок-объекта\n        process_mock = MagicMock()\n        process_mock.stdout = [\"Output line 1\\n\", \"Output line 2\\n\"]\n        process_mock.stderr = MagicMock()\n        process_mock.stderr.read.return_value = \"Error message\"\n        process_mock.wait.return_value = 0  # Успешное завершение по умолчанию\n        mock_popen.return_value = process_mock",
+        "detail": "tests.scripts.test_docker",
         "documentation": {}
     },
     {
@@ -6923,6 +8539,15 @@
         "documentation": {}
     },
     {
+        "label": "TestNavigation",
+        "kind": 6,
+        "importPath": "tests.unit.ui.test_navigation",
+        "description": "tests.unit.ui.test_navigation",
+        "peekOfCode": "class TestNavigation:\n    \"\"\"Тесты для навигационных элементов и переходов между страницами.\"\"\"\n    def test_main_navigation_links(self, ui_client):\n        \"\"\"Тест основных навигационных ссылок.\"\"\"\n        # Открываем главную страницу\n        ui_client.get(\"http://localhost:5000/\")\n        # Находим все основные навигационные ссылки\n        nav_links = ui_client.find_elements(By.CSS_SELECTOR, \"nav a\")\n        # Проверяем наличие ожидаемых ссылок\n        expected_links = [\"Модели\", \"История\", \"Настройки\", \"Помощь\"]",
+        "detail": "tests.unit.ui.test_navigation",
+        "documentation": {}
+    },
+    {
         "label": "TestPerformance",
         "kind": 6,
         "importPath": "tests.unit.ui.test_performance",
@@ -6938,6 +8563,15 @@
         "description": "tests.unit.ui.test_responsive",
         "peekOfCode": "class TestResponsiveDesign:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        # Начинаем с большого размера окна\n        driver.set_window_size(1200, 800)\n        yield driver\n        driver.quit()\n    def test_desktop_layout(self, driver):\n        \"\"\"Тест макета для настольных компьютеров\"\"\"",
         "detail": "tests.unit.ui.test_responsive",
+        "documentation": {}
+    },
+    {
+        "label": "TestRouting",
+        "kind": 6,
+        "importPath": "tests.unit.ui.test_routing",
+        "description": "tests.unit.ui.test_routing",
+        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(\"http://localhost:5000/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
+        "detail": "tests.unit.ui.test_routing",
         "documentation": {}
     },
     {
@@ -6963,7 +8597,7 @@
         "kind": 6,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "class UiTestDriver:\n    \"\"\"Обертка над WebDriver с дополнительной функциональностью для тестов UI.\"\"\"\n    def __init__(self, driver: webdriver.Chrome, base_url: str):\n        self.driver = driver\n        self.base_url = base_url\n    def get_url(self, path: str) -> None:\n        \"\"\"Открывает относительный путь, используя базовый URL.\"\"\"\n        url = f\"{self.base_url}{path}\"\n        self.driver.get(url)\n    def __getattr__(self, name: str) -> Any:",
+        "peekOfCode": "class UiTestDriver:\n    \"\"\"Обертка над WebDriver с дополнительной функциональностью для тестов UI.\"\"\"\n    def __init__(self, driver: webdriver.Chrome, base_url: str):\n        self.driver = driver\n        self.base_url = base_url\n    def get_url(self, path: str) -> None:\n        \"\"\"Открывает относительный путь, используя базовый URL.\"\"\"\n        url = f\"{self.base_url}{path}\"\n        self.driver.get(url)\n    def get(self, url):",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -6990,7 +8624,7 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def ui_client():\n    \"\"\"Фикстура для тестирования UI с Selenium WebDriver\"\"\"\n    # Создаем опции Chrome\n    chrome_options = Options()\n    chrome_options.add_argument(\"--headless\")\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n    # Инициализируем драйвер Chrome\n    service = ChromeService()\n    driver = webdriver.Chrome(service=service, options=chrome_options)",
+        "peekOfCode": "def ui_client(base_url):\n    \"\"\"Фикстура для тестирования UI с Selenium WebDriver\"\"\"\n    # Создаем опции Chrome\n    chrome_options = Options()\n    # Добавляем аргументы для запуска Chrome в безголовом режиме при CI/CD\n    if os.environ.get(\"CI\") == \"true\":\n        chrome_options.add_argument(\"--headless\")\n        chrome_options.add_argument(\"--no-sandbox\")\n        chrome_options.add_argument(\"--disable-dev-shm-usage\")\n    # Дополнительные настройки для стабильности тестов",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -6999,7 +8633,52 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]",
+        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]\n@pytest.fixture(scope=\"function\")\ndef authenticated_ui_client(ui_client):\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "authenticated_ui_client",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def authenticated_ui_client(ui_client):\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина\n    ui_client.get(\"http://localhost:5000/login\")\n    try:\n        # Ожидаем загрузки формы логина\n        WebDriverWait(ui_client.driver, 10).until(",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mobile_ui_client",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mobile_ui_client(ui_client):\n    \"\"\"\n    Фикстура для мобильного вида UI-тестирования.\n    Устанавливает размер окна браузера, соответствующий мобильному устройству,\n    и возвращает его в исходное состояние после завершения теста.\n    \"\"\"\n    # Сохраняем исходный размер окна\n    original_size = ui_client.get_window_size()\n    # Устанавливаем размер окна как у iPhone X\n    ui_client.set_window_size(375, 812)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "take_screenshot_on_failure",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def take_screenshot_on_failure(ui_client, request):\n    \"\"\"\n    Фикстура для создания скриншотов при падении тестов.\n    Автоматически делает скриншот страницы, если тест не прошел,\n    и сохраняет его в директории screenshots.\n    \"\"\"\n    yield\n    # Делаем скриншот только в случае падения теста\n    if request.node.rep_setup.failed or request.node.rep_call.failed:\n        # Создаем директорию для скриншотов, если она не существует",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_runtest_makereport",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_runtest_makereport(item, call):\n    outcome = yield\n    rep = outcome.get_result()\n    setattr(item, f\"rep_{rep.when}\", rep)\n@pytest.fixture(scope=\"function\")\ndef mobile_driver():\n    \"\"\"Фикстура для тестирования на мобильном устройстве с эмуляцией\"\"\"\n    # Настройка мобильной эмуляции\n    mobile_emulation = {\"deviceName\": \"iPhone X\"}\n    chrome_options = webdriver.ChromeOptions()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mobile_driver",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mobile_driver():\n    \"\"\"Фикстура для тестирования на мобильном устройстве с эмуляцией\"\"\"\n    # Настройка мобильной эмуляции\n    mobile_emulation = {\"deviceName\": \"iPhone X\"}\n    chrome_options = webdriver.ChromeOptions()\n    chrome_options.add_experimental_option(\"mobileEmulation\", mobile_emulation)\n    # Для CI/CD добавляем необходимые аргументы\n    if os.environ.get(\"CI\") == \"true\":\n        chrome_options.add_argument(\"--headless\")\n        chrome_options.add_argument(\"--no-sandbox\")",
         "detail": "tests.conftest",
         "documentation": {}
     },

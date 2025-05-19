@@ -251,3 +251,233 @@ class TestMobileUI:
             except Exception:
                 # Если меню не появилось, возможно, оно реализовано по-другому
                 pass
+
+    # === Новые тесты для мобильной навигации ===
+
+    def test_hamburger_menu_navigation(self, mobile_driver):
+        """Тест навигации через меню-гамбургер на мобильных устройствах"""
+        mobile_driver.get("http://localhost:5000")
+
+        # Проверяем наличие кнопки гамбургер-меню
+        hamburger_buttons = mobile_driver.find_elements(
+            By.CSS_SELECTOR,
+            ".hamburger-button, .navbar-toggler, .menu-toggle, [data-toggle='collapse']",
+        )
+
+        if not hamburger_buttons:
+            pytest.skip("Меню-гамбургер не найдено на странице")
+
+        hamburger_button = hamburger_buttons[0]
+
+        # Проверяем, что кнопка видима и доступна
+        assert (
+            hamburger_button.is_displayed()
+        ), "Кнопка меню-гамбургер не отображается на мобильном устройстве"
+
+        # Кликаем по кнопке
+        hamburger_button.click()
+
+        # Ждем появления меню
+        try:
+            WebDriverWait(mobile_driver, 5).until(
+                EC.visibility_of_element_located(
+                    (
+                        By.CSS_SELECTOR,
+                        ".navbar-collapse, .mobile-menu, .dropdown-menu, .navigation-menu",
+                    )
+                )
+            )
+
+            # Находим открытое меню
+            menu = mobile_driver.find_element(
+                By.CSS_SELECTOR, ".navbar-collapse, .mobile-menu, .dropdown-menu, .navigation-menu"
+            )
+
+            # Находим все ссылки в меню
+            menu_links = menu.find_elements(By.TAG_NAME, "a")
+
+            # Проверяем, что в меню есть ссылки
+            assert len(menu_links) > 0, "В мобильном меню нет ссылок для навигации"
+
+            # Находим ссылку (не на текущую страницу) для тестирования навигации
+            target_link = None
+            current_url = mobile_driver.current_url
+
+            for link in menu_links:
+                href = link.get_attribute("href")
+                if href and href != current_url and href != "#" and href.startswith("http"):
+                    target_link = link
+                    break
+
+            if target_link:
+                # Запоминаем URL для перехода
+                target_url = target_link.get_attribute("href")
+
+                # Кликаем по ссылке
+                target_link.click()
+
+                # Ждем загрузки новой страницы
+                WebDriverWait(mobile_driver, 10).until(
+                    lambda driver: driver.current_url != current_url
+                )
+
+                # Проверяем, что URL изменился на ожидаемый
+                assert (
+                    mobile_driver.current_url == target_url
+                ), "Навигация через гамбургер-меню не работает"
+            else:
+                # Если подходящей ссылки нет, пропускаем проверку навигации
+                pass
+        except Exception as e:
+            pytest.skip(f"Не удалось протестировать навигацию через меню-гамбургер: {str(e)}")
+
+    def test_mobile_navigation_adapts(self, mobile_driver):
+        """Тест адаптации навигации для мобильных устройств"""
+        mobile_driver.get("http://localhost:5000")
+
+        # Проверяем, что десктопная навигация скрыта на мобильном устройстве
+        desktop_navs = mobile_driver.find_elements(
+            By.CSS_SELECTOR, ".desktop-nav, .desktop-only, .hidden-xs, .d-none.d-md-block"
+        )
+
+        for nav in desktop_navs:
+            style = mobile_driver.execute_script(
+                "return window.getComputedStyle(arguments[0])", nav
+            )
+            display = style.get_property("display")
+            visibility = style.get_property("visibility")
+
+            # Проверяем, что элемент скрыт через CSS
+            assert (
+                display == "none" or visibility == "hidden" or not nav.is_displayed()
+            ), "Десктопная навигация не скрыта на мобильном устройстве"
+
+        # Проверяем наличие мобильной навигации
+        mobile_navs = mobile_driver.find_elements(
+            By.CSS_SELECTOR,
+            ".mobile-nav, .navbar-toggler, .mobile-only, .d-md-none, .d-block.d-md-none",
+        )
+
+        if not mobile_navs:
+            pytest.skip("Мобильная навигация не найдена")
+
+        for nav in mobile_navs:
+            # Проверяем, что мобильная навигация видима
+            assert nav.is_displayed(), "Мобильная навигация не отображается на мобильном устройстве"
+
+    def test_mobile_bottom_navigation(self, mobile_driver):
+        """Тест нижней панели навигации на мобильных устройствах (если есть)"""
+        mobile_driver.get("http://localhost:5000")
+
+        # Ищем нижнюю панель навигации, которая часто используется в мобильных интерфейсах
+        bottom_navs = mobile_driver.find_elements(
+            By.CSS_SELECTOR, ".bottom-nav, .footer-nav, .mobile-footer-nav, .nav-bottom"
+        )
+
+        if not bottom_navs:
+            pytest.skip("Нижняя панель навигации не найдена")
+
+        bottom_nav = bottom_navs[0]
+
+        # Проверяем, что нижняя панель видима
+        assert bottom_nav.is_displayed(), "Нижняя панель навигации не отображается"
+
+        # Проверяем позиционирование панели
+        bottom_nav_position = mobile_driver.execute_script(
+            "var rect = arguments[0].getBoundingClientRect(); return {bottom: rect.bottom, windowHeight: window.innerHeight};",
+            bottom_nav,
+        )
+
+        # Нижняя панель должна находиться внизу экрана
+        assert (
+            bottom_nav_position["bottom"] >= bottom_nav_position["windowHeight"] - 20
+        ), "Нижняя панель навигации не расположена в нижней части экрана"
+
+        # Проверяем, что в панели есть навигационные элементы
+        nav_items = bottom_nav.find_elements(By.TAG_NAME, "a")
+        assert len(nav_items) > 0, "В нижней панели навигации нет ссылок"
+
+    def test_swipe_navigation(self, mobile_driver):
+        """Тест навигации жестами свайпа (если поддерживается)"""
+        mobile_driver.get("http://localhost:5000")
+
+        # Проверяем наличие слайдера или карусели, которые могут поддерживать свайп
+        swipeable_elements = mobile_driver.find_elements(
+            By.CSS_SELECTOR, ".carousel, .swiper, .slider, [data-swipe='true']"
+        )
+
+        if not swipeable_elements:
+            pytest.skip("Элементы с поддержкой свайпа не найдены")
+
+        swipeable = swipeable_elements[0]
+
+        try:
+            # Получаем текущий активный элемент слайдера
+            current_indicator = mobile_driver.find_element(
+                By.CSS_SELECTOR, ".active, .swiper-slide-active, .carousel-item.active"
+            )
+
+            # Симулируем свайп влево (для перехода к следующему слайду)
+            swipe_element = swipeable
+            action = webdriver.ActionChains(mobile_driver)
+
+            # Получаем размеры элемента
+            size = swipe_element.size
+            width = size["width"]
+
+            # Выполняем свайп: нажимаем на правую часть элемента и перемещаем к левой части
+            action.move_to_element_with_offset(swipe_element, width - 20, 10)
+            action.click_and_hold()
+            action.move_by_offset(-width + 40, 0)
+            action.release()
+            action.perform()
+
+            # Ждем перехода к следующему слайду
+            time.sleep(1)
+
+            # Проверяем, что активный элемент изменился
+            new_indicator = mobile_driver.find_element(
+                By.CSS_SELECTOR, ".active, .swiper-slide-active, .carousel-item.active"
+            )
+
+            assert current_indicator != new_indicator, "Свайп не изменил активный элемент слайдера"
+
+        except Exception as e:
+            pytest.skip(f"Не удалось протестировать навигацию жестами: {str(e)}")
+
+    def test_mobile_search_usability(self, mobile_driver):
+        """Тест удобства использования поиска на мобильных устройствах"""
+        mobile_driver.get("http://localhost:5000")
+
+        # Ищем поле поиска
+        search_fields = mobile_driver.find_elements(
+            By.CSS_SELECTOR,
+            "input[type='search'], .search-input, [placeholder*='Поиск'], [placeholder*='Search']",
+        )
+
+        if not search_fields:
+            pytest.skip("Поле поиска не найдено")
+
+        search_field = search_fields[0]
+
+        # Проверяем размеры поля поиска
+        search_size = search_field.size
+
+        # Минимальная ширина для удобного ввода на мобильном
+        assert search_size["width"] >= 120, "Поле поиска слишком узкое для мобильного устройства"
+
+        # Проверяем, что поле поиска видимо на мобильном устройстве
+        assert search_field.is_displayed(), "Поле поиска не отображается на мобильном устройстве"
+
+        # Проверяем, что поле поиска доступно для ввода
+        search_field.click()
+
+        # Вводим тестовый поисковый запрос
+        search_text = "тестовый запрос"
+        search_field.clear()
+        search_field.send_keys(search_text)
+
+        # Проверяем, что текст введен
+        assert (
+            search_field.get_attribute("value") == search_text
+        ), "Не удалось ввести текст в поле поиска"

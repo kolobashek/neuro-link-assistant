@@ -35,6 +35,11 @@ colorlog = ">=6.6.0"
 webdriver-manager = ">=3.8.5"
 pyttsx3 = "^2.98"
 pytesseract = "^0.3.13"
+# Добавляем зависимости для работы с PostgreSQL
+sqlalchemy = "^2.0.0"
+psycopg2-binary = "^2.9.5"
+alembic = "^1.10.0"
+pydantic = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.0.0"
@@ -60,6 +65,13 @@ transformers = ">=4.28.1"
 [tool.poetry.scripts]
 neuro-assistant = "app:run_app"
 test = "pytest:main"
+# Добавляем скрипты для работы с Docker
+db-up = "scripts.docker:start_db"
+db-down = "scripts.docker:stop_db"
+db-restart = "scripts.docker:restart_db"
+db-logs = "scripts.docker:show_db_logs"
+db-migrate = "scripts.db:run_migrations"
+db-seed = "scripts.db:seed_database"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

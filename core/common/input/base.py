@@ -1,100 +1,248 @@
-﻿# Абстрактные классы ввода данных
-class AbstractKeyboard:
-    """Абстрактный класс для эмуляции клавиатуры"""
+﻿"""
+Абстрактные базовые классы для системы ввода.
+Предоставляет интерфейсы для клавиатуры и мыши.
+"""
 
-    def press_key(self, key):
-        """Нажать клавишу"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-
-    def release_key(self, key):
-        """Отпустить клавишу"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-
-    def press_and_release(self, key):
-        """Нажать и отпустить клавишу"""
-        self.press_key(key)
-        self.release_key(key)
-
-    def type_text(self, text):
-        """Напечатать текст"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
-
-    def hotkey(self, *keys):
-        """Нажать комбинацию клавиш"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+from abc import ABC, abstractmethod
+from typing import List, Optional, Tuple
 
 
-class AbstractMouse:
-    """Абстрактный класс для эмуляции мыши"""
+class AbstractKeyboard(ABC):
+    """Абстрактный класс для клавиатуры"""
 
-    def move_to(self, x, y):
-        """Переместить курсор в указанные координаты"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+    @abstractmethod
+    def press_key(self, key: str) -> bool:
+        """
+        Нажимает клавишу и сразу отпускает её.
 
-    def click(self, button="left"):
-        """Кликнуть указанной кнопкой мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+        Args:
+            key (str): Клавиша для нажатия.
 
-    def double_click(self, button="left"):
-        """Двойной клик мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
 
-    def drag_to(self, x, y, button="left"):
-        """Перетащить с зажатой кнопкой мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+    @abstractmethod
+    def press_keys(self, keys: List[str]) -> bool:
+        """
+        Нажимает комбинацию клавиш.
 
-    def scroll(self, amount):
-        """Прокрутить колесо мыши"""
-        raise NotImplementedError("Метод должен быть реализован в дочернем классе")
+        Args:
+            keys (List[str]): Список клавиш для нажатия.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def key_down(self, key: str) -> bool:
+        """
+        Удерживает клавишу нажатой.
+
+        Args:
+            key (str): Клавиша для удержания.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def key_up(self, key: str) -> bool:
+        """
+        Отпускает удерживаемую клавишу.
+
+        Args:
+            key (str): Клавиша для отпускания.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def type_text(self, text: str, interval: Optional[float] = None) -> bool:
+        """
+        Вводит текст с указанным интервалом между нажатиями.
+
+        Args:
+            text (str): Текст для ввода.
+            interval (Optional[float]): Интервал между нажатиями в секундах.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def paste_text(self, text: str) -> bool:
+        """
+        Вставляет текст через буфер обмена.
+
+        Args:
+            text (str): Текст для вставки.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+
+class AbstractMouse(ABC):
+    """Абстрактный класс для мыши"""
+
+    @abstractmethod
+    def move_to(self, x: int, y: int, duration: Optional[float] = None) -> bool:
+        """
+        Перемещает курсор в указанную позицию.
+
+        Args:
+            x (int): X-координата.
+            y (int): Y-координата.
+            duration (Optional[float]): Длительность перемещения в секундах.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def move_by(self, dx: int, dy: int, duration: Optional[float] = None) -> bool:
+        """
+        Перемещает курсор на указанное расстояние.
+
+        Args:
+            dx (int): Смещение по X.
+            dy (int): Смещение по Y.
+            duration (Optional[float]): Длительность перемещения в секундах.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def click(self, button: str = "left", count: int = 1) -> bool:
+        """
+        Выполняет клик мышью.
+
+        Args:
+            button (str): Кнопка ("left", "right", "middle").
+            count (int): Количество кликов.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def double_click(self, button: str = "left") -> bool:
+        """
+        Выполняет двойной клик мышью.
+
+        Args:
+            button (str): Кнопка ("left", "right", "middle").
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def right_click(self) -> bool:
+        """
+        Выполняет правый клик мышью.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def mouse_down(self, button: str = "left") -> bool:
+        """
+        Удерживает кнопку мыши нажатой.
+
+        Args:
+            button (str): Кнопка ("left", "right", "middle").
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+
+        pass
+
+    @abstractmethod
+    def mouse_up(self, button: str = "left") -> bool:
+        """
+        Отпускает удерживаемую кнопку мыши.
+
+        Args:
+            button (str): Кнопка ("left", "right", "middle").
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def drag_to(
+        self, x: int, y: int, button: str = "left", duration: Optional[float] = None
+    ) -> bool:
+        """
+        Перетаскивает курсор в указанную позицию с нажатой кнопкой мыши.
+
+        Args:
+            x (int): X-координата.
+            y (int): Y-координата.
+            button (str): Кнопка ("left", "right", "middle").
+            duration (Optional[float]): Длительность перетаскивания в секундах.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def scroll(self, clicks: int, direction: str = "down") -> bool:
+        """
+        Выполняет прокрутку мыши.
+
+        Args:
+            clicks (int): Количество щелчков колеса мыши.
+            direction (str): Направление ("up", "down", "left", "right").
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+
+        pass
+
+    @abstractmethod
+    def get_position(self) -> Tuple[int, int]:
+        """
+        Получает текущую позицию курсора.
+
+        Returns:
+            Tuple[int, int]: Кортеж (x, y) с координатами курсора.
+        """
+        pass
 
 
 class InputController:
-    """Контроллер ввода, объединяющий клавиатуру и мышь"""
+    """
+    Комбинированный контроллер ввода, объединяющий клавиатуру и мышь.
+    """
 
-    def __init__(self, keyboard, mouse):
+    def __init__(self, keyboard: AbstractKeyboard, mouse: AbstractMouse):
         """
-        Инициализация контроллера ввода.
+        Инициализирует контроллер ввода.
 
         Args:
-            keyboard: Контроллер клавиатуры
-            mouse: Контроллер мыши
+            keyboard (AbstractKeyboard): Контроллер клавиатуры.
+            mouse (AbstractMouse): Контроллер мыши.
         """
         self.keyboard = keyboard
         self.mouse = mouse
-
-    def perform_action(self, action_type, **params):
-        """
-        Выполнить действие ввода
-
-        Args:
-            action_type (str): Тип действия ('key_press', 'mouse_click', и т.д.)
-            **params: Параметры действия
-
-        Returns:
-            bool: True, если действие выполнено успешно
-        """
-        if action_type == "key_press":
-            return self.keyboard.press_key(params.get("key"))
-        elif action_type == "key_release":
-            return self.keyboard.release_key(params.get("key"))
-        elif action_type == "type_text":
-            return self.keyboard.type_text(params.get("text"))
-        elif action_type == "hotkey":
-            return self.keyboard.hotkey(*params.get("keys", []))
-        elif action_type == "mouse_move":
-            return self.mouse.move_to(params.get("x"), params.get("y"))
-        elif action_type == "mouse_click":
-            return self.mouse.click(params.get("button", "left"))
-        elif action_type == "mouse_double_click":
-            return self.mouse.double_click(params.get("button", "left"))
-        elif action_type == "mouse_drag":
-            return self.mouse.drag_to(
-                params.get("x"), params.get("y"), params.get("button", "left")
-            )
-        elif action_type == "mouse_scroll":
-            return self.mouse.scroll(params.get("amount"))
-        else:
-            from core.common.error_handler import handle_error
-
-            handle_error(f"Неизвестный тип действия: {action_type}", module="input")
-            return False
