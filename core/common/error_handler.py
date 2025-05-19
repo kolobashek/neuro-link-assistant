@@ -277,7 +277,8 @@ _error_handler = ErrorHandler()
 
 
 # Глобальные функции для обратной совместимости и удобства
-def handle_error(exception, context=None, callback=None, log_level="error"):
+
+def handle_error(exception, context=None, callback=None, log_level="error", module=None):
     """
     Глобальная функция для обработки ошибок с использованием глобального экземпляра ErrorHandler.
 
@@ -286,24 +287,40 @@ def handle_error(exception, context=None, callback=None, log_level="error"):
         context (str, optional): Контекст, в котором произошла ошибка
         callback (callable, optional): Функция обратного вызова для обработки ошибки
         log_level (str, optional): Уровень логирования ('error', 'warning', 'critical')
+        module (str, optional): Имя модуля, в котором произошла ошибка, для группировки логов
 
     Returns:
         bool: True, если ошибка обработана, False в противном случае
     """
+    if module:
+        # Если указан модуль, добавляем его в контекст
+        if context:
+            context = f"[{module}] {context}"
+        else:
+            context = f"[{module}] {str(exception)}"
+
     return _error_handler.handle_error(exception, context, callback, log_level)
 
 
-def handle_warning(message, context=None):
+def handle_warning(message, context=None, module=None):
     """
     Глобальная функция для обработки предупреждений с использованием глобального экземпляра ErrorHandler.
 
     Args:
         message (str): Сообщение предупреждения
         context (str, optional): Контекст, в котором произошло предупреждение
+        module (str, optional): Имя модуля, в котором произошло предупреждение
 
     Returns:
         bool: True, если предупреждение обработано
     """
+    if module:
+        # Если указан модуль, добавляем его в контекст
+        if context:
+            context = f"[{module}] {context}"
+        else:
+            context = f"[{module}] {message}"
+
     return _error_handler.handle_warning(message, context)
 
 

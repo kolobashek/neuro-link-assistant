@@ -210,13 +210,13 @@ x Дублирование ввода:
 core/common/input/base.py
 core/input/keyboard_controller.py и core/input/mouse_controller.py
 core/platform/windows/input/keyboard.py и core/platform/windows/input/mouse.py
-Дублирование обработки ошибок:
+x Дублирование обработки ошибок:
 
 core/error_handler.py
 core/common/error_handler.py
 core/llm/error_handler.py
 core/llm/error_handling.py
-Дублирование оконных менеджеров:
+x Дублирование оконных менеджеров:
 
 core/windows/window_manager.py
 core/platform/windows/window_manager.py
