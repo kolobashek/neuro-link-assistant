@@ -624,6 +624,14 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "KeyboardController",
         "importPath": "core.input.keyboard_controller",
         "description": "core.input.keyboard_controller",
@@ -1119,11 +1127,35 @@
         "documentation": {}
     },
     {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
         "label": "Options",
         "importPath": "selenium.webdriver.chrome.options",
         "description": "selenium.webdriver.chrome.options",
         "isExtraImport": true,
         "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Service",
+        "importPath": "selenium.webdriver.chrome.service",
+        "description": "selenium.webdriver.chrome.service",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.service",
         "documentation": {}
     },
     {
@@ -1476,22 +1508,6 @@
         "description": "selenium.webdriver.support",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support",
-        "documentation": {}
-    },
-    {
-        "label": "expected_conditions",
-        "importPath": "selenium.webdriver.support",
-        "description": "selenium.webdriver.support",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support",
-        "documentation": {}
-    },
-    {
-        "label": "WebDriverWait",
-        "importPath": "selenium.webdriver.support.ui",
-        "description": "selenium.webdriver.support.ui",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.ui",
         "documentation": {}
     },
     {
@@ -1915,6 +1931,14 @@
         "importPath": "pyperclip",
         "description": "pyperclip",
         "detail": "pyperclip",
+        "documentation": {}
+    },
+    {
+        "label": "Keys",
+        "importPath": "selenium.webdriver.common.keys",
+        "description": "selenium.webdriver.common.keys",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.keys",
         "documentation": {}
     },
     {
@@ -6251,11 +6275,56 @@
         "documentation": {}
     },
     {
+        "label": "LLMApiClient",
+        "kind": 6,
+        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
+        "description": "tests.unit.core.llm_integration.test_llm_integration",
+        "peekOfCode": "class LLMApiClient:\n    def __init__(self, api_key=None, base_url=None):\n        self.api_key = api_key or \"test_api_key\"\n        self.base_url = base_url or \"https://api.example.com/v1\"\n        self.session = requests.Session()\n    def connect(self):\n        return True\n    def send_request(self, prompt, options=None):\n        # Имитация ответа от API\n        return {",
+        "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "PromptProcessor",
+        "kind": 6,
+        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
+        "description": "tests.unit.core.llm_integration.test_llm_integration",
+        "peekOfCode": "class PromptProcessor:\n    def __init__(self):\n        self.templates = {}\n    def add_template(self, name, template):\n        self.templates[name] = template\n        return True\n    def process_prompt(self, template_name, variables=None):\n        if template_name not in self.templates:\n            raise ValueError(f\"Template {template_name} not found\")\n        template = self.templates[template_name]",
+        "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "ResponseParser",
+        "kind": 6,
+        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
+        "description": "tests.unit.core.llm_integration.test_llm_integration",
+        "peekOfCode": "class ResponseParser:\n    def parse_response(self, response):\n        if \"choices\" in response and len(response[\"choices\"]) > 0:\n            return response[\"choices\"][0][\"text\"]\n        return None\n    def extract_json(self, text):\n        try:\n            # Ищем JSON в тексте между фигурными скобками\n            start = text.find(\"{\")\n            end = text.rfind(\"}\") + 1",
+        "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "ActionPlanner",
+        "kind": 6,
+        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
+        "description": "tests.unit.core.llm_integration.test_llm_integration",
+        "peekOfCode": "class ActionPlanner:\n    def __init__(self, llm_client, prompt_processor, response_parser):\n        self.llm_client = llm_client\n        self.prompt_processor = prompt_processor\n        self.response_parser = response_parser\n    def plan_actions(self, user_request):\n        # Создаем промпт для планирования действий\n        prompt = self.prompt_processor.process_prompt(\n            \"action_planning\", {\"user_request\": user_request}\n        )",
+        "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "LLMErrorHandler",
+        "kind": 6,
+        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
+        "description": "tests.unit.core.llm_integration.test_llm_integration",
+        "peekOfCode": "class LLMErrorHandler:\n    def handle_api_error(self, error):\n        error_type = type(error).__name__\n        error_message = str(error)\n        if isinstance(error, requests.exceptions.ConnectionError):\n            return {\"error\": \"connection_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.Timeout):\n            return {\"error\": \"timeout_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.RequestException):\n            return {\"error\": \"request_error\", \"message\": error_message}",
+        "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
         "label": "TestLLMApiConnection",
         "kind": 6,
         "importPath": "tests.unit.core.llm_integration.test_llm_integration",
         "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestLLMApiConnection:\n    \"\"\"Тесты подключения к LLM API\"\"\"\n    def test_successful_connection(self):\n        \"\"\"Тест успешного подключения к API\"\"\"\n        # Используем мок вместо реального объекта для ускорения теста\n        client = MagicMock()\n        client.connect.return_value = True\n        result = client.connect()\n        assert result is True\n    @patch('requests.Session.get')",
+        "peekOfCode": "class TestLLMApiConnection:\n    \"\"\"Тесты подключения к LLM API\"\"\"\n    def test_successful_connection(self):\n        \"\"\"Тест успешного подключения к API\"\"\"\n        # Используем мок вместо реального объекта для ускорения теста\n        client = MagicMock()\n        client.connect.return_value = True\n        result = client.connect()\n        assert result is True\n    @patch(\"requests.Session.get\")",
         "detail": "tests.unit.core.llm_integration.test_llm_integration",
         "documentation": {}
     },
@@ -6273,7 +6342,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.llm_integration.test_llm_integration",
         "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestResponseParsing:\n    \"\"\"Тесты парсинга ответов модели\"\"\"\n    def test_parse_simple_response(self):\n        \"\"\"Тест парсинга простого ответа\"\"\"\n        parser = ResponseParser()\n        response = {\n            \"id\": \"test-id\",\n            \"choices\": [\n                {\n                    \"text\": \"This is a test response\",",
+        "peekOfCode": "class TestResponseParsing:\n    \"\"\"Тесты парсинга ответов модели\"\"\"\n    def test_parse_simple_response(self):\n        \"\"\"Тест парсинга простого ответа\"\"\"\n        parser = ResponseParser()\n        response = {\n            \"id\": \"test-id\",\n            \"choices\": [{\"text\": \"This is a test response\", \"finish_reason\": \"stop\"}],\n        }\n        result = parser.parse_response(response)",
         "detail": "tests.unit.core.llm_integration.test_llm_integration",
         "documentation": {}
     },
@@ -6759,7 +6828,7 @@
         "kind": 6,
         "importPath": "tests.unit.ui.test_accessibility",
         "description": "tests.unit.ui.test_accessibility",
-        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, driver):\n        \"\"\"Тест навигации с помощью клавиатуры\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, ui_client):\n        \"\"\"Тест навигации по интерфейсу с помощью клавиатуры\"\"\"\n        # Открываем главную страницу с полным URL",
         "detail": "tests.unit.ui.test_accessibility",
         "documentation": {}
     },
@@ -6890,6 +6959,15 @@
         "documentation": {}
     },
     {
+        "label": "UiTestDriver",
+        "kind": 6,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "class UiTestDriver:\n    \"\"\"Обертка над WebDriver с дополнительной функциональностью для тестов UI.\"\"\"\n    def __init__(self, driver: webdriver.Chrome, base_url: str):\n        self.driver = driver\n        self.base_url = base_url\n    def get_url(self, path: str) -> None:\n        \"\"\"Открывает относительный путь, используя базовый URL.\"\"\"\n        url = f\"{self.base_url}{path}\"\n        self.driver.get(url)\n    def __getattr__(self, name: str) -> Any:",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
         "label": "mock_component",
         "kind": 2,
         "importPath": "tests.conftest",
@@ -6904,6 +6982,33 @@
         "importPath": "tests.conftest",
         "description": "tests.conftest",
         "peekOfCode": "def empty_registry():\n    \"\"\"Фикстура для создания пустого реестра компонентов\"\"\"\n    try:\n        from core.component_registry import ComponentRegistry\n        return ComponentRegistry()\n    except ImportError:\n        # Заглушка, если модуль еще не реализован\n        class MockComponentRegistry:\n            def __init__(self):\n                self.components = {}",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "ui_client",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def ui_client():\n    \"\"\"Фикстура для тестирования UI с Selenium WebDriver\"\"\"\n    # Создаем опции Chrome\n    chrome_options = Options()\n    chrome_options.add_argument(\"--headless\")\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n    # Инициализируем драйвер Chrome\n    service = ChromeService()\n    driver = webdriver.Chrome(service=service, options=chrome_options)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "base_url",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "TEST_CONFIG",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "TEST_CONFIG = {\"base_url\": \"http://localhost:5000\"}\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture\ndef empty_registry():\n    \"\"\"Фикстура для создания пустого реестра компонентов\"\"\"\n    try:\n        from core.component_registry import ComponentRegistry",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -7696,6 +7801,15 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    # Инициализация системы логирования\n    from utils.logging_utils import init_logging_system\n    init_logging_system()\n    # Регистрация маршрутов\n    app.register_blueprint(main_bp)\n    app.register_blueprint(api_bp, url_prefix=\"/api\")\n    # Настройка логирования",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "run_app",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def run_app():\n    \"\"\"Запускает приложение Flask\"\"\"\n    init_app()\n    app.run(debug=True)\nif __name__ == \"__main__\":\n    run_app()",
         "detail": "app",
         "documentation": {}
     },

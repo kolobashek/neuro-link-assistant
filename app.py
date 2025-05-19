@@ -48,6 +48,11 @@ def init_app():
     system_logger.info("Приложение запущено")
 
 
-if __name__ == "__main__":
+def run_app():
+    """Запускает приложение Flask"""
     init_app()
     app.run(debug=True)
+
+
+if __name__ == "__main__":
+    run_app()

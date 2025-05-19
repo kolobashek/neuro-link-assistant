@@ -58,7 +58,7 @@ torch = ">=2.0.0"
 transformers = ">=4.28.1"
 
 [tool.poetry.scripts]
-neuro-assistant = "app:init_app"
+neuro-assistant = "app:run_app"
 test = "pytest:main"
 
 [build-system]
