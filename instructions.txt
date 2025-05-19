@@ -220,7 +220,7 @@ x Дублирование оконных менеджеров:
 
 core/windows/window_manager.py
 core/platform/windows/window_manager.py
-Дублирование менеджеров процессов:
+x Дублирование менеджеров процессов:
 
 core/windows/process_manager.py
 core/platform/windows/process_manager.py
