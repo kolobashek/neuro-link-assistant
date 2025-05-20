@@ -4,7 +4,8 @@ import time
 
 import pytest
 
-from core.platform.windows.window_manager import WindowsWindowManager as WindowManager
+from core.common.filesystem import get_file_system
+from core.platform.windows.window.win32_window_manager import Win32WindowManager as WindowManager
 
 
 class TestWindowManagement:
@@ -105,7 +106,6 @@ class TestFileSystem:
 
     def test_create_file(self):
         """Тест создания файла"""
-        from core.filesystem import get_file_system
 
         file_system = get_file_system()
 
@@ -116,7 +116,6 @@ class TestFileSystem:
 
     def test_read_file(self):
         """Тест чтения файла"""
-        from core.filesystem import get_file_system
 
         file_system = get_file_system()
 
@@ -129,7 +128,6 @@ class TestFileSystem:
 
     def test_write_file(self):
         """Тест записи в файл"""
-        from core.filesystem import get_file_system
 
         file_system = get_file_system()
 
@@ -147,7 +145,6 @@ class TestFileSystem:
 
     def test_delete_file(self):
         """Тест удаления файла"""
-        from core.filesystem import get_file_system
 
         file_system = get_file_system()
 
@@ -176,7 +173,7 @@ class TestProcessManagement:
 
     def test_start_process(self):
         """Тест запуска процесса"""
-        from core.process import get_process_manager
+        from core.common.process import get_process_manager
 
         process_manager = get_process_manager()
 
@@ -191,7 +188,7 @@ class TestProcessManagement:
 
     def test_terminate_process(self):
         """Тест завершения процесса"""
-        from core.process import get_process_manager
+        from core.common.process import get_process_manager
 
         process_manager = get_process_manager()
 
@@ -215,7 +212,7 @@ class TestProcessManagement:
 
     def test_is_process_running(self):
         """Тест проверки запущенного процесса"""
-        from core.process import get_process_manager
+        from core.common.process import get_process_manager
 
         process_manager = get_process_manager()
 
@@ -245,9 +242,9 @@ class TestSystemInformation:
 
     def test_get_os_info(self):
         """Тест получения информации об ОС"""
-        from core.windows.system_info import SystemInfo
+        from core.platform.windows.system.win32_system_info import Win32SystemInfo
 
-        system_info = SystemInfo()
+        system_info = Win32SystemInfo()
 
         os_info = system_info.get_os_info()
 
@@ -257,9 +254,9 @@ class TestSystemInformation:
 
     def test_get_cpu_info(self):
         """Тест получения информации о процессоре"""
-        from core.windows.system_info import SystemInfo
+        from core.platform.windows.system.win32_system_info import Win32SystemInfo
 
-        system_info = SystemInfo()
+        system_info = Win32SystemInfo()
 
         cpu_info = system_info.get_cpu_info()
 
@@ -271,9 +268,9 @@ class TestSystemInformation:
 
     def test_get_memory_info(self):
         """Тест получения информации о памяти"""
-        from core.windows.system_info import SystemInfo
+        from core.platform.windows.system.win32_system_info import Win32SystemInfo
 
-        system_info = SystemInfo()
+        system_info = Win32SystemInfo()
 
         memory_info = system_info.get_memory_info()
 
@@ -284,9 +281,9 @@ class TestSystemInformation:
 
     def test_get_disk_info(self):
         """Тест получения информации о дисках"""
-        from core.windows.system_info import SystemInfo
+        from core.platform.windows.system.win32_system_info import Win32SystemInfo
 
-        system_info = SystemInfo()
+        system_info = Win32SystemInfo()
 
         disk_info = system_info.get_disk_info()
 
@@ -300,9 +297,9 @@ class TestRegistryManagement:
 
     def setup_method(self):
         """Подготовка перед каждым тестом"""
-        from core.windows.registry_manager import RegistryManager
+        from core.platform.windows.registry.win32_registry_manager import Win32RegistryManager
 
-        self.registry_manager = RegistryManager()
+        self.registry_manager = Win32RegistryManager()
 
         # Используем временный ключ для тестов
         self.root_key = self.registry_manager.HKEY_CURRENT_USER
@@ -317,7 +314,7 @@ class TestRegistryManagement:
         # Удаляем тестовый ключ
         try:
             self.registry_manager.delete_key(self.root_key, self.test_key_path)
-        except subprocess.TimeoutExpired:
+        except Exception:
             pass
 
     def test_read_value(self):
@@ -328,7 +325,6 @@ class TestRegistryManagement:
         )
 
         # Читаем значение
-
         value = self.registry_manager.read_value(
             self.root_key, self.test_key_path, self.test_value_name
         )
@@ -353,7 +349,7 @@ class TestRegistryManagement:
 
     def test_delete_value(self):
         """Тест удаления значения из реестра"""
-        # Записываем значение
+        # Сначала записываем значение
         self.registry_manager.write_value(
             self.root_key, self.test_key_path, self.test_value_name, "Test Value"
         )
@@ -372,38 +368,75 @@ class TestRegistryManagement:
 
         assert value is None
 
+    def test_list_values(self):
+        """Тест получения списка значений из реестра"""
+        # Записываем несколько значений
+        self.registry_manager.write_value(
+            self.root_key, self.test_key_path, "Value1", "Test Value 1"
+        )
+        self.registry_manager.write_value(
+            self.root_key, self.test_key_path, "Value2", "Test Value 2"
+        )
+        import winreg
+
+        self.registry_manager.write_value(
+            self.root_key, self.test_key_path, "Value3", 123, winreg.REG_DWORD
+        )
+
+        # Получаем список значений
+        values = self.registry_manager.list_values(self.root_key, self.test_key_path)
+
+        # Проверяем результат
+        assert len(values) >= 3  # Могут быть другие значения
+        # Проверяем наличие наших значений в списке
+        value_names = [value["name"] for value in values]
+        assert "Value1" in value_names
+        assert "Value2" in value_names
+        assert "Value3" in value_names
+
     def test_create_key(self):
         """Тест создания ключа реестра"""
         # Создаем новый ключ
-        new_key_path = f"{self.test_key_path}\\SubKey"
-        result = self.registry_manager.create_key(self.root_key, new_key_path)
+        subkey_path = f"{self.test_key_path}\\SubKey"
+        result = self.registry_manager.create_key(self.root_key, subkey_path)
 
         assert result is True
+        # Проверяем, что ключ создан, получив список подключей
+        keys = self.registry_manager.list_keys(self.root_key, self.test_key_path)
 
-        # Проверяем, что ключ создан, записав в него значение
-        write_result = self.registry_manager.write_value(
-            self.root_key, new_key_path, self.test_value_name, "Test Value"
-        )
-
-        assert write_result is True
+        assert "SubKey" in keys
 
     def test_delete_key(self):
         """Тест удаления ключа реестра"""
         # Создаем новый ключ
-        new_key_path = f"{self.test_key_path}\\SubKey"
-        self.registry_manager.create_key(self.root_key, new_key_path)
+        subkey_path = f"{self.test_key_path}\\SubKey"
+        self.registry_manager.create_key(self.root_key, subkey_path)
 
-        # Удаляем ключ
-        self.registry_manager.delete_key(self.root_key, new_key_path)
+        # Удаляем подключ
+        result = self.registry_manager.delete_key(self.root_key, subkey_path)
 
-        # Проверяем результат удаления
-        # Примечание: в некоторых случаях удаление может не сработать из-за прав доступа
-        # Поэтому мы не проверяем результат удаления, а только проверяем, что ключ не существует
+        assert result is True
 
-        # Проверяем, что ключ удален, проверив список подключей
-        subkeys = self.registry_manager.list_keys(self.root_key, self.test_key_path)
-        assert "SubKey" not in subkeys
+        # Проверяем, что ключ удален
+        keys = self.registry_manager.list_keys(self.root_key, self.test_key_path)
+        assert "SubKey" not in keys
+
+    def test_list_keys(self):
+        """Тест получения списка подключей ключа реестра"""
+        # Создаем несколько подключей
+        self.registry_manager.create_key(self.root_key, f"{self.test_key_path}\\Subkey1")
+        self.registry_manager.create_key(self.root_key, f"{self.test_key_path}\\Subkey2")
+        self.registry_manager.create_key(self.root_key, f"{self.test_key_path}\\Subkey3")
+
+        # Получаем список подключей
+        keys = self.registry_manager.list_keys(self.root_key, self.test_key_path)
+
+        assert len(keys) >= 3  # Минимум 3 созданных нами ключа
+        assert "Subkey1" in keys
+        assert "Subkey2" in keys
+        assert "Subkey3" in keys
 
 
 if __name__ == "__main__":
+    # При запуске файла напрямую запускаем тесты с verbose
     pytest.main(["-v", __file__])

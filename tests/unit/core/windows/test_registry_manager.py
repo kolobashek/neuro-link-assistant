@@ -2,7 +2,7 @@ import unittest
 import winreg
 from unittest.mock import Mock, patch
 
-from core.windows.registry_manager import RegistryManager
+from core.platform.windows.registry.win32_registry_manager import Win32RegistryManager
 
 
 class TestRegistryManager(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestRegistryManager(unittest.TestCase):
 
     def setUp(self):
         """Настройка перед каждым тестом"""
-        self.registry_manager = RegistryManager()
+        self.registry_manager = Win32RegistryManager()
 
     @patch("winreg.OpenKey")
     @patch("winreg.QueryValueEx")

@@ -8,11 +8,11 @@ class TestSystemInfo:
 
     @pytest.fixture
     def system_info(self):
-        """Создает экземпляр SystemInfo с мок-зависимостями"""
+        """Создает экземпляр Win32SystemInfo с мок-зависимостями"""
         with patch("wmi.WMI"):
-            from core.windows.system_info import SystemInfo
+            from core.platform.windows.system.win32_system_info import Win32SystemInfo
 
-            return SystemInfo()
+            return Win32SystemInfo()
 
     @patch("platform.system", return_value="Windows")
     @patch("platform.version", return_value="10.0.19042")
