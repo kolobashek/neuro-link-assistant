@@ -1,105 +1,120 @@
 """
-Фабрика для создания и регистрации контроллеров ввода.
+Фабрика контроллеров ввода.
 """
 
 import platform
-from typing import Any, Dict
+from typing import Any, Optional
 
 from core.common.input.base import AbstractKeyboard, AbstractMouse, InputController
 from core.common.input.registry import InputRegistry
 
-# Глобальный экземпляр реестра
+# Получаем глобальный экземпляр реестра
 registry = InputRegistry()
 
-# Глобальные экземпляры контроллеров для кэширования
-_keyboard_instances: Dict[str, AbstractKeyboard] = {}
-_mouse_instances: Dict[str, AbstractMouse] = {}
+
+# Кэш для хранения экземпляров контроллеров
+_keyboard_instances = {}
+_mouse_instances = {}
 
 
-def get_keyboard(human_like: bool = True, new_instance: bool = False) -> AbstractKeyboard:
+def get_keyboard(
+    human_like=True, platform_name=None, new_instance=False
+) -> Optional[AbstractKeyboard]:
     """
-    Возвращает контроллер клавиатуры для текущей платформы.
+    Возвращает экземпляр контроллера клавиатуры для текущей или указанной платформы.
 
     Args:
-        human_like: Флаг, указывающий, должен ли контроллер имитировать человеческое поведение.
-        new_instance: Флаг, указывающий, нужно ли создать новый экземпляр
-                      контроллера вместо использования кэшированного.
+        human_like (bool, optional): Признак человекоподобного поведения.
+        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).
+        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).
 
     Returns:
-        Экземпляр контроллера клавиатуры.
+        AbstractKeyboard: Экземпляр контроллера клавиатуры или None, если не найден.
     """
-    key = f"keyboard_{human_like}"
+    # Определяем имя платформы, если не указано
+    if platform_name is None:
+        platform_name = platform.system().lower()
 
-    if key in _keyboard_instances and not new_instance:
-        return _keyboard_instances[key]
+    # Используем кэш, если не требуется новый экземпляр
+    cache_key = f"{platform_name}_{human_like}"
+    if not new_instance and cache_key in _keyboard_instances:
+        return _keyboard_instances[cache_key]
 
-    system = platform.system().lower()
+    # Получаем класс контроллера клавиатуры для указанной платформы
+    keyboard_class = registry.get_keyboard(platform_name)
+    if not keyboard_class:
+        return None
 
-    if system == "windows":
+    # Создаем экземпляр контроллера
+    keyboard = keyboard_class(human_like=human_like)
 
-        # Важно: импортируем непосредственно из модуля для тестов
-        from core.platform.windows.input.keyboard import WindowsKeyboard
-
-        keyboard = WindowsKeyboard(human_like=human_like)
-    else:
-        raise NotImplementedError(f"Система {system} не поддерживается")
-
+    # Сохраняем в кэш, если не требуется новый экземпляр
     if not new_instance:
-        _keyboard_instances[key] = keyboard
+        _keyboard_instances[cache_key] = keyboard
 
     return keyboard
 
 
-def get_mouse(human_like: bool = True, new_instance: bool = False) -> AbstractMouse:
+def get_mouse(human_like=True, platform_name=None, new_instance=False) -> Optional[AbstractMouse]:
     """
-    Возвращает контроллер мыши для текущей платформы.
+    Возвращает экземпляр контроллера мыши для текущей или указанной платформы.
 
     Args:
-        human_like: Флаг, указывающий, должен ли контроллер имитировать человеческое поведение.
-        new_instance: Флаг, указывающий, нужно ли создать новый экземпляр
-                     контроллера вместо использования кэшированного.
+        human_like (bool, optional): Признак человекоподобного поведения.
+        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).
+        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).
 
     Returns:
-        Экземпляр контроллера мыши.
+        AbstractMouse: Экземпляр контроллера мыши или None, если не найден.
     """
-    key = f"mouse_{human_like}"
+    # Определяем имя платформы, если не указано
+    if platform_name is None:
+        platform_name = platform.system().lower()
 
-    if key in _mouse_instances and not new_instance:
-        return _mouse_instances[key]
+    # Используем кэш, если не требуется новый экземпляр
+    cache_key = f"{platform_name}_{human_like}"
+    if not new_instance and cache_key in _mouse_instances:
+        return _mouse_instances[cache_key]
 
-    system = platform.system().lower()
+    # Получаем класс контроллера мыши для указанной платформы
+    mouse_class = registry.get_mouse(platform_name)
+    if not mouse_class:
+        return None
 
-    if system == "windows":
+    # Создаем экземпляр контроллера
+    mouse = mouse_class(human_like=human_like)
 
-        # Важно: импортируем непосредственно из модуля для тестов
-        from core.platform.windows.input.mouse import WindowsMouse
-
-        mouse = WindowsMouse(human_like=human_like)
-    else:
-        raise NotImplementedError(f"Система {system} не поддерживается")
-
+    # Сохраняем в кэш, если не требуется новый экземпляр
     if not new_instance:
-        _mouse_instances[key] = mouse
+        _mouse_instances[cache_key] = mouse
 
     return mouse
 
 
-def get_input_controller(human_like: bool = True) -> InputController:
+def get_input_controller(
+    human_like=True, platform_name=None, new_instance=False
+) -> Optional[InputController]:
     """
-    Возвращает комбинированный контроллер ввода для текущей платформы.
+    Возвращает комбинированный контроллер ввода для текущей или указанной платформы.
 
     Args:
-        human_like: Флаг, указывающий, должен ли контроллер имитировать человеческое поведение.
+        human_like (bool, optional): Признак человекоподобного поведения.
+        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).
+        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).
 
     Returns:
-        Экземпляр комбинированного контроллера ввода.
+        InputController: Экземпляр контроллера ввода или None, если не найдены контроллеры.
     """
-    # Важно использовать именованные аргументы для соответствия тестам
-    keyboard = get_keyboard(human_like=human_like)
-    mouse = get_mouse(human_like=human_like)
-    # Импортируем здесь, чтобы избежать циклических зависимостей
-    from core.common.input.base import InputController
 
+    # Получаем контроллеры клавиатуры и мыши
+    keyboard = get_keyboard(human_like, platform_name, new_instance)
+    mouse = get_mouse(human_like, platform_name, new_instance)
+
+    # Если один из контроллеров не найден, возвращаем None
+    if not keyboard or not mouse:
+        return None
+
+    # Создаем и возвращаем комбинированный контроллер
     return InputController(keyboard, mouse)
 
 

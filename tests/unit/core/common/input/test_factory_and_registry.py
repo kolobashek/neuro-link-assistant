@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from core.common.input.base import AbstractKeyboard, AbstractMouse
-from core.common.input.factory import get_input_controller, get_keyboard, get_mouse
+from core.common.input.factory import get_mouse
 from core.common.input.registry import InputRegistry
 
 
@@ -20,18 +20,28 @@ class TestInputFactory:
         with patch("core.common.input.factory.registry") as mock_registry, patch(
             "platform.system", return_value="Windows"
         ):
+            # Очищаем кэш для теста
+            from core.common.input.factory import _keyboard_instances
+
+            _keyboard_instances.clear()
 
             # Создаем моки для класса клавиатуры
             mock_keyboard_class = MagicMock()
-            mock_keyboard = MagicMock()
-            mock_keyboard_class.return_value = mock_keyboard
+
+            mock_keyboard1 = MagicMock()
+            mock_keyboard2 = MagicMock()
+
+            # Настраиваем мок так, чтобы при каждом вызове возвращал новый экземпляр
+            mock_keyboard_class.side_effect = [mock_keyboard1, mock_keyboard2]
 
             # Настраиваем реестр для возврата моков
             mock_registry.get_keyboard.return_value = mock_keyboard_class
 
             # Первый вызов должен создать новый экземпляр
+            from core.common.input.factory import get_keyboard
+
             kb1 = get_keyboard(human_like=True)
-            assert kb1 == mock_keyboard
+            assert kb1 == mock_keyboard1
             mock_keyboard_class.assert_called_once_with(human_like=True)
 
             # Сбрасываем счетчик вызовов
@@ -39,12 +49,12 @@ class TestInputFactory:
 
             # Второй вызов должен вернуть тот же экземпляр (кэширование)
             kb2 = get_keyboard(human_like=True)
-            assert kb2 == mock_keyboard
+            assert kb2 == mock_keyboard1
             mock_keyboard_class.assert_not_called()  # Новый экземпляр не создается
 
             # Третий вызов с new_instance=True должен создать новый экземпляр
             kb3 = get_keyboard(human_like=True, new_instance=True)
-            assert kb3 == mock_keyboard
+            assert kb3 == mock_keyboard2
             mock_keyboard_class.assert_called_once_with(human_like=True)
 
     def test_get_mouse_caching(self):
@@ -85,38 +95,56 @@ class TestInputFactory:
         with patch("platform.system", return_value="Windows"), patch(
             "core.common.input.factory._keyboard_instances", {}
         ), patch("core.common.input.factory._mouse_instances", {}), patch(
-            "core.platform.windows.input.keyboard.WindowsKeyboard"
-        ) as mock_keyboard_class, patch(
-            "core.platform.windows.input.mouse.WindowsMouse"
-        ) as mock_mouse_class, patch(
-            "core.common.input.base.InputController"
+            "core.common.input.registry.InputRegistry._register_platform_controllers"
+        ), patch(
+            "core.common.input.registry.InputRegistry.get_keyboard"
+        ) as mock_get_keyboard_class, patch(
+            "core.common.input.registry.InputRegistry.get_mouse"
+        ) as mock_get_mouse_class, patch(
+            "core.common.input.factory.InputController"  # Патчим в модуле factory
         ) as mock_controller_class:
 
-            # Создаем моки для экземпляров
+            # Создаем моки
+            mock_keyboard_class = MagicMock()
+            mock_mouse_class = MagicMock()
+
             mock_keyboard = MagicMock()
             mock_mouse = MagicMock()
             mock_controller = MagicMock()
 
+            # Настройка возвращаемых значений
             mock_keyboard_class.return_value = mock_keyboard
             mock_mouse_class.return_value = mock_mouse
+            mock_get_keyboard_class.return_value = mock_keyboard_class
+            mock_get_mouse_class.return_value = mock_mouse_class
             mock_controller_class.return_value = mock_controller
 
+            # Импортируем функцию get_input_controller
+            from core.common.input.factory import get_input_controller
             # Получаем контроллер ввода
             controller = get_input_controller(human_like=True)
 
-            # Проверяем, что были созданы экземпляры клавиатуры и мыши
+            # Проверки
             mock_keyboard_class.assert_called_once_with(human_like=True)
             mock_mouse_class.assert_called_once_with(human_like=True)
 
-            # Проверяем, что был создан InputController с правильными аргументами
             mock_controller_class.assert_called_once_with(mock_keyboard, mock_mouse)
 
-            # Проверяем, что вернулся правильный контроллер
             assert controller == mock_controller
 
 
 class TestInputRegistry:
     """Тесты для реестра контроллеров ввода."""
+
+    @pytest.fixture(autouse=True)
+    def reset_registry(self, request):
+        """Сбрасывает синглтон реестра перед каждым тестом."""
+        # Пропускаем сброс для теста синглтона
+        if "test_singleton_property" not in request.node.name:
+            from core.common.input.registry import InputRegistry
+
+            InputRegistry.reset_instance()
+        yield
 
     def test_singleton_property(self):
         """
@@ -137,8 +165,9 @@ class TestInputRegistry:
 
     def test_initial_state(self):
         """Тест начального состояния реестра."""
-        # Создаем новый реестр
-        registry = InputRegistry()
+
+        # Создаем новый реестр без авторегистрации
+        registry = InputRegistry(auto_register=False)
 
         # Проверяем, что в нем пусто
         assert not registry._keyboard_classes  # Пустой словарь клавиатур
@@ -169,32 +198,19 @@ class TestInputRegistry:
         Тест, что при создании реестра регистрируются
         стандартные классы для текущей платформы.
         """
-        # Создаем чистый реестр с перезагрузкой модуля
-        with patch.dict("sys.modules", {"core.common.input.registry": None}):
-            # Перезагружаем модуль реестра для сброса регистраций
-            import importlib
 
-            import core.common.input.registry
+        # Создаем чистый реестр, но уже с авторегистрацией
+        registry = InputRegistry(auto_register=True)
 
-            importlib.reload(core.common.input.registry)
+        # Получаем классы для Windows
+        windows_keyboard = registry.get_keyboard("windows")
+        windows_mouse = registry.get_mouse("windows")
+        # Проверяем, что классы есть в реестре и они правильные
+        from core.platform.windows.input.keyboard import WindowsKeyboard
+        from core.platform.windows.input.mouse import WindowsMouse
 
-            # Патчим определение платформы
-            with patch("platform.system", return_value="Windows"):
-                # Проверяем, что WindowsKeyboard и WindowsMouse зарегистрированы
-                from core.common.input.registry import InputRegistry
-
-                registry = InputRegistry()
-
-                # Получаем классы для Windows
-                windows_keyboard = registry.get_keyboard("windows")
-                windows_mouse = registry.get_mouse("windows")
-
-                # Проверяем, что классы есть в реестре и они правильные
-                from core.platform.windows.input.keyboard import WindowsKeyboard
-                from core.platform.windows.input.mouse import WindowsMouse
-
-                assert windows_keyboard is WindowsKeyboard
-                assert windows_mouse is WindowsMouse
+        assert windows_keyboard is WindowsKeyboard
+        assert windows_mouse is WindowsMouse
 
     def test_platform_specific_registrations(self):
         """Тест регистрации контроллеров для разных платформ."""

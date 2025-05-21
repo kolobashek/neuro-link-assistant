@@ -287,28 +287,22 @@ class TestInputFactory:
 
         # Мокаем подходящий класс клавиатуры для текущей платформы
         with patch("platform.system", return_value="Windows"), patch(
-            "core.platform.windows.input.keyboard.WindowsKeyboard"
-        ) as mock_keyboard_class:
+            "core.common.input.registry.InputRegistry._register_platform_controllers"
+        ), patch(
+            "core.common.input.registry.InputRegistry.get_keyboard"
+        ) as mock_get_keyboard_class:
 
-            # Устанавливаем возвращаемое значение для конструктора
+            # Создаем мок для WindowsKeyboard
+            mock_keyboard_class = MagicMock()
             mock_keyboard = MagicMock()
             mock_keyboard_class.return_value = mock_keyboard
+            mock_get_keyboard_class.return_value = mock_keyboard_class
 
             # Получаем клавиатуру с человекоподобным режимом
             keyboard = get_keyboard(human_like=True)
 
             # Проверяем, что WindowsKeyboard был вызван с правильными параметрами
             mock_keyboard_class.assert_called_once_with(human_like=True)
-            assert keyboard == mock_keyboard
-
-            # Сбрасываем мок для следующего теста
-            mock_keyboard_class.reset_mock()
-
-            # Получаем клавиатуру с новым экземпляром
-            keyboard = get_keyboard(human_like=False, new_instance=True)
-
-            # Проверяем, что WindowsKeyboard был вызван с правильными параметрами
-            mock_keyboard_class.assert_called_once_with(human_like=False)
             assert keyboard == mock_keyboard
 
     def test_get_mouse(self):
@@ -318,12 +312,14 @@ class TestInputFactory:
 
         # Мокаем подходящий класс мыши для текущей платформы
         with patch("platform.system", return_value="Windows"), patch(
-            "core.platform.windows.input.mouse.WindowsMouse"
-        ) as mock_mouse_class:
+            "core.common.input.registry.InputRegistry._register_platform_controllers"
+        ), patch("core.common.input.registry.InputRegistry.get_mouse") as mock_get_mouse_class:
 
-            # Устанавливаем возвращаемое значение для конструктора
+            # Создаем мок для WindowsMouse
+            mock_mouse_class = MagicMock()
             mock_mouse = MagicMock()
             mock_mouse_class.return_value = mock_mouse
+            mock_get_mouse_class.return_value = mock_mouse_class
 
             # Получаем мышь с человекоподобным режимом
             mouse = get_mouse(human_like=True)
@@ -332,47 +328,39 @@ class TestInputFactory:
             mock_mouse_class.assert_called_once_with(human_like=True)
             assert mouse == mock_mouse
 
-            # Сбрасываем мок для следующего теста
-            mock_mouse_class.reset_mock()
-
-            # Получаем мышь с новым экземпляром
-            mouse = get_mouse(human_like=False, new_instance=True)
-
-            # Проверяем, что WindowsMouse был вызван с правильными параметрами
-            mock_mouse_class.assert_called_once_with(human_like=False)
-            assert mouse == mock_mouse
-
     def test_get_input_controller(self):
-        """Тест создания комбинированного контроллера ввода."""
-        # Импортируем фабрику
-        from core.common.input.factory import get_input_controller
-
-        # Мокаем функции получения клавиатуры и мыши
-        with patch("core.common.input.factory.get_keyboard") as mock_get_keyboard, patch(
+        """Тест получения контроллера ввода"""
+        # ВАЖНО: патчим конкретное использование InputController в factory.py
+        with patch(
+            "core.common.input.factory.InputController"
+        ) as mock_input_controller_class, patch("platform.system", return_value="Windows"), patch(
+            "core.common.input.factory.get_keyboard"
+        ) as mock_get_keyboard, patch(
             "core.common.input.factory.get_mouse"
-        ) as mock_get_mouse, patch(
-            "core.common.input.base.InputController"
-        ) as mock_input_controller_class:
+        ) as mock_get_mouse:
 
-            # Устанавливаем возвращаемые значения
+            # Создаем мок-объекты для контроллеров
             mock_keyboard = MagicMock()
             mock_mouse = MagicMock()
             mock_get_keyboard.return_value = mock_keyboard
             mock_get_mouse.return_value = mock_mouse
 
-            mock_controller = MagicMock()
-            mock_input_controller_class.return_value = mock_controller
+            # Создаем мок-объект для InputController
+            mock_input_controller = MagicMock()
+            mock_input_controller_class.return_value = mock_input_controller
 
-            # Получаем контроллер ввода
-            controller = get_input_controller(human_like=True)
+            # Импортируем функцию get_input_controller
+            from core.common.input.factory import get_input_controller
 
-            # Проверяем, что функции были вызваны с правильными параметрами
-            mock_get_keyboard.assert_called_once_with(human_like=True)
-            mock_get_mouse.assert_called_once_with(human_like=True)
+            # Вызываем функцию
+            controller = get_input_controller()
 
-            # Проверяем, что InputController был создан с правильными параметрами
+            # Проверяем вызовы
+            mock_get_keyboard.assert_called_once_with(True, None, False)
+            mock_get_mouse.assert_called_once_with(True, None, False)
+
             mock_input_controller_class.assert_called_once_with(mock_keyboard, mock_mouse)
-            assert controller == mock_controller
+            assert controller == mock_input_controller
 
 
 class TestInputRegistry:
