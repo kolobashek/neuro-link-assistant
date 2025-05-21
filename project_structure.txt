@@ -1,0 +1,333 @@
+﻿|-- BASE_DIR
+|   |-- data
+|   |   |-- ai_models.json
+|-- commands
+|   |-- app_commands.py
+|   |-- assistant_commands.py
+|   |-- communication_commands.py
+|   |-- developer_commands.py
+|   |-- file_commands.py
+|   |-- media_commands.py
+|   |-- navigation_commands.py
+|   |-- smart_home_commands.py
+|   |-- system_commands.py
+|   |-- ui_commands.py
+|   |-- web_commands.py
+|   |-- __init__.py
+|-- core
+|   |-- common
+|   |   |-- filesystem
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- __init__.py
+|   |   |-- input
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- registry.py
+|   |   |   |-- __init__.py
+|   |   |-- process
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- __init__.py
+|   |   |-- registry
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- __init__.py
+|   |   |-- system
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- __init__.py
+|   |   |-- window
+|   |   |   |-- base.py
+|   |   |   |-- factory.py
+|   |   |   |-- __init__.py
+|   |   |-- error_handler.py
+|   |   |-- file_system.py
+|   |   |-- __init__.py
+|   |-- db
+|   |   |-- repository
+|   |   |   |-- task_repository.py
+|   |   |   |-- user_repository.py
+|   |   |   |-- workflow_repository.py
+|   |   |   |-- __init__.py
+|   |   |-- connection.py
+|   |   |-- crud.py
+|   |   |-- models.py
+|   |   |-- transaction.py
+|   |   |-- __init__.py
+|   |-- input
+|   |   |-- input_factory.py
+|   |   |-- keyboard_controller.py
+|   |   |-- mouse_controller.py
+|   |   |-- __init__.py
+|   |-- llm
+|   |   |-- action_planner.py
+|   |   |-- api_client.py
+|   |   |-- api_connector.py
+|   |   |-- prompt_processor.py
+|   |   |-- response_parser.py
+|   |   |-- __init__.py
+|   |-- platform
+|   |   |-- linux
+|   |   |   |-- file_system.py
+|   |   |-- macos
+|   |   |   |-- file_system.py
+|   |   |-- windows
+|   |   |   |-- filesystem
+|   |   |   |   |-- win32_file_system.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- input
+|   |   |   |   |-- keyboard.py
+|   |   |   |   |-- mouse.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- process
+|   |   |   |   |-- win32_process_manager.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- registry
+|   |   |   |   |-- win32_registry_manager.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- system
+|   |   |   |   |-- win32_system_info.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- window
+|   |   |   |   |-- pygetwindow_manager.py
+|   |   |   |   |-- win32_window_manager.py
+|   |   |   |   |-- __init__.py
+|   |-- vision
+|   |   |-- element_localization.py
+|   |   |-- element_recognition.py
+|   |   |-- image_comparison.py
+|   |   |-- screen_capture.py
+|   |   |-- screen_changes.py
+|   |   |-- __init__.py
+|   |-- web
+|   |   |-- browser_controller.py
+|   |   |-- element_finder.py
+|   |   |-- __init__.py
+|   |-- component_registry.py
+|   |-- plugin_manager.py
+|   |-- system_initializer.py
+|   |-- __init__.py
+|-- data
+|-- htmlcov
+|   |-- .gitignore
+|   |-- class_index.html
+|   |-- coverage_html_cb_497bf287.js
+|   |-- favicon_32_cb_58284776.png
+|   |-- function_index.html
+|   |-- index.html
+|   |-- keybd_closed_cb_ce680311.png
+|   |-- status.json
+|   |-- style_cb_718ce007.css
+|   |-- z_054e8cf5617995a5_filesystem_manager_py.html
+|   |-- z_054e8cf5617995a5_file_system_py.html
+|   |-- z_054e8cf5617995a5_process_manager_py.html
+|   |-- z_054e8cf5617995a5_registry_manager_py.html
+|   |-- z_054e8cf5617995a5_system_info_py.html
+|   |-- z_054e8cf5617995a5_window_manager_py.html
+|   |-- z_054e8cf5617995a5___init___py.html
+|   |-- z_57760688d1f824db_component_registry_py.html
+|   |-- z_57760688d1f824db_error_handler_py.html
+|   |-- z_57760688d1f824db_plugin_manager_py.html
+|   |-- z_57760688d1f824db_system_initializer_py.html
+|   |-- z_57760688d1f824db___init___py.html
+|   |-- z_95d4803d683e23b9_file_manager_py.html
+|   |-- z_95d4803d683e23b9___init___py.html
+|   |-- z_a38444e043660279_action_planner_py.html
+|   |-- z_a38444e043660279_api_client_py.html
+|   |-- z_a38444e043660279_error_handler_py.html
+|   |-- z_a38444e043660279_prompt_processor_py.html
+|   |-- z_a38444e043660279_response_parser_py.html
+|   |-- z_a38444e043660279___init___py.html
+|   |-- z_b36dd04dd515f75b_element_recognition_py.html
+|   |-- z_b36dd04dd515f75b_screen_capture_py.html
+|   |-- z_b36dd04dd515f75b___init___py.html
+|   |-- z_c52f0743285faf8b_browser_controller_py.html
+|   |-- z_c52f0743285faf8b_element_finder_py.html
+|   |-- z_c52f0743285faf8b___init___py.html
+|   |-- z_edd6f01a36dfa565_keyboard_controller_py.html
+|   |-- z_edd6f01a36dfa565_keyboard_emulator_py.html
+|   |-- z_edd6f01a36dfa565_mouse_controller_py.html
+|   |-- z_edd6f01a36dfa565_mouse_emulator_py.html
+|   |-- z_edd6f01a36dfa565___init___py.html
+|-- init-scripts
+|   |-- 01-init.sql
+|-- logs
+|   |-- app_20250506_183535.log
+|   |-- app_20250506_183759.log
+|   |-- app_20250506_183800.log
+|   |-- app_20250506_190245.log
+|   |-- command_history.log
+|   |-- command_summary.txt
+|   |-- detailed_command.log
+|   |-- detailed_command_log.txt
+|   |-- system.log
+|-- models
+|   |-- command_models.py
+|   |-- __init__.py
+|-- neuro_link_assistant.egg-info
+|   |-- dependency_links.txt
+|   |-- entry_points.txt
+|   |-- PKG-INFO
+|   |-- requires.txt
+|   |-- SOURCES.txt
+|   |-- top_level.txt
+|-- routes
+|   |-- api_routes.py
+|   |-- main_routes.py
+|   |-- __init__.py
+|-- scripts
+|   |-- db.py
+|   |-- docker.py
+|   |-- run_affected_tests.py
+|-- services
+|   |-- ai_service.py
+|   |-- browser_service.py
+|   |-- command_service.py
+|   |-- huggingface_service.py
+|   |-- __init__.py
+|-- static
+|   |-- css
+|   |   |-- ai_models.css
+|   |   |-- command_form.css
+|   |   |-- history.css
+|   |   |-- logs.css
+|   |   |-- main.css
+|   |   |-- modals.css
+|   |   |-- style.css
+|   |-- js
+|   |   |-- ai_models.js
+|   |   |-- command_form.js
+|   |   |-- fixes.js
+|   |   |-- history.js
+|   |   |-- main.js
+|   |   |-- utils.js
+|   |-- screenshots
+|-- templates
+|   |-- components
+|   |   |-- ai_models.html
+|   |   |-- command_form.html
+|   |   |-- command_history.html
+|   |   |-- modals.html
+|   |-- base.html
+|   |-- index.html
+|-- tests
+|   |-- db
+|   |   |-- test_connection.py
+|   |   |-- test_crud.py
+|   |   |-- test_migrations.py
+|   |   |-- test_pagination.py
+|   |   |-- test_performance.py
+|   |   |-- test_repository.py
+|   |   |-- test_security.py
+|   |   |-- test_transactions.py
+|   |   |-- test_validation.py
+|   |-- integration
+|   |   |-- test_db_services.py
+|   |-- scripts
+|   |   |-- test_docker.py
+|   |-- unit
+|   |   |-- core
+|   |   |   |-- architecture
+|   |   |   |   |-- test_architecture.py
+|   |   |   |-- filesystem
+|   |   |   |   |-- test_filesystem.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- input
+|   |   |   |   |-- test_input.py
+|   |   |   |-- llm
+|   |   |   |   |-- test_action_planner.py
+|   |   |   |   |-- test_api_connector.py
+|   |   |   |   |-- test_error_handling.py
+|   |   |   |   |-- test_prompt_processor.py
+|   |   |   |   |-- test_response_parser.py
+|   |   |   |-- llm_integration
+|   |   |   |   |-- test_llm_integration.py
+|   |   |   |-- vision
+|   |   |   |   |-- test_element_localization.py
+|   |   |   |   |-- test_element_recognition.py
+|   |   |   |   |-- test_image_comparison.py
+|   |   |   |   |-- test_screen_capture.py
+|   |   |   |   |-- test_screen_changes.py
+|   |   |   |   |-- test_vision.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- web
+|   |   |   |   |-- test_browser_init.py
+|   |   |   |   |-- test_data_extraction.py
+|   |   |   |   |-- test_dom_search.py
+|   |   |   |   |-- test_form_interaction.py
+|   |   |   |   |-- test_js_events.py
+|   |   |   |   |-- test_navigation.py
+|   |   |   |   |-- test_web.py
+|   |   |   |   |-- __init__.py
+|   |   |   |-- windows
+|   |   |   |   |-- test_filesystem_manager.py
+|   |   |   |   |-- test_file_system.py
+|   |   |   |   |-- test_process_manager.py
+|   |   |   |   |-- test_registry_manager.py
+|   |   |   |   |-- test_system_info.py
+|   |   |   |   |-- test_window_manager.py
+|   |   |   |-- windows_interaction
+|   |   |   |   |-- test_windows_interaction.py
+|   |   |   |-- test_component_registry.py
+|   |   |   |-- test_error_handler.py
+|   |   |   |-- test_plugin_manager.py
+|   |   |   |-- test_system_initializer.py
+|   |   |-- ui
+|   |   |   |-- test_accessibility.py
+|   |   |   |-- test_ai_models.py
+|   |   |   |-- test_animations.py
+|   |   |   |-- test_api_integration.py
+|   |   |   |-- test_base_layout.py
+|   |   |   |-- test_command_form.py
+|   |   |   |-- test_command_history.py
+|   |   |   |-- test_error_handling.py
+|   |   |   |-- test_logs_display.py
+|   |   |   |-- test_mobile_ui.py
+|   |   |   |-- test_modals.py
+|   |   |   |-- test_navigation.py
+|   |   |   |-- test_performance.py
+|   |   |   |-- test_responsive.py
+|   |   |   |-- test_routing.py
+|   |   |   |-- test_settings.py
+|   |   |   |-- test_theme_system.py
+|   |-- conftest.py
+|-- utils
+|   |-- helpers.py
+|   |-- logging_utils.py
+|   |-- log_maintenance.py
+|   |-- __init__.py
+|-- .coverage
+|-- .env
+|-- .gitignore
+|-- .pre-commit-config.yaml
+|-- AGENT.md
+|-- analyze_dependencies.py
+|-- app.py
+|-- check_element_finder.py
+|-- commands__init__.py
+|-- config.py
+|-- conftest.py
+|-- detailed_command_log.txt
+|-- docker-compose.yml
+|-- error.log
+|-- flake8_report.txt
+|-- globals.py
+|-- instructions.txt
+|-- LICENSE
+|-- plan.md
+|-- plan.test.md
+|-- poetry.lock
+|-- project_structure.txt
+|-- pyproject.toml
+|-- pyproject.toml.backup
+|-- readme.md
+|-- README_NEW_STRUCTURE.md
+|-- report.html
+|-- requirements-dev.txt
+|-- requirements-optional.txt
+|-- requirements.txt
+|-- run.bat
+|-- setup.cfg
+|-- Show-DirTree.ps1
+|-- tree.ps1

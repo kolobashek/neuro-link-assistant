@@ -60,6 +60,7 @@ class WindowsMouse(AbstractMouse):
             human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.
         """
         self.human_like = human_like
+        self.controller = None  # Для тестирования будет заменено моком
 
         # Настройки для эмуляции движения человеческой руки
         self.move_steps = 20  # Количество шагов при плавном перемещении
@@ -420,3 +421,66 @@ class WindowsMouse(AbstractMouse):
             handle_error(f"Ошибка при получении позиции курсора: {e}", e)
             # Возвращаем нулевые координаты в случае ошибки
             return (0, 0)
+
+    def move_to_element(
+        self, element, offset_x: int = 0, offset_y: int = 0, duration: Optional[float] = None
+    ) -> bool:
+        """
+        Перемещает курсор к элементу с указанным смещением.
+
+        Args:
+            element: Элемент, к которому нужно переместить курсор.
+            offset_x (int): Смещение по оси X от центра элемента.
+            offset_y (int): Смещение по оси Y от центра элемента.
+            duration (Optional[float]): Длительность перемещения в секундах.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        try:
+            # Получаем положение и размер элемента
+            location = element.location
+            size = element.size
+
+            # Вычисляем центр элемента
+            center_x = location["x"] + size["width"] // 2
+            center_y = location["y"] + size["height"] // 2
+
+            # Перемещаем курсор в центр элемента с учетом смещения
+            target_x = center_x + offset_x
+            target_y = center_y + offset_y
+
+            return self.move_to(target_x, target_y, duration)
+        except Exception as e:
+            handle_error(f"Ошибка при перемещении курсора к элементу: {e}", e)
+            return False
+
+    def click_element(
+        self, element, button: str = "left", offset_x: int = 0, offset_y: int = 0
+    ) -> bool:
+        """
+        Выполняет клик по элементу с указанным смещением.
+
+        Args:
+            element: Элемент, по которому нужно кликнуть.
+            button (str): Кнопка мыши ("left", "right", "middle").
+            offset_x (int): Смещение по оси X от центра элемента.
+            offset_y (int): Смещение по оси Y от центра элемента.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        try:
+            # Перемещаем курсор к элементу
+            if not self.move_to_element(element, offset_x, offset_y):
+                return False
+
+            # Если имитируем человека, делаем небольшую паузу перед кликом
+            if self.human_like:
+                time.sleep(0.1)
+
+            # Выполняем клик
+            return self.click(button)
+        except Exception as e:
+            handle_error(f"Ошибка при клике по элементу: {e}", e)
+            return False

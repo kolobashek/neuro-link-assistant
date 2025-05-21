@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Базовые интерфейсы для системы ввода.
-Предоставляет абстрактные классы для клавиатуры и мыши.
+Модуль для работы с вводом пользователя (клавиатура, мышь).
 """
 
 from .base import AbstractKeyboard, AbstractMouse, InputController
@@ -12,6 +10,7 @@ from .factory import (
     register_keyboard,
     register_mouse,
 )
+
 __all__ = [
     "AbstractKeyboard",
     "AbstractMouse",

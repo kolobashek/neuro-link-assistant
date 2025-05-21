@@ -49,8 +49,13 @@ except ImportError:
             self.components[name] = component
             return True
 
-        def get(self, name):
-            return self.components.get(name)
+        def get(self, name, default=None):
+            if name in self.components:
+                return self.components[name]
+            if default is not None:
+                return default
+            # Вызываем исключение, если компонент не найден и default не указан
+            raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
 
     class SystemInitializer(ISystemInitializer):
         def __init__(self, registry):

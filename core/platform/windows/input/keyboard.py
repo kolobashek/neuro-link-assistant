@@ -100,6 +100,7 @@ class WindowsKeyboard(AbstractKeyboard):
             human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.
         """
         self.human_like = human_like
+        self.controller = None  # Для тестирования будет заменено моком
 
         # Настройки для эмуляции поведения человека
         self.min_press_delay = 0.05  # минимальная задержка между нажатиями
@@ -364,3 +365,21 @@ class WindowsKeyboard(AbstractKeyboard):
                 pass
 
             return False
+
+    def press_enter(self) -> bool:
+        """
+        Нажимает клавишу Enter.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        return self.press_key("enter")
+
+    def press_ctrl_c(self) -> bool:
+        """
+        Нажимает комбинацию клавиш Ctrl+C.
+
+        Returns:
+            bool: True если успешно, иначе False.
+        """
+        return self.press_keys(["ctrl", "c"])

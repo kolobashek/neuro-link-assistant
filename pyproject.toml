@@ -101,6 +101,7 @@ minversion = "7.0"
 addopts = "--cov=core --cov=utils --cov=routes --cov-report=term-missing --no-header --tb=native"
 console_output_style = "classic"
 testpaths = ["tests"]
+markers = ["deprecated: marks tests as deprecated and scheduled for removal"]
 
 [tool.mypy]
 python_version = "3.8"

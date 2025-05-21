@@ -1,78 +1,92 @@
 ﻿"""
-Абстрактные базовые классы для системы ввода.
-Предоставляет интерфейсы для клавиатуры и мыши.
+Базовые классы и интерфейсы для подсистемы ввода.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Tuple
+from typing import Any, List, Optional, Tuple
 
 
 class AbstractKeyboard(ABC):
-    """Абстрактный класс для клавиатуры"""
+    """
+    Абстрактный базовый класс для контроллеров клавиатуры.
+    Определяет интерфейс, который должен быть реализован всеми
+    конкретными контроллерами клавиатуры.
+    """
+
+    def __init__(self, human_like: bool = True):
+        """
+        Инициализация контроллера клавиатуры.
+
+        Args:
+            human_like: Эмулировать человеческое поведение при вводе.
+        """
+        self.human_like = human_like
 
     @abstractmethod
     def press_key(self, key: str) -> bool:
         """
-        Нажимает клавишу и сразу отпускает её.
+        Нажимает указанную клавишу.
 
         Args:
-            key (str): Клавиша для нажатия.
+            key: Клавиша для нажатия. Может быть символом или специальным ключом,
+                например, 'enter', 'shift', 'ctrl', и т.д.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если нажатие выполнено успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def press_keys(self, keys: List[str]) -> bool:
         """
-        Нажимает комбинацию клавиш.
+        Последовательно нажимает комбинацию клавиш.
 
         Args:
-            keys (List[str]): Список клавиш для нажатия.
+            keys: Список клавиш для нажатия.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если все нажатия выполнены успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def key_down(self, key: str) -> bool:
         """
-        Удерживает клавишу нажатой.
+        Нажимает и удерживает клавишу.
 
         Args:
-            key (str): Клавиша для удержания.
+            key: Клавиша для удержания.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если нажатие выполнено успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def key_up(self, key: str) -> bool:
         """
-        Отпускает удерживаемую клавишу.
+        Отпускает ранее нажатую клавишу.
 
         Args:
-            key (str): Клавиша для отпускания.
+            key: Клавиша для отпускания.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если отпускание выполнено успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def type_text(self, text: str, interval: Optional[float] = None) -> bool:
         """
-        Вводит текст с указанным интервалом между нажатиями.
+        Вводит указанный текст с заданным интервалом между нажатиями.
 
         Args:
-            text (str): Текст для ввода.
-            interval (Optional[float]): Интервал между нажатиями в секундах.
+            text: Текст для ввода.
+            interval: Интервал между нажатиями клавиш в секундах. Если None,
+                      используется значение по умолчанию.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если ввод выполнен успешно, иначе False.
         """
         pass
 
@@ -82,44 +96,78 @@ class AbstractKeyboard(ABC):
         Вставляет текст через буфер обмена.
 
         Args:
-            text (str): Текст для вставки.
+            text: Текст для вставки.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если вставка выполнена успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def press_enter(self) -> bool:
+        """
+        Нажимает клавишу Enter.
+
+        Returns:
+            True, если нажатие выполнено успешно, иначе False.
+        """
+
+        pass
+
+    @abstractmethod
+    def press_ctrl_c(self) -> bool:
+        """
+        Нажимает комбинацию Ctrl+C (копирование).
+
+        Returns:
+            True, если нажатие выполнено успешно, иначе False.
         """
         pass
 
 
 class AbstractMouse(ABC):
-    """Абстрактный класс для мыши"""
+    """
+    Абстрактный базовый класс для контроллеров мыши.
+    Определяет интерфейс, который должен быть реализован всеми
+    конкретными контроллерами мыши.
+    """
+
+    def __init__(self, human_like: bool = True):
+        """
+        Инициализация контроллера мыши.
+
+        Args:
+            human_like: Эмулировать человеческое поведение при движении мыши.
+        """
+        self.human_like = human_like
 
     @abstractmethod
     def move_to(self, x: int, y: int, duration: Optional[float] = None) -> bool:
         """
-        Перемещает курсор в указанную позицию.
+        Перемещает курсор мыши в указанные координаты.
 
         Args:
-            x (int): X-координата.
-            y (int): Y-координата.
-            duration (Optional[float]): Длительность перемещения в секундах.
+            x: X-координата.
+            y: Y-координата.
+            duration: Длительность перемещения в секундах.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если перемещение выполнено успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def move_by(self, dx: int, dy: int, duration: Optional[float] = None) -> bool:
         """
-        Перемещает курсор на указанное расстояние.
+        Перемещает курсор мыши относительно текущей позиции.
 
         Args:
-            dx (int): Смещение по X.
-            dy (int): Смещение по Y.
-            duration (Optional[float]): Длительность перемещения в секундах.
+            dx: Смещение по X.
+            dy: Смещение по Y.
+            duration: Длительность перемещения в секундах.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если перемещение выполнено успешно, иначе False.
         """
         pass
 
@@ -129,11 +177,11 @@ class AbstractMouse(ABC):
         Выполняет клик мышью.
 
         Args:
-            button (str): Кнопка ("left", "right", "middle").
-            count (int): Количество кликов.
+            button: Кнопка мыши ('left', 'right', 'middle').
+            count: Количество кликов.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если клик выполнен успешно, иначе False.
         """
         pass
 
@@ -143,47 +191,46 @@ class AbstractMouse(ABC):
         Выполняет двойной клик мышью.
 
         Args:
-            button (str): Кнопка ("left", "right", "middle").
+            button: Кнопка мыши ('left', 'right', 'middle').
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если двойной клик выполнен успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def right_click(self) -> bool:
         """
-        Выполняет правый клик мышью.
+        Выполняет клик правой кнопкой мыши.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если клик выполнен успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def mouse_down(self, button: str = "left") -> bool:
         """
-        Удерживает кнопку мыши нажатой.
+        Нажимает и удерживает кнопку мыши.
 
         Args:
-            button (str): Кнопка ("left", "right", "middle").
+            button: Кнопка мыши ('left', 'right', 'middle').
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если нажатие выполнено успешно, иначе False.
         """
-
         pass
 
     @abstractmethod
     def mouse_up(self, button: str = "left") -> bool:
         """
-        Отпускает удерживаемую кнопку мыши.
+        Отпускает ранее нажатую кнопку мыши.
 
         Args:
-            button (str): Кнопка ("left", "right", "middle").
+            button: Кнопка мыши ('left', 'right', 'middle').
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если отпускание выполнено успешно, иначе False.
         """
         pass
 
@@ -192,57 +239,112 @@ class AbstractMouse(ABC):
         self, x: int, y: int, button: str = "left", duration: Optional[float] = None
     ) -> bool:
         """
-        Перетаскивает курсор в указанную позицию с нажатой кнопкой мыши.
+        Перетаскивает курсор мыши в указанные координаты с зажатой кнопкой.
 
         Args:
-            x (int): X-координата.
-            y (int): Y-координата.
-            button (str): Кнопка ("left", "right", "middle").
-            duration (Optional[float]): Длительность перетаскивания в секундах.
+            x: X-координата.
+            y: Y-координата.
+            button: Кнопка мыши ('left', 'right', 'middle').
+            duration: Длительность перетаскивания в секундах.
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если перетаскивание выполнено успешно, иначе False.
         """
         pass
 
     @abstractmethod
     def scroll(self, clicks: int, direction: str = "down") -> bool:
         """
-        Выполняет прокрутку мыши.
+        Выполняет прокрутку колесика мыши.
 
         Args:
-            clicks (int): Количество щелчков колеса мыши.
-            direction (str): Направление ("up", "down", "left", "right").
+            clicks: Количество щелчков прокрутки.
+            direction: Направление прокрутки ('up', 'down').
 
         Returns:
-            bool: True если успешно, иначе False.
+            True, если прокрутка выполнена успешно, иначе False.
         """
-
         pass
 
     @abstractmethod
     def get_position(self) -> Tuple[int, int]:
         """
-        Получает текущую позицию курсора.
+        Получает текущую позицию курсора мыши.
 
         Returns:
-            Tuple[int, int]: Кортеж (x, y) с координатами курсора.
+            Кортеж (x, y) с координатами.
+        """
+        pass
+
+    @abstractmethod
+    def move_to_element(
+        self, element: Any, offset_x: int = 0, offset_y: int = 0, duration: Optional[float] = None
+    ) -> bool:
+        """
+        Перемещает курсор мыши к указанному элементу.
+
+        Args:
+            element: Элемент, к которому нужно переместить курсор.
+            offset_x: Смещение по X относительно центра элемента.
+            offset_y: Смещение по Y относительно центра элемента.
+            duration: Длительность перемещения в секундах.
+
+        Returns:
+            True, если перемещение выполнено успешно, иначе False.
+        """
+        pass
+
+    @abstractmethod
+    def click_element(
+        self, element: Any, button: str = "left", offset_x: int = 0, offset_y: int = 0
+    ) -> bool:
+        """
+        Выполняет клик по указанному элементу.
+
+        Args:
+            element: Элемент, по которому нужно кликнуть.
+            button: Кнопка мыши ('left', 'right', 'middle').
+            offset_x: Смещение по X относительно центра элемента.
+            offset_y: Смещение по Y относительно центра элемента.
+
+        Returns:
+            True, если клик выполнен успешно, иначе False.
         """
         pass
 
 
 class InputController:
     """
-    Комбинированный контроллер ввода, объединяющий клавиатуру и мышь.
+    Комбинированный контроллер ввода, объединяющий функциональность
+    клавиатуры и мыши.
     """
 
     def __init__(self, keyboard: AbstractKeyboard, mouse: AbstractMouse):
         """
-        Инициализирует контроллер ввода.
+        Инициализация контроллера ввода.
 
         Args:
-            keyboard (AbstractKeyboard): Контроллер клавиатуры.
-            mouse (AbstractMouse): Контроллер мыши.
+            keyboard: Экземпляр контроллера клавиатуры.
+            mouse: Экземпляр контроллера мыши.
         """
         self.keyboard = keyboard
         self.mouse = mouse
+
+    def is_human_like(self) -> bool:
+        """
+        Проверяет, включен ли режим эмуляции человеческого ввода.
+
+        Returns:
+            True, если режим включен, иначе False.
+        """
+        return self.keyboard.human_like and self.mouse.human_like
+
+    def set_human_like(self, enabled: bool) -> None:
+        """
+        Включает или выключает режим эмуляции человеческого ввода.
+
+        Args:
+            enabled: True для включения, False для выключения.
+        """
+        self.keyboard.human_like = enabled
+        self.mouse.human_like = enabled

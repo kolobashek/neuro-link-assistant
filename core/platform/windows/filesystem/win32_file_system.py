@@ -63,6 +63,20 @@ class Win32FileSystem(AbstractFileSystem):
             handle_error(f"Error listing directory {path}: {e}", e, module="filesystem")
             return []
 
+    def list_directory_names(self, path, pattern="*"):
+        """
+        Получает список имен файлов и директорий в указанной директории.
+
+        Args:
+            path (str): Путь к директории
+            pattern (str, optional): Шаблон для фильтрации файлов. По умолчанию "*".
+
+        Returns:
+            list: Список имен файлов и директорий (без полных путей)
+        """
+        items = self.list_directory(path, pattern)
+        return [os.path.basename(item) for item in items]
+
     def create_directory(self, path: str) -> bool:
         """
         Создать директорию.

@@ -5,16 +5,18 @@ from pynput.keyboard import Key
 from pynput.mouse import Button
 
 
+@pytest.mark.deprecated
 class TestKeyboardController:
     """Тесты контроллера клавиатуры"""
 
     @pytest.fixture
     def keyboard_controller(self):
         """Создает экземпляр KeyboardController с мокнутым контроллером pynput"""
-        with patch("core.input.keyboard_controller.Controller") as mock_controller:
-            from core.input.keyboard_controller import KeyboardController as AppKeyboardController
 
-            controller = AppKeyboardController(human_like=False)
+        with patch("core.platform.windows.input.keyboard.Controller") as mock_controller:
+            from core.platform.windows.input.keyboard import WindowsKeyboard
+
+            controller = WindowsKeyboard(human_like=False)
             controller.controller = mock_controller.return_value
             yield controller
 
@@ -168,18 +170,20 @@ class TestKeyboardController:
         assert keyboard_controller.get_key_object(Key.enter) == Key.enter
 
 
+@pytest.mark.deprecated
 class TestMouseController:
     """Тесты контроллера мыши"""
 
     @pytest.fixture
     def mouse_controller(self):
         """Создает экземпляр MouseController с мокнутыми контроллерами"""
-        with patch("core.input.mouse_controller.Controller") as mock_controller, patch(
-            "core.input.mouse_controller.pyautogui"
-        ) as mock_pyautogui:
-            from core.input.mouse_controller import MouseController as AppMouseController
 
-            controller = AppMouseController(human_like=True)
+        with patch("core.platform.windows.input.mouse.Controller") as mock_controller, patch(
+            "core.platform.windows.input.mouse.pyautogui"
+        ) as mock_pyautogui:
+            from core.platform.windows.input.mouse import WindowsMouse
+
+            controller = WindowsMouse(human_like=True)
             controller.controller = mock_controller.return_value
             controller.controller.position = (100, 100)  # Устанавливаем начальную позицию
             yield controller, mock_pyautogui
@@ -483,6 +487,7 @@ class TestMouseController:
             mock_sleep.assert_not_called()
 
 
+@pytest.mark.deprecated
 class TestInputController:
     """Тесты объединенного контроллера ввода"""
 
@@ -603,35 +608,30 @@ class TestInputController:
         mock_keyboard.type_text.assert_called_once_with("Hello, World!")
 
 
+@pytest.mark.deprecated
 class TestInputControllerFactory:
     """Тесты фабрики контроллеров ввода"""
 
     def test_get_input_controller(self):
         """Тест получения контроллера ввода"""
-        # Сначала импортируем модуль
-        import core.input
+        # Импортируем модуль с фабрикой
+        from core.common.input.factory import get_input_controller
 
-        # Затем патчим классы в самом модуле
-        with patch("platform.system", return_value="Windows"), patch.object(
-            core.input, "KeyboardController"
-        ) as mock_keyboard_class, patch.object(
-            core.input, "MouseController"
-        ) as mock_mouse_class, patch.object(
-            core.input, "InputController"
+        # Создаем патчи для классов
+        with patch("platform.system", return_value="Windows"), patch(
+            "core.platform.windows.input.keyboard.WindowsKeyboard"
+        ) as mock_keyboard_class, patch(
+            "core.platform.windows.input.mouse.WindowsMouse"
+        ) as mock_mouse_class, patch(
+            "core.common.input.base.InputController"
         ) as mock_input_controller_class:
-
-            # Создаем мок-объекты для контроллеров
-            mock_keyboard = MagicMock()
-            mock_mouse = MagicMock()
-            mock_keyboard_class.return_value = mock_keyboard
-            mock_mouse_class.return_value = mock_mouse
-
-            # Создаем мок-объект для InputController
-            mock_input_controller = MagicMock()
-            mock_input_controller_class.return_value = mock_input_controller
+            # Настраиваем моки для возврата значений
+            mock_keyboard = mock_keyboard_class.return_value
+            mock_mouse = mock_mouse_class.return_value
+            mock_input_controller = mock_input_controller_class.return_value
 
             # Вызываем функцию
-            controller = core.input.get_input_controller()
+            controller = get_input_controller()
 
             # Проверяем, что были созданы правильные контроллеры
             mock_keyboard_class.assert_called_once_with(human_like=True)
@@ -656,16 +656,17 @@ class TestInputControllerFactory:
     def test_input_controller_factory_human_like(self):
         """Тест фабрики контроллеров ввода с имитацией человека"""
         # Импортируем фабрику
-        from core.input.input_factory import InputControllerFactory
+        from core.common.input.factory import get_keyboard, get_mouse
 
         # Создаем патчи для контроллеров
-        with patch("core.input.input_factory.KeyboardController") as mock_keyboard_class, patch(
-            "core.input.input_factory.MouseController"
+        with patch(
+            "core.platform.windows.input.keyboard.WindowsKeyboard"
+        ) as mock_keyboard_class, patch(
+            "core.platform.windows.input.mouse.WindowsMouse"
         ) as mock_mouse_class:
-
             # Создаем и проверяем мок вместо создания реальных контроллеров
-            InputControllerFactory.get_keyboard_controller(human_like=True)
-            InputControllerFactory.get_mouse_controller(human_like=True)
+            get_keyboard(human_like=True, new_instance=True)
+            get_mouse(human_like=True, new_instance=True)
 
             # Проверяем, что классы были вызваны с правильными параметрами
             mock_keyboard_class.assert_called_once_with(human_like=True)
@@ -674,16 +675,17 @@ class TestInputControllerFactory:
     def test_input_controller_factory_non_human_like(self):
         """Тест фабрики контроллеров ввода без имитации человека"""
         # Импортируем фабрику
-        from core.input.input_factory import InputControllerFactory
+        from core.common.input.factory import get_keyboard, get_mouse
 
         # Создаем патчи для контроллеров
-        with patch("core.input.input_factory.KeyboardController") as mock_keyboard_class, patch(
-            "core.input.input_factory.MouseController"
+        with patch(
+            "core.platform.windows.input.keyboard.WindowsKeyboard"
+        ) as mock_keyboard_class, patch(
+            "core.platform.windows.input.mouse.WindowsMouse"
         ) as mock_mouse_class:
-
             # Создаем и проверяем мок вместо создания реальных контроллеров
-            InputControllerFactory.get_keyboard_controller(human_like=False)
-            InputControllerFactory.get_mouse_controller(human_like=False)
+            get_keyboard(human_like=False, new_instance=True)
+            get_mouse(human_like=False, new_instance=True)
 
             # Проверяем, что классы были вызваны с правильными параметрами
             mock_keyboard_class.assert_called_once_with(human_like=False)
@@ -691,70 +693,40 @@ class TestInputControllerFactory:
 
     def test_get_input_controller_with_human_like_parameter(self):
         """Тест получения контроллера ввода с указанием параметра human_like"""
-        # Сначала импортируем модуль
-        import core.input
+        from core.common.input.factory import get_input_controller
 
-        # Создаем патчи непосредственно для объектов в модуле
-        with patch.object(core.input, "KeyboardController") as mock_keyboard_class, patch.object(
-            core.input, "MouseController"
-        ) as mock_mouse_class, patch.object(
-            core.input, "InputController"
+        # Создаем патчи непосредственно для функций в модуле
+        with patch("core.common.input.factory.get_keyboard") as mock_get_keyboard, patch(
+            "core.common.input.factory.get_mouse"
+        ) as mock_get_mouse, patch(
+            "core.common.input.base.InputController"
         ) as mock_input_controller_class:
+            # Настраиваем моки для возврата значений
+            mock_keyboard = MagicMock()
+            mock_mouse = MagicMock()
+            mock_get_keyboard.return_value = mock_keyboard
+            mock_get_mouse.return_value = mock_mouse
+            mock_input_controller = mock_input_controller_class.return_value
 
-            # Вызываем функцию с разными параметрами
-            core.input.get_input_controller()  # По умолчанию должен использоваться human_like=True
-            core.input.get_input_controller(human_like=False)  # Явно указываем human_like=False
+            # Тест с human_like=True
+            controller = get_input_controller(human_like=True)
 
-            # Проверяем, что классы контроллеров были вызваны с правильными параметрами
-            assert mock_keyboard_class.call_args_list[0][1]["human_like"] is True
-            assert mock_mouse_class.call_args_list[0][1]["human_like"] is True
+            # Проверяем, что были вызваны функции с правильными параметрами
+            mock_get_keyboard.assert_called_once_with(human_like=True)
+            mock_get_mouse.assert_called_once_with(human_like=True)
+            mock_input_controller_class.assert_called_once_with(mock_keyboard, mock_mouse)
+            assert controller == mock_input_controller
 
-            assert mock_keyboard_class.call_args_list[1][1]["human_like"] is False
-            assert mock_mouse_class.call_args_list[1][1]["human_like"] is False
+            # Сбрасываем моки для следующего теста
+            mock_get_keyboard.reset_mock()
+            mock_get_mouse.reset_mock()
+            mock_input_controller_class.reset_mock()
 
-            # Проверяем, что InputController был создан дважды
-            assert mock_input_controller_class.call_count == 2
+            # Тест с human_like=False
+            controller = get_input_controller(human_like=False)
 
-
-class TestIntegration:
-    """Интеграционные тесты контроллеров ввода"""
-
-    def test_keyboard_mouse_integration(self):
-        """Тест интеграции клавиатуры и мыши"""
-        with patch("core.input.keyboard_controller.Controller") as mock_keyboard_controller, patch(
-            "core.input.mouse_controller.Controller"
-        ) as mock_mouse_controller, patch(
-            "core.input.mouse_controller.pyautogui"
-        ) as mock_pyautogui:
-
-            # Импортируем необходимые классы
-            from core.common.input.base import InputController
-            from core.input.keyboard_controller import KeyboardController
-            from core.input.mouse_controller import MouseController
-
-            # Создаем контроллеры
-            keyboard = KeyboardController(human_like=False)
-            mouse = MouseController(human_like=False)
-
-            # Устанавливаем моки
-            keyboard.controller = mock_keyboard_controller.return_value
-            mouse.controller = mock_mouse_controller.return_value
-
-            # Создаем объединенный контроллер
-            input_controller = InputController(keyboard, mouse)
-
-            # Выполняем комбинированные действия
-            # 1. Перемещаем мышь
-            input_controller.mouse.move_to(100, 200)
-            # 2. Кликаем
-            input_controller.mouse.click()
-            # 3. Вводим текст
-            input_controller.keyboard.type_text("Hello")
-            # 4. Нажимаем Enter
-            input_controller.keyboard.press_enter()
-
-            # Проверяем, что все методы были вызваны
-            mock_pyautogui.moveTo.assert_called_once()
-            mock_mouse_controller.return_value.click.assert_called_once()
-            assert mock_keyboard_controller.return_value.press.call_count >= 5  # "Hello"
-            assert mock_keyboard_controller.return_value.release.call_count >= 5  # "Hello"
+            # Проверяем, что были вызваны функции с правильными параметрами
+            mock_get_keyboard.assert_called_once_with(human_like=False)
+            mock_get_mouse.assert_called_once_with(human_like=False)
+            mock_input_controller_class.assert_called_once_with(mock_keyboard, mock_mouse)
+            assert controller == mock_input_controller

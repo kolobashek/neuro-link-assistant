@@ -11,7 +11,7 @@ class TestFileManager:
     @pytest.fixture
     def file_manager(self):
         """Создает экземпляр FileManager"""
-        from core.filesystem import get_file_system
+        from core.common.filesystem.factory import get_file_system
 
         return get_file_system()
 
@@ -60,8 +60,8 @@ class TestFileManager:
         with open(test_file, "w") as f:
             f.write(initial_content)
 
-        # Используем правильное имя метода append_file вместо append_to_file
-        result = file_manager.append_file(test_file, append_content)
+        # Используем правильное имя метода append_to_file
+        result = file_manager.append_to_file(test_file, append_content)
 
         assert result is True
 
@@ -115,12 +115,17 @@ class TestFileManager:
         # Получаем список всех файлов
         result = file_manager.list_directory(temp_dir)
 
-        assert set(result) == set(test_files)
+        # Извлекаем только имена файлов из полных путей
+        result_filenames = [os.path.basename(path) for path in result]
+
+        assert set(result_filenames) == set(test_files)
 
         # Получаем список файлов по шаблону
         result = file_manager.list_directory(temp_dir, "*.txt")
 
-        assert set(result) == {"file1.txt", "file2.txt"}
+        # Извлекаем только имена файлов из полных путей
+        result_filenames = [os.path.basename(path) for path in result]
+        assert set(result_filenames) == {"file1.txt", "file2.txt"}
 
     def test_copy_file(self, file_manager, temp_dir):
         """Тест копирования файла"""
@@ -321,14 +326,14 @@ class TestFileManager:
         test_file = os.path.join(temp_dir, "test.txt")
 
         # Файл не существует
-        assert file_manager.is_file_exists(test_file) is False
+        assert file_manager.file_exists(test_file) is False
 
         # Создаем файл
         with open(test_file, "w") as f:
             f.write("Test content")
 
         # Файл существует
-        assert file_manager.is_file_exists(test_file) is True
+        assert file_manager.file_exists(test_file) is True
 
     def test_directory_exists(self, file_manager, temp_dir):
         """Тест проверки существования директории"""

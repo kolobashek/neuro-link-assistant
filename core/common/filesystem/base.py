@@ -30,6 +30,20 @@ class AbstractFileSystem(ABC):
         pass
 
     @abstractmethod
+    def list_directory_names(self, path, pattern="*"):
+        """
+        Получает список имен файлов и директорий в указанной директории.
+
+        Args:
+            path (str): Путь к директории
+            pattern (str, optional): Шаблон для фильтрации файлов. По умолчанию "*".
+
+        Returns:
+            list: Список имен файлов и директорий (без полных путей)
+        """
+        pass
+
+    @abstractmethod
     def file_exists(self, path: str) -> bool:
         """
         Проверить существование файла.

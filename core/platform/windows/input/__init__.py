@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Реализации контроллеров ввода для Windows.
+Модуль, содержащий реализации контроллеров ввода для платформы Windows.
 """
 
 from core.platform.windows.input.keyboard import WindowsKeyboard
