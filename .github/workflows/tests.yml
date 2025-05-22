@@ -22,8 +22,16 @@ jobs:
       - name: Установка зависимостей
         run: |
           python -m pip install --upgrade pip
+          pip install pytest pytest-cov
           pip install -r requirements.txt
 
-      - name: Запуск тестов
+      - name: Запуск модульных тестов
         run: |
-          pytest tests/unit/core/web/ -v --cov=core.web
+          pytest tests/unit --cov=core -v
+
+      - name: Запуск интеграционных тестов
+        run: |
+          pytest tests/integration -v
+
+      - name: Загрузка отчета о покрытии
+        uses: codecov/codecov-action@v3

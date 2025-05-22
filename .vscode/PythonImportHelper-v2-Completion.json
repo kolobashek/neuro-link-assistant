@@ -157,7 +157,31 @@
         "documentation": {}
     },
     {
-        "label": "timedelta",
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -182,6 +206,14 @@
     },
     {
         "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -500,6 +532,1368 @@
         "documentation": {}
     },
     {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Generator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TypeVar",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "InputController",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "InputController",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractKeyboard",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractMouse",
+        "importPath": "core.common.input.base",
+        "description": "core.common.input.base",
+        "isExtraImport": true,
+        "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "InputRegistry",
+        "importPath": "core.common.input.registry",
+        "description": "core.common.input.registry",
+        "isExtraImport": true,
+        "detail": "core.common.input.registry",
+        "documentation": {}
+    },
+    {
+        "label": "InputRegistry",
+        "importPath": "core.common.input.registry",
+        "description": "core.common.input.registry",
+        "isExtraImport": true,
+        "detail": "core.common.input.registry",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractProcessManager",
+        "importPath": "core.common.process.base",
+        "description": "core.common.process.base",
+        "isExtraImport": true,
+        "detail": "core.common.process.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractProcessManager",
+        "importPath": "core.common.process.base",
+        "description": "core.common.process.base",
+        "isExtraImport": true,
+        "detail": "core.common.process.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractRegistryManager",
+        "importPath": "core.common.registry.base",
+        "description": "core.common.registry.base",
+        "isExtraImport": true,
+        "detail": "core.common.registry.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractRegistryManager",
+        "importPath": "core.common.registry.base",
+        "description": "core.common.registry.base",
+        "isExtraImport": true,
+        "detail": "core.common.registry.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractSystemInfo",
+        "importPath": "core.common.system.base",
+        "description": "core.common.system.base",
+        "isExtraImport": true,
+        "detail": "core.common.system.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractSystemInfo",
+        "importPath": "core.common.system.base",
+        "description": "core.common.system.base",
+        "isExtraImport": true,
+        "detail": "core.common.system.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractWindowManager",
+        "importPath": "core.common.window.base",
+        "description": "core.common.window.base",
+        "isExtraImport": true,
+        "detail": "core.common.window.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractWindowManager",
+        "importPath": "core.common.window.base",
+        "description": "core.common.window.base",
+        "isExtraImport": true,
+        "detail": "core.common.window.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractWindowManager",
+        "importPath": "core.common.window.base",
+        "description": "core.common.window.base",
+        "isExtraImport": true,
+        "detail": "core.common.window.base",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "desc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "desc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -508,7 +1902,7 @@
         "documentation": {}
     },
     {
-        "label": "# Table",
+        "label": "asc",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -516,7 +1910,15 @@
         "documentation": {}
     },
     {
-        "label": "; UniqueConstraint",
+        "label": "desc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "or_",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -628,14 +2030,6 @@
         "documentation": {}
     },
     {
-        "label": "desc",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "isExtraImport": true,
-        "detail": "sqlalchemy",
-        "documentation": {}
-    },
-    {
         "label": "text",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -644,11 +2038,27 @@
         "documentation": {}
     },
     {
-        "label": "declarative_base",
-        "importPath": "sqlalchemy.ext.declarative",
-        "description": "sqlalchemy.ext.declarative",
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
         "isExtraImport": true,
-        "detail": "sqlalchemy.ext.declarative",
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -689,310 +2099,6 @@
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
         "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "AIModel",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Workflow",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Base",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "AIModel",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Workflow",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "AIModel",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "core.db.models",
-        "description": "core.db.models",
-        "isExtraImport": true,
-        "detail": "core.db.models",
         "documentation": {}
     },
     {
@@ -1052,6 +2158,22 @@
         "documentation": {}
     },
     {
+        "label": "Workflow",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "AIModel",
         "importPath": "core.db.models",
         "description": "core.db.models",
@@ -1073,6 +2195,86 @@
         "description": "core.db.models",
         "isExtraImport": true,
         "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
         "documentation": {}
     },
     {
@@ -1116,20 +2318,91 @@
         "documentation": {}
     },
     {
-        "label": "get_db",
-        "importPath": "core.db.connection",
-        "description": "core.db.connection",
+        "label": "contextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
         "isExtraImport": true,
-        "detail": "core.db.connection",
+        "detail": "contextlib",
         "documentation": {}
     },
     {
-        "label": "csv",
-        "kind": 6,
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
         "isExtraImport": true,
-        "importPath": "csv",
-        "description": "csv",
-        "detail": "csv",
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "get_keyboard",
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "isExtraImport": true,
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_mouse",
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "isExtraImport": true,
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_mouse",
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "isExtraImport": true,
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsKeyboard",
+        "importPath": "core.platform.windows.input.keyboard",
+        "description": "core.platform.windows.input.keyboard",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsKeyboard",
+        "importPath": "core.platform.windows.input.keyboard",
+        "description": "core.platform.windows.input.keyboard",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsKeyboard",
+        "importPath": "core.platform.windows.input.keyboard",
+        "description": "core.platform.windows.input.keyboard",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsMouse",
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsMouse",
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsMouse",
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
@@ -1139,6 +2412,48 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "RequestException",
+        "importPath": "requests.exceptions",
+        "description": "requests.exceptions",
+        "isExtraImport": true,
+        "detail": "requests.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.file_system",
+        "description": "core.common.file_system",
+        "isExtraImport": true,
+        "detail": "core.common.file_system",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.file_system",
+        "description": "core.common.file_system",
+        "isExtraImport": true,
+        "detail": "core.common.file_system",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
         "documentation": {}
     },
     {
@@ -1184,19 +2499,20 @@
         "documentation": {}
     },
     {
-        "label": "KeyboardController",
-        "importPath": "core.input.keyboard_controller",
-        "description": "core.input.keyboard_controller",
+        "label": "ctypes",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "core.input.keyboard_controller",
+        "importPath": "ctypes",
+        "description": "ctypes",
+        "detail": "ctypes",
         "documentation": {}
     },
     {
-        "label": "MouseController",
-        "importPath": "core.input.mouse_controller",
-        "description": "core.input.mouse_controller",
+        "label": "wintypes",
+        "importPath": "ctypes",
+        "description": "ctypes",
         "isExtraImport": true,
-        "detail": "core.input.mouse_controller",
+        "detail": "ctypes",
         "documentation": {}
     },
     {
@@ -1209,245 +2525,21 @@
         "documentation": {}
     },
     {
-        "label": "Controller",
-        "importPath": "pynput.keyboard",
-        "description": "pynput.keyboard",
-        "isExtraImport": true,
-        "detail": "pynput.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "Key",
-        "importPath": "pynput.keyboard",
-        "description": "pynput.keyboard",
-        "isExtraImport": true,
-        "detail": "pynput.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "Key",
-        "importPath": "pynput.keyboard",
-        "description": "pynput.keyboard",
-        "isExtraImport": true,
-        "detail": "pynput.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "Button",
-        "importPath": "pynput.mouse",
-        "description": "pynput.mouse",
-        "isExtraImport": true,
-        "detail": "pynput.mouse",
-        "documentation": {}
-    },
-    {
-        "label": "Controller",
-        "importPath": "pynput.mouse",
-        "description": "pynput.mouse",
-        "isExtraImport": true,
-        "detail": "pynput.mouse",
-        "documentation": {}
-    },
-    {
-        "label": "Button",
-        "importPath": "pynput.mouse",
-        "description": "pynput.mouse",
-        "isExtraImport": true,
-        "detail": "pynput.mouse",
-        "documentation": {}
-    },
-    {
-        "label": "requests",
+        "label": "win32clipboard",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
+        "importPath": "win32clipboard",
+        "description": "win32clipboard",
+        "detail": "win32clipboard",
         "documentation": {}
     },
     {
-        "label": "RequestException",
-        "importPath": "requests.exceptions",
-        "description": "requests.exceptions",
-        "isExtraImport": true,
-        "detail": "requests.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_llm_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "ErrorHandler",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_llm_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_warning",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "ErrorHandler",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "re",
+        "label": "math",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractKeyboard",
-        "importPath": "core.common.input.base",
-        "description": "core.common.input.base",
-        "isExtraImport": true,
-        "detail": "core.common.input.base",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractMouse",
-        "importPath": "core.common.input.base",
-        "description": "core.common.input.base",
-        "isExtraImport": true,
-        "detail": "core.common.input.base",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractFileSystem",
-        "importPath": "core.common.file_system",
-        "description": "core.common.file_system",
-        "isExtraImport": true,
-        "detail": "core.common.file_system",
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
         "documentation": {}
     },
     {
@@ -1457,6 +2549,33 @@
         "importPath": "psutil",
         "description": "psutil",
         "detail": "psutil",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "pygetwindow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygetwindow",
+        "description": "pygetwindow",
+        "detail": "pygetwindow",
+        "documentation": {}
+    },
+    {
+        "label": "win32process",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "win32process",
+        "description": "win32process",
+        "detail": "win32process",
         "documentation": {}
     },
     {
@@ -2239,33 +3358,6 @@
         "documentation": {}
     },
     {
-        "label": "platform",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "platform",
-        "description": "platform",
-        "detail": "platform",
-        "documentation": {}
-    },
-    {
-        "label": "socket",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "socket",
-        "description": "socket",
-        "detail": "socket",
-        "documentation": {}
-    },
-    {
-        "label": "win32process",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "win32process",
-        "description": "win32process",
-        "detail": "win32process",
-        "documentation": {}
-    },
-    {
         "label": "importlib",
         "kind": 6,
         "isExtraImport": true,
@@ -2703,14 +3795,6 @@
         "documentation": {}
     },
     {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
         "label": "DataError",
         "importPath": "sqlalchemy.exc",
         "description": "sqlalchemy.exc",
@@ -3032,27 +4116,43 @@
         "documentation": {}
     },
     {
-        "label": "AIModelService",
-        "importPath": "core.services.ai_model_service",
-        "description": "core.services.ai_model_service",
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
         "isExtraImport": true,
-        "detail": "core.services.ai_model_service",
+        "detail": "unittest.mock",
         "documentation": {}
     },
     {
-        "label": "TaskService",
-        "importPath": "core.services.task_service",
-        "description": "core.services.task_service",
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
         "isExtraImport": true,
-        "detail": "core.services.task_service",
+        "detail": "unittest.mock",
         "documentation": {}
     },
     {
-        "label": "UserService",
-        "importPath": "core.services.user_service",
-        "description": "core.services.user_service",
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
         "isExtraImport": true,
-        "detail": "core.services.user_service",
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
         "documentation": {}
     },
     {
@@ -3153,6 +4253,22 @@
     },
     {
         "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
         "isExtraImport": true,
@@ -3456,6 +4572,30 @@
         "documentation": {}
     },
     {
+        "label": "AIModelService",
+        "importPath": "core.services.ai_model_service",
+        "description": "core.services.ai_model_service",
+        "isExtraImport": true,
+        "detail": "core.services.ai_model_service",
+        "documentation": {}
+    },
+    {
+        "label": "TaskService",
+        "importPath": "core.services.task_service",
+        "description": "core.services.task_service",
+        "isExtraImport": true,
+        "detail": "core.services.task_service",
+        "documentation": {}
+    },
+    {
+        "label": "UserService",
+        "importPath": "core.services.user_service",
+        "description": "core.services.user_service",
+        "isExtraImport": true,
+        "detail": "core.services.user_service",
+        "documentation": {}
+    },
+    {
         "label": "restart_db",
         "importPath": "scripts.docker",
         "description": "scripts.docker",
@@ -3493,6 +4633,22 @@
         "description": "scripts.docker",
         "isExtraImport": true,
         "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "Key",
+        "importPath": "pynput.keyboard",
+        "description": "pynput.keyboard",
+        "isExtraImport": true,
+        "detail": "pynput.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "Button",
+        "importPath": "pynput.mouse",
+        "description": "pynput.mouse",
+        "isExtraImport": true,
+        "detail": "pynput.mouse",
         "documentation": {}
     },
     {
@@ -3536,11 +4692,11 @@
         "documentation": {}
     },
     {
-        "label": "RegistryManager",
-        "importPath": "core.windows.registry_manager",
-        "description": "core.windows.registry_manager",
+        "label": "Win32RegistryManager",
+        "importPath": "core.platform.windows.registry.win32_registry_manager",
+        "description": "core.platform.windows.registry.win32_registry_manager",
         "isExtraImport": true,
-        "detail": "core.windows.registry_manager",
+        "detail": "core.platform.windows.registry.win32_registry_manager",
         "documentation": {}
     },
     {
@@ -3552,11 +4708,19 @@
         "documentation": {}
     },
     {
-        "label": "WindowsWindowManager",
-        "importPath": "core.platform.windows.window_manager",
-        "description": "core.platform.windows.window_manager",
+        "label": "get_file_system",
+        "importPath": "core.common.filesystem",
+        "description": "core.common.filesystem",
         "isExtraImport": true,
-        "detail": "core.platform.windows.window_manager",
+        "detail": "core.common.filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "Win32WindowManager",
+        "importPath": "core.platform.windows.window.win32_window_manager",
+        "description": "core.platform.windows.window.win32_window_manager",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.window.win32_window_manager",
         "documentation": {}
     },
     {
@@ -6091,11 +7255,56 @@
         "documentation": {}
     },
     {
+        "label": "AbstractFileSystem",
+        "kind": 6,
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
+        "peekOfCode": "class AbstractFileSystem(ABC):\n    \"\"\"\n    Абстрактный класс для работы с файловой системой.\n    Определяет методы для работы с файлами и директориями.\n    \"\"\"\n    @abstractmethod\n    def list_directory(self, path: str, pattern: str = \"*\", recursive: bool = False) -> List[str]:\n        \"\"\"\n        Получить список файлов в директории.\n        Args:",
+        "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "register_file_system",
+        "kind": 2,
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "peekOfCode": "def register_file_system(platform_name: str, implementation: Type[AbstractFileSystem]) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы для указанной платформы.\n    Args:\n        platform_name (str): Имя платформы (\"windows\", \"linux\", \"darwin\").\n        implementation (Type[AbstractFileSystem]): Класс реализации файловой системы.\n    \"\"\"\n    _file_system_implementations[platform_name.lower()] = implementation\ndef create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:\n    \"\"\"",
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "create_file_system",
+        "kind": 2,
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "peekOfCode": "def create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:\n    \"\"\"\n    Создает экземпляр файловой системы для указанной платформы.\n    Args:\n        platform_name (Optional[str], optional): Имя платформы. Если None, используется текущая платформа.\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы.\n    Raises:\n        NotImplementedError: Если реализация для указанной платформы не найдена.\n    \"\"\"",
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_system",
+        "kind": 2,
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "peekOfCode": "def get_file_system(new_instance: bool = False) -> AbstractFileSystem:\n    \"\"\"\n    Получает экземпляр файловой системы для текущей платформы.\n    Args:\n        new_instance (bool, optional): Флаг, указывающий, нужно ли создать новый экземпляр.\n                                      По умолчанию False.\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы.\n    \"\"\"\n    global _file_system_instance",
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "_file_system_instance",
+        "kind": 5,
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "peekOfCode": "_file_system_instance = None\ndef register_file_system(platform_name: str, implementation: Type[AbstractFileSystem]) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы для указанной платформы.\n    Args:\n        platform_name (str): Имя платформы (\"windows\", \"linux\", \"darwin\").\n        implementation (Type[AbstractFileSystem]): Класс реализации файловой системы.\n    \"\"\"\n    _file_system_implementations[platform_name.lower()] = implementation\ndef create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:",
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
         "label": "AbstractKeyboard",
         "kind": 6,
         "importPath": "core.common.input.base",
         "description": "core.common.input.base",
-        "peekOfCode": "class AbstractKeyboard:\n    \"\"\"Абстрактный класс для эмуляции клавиатуры\"\"\"\n    def press_key(self, key):\n        \"\"\"Нажать клавишу\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def release_key(self, key):\n        \"\"\"Отпустить клавишу\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def press_and_release(self, key):\n        \"\"\"Нажать и отпустить клавишу\"\"\"",
+        "peekOfCode": "class AbstractKeyboard(ABC):\n    \"\"\"\n    Абстрактный базовый класс для контроллеров клавиатуры.\n    Определяет интерфейс, который должен быть реализован всеми\n    конкретными контроллерами клавиатуры.\n    \"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализация контроллера клавиатуры.\n        Args:",
         "detail": "core.common.input.base",
         "documentation": {}
     },
@@ -6104,7 +7313,7 @@
         "kind": 6,
         "importPath": "core.common.input.base",
         "description": "core.common.input.base",
-        "peekOfCode": "class AbstractMouse:\n    \"\"\"Абстрактный класс для эмуляции мыши\"\"\"\n    def move_to(self, x, y):\n        \"\"\"Переместить курсор в указанные координаты\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def click(self, button=\"left\"):\n        \"\"\"Кликнуть указанной кнопкой мыши\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def double_click(self, button=\"left\"):\n        \"\"\"Двойной клик мыши\"\"\"",
+        "peekOfCode": "class AbstractMouse(ABC):\n    \"\"\"\n    Абстрактный базовый класс для контроллеров мыши.\n    Определяет интерфейс, который должен быть реализован всеми\n    конкретными контроллерами мыши.\n    \"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализация контроллера мыши.\n        Args:",
         "detail": "core.common.input.base",
         "documentation": {}
     },
@@ -6113,8 +7322,170 @@
         "kind": 6,
         "importPath": "core.common.input.base",
         "description": "core.common.input.base",
-        "peekOfCode": "class InputController:\n    \"\"\"Контроллер ввода, объединяющий клавиатуру и мышь\"\"\"\n    def __init__(self, keyboard, mouse):\n        \"\"\"\n        Инициализация контроллера ввода.\n        Args:\n            keyboard: Контроллер клавиатуры\n            mouse: Контроллер мыши\n        \"\"\"\n        self.keyboard = keyboard",
+        "peekOfCode": "class InputController:\n    \"\"\"\n    Комбинированный контроллер ввода, объединяющий функциональность\n    клавиатуры и мыши.\n    \"\"\"\n    def __init__(self, keyboard: AbstractKeyboard, mouse: AbstractMouse):\n        \"\"\"\n        Инициализация контроллера ввода.\n        Args:\n            keyboard: Экземпляр контроллера клавиатуры.",
         "detail": "core.common.input.base",
+        "documentation": {}
+    },
+    {
+        "label": "get_keyboard",
+        "kind": 2,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "def get_keyboard(\n    human_like=True, platform_name=None, new_instance=False\n) -> Optional[AbstractKeyboard]:\n    \"\"\"\n    Возвращает экземпляр контроллера клавиатуры для текущей или указанной платформы.\n    Args:\n        human_like (bool, optional): Признак человекоподобного поведения.\n        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).\n        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).\n    Returns:",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_mouse",
+        "kind": 2,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "def get_mouse(human_like=True, platform_name=None, new_instance=False) -> Optional[AbstractMouse]:\n    \"\"\"\n    Возвращает экземпляр контроллера мыши для текущей или указанной платформы.\n    Args:\n        human_like (bool, optional): Признак человекоподобного поведения.\n        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).\n        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).\n    Returns:\n        AbstractMouse: Экземпляр контроллера мыши или None, если не найден.\n    \"\"\"",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_input_controller",
+        "kind": 2,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "def get_input_controller(\n    human_like=True, platform_name=None, new_instance=False\n) -> Optional[InputController]:\n    \"\"\"\n    Возвращает комбинированный контроллер ввода для текущей или указанной платформы.\n    Args:\n        human_like (bool, optional): Признак человекоподобного поведения.\n        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).\n        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).\n    Returns:",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "register_keyboard",
+        "kind": 2,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "def register_keyboard(name: str, keyboard_class: Any) -> bool:\n    \"\"\"\n    Регистрирует класс контроллера клавиатуры в реестре.\n    Args:\n        name: Уникальное имя контроллера.\n        keyboard_class: Класс контроллера клавиатуры.\n    Returns:\n        True если регистрация успешна, иначе False.\n    \"\"\"\n    return registry.register_keyboard(name, keyboard_class)",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "register_mouse",
+        "kind": 2,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "def register_mouse(name: str, mouse_class: Any) -> bool:\n    \"\"\"\n    Регистрирует класс контроллера мыши в реестре.\n    Args:\n        name: Уникальное имя контроллера.\n        mouse_class: Класс контроллера мыши.\n    Returns:\n        True если регистрация успешна, иначе False.\n    \"\"\"\n    return registry.register_mouse(name, mouse_class)",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "registry",
+        "kind": 5,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "registry = InputRegistry()\n# Кэш для хранения экземпляров контроллеров\n_keyboard_instances = {}\n_mouse_instances = {}\ndef get_keyboard(\n    human_like=True, platform_name=None, new_instance=False\n) -> Optional[AbstractKeyboard]:\n    \"\"\"\n    Возвращает экземпляр контроллера клавиатуры для текущей или указанной платформы.\n    Args:",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "_keyboard_instances",
+        "kind": 5,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "_keyboard_instances = {}\n_mouse_instances = {}\ndef get_keyboard(\n    human_like=True, platform_name=None, new_instance=False\n) -> Optional[AbstractKeyboard]:\n    \"\"\"\n    Возвращает экземпляр контроллера клавиатуры для текущей или указанной платформы.\n    Args:\n        human_like (bool, optional): Признак человекоподобного поведения.\n        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "_mouse_instances",
+        "kind": 5,
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "peekOfCode": "_mouse_instances = {}\ndef get_keyboard(\n    human_like=True, platform_name=None, new_instance=False\n) -> Optional[AbstractKeyboard]:\n    \"\"\"\n    Возвращает экземпляр контроллера клавиатуры для текущей или указанной платформы.\n    Args:\n        human_like (bool, optional): Признак человекоподобного поведения.\n        platform_name (str, optional): Имя платформы (если None, используется текущая платформа).\n        new_instance (bool, optional): Признак создания нового экземпляра (не использовать кэш).",
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
+        "label": "InputRegistry",
+        "kind": 6,
+        "importPath": "core.common.input.registry",
+        "description": "core.common.input.registry",
+        "peekOfCode": "class InputRegistry:\n    \"\"\"\n    Реестр контроллеров ввода.\n    Хранит информацию о доступных классах контроллеров клавиатуры и мыши.\n    \"\"\"\n    def __new__(cls, auto_register=True):\n        \"\"\"\n        Создает единственный экземпляр класса (синглтон).\n        Args:\n            auto_register (bool): Если True, автоматически регистрирует стандартные контроллеры.",
+        "detail": "core.common.input.registry",
+        "documentation": {}
+    },
+    {
+        "label": "_instance",
+        "kind": 5,
+        "importPath": "core.common.input.registry",
+        "description": "core.common.input.registry",
+        "peekOfCode": "_instance = None\nclass InputRegistry:\n    \"\"\"\n    Реестр контроллеров ввода.\n    Хранит информацию о доступных классах контроллеров клавиатуры и мыши.\n    \"\"\"\n    def __new__(cls, auto_register=True):\n        \"\"\"\n        Создает единственный экземпляр класса (синглтон).\n        Args:",
+        "detail": "core.common.input.registry",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractProcessManager",
+        "kind": 6,
+        "importPath": "core.common.process.base",
+        "description": "core.common.process.base",
+        "peekOfCode": "class AbstractProcessManager(ABC):\n    \"\"\"\n    Абстрактный класс для управления процессами.\n    Определяет интерфейс для платформо-зависимых реализаций.\n    \"\"\"\n    @abstractmethod\n    def start_process(\n        self,\n        executable: str,\n        args: Optional[List[str]] = None,",
+        "detail": "core.common.process.base",
+        "documentation": {}
+    },
+    {
+        "label": "ProcessManagerFactory",
+        "kind": 6,
+        "importPath": "core.common.process.factory",
+        "description": "core.common.process.factory",
+        "peekOfCode": "class ProcessManagerFactory:\n    \"\"\"\n    Фабрика для создания менеджеров процессов.\n    \"\"\"\n    @staticmethod\n    def create_process_manager() -> AbstractProcessManager:\n        \"\"\"\n        Создать менеджер процессов для текущей платформы.\n        Returns:\n            AbstractProcessManager: Менеджер процессов для текущей платформы",
+        "detail": "core.common.process.factory",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractRegistryManager",
+        "kind": 6,
+        "importPath": "core.common.registry.base",
+        "description": "core.common.registry.base",
+        "peekOfCode": "class AbstractRegistryManager(ABC):\n    \"\"\"\n    Абстрактный класс для управления реестром.\n    Определяет интерфейс для платформо-зависимых реализаций.\n    \"\"\"\n    @abstractmethod\n    def read_value(self, root_key: Any, key_path: str, value_name: str) -> Any:\n        \"\"\"\n        Читает значение из реестра.\n        Args:",
+        "detail": "core.common.registry.base",
+        "documentation": {}
+    },
+    {
+        "label": "RegistryManagerFactory",
+        "kind": 6,
+        "importPath": "core.common.registry.factory",
+        "description": "core.common.registry.factory",
+        "peekOfCode": "class RegistryManagerFactory:\n    \"\"\"\n    Фабрика для создания менеджеров реестра.\n    \"\"\"\n    @staticmethod\n    def create_registry_manager() -> AbstractRegistryManager:\n        \"\"\"\n        Создать менеджер реестра для текущей платформы.\n        Returns:\n            AbstractRegistryManager: Менеджер реестра для текущей платформы",
+        "detail": "core.common.registry.factory",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractSystemInfo",
+        "kind": 6,
+        "importPath": "core.common.system.base",
+        "description": "core.common.system.base",
+        "peekOfCode": "class AbstractSystemInfo(ABC):\n    \"\"\"\n    Абстрактный класс для получения системной информации.\n    Определяет интерфейс для платформо-зависимых реализаций.\n    \"\"\"\n    @abstractmethod\n    def get_os_info(self) -> Dict[str, Any]:\n        \"\"\"\n        Получает информацию об операционной системе.\n        Returns:",
+        "detail": "core.common.system.base",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInfoFactory",
+        "kind": 6,
+        "importPath": "core.common.system.factory",
+        "description": "core.common.system.factory",
+        "peekOfCode": "class SystemInfoFactory:\n    \"\"\"\n    Фабрика для создания объектов системной информации.\n    \"\"\"\n    @staticmethod\n    def create_system_info() -> AbstractSystemInfo:\n        \"\"\"\n        Создать объект системной информации для текущей платформы.\n        Returns:\n            AbstractSystemInfo: Объект системной информации для текущей платформы",
+        "detail": "core.common.system.factory",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractWindowManager",
+        "kind": 6,
+        "importPath": "core.common.window.base",
+        "description": "core.common.window.base",
+        "peekOfCode": "class AbstractWindowManager(ABC):\n    \"\"\"\n    Абстрактный класс для управления окнами.\n    Определяет интерфейс для платформо-зависимых реализаций.\n    \"\"\"\n    @abstractmethod\n    def get_all_windows(self) -> List[Any]:\n        \"\"\"\n        Получение списка всех открытых окон.\n        Returns:",
+        "detail": "core.common.window.base",
+        "documentation": {}
+    },
+    {
+        "label": "WindowManagerFactory",
+        "kind": 6,
+        "importPath": "core.common.window.factory",
+        "description": "core.common.window.factory",
+        "peekOfCode": "class WindowManagerFactory:\n    \"\"\"\n    Фабрика для создания менеджеров окон.\n    \"\"\"\n    @staticmethod\n    def create_window_manager(backend: Optional[str] = None) -> AbstractWindowManager:\n        \"\"\"\n        Создать менеджер окон для текущей платформы.\n        Args:\n            backend (Optional[str]): Предпочтительный бэкенд",
+        "detail": "core.common.window.factory",
         "documentation": {}
     },
     {
@@ -6122,7 +7493,7 @@
         "kind": 6,
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
-        "peekOfCode": "class ErrorHandler:\n    \"\"\"\n    Обработчик ошибок.\n    Предоставляет функции для обработки и логирования ошибок.\n    \"\"\"\n    def __init__(self, logger_name=\"error_handler\"):\n        \"\"\"\n        Инициализация обработчика ошибок.\n        Args:\n            logger_name (str, optional): Имя логгера",
+        "peekOfCode": "class ErrorHandler:\n    \"\"\"\n    Обработчик ошибок.\n    Предоставляет функции для обработки и логирования ошибок различных типов.\n    \"\"\"\n    def __init__(self, logger_name=\"error_handler\"):\n        \"\"\"\n        Инициализация обработчика ошибок.\n        Args:\n            logger_name (str, optional): Имя логгера",
         "detail": "core.common.error_handler",
         "documentation": {}
     },
@@ -6131,7 +7502,7 @@
         "kind": 2,
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
-        "peekOfCode": "def handle_error(message, exception=None, module=\"general\", log_level=\"error\"):\n    \"\"\"\n    Обработка ошибок с логированием (глобальная функция).\n    Args:\n        message (str): Сообщение об ошибке\n        exception (Exception, optional): Исключение, вызвавшее ошибку\n        module (str, optional): Модуль, в котором произошла ошибка\n        log_level (str, optional): Уровень логирования ('error', 'warning', 'critical')\n    Returns:\n        bool: True, если ошибка обработана, False в противном случае",
+        "peekOfCode": "def handle_error(exception, context=None, callback=None, log_level=\"error\", module=None):\n    \"\"\"\n    Глобальная функция для обработки ошибок с использованием глобального экземпляра ErrorHandler.\n    Args:\n        exception (Exception): Исключение, вызвавшее ошибку\n        context (str, optional): Контекст, в котором произошла ошибка\n        callback (callable, optional): Функция обратного вызова для обработки ошибки\n        log_level (str, optional): Уровень логирования ('error', 'warning', 'critical')\n        module (str, optional): Имя модуля, в котором произошла ошибка, для группировки логов\n    Returns:",
         "detail": "core.common.error_handler",
         "documentation": {}
     },
@@ -6140,7 +7511,7 @@
         "kind": 2,
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
-        "peekOfCode": "def handle_warning(message, module=\"general\"):\n    \"\"\"\n    Обработка предупреждений (глобальная функция).\n    Args:\n        message (str): Сообщение предупреждения\n        module (str, optional): Модуль, в котором произошло предупреждение\n    Returns:\n        bool: True, если предупреждение обработано\n    \"\"\"\n    return _error_handler.handle_warning(message, module)",
+        "peekOfCode": "def handle_warning(message, context=None, module=None):\n    \"\"\"\n    Глобальная функция для обработки предупреждений с использованием глобального экземпляра ErrorHandler.\n    Args:\n        message (str): Сообщение предупреждения\n        context (str, optional): Контекст, в котором произошло предупреждение\n        module (str, optional): Имя модуля, в котором произошло предупреждение\n    Returns:\n        bool: True, если предупреждение обработано\n    \"\"\"",
         "detail": "core.common.error_handler",
         "documentation": {}
     },
@@ -6149,7 +7520,43 @@
         "kind": 2,
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
-        "peekOfCode": "def handle_llm_error(message, exception=None, model=None, prompt=None):\n    \"\"\"\n    Специализированный обработчик ошибок для LLM (глобальная функция).\n    Args:\n        message (str): Сообщение об ошибке\n        exception (Exception, optional): Исключение, вызвавшее ошибку\n        model (str, optional): Модель LLM, вызвавшая ошибку\n        prompt (str, optional): Промпт, вызвавший ошибку\n    Returns:\n        bool: True, если ошибка обработана, False в противном случае",
+        "peekOfCode": "def handle_llm_error(message, exception=None, model=None, prompt=None):\n    \"\"\"\n    Глобальная функция для обработки ошибок LLM с использованием глобального экземпляра ErrorHandler.\n    Args:\n        message (str): Сообщение об ошибке\n        exception (Exception, optional): Исключение, вызвавшее ошибку\n        model (str, optional): Модель LLM, вызвавшая ошибку\n        prompt (str, optional): Промпт, вызвавший ошибку\n    Returns:\n        bool: True, если ошибка обработана, False в противном случае",
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_api_error",
+        "kind": 2,
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "peekOfCode": "def handle_api_error(exception: Exception, context: str) -> Dict[str, Any]:\n    \"\"\"\n    Глобальная функция для обработки ошибок API с использованием глобального экземпляра ErrorHandler.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"\n    return _error_handler.handle_api_error(exception, context)",
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_rate_limit",
+        "kind": 2,
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "peekOfCode": "def handle_rate_limit(exception: Exception, context: str) -> Dict[str, Any]:\n    \"\"\"\n    Глобальная функция для обработки ошибок превышения лимита запросов\n    с использованием глобального экземпляра ErrorHandler.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"",
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_timeout",
+        "kind": 2,
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "peekOfCode": "def handle_timeout(exception: Exception, context: str) -> Dict[str, Any]:\n    \"\"\"\n    Глобальная функция для обработки ошибок таймаута с использованием глобального экземпляра ErrorHandler.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"\n    return _error_handler.handle_timeout(exception, context)",
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "get_error_handler",
+        "kind": 2,
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "peekOfCode": "def get_error_handler() -> ErrorHandler:\n    \"\"\"\n    Возвращает глобальный экземпляр ErrorHandler.\n    Returns:\n        ErrorHandler: Глобальный экземпляр ErrorHandler\n    \"\"\"\n    return _error_handler",
         "detail": "core.common.error_handler",
         "documentation": {}
     },
@@ -6158,7 +7565,7 @@
         "kind": 5,
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
-        "peekOfCode": "_error_handler = ErrorHandler()\ndef handle_error(message, exception=None, module=\"general\", log_level=\"error\"):\n    \"\"\"\n    Обработка ошибок с логированием (глобальная функция).\n    Args:\n        message (str): Сообщение об ошибке\n        exception (Exception, optional): Исключение, вызвавшее ошибку\n        module (str, optional): Модуль, в котором произошла ошибка\n        log_level (str, optional): Уровень логирования ('error', 'warning', 'critical')\n    Returns:",
+        "peekOfCode": "_error_handler = ErrorHandler()\n# Глобальные функции для обратной совместимости и удобства\ndef handle_error(exception, context=None, callback=None, log_level=\"error\", module=None):\n    \"\"\"\n    Глобальная функция для обработки ошибок с использованием глобального экземпляра ErrorHandler.\n    Args:\n        exception (Exception): Исключение, вызвавшее ошибку\n        context (str, optional): Контекст, в котором произошла ошибка\n        callback (callable, optional): Функция обратного вызова для обработки ошибки\n        log_level (str, optional): Уровень логирования ('error', 'warning', 'critical')",
         "detail": "core.common.error_handler",
         "documentation": {}
     },
@@ -6167,8 +7574,35 @@
         "kind": 6,
         "importPath": "core.common.file_system",
         "description": "core.common.file_system",
-        "peekOfCode": "class AbstractFileSystem:\n    \"\"\"Абстрактный класс для работы с файловой системой\"\"\"\n    def list_directory(self, path):\n        \"\"\"Получить список файлов в директории\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def file_exists(self, path):\n        \"\"\"Проверить существование файла\"\"\"\n        raise NotImplementedError(\"Метод должен быть реализован в дочернем классе\")\n    def create_directory(self, path):\n        \"\"\"Создать директорию\"\"\"",
+        "peekOfCode": "class AbstractFileSystem:\n    \"\"\"Абстрактный класс для работы с файловой системой\"\"\"\n    # Базовые операции с файлами\n    def list_directory(self, path: str, pattern: str = \"*\", recursive: bool = False) -> List[str]:\n        \"\"\"Получить список файлов в директории\n        Args:\n            path: Путь к директории\n            pattern: Шаблон для фильтрации файлов\n            recursive: Рекурсивный поиск в поддиректориях\n        Returns:",
         "detail": "core.common.file_system",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "kind": 6,
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "peekOfCode": "class TaskRepository:\n    \"\"\"Класс для работы с задачами в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий задач.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def create(",
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "kind": 6,
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "peekOfCode": "class UserRepository:\n    \"\"\"Класс для работы с пользователями в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий пользователей.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def create(",
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowRepository",
+        "kind": 6,
+        "importPath": "core.db.repository.workflow_repository",
+        "description": "core.db.repository.workflow_repository",
+        "peekOfCode": "class WorkflowRepository:\n    \"\"\"Класс для работы с рабочими процессами в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий рабочих процессов.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def create(self, user_id: int, name: str, description: Optional[str] = None) -> Workflow:",
+        "detail": "core.db.repository.workflow_repository",
         "documentation": {}
     },
     {
@@ -6214,6 +7648,15 @@
         "description": "core.db.connection",
         "peekOfCode": "Base = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:\n        yield db\n    finally:",
         "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "Pagination",
+        "kind": 6,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "class Pagination:\n    \"\"\"Класс для представления результатов с пагинацией\"\"\"\n    def __init__(self, items, page, per_page, total):\n        self.items = items\n        self.page = page\n        self.per_page = per_page\n        self.total = total\n        # Вычисляем количество страниц\n        self.pages = (total + per_page - 1) // per_page if total > 0 else 0\n        # Определяем, есть ли предыдущая/следующая страницы",
+        "detail": "core.db.crud",
         "documentation": {}
     },
     {
@@ -6365,7 +7808,7 @@
         "kind": 2,
         "importPath": "core.db.crud",
         "description": "core.db.crud",
-        "peekOfCode": "def get_workflow_by_id(db: Session, workflow_id: int) -> Optional[Workflow]:\n    \"\"\"Получает рабочий процесс по ID\"\"\"\n    return db.query(Workflow).filter(Workflow.id == workflow_id).first()\ndef get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()",
+        "peekOfCode": "def get_workflow_by_id(db: Session, workflow_id: int) -> Optional[Workflow]:\n    \"\"\"Получает рабочий процесс по ID\"\"\"\n    return db.query(Workflow).filter(Workflow.id == workflow_id).first()\ndef get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()\nclass Pagination:\n    \"\"\"Класс для представления результатов с пагинацией\"\"\"\n    def __init__(self, items, page, per_page, total):\n        self.items = items",
         "detail": "core.db.crud",
         "documentation": {}
     },
@@ -6374,7 +7817,16 @@
         "kind": 2,
         "importPath": "core.db.crud",
         "description": "core.db.crud",
-        "peekOfCode": "def get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()",
+        "peekOfCode": "def get_workflows_by_user(db: Session, user_id: int) -> List[Workflow]:\n    \"\"\"Получает список рабочих процессов пользователя\"\"\"\n    return db.query(Workflow).filter(Workflow.user_id == user_id).all()\nclass Pagination:\n    \"\"\"Класс для представления результатов с пагинацией\"\"\"\n    def __init__(self, items, page, per_page, total):\n        self.items = items\n        self.page = page\n        self.per_page = per_page\n        self.total = total",
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_with_pagination",
+        "kind": 2,
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "peekOfCode": "def get_tasks_with_pagination(\n    db: Session,\n    user_id: int,\n    page: int = 1,\n    per_page: int = 10,\n    status: Optional[str] = None,\n    priority: Optional[int] = None,\n    sort_by: Optional[str] = None,\n    sort_order: str = \"asc\",\n    search_query: Optional[str] = None,",
         "detail": "core.db.crud",
         "documentation": {}
     },
@@ -6383,7 +7835,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    display_name = Column(String(100))\n    bio = Column(Text)\n    avatar_url = Column(String(255))\n    is_active = Column(Boolean, default=True)",
+        "peekOfCode": "class User(Base):\n    \"\"\"Модель пользователя.\"\"\"\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    display_name = Column(String(100))\n    bio = Column(Text)\n    avatar_url = Column(String(255))",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6392,7 +7844,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class AIModel(Base):\n    __tablename__ = \"ai_models\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(100), nullable=False)\n    provider = Column(String(100), nullable=False)\n    is_api = Column(Boolean, default=True)\n    base_url = Column(String(255))\n    api_key_name = Column(String(100))\n    is_active = Column(Boolean, default=True)\n    configuration = Column(JSON)",
+        "peekOfCode": "class AIModel(Base):\n    \"\"\"Модель для AI моделей.\"\"\"\n    __tablename__ = \"ai_models\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(100), nullable=False)\n    provider = Column(String(100), nullable=False)\n    is_api = Column(Boolean, default=True)\n    base_url = Column(String(255))\n    api_key_name = Column(String(100))\n    is_active = Column(Boolean, default=True)",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6401,7 +7853,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class Task(Base):\n    __tablename__ = \"tasks\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(255), nullable=False)\n    description = Column(Text)\n    status = Column(String(50), default=\"created\")\n    priority = Column(Integer, default=1)\n    due_date = Column(DateTime(timezone=True))\n    created_at = Column(DateTime(timezone=True), server_default=func.now())",
+        "peekOfCode": "class Task(Base):\n    \"\"\"Модель задачи.\"\"\"\n    __tablename__ = \"tasks\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(255), nullable=False)\n    description = Column(Text)\n    status = Column(String(50), default=\"created\")  # created, in_progress, completed\n    priority = Column(Integer, default=1)  # 1 - низкий, 2 - средний, 3 - высокий\n    due_date = Column(DateTime(timezone=True))",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6410,7 +7862,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class TaskExecution(Base):\n    __tablename__ = \"task_executions\"\n    id = Column(Integer, primary_key=True, index=True)\n    task_id = Column(Integer, ForeignKey(\"tasks.id\"), nullable=False)\n    model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    input_data = Column(Text)\n    output_data = Column(Text)\n    status = Column(String(50))\n    started_at = Column(DateTime(timezone=True), server_default=func.now())\n    completed_at = Column(DateTime(timezone=True))",
+        "peekOfCode": "class TaskExecution(Base):\n    \"\"\"Модель выполнения задачи.\"\"\"\n    __tablename__ = \"task_executions\"\n    id = Column(Integer, primary_key=True, index=True)\n    task_id = Column(Integer, ForeignKey(\"tasks.id\"), nullable=False)\n    model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    input_data = Column(Text)\n    output_data = Column(Text)\n    status = Column(String(50))\n    started_at = Column(DateTime(timezone=True), server_default=func.now())",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6419,7 +7871,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class Workflow(Base):\n    __tablename__ = \"workflows\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    is_active = Column(Boolean, default=True)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())\n    updated_at = Column(DateTime(timezone=True), onupdate=func.now())\n    steps = relationship(\"WorkflowStep\", back_populates=\"workflow\", cascade=\"all, delete-orphan\")",
+        "peekOfCode": "class Workflow(Base):\n    \"\"\"Модель рабочего процесса (workflow).\"\"\"\n    __tablename__ = \"workflows\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    is_active = Column(Boolean, default=True)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())\n    updated_at = Column(DateTime(timezone=True), onupdate=func.now())",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6428,7 +7880,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class WorkflowStep(Base):\n    __tablename__ = \"workflow_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    workflow_id = Column(Integer, ForeignKey(\"workflows.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    order = Column(Integer, nullable=False)\n    configuration = Column(JSON)\n    workflow = relationship(\"Workflow\", back_populates=\"steps\")\nclass RoutingRule(Base):",
+        "peekOfCode": "class WorkflowStep(Base):\n    \"\"\"Модель шага рабочего процесса.\"\"\"\n    __tablename__ = \"workflow_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    workflow_id = Column(Integer, ForeignKey(\"workflows.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    order = Column(Integer, nullable=False)\n    configuration = Column(JSON)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -6437,62 +7889,62 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class RoutingRule(Base):\n    __tablename__ = \"routing_rules\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    rule_type = Column(String(50), nullable=False)\n    pattern = Column(String(255), nullable=False)\n    target_model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    priority = Column(Integer, default=0)\n    is_active = Column(Boolean, default=True)",
+        "peekOfCode": "class RoutingRule(Base):\n    \"\"\"Модель правила маршрутизации.\"\"\"\n    __tablename__ = \"routing_rules\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    rule_type = Column(String(50), nullable=False)\n    pattern = Column(String(255), nullable=False)\n    target_model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    priority = Column(Integer, default=0)",
         "detail": "core.db.models",
         "documentation": {}
     },
     {
-        "label": "FileManager",
+        "label": "TransactionManager",
         "kind": 6,
-        "importPath": "core.filesystem.file_manager",
-        "description": "core.filesystem.file_manager",
-        "peekOfCode": "class FileManager:\n    \"\"\"\n    Класс для работы с файловой системой.\n    Предоставляет методы для создания, чтения, записи, удаления файлов и директорий.\n    \"\"\"\n    def create_file(self, path, content=\"\", encoding=\"utf-8\"):\n        \"\"\"\n        Создает файл с указанным содержимым.\n        Args:\n            path (str): Путь к файлу",
-        "detail": "core.filesystem.file_manager",
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "peekOfCode": "class TransactionManager:\n    \"\"\"\n    Менеджер транзакций для управления операциями базы данных.\n    \"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует менеджер транзакций.\n        Args:\n            db_session (Session): Сессия SQLAlchemy.\n        \"\"\"",
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "transaction",
+        "kind": 2,
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "peekOfCode": "def transaction(db_session: Session) -> Callable[[Callable[..., T]], Callable[..., T]]:\n    \"\"\"\n    Декоратор для выполнения функции внутри транзакции.\n    Args:\n        db_session (Session): Сессия SQLAlchemy.\n    Returns:\n        Callable: Декорированная функция.\n    \"\"\"\n    def decorator(func: Callable[..., T]) -> Callable[..., T]:\n        @wraps(func)",
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "T",
+        "kind": 5,
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "peekOfCode": "T = TypeVar(\"T\")\nclass TransactionManager:\n    \"\"\"\n    Менеджер транзакций для управления операциями базы данных.\n    \"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует менеджер транзакций.\n        Args:\n            db_session (Session): Сессия SQLAlchemy.",
+        "detail": "core.db.transaction",
         "documentation": {}
     },
     {
         "label": "InputControllerFactory",
         "kind": 6,
-        "importPath": "core.input.input_factory",
-        "description": "core.input.input_factory",
-        "peekOfCode": "class InputControllerFactory:\n    \"\"\"\n    Фабрика для создания контроллеров ввода.\n    Предоставляет методы для создания контроллеров клавиатуры и мыши.\n    \"\"\"\n    @staticmethod\n    def get_keyboard_controller(human_like: bool = True) -> KeyboardController:\n        \"\"\"\n        Создает и возвращает контроллер клавиатуры.\n        Args:",
-        "detail": "core.input.input_factory",
+        "importPath": "core.input_deprecated.input_factory",
+        "description": "core.input_deprecated.input_factory",
+        "peekOfCode": "class InputControllerFactory:\n    \"\"\"\n    Фабрика для создания контроллеров ввода.\n    Предоставляет методы для создания контроллеров клавиатуры и мыши.\n    Примечание: Данный класс устарел. Рекомендуется использовать\n    функции из core.common.input.factory вместо этого класса.\n    \"\"\"\n    @staticmethod\n    def get_keyboard_controller(human_like: bool = True) -> WindowsKeyboard:\n        \"\"\"",
+        "detail": "core.input_deprecated.input_factory",
         "documentation": {}
     },
     {
         "label": "KeyboardController",
-        "kind": 6,
-        "importPath": "core.input.keyboard_controller",
-        "description": "core.input.keyboard_controller",
-        "peekOfCode": "class KeyboardController:\n    \"\"\"\n    Класс для эмуляции клавиатурного ввода.\n    \"\"\"\n    def __init__(self, human_like=True):\n        \"\"\"\n        Инициализация контроллера клавиатуры.\n        Args:\n            human_like (bool, optional): Эмулировать человеческий ввод с клавиатуры\n        \"\"\"",
-        "detail": "core.input.keyboard_controller",
-        "documentation": {}
-    },
-    {
-        "label": "KeyboardEmulator",
-        "kind": 6,
-        "importPath": "core.input.keyboard_emulator",
-        "description": "core.input.keyboard_emulator",
-        "peekOfCode": "class KeyboardEmulator:\n    \"\"\"\n    Класс для эмуляции ввода с клавиатуры.\n    \"\"\"\n    def __init__(self, human_like=True):\n        \"\"\"\n        Инициализация эмулятора клавиатуры.\n        Args:\n            human_like (bool, optional): Эмулировать человеческое поведение\n        \"\"\"",
-        "detail": "core.input.keyboard_emulator",
+        "kind": 5,
+        "importPath": "core.input_deprecated.keyboard_controller",
+        "description": "core.input_deprecated.keyboard_controller",
+        "peekOfCode": "KeyboardController = WindowsKeyboard",
+        "detail": "core.input_deprecated.keyboard_controller",
         "documentation": {}
     },
     {
         "label": "MouseController",
-        "kind": 6,
-        "importPath": "core.input.mouse_controller",
-        "description": "core.input.mouse_controller",
-        "peekOfCode": "class MouseController:\n    \"\"\"\n    Класс для эмуляции действий мыши.\n    \"\"\"\n    def __init__(self, human_like=True):\n        \"\"\"\n        Инициализация контроллера мыши.\n        Args:\n            human_like (bool, optional): Эмулировать человеческие движения мыши\n        \"\"\"",
-        "detail": "core.input.mouse_controller",
-        "documentation": {}
-    },
-    {
-        "label": "MouseEmulator",
-        "kind": 6,
-        "importPath": "core.input.mouse_emulator",
-        "description": "core.input.mouse_emulator",
-        "peekOfCode": "class MouseEmulator:\n    \"\"\"\n    Класс для эмуляции действий мыши.\n    \"\"\"\n    def __init__(self, human_like=True):\n        \"\"\"\n        Инициализация эмулятора мыши.\n        Args:\n            human_like (bool, optional): Эмулировать человеческое поведение\n        \"\"\"",
-        "detail": "core.input.mouse_emulator",
+        "kind": 5,
+        "importPath": "core.input_deprecated.mouse_controller",
+        "description": "core.input_deprecated.mouse_controller",
+        "peekOfCode": "MouseController = WindowsMouse",
+        "detail": "core.input_deprecated.mouse_controller",
         "documentation": {}
     },
     {
@@ -6523,42 +7975,6 @@
         "documentation": {}
     },
     {
-        "label": "__all__",
-        "kind": 5,
-        "importPath": "core.llm.error_handler",
-        "description": "core.llm.error_handler",
-        "peekOfCode": "__all__ = [\"handle_llm_error\", \"handle_error\"]",
-        "detail": "core.llm.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_api_error",
-        "kind": 2,
-        "importPath": "core.llm.error_handling",
-        "description": "core.llm.error_handling",
-        "peekOfCode": "def handle_api_error(exception: Exception, context: str, error_handler=None) -> Dict[str, Any]:\n    \"\"\"\n    Обработка ошибок API.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n        error_handler (object, optional): Обработчик ошибок\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"",
-        "detail": "core.llm.error_handling",
-        "documentation": {}
-    },
-    {
-        "label": "handle_rate_limit",
-        "kind": 2,
-        "importPath": "core.llm.error_handling",
-        "description": "core.llm.error_handling",
-        "peekOfCode": "def handle_rate_limit(exception: Exception, context: str, error_handler=None) -> Dict[str, Any]:\n    \"\"\"\n    Обработка ошибок превышения лимита запросов.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n        error_handler (object, optional): Обработчик ошибок\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"",
-        "detail": "core.llm.error_handling",
-        "documentation": {}
-    },
-    {
-        "label": "handle_timeout",
-        "kind": 2,
-        "importPath": "core.llm.error_handling",
-        "description": "core.llm.error_handling",
-        "peekOfCode": "def handle_timeout(exception: Exception, context: str, error_handler=None) -> Dict[str, Any]:\n    \"\"\"\n    Обработка ошибок таймаута.\n    Args:\n        exception (Exception): Исключение\n        context (str): Контекст, в котором произошла ошибка\n        error_handler (object, optional): Обработчик ошибок\n    Returns:\n        Dict[str, Any]: Информация об ошибке\n    \"\"\"",
-        "detail": "core.llm.error_handling",
-        "documentation": {}
-    },
-    {
         "label": "PromptProcessor",
         "kind": 6,
         "importPath": "core.llm.prompt_processor",
@@ -6577,12 +7993,75 @@
         "documentation": {}
     },
     {
+        "label": "LinuxFileSystem",
+        "kind": 6,
+        "importPath": "core.platform.linux.file_system",
+        "description": "core.platform.linux.file_system",
+        "peekOfCode": "class LinuxFileSystem(AbstractFileSystem):\n    \"\"\"Реализация файловой системы для Linux\"\"\"\n    def list_directory(self, path):\n        \"\"\"Получить список файлов в директории\"\"\"\n        try:\n            return os.listdir(path)\n        except Exception as e:\n            handle_error(f\"Ошибка при получении списка файлов: {e}\", e)\n            return []\n    def file_exists(self, path):",
+        "detail": "core.platform.linux.file_system",
+        "documentation": {}
+    },
+    {
+        "label": "MacOSFileSystem",
+        "kind": 6,
+        "importPath": "core.platform.macos.file_system",
+        "description": "core.platform.macos.file_system",
+        "peekOfCode": "class MacOSFileSystem(AbstractFileSystem):\n    \"\"\"Реализация файловой системы для MacOS\"\"\"\n    def list_directory(self, path):\n        \"\"\"Получить список файлов в директории\"\"\"\n        try:\n            return os.listdir(path)\n        except Exception as e:\n            handle_error(f\"Ошибка при получении списка файлов: {e}\", e)\n            return []\n    def file_exists(self, path):",
+        "detail": "core.platform.macos.file_system",
+        "documentation": {}
+    },
+    {
+        "label": "Win32FileSystem",
+        "kind": 6,
+        "importPath": "core.platform.windows.filesystem.win32_file_system",
+        "description": "core.platform.windows.filesystem.win32_file_system",
+        "peekOfCode": "class Win32FileSystem(AbstractFileSystem):\n    \"\"\"\n    Реализация работы с файловой системой для Windows.\n    Предоставляет методы для работы с файлами и директориями.\n    \"\"\"\n    def file_exists(self, path: str) -> bool:\n        \"\"\"\n        Проверить существование файла.\n        Args:\n            path (str): Путь к файлу.",
+        "detail": "core.platform.windows.filesystem.win32_file_system",
+        "documentation": {}
+    },
+    {
         "label": "WindowsKeyboard",
         "kind": 6,
         "importPath": "core.platform.windows.input.keyboard",
         "description": "core.platform.windows.input.keyboard",
-        "peekOfCode": "class WindowsKeyboard(AbstractKeyboard):\n    \"\"\"Реализация эмуляции клавиатуры для Windows с использованием PyAutoGUI\"\"\"\n    def __init__(self):\n        if pyautogui is None:\n            handle_error(\n                \"PyAutoGUI не установлен. Установите его: pip install pyautogui\", module=\"keyboard\"\n            )\n    def press_key(self, key):\n        \"\"\"Нажать клавишу\"\"\"\n        try:",
+        "peekOfCode": "class WindowsKeyboard(AbstractKeyboard):\n    \"\"\"Реализация клавиатуры для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер клавиатуры.\n        Args:\n            human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.\n        \"\"\"\n        self.human_like = human_like\n        self.controller = None  # Для тестирования будет заменено моком",
         "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "VK_CODES",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.keyboard",
+        "description": "core.platform.windows.input.keyboard",
+        "peekOfCode": "VK_CODES = {\n    \"backspace\": 0x08,\n    \"tab\": 0x09,\n    \"enter\": 0x0D,\n    \"shift\": 0x10,\n    \"ctrl\": 0x11,\n    \"alt\": 0x12,\n    \"pause\": 0x13,\n    \"caps_lock\": 0x14,\n    \"esc\": 0x1B,",
+        "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "POINT",
+        "kind": 6,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "class POINT(ctypes.Structure):\n    _fields_ = [(\"x\", ctypes.c_long), (\"y\", ctypes.c_long)]\nclass MOUSEINPUT(ctypes.Structure):\n    _fields_ = [\n        (\"dx\", wintypes.LONG),\n        (\"dy\", wintypes.LONG),\n        (\"mouseData\", wintypes.DWORD),\n        (\"dwFlags\", wintypes.DWORD),\n        (\"time\", wintypes.DWORD),\n        (\"dwExtraInfo\", ctypes.POINTER(ctypes.c_ulong)),",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEINPUT",
+        "kind": 6,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "class MOUSEINPUT(ctypes.Structure):\n    _fields_ = [\n        (\"dx\", wintypes.LONG),\n        (\"dy\", wintypes.LONG),\n        (\"mouseData\", wintypes.DWORD),\n        (\"dwFlags\", wintypes.DWORD),\n        (\"time\", wintypes.DWORD),\n        (\"dwExtraInfo\", ctypes.POINTER(ctypes.c_ulong)),\n    ]\nclass INPUT(ctypes.Structure):",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "INPUT",
+        "kind": 6,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "class INPUT(ctypes.Structure):\n    _fields_ = [(\"type\", wintypes.DWORD), (\"mi\", MOUSEINPUT)]\n# Константы для действий с мышью\nMOUSEEVENTF_MOVE = 0x0001\nMOUSEEVENTF_LEFTDOWN = 0x0002\nMOUSEEVENTF_LEFTUP = 0x0004\nMOUSEEVENTF_RIGHTDOWN = 0x0008\nMOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040",
+        "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
@@ -6590,35 +8069,134 @@
         "kind": 6,
         "importPath": "core.platform.windows.input.mouse",
         "description": "core.platform.windows.input.mouse",
-        "peekOfCode": "class WindowsMouse(AbstractMouse):\n    \"\"\"Реализация контроля мыши для Windows с использованием PyAutoGUI\"\"\"\n    def __init__(self):\n        if pyautogui is None:\n            handle_error(\n                \"PyAutoGUI не установлен. Установите его: pip install pyautogui\", module=\"mouse\"\n            )\n        # Настройка параметров\n        self.duration = 0.1  # длительность анимации мыши\n    def move_to(self, x, y):",
+        "peekOfCode": "class WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.\n        Args:\n            human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.\n        \"\"\"\n        self.human_like = human_like\n        self.controller = None  # Для тестирования будет заменено моком",
         "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
-        "label": "WindowsFileSystem",
-        "kind": 6,
-        "importPath": "core.platform.windows.file_system",
-        "description": "core.platform.windows.file_system",
-        "peekOfCode": "class WindowsFileSystem(AbstractFileSystem):\n    \"\"\"Реализация файловой системы для Windows\"\"\"\n    def list_directory(self, path):\n        \"\"\"Получить список файлов в директории\"\"\"\n        try:\n            return os.listdir(path)\n        except Exception as e:\n            handle_error(f\"Ошибка при получении списка файлов: {e}\", e)\n            return []\n    def file_exists(self, path):",
-        "detail": "core.platform.windows.file_system",
+        "label": "MOUSEEVENTF_MOVE",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_MOVE = 0x0001\nMOUSEEVENTF_LEFTDOWN = 0x0002\nMOUSEEVENTF_LEFTUP = 0x0004\nMOUSEEVENTF_RIGHTDOWN = 0x0008\nMOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):",
+        "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
-        "label": "WindowsProcessManager",
-        "kind": 6,
-        "importPath": "core.platform.windows.process_manager",
-        "description": "core.platform.windows.process_manager",
-        "peekOfCode": "class WindowsProcessManager:\n    \"\"\"Управление процессами в Windows\"\"\"\n    def start_process(self, command, shell=True, cwd=None, env=None):\n        \"\"\"\n        Запускает процесс\n        Args:\n            command (str): Команда для запуска\n            shell (bool): Использовать ли оболочку\n            cwd (str, optional): Рабочая директория\n            env (dict, optional): Переменные окружения",
-        "detail": "core.platform.windows.process_manager",
+        "label": "MOUSEEVENTF_LEFTDOWN",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_LEFTDOWN = 0x0002\nMOUSEEVENTF_LEFTUP = 0x0004\nMOUSEEVENTF_RIGHTDOWN = 0x0008\nMOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"",
+        "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
-        "label": "WindowsWindowManager",
+        "label": "MOUSEEVENTF_LEFTUP",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_LEFTUP = 0x0004\nMOUSEEVENTF_RIGHTDOWN = 0x0008\nMOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_RIGHTDOWN",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_RIGHTDOWN = 0x0008\nMOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_RIGHTUP",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_RIGHTUP = 0x0010\nMOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_MIDDLEDOWN",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_MIDDLEDOWN = 0x0020\nMOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.\n        Args:",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_MIDDLEUP",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_MIDDLEUP = 0x0040\nMOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.\n        Args:\n            human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_WHEEL",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_WHEEL = 0x0800\nMOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.\n        Args:\n            human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.\n        \"\"\"",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "MOUSEEVENTF_ABSOLUTE",
+        "kind": 5,
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "peekOfCode": "MOUSEEVENTF_ABSOLUTE = 0x8000\nclass WindowsMouse(AbstractMouse):\n    \"\"\"Реализация мыши для операционной системы Windows.\"\"\"\n    def __init__(self, human_like: bool = True):\n        \"\"\"\n        Инициализирует контроллер мыши.\n        Args:\n            human_like (bool): Флаг, указывающий, нужно ли эмулировать человеческое поведение.\n        \"\"\"\n        self.human_like = human_like",
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "Win32ProcessManager",
         "kind": 6,
-        "importPath": "core.platform.windows.window_manager",
-        "description": "core.platform.windows.window_manager",
-        "peekOfCode": "class WindowsWindowManager:\n    \"\"\"Управление окнами в Windows\"\"\"\n    def __init__(self):\n        if gw is None:\n            handle_error(\n                \"PyGetWindow не установлен. Установите его: pip install pygetwindow\",\n                module=\"window\",\n            )\n    def get_all_windows(self):\n        \"\"\"",
-        "detail": "core.platform.windows.window_manager",
+        "importPath": "core.platform.windows.process.win32_process_manager",
+        "description": "core.platform.windows.process.win32_process_manager",
+        "peekOfCode": "class Win32ProcessManager(AbstractProcessManager):\n    \"\"\"\n    Менеджер процессов Windows, основанный на psutil и subprocess.\n    \"\"\"\n    def start_process(\n        self,\n        executable: str,\n        args: Optional[List[str]] = None,\n        cwd: Optional[str] = None,\n        wait: bool = False,",
+        "detail": "core.platform.windows.process.win32_process_manager",
+        "documentation": {}
+    },
+    {
+        "label": "Win32RegistryManager",
+        "kind": 6,
+        "importPath": "core.platform.windows.registry.win32_registry_manager",
+        "description": "core.platform.windows.registry.win32_registry_manager",
+        "peekOfCode": "class Win32RegistryManager(AbstractRegistryManager):\n    \"\"\"\n    Менеджер реестра Windows.\n    Предоставляет функции для работы с реестром Windows.\n    \"\"\"\n    # Константы для корневых ключей реестра\n    HKEY_CLASSES_ROOT = winreg.HKEY_CLASSES_ROOT\n    HKEY_CURRENT_USER = winreg.HKEY_CURRENT_USER\n    HKEY_LOCAL_MACHINE = winreg.HKEY_LOCAL_MACHINE\n    HKEY_USERS = winreg.HKEY_USERS",
+        "detail": "core.platform.windows.registry.win32_registry_manager",
+        "documentation": {}
+    },
+    {
+        "label": "Win32SystemInfo",
+        "kind": 6,
+        "importPath": "core.platform.windows.system.win32_system_info",
+        "description": "core.platform.windows.system.win32_system_info",
+        "peekOfCode": "class Win32SystemInfo(AbstractSystemInfo):\n    \"\"\"\n    Класс для получения системной информации Windows.\n    \"\"\"\n    def __init__(self):\n        \"\"\"Инициализация класса системной информации.\"\"\"\n        try:\n            self.wmi_client = wmi.WMI()\n        except Exception as e:\n            handle_error(f\"Error initializing WMI: {e}\", e, module=\"system\")",
+        "detail": "core.platform.windows.system.win32_system_info",
+        "documentation": {}
+    },
+    {
+        "label": "PyGetWindowManager",
+        "kind": 6,
+        "importPath": "core.platform.windows.window.pygetwindow_manager",
+        "description": "core.platform.windows.window.pygetwindow_manager",
+        "peekOfCode": "class PyGetWindowManager(AbstractWindowManager):\n    \"\"\"\n    Менеджер окон Windows, использующий библиотеку pygetwindow.\n    \"\"\"\n    def get_all_windows(self) -> List[Any]:\n        \"\"\"\n        Получение списка всех открытых окон.\n        Returns:\n            List[Any]: Список объектов окон\n        \"\"\"",
+        "detail": "core.platform.windows.window.pygetwindow_manager",
+        "documentation": {}
+    },
+    {
+        "label": "Win32WindowManager",
+        "kind": 6,
+        "importPath": "core.platform.windows.window.win32_window_manager",
+        "description": "core.platform.windows.window.win32_window_manager",
+        "peekOfCode": "class Win32WindowManager(AbstractWindowManager):\n    \"\"\"\n    Менеджер окон Windows, использующий Win32 API.\n    \"\"\"\n    def get_all_windows(self) -> List[Dict[str, Any]]:\n        \"\"\"\n        Получение списка всех открытых окон.\n        Returns:\n            List[Dict[str, Any]]: Список словарей с информацией о каждом окне\n        \"\"\"",
+        "detail": "core.platform.windows.window.win32_window_manager",
         "documentation": {}
     },
     {
@@ -6685,75 +8263,12 @@
         "documentation": {}
     },
     {
-        "label": "FileSystemManager",
-        "kind": 6,
-        "importPath": "core.windows.filesystem_manager",
-        "description": "core.windows.filesystem_manager",
-        "peekOfCode": "class FileSystemManager:\n    \"\"\"\n    Класс для работы с файловой системой Windows.\n    Предоставляет функции для операций с файлами и директориями.\n    \"\"\"\n    def list_directory(self, directory_path):\n        \"\"\"\n        Получает список файлов и директорий в указанной директории.\n        Args:\n            directory_path (str): Путь к директории",
-        "detail": "core.windows.filesystem_manager",
-        "documentation": {}
-    },
-    {
-        "label": "FileSystem",
-        "kind": 6,
-        "importPath": "core.windows.file_system",
-        "description": "core.windows.file_system",
-        "peekOfCode": "class FileSystem:\n    \"\"\"\n    Класс для работы с файловой системой Windows.\n    Предоставляет функции для операций с файлами и директориями.\n    \"\"\"\n    def create_directory(self, path):\n        \"\"\"\n        Создает директорию.\n        Args:\n            path (str): Путь к создаваемой директории",
-        "detail": "core.windows.file_system",
-        "documentation": {}
-    },
-    {
-        "label": "ProcessManager",
-        "kind": 6,
-        "importPath": "core.windows.process_manager",
-        "description": "core.windows.process_manager",
-        "peekOfCode": "class ProcessManager:\n    \"\"\"\n    Менеджер процессов Windows.\n    Предоставляет функции для запуска, завершения и управления процессами.\n    \"\"\"\n    def start_process(self, executable, args=None, cwd=None, wait=False, shell=False):\n        \"\"\"\n        Запускает процесс.\n        Args:\n            executable (str): Путь к исполняемому файлу",
-        "detail": "core.windows.process_manager",
-        "documentation": {}
-    },
-    {
-        "label": "RegistryManager",
-        "kind": 6,
-        "importPath": "core.windows.registry_manager",
-        "description": "core.windows.registry_manager",
-        "peekOfCode": "class RegistryManager:\n    \"\"\"\n    Менеджер реестра Windows.\n    Предоставляет функции для работы с реестром Windows.\n    \"\"\"\n    # Константы для корневых ключей реестра\n    HKEY_CLASSES_ROOT = winreg.HKEY_CLASSES_ROOT\n    HKEY_CURRENT_USER = winreg.HKEY_CURRENT_USER\n    HKEY_LOCAL_MACHINE = winreg.HKEY_LOCAL_MACHINE\n    HKEY_USERS = winreg.HKEY_USERS",
-        "detail": "core.windows.registry_manager",
-        "documentation": {}
-    },
-    {
-        "label": "SystemInfo",
-        "kind": 6,
-        "importPath": "core.windows.system_info",
-        "description": "core.windows.system_info",
-        "peekOfCode": "class SystemInfo:\n    \"\"\"\n    Класс для получения системной информации Windows.\n    \"\"\"\n    def __init__(self):\n        \"\"\"Инициализация класса системной информации.\"\"\"\n        try:\n            self.wmi_client = wmi.WMI()\n        except Exception as e:\n            print(f\"Error initializing WMI: {e}\")",
-        "detail": "core.windows.system_info",
-        "documentation": {}
-    },
-    {
-        "label": "WindowManager",
-        "kind": 6,
-        "importPath": "core.windows.window_manager",
-        "description": "core.windows.window_manager",
-        "peekOfCode": "class WindowManager:\n    \"\"\"\n    Менеджер окон Windows.\n    Предоставляет функции для поиска, активации и управления окнами.\n    \"\"\"\n    def find_window(self, title=None, class_name=None, process_name=None):\n        \"\"\"\n        Находит окно по заголовку, имени класса или имени процесса.\n        Args:\n            title (str, optional): Заголовок окна (может быть частичным)",
-        "detail": "core.windows.window_manager",
-        "documentation": {}
-    },
-    {
         "label": "ComponentRegistry",
         "kind": 6,
         "importPath": "core.component_registry",
         "description": "core.component_registry",
         "peekOfCode": "class ComponentRegistry:\n    \"\"\"\n    Реестр компонентов системы.\n    Предоставляет централизованный доступ к компонентам по их именам.\n    \"\"\"\n    def __init__(self):\n        \"\"\"Инициализация реестра компонентов.\"\"\"\n        self._components = {}\n    def register(self, name, component):\n        \"\"\"",
         "detail": "core.component_registry",
-        "documentation": {}
-    },
-    {
-        "label": "__all__",
-        "kind": 5,
-        "importPath": "core.error_handler",
-        "description": "core.error_handler",
-        "peekOfCode": "__all__ = [\"handle_error\", \"handle_warning\", \"handle_llm_error\", \"ErrorHandler\"]",
-        "detail": "core.error_handler",
         "documentation": {}
     },
     {
@@ -7526,7 +9041,7 @@
         "kind": 6,
         "importPath": "tests.db.test_pagination",
         "description": "tests.db.test_pagination",
-        "peekOfCode": "class TestPaginationAndFiltering:\n    def test_basic_pagination(self, db_session, user_with_many_tasks):\n        \"\"\"Тест базовой пагинации\"\"\"\n        user = user_with_many_tasks\n        # Первая страница (10 элементов)\n        page1 = get_tasks_with_pagination(db_session, user_id=user.id, page=1, per_page=10)\n        assert len(page1.items) == 10\n        assert page1.total == 50\n        assert page1.pages == 5\n        assert page1.has_next == True",
+        "peekOfCode": "class TestPaginationAndFiltering:\n    def test_basic_pagination(self, db_session, user_with_many_tasks):\n        \"\"\"Тест базовой пагинации\"\"\"\n        user = user_with_many_tasks\n        # Первая страница (10 элементов)\n        page1 = get_tasks_with_pagination(db_session, user_id=user.id, page=1, per_page=10)\n        assert len(page1.items) == 10\n        assert page1.total == 50\n        assert page1.pages == 5\n        assert page1.has_next is True  # Исправлено: == True -> is True",
         "detail": "tests.db.test_pagination",
         "documentation": {}
     },
@@ -7618,6 +9133,15 @@
         "description": "tests.db.test_validation",
         "peekOfCode": "class TestDataValidation:\n    def test_required_fields(self, db_session):\n        \"\"\"Тест обязательных полей\"\"\"\n        # Проверка пользователя без обязательного поля\n        with pytest.raises(IntegrityError):\n            db_session.add(User(email=\"missing_username@example.com\", password_hash=\"hash\"))\n            db_session.flush()\n        db_session.rollback()\n        # Проверка задачи без обязательного поля\n        with pytest.raises(IntegrityError):",
         "detail": "tests.db.test_validation",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputIntegration",
+        "kind": 6,
+        "importPath": "tests.integration.core.common.input.test_input_integration",
+        "description": "tests.integration.core.common.input.test_input_integration",
+        "peekOfCode": "class TestInputIntegration:\n    \"\"\"Интеграционные тесты для подсистемы ввода.\"\"\"\n    def test_keyboard_mouse_integration(self):\n        \"\"\"Тест интеграции клавиатуры и мыши.\"\"\"\n        # Импортируем необходимые компоненты\n        from core.common.input.factory import get_input_controller\n        # Патчим реальные вызовы клавиатуры и мыши для предотвращения\n        # фактического ввода во время тестирования\n        with patch(\n            \"core.platform.windows.input.keyboard.WindowsKeyboard.press_key\"",
+        "detail": "tests.integration.core.common.input.test_input_integration",
         "documentation": {}
     },
     {
@@ -7756,11 +9280,92 @@
         "documentation": {}
     },
     {
+        "label": "TestDirectoryStructure",
+        "kind": 6,
+        "importPath": "tests.unit.core.architecture.test_directory_structure",
+        "description": "tests.unit.core.architecture.test_directory_structure",
+        "peekOfCode": "class TestDirectoryStructure:\n    \"\"\"Тесты для проверки структуры каталогов.\"\"\"\n    def test_core_directory_exists(self):\n        \"\"\"Проверка существования базовой директории core.\"\"\"\n        assert os.path.isdir(\"core\"), \"Директория core не существует\"\n    def test_common_directory_exists(self):\n        \"\"\"Проверка существования директории core/common.\"\"\"\n        common_dir = os.path.join(\"core\", \"common\")\n        assert os.path.isdir(common_dir), \"Директория core/common не существует\"\n    def test_platform_directory_exists(self):",
+        "detail": "tests.unit.core.architecture.test_directory_structure",
+        "documentation": {}
+    },
+    {
+        "label": "TestKeyboardInterface",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_classes",
+        "description": "tests.unit.core.common.input.test_base_classes",
+        "peekOfCode": "class TestKeyboardInterface:\n    \"\"\"Тесты для проверки интерфейса клавиатуры.\"\"\"\n    def test_abstract_keyboard_methods(self):\n        \"\"\"Проверка наличия всех необходимых абстрактных методов.\"\"\"\n        # Получаем все абстрактные методы\n        abstract_methods = {\n            name\n            for name, method in inspect.getmembers(AbstractKeyboard)\n            if getattr(method, \"__isabstractmethod__\", False)\n        }",
+        "detail": "tests.unit.core.common.input.test_base_classes",
+        "documentation": {}
+    },
+    {
+        "label": "TestMouseInterface",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_classes",
+        "description": "tests.unit.core.common.input.test_base_classes",
+        "peekOfCode": "class TestMouseInterface:\n    \"\"\"Тесты для проверки интерфейса мыши.\"\"\"\n    def test_abstract_mouse_methods(self):\n        \"\"\"Проверка наличия всех необходимых абстрактных методов.\"\"\"\n        # Получаем все абстрактные методы\n        abstract_methods = {\n            name\n            for name, method in inspect.getmembers(AbstractMouse)\n            if getattr(method, \"__isabstractmethod__\", False)\n        }",
+        "detail": "tests.unit.core.common.input.test_base_classes",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputController",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_classes",
+        "description": "tests.unit.core.common.input.test_base_classes",
+        "peekOfCode": "class TestInputController:\n    \"\"\"Тесты для комбинированного контроллера ввода.\"\"\"\n    def test_input_controller_initialization(self):\n        \"\"\"Проверка правильной инициализации InputController.\"\"\"\n        # Создаем моки для клавиатуры и мыши\n        mock_keyboard = MagicMock(spec=AbstractKeyboard)\n        mock_mouse = MagicMock(spec=AbstractMouse)\n        # Создаем InputController\n        controller = InputController(mock_keyboard, mock_mouse)\n        # Проверяем, что контроллер правильно инициализирован",
+        "detail": "tests.unit.core.common.input.test_base_classes",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputFactory",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_classes",
+        "description": "tests.unit.core.common.input.test_base_classes",
+        "peekOfCode": "class TestInputFactory:\n    \"\"\"Тесты для фабрики контроллеров ввода.\"\"\"\n    def test_get_keyboard(self):\n        \"\"\"Тест создания контроллера клавиатуры.\"\"\"\n        # Импортируем фабрику\n        from core.common.input.factory import get_keyboard\n        # Мокаем подходящий класс клавиатуры для текущей платформы\n        with patch(\"platform.system\", return_value=\"Windows\"), patch(\n            \"core.common.input.registry.InputRegistry._register_platform_controllers\"\n        ), patch(",
+        "detail": "tests.unit.core.common.input.test_base_classes",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputRegistry",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_classes",
+        "description": "tests.unit.core.common.input.test_base_classes",
+        "peekOfCode": "class TestInputRegistry:\n    \"\"\"Тесты для реестра контроллеров ввода.\"\"\"\n    def test_register_keyboard(self):\n        \"\"\"Тест регистрации контроллера клавиатуры.\"\"\"\n        from core.common.input.registry import InputRegistry\n        # Создаем реестр\n        registry = InputRegistry()\n        # Создаем тестовый класс клавиатуры\n        class TestKeyboard(AbstractKeyboard):\n            def press_key(self, key: str) -> bool:",
+        "detail": "tests.unit.core.common.input.test_base_classes",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputBaseInterfaces",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_base_interfaces",
+        "description": "tests.unit.core.common.input.test_base_interfaces",
+        "peekOfCode": "class TestInputBaseInterfaces:\n    \"\"\"Тесты для проверки базовых интерфейсов подсистемы ввода.\"\"\"\n    def test_keyboard_controller_base_exists(self):\n        \"\"\"Проверка существования и структуры базового класса для контроллера клавиатуры.\"\"\"\n        # Импортируем базовый класс\n        from core.common.input.base import AbstractKeyboard\n        # Проверяем, что это абстрактный класс\n        assert issubclass(AbstractKeyboard, ABC)\n        # Проверяем наличие необходимых абстрактных методов\n        abstract_methods = {",
+        "detail": "tests.unit.core.common.input.test_base_interfaces",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputFactory",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_factory_and_registry",
+        "description": "tests.unit.core.common.input.test_factory_and_registry",
+        "peekOfCode": "class TestInputFactory:\n    \"\"\"Тесты для фабрики контроллеров ввода.\"\"\"\n    def test_get_keyboard_caching(self):\n        \"\"\"Тест кэширования экземпляров клавиатуры.\"\"\"\n        # Патчим реестр контроллеров ввода\n        with patch(\"core.common.input.factory.registry\") as mock_registry, patch(\n            \"platform.system\", return_value=\"Windows\"\n        ):\n            # Очищаем кэш для теста\n            from core.common.input.factory import _keyboard_instances",
+        "detail": "tests.unit.core.common.input.test_factory_and_registry",
+        "documentation": {}
+    },
+    {
+        "label": "TestInputRegistry",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.input.test_factory_and_registry",
+        "description": "tests.unit.core.common.input.test_factory_and_registry",
+        "peekOfCode": "class TestInputRegistry:\n    \"\"\"Тесты для реестра контроллеров ввода.\"\"\"\n    @pytest.fixture(autouse=True)\n    def reset_registry(self, request):\n        \"\"\"Сбрасывает синглтон реестра перед каждым тестом.\"\"\"\n        # Пропускаем сброс для теста синглтона\n        if \"test_singleton_property\" not in request.node.name:\n            from core.common.input.registry import InputRegistry\n            InputRegistry.reset_instance()\n        yield",
+        "detail": "tests.unit.core.common.input.test_factory_and_registry",
+        "documentation": {}
+    },
+    {
         "label": "TestFileManager",
         "kind": 6,
         "importPath": "tests.unit.core.filesystem.test_filesystem",
         "description": "tests.unit.core.filesystem.test_filesystem",
-        "peekOfCode": "class TestFileManager:\n    \"\"\"Тесты менеджера файловой системы\"\"\"\n    @pytest.fixture\n    def file_manager(self):\n        \"\"\"Создает экземпляр FileManager\"\"\"\n        from core.filesystem import get_file_system\n        return get_file_system()\n    @pytest.fixture\n    def temp_dir(self):\n        \"\"\"Создает временную директорию для тестов\"\"\"",
+        "peekOfCode": "class TestFileManager:\n    \"\"\"Тесты менеджера файловой системы\"\"\"\n    @pytest.fixture\n    def file_manager(self):\n        \"\"\"Создает экземпляр FileManager\"\"\"\n        from core.common.filesystem.factory import get_file_system\n        return get_file_system()\n    @pytest.fixture\n    def temp_dir(self):\n        \"\"\"Создает временную директорию для тестов\"\"\"",
         "detail": "tests.unit.core.filesystem.test_filesystem",
         "documentation": {}
     },
@@ -7769,7 +9374,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.input.test_input",
         "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestKeyboardController:\n    \"\"\"Тесты контроллера клавиатуры\"\"\"\n    @pytest.fixture\n    def keyboard_controller(self):\n        \"\"\"Создает экземпляр KeyboardController с мокнутым контроллером pynput\"\"\"\n        with patch(\"core.input.keyboard_controller.Controller\") as mock_controller:\n            from core.input.keyboard_controller import KeyboardController as AppKeyboardController\n            controller = AppKeyboardController(human_like=False)\n            controller.controller = mock_controller.return_value\n            yield controller",
+        "peekOfCode": "class TestKeyboardController:\n    \"\"\"Тесты контроллера клавиатуры\"\"\"\n    @pytest.fixture\n    def keyboard_controller(self):\n        \"\"\"Создает экземпляр KeyboardController с мокнутым контроллером pynput\"\"\"\n        with patch(\"core.platform.windows.input.keyboard.Controller\") as mock_controller:\n            from core.platform.windows.input.keyboard import WindowsKeyboard\n            controller = WindowsKeyboard(human_like=False)\n            controller.controller = mock_controller.return_value\n            yield controller",
         "detail": "tests.unit.core.input.test_input",
         "documentation": {}
     },
@@ -7778,7 +9383,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.input.test_input",
         "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestMouseController:\n    \"\"\"Тесты контроллера мыши\"\"\"\n    @pytest.fixture\n    def mouse_controller(self):\n        \"\"\"Создает экземпляр MouseController с мокнутыми контроллерами\"\"\"\n        with patch(\"core.input.mouse_controller.Controller\") as mock_controller, patch(\n            \"core.input.mouse_controller.pyautogui\"\n        ) as mock_pyautogui:\n            from core.input.mouse_controller import MouseController as AppMouseController\n            controller = AppMouseController(human_like=True)",
+        "peekOfCode": "class TestMouseController:\n    \"\"\"Тесты контроллера мыши\"\"\"\n    @pytest.fixture\n    def mouse_controller(self):\n        \"\"\"Создает экземпляр MouseController с мокнутыми контроллерами\"\"\"\n        with patch(\"core.platform.windows.input.mouse.Controller\") as mock_controller, patch(\n            \"core.platform.windows.input.mouse.pyautogui\"\n        ) as mock_pyautogui:\n            from core.platform.windows.input.mouse import WindowsMouse\n            controller = WindowsMouse(human_like=True)",
         "detail": "tests.unit.core.input.test_input",
         "documentation": {}
     },
@@ -7796,16 +9401,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.input.test_input",
         "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestInputControllerFactory:\n    \"\"\"Тесты фабрики контроллеров ввода\"\"\"\n    def test_get_input_controller(self):\n        \"\"\"Тест получения контроллера ввода\"\"\"\n        # Сначала импортируем модуль\n        import core.input\n        # Затем патчим классы в самом модуле\n        with patch(\"platform.system\", return_value=\"Windows\"), patch.object(\n            core.input, \"KeyboardController\"\n        ) as mock_keyboard_class, patch.object(",
-        "detail": "tests.unit.core.input.test_input",
-        "documentation": {}
-    },
-    {
-        "label": "TestIntegration",
-        "kind": 6,
-        "importPath": "tests.unit.core.input.test_input",
-        "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestIntegration:\n    \"\"\"Интеграционные тесты контроллеров ввода\"\"\"\n    def test_keyboard_mouse_integration(self):\n        \"\"\"Тест интеграции клавиатуры и мыши\"\"\"\n        with patch(\"core.input.keyboard_controller.Controller\") as mock_keyboard_controller, patch(\n            \"core.input.mouse_controller.Controller\"\n        ) as mock_mouse_controller, patch(\n            \"core.input.mouse_controller.pyautogui\"\n        ) as mock_pyautogui:\n            # Импортируем необходимые классы",
+        "peekOfCode": "class TestInputControllerFactory:\n    \"\"\"Тесты фабрики контроллеров ввода\"\"\"\n    def test_get_input_controller(self):\n        \"\"\"Тест получения контроллера ввода\"\"\"\n        # Импортируем модуль с фабрикой\n        from core.common.input.factory import get_input_controller\n        # Создаем патчи для классов\n        with patch(\"platform.system\", return_value=\"Windows\"), patch(\n            \"core.platform.windows.input.keyboard.WindowsKeyboard\"\n        ) as mock_keyboard_class, patch(",
         "detail": "tests.unit.core.input.test_input",
         "documentation": {}
     },
@@ -7978,6 +9574,33 @@
         "description": "tests.unit.core.llm_integration.test_llm_integration",
         "peekOfCode": "class TestLLMErrorHandling:\n    \"\"\"Тесты обработки ошибок API\"\"\"\n    def test_handle_connection_error(self):\n        \"\"\"Тест обработки ошибки соединения\"\"\"\n        handler = LLMErrorHandler()\n        # Создаем объект исключения вместо вызова реального исключения\n        error = requests.exceptions.ConnectionError(\"Failed to establish connection\")\n        result = handler.handle_api_error(error)\n        assert result[\"error\"] == \"connection_error\"\n        assert \"Failed to establish connection\" in result[\"message\"]",
         "detail": "tests.unit.core.llm_integration.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowsKeyboard",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "description": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "peekOfCode": "class TestWindowsKeyboard:\n    \"\"\"Тесты для Windows-реализации контроллера клавиатуры.\"\"\"\n    @pytest.fixture\n    def keyboard(self):\n        \"\"\"Создает экземпляр WindowsKeyboard для тестов.\"\"\"\n        with patch(\"win32api.keybd_event\") as mock_keybd_event:\n            keyboard = WindowsKeyboard(human_like=False)\n            yield keyboard, mock_keybd_event\n    def test_inheritance(self):\n        \"\"\"Проверка, что WindowsKeyboard наследуется от AbstractKeyboard.\"\"\"",
+        "detail": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowsMouse",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "description": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "peekOfCode": "class TestWindowsMouse:\n    \"\"\"Тесты для Windows-реализации контроллера мыши.\"\"\"\n    @pytest.fixture\n    def mouse(self):\n        \"\"\"Создает экземпляр WindowsMouse для тестов.\"\"\"\n        with patch(\"win32api.SetCursorPos\") as mock_set_cursor, patch(\n            \"win32api.mouse_event\"\n        ) as mock_mouse_event, patch(\n            \"win32gui.GetCursorPos\", return_value=(100, 100)\n        ) as mock_get_cursor:",
+        "detail": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowsInputIntegration",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "description": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "peekOfCode": "class TestWindowsInputIntegration:\n    \"\"\"Интеграционные тесты для WindowsKeyboard и WindowsMouse.\"\"\"\n    @pytest.fixture\n    def input_controller(self):\n        \"\"\"Создает InputController с моками клавиатуры и мыши Windows.\"\"\"\n        with patch(\"win32api.keybd_event\"), patch(\"win32api.SetCursorPos\"), patch(\n            \"win32api.mouse_event\"\n        ):\n            keyboard = WindowsKeyboard(human_like=False)\n            mouse = WindowsMouse(human_like=False)",
+        "detail": "tests.unit.core.platform.windows.input.test_windows_controllers",
         "documentation": {}
     },
     {
@@ -8336,7 +9959,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.windows.test_registry_manager",
         "description": "tests.unit.core.windows.test_registry_manager",
-        "peekOfCode": "class TestRegistryManager(unittest.TestCase):\n    \"\"\"Тесты для менеджера реестра Windows\"\"\"\n    def setUp(self):\n        \"\"\"Настройка перед каждым тестом\"\"\"\n        self.registry_manager = RegistryManager()\n    @patch(\"winreg.OpenKey\")\n    @patch(\"winreg.QueryValueEx\")\n    @patch(\"winreg.CloseKey\")  # Добавляем патч для CloseKey\n    def test_read_value(self, mock_close_key, mock_query_value, mock_open_key):\n        \"\"\"Тест чтения значения из реестра\"\"\"",
+        "peekOfCode": "class TestRegistryManager(unittest.TestCase):\n    \"\"\"Тесты для менеджера реестра Windows\"\"\"\n    def setUp(self):\n        \"\"\"Настройка перед каждым тестом\"\"\"\n        self.registry_manager = Win32RegistryManager()\n    @patch(\"winreg.OpenKey\")\n    @patch(\"winreg.QueryValueEx\")\n    @patch(\"winreg.CloseKey\")  # Добавляем патч для CloseKey\n    def test_read_value(self, mock_close_key, mock_query_value, mock_open_key):\n        \"\"\"Тест чтения значения из реестра\"\"\"",
         "detail": "tests.unit.core.windows.test_registry_manager",
         "documentation": {}
     },
@@ -8345,7 +9968,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.windows.test_system_info",
         "description": "tests.unit.core.windows.test_system_info",
-        "peekOfCode": "class TestSystemInfo:\n    \"\"\"Тесты класса системной информации Windows\"\"\"\n    @pytest.fixture\n    def system_info(self):\n        \"\"\"Создает экземпляр SystemInfo с мок-зависимостями\"\"\"\n        with patch(\"wmi.WMI\"):\n            from core.windows.system_info import SystemInfo\n            return SystemInfo()\n    @patch(\"platform.system\", return_value=\"Windows\")\n    @patch(\"platform.version\", return_value=\"10.0.19042\")",
+        "peekOfCode": "class TestSystemInfo:\n    \"\"\"Тесты класса системной информации Windows\"\"\"\n    @pytest.fixture\n    def system_info(self):\n        \"\"\"Создает экземпляр Win32SystemInfo с мок-зависимостями\"\"\"\n        with patch(\"wmi.WMI\"):\n            from core.platform.windows.system.win32_system_info import Win32SystemInfo\n            return Win32SystemInfo()\n    @patch(\"platform.system\", return_value=\"Windows\")\n    @patch(\"platform.version\", return_value=\"10.0.19042\")",
         "detail": "tests.unit.core.windows.test_system_info",
         "documentation": {}
     },
@@ -8381,7 +10004,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
         "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestProcessManagement:\n    \"\"\"Тесты управления процессами Windows\"\"\"\n    def teardown_method(self):\n        \"\"\"Очистка после каждого теста\"\"\"\n        # Закрываем Блокнот, если он был запущен\n        import os\n        os.system(\"taskkill /f /im notepad.exe 2>nul\")\n    def test_start_process(self):\n        \"\"\"Тест запуска процесса\"\"\"\n        from core.process import get_process_manager",
+        "peekOfCode": "class TestProcessManagement:\n    \"\"\"Тесты управления процессами Windows\"\"\"\n    def teardown_method(self):\n        \"\"\"Очистка после каждого теста\"\"\"\n        # Закрываем Блокнот, если он был запущен\n        import os\n        os.system(\"taskkill /f /im notepad.exe 2>nul\")\n    def test_start_process(self):\n        \"\"\"Тест запуска процесса\"\"\"\n        from core.common.process import get_process_manager",
         "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
         "documentation": {}
     },
@@ -8390,7 +10013,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
         "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestSystemInformation:\n    \"\"\"Тесты получения системной информации Windows\"\"\"\n    def test_get_os_info(self):\n        \"\"\"Тест получения информации об ОС\"\"\"\n        from core.windows.system_info import SystemInfo\n        system_info = SystemInfo()\n        os_info = system_info.get_os_info()\n        assert os_info is not None\n        assert \"name\" in os_info\n        assert os_info[\"name\"] == \"Windows\"",
+        "peekOfCode": "class TestSystemInformation:\n    \"\"\"Тесты получения системной информации Windows\"\"\"\n    def test_get_os_info(self):\n        \"\"\"Тест получения информации об ОС\"\"\"\n        from core.platform.windows.system.win32_system_info import Win32SystemInfo\n        system_info = Win32SystemInfo()\n        os_info = system_info.get_os_info()\n        assert os_info is not None\n        assert \"name\" in os_info\n        assert os_info[\"name\"] == \"Windows\"",
         "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
         "documentation": {}
     },
@@ -8399,7 +10022,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
         "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestRegistryManagement:\n    \"\"\"Тесты работы с реестром Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        from core.windows.registry_manager import RegistryManager\n        self.registry_manager = RegistryManager()\n        # Используем временный ключ для тестов\n        self.root_key = self.registry_manager.HKEY_CURRENT_USER\n        self.test_key_path = \"Software\\\\NLATest\"\n        self.test_value_name = \"TestValue\"",
+        "peekOfCode": "class TestRegistryManagement:\n    \"\"\"Тесты работы с реестром Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        from core.platform.windows.registry.win32_registry_manager import Win32RegistryManager\n        self.registry_manager = Win32RegistryManager()\n        # Используем временный ключ для тестов\n        self.root_key = self.registry_manager.HKEY_CURRENT_USER\n        self.test_key_path = \"Software\\\\NLATest\"\n        self.test_value_name = \"TestValue\"",
         "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
         "documentation": {}
     },
