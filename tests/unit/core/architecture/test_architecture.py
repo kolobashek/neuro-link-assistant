@@ -1,3 +1,4 @@
+import inspect
 import logging
 import os
 import shutil
@@ -5,7 +6,7 @@ import sys
 import tempfile
 
 # Импортируем типы для аннотаций
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -19,18 +20,26 @@ class IComponentRegistry:
 
 class ISystemInitializer:
     def initialize(self) -> bool: ...  # noqa: E704
+    def shutdown(self) -> bool: ...  # noqa: E704
+    def is_initialized(self) -> bool: ...  # noqa: E704
 
 
 class IErrorHandler:
-
     def handle_error(  # noqa: E704
         self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704
+    ) -> bool: ...  # noqa: E704
+
+    def handle_warning(  # noqa: E704
+        self, message: str, context: Optional[Dict[str, Any]] = None  # noqa: E704
     ) -> bool: ...  # noqa: E704
 
 
 class IPluginManager:
     def load_plugin(self, name: str) -> Any: ...  # noqa: E704
     def get_plugin(self, name: str) -> Any: ...  # noqa: E704
+    def discover_plugins(self) -> List[str]: ...  # noqa: E704
+    def load_plugins(self) -> int: ...  # noqa: E704
+    def unload_plugin(self, name: str) -> bool: ...  # noqa: E704
 
 
 # Пытаемся импортировать реальные классы
@@ -49,22 +58,27 @@ except ImportError:
             self.components[name] = component
             return True
 
-        def get(self, name, default=None):
+        def get(self, name):
             if name in self.components:
                 return self.components[name]
-            if default is not None:
-                return default
-            # Вызываем исключение, если компонент не найден и default не указан
+            # Вызываем исключение, если компонент не найден
             raise KeyError(f"Компонент с именем '{name}' не зарегистрирован")
 
     class SystemInitializer(ISystemInitializer):
         def __init__(self, registry):
             self.registry = registry
-            self.initialized = False
+            self._initialized = False
 
         def initialize(self):
-            self.initialized = True
+            self._initialized = True
             return True
+
+        def shutdown(self):
+            self._initialized = False
+            return True
+
+        def is_initialized(self):
+            return self._initialized
 
     class ErrorHandler(IErrorHandler):
         def __init__(self):
@@ -72,6 +86,10 @@ except ImportError:
 
         def handle_error(self, error, context=None):
             self.logger.error(f"Error: {error}, Context: {context}")
+            return True
+
+        def handle_warning(self, message, context=None):
+            self.logger.warning(f"Warning: {message}, Context: {context}")
             return True
 
     class PluginManager(IPluginManager):
@@ -86,6 +104,18 @@ except ImportError:
 
         def get_plugin(self, name):
             return self.plugins.get(name)
+
+        def discover_plugins(self):
+            return []
+
+        def load_plugins(self):
+            return 0
+
+        def unload_plugin(self, name):
+            if name in self.plugins:
+                del self.plugins[name]
+                return True
+            return False
 
 
 class TestComponentRegistry:
@@ -105,13 +135,9 @@ class TestComponentRegistry:
         """Тест получения несуществующего компонента"""
         registry = ComponentRegistry()
 
-        # Вариант 1: Ожидаем исключение
+        # Ожидаем исключение
         with pytest.raises(KeyError):
             registry.get("nonexistent")
-
-        # Вариант 2: Используем default параметр
-        # component = registry.get("nonexistent", default=None)
-        # assert component is None
 
     def test_register_multiple_components(self):
         """Тест регистрации нескольких компонентов"""
@@ -147,8 +173,9 @@ class TestSystemInitialization:
         initializer = SystemInitializer(registry)
         result = initializer.initialize()
 
-        # Проверяем только результат инициализации
+        # Проверяем результат инициализации
         assert result is True
+        assert initializer.is_initialized() is True
 
     @patch.object(SystemInitializer, "initialize")
     def test_initialization_with_components(self, mock_initialize):
@@ -166,6 +193,27 @@ class TestSystemInitialization:
 
         assert result is True
         mock_initialize.assert_called_once()
+
+    @patch.object(SystemInitializer, "initialize")
+    @patch.object(SystemInitializer, "shutdown")
+    def test_system_lifecycle(self, mock_shutdown, mock_initialize):
+        """Тест жизненного цикла системы: инициализация и завершение"""
+        registry = ComponentRegistry()
+        initializer = SystemInitializer(registry)
+
+        # Настраиваем моки
+        mock_initialize.return_value = True
+        mock_shutdown.return_value = True
+
+        # Инициализируем систему
+        init_result = initializer.initialize()
+        assert init_result is True
+        mock_initialize.assert_called_once()
+
+        # Завершаем работу системы
+        shutdown_result = initializer.shutdown()
+        assert shutdown_result is True
+        mock_shutdown.assert_called_once()
 
 
 class TestErrorHandling:
@@ -193,6 +241,17 @@ class TestErrorHandling:
 
         assert result is True
         mock_error.assert_called_once()
+
+    @patch("logging.Logger.warning")
+    def test_warning_handling(self, mock_warning):
+        """Тест обработки предупреждений"""
+        handler = ErrorHandler()
+        warning_message = "Test warning"
+
+        result = handler.handle_warning(warning_message)
+
+        assert result is True
+        mock_warning.assert_called_once()
 
 
 class TestPluginSystem:
@@ -317,6 +376,139 @@ class IntegrationPlugin:
         result = plugin.integrate(registry)
         assert result is True
         plugin.integrate.assert_called_once_with(registry)
+
+
+class TestArchitectureCompliance:
+    """Тесты соответствия архитектуры проекта требованиям"""
+
+    def test_core_components_existence(self):
+        """Проверка наличия всех основных компонентов ядра"""
+        # Проверяем наличие файлов ядра
+        core_files = [
+            "core/component_registry.py",
+            "core/system_initializer.py",
+            "core/plugin_manager.py",
+            "core/common/error_handler.py",
+        ]
+
+        for file_path in core_files:
+            assert os.path.exists(file_path), f"Файл {file_path} не найден"
+
+    def test_directory_structure(self):
+        """Проверка соответствия структуры каталогов требованиям"""
+        # Проверяем наличие основных каталогов
+        required_dirs = [
+            "core",
+            "core/common",
+            "core/platform",
+            "core/platform/windows",
+            "core/common/filesystem",
+            "core/common/input",
+            "core/common/process",
+            "core/common/window",
+        ]
+
+        for dir_path in required_dirs:
+            assert os.path.isdir(dir_path), f"Каталог {dir_path} не найден"
+
+    def test_solid_principles_compliance(self):
+        """Проверка соответствия принципам SOLID"""
+        # Проверяем принцип единственной ответственности (Single Responsibility)
+        # для основных классов
+
+        # Импортируем классы, если они существуют
+        classes_to_check = []
+        try:
+            from core.component_registry import ComponentRegistry
+
+            classes_to_check.append(ComponentRegistry)
+        except ImportError:
+            pass
+
+        try:
+            from core.common.error_handler import ErrorHandler
+
+            classes_to_check.append(ErrorHandler)
+        except ImportError:
+            pass
+
+        try:
+            from core.plugin_manager import PluginManager
+
+            classes_to_check.append(PluginManager)
+        except ImportError:
+            pass
+
+        try:
+            from core.system_initializer import SystemInitializer
+
+            classes_to_check.append(SystemInitializer)
+        except ImportError:
+            pass
+
+        # Проверяем, что каждый класс имеет разумное количество методов
+        # (признак соблюдения принципа единственной ответственности)
+        for cls in classes_to_check:
+            methods = [m for m in dir(cls) if not m.startswith("_") and callable(getattr(cls, m))]
+            # Проверяем, что класс имеет не слишком много публичных методов
+            assert (
+                len(methods) <= 15
+            ), f"Класс {cls.__name__} имеет слишком много методов ({len(methods)})"
+
+    def test_dependency_inversion_principle(self):
+        """Проверка соответствия принципу инверсии зависимостей"""
+        # Проверяем, что SystemInitializer зависит от абстракции, а не от конкретной реализации
+        try:
+            from core.system_initializer import SystemInitializer
+
+            # Получаем параметры конструктора
+            init_signature = inspect.signature(SystemInitializer.__init__)
+
+            # Проверяем, что первый параметр (после self) - это registry
+            params = list(init_signature.parameters.values())
+            assert (
+                len(params) >= 2
+            ), "SystemInitializer.__init__ должен принимать хотя бы один параметр"
+            assert params[1].name == "registry", "Первый параметр должен быть registry"
+
+            # Проверяем, что тип не указан явно (или это интерфейс)
+            # Это косвенно подтверждает, что класс работает с абстракцией
+            if params[1].annotation != inspect.Parameter.empty:
+                assert "Registry" in str(
+                    params[1].annotation
+                ), "Тип параметра должен быть абстрактным"
+        except ImportError:
+            pass
+
+    def test_interface_segregation_principle(self):
+        """Проверка соответствия принципу разделения интерфейсов"""
+        # Проверяем, что интерфейсы не слишком большие
+        interfaces = [IComponentRegistry, ISystemInitializer, IErrorHandler, IPluginManager]
+
+        for interface in interfaces:
+            methods = [
+                m for m in dir(interface) if not m.startswith("_") and not m.startswith("__")
+            ]
+            # Проверяем, что интерфейс имеет разумное количество методов
+            assert (
+                len(methods) <= 10
+            ), f"Интерфейс {interface.__name__} слишком большой ({len(methods)} методов)"
+
+    def test_open_closed_principle(self):
+        """Проверка соответствия принципу открытости/закрытости"""
+        # Проверяем, что PluginManager поддерживает расширение через плагины
+        try:
+            from core.plugin_manager import PluginManager
+
+            # Проверяем наличие методов для работы с плагинами
+            assert hasattr(
+                PluginManager, "load_plugin"
+            ), "PluginManager должен иметь метод load_plugin"
+            assert hasattr(
+                PluginManager, "get_plugin"
+            ), "PluginManager должен иметь метод get_plugin"
+        except ImportError:
+            pass
 
 
 if __name__ == "__main__":

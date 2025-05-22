@@ -1436,6 +1436,14 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -1638,6 +1646,22 @@
     },
     {
         "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
         "isExtraImport": true,
@@ -4140,6 +4164,14 @@
         "documentation": {}
     },
     {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
         "label": "MagicMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
@@ -4572,6 +4604,54 @@
         "documentation": {}
     },
     {
+        "label": "ComponentRegistry",
+        "importPath": "core.component_registry",
+        "description": "core.component_registry",
+        "isExtraImport": true,
+        "detail": "core.component_registry",
+        "documentation": {}
+    },
+    {
+        "label": "ComponentRegistry",
+        "importPath": "core.component_registry",
+        "description": "core.component_registry",
+        "isExtraImport": true,
+        "detail": "core.component_registry",
+        "documentation": {}
+    },
+    {
+        "label": "PluginManager",
+        "importPath": "core.plugin_manager",
+        "description": "core.plugin_manager",
+        "isExtraImport": true,
+        "detail": "core.plugin_manager",
+        "documentation": {}
+    },
+    {
+        "label": "PluginManager",
+        "importPath": "core.plugin_manager",
+        "description": "core.plugin_manager",
+        "isExtraImport": true,
+        "detail": "core.plugin_manager",
+        "documentation": {}
+    },
+    {
+        "label": "PluginManager",
+        "importPath": "core.plugin_manager",
+        "description": "core.plugin_manager",
+        "isExtraImport": true,
+        "detail": "core.plugin_manager",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
         "label": "AIModelService",
         "importPath": "core.services.ai_model_service",
         "description": "core.services.ai_model_service",
@@ -4633,22 +4713,6 @@
         "description": "scripts.docker",
         "isExtraImport": true,
         "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
-        "label": "Key",
-        "importPath": "pynput.keyboard",
-        "description": "pynput.keyboard",
-        "isExtraImport": true,
-        "detail": "pynput.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "Button",
-        "importPath": "pynput.mouse",
-        "description": "pynput.mouse",
-        "isExtraImport": true,
-        "detail": "pynput.mouse",
         "documentation": {}
     },
     {
@@ -4721,14 +4785,6 @@
         "description": "core.platform.windows.window.win32_window_manager",
         "isExtraImport": true,
         "detail": "core.platform.windows.window.win32_window_manager",
-        "documentation": {}
-    },
-    {
-        "label": "PluginManager",
-        "importPath": "core.plugin_manager",
-        "description": "core.plugin_manager",
-        "isExtraImport": true,
-        "detail": "core.plugin_manager",
         "documentation": {}
     },
     {
@@ -9145,6 +9201,87 @@
         "documentation": {}
     },
     {
+        "label": "TestCoreComponentsIntegration",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_core_components_integration",
+        "description": "tests.integration.core.test_core_components_integration",
+        "peekOfCode": "class TestCoreComponentsIntegration:\n    \"\"\"Интеграционные тесты для проверки взаимодействия компонентов ядра системы.\"\"\"\n    @pytest.fixture\n    def setup_core_components(self):\n        \"\"\"\n        Создает и настраивает основные компоненты ядра для тестирования.\n        \"\"\"\n        # Создаем компоненты\n        registry = ComponentRegistry()\n        error_handler = ErrorHandler()",
+        "detail": "tests.integration.core.test_core_components_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestPlugin",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_core_components_integration",
+        "description": "tests.integration.core.test_core_components_integration",
+        "peekOfCode": "class TestPlugin:\n    def __init__(self):\n        self.initialized = False\n    def setup(self):\n        self.initialized = True\n        return True\n\"\"\"\n            plugin_path = os.path.join(temp_dir, \"test_plugin.py\")\n            with open(plugin_path, \"w\") as f:\n                f.write(plugin_code)",
+        "detail": "tests.integration.core.test_core_components_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestPluginSystemIntegration",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class TestPluginSystemIntegration:\n    \"\"\"Интеграционные тесты для проверки взаимодействия системы плагинов с другими компонентами.\"\"\"\n    @pytest.fixture\n    def setup_plugin_system(self):\n        \"\"\"\n        Создает и настраивает компоненты для тестирования системы плагинов.\n        \"\"\"\n        # Создаем компоненты\n        registry = ComponentRegistry()\n        error_handler = ErrorHandler()",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestPlugin",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class TestPlugin:\n    def __init__(self):\n        self.initialized = False\n        self.registry = None\n    def setup(self):\n        self.initialized = True\n        return True\n\"\"\"\n        self.create_test_plugin(temp_dir, \"test_plugin\", plugin_code)\n        # Загружаем плагин",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "RegistryPlugin",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class RegistryPlugin:\n    def __init__(self):\n        self.registry = None\n        self.error_handler = None\n    def setup(self):\n        # Ничего не делаем в setup\n        pass\n    def integrate(self, registry):\n        self.registry = registry\n        self.error_handler = registry.get(\"error_handler\")",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "BrokenPlugin",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class BrokenPlugin:\n    def __init__(self):\n        self.initialized = False\n    def setup(self):\n        raise Exception(\"Test error in plugin setup\")\n\"\"\"\n        self.create_test_plugin(temp_dir, \"broken_plugin\", plugin_code)\n        # Патчим метод handle_error для перехвата вызовов\n        with patch.object(error_handler, \"handle_error\") as mock_handle_error:\n            # Загружаем плагин с ошибкой",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "Plugin1",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class Plugin1:\n    def __init__(self):\n        self.name = \"Plugin1\"\n    def setup(self):\n        pass\n\"\"\"\n        plugin2_code = \"\"\"\nclass Plugin2:\n    def __init__(self):\n        self.name = \"Plugin2\"",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "Plugin2",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class Plugin2:\n    def __init__(self):\n        self.name = \"Plugin2\"\n    def setup(self):\n        pass\n\"\"\"\n        self.create_test_plugin(temp_dir, \"plugin1\", plugin1_code)\n        self.create_test_plugin(temp_dir, \"plugin2\", plugin2_code)\n        # Обнаруживаем плагины\n        discovered_plugins = plugin_manager.discover_plugins()",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
+        "label": "UnloadablePlugin",
+        "kind": 6,
+        "importPath": "tests.integration.core.test_plugin_system_integration",
+        "description": "tests.integration.core.test_plugin_system_integration",
+        "peekOfCode": "class UnloadablePlugin:\n    def __init__(self):\n        self.torn_down = False\n    def setup(self):\n        pass\n    def teardown(self):\n        self.torn_down = True\n\"\"\"\n        self.create_test_plugin(temp_dir, \"unloadable_plugin\", plugin_code)\n        # Загружаем плагин",
+        "detail": "tests.integration.core.test_plugin_system_integration",
+        "documentation": {}
+    },
+    {
         "label": "TestUserService",
         "kind": 6,
         "importPath": "tests.integration.test_db_services",
@@ -9194,7 +9331,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class IComponentRegistry:\n    def register(self, name: str, component: Any) -> bool: ...  # noqa: E704\n    def get(self, name: str) -> Any: ...  # noqa: E704\nclass ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:",
+        "peekOfCode": "class IComponentRegistry:\n    def register(self, name: str, component: Any) -> bool: ...  # noqa: E704\n    def get(self, name: str) -> Any: ...  # noqa: E704\nclass ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\n    def shutdown(self) -> bool: ...  # noqa: E704\n    def is_initialized(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -9203,7 +9340,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы",
+        "peekOfCode": "class ISystemInitializer:\n    def initialize(self) -> bool: ...  # noqa: E704\n    def shutdown(self) -> bool: ...  # noqa: E704\n    def is_initialized(self) -> bool: ...  # noqa: E704\nclass IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\n    def handle_warning(  # noqa: E704\n        self, message: str, context: Optional[Dict[str, Any]] = None  # noqa: E704",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -9212,7 +9349,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore",
+        "peekOfCode": "class IErrorHandler:\n    def handle_error(  # noqa: E704\n        self, error: Exception, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\n    def handle_warning(  # noqa: E704\n        self, message: str, context: Optional[Dict[str, Any]] = None  # noqa: E704\n    ) -> bool: ...  # noqa: E704\nclass IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -9221,7 +9358,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
-        "peekOfCode": "class IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore\n    from core.component_registry import ComponentRegistry  # type: ignore\n    from core.plugin_manager import PluginManager  # type: ignore\n    from core.system_initializer import SystemInitializer  # type: ignore\nexcept ImportError:",
+        "peekOfCode": "class IPluginManager:\n    def load_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def get_plugin(self, name: str) -> Any: ...  # noqa: E704\n    def discover_plugins(self) -> List[str]: ...  # noqa: E704\n    def load_plugins(self) -> int: ...  # noqa: E704\n    def unload_plugin(self, name: str) -> bool: ...  # noqa: E704\n# Пытаемся импортировать реальные классы\ntry:\n    from core.common.error_handler import ErrorHandler  # type: ignore\n    from core.component_registry import ComponentRegistry  # type: ignore",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -9276,6 +9413,15 @@
         "importPath": "tests.unit.core.architecture.test_architecture",
         "description": "tests.unit.core.architecture.test_architecture",
         "peekOfCode": "class IntegrationPlugin:\n    def __init__(self):\n        self.registry = None\n    def setup(self):\n        pass\n    def integrate(self, registry):\n        self.registry = registry\n        return True\n\"\"\"\n        self.create_test_plugin(\"integration_plugin\", plugin_code)",
+        "detail": "tests.unit.core.architecture.test_architecture",
+        "documentation": {}
+    },
+    {
+        "label": "TestArchitectureCompliance",
+        "kind": 6,
+        "importPath": "tests.unit.core.architecture.test_architecture",
+        "description": "tests.unit.core.architecture.test_architecture",
+        "peekOfCode": "class TestArchitectureCompliance:\n    \"\"\"Тесты соответствия архитектуры проекта требованиям\"\"\"\n    def test_core_components_existence(self):\n        \"\"\"Проверка наличия всех основных компонентов ядра\"\"\"\n        # Проверяем наличие файлов ядра\n        core_files = [\n            \"core/component_registry.py\",\n            \"core/system_initializer.py\",\n            \"core/plugin_manager.py\",\n            \"core/common/error_handler.py\",",
         "detail": "tests.unit.core.architecture.test_architecture",
         "documentation": {}
     },
@@ -9367,42 +9513,6 @@
         "description": "tests.unit.core.filesystem.test_filesystem",
         "peekOfCode": "class TestFileManager:\n    \"\"\"Тесты менеджера файловой системы\"\"\"\n    @pytest.fixture\n    def file_manager(self):\n        \"\"\"Создает экземпляр FileManager\"\"\"\n        from core.common.filesystem.factory import get_file_system\n        return get_file_system()\n    @pytest.fixture\n    def temp_dir(self):\n        \"\"\"Создает временную директорию для тестов\"\"\"",
         "detail": "tests.unit.core.filesystem.test_filesystem",
-        "documentation": {}
-    },
-    {
-        "label": "TestKeyboardController",
-        "kind": 6,
-        "importPath": "tests.unit.core.input.test_input",
-        "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestKeyboardController:\n    \"\"\"Тесты контроллера клавиатуры\"\"\"\n    @pytest.fixture\n    def keyboard_controller(self):\n        \"\"\"Создает экземпляр KeyboardController с мокнутым контроллером pynput\"\"\"\n        with patch(\"core.platform.windows.input.keyboard.Controller\") as mock_controller:\n            from core.platform.windows.input.keyboard import WindowsKeyboard\n            controller = WindowsKeyboard(human_like=False)\n            controller.controller = mock_controller.return_value\n            yield controller",
-        "detail": "tests.unit.core.input.test_input",
-        "documentation": {}
-    },
-    {
-        "label": "TestMouseController",
-        "kind": 6,
-        "importPath": "tests.unit.core.input.test_input",
-        "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestMouseController:\n    \"\"\"Тесты контроллера мыши\"\"\"\n    @pytest.fixture\n    def mouse_controller(self):\n        \"\"\"Создает экземпляр MouseController с мокнутыми контроллерами\"\"\"\n        with patch(\"core.platform.windows.input.mouse.Controller\") as mock_controller, patch(\n            \"core.platform.windows.input.mouse.pyautogui\"\n        ) as mock_pyautogui:\n            from core.platform.windows.input.mouse import WindowsMouse\n            controller = WindowsMouse(human_like=True)",
-        "detail": "tests.unit.core.input.test_input",
-        "documentation": {}
-    },
-    {
-        "label": "TestInputController",
-        "kind": 6,
-        "importPath": "tests.unit.core.input.test_input",
-        "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestInputController:\n    \"\"\"Тесты объединенного контроллера ввода\"\"\"\n    @pytest.fixture\n    def input_controller(self):\n        \"\"\"Создает экземпляр InputController с мокнутыми контроллерами клавиатуры и мыши\"\"\"\n        from core.common.input.base import InputController\n        mock_keyboard = MagicMock()\n        mock_mouse = MagicMock()\n        controller = InputController(mock_keyboard, mock_mouse)\n        yield controller, mock_keyboard, mock_mouse",
-        "detail": "tests.unit.core.input.test_input",
-        "documentation": {}
-    },
-    {
-        "label": "TestInputControllerFactory",
-        "kind": 6,
-        "importPath": "tests.unit.core.input.test_input",
-        "description": "tests.unit.core.input.test_input",
-        "peekOfCode": "class TestInputControllerFactory:\n    \"\"\"Тесты фабрики контроллеров ввода\"\"\"\n    def test_get_input_controller(self):\n        \"\"\"Тест получения контроллера ввода\"\"\"\n        # Импортируем модуль с фабрикой\n        from core.common.input.factory import get_input_controller\n        # Создаем патчи для классов\n        with patch(\"platform.system\", return_value=\"Windows\"), patch(\n            \"core.platform.windows.input.keyboard.WindowsKeyboard\"\n        ) as mock_keyboard_class, patch(",
-        "detail": "tests.unit.core.input.test_input",
         "documentation": {}
     },
     {

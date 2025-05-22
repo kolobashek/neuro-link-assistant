@@ -1,4 +1,4 @@
-function Show-DirTree($path = ".", $indent = "", $exclude = @(".git", "venv", ".venv", "__pycache__", ".vscode", ".github", ".pytest_cache")) {
+function Show-DirTree($path = ".\tests", $indent = "", $exclude = @(".git", "venv", ".venv", "__pycache__", ".vscode", ".github", ".pytest_cache")) {
     $items = Get-ChildItem -Path $path
     foreach ($item in $items) {
         if ($exclude -contains $item.Name) { continue }

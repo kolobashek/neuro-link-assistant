@@ -20,6 +20,9 @@ class TestInputIntegration:
             # Получаем контроллер ввода
             controller = get_input_controller()
 
+            # Проверяем, что контроллер был получен
+            assert controller is not None, "Не удалось получить контроллер ввода"
+
             # Проверяем доступность методов
             assert hasattr(controller.keyboard, "press_key")
             assert hasattr(controller.mouse, "click")
@@ -40,6 +43,9 @@ class TestInputIntegration:
             "core.platform.windows.input.keyboard.WindowsKeyboard.type_text"
         ) as mock_type_text:
             keyboard = get_keyboard()
+
+            # Проверяем, что клавиатура была получена
+            assert keyboard is not None, "Не удалось получить контроллер клавиатуры"
 
             # Вводим текст
             text = "Hello, World!"

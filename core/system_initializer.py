@@ -110,7 +110,7 @@ class SystemInitializer:
             except ImportError:
                 # Пробуем альтернативный путь импорта
                 try:
-                    from core.error_handler import ErrorHandler
+                    from core.common.error_handler import ErrorHandler
 
                     error_handler = ErrorHandler()
                     self._registry.register("error_handler", error_handler)
