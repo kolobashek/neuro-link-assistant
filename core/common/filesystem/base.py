@@ -30,29 +30,29 @@ class AbstractFileSystem(ABC):
         pass
 
     @abstractmethod
-    def list_directory_names(self, path, pattern="*"):
+    def list_directory_names(self, path: str, pattern: str = "*") -> List[str]:
         """
-        Получает список имен файлов и директорий в указанной директории.
+        Получает список имен поддиректорий в указанной директории.
 
         Args:
             path (str): Путь к директории
-            pattern (str, optional): Шаблон для фильтрации файлов. По умолчанию "*".
+            pattern (str, optional): Шаблон для фильтрации директорий
 
         Returns:
-            list: Список имен файлов и директорий (без полных путей)
+            List[str]: Список имен поддиректорий
         """
         pass
 
     @abstractmethod
     def file_exists(self, path: str) -> bool:
         """
-        Проверить существование файла.
+        Проверяет существование файла.
 
         Args:
-            path (str): Путь к файлу.
+            path (str): Путь к файлу
 
         Returns:
-            bool: True, если файл существует, иначе False.
+            bool: True, если файл существует, иначе False
         """
         pass
 
@@ -86,15 +86,15 @@ class AbstractFileSystem(ABC):
     @abstractmethod
     def write_file(self, path: str, content: str, encoding: str = "utf-8") -> bool:
         """
-        Записать содержимое в файл.
+        Записывает содержимое в файл.
 
         Args:
-            path (str): Путь к файлу.
-            content (str): Содержимое для записи.
-            encoding (str, optional): Кодировка файла. По умолчанию "utf-8".
+            path (str): Путь к файлу
+            content (str): Содержимое для записи
+            encoding (str, optional): Кодировка файла
 
         Returns:
-            bool: True в случае успешной записи.
+            bool: True в случае успешной записи
         """
         pass
 
@@ -125,15 +125,15 @@ class AbstractFileSystem(ABC):
         pass
 
     @abstractmethod
-    def get_file_modification_time(self, path: str) -> Optional[datetime]:
+    def get_file_modification_time(self, path: str) -> datetime:
         """
-        Получить время последней модификации файла.
+        Получает время последней модификации файла.
 
         Args:
-            path (str): Путь к файлу.
+            path (str): Путь к файлу
 
         Returns:
-            Optional[datetime]: Время модификации или None в случае ошибки.
+            datetime: Время последней модификации
         """
         pass
 

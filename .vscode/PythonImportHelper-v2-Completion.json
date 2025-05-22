@@ -269,6 +269,22 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "operator",
         "kind": 6,
         "isExtraImport": true,
@@ -692,6 +708,22 @@
         "documentation": {}
     },
     {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -1076,14 +1108,6 @@
         "documentation": {}
     },
     {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -1445,6 +1469,22 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -1493,187 +1533,19 @@
         "documentation": {}
     },
     {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
         "isExtraImport": true,
-        "detail": "core.common.error_handler",
+        "detail": "core.common.filesystem.base",
         "documentation": {}
     },
     {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
         "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "handle_error",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "ErrorHandler",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "ErrorHandler",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
-        "documentation": {}
-    },
-    {
-        "label": "ErrorHandler",
-        "importPath": "core.common.error_handler",
-        "description": "core.common.error_handler",
-        "isExtraImport": true,
-        "detail": "core.common.error_handler",
+        "detail": "core.common.filesystem.base",
         "documentation": {}
     },
     {
@@ -1690,6 +1562,78 @@
         "description": "core.common.filesystem.base",
         "isExtraImport": true,
         "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractFileSystem",
+        "importPath": "core.common.filesystem.base",
+        "description": "core.common.filesystem.base",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.base",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_system_implementation",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "is_file_system_registered",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "register_file_system",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_system_implementation",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "get_registered_file_systems",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "is_file_system_registered",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "register_file_system",
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.registry",
         "documentation": {}
     },
     {
@@ -1818,6 +1762,182 @@
         "description": "core.common.input.registry",
         "isExtraImport": true,
         "detail": "core.common.input.registry",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorHandler",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
         "documentation": {}
     },
     {
@@ -2355,78 +2475,6 @@
         "description": "functools",
         "isExtraImport": true,
         "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "get_keyboard",
-        "importPath": "core.common.input.factory",
-        "description": "core.common.input.factory",
-        "isExtraImport": true,
-        "detail": "core.common.input.factory",
-        "documentation": {}
-    },
-    {
-        "label": "get_mouse",
-        "importPath": "core.common.input.factory",
-        "description": "core.common.input.factory",
-        "isExtraImport": true,
-        "detail": "core.common.input.factory",
-        "documentation": {}
-    },
-    {
-        "label": "get_mouse",
-        "importPath": "core.common.input.factory",
-        "description": "core.common.input.factory",
-        "isExtraImport": true,
-        "detail": "core.common.input.factory",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsKeyboard",
-        "importPath": "core.platform.windows.input.keyboard",
-        "description": "core.platform.windows.input.keyboard",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsKeyboard",
-        "importPath": "core.platform.windows.input.keyboard",
-        "description": "core.platform.windows.input.keyboard",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsKeyboard",
-        "importPath": "core.platform.windows.input.keyboard",
-        "description": "core.platform.windows.input.keyboard",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.keyboard",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsMouse",
-        "importPath": "core.platform.windows.input.mouse",
-        "description": "core.platform.windows.input.mouse",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.mouse",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsMouse",
-        "importPath": "core.platform.windows.input.mouse",
-        "description": "core.platform.windows.input.mouse",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.mouse",
-        "documentation": {}
-    },
-    {
-        "label": "WindowsMouse",
-        "importPath": "core.platform.windows.input.mouse",
-        "description": "core.platform.windows.input.mouse",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.input.mouse",
         "documentation": {}
     },
     {
@@ -4324,174 +4372,6 @@
         "documentation": {}
     },
     {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "PropertyMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "PropertyMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
         "label": "MagicMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
@@ -4533,6 +4413,166 @@
     },
     {
         "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "PropertyMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "PropertyMock",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
         "isExtraImport": true,
@@ -4716,11 +4756,107 @@
         "documentation": {}
     },
     {
+        "label": "get_file_system",
+        "importPath": "core.common.filesystem",
+        "description": "core.common.filesystem",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_system",
+        "importPath": "core.common.filesystem",
+        "description": "core.common.filesystem",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "create_file_system",
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "register_file_system_implementation",
+        "importPath": "core.common.filesystem.factory",
+        "description": "core.common.filesystem.factory",
+        "isExtraImport": true,
+        "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "get_mouse",
+        "importPath": "core.common.input.factory",
+        "description": "core.common.input.factory",
+        "isExtraImport": true,
+        "detail": "core.common.input.factory",
+        "documentation": {}
+    },
+    {
         "label": "ResponseParser",
         "importPath": "core.llm.response_parser",
         "description": "core.llm.response_parser",
         "isExtraImport": true,
         "detail": "core.llm.response_parser",
+        "documentation": {}
+    },
+    {
+        "label": "Win32FileSystem",
+        "importPath": "core.platform.windows.filesystem",
+        "description": "core.platform.windows.filesystem",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "BaseFileSystemTest",
+        "importPath": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "description": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "isExtraImport": true,
+        "detail": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsKeyboard",
+        "importPath": "core.platform.windows.input.keyboard",
+        "description": "core.platform.windows.input.keyboard",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsMouse",
+        "importPath": "core.platform.windows.input.mouse",
+        "description": "core.platform.windows.input.mouse",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.input.mouse",
+        "documentation": {}
+    },
+    {
+        "label": "Win32RegistryManager",
+        "importPath": "core.platform.windows.registry.win32_registry_manager",
+        "description": "core.platform.windows.registry.win32_registry_manager",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.registry.win32_registry_manager",
+        "documentation": {}
+    },
+    {
+        "label": "Win32WindowManager",
+        "importPath": "core.platform.windows.window.win32_window_manager",
+        "description": "core.platform.windows.window.win32_window_manager",
+        "isExtraImport": true,
+        "detail": "core.platform.windows.window.win32_window_manager",
+        "documentation": {}
+    },
+    {
+        "label": "WindowManager",
+        "importPath": "core.windows",
+        "description": "core.windows",
+        "isExtraImport": true,
+        "detail": "core.windows",
         "documentation": {}
     },
     {
@@ -4737,54 +4873,6 @@
         "description": "core.vision.screen_changes",
         "isExtraImport": true,
         "detail": "core.vision.screen_changes",
-        "documentation": {}
-    },
-    {
-        "label": "FileSystemManager",
-        "importPath": "core.windows.filesystem_manager",
-        "description": "core.windows.filesystem_manager",
-        "isExtraImport": true,
-        "detail": "core.windows.filesystem_manager",
-        "documentation": {}
-    },
-    {
-        "label": "FileSystem",
-        "importPath": "core.windows.file_system",
-        "description": "core.windows.file_system",
-        "isExtraImport": true,
-        "detail": "core.windows.file_system",
-        "documentation": {}
-    },
-    {
-        "label": "Win32RegistryManager",
-        "importPath": "core.platform.windows.registry.win32_registry_manager",
-        "description": "core.platform.windows.registry.win32_registry_manager",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.registry.win32_registry_manager",
-        "documentation": {}
-    },
-    {
-        "label": "WindowManager",
-        "importPath": "core.windows",
-        "description": "core.windows",
-        "isExtraImport": true,
-        "detail": "core.windows",
-        "documentation": {}
-    },
-    {
-        "label": "get_file_system",
-        "importPath": "core.common.filesystem",
-        "description": "core.common.filesystem",
-        "isExtraImport": true,
-        "detail": "core.common.filesystem",
-        "documentation": {}
-    },
-    {
-        "label": "Win32WindowManager",
-        "importPath": "core.platform.windows.window.win32_window_manager",
-        "description": "core.platform.windows.window.win32_window_manager",
-        "isExtraImport": true,
-        "detail": "core.platform.windows.window.win32_window_manager",
         "documentation": {}
     },
     {
@@ -7320,20 +7408,11 @@
         "documentation": {}
     },
     {
-        "label": "register_file_system",
-        "kind": 2,
-        "importPath": "core.common.filesystem.factory",
-        "description": "core.common.filesystem.factory",
-        "peekOfCode": "def register_file_system(platform_name: str, implementation: Type[AbstractFileSystem]) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы для указанной платформы.\n    Args:\n        platform_name (str): Имя платформы (\"windows\", \"linux\", \"darwin\").\n        implementation (Type[AbstractFileSystem]): Класс реализации файловой системы.\n    \"\"\"\n    _file_system_implementations[platform_name.lower()] = implementation\ndef create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:\n    \"\"\"",
-        "detail": "core.common.filesystem.factory",
-        "documentation": {}
-    },
-    {
         "label": "create_file_system",
         "kind": 2,
         "importPath": "core.common.filesystem.factory",
         "description": "core.common.filesystem.factory",
-        "peekOfCode": "def create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:\n    \"\"\"\n    Создает экземпляр файловой системы для указанной платформы.\n    Args:\n        platform_name (Optional[str], optional): Имя платформы. Если None, используется текущая платформа.\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы.\n    Raises:\n        NotImplementedError: Если реализация для указанной платформы не найдена.\n    \"\"\"",
+        "peekOfCode": "def create_file_system(name: str, **kwargs) -> AbstractFileSystem:\n    \"\"\"\n    Создает новый экземпляр файловой системы с указанным именем.\n    Args:\n        name (str): Имя реализации файловой системы\n        **kwargs: Дополнительные параметры для конструктора\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы\n    Raises:\n        KeyError: Если реализация с указанным именем не зарегистрирована",
         "detail": "core.common.filesystem.factory",
         "documentation": {}
     },
@@ -7342,17 +7421,53 @@
         "kind": 2,
         "importPath": "core.common.filesystem.factory",
         "description": "core.common.filesystem.factory",
-        "peekOfCode": "def get_file_system(new_instance: bool = False) -> AbstractFileSystem:\n    \"\"\"\n    Получает экземпляр файловой системы для текущей платформы.\n    Args:\n        new_instance (bool, optional): Флаг, указывающий, нужно ли создать новый экземпляр.\n                                      По умолчанию False.\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы.\n    \"\"\"\n    global _file_system_instance",
+        "peekOfCode": "def get_file_system(name: Optional[str] = None) -> AbstractFileSystem:\n    \"\"\"\n    Возвращает экземпляр файловой системы с указанным именем.\n    Если экземпляр уже был создан ранее, возвращает его из кэша.\n    Если имя не указано, определяет текущую операционную систему и возвращает соответствующую реализацию.\n    Args:\n        name (Optional[str]): Имя реализации файловой системы или None для автоопределения\n    Returns:\n        AbstractFileSystem: Экземпляр файловой системы\n    Raises:",
         "detail": "core.common.filesystem.factory",
         "documentation": {}
     },
     {
-        "label": "_file_system_instance",
-        "kind": 5,
+        "label": "register_file_system_implementation",
+        "kind": 2,
         "importPath": "core.common.filesystem.factory",
         "description": "core.common.filesystem.factory",
-        "peekOfCode": "_file_system_instance = None\ndef register_file_system(platform_name: str, implementation: Type[AbstractFileSystem]) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы для указанной платформы.\n    Args:\n        platform_name (str): Имя платформы (\"windows\", \"linux\", \"darwin\").\n        implementation (Type[AbstractFileSystem]): Класс реализации файловой системы.\n    \"\"\"\n    _file_system_implementations[platform_name.lower()] = implementation\ndef create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:",
+        "peekOfCode": "def register_file_system_implementation(\n    name: str, implementation: Type[AbstractFileSystem]\n) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы.\n    Перенаправляет вызов к функции в registry.py для обратной совместимости.\n    Args:\n        name (str): Имя реализации\n        implementation (Type[AbstractFileSystem]): Класс реализации\n    \"\"\"",
         "detail": "core.common.filesystem.factory",
+        "documentation": {}
+    },
+    {
+        "label": "register_file_system",
+        "kind": 2,
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "peekOfCode": "def register_file_system(name: str, implementation: Type[AbstractFileSystem]) -> None:\n    \"\"\"\n    Регистрирует реализацию файловой системы в глобальном реестре.\n    Args:\n        name (str): Имя реализации (например, \"windows\", \"linux\", \"mac\")\n        implementation (Type[AbstractFileSystem]): Класс, реализующий AbstractFileSystem\n    \"\"\"\n    global _file_system_implementations\n    _file_system_implementations[name.lower()] = implementation\ndef get_registered_file_systems() -> Dict[str, Type[AbstractFileSystem]]:",
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "get_registered_file_systems",
+        "kind": 2,
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "peekOfCode": "def get_registered_file_systems() -> Dict[str, Type[AbstractFileSystem]]:\n    \"\"\"\n    Возвращает словарь всех зарегистрированных реализаций файловой системы.\n    Returns:\n        Dict[str, Type[AbstractFileSystem]]: Словарь с именами и классами реализаций\n    \"\"\"\n    return _file_system_implementations.copy()\ndef get_file_system_implementation(name: str) -> Type[AbstractFileSystem]:\n    \"\"\"\n    Возвращает класс реализации файловой системы по имени.",
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "get_file_system_implementation",
+        "kind": 2,
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "peekOfCode": "def get_file_system_implementation(name: str) -> Type[AbstractFileSystem]:\n    \"\"\"\n    Возвращает класс реализации файловой системы по имени.\n    Args:\n        name (str): Имя реализации файловой системы\n    Returns:\n        Type[AbstractFileSystem]: Класс реализации файловой системы\n    Raises:\n        KeyError: Если реализация с указанным именем не зарегистрирована\n    \"\"\"",
+        "detail": "core.common.filesystem.registry",
+        "documentation": {}
+    },
+    {
+        "label": "is_file_system_registered",
+        "kind": 2,
+        "importPath": "core.common.filesystem.registry",
+        "description": "core.common.filesystem.registry",
+        "peekOfCode": "def is_file_system_registered(name: str) -> bool:\n    \"\"\"\n    Проверяет, зарегистрирована ли реализация файловой системы с указанным именем.\n    Args:\n        name (str): Имя реализации файловой системы\n    Returns:\n        bool: True, если реализация зарегистрирована, иначе False\n    \"\"\"\n    return name.lower() in _file_system_implementations\n# Автоматическая регистрация доступных реализаций файловой системы",
+        "detail": "core.common.filesystem.registry",
         "documentation": {}
     },
     {
@@ -7977,33 +8092,6 @@
         "documentation": {}
     },
     {
-        "label": "InputControllerFactory",
-        "kind": 6,
-        "importPath": "core.input_deprecated.input_factory",
-        "description": "core.input_deprecated.input_factory",
-        "peekOfCode": "class InputControllerFactory:\n    \"\"\"\n    Фабрика для создания контроллеров ввода.\n    Предоставляет методы для создания контроллеров клавиатуры и мыши.\n    Примечание: Данный класс устарел. Рекомендуется использовать\n    функции из core.common.input.factory вместо этого класса.\n    \"\"\"\n    @staticmethod\n    def get_keyboard_controller(human_like: bool = True) -> WindowsKeyboard:\n        \"\"\"",
-        "detail": "core.input_deprecated.input_factory",
-        "documentation": {}
-    },
-    {
-        "label": "KeyboardController",
-        "kind": 5,
-        "importPath": "core.input_deprecated.keyboard_controller",
-        "description": "core.input_deprecated.keyboard_controller",
-        "peekOfCode": "KeyboardController = WindowsKeyboard",
-        "detail": "core.input_deprecated.keyboard_controller",
-        "documentation": {}
-    },
-    {
-        "label": "MouseController",
-        "kind": 5,
-        "importPath": "core.input_deprecated.mouse_controller",
-        "description": "core.input_deprecated.mouse_controller",
-        "peekOfCode": "MouseController = WindowsMouse",
-        "detail": "core.input_deprecated.mouse_controller",
-        "documentation": {}
-    },
-    {
         "label": "ActionPlanner",
         "kind": 6,
         "importPath": "core.llm.action_planner",
@@ -8071,7 +8159,7 @@
         "kind": 6,
         "importPath": "core.platform.windows.filesystem.win32_file_system",
         "description": "core.platform.windows.filesystem.win32_file_system",
-        "peekOfCode": "class Win32FileSystem(AbstractFileSystem):\n    \"\"\"\n    Реализация работы с файловой системой для Windows.\n    Предоставляет методы для работы с файлами и директориями.\n    \"\"\"\n    def file_exists(self, path: str) -> bool:\n        \"\"\"\n        Проверить существование файла.\n        Args:\n            path (str): Путь к файлу.",
+        "peekOfCode": "class Win32FileSystem(AbstractFileSystem):\n    \"\"\"\n    Реализация работы с файловой системой для Windows.\n    Предоставляет методы для работы с файлами и директориями.\n    \"\"\"\n    def file_exists(self, path: str) -> bool:\n        \"\"\"\n        Проверяет существование файла.\n        Args:\n            path (str): Путь к файлу",
         "detail": "core.platform.windows.filesystem.win32_file_system",
         "documentation": {}
     },
@@ -9435,6 +9523,60 @@
         "documentation": {}
     },
     {
+        "label": "BaseFileSystemTest",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "description": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "peekOfCode": "class BaseFileSystemTest:\n    \"\"\"\n    Базовый класс для тестирования реализаций файловой системы.\n    Все тесты, общие для всех реализаций, должны быть определены здесь.\n    \"\"\"\n    # Должен быть переопределен в подклассах\n    file_system_class: Optional[Type[AbstractFileSystem]] = None\n    @pytest.fixture\n    def file_system(self):\n        \"\"\"Создает экземпляр файловой системы для тестирования\"\"\"",
+        "detail": "tests.unit.core.common.filesystem.test_base_filesystem",
+        "documentation": {}
+    },
+    {
+        "label": "MockFileSystem",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "description": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "peekOfCode": "class MockFileSystem(AbstractFileSystem):\n    \"\"\"Мок-реализация файловой системы для тестирования\"\"\"\n    def __init__(self, **kwargs):\n        self.test_param = kwargs.get(\"test_param\", None)\n    # Реализация абстрактных методов\n    def create_file(self, path, content=\"\", encoding=\"utf-8\"):\n        return True\n    def read_file(self, path, encoding=\"utf-8\"):\n        return \"Mock content\"\n    def append_to_file(self, path, content, encoding=\"utf-8\"):",
+        "detail": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "documentation": {}
+    },
+    {
+        "label": "TestFileSystemFactory",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "description": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "peekOfCode": "class TestFileSystemFactory:\n    \"\"\"Тесты для фабрики файловой системы\"\"\"\n    @pytest.fixture(autouse=True)\n    def cleanup(self):\n        \"\"\"Очистка после тестов\"\"\"\n        yield\n        # Удаляем тестовую реализацию из реестра\n        from core.common.filesystem.registry import _file_system_implementations\n        if \"mock\" in _file_system_implementations:\n            del _file_system_implementations[\"mock\"]",
+        "detail": "tests.unit.core.common.filesystem.test_filesystem_factory",
+        "documentation": {}
+    },
+    {
+        "label": "TestMockFileSystem",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "description": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "peekOfCode": "class TestMockFileSystem(AbstractFileSystem):\n    \"\"\"Мок-реализация файловой системы для тестов реестра\"\"\"\n    # Минимальная заглушка для абстрактного класса\n    def create_file(self, path, content=\"\", encoding=\"utf-8\"):\n        return True\nclass TestMockFileSystem2(AbstractFileSystem):\n    \"\"\"Вторая мок-реализация файловой системы для тестов реестра\"\"\"\n    # Минимальная заглушка для абстрактного класса\n    def create_file(self, path, content=\"\", encoding=\"utf-8\"):\n        return True",
+        "detail": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "documentation": {}
+    },
+    {
+        "label": "TestMockFileSystem2",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "description": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "peekOfCode": "class TestMockFileSystem2(AbstractFileSystem):\n    \"\"\"Вторая мок-реализация файловой системы для тестов реестра\"\"\"\n    # Минимальная заглушка для абстрактного класса\n    def create_file(self, path, content=\"\", encoding=\"utf-8\"):\n        return True\nclass TestFileSystemRegistry:\n    \"\"\"Тесты для реестра файловой системы\"\"\"\n    @pytest.fixture(autouse=True)\n    def cleanup(self):\n        \"\"\"Очистка после тестов\"\"\"",
+        "detail": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "documentation": {}
+    },
+    {
+        "label": "TestFileSystemRegistry",
+        "kind": 6,
+        "importPath": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "description": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "peekOfCode": "class TestFileSystemRegistry:\n    \"\"\"Тесты для реестра файловой системы\"\"\"\n    @pytest.fixture(autouse=True)\n    def cleanup(self):\n        \"\"\"Очистка после тестов\"\"\"\n        original_registry = get_registered_file_systems()\n        yield\n        # Восстанавливаем оригинальное состояние реестра\n        from core.common.filesystem.registry import _file_system_implementations\n        _file_system_implementations.clear()",
+        "detail": "tests.unit.core.common.filesystem.test_filesystem_registry",
+        "documentation": {}
+    },
+    {
         "label": "TestKeyboardInterface",
         "kind": 6,
         "importPath": "tests.unit.core.common.input.test_base_classes",
@@ -9504,15 +9646,6 @@
         "description": "tests.unit.core.common.input.test_factory_and_registry",
         "peekOfCode": "class TestInputRegistry:\n    \"\"\"Тесты для реестра контроллеров ввода.\"\"\"\n    @pytest.fixture(autouse=True)\n    def reset_registry(self, request):\n        \"\"\"Сбрасывает синглтон реестра перед каждым тестом.\"\"\"\n        # Пропускаем сброс для теста синглтона\n        if \"test_singleton_property\" not in request.node.name:\n            from core.common.input.registry import InputRegistry\n            InputRegistry.reset_instance()\n        yield",
         "detail": "tests.unit.core.common.input.test_factory_and_registry",
-        "documentation": {}
-    },
-    {
-        "label": "TestFileManager",
-        "kind": 6,
-        "importPath": "tests.unit.core.filesystem.test_filesystem",
-        "description": "tests.unit.core.filesystem.test_filesystem",
-        "peekOfCode": "class TestFileManager:\n    \"\"\"Тесты менеджера файловой системы\"\"\"\n    @pytest.fixture\n    def file_manager(self):\n        \"\"\"Создает экземпляр FileManager\"\"\"\n        from core.common.filesystem.factory import get_file_system\n        return get_file_system()\n    @pytest.fixture\n    def temp_dir(self):\n        \"\"\"Создает временную директорию для тестов\"\"\"",
-        "detail": "tests.unit.core.filesystem.test_filesystem",
         "documentation": {}
     },
     {
@@ -9687,6 +9820,15 @@
         "documentation": {}
     },
     {
+        "label": "TestWin32FileSystem",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.filesystem.test_win32_filesystem",
+        "description": "tests.unit.core.platform.windows.filesystem.test_win32_filesystem",
+        "peekOfCode": "class TestWin32FileSystem(BaseFileSystemTest):\n    \"\"\"\n    Тесты для Windows-реализации файловой системы.\n    Наследует общие тесты из BaseFileSystemTest и добавляет специфичные для Windows.\n    \"\"\"\n    file_system_class = Win32FileSystem\n    @pytest.fixture(autouse=True)\n    def check_platform(self):\n        \"\"\"Пропускаем тесты, если не Windows\"\"\"\n        if platform.system().lower() != \"windows\":",
+        "detail": "tests.unit.core.platform.windows.filesystem.test_win32_filesystem",
+        "documentation": {}
+    },
+    {
         "label": "TestWindowsKeyboard",
         "kind": 6,
         "importPath": "tests.unit.core.platform.windows.input.test_windows_controllers",
@@ -9711,6 +9853,87 @@
         "description": "tests.unit.core.platform.windows.input.test_windows_controllers",
         "peekOfCode": "class TestWindowsInputIntegration:\n    \"\"\"Интеграционные тесты для WindowsKeyboard и WindowsMouse.\"\"\"\n    @pytest.fixture\n    def input_controller(self):\n        \"\"\"Создает InputController с моками клавиатуры и мыши Windows.\"\"\"\n        with patch(\"win32api.keybd_event\"), patch(\"win32api.SetCursorPos\"), patch(\n            \"win32api.mouse_event\"\n        ):\n            keyboard = WindowsKeyboard(human_like=False)\n            mouse = WindowsMouse(human_like=False)",
         "detail": "tests.unit.core.platform.windows.input.test_windows_controllers",
+        "documentation": {}
+    },
+    {
+        "label": "TestProcessManager",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_process_manager",
+        "description": "tests.unit.core.platform.windows.test_process_manager",
+        "peekOfCode": "class TestProcessManager:\n    \"\"\"Тесты класса управления процессами Windows\"\"\"\n    @pytest.fixture\n    def process_manager(self):\n        \"\"\"Создает экземпляр ProcessManager\"\"\"\n        from core.process import get_process_manager\n        return get_process_manager()\n    @pytest.fixture\n    def mock_popen(self):\n        \"\"\"Мок для subprocess.Popen\"\"\"",
+        "detail": "tests.unit.core.platform.windows.test_process_manager",
+        "documentation": {}
+    },
+    {
+        "label": "TestRegistryManager",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_registry_manager",
+        "description": "tests.unit.core.platform.windows.test_registry_manager",
+        "peekOfCode": "class TestRegistryManager(unittest.TestCase):\n    \"\"\"Тесты для менеджера реестра Windows\"\"\"\n    def setUp(self):\n        \"\"\"Настройка перед каждым тестом\"\"\"\n        self.registry_manager = Win32RegistryManager()\n    @patch(\"winreg.OpenKey\")\n    @patch(\"winreg.QueryValueEx\")\n    @patch(\"winreg.CloseKey\")  # Добавляем патч для CloseKey\n    def test_read_value(self, mock_close_key, mock_query_value, mock_open_key):\n        \"\"\"Тест чтения значения из реестра\"\"\"",
+        "detail": "tests.unit.core.platform.windows.test_registry_manager",
+        "documentation": {}
+    },
+    {
+        "label": "TestSystemInfo",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_system_info",
+        "description": "tests.unit.core.platform.windows.test_system_info",
+        "peekOfCode": "class TestSystemInfo:\n    \"\"\"Тесты класса системной информации Windows\"\"\"\n    @pytest.fixture\n    def system_info(self):\n        \"\"\"Создает экземпляр Win32SystemInfo с мок-зависимостями\"\"\"\n        with patch(\"wmi.WMI\"):\n            from core.platform.windows.system.win32_system_info import Win32SystemInfo\n            return Win32SystemInfo()\n    @patch(\"platform.system\", return_value=\"Windows\")\n    @patch(\"platform.version\", return_value=\"10.0.19042\")",
+        "detail": "tests.unit.core.platform.windows.test_system_info",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowManagement",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_windows_interaction",
+        "description": "tests.unit.core.platform.windows.test_windows_interaction",
+        "peekOfCode": "class TestWindowManagement:\n    \"\"\"Тесты управления окнами Windows\"\"\"\n    @pytest.fixture(autouse=True)\n    def setup_and_teardown(self):\n        \"\"\"Запускаем и закрываем Блокнот для каждого теста\"\"\"\n        # Запускаем Блокнот\n        self.notepad_process = subprocess.Popen([\"notepad.exe\"])\n        # Даем время на запуск\n        time.sleep(2)\n        yield  # Выполняем тест",
+        "detail": "tests.unit.core.platform.windows.test_windows_interaction",
+        "documentation": {}
+    },
+    {
+        "label": "TestFileSystem",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_windows_interaction",
+        "description": "tests.unit.core.platform.windows.test_windows_interaction",
+        "peekOfCode": "class TestFileSystem:\n    \"\"\"Тесты работы с файловой системой Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        self.test_dir = \"test_files\"\n        self.test_file = f\"{self.test_dir}/test.txt\"\n        # Создаем тестовую директорию, если она не существует\n        import os\n        if not os.path.exists(self.test_dir):\n            os.makedirs(self.test_dir)",
+        "detail": "tests.unit.core.platform.windows.test_windows_interaction",
+        "documentation": {}
+    },
+    {
+        "label": "TestProcessManagement",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_windows_interaction",
+        "description": "tests.unit.core.platform.windows.test_windows_interaction",
+        "peekOfCode": "class TestProcessManagement:\n    \"\"\"Тесты управления процессами Windows\"\"\"\n    def teardown_method(self):\n        \"\"\"Очистка после каждого теста\"\"\"\n        # Закрываем Блокнот, если он был запущен\n        import os\n        os.system(\"taskkill /f /im notepad.exe 2>nul\")\n    def test_start_process(self):\n        \"\"\"Тест запуска процесса\"\"\"\n        from core.common.process import get_process_manager",
+        "detail": "tests.unit.core.platform.windows.test_windows_interaction",
+        "documentation": {}
+    },
+    {
+        "label": "TestSystemInformation",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_windows_interaction",
+        "description": "tests.unit.core.platform.windows.test_windows_interaction",
+        "peekOfCode": "class TestSystemInformation:\n    \"\"\"Тесты получения системной информации Windows\"\"\"\n    def test_get_os_info(self):\n        \"\"\"Тест получения информации об ОС\"\"\"\n        from core.platform.windows.system.win32_system_info import Win32SystemInfo\n        system_info = Win32SystemInfo()\n        os_info = system_info.get_os_info()\n        assert os_info is not None\n        assert \"name\" in os_info\n        assert os_info[\"name\"] == \"Windows\"",
+        "detail": "tests.unit.core.platform.windows.test_windows_interaction",
+        "documentation": {}
+    },
+    {
+        "label": "TestRegistryManagement",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_windows_interaction",
+        "description": "tests.unit.core.platform.windows.test_windows_interaction",
+        "peekOfCode": "class TestRegistryManagement:\n    \"\"\"Тесты работы с реестром Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        from core.platform.windows.registry.win32_registry_manager import Win32RegistryManager\n        self.registry_manager = Win32RegistryManager()\n        # Используем временный ключ для тестов\n        self.root_key = self.registry_manager.HKEY_CURRENT_USER\n        self.test_key_path = \"Software\\\\NLATest\"\n        self.test_value_name = \"TestValue\"",
+        "detail": "tests.unit.core.platform.windows.test_windows_interaction",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowManager",
+        "kind": 6,
+        "importPath": "tests.unit.core.platform.windows.test_window_manager",
+        "description": "tests.unit.core.platform.windows.test_window_manager",
+        "peekOfCode": "class TestWindowManager:\n    \"\"\"Тесты менеджера окон Windows\"\"\"\n    @pytest.fixture\n    def window_manager(self):\n        \"\"\"Создает экземпляр WindowManager\"\"\"\n        return WindowManager()\n    @patch(\"win32gui.EnumWindows\")\n    def test_find_window_by_title(self, mock_enum_windows, window_manager):\n        \"\"\"Тест поиска окна по заголовку\"\"\"\n        # Создаем функцию для имитации обратного вызова EnumWindows",
+        "detail": "tests.unit.core.platform.windows.test_window_manager",
         "documentation": {}
     },
     {
@@ -10035,105 +10258,6 @@
         "description": "tests.unit.core.web.test_web",
         "peekOfCode": "class TestElementFinder:\n    \"\"\"Тесты искателя элементов\"\"\"\n    @pytest.fixture\n    def mock_browser_controller(self):\n        \"\"\"Мок для BrowserController\"\"\"\n        mock_browser = MagicMock()\n        mock_browser.driver = MagicMock()\n        return mock_browser\n    @pytest.fixture\n    def element_finder(self, mock_browser_controller):",
         "detail": "tests.unit.core.web.test_web",
-        "documentation": {}
-    },
-    {
-        "label": "TestFileSystemManager",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_filesystem_manager",
-        "description": "tests.unit.core.windows.test_filesystem_manager",
-        "peekOfCode": "class TestFileSystemManager:\n    \"\"\"Тесты класса управления файловой системой Windows\"\"\"\n    @pytest.fixture\n    def temp_dir(self):\n        \"\"\"Создает временную директорию для тестов\"\"\"\n        temp_dir = tempfile.mkdtemp()\n        yield temp_dir\n        # Очистка после тестов\n        if os.path.exists(temp_dir):\n            shutil.rmtree(temp_dir)",
-        "detail": "tests.unit.core.windows.test_filesystem_manager",
-        "documentation": {}
-    },
-    {
-        "label": "TestFileSystem",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_file_system",
-        "description": "tests.unit.core.windows.test_file_system",
-        "peekOfCode": "class TestFileSystem:\n    \"\"\"Тесты класса файловой системы Windows\"\"\"\n    @pytest.fixture\n    def file_system(self):\n        \"\"\"Создает экземпляр FileSystem с мок-зависимостями\"\"\"\n        return FileSystem()\n    @pytest.fixture\n    def test_dir(self, tmp_path):\n        \"\"\"Создает временную директорию для тестов\"\"\"\n        return tmp_path",
-        "detail": "tests.unit.core.windows.test_file_system",
-        "documentation": {}
-    },
-    {
-        "label": "TestProcessManager",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_process_manager",
-        "description": "tests.unit.core.windows.test_process_manager",
-        "peekOfCode": "class TestProcessManager:\n    \"\"\"Тесты класса управления процессами Windows\"\"\"\n    @pytest.fixture\n    def process_manager(self):\n        \"\"\"Создает экземпляр ProcessManager\"\"\"\n        from core.process import get_process_manager\n        return get_process_manager()\n    @pytest.fixture\n    def mock_popen(self):\n        \"\"\"Мок для subprocess.Popen\"\"\"",
-        "detail": "tests.unit.core.windows.test_process_manager",
-        "documentation": {}
-    },
-    {
-        "label": "TestRegistryManager",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_registry_manager",
-        "description": "tests.unit.core.windows.test_registry_manager",
-        "peekOfCode": "class TestRegistryManager(unittest.TestCase):\n    \"\"\"Тесты для менеджера реестра Windows\"\"\"\n    def setUp(self):\n        \"\"\"Настройка перед каждым тестом\"\"\"\n        self.registry_manager = Win32RegistryManager()\n    @patch(\"winreg.OpenKey\")\n    @patch(\"winreg.QueryValueEx\")\n    @patch(\"winreg.CloseKey\")  # Добавляем патч для CloseKey\n    def test_read_value(self, mock_close_key, mock_query_value, mock_open_key):\n        \"\"\"Тест чтения значения из реестра\"\"\"",
-        "detail": "tests.unit.core.windows.test_registry_manager",
-        "documentation": {}
-    },
-    {
-        "label": "TestSystemInfo",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_system_info",
-        "description": "tests.unit.core.windows.test_system_info",
-        "peekOfCode": "class TestSystemInfo:\n    \"\"\"Тесты класса системной информации Windows\"\"\"\n    @pytest.fixture\n    def system_info(self):\n        \"\"\"Создает экземпляр Win32SystemInfo с мок-зависимостями\"\"\"\n        with patch(\"wmi.WMI\"):\n            from core.platform.windows.system.win32_system_info import Win32SystemInfo\n            return Win32SystemInfo()\n    @patch(\"platform.system\", return_value=\"Windows\")\n    @patch(\"platform.version\", return_value=\"10.0.19042\")",
-        "detail": "tests.unit.core.windows.test_system_info",
-        "documentation": {}
-    },
-    {
-        "label": "TestWindowManager",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows.test_window_manager",
-        "description": "tests.unit.core.windows.test_window_manager",
-        "peekOfCode": "class TestWindowManager:\n    \"\"\"Тесты менеджера окон Windows\"\"\"\n    @pytest.fixture\n    def window_manager(self):\n        \"\"\"Создает экземпляр WindowManager\"\"\"\n        return WindowManager()\n    @patch(\"win32gui.EnumWindows\")\n    def test_find_window_by_title(self, mock_enum_windows, window_manager):\n        \"\"\"Тест поиска окна по заголовку\"\"\"\n        # Создаем функцию для имитации обратного вызова EnumWindows",
-        "detail": "tests.unit.core.windows.test_window_manager",
-        "documentation": {}
-    },
-    {
-        "label": "TestWindowManagement",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestWindowManagement:\n    \"\"\"Тесты управления окнами Windows\"\"\"\n    @pytest.fixture(autouse=True)\n    def setup_and_teardown(self):\n        \"\"\"Запускаем и закрываем Блокнот для каждого теста\"\"\"\n        # Запускаем Блокнот\n        self.notepad_process = subprocess.Popen([\"notepad.exe\"])\n        # Даем время на запуск\n        time.sleep(2)\n        yield  # Выполняем тест",
-        "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "documentation": {}
-    },
-    {
-        "label": "TestFileSystem",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestFileSystem:\n    \"\"\"Тесты работы с файловой системой Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        self.test_dir = \"test_files\"\n        self.test_file = f\"{self.test_dir}/test.txt\"\n        # Создаем тестовую директорию, если она не существует\n        import os\n        if not os.path.exists(self.test_dir):\n            os.makedirs(self.test_dir)",
-        "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "documentation": {}
-    },
-    {
-        "label": "TestProcessManagement",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestProcessManagement:\n    \"\"\"Тесты управления процессами Windows\"\"\"\n    def teardown_method(self):\n        \"\"\"Очистка после каждого теста\"\"\"\n        # Закрываем Блокнот, если он был запущен\n        import os\n        os.system(\"taskkill /f /im notepad.exe 2>nul\")\n    def test_start_process(self):\n        \"\"\"Тест запуска процесса\"\"\"\n        from core.common.process import get_process_manager",
-        "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "documentation": {}
-    },
-    {
-        "label": "TestSystemInformation",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestSystemInformation:\n    \"\"\"Тесты получения системной информации Windows\"\"\"\n    def test_get_os_info(self):\n        \"\"\"Тест получения информации об ОС\"\"\"\n        from core.platform.windows.system.win32_system_info import Win32SystemInfo\n        system_info = Win32SystemInfo()\n        os_info = system_info.get_os_info()\n        assert os_info is not None\n        assert \"name\" in os_info\n        assert os_info[\"name\"] == \"Windows\"",
-        "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "documentation": {}
-    },
-    {
-        "label": "TestRegistryManagement",
-        "kind": 6,
-        "importPath": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "description": "tests.unit.core.windows_interaction.test_windows_interaction",
-        "peekOfCode": "class TestRegistryManagement:\n    \"\"\"Тесты работы с реестром Windows\"\"\"\n    def setup_method(self):\n        \"\"\"Подготовка перед каждым тестом\"\"\"\n        from core.platform.windows.registry.win32_registry_manager import Win32RegistryManager\n        self.registry_manager = Win32RegistryManager()\n        # Используем временный ключ для тестов\n        self.root_key = self.registry_manager.HKEY_CURRENT_USER\n        self.test_key_path = \"Software\\\\NLATest\"\n        self.test_value_name = \"TestValue\"",
-        "detail": "tests.unit.core.windows_interaction.test_windows_interaction",
         "documentation": {}
     },
     {

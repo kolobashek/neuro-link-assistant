@@ -25,13 +25,13 @@ class Win32FileSystem(AbstractFileSystem):
 
     def file_exists(self, path: str) -> bool:
         """
-        Проверить существование файла.
+        Проверяет существование файла.
 
         Args:
-            path (str): Путь к файлу.
+            path (str): Путь к файлу
 
         Returns:
-            bool: True, если файл существует, иначе False.
+            bool: True, если файл существует, иначе False
         """
         return os.path.isfile(path)
 
@@ -63,19 +63,29 @@ class Win32FileSystem(AbstractFileSystem):
             handle_error(f"Error listing directory {path}: {e}", e, module="filesystem")
             return []
 
-    def list_directory_names(self, path, pattern="*"):
+    def list_directory_names(self, path: str, pattern: str = "*") -> List[str]:
         """
-        Получает список имен файлов и директорий в указанной директории.
+        Получает список имен поддиректорий в указанной директории.
 
         Args:
             path (str): Путь к директории
-            pattern (str, optional): Шаблон для фильтрации файлов. По умолчанию "*".
+            pattern (str, optional): Шаблон для фильтрации директорий
 
         Returns:
-            list: Список имен файлов и директорий (без полных путей)
+            List[str]: Список имен поддиректорий
         """
-        items = self.list_directory(path, pattern)
-        return [os.path.basename(item) for item in items]
+        try:
+            if not os.path.exists(path):
+                return []
+
+            # Получаем все элементы, соответствующие шаблону
+            all_items = glob.glob(os.path.join(path, pattern))
+
+            # Фильтруем только директории
+            return [os.path.basename(item) for item in all_items if os.path.isdir(item)]
+        except Exception as e:
+            print(f"Error listing directory names: {e}")
+            return []
 
     def create_directory(self, path: str) -> bool:
         """
@@ -117,15 +127,15 @@ class Win32FileSystem(AbstractFileSystem):
 
     def write_file(self, path: str, content: str, encoding: str = "utf-8") -> bool:
         """
-        Записать содержимое в файл.
+        Записывает содержимое в файл.
 
         Args:
-            path (str): Путь к файлу.
-            content (str): Содержимое для записи.
-            encoding (str, optional): Кодировка файла. По умолчанию "utf-8".
+            path (str): Путь к файлу
+            content (str): Содержимое для записи
+            encoding (str, optional): Кодировка файла
 
         Returns:
-            bool: True в случае успешной записи.
+            bool: True в случае успешной записи
         """
         try:
             # Создаем директорию, если она не существует
@@ -133,12 +143,13 @@ class Win32FileSystem(AbstractFileSystem):
             if directory and not os.path.exists(directory):
                 os.makedirs(directory, exist_ok=True)
 
+            # Записываем содержимое в файл
             with open(path, "w", encoding=encoding) as f:
                 f.write(content)
 
             return True
         except Exception as e:
-            handle_error(f"Error writing to file {path}: {e}", e, module="filesystem")
+            print(f"Error writing to file {path}: {e}")
             return False
 
     def delete_file(self, path: str) -> bool:
@@ -179,24 +190,21 @@ class Win32FileSystem(AbstractFileSystem):
             handle_error(f"Error getting file size: {e}", e, module="filesystem")
             return -1
 
-    def get_file_modification_time(self, path: str) -> Optional[datetime]:
+    def get_file_modification_time(self, path: str) -> datetime:
         """
-        Получить время последней модификации файла.
+        Получает время последней модификации файла.
 
         Args:
-            path (str): Путь к файлу.
+            path (str): Путь к файлу
 
         Returns:
-            Optional[datetime]: Время модификации или None в случае ошибки.
+            datetime: Время последней модификации
         """
-        try:
-            if os.path.exists(path):
-                mod_time = os.path.getmtime(path)
-                return datetime.fromtimestamp(mod_time)
-            return None
-        except Exception as e:
-            handle_error(f"Error getting file modification time: {e}", e, module="filesystem")
-            return None
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Файл {path} не найден")
+
+        mtime = os.path.getmtime(path)
+        return datetime.fromtimestamp(mtime)
 
     def create_file(self, path: str, content: str = "", encoding: str = "utf-8") -> bool:
         """

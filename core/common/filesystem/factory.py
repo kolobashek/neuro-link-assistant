@@ -1,86 +1,100 @@
-# -*- coding: utf-8 -*-
 """
-Фабрика для создания объектов файловой системы.
+Фабрика для создания экземпляров файловой системы.
+Отвечает за создание и кэширование экземпляров файловой системы.
 """
+
 import platform
 from typing import Dict, Optional, Type
 
-from core.common.error_handler import handle_error
 from core.common.filesystem.base import AbstractFileSystem
+from core.common.filesystem.registry import (
+    get_file_system_implementation,
+    is_file_system_registered,
+    register_file_system,
+)
 
-# Словарь зарегистрированных реализаций файловой системы
-_file_system_implementations: Dict[str, Type[AbstractFileSystem]] = {}
-
-# Глобальный экземпляр файловой системы
-_file_system_instance = None
+# Кэш созданных экземпляров файловой системы
+_file_system_instances: Dict[str, AbstractFileSystem] = {}
 
 
-def register_file_system(platform_name: str, implementation: Type[AbstractFileSystem]) -> None:
+def create_file_system(name: str, **kwargs) -> AbstractFileSystem:
     """
-    Регистрирует реализацию файловой системы для указанной платформы.
+    Создает новый экземпляр файловой системы с указанным именем.
 
     Args:
-        platform_name (str): Имя платформы ("windows", "linux", "darwin").
-        implementation (Type[AbstractFileSystem]): Класс реализации файловой системы.
-    """
-    _file_system_implementations[platform_name.lower()] = implementation
-
-
-def create_file_system(platform_name: Optional[str] = None) -> AbstractFileSystem:
-    """
-    Создает экземпляр файловой системы для указанной платформы.
-
-    Args:
-        platform_name (Optional[str], optional): Имя платформы. Если None, используется текущая платформа.
+        name (str): Имя реализации файловой системы
+        **kwargs: Дополнительные параметры для конструктора
 
     Returns:
-        AbstractFileSystem: Экземпляр файловой системы.
+        AbstractFileSystem: Экземпляр файловой системы
 
     Raises:
-        NotImplementedError: Если реализация для указанной платформы не найдена.
+        KeyError: Если реализация с указанным именем не зарегистрирована
     """
-    if platform_name is None:
-        platform_name = platform.system().lower()
-
-    # Получаем реализацию для указанной платформы
-    file_system_class = _file_system_implementations.get(platform_name)
-    if file_system_class is None:
-        error_msg = f"Реализация файловой системы для платформы {platform_name} не найдена"
-        handle_error(error_msg, module="filesystem")
-        raise NotImplementedError(error_msg)
-
-    try:
-        # Создаем экземпляр
-        return file_system_class()
-    except Exception as e:
-        handle_error(f"Ошибка создания файловой системы: {e}", e, module="filesystem")
-        raise
+    file_system_class = get_file_system_implementation(name)
+    return file_system_class(**kwargs)
 
 
-def get_file_system(new_instance: bool = False) -> AbstractFileSystem:
+def get_file_system(name: Optional[str] = None) -> AbstractFileSystem:
     """
-    Получает экземпляр файловой системы для текущей платформы.
+    Возвращает экземпляр файловой системы с указанным именем.
+    Если экземпляр уже был создан ранее, возвращает его из кэша.
+    Если имя не указано, определяет текущую операционную систему и возвращает соответствующую реализацию.
 
     Args:
-        new_instance (bool, optional): Флаг, указывающий, нужно ли создать новый экземпляр.
-                                      По умолчанию False.
+        name (Optional[str]): Имя реализации файловой системы или None для автоопределения
 
     Returns:
-        AbstractFileSystem: Экземпляр файловой системы.
+        AbstractFileSystem: Экземпляр файловой системы
+
+    Raises:
+        RuntimeError: Если не удалось определить или создать файловую систему
     """
-    global _file_system_instance
+    global _file_system_instances
 
-    # Если нужен новый экземпляр или экземпляр еще не создан
-    if new_instance or _file_system_instance is None:
-        _file_system_instance = create_file_system()
+    # Если имя не указано, определяем его на основе текущей ОС
+    if name is None:
+        current_os = platform.system().lower()
+        if current_os == "windows":
+            name = "windows"
+        elif current_os == "linux":
+            name = "linux"
+        elif current_os == "darwin":
+            name = "mac"
+        else:
+            raise RuntimeError(f"Неподдерживаемая операционная система: {platform.system()}")
 
-    return _file_system_instance
+    # Нормализуем имя
+    name = name.lower()
+
+    # Проверяем, есть ли уже созданный экземпляр
+    if name in _file_system_instances:
+        return _file_system_instances[name]
+
+    # Проверяем, зарегистрирована ли реализация
+    if not is_file_system_registered(name):
+        raise RuntimeError(f"Реализация файловой системы '{name}' не зарегистрирована")
+
+    # Создаем новый экземпляр
+    file_system = create_file_system(name)
+
+    # Сохраняем в кэш
+    _file_system_instances[name] = file_system
+
+    return file_system
 
 
-# Автоматическая регистрация реализаций
-try:
-    from core.platform.windows.filesystem.win32_file_system import Win32FileSystem
+# Экспортируем функцию регистрации для удобства использования
+# Это позволяет клиентскому коду регистрировать свои реализации без прямого импорта из registry
+def register_file_system_implementation(
+    name: str, implementation: Type[AbstractFileSystem]
+) -> None:
+    """
+    Регистрирует реализацию файловой системы.
+    Перенаправляет вызов к функции в registry.py для обратной совместимости.
 
-    register_file_system("windows", Win32FileSystem)
-except ImportError:
-    pass
+    Args:
+        name (str): Имя реализации
+        implementation (Type[AbstractFileSystem]): Класс реализации
+    """
+    register_file_system(name, implementation)
