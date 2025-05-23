@@ -4692,6 +4692,14 @@
         "documentation": {}
     },
     {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
         "label": "AIModelService",
         "importPath": "core.services.ai_model_service",
         "description": "core.services.ai_model_service",
@@ -7615,6 +7623,15 @@
         "documentation": {}
     },
     {
+        "label": "ComponentRegistry",
+        "kind": 6,
+        "importPath": "core.common.registry.component_registry",
+        "description": "core.common.registry.component_registry",
+        "peekOfCode": "class ComponentRegistry:\n    \"\"\"\n    Реестр компонентов системы.\n    Обеспечивает регистрацию, поиск и управление компонентами.\n    \"\"\"\n    def __init__(self):\n        self._components = {}\n    def register(self, name, component):\n        \"\"\"\n        Регистрирует компонент в реестре.",
+        "detail": "core.common.registry.component_registry",
+        "documentation": {}
+    },
+    {
         "label": "RegistryManagerFactory",
         "kind": 6,
         "importPath": "core.common.registry.factory",
@@ -8425,12 +8442,39 @@
         "documentation": {}
     },
     {
+        "label": "System",
+        "kind": 6,
+        "importPath": "core.system",
+        "description": "core.system",
+        "peekOfCode": "class System:\n    \"\"\"\n    Основной класс системы, представляющий собой точку входа для взаимодействия с функциональностью.\n    \"\"\"\n    def __init__(self, registry):\n        \"\"\"\n        Инициализирует экземпляр системы.\n        Args:\n            registry: Реестр компонентов системы\n        \"\"\"",
+        "detail": "core.system",
+        "documentation": {}
+    },
+    {
         "label": "SystemInitializer",
         "kind": 6,
         "importPath": "core.system_initializer",
         "description": "core.system_initializer",
-        "peekOfCode": "class SystemInitializer:\n    \"\"\"\n    Инициализатор системы.\n    Отвечает за инициализацию и завершение работы системы.\n    \"\"\"\n    def __init__(self, registry):\n        \"\"\"\n        Инициализация инициализатора системы.\n        Args:\n            registry (ComponentRegistry): Реестр компонентов системы",
+        "peekOfCode": "class SystemInitializer:\n    \"\"\"\n    Инициализатор системы.\n    Отвечает за инициализацию и завершение работы системы.\n    \"\"\"\n    def __init__(self, registry=None):\n        \"\"\"\n        Инициализация инициализатора системы.\n        Args:\n            registry (ComponentRegistry, optional): Реестр компонентов системы",
         "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "kind": 6,
+        "importPath": "core.task",
+        "description": "core.task",
+        "peekOfCode": "class TaskResult:\n    \"\"\"\n    Результат выполнения задачи.\n    \"\"\"\n    def __init__(self, success, details=\"\"):\n        \"\"\"\n        Инициализирует результат задачи.\n        Args:\n            success (bool): Успешность выполнения\n            details (str): Подробности выполнения",
+        "detail": "core.task",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "kind": 6,
+        "importPath": "core.task",
+        "description": "core.task",
+        "peekOfCode": "class Task:\n    \"\"\"\n    Задача для выполнения системой.\n    \"\"\"\n    def __init__(self, description, registry):\n        \"\"\"\n        Инициализирует задачу.\n        Args:\n            description (str): Описание задачи\n            registry: Реестр компонентов системы",
+        "detail": "core.task",
         "documentation": {}
     },
     {
@@ -9412,6 +9456,15 @@
         "description": "tests.scripts.test_docker",
         "peekOfCode": "def mock_subprocess_popen():\n    \"\"\"Фикстура для мокирования subprocess.Popen\"\"\"\n    with patch(\"subprocess.Popen\") as mock_popen:\n        # Настройка мок-объекта\n        process_mock = MagicMock()\n        process_mock.stdout = [\"Output line 1\\n\", \"Output line 2\\n\"]\n        process_mock.stderr = MagicMock()\n        process_mock.stderr.read.return_value = \"Error message\"\n        process_mock.wait.return_value = 0  # Успешное завершение по умолчанию\n        mock_popen.return_value = process_mock",
         "detail": "tests.scripts.test_docker",
+        "documentation": {}
+    },
+    {
+        "label": "TestApplicationWorkflow",
+        "kind": 6,
+        "importPath": "tests.system.test_application_workflow",
+        "description": "tests.system.test_application_workflow",
+        "peekOfCode": "class TestApplicationWorkflow:\n    def test_basic_application_flow(self):\n        \"\"\"\n        Проверяет базовый рабочий процесс приложения от запуска до выполнения простой задачи.\n        Этот тест будет изначально не проходить и поможет определить, что нужно реализовать.\n        \"\"\"\n        # Инициализация системы\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        # Проверяем, что система успешно инициализирована",
+        "detail": "tests.system.test_application_workflow",
         "documentation": {}
     },
     {
