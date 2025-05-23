@@ -1428,6 +1428,22 @@
         "documentation": {}
     },
     {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -2022,6 +2038,15 @@
         "documentation": {}
     },
     {
+        "label": "sqlalchemy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "desc",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -2134,6 +2159,30 @@
         "documentation": {}
     },
     {
+        "label": "engine_from_config",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "pool",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -2199,6 +2248,14 @@
     },
     {
         "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "DeclarativeBase",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -2223,6 +2280,14 @@
     },
     {
         "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -2318,6 +2383,22 @@
         "documentation": {}
     },
     {
+        "label": "Base",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "AIModel",
         "importPath": "core.db.models",
         "description": "core.db.models",
@@ -2414,14 +2495,6 @@
         "documentation": {}
     },
     {
-        "label": "declarative_base",
-        "importPath": "sqlalchemy.ext.declarative",
-        "description": "sqlalchemy.ext.declarative",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.ext.declarative",
-        "documentation": {}
-    },
-    {
         "label": "func",
         "importPath": "sqlalchemy.sql",
         "description": "sqlalchemy.sql",
@@ -2431,14 +2504,6 @@
     },
     {
         "label": "Base",
-        "importPath": "core.db.connection",
-        "description": "core.db.connection",
-        "isExtraImport": true,
-        "detail": "core.db.connection",
-        "documentation": {}
-    },
-    {
-        "label": "DATABASE_URL",
         "importPath": "core.db.connection",
         "description": "core.db.connection",
         "isExtraImport": true,
@@ -3448,6 +3513,46 @@
         "documentation": {}
     },
     {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "context",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "fileConfig",
+        "importPath": "logging.config",
+        "description": "logging.config",
+        "isExtraImport": true,
+        "detail": "logging.config",
+        "documentation": {}
+    },
+    {
+        "label": "abspath",
+        "importPath": "os.path",
+        "description": "os.path",
+        "isExtraImport": true,
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "dirname",
+        "importPath": "os.path",
+        "description": "os.path",
+        "isExtraImport": true,
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
         "label": "asdict",
         "importPath": "dataclasses",
         "description": "dataclasses",
@@ -3842,6 +3947,15 @@
         "documentation": {}
     },
     {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -3851,35 +3965,27 @@
         "documentation": {}
     },
     {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
+        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
         "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
+        "detail": "psycopg2.extensions",
         "documentation": {}
     },
     {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
+        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
         "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
+        "detail": "psycopg2.extensions",
         "documentation": {}
     },
     {
-        "label": "DataError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
         "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
+        "detail": "core.db.crud",
         "documentation": {}
     },
     {
@@ -4024,6 +4130,38 @@
         "description": "core.db.crud",
         "isExtraImport": true,
         "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "DataError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
         "documentation": {}
     },
     {
@@ -4681,6 +4819,78 @@
         "description": "core.plugin_manager",
         "isExtraImport": true,
         "detail": "core.plugin_manager",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
+        "documentation": {}
+    },
+    {
+        "label": "SystemInitializer",
+        "importPath": "core.system_initializer",
+        "description": "core.system_initializer",
+        "isExtraImport": true,
+        "detail": "core.system_initializer",
         "documentation": {}
     },
     {
@@ -7794,6 +8004,15 @@
         "documentation": {}
     },
     {
+        "label": "Base",
+        "kind": 6,
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "peekOfCode": "class Base(DeclarativeBase):\n    pass\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:\n        yield db",
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
         "label": "get_db",
         "kind": 2,
         "importPath": "core.db.connection",
@@ -7807,7 +8026,7 @@
         "kind": 5,
         "importPath": "core.db.connection",
         "description": "core.db.connection",
-        "peekOfCode": "DATABASE_URL = os.environ.get(\n    \"DATABASE_URL\", \"postgresql://postgres:postgres@localhost/neurolink_db\"\n)\n# Создаем движок SQLAlchemy\nengine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():",
+        "peekOfCode": "DATABASE_URL = os.environ.get(\n    \"DATABASE_URL\", \"postgresql://postgres:postgres@localhost/neurolink_db\"\n)\n# Создаем движок SQLAlchemy\nengine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass Base(DeclarativeBase):\n    pass\ndef get_db():",
         "detail": "core.db.connection",
         "documentation": {}
     },
@@ -7816,7 +8035,7 @@
         "kind": 5,
         "importPath": "core.db.connection",
         "description": "core.db.connection",
-        "peekOfCode": "engine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass Base(DeclarativeBase):\n    pass\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"",
         "detail": "core.db.connection",
         "documentation": {}
     },
@@ -7825,16 +8044,7 @@
         "kind": 5,
         "importPath": "core.db.connection",
         "description": "core.db.connection",
-        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Базовый класс для моделей\nBase = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:",
-        "detail": "core.db.connection",
-        "documentation": {}
-    },
-    {
-        "label": "Base",
-        "kind": 5,
-        "importPath": "core.db.connection",
-        "description": "core.db.connection",
-        "peekOfCode": "Base = declarative_base()\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:\n        yield db\n    finally:",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass Base(DeclarativeBase):\n    pass\ndef get_db():\n    \"\"\"\n    Генератор для получения сессии базы данных.\n    Используется для внедрения зависимостей в FastAPI.\n    \"\"\"\n    db = SessionLocal()\n    try:",
         "detail": "core.db.connection",
         "documentation": {}
     },
@@ -8475,6 +8685,78 @@
         "description": "core.task",
         "peekOfCode": "class Task:\n    \"\"\"\n    Задача для выполнения системой.\n    \"\"\"\n    def __init__(self, description, registry):\n        \"\"\"\n        Инициализирует задачу.\n        Args:\n            description (str): Описание задачи\n            registry: Реестр компонентов системы",
         "detail": "core.task",
+        "documentation": {}
+    },
+    {
+        "label": "drop_constraint_if_exists",
+        "kind": 2,
+        "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "description": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "peekOfCode": "def drop_constraint_if_exists(constraint_name, table_name, type_):\n    \"\"\"Безопасно удаляет ограничение, если оно существует.\"\"\"\n    # Проверяем существование constraint перед удалением\n    conn = op.get_bind()\n    # Запрос для проверки существования constraint\n    query = f\"\"\"\n    SELECT 1 FROM pg_constraint c\n    JOIN pg_namespace n ON n.oid = c.connamespace\n    JOIN pg_class t ON t.oid = c.conrelid\n    WHERE c.conname = '{constraint_name}'",
+        "detail": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "drop_table_if_exists",
+        "kind": 2,
+        "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "description": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "peekOfCode": "def drop_table_if_exists(table_name):\n    \"\"\"Безопасно удаляет таблицу, если она существует.\"\"\"\n    conn = op.get_bind()\n    inspector = sa.inspect(conn)\n    if inspector.has_table(table_name):\n        op.drop_table(table_name)\n        print(f\"Таблица {table_name} успешно удалена\")\n    else:\n        print(f\"Таблица {table_name} не существует, пропускаем\")\ndef upgrade() -> None:",
+        "detail": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "description": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Upgrade schema.\"\"\"\n    # ЭТАП 1: Удаление всех внешних ключей\n    # ai_models внешние ключи\n    drop_constraint_if_exists(\"ai_models_model_type_id_fkey\", \"ai_models\", \"foreignkey\")\n    # api_keys внешние ключи\n    drop_constraint_if_exists(\"api_keys_user_id_fkey\", \"api_keys\", \"foreignkey\")\n    # task_history внешние ключи\n    drop_constraint_if_exists(\"task_history_task_id_fkey\", \"task_history\", \"foreignkey\")\n    drop_constraint_if_exists(\"task_history_user_id_fkey\", \"task_history\", \"foreignkey\")",
+        "detail": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "description": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Downgrade schema.\"\"\"\n    # Удаляем внешние ключи\n    try:\n        op.drop_constraint(\n            \"routing_rules_target_model_id_fkey\", \"routing_rules\", type_=\"foreignkey\"\n        )\n    except Exception:\n        pass\n    try:",
+        "detail": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "run_migrations_offline",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n    Calls to context.execute() here emit the given string to the\n    script output.\n    \"\"\"\n    url = config.get_main_option(\"sqlalchemy.url\")",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "run_migrations_online",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def run_migrations_online() -> None:\n    \"\"\"Run migrations in 'online' mode.\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n    \"\"\"\n    connectable = engine_from_config(\n        config.get_section(config.config_ini_section, {}),\n        prefix=\"sqlalchemy.\",\n        poolclass=pool.NullPool,\n    )",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 5,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "config = context.config\n# Interpret the config file for Python logging.\n# This line sets up loggers basically.\nif config.config_file_name is not None:\n    fileConfig(config.config_file_name)\n# add your model's MetaData object here\n# for 'autogenerate' support\n# from myapp import mymodel\n# target_metadata = mymodel.Base.metadata\nimport sys  # noqa: E402",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "target_metadata",
+        "kind": 5,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "target_metadata = Base.metadata\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation",
+        "detail": "migrations.env",
         "documentation": {}
     },
     {
@@ -9162,6 +9444,33 @@
         "documentation": {}
     },
     {
+        "label": "db_engine",
+        "kind": 2,
+        "importPath": "tests.db.conftest",
+        "description": "tests.db.conftest",
+        "peekOfCode": "def db_engine():\n    \"\"\"\n    Создает тестовый движок БД с изолированной тестовой базой данных.\n    Эта фикстура:\n    1. Подключается к PostgreSQL\n    2. Создает отдельную тестовую БД, если она не существует\n    3. Настраивает схему таблиц\n    4. Очищает таблицы после всех тестов\n    \"\"\"\n    # Настройки подключения",
+        "detail": "tests.db.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.db.conftest",
+        "description": "tests.db.conftest",
+        "peekOfCode": "def db_session(db_engine):\n    \"\"\"\n    Создает изолированную сессию БД для каждого теста.\n    Каждый тест получает \"чистую\" транзакцию, которая откатывается после\n    завершения теста, обеспечивая изоляцию между тестами.\n    \"\"\"\n    connection = db_engine.connect()\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session",
+        "detail": "tests.db.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_user",
+        "kind": 2,
+        "importPath": "tests.db.conftest",
+        "description": "tests.db.conftest",
+        "peekOfCode": "def test_user(db_session):\n    \"\"\"\n    Создает тестового пользователя для использования в тестах.\n    Внимание: если тесту нужно видеть этого пользователя в БД,\n    необходимо сделать commit в фикстуре.\n    \"\"\"\n    user_data = {\n        \"username\": \"test_user\",\n        \"email\": \"test@example.com\",\n        \"password_hash\": \"hashed_password\",",
+        "detail": "tests.db.conftest",
+        "documentation": {}
+    },
+    {
         "label": "TestDatabaseConnection",
         "kind": 6,
         "importPath": "tests.db.test_connection",
@@ -9175,7 +9484,7 @@
         "kind": 2,
         "importPath": "tests.db.test_connection",
         "description": "tests.db.test_connection",
-        "peekOfCode": "def db_engine():\n    \"\"\"Создает тестовый движок БД\"\"\"\n    # Используем тестовую БД или ту же с другой схемой\n    test_db_url = DATABASE_URL.replace(\"/neurolink_db\", \"/neurolink_test_db\")\n    engine = create_engine(test_db_url)\n    # Создаем все таблицы\n    Base.metadata.create_all(engine)\n    yield engine\n    # Удаляем таблицы после тестов\n    Base.metadata.drop_all(engine)",
+        "peekOfCode": "def db_engine():\n    \"\"\"Создает тестовый движок БД\"\"\"\n    # Формируем строку подключения с правильными учетными данными\n    # но сохраняем логику использования отдельной тестовой БД\n    db_user = \"neurolink\"\n    db_password = \"secure_password\"\n    db_host = \"localhost\"\n    db_port = \"5432\"\n    # Используем тестовую БД с тем же именем, что и в исходном коде\n    test_db_name = \"neurolink_test_db\"",
         "detail": "tests.db.test_connection",
         "documentation": {}
     },
@@ -9465,6 +9774,87 @@
         "description": "tests.system.test_application_workflow",
         "peekOfCode": "class TestApplicationWorkflow:\n    def test_basic_application_flow(self):\n        \"\"\"\n        Проверяет базовый рабочий процесс приложения от запуска до выполнения простой задачи.\n        Этот тест будет изначально не проходить и поможет определить, что нужно реализовать.\n        \"\"\"\n        # Инициализация системы\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        # Проверяем, что система успешно инициализирована",
         "detail": "tests.system.test_application_workflow",
+        "documentation": {}
+    },
+    {
+        "label": "test_user_authentication",
+        "kind": 2,
+        "importPath": "tests.system.test_authorization",
+        "description": "tests.system.test_authorization",
+        "peekOfCode": "def test_user_authentication():\n    \"\"\"Проверяет регистрацию, вход и проверку прав доступа.\"\"\"\n    system_initializer = SystemInitializer()\n    system = system_initializer.initialize()\n    # Регистрация пользователя\n    register_task = system.create_task(\n        \"Зарегистрировать пользователя test_user с паролем password123\"\n    )\n    register_result = register_task.execute()\n    assert register_result.success",
+        "detail": "tests.system.test_authorization",
+        "documentation": {}
+    },
+    {
+        "label": "TestComputerVision",
+        "kind": 6,
+        "importPath": "tests.system.test_computer_vision",
+        "description": "tests.system.test_computer_vision",
+        "peekOfCode": "class TestComputerVision:\n    def test_screen_capture_and_analysis(self):\n        \"\"\"Проверяет функциональность компьютерного зрения: захват экрана и распознавание элементов.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для захвата экрана\n        task = system.create_task(\"Сделать снимок экрана и найти иконку проводника\")\n        result = task.execute()\n        assert result.success",
+        "detail": "tests.system.test_computer_vision",
+        "documentation": {}
+    },
+    {
+        "label": "TestFileOperations",
+        "kind": 6,
+        "importPath": "tests.system.test_file_operations",
+        "description": "tests.system.test_file_operations",
+        "peekOfCode": "class TestFileOperations:\n    def test_file_operations_workflow(self):\n        \"\"\"Проверяет работу с файловой системой: создание, чтение, запись, удаление файлов.\"\"\"\n        # Инициализация системы\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для работы с файлами\n        task = system.create_task(\"Создать файл test.txt с текстом 'Hello World'\")\n        result = task.execute()",
+        "detail": "tests.system.test_file_operations",
+        "documentation": {}
+    },
+    {
+        "label": "TestLLMIntegration",
+        "kind": 6,
+        "importPath": "tests.system.test_llm_integration",
+        "description": "tests.system.test_llm_integration",
+        "peekOfCode": "class TestLLMIntegration:\n    def test_llm_basic_interaction(self):\n        \"\"\"Проверяет базовое взаимодействие с языковыми моделями.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для LLM\n        task = system.create_task(\"Сгенерировать короткое стихотворение о программировании\")\n        result = task.execute()\n        assert result.success",
+        "detail": "tests.system.test_llm_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestModelOrchestration",
+        "kind": 6,
+        "importPath": "tests.system.test_model_orchestration",
+        "description": "tests.system.test_model_orchestration",
+        "peekOfCode": "class TestModelOrchestration:\n    def test_multi_model_workflow(self):\n        \"\"\"Проверяет оркестрацию нескольких моделей для решения комплексной задачи.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Задача, требующая координации нескольких моделей\n        task = system.create_task(\n            \"Найти на рабочем столе документ с текстом, проанализировать его содержимое с помощью LLM и сохранить результат в новый файл\"\n        )",
+        "detail": "tests.system.test_model_orchestration",
+        "documentation": {}
+    },
+    {
+        "label": "TestPluginSystem",
+        "kind": 6,
+        "importPath": "tests.system.test_plugin_system",
+        "description": "tests.system.test_plugin_system",
+        "peekOfCode": "class TestPluginSystem:\n    def test_plugin_loading_and_execution(self):\n        \"\"\"Проверяет загрузку и выполнение плагинов.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Получение списка плагинов\n        plugins = system.get_plugin_manager().get_loaded_plugins()\n        if plugins:\n            # Если есть хотя бы один плагин, проверяем его",
+        "detail": "tests.system.test_plugin_system",
+        "documentation": {}
+    },
+    {
+        "label": "TestTaskManagement",
+        "kind": 6,
+        "importPath": "tests.system.test_task_management",
+        "description": "tests.system.test_task_management",
+        "peekOfCode": "class TestTaskManagement:\n    def test_task_lifecycle(self):\n        \"\"\"Проверяет полный жизненный цикл задачи: создание, выполнение, сохранение в истории.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи\n        task = system.create_task(\"Тестовая задача для проверки жизненного цикла\")\n        # Сохранение и получение задачи из базы данных\n        task_id = system.task_manager.save_task(task)",
+        "detail": "tests.system.test_task_management",
+        "documentation": {}
+    },
+    {
+        "label": "TestWebAutomation",
+        "kind": 6,
+        "importPath": "tests.system.test_web_automation",
+        "description": "tests.system.test_web_automation",
+        "peekOfCode": "class TestWebAutomation:\n    def test_web_search_automation(self):\n        \"\"\"Проверяет автоматизацию веб-поиска.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для веб-поиска\n        task = system.create_task(\n            \"Открыть браузер, найти в поисковике 'Python TDD' и сохранить первые 3 результата\"\n        )",
+        "detail": "tests.system.test_web_automation",
+        "documentation": {}
+    },
+    {
+        "label": "TestWindowsAutomation",
+        "kind": 6,
+        "importPath": "tests.system.test_windows_automation",
+        "description": "tests.system.test_windows_automation",
+        "peekOfCode": "class TestWindowsAutomation:\n    def test_windows_application_automation(self):\n        \"\"\"Проверяет автоматизацию работы с приложениями Windows.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для работы с калькулятором\n        task = system.create_task(\"Открыть калькулятор, выполнить операцию 2+2 и вернуть результат\")\n        result = task.execute()\n        assert result.success",
+        "detail": "tests.system.test_windows_automation",
         "documentation": {}
     },
     {

@@ -1,16 +1,49 @@
+import psycopg2
 import pytest
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import Session
 
-from core.db.connection import DATABASE_URL, get_db
+from core.db.connection import get_db
 from core.db.models import Base  # Импортируем ваши модели
 
 
 @pytest.fixture(scope="module")
 def db_engine():
     """Создает тестовый движок БД"""
-    # Используем тестовую БД или ту же с другой схемой
-    test_db_url = DATABASE_URL.replace("/neurolink_db", "/neurolink_test_db")
+
+    # Формируем строку подключения с правильными учетными данными
+    # но сохраняем логику использования отдельной тестовой БД
+    db_user = "neurolink"
+    db_password = "secure_password"
+    db_host = "localhost"
+    db_port = "5432"
+
+    # Используем тестовую БД с тем же именем, что и в исходном коде
+    test_db_name = "neurolink_test_db"
+
+    # Сначала подключаемся к базе данных postgres для создания тестовой БД
+    conn = psycopg2.connect(
+        user=db_user,
+        password=db_password,
+        host=db_host,
+        port=db_port,
+        database="neurolink_db",  # Подключаемся к существующей БД
+    )
+    conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)  # Важно для создания БД
+    cursor = conn.cursor()
+
+    # Проверяем, существует ли БД, и если нет - создаем
+    cursor.execute("SELECT 1 FROM pg_catalog.pg_database WHERE datname = %s", (test_db_name,))
+    db_exists = cursor.fetchone()
+    if not db_exists:
+        cursor.execute(f"CREATE DATABASE {test_db_name}")
+
+    cursor.close()
+    conn.close()
+
+    # Теперь подключаемся к созданной тестовой БД
+    test_db_url = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{test_db_name}"
     engine = create_engine(test_db_url)
 
     # Создаем все таблицы

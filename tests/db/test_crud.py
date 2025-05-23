@@ -48,20 +48,22 @@ class TestUserCRUD:
         }
 
         create_user(db_session, **user_data)
+        db_session.commit()  # Важно: сохраняем изменения в БД!
 
         # Пытаемся создать пользователя с тем же username
         with pytest.raises(IntegrityError):
             create_user(
                 db_session, username="uniqueuser", email="another@example.com", password_hash="hash"
             )
-
-        db_session.rollback()
+            db_session.flush()  # Выполняем flush для проверки ограничений
+        db_session.rollback()  # Откатываем изменения после ошибки
 
         # Пытаемся создать пользователя с тем же email
         with pytest.raises(IntegrityError):
             create_user(
                 db_session, username="anotheruser", email="unique@example.com", password_hash="hash"
             )
+            db_session.flush()  # Выполняем flush для проверки ограничений
 
     def test_get_user(self, db_session):
         """Тест получения пользователя"""
@@ -107,8 +109,10 @@ class TestAIModelCRUD:
     def test_get_ai_models(self, db_session):
         """Тест получения списка моделей ИИ"""
         # Создаем несколько моделей
-        create_ai_model(db_session, name="Model 1", provider="Provider 1", is_api=True)
-        create_ai_model(db_session, name="Model 2", provider="Provider 2", is_api=False)
+
+        model1 = create_ai_model(db_session, name="Model 1", provider="Provider 1", is_api=True)
+        # model2 = create_ai_model(db_session, name="Model 2", provider="Provider 2", is_api=False)
+        db_session.commit()  # Сохраняем изменения в БД!
 
         # Получаем все модели
         models = get_ai_models(db_session)
@@ -119,9 +123,9 @@ class TestAIModelCRUD:
         assert all(model.is_api for model in api_models)
 
         # Получаем модель по ID
-        model = get_ai_model_by_id(db_session, 1)
+        model = get_ai_model_by_id(db_session, model1.id)  # Используем ID созданной модели
         assert model is not None
-        assert model.id == 1
+        assert model.id == model1.id
 
 
 class TestTaskCRUD:

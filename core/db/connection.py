@@ -1,8 +1,10 @@
 import os
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+
+# from sqlalchemy.ext.declarative import declarative_base
+# Базовый класс для моделей
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 # Получаем URL для подключения к базе данных из переменной окружения или используем значение по умолчанию
 DATABASE_URL = os.environ.get(
@@ -15,8 +17,9 @@ engine = create_engine(DATABASE_URL)
 # Создаем фабрику сессий
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Базовый класс для моделей
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 
 def get_db():
