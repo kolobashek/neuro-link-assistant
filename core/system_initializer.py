@@ -35,7 +35,7 @@ class SystemInitializer:
                 return False
 
             # Проверяем наличие необходимых компонентов
-            required_components = ["error_handler", "plugin_manager"]
+            required_components = ["error_handler", "plugin_manager", "task_manager"]
             for component_name in required_components:
                 if not self._registry.has(component_name):
                     print(f"Missing required component: {component_name}")
@@ -50,6 +50,10 @@ class SystemInitializer:
             # Получаем менеджер плагинов
             plugin_manager = self._registry.get("plugin_manager")
             print(f"Получен менеджер плагинов: {plugin_manager}")
+
+            # Получаем менеджер задач
+            task_manager = self._registry.get("task_manager")
+            print(f"Получен менеджер задач: {task_manager}")
 
             # Загружаем плагины если менеджер плагинов существует
             if plugin_manager:
@@ -170,6 +174,15 @@ class SystemInitializer:
                 self._registry.register("plugin_manager", plugin_manager)
             except ImportError:
                 print("Не удалось импортировать PluginManager")
+
+            # Создаем и регистрируем менеджер задач
+            try:
+                from core.task_manager import TaskManager
+
+                task_manager = TaskManager()
+                self._registry.register("task_manager", task_manager)
+            except ImportError:
+                print("Не удалось импортировать TaskManager")
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()

@@ -37,3 +37,12 @@ class System:
         from core.task import Task
 
         return Task(task_description, self._registry)
+
+    def get_plugin_manager(self):
+        """Возвращает менеджер плагинов системы."""
+        return self._registry.get("plugin_manager")
+
+    @property
+    def task_manager(self):
+        """Возвращает менеджер задач системы."""
+        return self._registry.get("task_manager")

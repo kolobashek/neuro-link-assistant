@@ -135,6 +135,15 @@ class PluginManager:
         """
         self.plugins = value
 
+    def get_loaded_plugins(self):
+        """
+        Возвращает словарь загруженных плагинов.
+
+        Returns:
+            dict: Словарь загруженных плагинов
+        """
+        return self.loaded_plugins
+
     def unload_plugin(self, plugin_name):
         """
         Выгружает плагин.

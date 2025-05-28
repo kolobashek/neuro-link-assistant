@@ -8688,6 +8688,15 @@
         "documentation": {}
     },
     {
+        "label": "TaskManager",
+        "kind": 6,
+        "importPath": "core.task_manager",
+        "description": "core.task_manager",
+        "peekOfCode": "class TaskManager:\n    \"\"\"\n    Менеджер задач для управления жизненным циклом задач.\n    \"\"\"\n    def __init__(self):\n        \"\"\"\n        Инициализация менеджера задач.\n        \"\"\"\n        self._tasks = {}\n        self._task_counter = 0",
+        "detail": "core.task_manager",
+        "documentation": {}
+    },
+    {
         "label": "drop_constraint_if_exists",
         "kind": 2,
         "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
