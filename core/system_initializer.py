@@ -35,7 +35,7 @@ class SystemInitializer:
                 return False
 
             # Проверяем наличие необходимых компонентов
-            required_components = ["error_handler", "plugin_manager", "task_manager"]
+            required_components = ["error_handler", "plugin_manager", "task_manager", "filesystem"]
             for component_name in required_components:
                 if not self._registry.has(component_name):
                     print(f"Missing required component: {component_name}")
@@ -54,6 +54,10 @@ class SystemInitializer:
             # Получаем менеджер задач
             task_manager = self._registry.get("task_manager")
             print(f"Получен менеджер задач: {task_manager}")
+
+            # Получаем файловую систему
+            filesystem = self._registry.get("filesystem")
+            print(f"Получена файловая система: {filesystem}")
 
             # Загружаем плагины если менеджер плагинов существует
             if plugin_manager:
@@ -97,7 +101,6 @@ class SystemInitializer:
         class DummyComponent:
             pass
 
-        self._registry.register("filesystem", DummyComponent())
         self._registry.register("input", DummyComponent())
         self._registry.register("vision", DummyComponent())
 
@@ -183,6 +186,15 @@ class SystemInitializer:
                 self._registry.register("task_manager", task_manager)
             except ImportError:
                 print("Не удалось импортировать TaskManager")
+
+            # Создаем и регистрируем файловую систему
+            try:
+                from core.platform.windows.filesystem import Win32FileSystem
+
+                filesystem = Win32FileSystem()
+                self._registry.register("filesystem", filesystem)
+            except ImportError:
+                print("Не удалось импортировать Win32FileSystem")
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()

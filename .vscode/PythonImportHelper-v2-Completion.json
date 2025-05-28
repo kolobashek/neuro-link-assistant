@@ -1933,6 +1933,14 @@
         "documentation": {}
     },
     {
+        "label": "handle_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
         "label": "ErrorHandler",
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
