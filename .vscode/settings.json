@@ -21,4 +21,6 @@
     },
   },
   "isort.args":["--profile", "black"],
+	"python.analysis.typeCheckingMode": "basic",
+	"python.defaultInterpreterPath": "./venv/Scripts/python.exe"
 }

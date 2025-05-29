@@ -41,6 +41,8 @@ class SystemInitializer:
                 "task_manager",
                 "filesystem",
                 "browser_controller",
+                "screen_capture",
+                "element_localization",
             ]
             for component_name in required_components:
                 if not self._registry.has(component_name):
@@ -219,6 +221,19 @@ class SystemInitializer:
                 self._registry.register("browser_controller", browser_controller)
             except ImportError:
                 print("Не удалось импортировать BrowserController")
+
+            # Создаем и регистрируем компоненты компьютерного зрения
+            try:
+                from core.vision.element_localization import ElementLocalization
+                from core.vision.screen_capture import ScreenCapture
+
+                screen_capture = ScreenCapture()
+                element_localization = ElementLocalization()
+
+                self._registry.register("screen_capture", screen_capture)
+                self._registry.register("element_localization", element_localization)
+            except ImportError:
+                print("Не удалось импортировать компоненты компьютерного зрения")
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()
