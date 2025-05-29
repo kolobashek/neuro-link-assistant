@@ -1428,6 +1428,78 @@
         "documentation": {}
     },
     {
+        "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Protocol",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Sequence",
         "importPath": "typing",
         "description": "typing",
@@ -2721,6 +2793,102 @@
         "importPath": "win32process",
         "description": "win32process",
         "detail": "win32process",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "FileOperationsMixin",
+        "importPath": "core.task.file_operations",
+        "description": "core.task.file_operations",
+        "isExtraImport": true,
+        "detail": "core.task.file_operations",
+        "documentation": {}
+    },
+    {
+        "label": "VisionOperationsMixin",
+        "importPath": "core.task.vision_operations",
+        "description": "core.task.vision_operations",
+        "isExtraImport": true,
+        "detail": "core.task.vision_operations",
+        "documentation": {}
+    },
+    {
+        "label": "WebOperationsMixin",
+        "importPath": "core.task.web_operations",
+        "description": "core.task.web_operations",
+        "isExtraImport": true,
+        "detail": "core.task.web_operations",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsOperationsMixin",
+        "importPath": "core.task.windows_operations",
+        "description": "core.task.windows_operations",
+        "isExtraImport": true,
+        "detail": "core.task.windows_operations",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.base",
+        "description": "core.task.base",
+        "isExtraImport": true,
+        "detail": "core.task.base",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "importPath": "core.task.base",
+        "description": "core.task.base",
+        "isExtraImport": true,
+        "detail": "core.task.base",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.base",
+        "description": "core.task.base",
+        "isExtraImport": true,
+        "detail": "core.task.base",
         "documentation": {}
     },
     {
@@ -8579,6 +8747,105 @@
         "documentation": {}
     },
     {
+        "label": "BaseTask",
+        "kind": 6,
+        "importPath": "core.task.base",
+        "description": "core.task.base",
+        "peekOfCode": "class BaseTask:\n    \"\"\"\n    Базовая задача для выполнения системой.\n    \"\"\"\n    def __init__(self, description, registry):\n        \"\"\"\n        Инициализирует задачу.\n        Args:\n            description (str): Описание задачи\n            registry: Реестр компонентов системы",
+        "detail": "core.task.base",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
+        "kind": 6,
+        "importPath": "core.task.base",
+        "description": "core.task.base",
+        "peekOfCode": "class Task(\n    VisionOperationsMixin, WebOperationsMixin, WindowsOperationsMixin, FileOperationsMixin, BaseTask\n):\n    \"\"\"\n    Финальный класс Task со всеми миксинами.\n    Порядок миксинов важен - VisionOperationsMixin первый для приоритета.\n    \"\"\"\n    pass",
+        "detail": "core.task.base",
+        "documentation": {}
+    },
+    {
+        "label": "FileOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.file_operations",
+        "description": "core.task.file_operations",
+        "peekOfCode": "class FileOperationsMixin:\n    \"\"\"\n    Миксин для файловых операций.\n    \"\"\"\n    def _is_file_operation(self: \"Task\") -> bool:\n        \"\"\"\n        Проверяет, является ли задача файловой операцией.\n        Returns:\n            bool: True если это файловая операция\n        \"\"\"",
+        "detail": "core.task.file_operations",
+        "documentation": {}
+    },
+    {
+        "label": "TaskProtocol",
+        "kind": 6,
+        "importPath": "core.task.protocols",
+        "description": "core.task.protocols",
+        "peekOfCode": "class TaskProtocol(Protocol):\n    \"\"\"Протокол для класса Task.\"\"\"\n    description: str\n    _registry: Any\n    def _extract_filename(self) -> str | None:\n        \"\"\"Извлекает имя файла из описания задачи.\"\"\"\n        ...\n    def _extract_content(self) -> str:\n        \"\"\"Извлекает содержимое для записи в файл.\"\"\"\n        ...",
+        "detail": "core.task.protocols",
+        "documentation": {}
+    },
+    {
+        "label": "WebTaskProtocol",
+        "kind": 6,
+        "importPath": "core.task.protocols",
+        "description": "core.task.protocols",
+        "peekOfCode": "class WebTaskProtocol(TaskProtocol, Protocol):\n    \"\"\"Протокол для веб-операций Task.\"\"\"\n    def _perform_duckduckgo_search(self, browser_controller: Any) -> TaskResult:\n        \"\"\"Выполняет поиск в DuckDuckGo.\"\"\"\n        ...\n    def _perform_web_search_with_protection(self, browser_controller: Any) -> TaskResult:\n        \"\"\"Выполняет поиск с защитой от ботов.\"\"\"\n        ...\n    def _check_bot_protection(self, browser_controller: Any) -> TaskResult:\n        \"\"\"Проверяет защиту от ботов.\"\"\"",
+        "detail": "core.task.protocols",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsTaskProtocol",
+        "kind": 6,
+        "importPath": "core.task.protocols",
+        "description": "core.task.protocols",
+        "peekOfCode": "class WindowsTaskProtocol(TaskProtocol, Protocol):\n    \"\"\"Протокол для Windows-операций Task.\"\"\"\n    def _launch_calculator(self) -> TaskResult:\n        \"\"\"Запускает калькулятор.\"\"\"\n        ...\n    def _launch_notepad(self) -> TaskResult:\n        \"\"\"Запускает блокнот.\"\"\"\n        ...\n    def _launch_application(self, app_name: str) -> TaskResult:\n        \"\"\"Запускает приложение.\"\"\"",
+        "detail": "core.task.protocols",
+        "documentation": {}
+    },
+    {
+        "label": "FileTaskProtocol",
+        "kind": 6,
+        "importPath": "core.task.protocols",
+        "description": "core.task.protocols",
+        "peekOfCode": "class FileTaskProtocol(TaskProtocol, Protocol):\n    \"\"\"Протокол для файловых операций Task.\"\"\"\n    def _create_file(self, filesystem: Any) -> TaskResult:\n        \"\"\"Создает файл.\"\"\"\n        ...\n    def _read_file(self, filesystem: Any) -> TaskResult:\n        \"\"\"Читает файл.\"\"\"\n        ...\n    def _delete_file(self, filesystem: Any) -> TaskResult:\n        \"\"\"Удаляет файл.\"\"\"",
+        "detail": "core.task.protocols",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "kind": 6,
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "peekOfCode": "class TaskResult:\n    \"\"\"\n    Результат выполнения задачи.\n    \"\"\"\n    def __init__(self, success, details=\"\"):\n        \"\"\"\n        Инициализирует результат задачи.\n        Args:\n            success (bool): Успешность выполнения\n            details (str): Подробности выполнения",
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "VisionOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.vision_operations",
+        "description": "core.task.vision_operations",
+        "peekOfCode": "class VisionOperationsMixin:\n    \"\"\"\n    Миксин для операций компьютерного зрения.\n    \"\"\"\n    def _is_computer_vision_operation(self) -> bool:\n        \"\"\"\n        Проверяет, является ли задача операцией компьютерного зрения.\n        Returns:\n            bool: True если это операция компьютерного зрения\n        \"\"\"",
+        "detail": "core.task.vision_operations",
+        "documentation": {}
+    },
+    {
+        "label": "WebOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.web_operations",
+        "description": "core.task.web_operations",
+        "peekOfCode": "class WebOperationsMixin:\n    \"\"\"\n    Миксин для веб-операций.\n    \"\"\"\n    def _is_web_operation(self: \"Task\") -> bool:\n        \"\"\"\n        Проверяет, является ли задача веб-операцией.\n        Returns:\n            bool: True если это веб-операция\n        \"\"\"",
+        "detail": "core.task.web_operations",
+        "documentation": {}
+    },
+    {
+        "label": "WindowsOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.windows_operations",
+        "description": "core.task.windows_operations",
+        "peekOfCode": "class WindowsOperationsMixin:\n    \"\"\"\n    Миксин для Windows-операций.\n    \"\"\"\n    def _is_windows_operation(self: \"Task\") -> bool:\n        \"\"\"\n        Проверяет, является ли задача Windows-операцией.\n        Returns:\n            bool: True если это Windows-операция\n        \"\"\"",
+        "detail": "core.task.windows_operations",
+        "documentation": {}
+    },
+    {
         "label": "ElementLocalization",
         "kind": 6,
         "importPath": "core.vision.element_localization",
@@ -8678,20 +8945,11 @@
         "documentation": {}
     },
     {
-        "label": "TaskResult",
-        "kind": 6,
+        "label": "__all__",
+        "kind": 5,
         "importPath": "core.task",
         "description": "core.task",
-        "peekOfCode": "class TaskResult:\n    \"\"\"\n    Результат выполнения задачи.\n    \"\"\"\n    def __init__(self, success, details=\"\"):\n        \"\"\"\n        Инициализирует результат задачи.\n        Args:\n            success (bool): Успешность выполнения\n            details (str): Подробности выполнения",
-        "detail": "core.task",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "kind": 6,
-        "importPath": "core.task",
-        "description": "core.task",
-        "peekOfCode": "class Task:\n    \"\"\"\n    Задача для выполнения системой.\n    \"\"\"\n    def __init__(self, description, registry):\n        \"\"\"\n        Инициализирует задачу.\n        Args:\n            description (str): Описание задачи\n            registry: Реестр компонентов системы",
+        "peekOfCode": "__all__ = [\"Task\", \"TaskResult\"]",
         "detail": "core.task",
         "documentation": {}
     },
@@ -9861,7 +10119,7 @@
         "kind": 6,
         "importPath": "tests.system.test_web_automation",
         "description": "tests.system.test_web_automation",
-        "peekOfCode": "class TestWebAutomation:\n    def test_web_search_automation(self):\n        \"\"\"Проверяет автоматизацию веб-поиска.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для веб-поиска\n        task = system.create_task(\n            \"Открыть браузер, найти в поисковике 'Python TDD' и сохранить первые 3 результата\"\n        )",
+        "peekOfCode": "class TestWebAutomation:\n    def test_web_search_automation(self):\n        \"\"\"Проверяет автоматизацию веб-поиска с обработкой защиты от ботов.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для веб-поиска\n        task = system.create_task(\n            \"Открыть браузер, найти в поисковике 'Python TDD' и сохранить первые 3 результата\"\n        )",
         "detail": "tests.system.test_web_automation",
         "documentation": {}
     },

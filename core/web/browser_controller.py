@@ -86,6 +86,44 @@ class BrowserController:
             print(f"Error initializing browser: {e}")
             return False
 
+    def initialize_stealth(self):
+        """
+        Инициализирует браузер с настройками для обхода детекции ботов.
+        """
+        try:
+            from selenium.webdriver.chrome.options import Options
+
+            options = Options()
+
+            # Настройки для обхода детекции
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--disable-blink-features=AutomationControlled")
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option("useAutomationExtension", False)
+
+            # Реальный User-Agent
+            options.add_argument(
+                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,"
+                " like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+
+            # Размер окна
+            options.add_argument("--window-size=1920,1080")
+
+            self.driver = webdriver.Chrome(options=options)
+
+            # Удаляем webdriver property
+            self.driver.execute_script(
+                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+            )
+
+            return True
+
+        except Exception as e:
+            print(f"DEBUG: Ошибка stealth инициализации: {e}")
+            return False
+
     def navigate(self, url):
         """
         Переходит по указанному URL.
@@ -277,3 +315,19 @@ class BrowserController:
     def __del__(self):
         """Деструктор для закрытия браузера при уничтожении объекта."""
         self.quit()
+
+    def get_page_source(self):
+        """
+        Получает исходный код текущей страницы.
+
+        Returns:
+            str: Исходный код страницы или пустая строка в случае ошибки
+        """
+        try:
+            if self.driver is None:
+                return ""
+
+            return self.driver.page_source
+        except Exception as e:
+            print(f"Error getting page source: {e}")
+            return ""

@@ -71,6 +71,13 @@ class SystemInitializer:
             browser_controller = self._registry.get("browser_controller")
             print(f"Получен контроллер браузера: {browser_controller}")
 
+            # Получаем компоненты компьютерного зрения
+            screen_capture = self._registry.get("screen_capture")
+            print(f"Получен компонент захвата экрана: {screen_capture}")
+
+            element_localization = self._registry.get("element_localization")
+            print(f"Получен компонент локализации элементов: {element_localization}")
+
             # Загружаем плагины если менеджер плагинов существует
             if plugin_manager:
                 print("Загрузка плагинов...")
@@ -232,8 +239,11 @@ class SystemInitializer:
 
                 self._registry.register("screen_capture", screen_capture)
                 self._registry.register("element_localization", element_localization)
-            except ImportError:
-                print("Не удалось импортировать компоненты компьютерного зрения")
+
+                print(f"Получен компонент захвата экрана: {screen_capture}")
+                print(f"Получен компонент локализации элементов: {element_localization}")
+            except ImportError as e:
+                print(f"Не удалось импортировать компоненты компьютерного зрения: {e}")
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()
