@@ -16,7 +16,10 @@ def js_event_handler(mock_driver):
             self.driver = driver
 
         def trigger_event(self, element, event_name):
-            js = f"var evt = new Event('{event_name}', {{bubbles:true}}); arguments[0].dispatchEvent(evt);"
+            js = (
+                f"var evt = new Event('{event_name}', {{bubbles:true}});"
+                " arguments[0].dispatchEvent(evt);"
+            )
             return self.driver.execute_script(js, element)
 
         def trigger_click(self, element):

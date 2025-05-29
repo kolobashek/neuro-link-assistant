@@ -156,8 +156,7 @@ class TestPerformance:
         driver.get("http://localhost:5000")
 
         # Добавляем много контента с помощью JavaScript для тестирования прокрутки
-        driver.execute_script(
-            """
+        driver.execute_script("""
             const container = document.querySelector('.container');
             if (container) {
                 // Добавляем временный контент для теста прокрутки
@@ -167,8 +166,7 @@ class TestPerformance:
                 tempContent.style.background = 'linear-gradient(to bottom, #f0f0f0, #e0e0e0)';
                 container.appendChild(tempContent);
             }
-        """
-        )
+        """)
 
         # Измеряем время прокрутки
         start_time = time.time()
@@ -188,14 +186,12 @@ class TestPerformance:
         ), f"Время прокрутки ({scroll_time:.2f} с) превышает допустимое значение"
 
         # Удаляем временный контент
-        driver.execute_script(
-            """
+        driver.execute_script("""
             const tempContent = document.getElementById('temp-scroll-test');
             if (tempContent) {
                 tempContent.remove();
             }
-        """
-        )
+        """)
 
     def test_memory_usage(self, driver):
         """Тест использования памяти"""
@@ -233,6 +229,7 @@ class TestPerformance:
         memory_increase_mb = (final_memory - initial_memory) / (1024 * 1024)
 
         # Проверяем, что прирост памяти не превышает допустимое значение (например, 50 МБ)
-        assert (
-            memory_increase_mb < 50
-        ), f"Прирост использования памяти ({memory_increase_mb:.2f} МБ) превышает допустимое значение"
+        assert memory_increase_mb < 50, (
+            f"Прирост использования памяти ({memory_increase_mb:.2f} МБ) превышает допустимое"
+            " значение"
+        )

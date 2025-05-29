@@ -56,15 +56,13 @@ class TestSettings:
             theme_toggle = theme_toggles[0]
 
             # Запоминаем текущую тему
-            initial_theme = driver.execute_script(
-                """
+            initial_theme = driver.execute_script("""
                 return document.body.classList.contains('dark-theme') ||
                        document.body.classList.contains('dark-mode') ||
                        document.documentElement.classList.contains('dark-theme') ||
                        document.documentElement.classList.contains('dark-mode') ?
                        'dark' : 'light';
-            """
-            )
+            """)
 
             # Нажимаем на переключатель темы
             theme_toggle.click()
@@ -73,15 +71,13 @@ class TestSettings:
             time.sleep(1)
 
             # Проверяем, что тема изменилась
-            new_theme = driver.execute_script(
-                """
+            new_theme = driver.execute_script("""
                 return document.body.classList.contains('dark-theme') ||
                        document.body.classList.contains('dark-mode') ||
                        document.documentElement.classList.contains('dark-theme') ||
                        document.documentElement.classList.contains('dark-mode') ?
                        'dark' : 'light';
-            """
-            )
+            """)
 
             assert new_theme != initial_theme, "Тема не изменилась после нажатия на переключатель"
 
@@ -92,15 +88,13 @@ class TestSettings:
             time.sleep(1)
 
             # Проверяем, что тема вернулась к исходной
-            final_theme = driver.execute_script(
-                """
+            final_theme = driver.execute_script("""
                 return document.body.classList.contains('dark-theme') ||
                        document.body.classList.contains('dark-mode') ||
                        document.documentElement.classList.contains('dark-theme') ||
                        document.documentElement.classList.contains('dark-mode') ?
                        'dark' : 'light';
-                """
-            )
+                """)
 
             assert (
                 final_theme == initial_theme
@@ -120,11 +114,9 @@ class TestSettings:
             language_selector = language_selectors[0]
 
             # Запоминаем текущий язык
-            initial_language = driver.execute_script(
-                """
+            initial_language = driver.execute_script("""
                 return document.documentElement.lang || 'ru';
-            """
-            )
+            """)
 
             # Нажимаем на переключатель языка
             language_selector.click()
@@ -144,11 +136,9 @@ class TestSettings:
                 time.sleep(1)
 
                 # Проверяем, что язык изменился
-                new_language = driver.execute_script(
-                    """
+                new_language = driver.execute_script("""
                     return document.documentElement.lang || 'ru';
-                """
-                )
+                """)
 
                 assert (
                     new_language != initial_language

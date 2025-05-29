@@ -8,7 +8,6 @@ from core.db.models import AIModel, Task, User
 
 
 class TestDataValidation:
-
     def test_required_fields(self, db_session):
         """Тест обязательных полей"""
         # Проверка пользователя без обязательного поля

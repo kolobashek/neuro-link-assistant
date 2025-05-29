@@ -65,12 +65,14 @@ class TestMobileUI:
         submit_button_size = submit_button.size
 
         # Минимальный размер для удобного нажатия на мобильном устройстве (обычно не менее 44x44px)
-        assert (
-            submit_button_size["width"] >= 44
-        ), f"Ширина кнопки отправки ({submit_button_size['width']}px) недостаточна для мобильного устройства"
-        assert (
-            submit_button_size["height"] >= 44
-        ), f"Высота кнопки отправки ({submit_button_size['height']}px) недостаточна для мобильного устройства"
+        assert submit_button_size["width"] >= 44, (
+            f"Ширина кнопки отправки ({submit_button_size['width']}px) недостаточна для мобильного"
+            " устройства"
+        )
+        assert submit_button_size["height"] >= 44, (
+            f"Высота кнопки отправки ({submit_button_size['height']}px) недостаточна для мобильного"
+            " устройства"
+        )
 
         # Проверяем, что между элементами достаточное расстояние для удобного нажатия
         # Получаем координаты элементов
@@ -109,9 +111,11 @@ class TestMobileUI:
             # Проверяем, что элемент видим и доступен для взаимодействия
             if element.is_displayed() and element.is_enabled():
                 # Минимальный размер для удобного касания на мобильном устройстве (обычно не менее 44x44px)
-                assert (
-                    element_size["width"] >= 44 or element_size["height"] >= 44
-                ), f"Размер интерактивного элемента ({element_size['width']}x{element_size['height']}px) недостаточен для мобильного устройства"
+                assert element_size["width"] >= 44 or element_size["height"] >= 44, (
+                    "Размер интерактивного элемента"
+                    f" ({element_size['width']}x{element_size['height']}px) недостаточен для"
+                    " мобильного устройства"
+                )
 
     def test_mobile_scrolling(self, mobile_driver):
         """Тест прокрутки на мобильных устройствах"""
@@ -384,7 +388,8 @@ class TestMobileUI:
 
         # Проверяем позиционирование панели
         bottom_nav_position = mobile_driver.execute_script(
-            "var rect = arguments[0].getBoundingClientRect(); return {bottom: rect.bottom, windowHeight: window.innerHeight};",
+            "var rect = arguments[0].getBoundingClientRect(); return {bottom: rect.bottom,"
+            " windowHeight: window.innerHeight};",
             bottom_nav,
         )
 

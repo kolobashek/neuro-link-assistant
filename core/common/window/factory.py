@@ -32,16 +32,14 @@ class WindowManagerFactory:
         system = platform.system().lower()
 
         if system == "windows":
-
             # Выбираем бэкенд для Windows
             if backend == "pygetwindow":
                 try:
-
                     from core.platform.windows.window.pygetwindow_manager import PyGetWindowManager
+
                     return PyGetWindowManager()
 
                 except ImportError as e:
-
                     handle_error(f"Не удалось импортировать PyGetWindowManager: {e}", e)
                     backend = "win32"  # Fallback на win32
 
@@ -58,7 +56,6 @@ class WindowManagerFactory:
             raise NotImplementedError("Менеджер окон для macOS пока не реализован")
 
         elif system == "linux":
-
             raise NotImplementedError("Менеджер окон для Linux пока не реализован")
 
         else:

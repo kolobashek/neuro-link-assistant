@@ -93,12 +93,10 @@ def check_ai_model_availability(model_id=None):
 
         # Если указан конкретный ID модели
         if model_id:
-
             # Находим модель по ID
             model = next((m for m in models if m["id"] == model_id), None)
 
             if not model:
-
                 return {"success": False, "message": f"Модель с ID {model_id} не найдена"}
 
             # Проверяем, является ли это моделью OpenAI
@@ -157,7 +155,10 @@ def check_ai_model_availability(model_id=None):
                 return {
                     "success": True,
                     "model_name": model["name"],
-                    "message": f"Модель {model['name']} {'доступна' if model['status'] == 'ready' else 'недоступна'}",
+                    "message": (
+                        "Модель"
+                        f" {model['name']} {'доступна' if model['status'] == 'ready' else 'недоступна'}"
+                    ),
                 }
             except Exception as e:
                 model["status"] = "unavailable"
@@ -266,7 +267,10 @@ def select_ai_model(model_id):
         if not availability["available"]:
             return {
                 "success": False,
-                "message": f"Модель {model['name']} недоступна: {availability.get('error', 'Неизвестная ошибка')}",
+                "message": (
+                    f"Модель {model['name']} недоступна:"
+                    f" {availability.get('error', 'Неизвестная ошибка')}"
+                ),
             }
 
         # Обновляем статус всех моделей
@@ -820,7 +824,9 @@ def get_available_huggingface_models(filter_criteria=None, limit=20):
                         else f"Модель {model.id}"
                     ),
                     "huggingface_id": model.id,
-                    "type": "completion",  # По умолчанию считаем, что это модель для завершения текста
+                    "type": (
+                        "completion"
+                    ),  # По умолчанию считаем, что это модель для завершения текста
                     "status": "unavailable",
                     "is_current": False,
                 }

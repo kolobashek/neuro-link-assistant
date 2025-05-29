@@ -79,16 +79,26 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 100
-target-version = ["py38"]
-include = '\.pyi?'
-exclude = '''
+target-version = ["py38", "py39", "py310", "py311"]
+include = '\.pyi?$'
+extend-exclude = '''
 /(
     \.git
   | \.venv
+  | \.env
+  | venv
+  | env
   | build
   | dist
+  | \.pytest_cache
+  | \.mypy_cache
+  | __pycache__
+  | migrations
 )/
 '''
+# Отключаем проверку перед бинарными операторами (решает вашу проблему)
+skip-string-normalization = false
+preview = true
 
 [tool.isort]
 profile = "black"
@@ -124,3 +134,34 @@ max-line-length = 100
 [tool.coverage.run]
 source = ["core", "utils", "routes"]
 omit = ["tests/*", "**/__init__.py"]
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = [
+    "E203",
+    "W503",
+    "E501",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D200",
+    "D400",
+    "D107",
+]
+# E203: конфликтует с black (пробелы вокруг ':')
+# W503: конфликтует с black (переносы строк перед бинарными операторами)
+# E501: длина строки (управляется black)
+exclude = [
+    ".git",
+    ".venv",
+    ".env",
+    "venv",
+    "env",
+    "build",
+    "dist",
+    ".pytest_cache",
+    ".mypy_cache",
+    "__pycache__",
+    "migrations",
+]

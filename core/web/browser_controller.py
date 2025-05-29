@@ -54,7 +54,6 @@ class BrowserController:
                 )
 
             elif self.browser_type == "firefox":
-
                 options = FirefoxOptions()
                 if self.headless:
                     options.add_argument("--headless")
@@ -65,7 +64,6 @@ class BrowserController:
                 )
 
             elif self.browser_type == "edge":
-
                 options = EdgeOptions()
                 if self.headless:
                     options.add_argument("--headless")

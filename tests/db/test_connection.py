@@ -73,7 +73,6 @@ def db_session(db_engine):
 
 
 class TestDatabaseConnection:
-
     def test_connection(self, db_engine):
         """Проверяем подключение к БД"""
         connection = db_engine.connect()

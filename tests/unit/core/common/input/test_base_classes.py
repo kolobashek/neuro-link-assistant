@@ -38,7 +38,7 @@ class TestKeyboardInterface:
 
         # Проверяем, что все требуемые методы являются абстрактными
         assert required_methods.issubset(abstract_methods), (
-            f"Не все необходимые методы определены как абстрактные. "
+            "Не все необходимые методы определены как абстрактные. "
             f"Отсутствуют: {required_methods - abstract_methods}"
         )
 
@@ -119,7 +119,7 @@ class TestMouseInterface:
 
         # Проверяем, что все требуемые методы являются абстрактными
         assert required_methods.issubset(abstract_methods), (
-            f"Не все необходимые методы определены как абстрактные. "
+            "Не все необходимые методы определены как абстрактные. "
             f"Отсутствуют: {required_methods - abstract_methods}"
         )
 
@@ -291,7 +291,6 @@ class TestInputFactory:
         ), patch(
             "core.common.input.registry.InputRegistry.get_keyboard"
         ) as mock_get_keyboard_class:
-
             # Создаем мок для WindowsKeyboard
             mock_keyboard_class = MagicMock()
             mock_keyboard = MagicMock()
@@ -314,7 +313,6 @@ class TestInputFactory:
         with patch("platform.system", return_value="Windows"), patch(
             "core.common.input.registry.InputRegistry._register_platform_controllers"
         ), patch("core.common.input.registry.InputRegistry.get_mouse") as mock_get_mouse_class:
-
             # Создаем мок для WindowsMouse
             mock_mouse_class = MagicMock()
             mock_mouse = MagicMock()
@@ -338,7 +336,6 @@ class TestInputFactory:
         ) as mock_get_keyboard, patch(
             "core.common.input.factory.get_mouse"
         ) as mock_get_mouse:
-
             # Создаем мок-объекты для контроллеров
             mock_keyboard = MagicMock()
             mock_mouse = MagicMock()

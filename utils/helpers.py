@@ -100,7 +100,8 @@ def check_interrupt_during_operation(operation_name, interval=0.5, max_time=30):
         # Проверяем флаг прерывания
         if command_interrupt_flag:
             detailed_logger.info(
-                f"Операция '{operation_name}' прервана пользователем после {elapsed_time:.1f} секунд"
+                f"Операция '{operation_name}' прервана пользователем после"
+                f" {elapsed_time:.1f} секунд"
             )
             return True
 

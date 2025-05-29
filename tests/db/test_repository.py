@@ -9,7 +9,6 @@ from core.db.repository.workflow_repository import WorkflowRepository
 
 
 class TestUserRepository:
-
     def test_user_repository_operations(self, db_session):
         """Тест операций репозитория пользователей"""
         user_repo = UserRepository(db_session)
@@ -67,7 +66,6 @@ class TestUserRepository:
 
 
 class TestTaskRepository:
-
     @pytest.fixture
     def test_user(self, db_session):
         """Создает тестового пользователя для задач"""
@@ -169,7 +167,6 @@ class TestTaskRepository:
 
 
 class TestWorkflowRepository:
-
     @pytest.fixture
     def test_user(self, db_session):
         """Создает тестового пользователя для рабочих процессов"""

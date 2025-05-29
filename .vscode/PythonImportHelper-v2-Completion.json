@@ -9834,7 +9834,7 @@
         "kind": 6,
         "importPath": "tests.system.test_model_orchestration",
         "description": "tests.system.test_model_orchestration",
-        "peekOfCode": "class TestModelOrchestration:\n    def test_multi_model_workflow(self):\n        \"\"\"Проверяет оркестрацию нескольких моделей для решения комплексной задачи.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Задача, требующая координации нескольких моделей\n        task = system.create_task(\n            \"Найти на рабочем столе документ с текстом, проанализировать его содержимое с помощью LLM и сохранить результат в новый файл\"\n        )",
+        "peekOfCode": "class TestModelOrchestration:\n    def test_multi_model_workflow(self):\n        \"\"\"Проверяет оркестрацию нескольких моделей для решения комплексной задачи.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Задача, требующая координации нескольких моделей\n        task = system.create_task(\n            \"Найти на рабочем столе документ с текстом, проанализировать его содержимое с помощью\"\n            \" LLM и сохранить результат в новый файл\"",
         "detail": "tests.system.test_model_orchestration",
         "documentation": {}
     },
@@ -10266,7 +10266,7 @@
         "kind": 6,
         "importPath": "tests.unit.core.llm_integration.test_llm_integration",
         "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestActionPlanning:\n    \"\"\"Тесты планирования действий на основе запросов\"\"\"\n    def test_plan_actions(self):\n        \"\"\"Тест планирования действий на основе запроса пользователя\"\"\"\n        # Создаем моки для зависимостей\n        llm_client = MagicMock()\n        llm_client.send_request.return_value = {\n            \"choices\": [\n                {\n                    \"text\": \"\"\"",
+        "peekOfCode": "class TestActionPlanning:\n    \"\"\"Тесты планирования действий на основе запросов\"\"\"\n    def test_plan_actions(self):\n        \"\"\"Тест планирования действий на основе запроса пользователя\"\"\"\n        # Создаем моки для зависимостей\n        llm_client = MagicMock()\n        llm_client.send_request.return_value = {\"choices\": [{\"text\": \"\"\"\n                    I'll help you install Python. Here's a plan:\n                    {\n                        \"actions\": [",
         "detail": "tests.unit.core.llm_integration.test_llm_integration",
         "documentation": {}
     },
@@ -10635,7 +10635,7 @@
         "kind": 2,
         "importPath": "tests.unit.core.web.test_js_events",
         "description": "tests.unit.core.web.test_js_events",
-        "peekOfCode": "def mock_driver():\n    return MagicMock()\n@pytest.fixture\ndef js_event_handler(mock_driver):\n    # Пример класса для работы с JS-событиями\n    class JSEventHandler:\n        def __init__(self, driver):\n            self.driver = driver\n        def trigger_event(self, element, event_name):\n            js = f\"var evt = new Event('{event_name}', {{bubbles:true}}); arguments[0].dispatchEvent(evt);\"",
+        "peekOfCode": "def mock_driver():\n    return MagicMock()\n@pytest.fixture\ndef js_event_handler(mock_driver):\n    # Пример класса для работы с JS-событиями\n    class JSEventHandler:\n        def __init__(self, driver):\n            self.driver = driver\n        def trigger_event(self, element, event_name):\n            js = (",
         "detail": "tests.unit.core.web.test_js_events",
         "documentation": {}
     },
@@ -10644,7 +10644,7 @@
         "kind": 2,
         "importPath": "tests.unit.core.web.test_js_events",
         "description": "tests.unit.core.web.test_js_events",
-        "peekOfCode": "def js_event_handler(mock_driver):\n    # Пример класса для работы с JS-событиями\n    class JSEventHandler:\n        def __init__(self, driver):\n            self.driver = driver\n        def trigger_event(self, element, event_name):\n            js = f\"var evt = new Event('{event_name}', {{bubbles:true}}); arguments[0].dispatchEvent(evt);\"\n            return self.driver.execute_script(js, element)\n        def trigger_click(self, element):\n            js = \"arguments[0].click();\"",
+        "peekOfCode": "def js_event_handler(mock_driver):\n    # Пример класса для работы с JS-событиями\n    class JSEventHandler:\n        def __init__(self, driver):\n            self.driver = driver\n        def trigger_event(self, element, event_name):\n            js = (\n                f\"var evt = new Event('{event_name}', {{bubbles:true}});\"\n                \" arguments[0].dispatchEvent(evt);\"\n            )",
         "detail": "tests.unit.core.web.test_js_events",
         "documentation": {}
     },

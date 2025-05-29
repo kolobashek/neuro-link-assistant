@@ -35,7 +35,13 @@ class SystemInitializer:
                 return False
 
             # Проверяем наличие необходимых компонентов
-            required_components = ["error_handler", "plugin_manager", "task_manager", "filesystem"]
+            required_components = [
+                "error_handler",
+                "plugin_manager",
+                "task_manager",
+                "filesystem",
+                "browser_controller",
+            ]
             for component_name in required_components:
                 if not self._registry.has(component_name):
                     print(f"Missing required component: {component_name}")
@@ -58,6 +64,10 @@ class SystemInitializer:
             # Получаем файловую систему
             filesystem = self._registry.get("filesystem")
             print(f"Получена файловая система: {filesystem}")
+
+            # Получаем контроллер браузера
+            browser_controller = self._registry.get("browser_controller")
+            print(f"Получен контроллер браузера: {browser_controller}")
 
             # Загружаем плагины если менеджер плагинов существует
             if plugin_manager:
@@ -118,6 +128,11 @@ class SystemInitializer:
             # Выгружаем плагины если менеджер плагинов существует
             if plugin_manager:
                 plugin_manager.unload_plugins()
+
+            # Закрываем браузер если он открыт
+            browser_controller = self._registry.get("browser_controller")
+            if browser_controller:
+                browser_controller.quit()
 
             # Отмечаем систему как неинициализированную
             self._initialized = False
@@ -195,6 +210,15 @@ class SystemInitializer:
                 self._registry.register("filesystem", filesystem)
             except ImportError:
                 print("Не удалось импортировать Win32FileSystem")
+
+            # Создаем и регистрируем контроллер браузера
+            try:
+                from core.web.browser_controller import BrowserController
+
+                browser_controller = BrowserController()
+                self._registry.register("browser_controller", browser_controller)
+            except ImportError:
+                print("Не удалось импортировать BrowserController")
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()

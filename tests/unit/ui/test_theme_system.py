@@ -111,7 +111,8 @@ class TestThemeSystem:
 
             # Получаем значение CSS-переменной для текущей темы
             initial_bg_color = driver.execute_script(
-                "return window.getComputedStyle(document.documentElement).getPropertyValue('--background-color').trim()"
+                "return"
+                " window.getComputedStyle(document.documentElement).getPropertyValue('--background-color').trim()"
             )
 
             # Переключаем тему
@@ -129,7 +130,8 @@ class TestThemeSystem:
 
             # Получаем значение CSS-переменной для новой темы
             new_bg_color = driver.execute_script(
-                "return window.getComputedStyle(document.documentElement).getPropertyValue('--background-color').trim()"
+                "return"
+                " window.getComputedStyle(document.documentElement).getPropertyValue('--background-color').trim()"
             )
 
             # Проверяем, что значение CSS-переменной изменилось

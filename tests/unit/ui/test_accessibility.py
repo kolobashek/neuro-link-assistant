@@ -123,9 +123,10 @@ class TestAccessibility:
                             )
 
                     # Проверка наличия хотя бы одного способа идентификации
-                    assert any(
-                        [placeholder, aria_label, aria_labelledby]
-                    ), f"Поле ввода {element_id} не имеет ни placeholder, ни aria-label, ни aria-labelledby"
+                    assert any([placeholder, aria_label, aria_labelledby]), (
+                        f"Поле ввода {element_id} не имеет ни placeholder, ни aria-label, ни"
+                        " aria-labelledby"
+                    )
 
                 # Проверяем общие ARIA-атрибуты
                 aria_role = element.get_attribute("role")
@@ -280,10 +281,12 @@ class TestAccessibility:
         if results:  # Добавляем проверку на случай, если results пустой
             print(f"Всего проверено элементов: {len(results)}")
             print(
-                f"Прошли проверку уровня AA (контраст >= {min_contrast_aa}): {pass_count} ({pass_count / len(results) * 100:.1f}%)"
+                f"Прошли проверку уровня AA (контраст >= {min_contrast_aa}):"
+                f" {pass_count} ({pass_count / len(results) * 100:.1f}%)"
             )
             print(
-                f"Прошли проверку уровня AAA (контраст >= {min_contrast_aaa}): {aaa_count} ({aaa_count / len(results) * 100:.1f}%)"
+                f"Прошли проверку уровня AAA (контраст >= {min_contrast_aaa}):"
+                f" {aaa_count} ({aaa_count / len(results) * 100:.1f}%)"
             )
             print(f"Не прошли проверку: {fail_count} ({fail_count / len(results) * 100:.1f}%)")
 
@@ -292,7 +295,9 @@ class TestAccessibility:
                 status = "✅" if result["passes_aa"] else "❌"
                 aaa_status = "(AAA)" if result["passes_aaa"] else ""
                 print(
-                    f"{status} {aaa_status} {result['element_id']}: контраст {result['contrast_ratio']:.2f} - {result['fg_color']} на {result['bg_color']}"
+                    f"{status} {aaa_status} {result['element_id']}: контраст"
+                    f" {result['contrast_ratio']:.2f} - {result['fg_color']} на"
+                    f" {result['bg_color']}"
                 )
         else:
             print("Не удалось проверить ни один элемент.")

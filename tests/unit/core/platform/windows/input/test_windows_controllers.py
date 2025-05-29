@@ -113,7 +113,6 @@ class TestWindowsKeyboard:
         ) as mock_close, patch.object(
             kb, "press_keys"
         ) as mock_press_keys:
-
             # Вставляем текст
             result = kb.paste_text("Test paste")
 
@@ -136,7 +135,6 @@ class TestWindowsKeyboard:
         with patch.object(kb, "press_key") as mock_press_key, patch.object(
             kb, "press_keys"
         ) as mock_press_keys:
-
             # Нажимаем Enter
             result_enter = kb.press_enter()
 
@@ -163,7 +161,6 @@ class TestWindowsMouse:
         ) as mock_mouse_event, patch(
             "win32gui.GetCursorPos", return_value=(100, 100)
         ) as mock_get_cursor:
-
             mouse = WindowsMouse(human_like=False)
             yield mouse, mock_set_cursor, mock_mouse_event, mock_get_cursor
 
@@ -274,7 +271,6 @@ class TestWindowsMouse:
         with patch.object(m, "mouse_down") as mock_down, patch.object(
             m, "move_to"
         ) as mock_move, patch.object(m, "mouse_up") as mock_up, patch("time.sleep") as mock_sleep:
-
             # Перетаскиваем мышью из текущей позиции в (300, 400)
             result = m.drag_to(300, 400, duration=0.5)
 
@@ -348,7 +344,6 @@ class TestWindowsMouse:
         with patch.object(m, "move_to_element") as mock_move, patch.object(
             m, "click"
         ) as mock_click, patch("time.sleep") as mock_sleep:
-
             # Создаем тестовый элемент
             element = MagicMock()
 
@@ -373,7 +368,6 @@ class TestWindowsInputIntegration:
         with patch("win32api.keybd_event"), patch("win32api.SetCursorPos"), patch(
             "win32api.mouse_event"
         ):
-
             keyboard = WindowsKeyboard(human_like=False)
             mouse = WindowsMouse(human_like=False)
 
@@ -390,7 +384,6 @@ class TestWindowsInputIntegration:
         with patch.object(controller.mouse, "move_to") as mock_move, patch.object(
             controller.mouse, "click"
         ) as mock_click, patch.object(controller.keyboard, "type_text") as mock_type:
-
             # Выполняем последовательность действий:
             # 1. Перемещаем мышь
             controller.mouse.move_to(100, 200)

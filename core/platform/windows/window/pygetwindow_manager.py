@@ -168,7 +168,6 @@ class PyGetWindowManager(AbstractWindowManager):
             Optional[Any]: Объект окна или None, если окно не найдено
         """
         if process_name:
-
             import logging
 
             logging.warning("Поиск по имени процесса не поддерживается в PyGetWindowManager")

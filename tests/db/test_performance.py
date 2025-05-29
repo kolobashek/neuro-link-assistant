@@ -2,6 +2,7 @@ import time
 
 import pytest
 from sqlalchemy import text
+
 # Удалён импорт get_db
 from core.db.crud import create_ai_model, create_task, create_user
 from core.db.models import Task, User  # noqa: F401, AIModel удалён, если не нужен
@@ -10,7 +11,6 @@ from core.db.models import Task, User  # noqa: F401, AIModel удалён, ес�
 
 
 class TestDatabasePerformance:
-
     @pytest.fixture
     def populated_db(self, db_session):
         """Создает набор тестовых данных"""

@@ -7,7 +7,6 @@ from core.db.transaction import TransactionManager, transaction
 
 
 class TestTransactions:
-
     @pytest.fixture
     def repositories(self, db_session):
         """Создает репозитории для тестирования"""

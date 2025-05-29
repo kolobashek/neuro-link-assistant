@@ -167,7 +167,7 @@ def log_execution_summary(execution, final=False):
             filtered_error = filter_sensitive_data(step.error) if step.error else None
 
             detailed_entry += (
-                f"  Шаг {step.step_number}: {filtered_description}\n" f"  Статус: {step.status}\n"
+                f"  Шаг {step.step_number}: {filtered_description}\n  Статус: {step.status}\n"
             )
             if filtered_result:
                 detailed_entry += f"  Результат: {filtered_result}\n"
@@ -205,9 +205,9 @@ def init_logging_system():
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     history_logger.info(
         f"{timestamp} - Системное событие\n"
-        f"Событие: Запуск приложения\n"
-        f"Статус: completed\n"
-        f"Выполнение: 100.0%\n"
-        f"Точность: 100.0%\n"
+        "Событие: Запуск приложения\n"
+        "Статус: completed\n"
+        "Выполнение: 100.0%\n"
+        "Точность: 100.0%\n"
         f"{'-' * 50}"
     )

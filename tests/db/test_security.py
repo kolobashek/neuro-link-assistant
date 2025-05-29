@@ -14,7 +14,6 @@ from core.services.permission_service import PermissionService
 
 
 class TestPasswordSecurity:
-
     def test_password_hashing(self):
         """Тест хеширования и проверки паролей"""
         # Хешируем пароль
@@ -36,7 +35,6 @@ class TestPasswordSecurity:
 
 
 class TestJWTTokens:
-
     def test_jwt_token_creation_and_verification(self):
         """Тест создания и проверки JWT токенов"""
         # Создаем JWT токен
@@ -82,7 +80,6 @@ class TestJWTTokens:
 
 
 class TestAuthorizationSecurity:
-
     @pytest.fixture
     def auth_service(self, db_session):
         """Создает сервис аутентификации"""

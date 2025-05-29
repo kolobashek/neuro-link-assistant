@@ -219,7 +219,6 @@ def upgrade() -> None:
     for fk_name, source, target, source_cols, target_cols in fk_defs:
         if fk_name not in existing_fkeys and tables_exist[source] and tables_exist[target]:
             try:
-
                 op.create_foreign_key(fk_name, source, target, source_cols, target_cols)
                 print(f"Внешний ключ {fk_name} создан")
             except Exception as e:

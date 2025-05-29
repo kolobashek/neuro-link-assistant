@@ -1,4 +1,5 @@
 import pytest
+
 from core.db.crud import create_task, create_user, get_tasks_with_pagination
 from core.db.models import Task, User  # noqa: F401
 
@@ -30,7 +31,6 @@ def user_with_many_tasks(db_session):
 
 
 class TestPaginationAndFiltering:
-
     def test_basic_pagination(self, db_session, user_with_many_tasks):
         """Тест базовой пагинации"""
         user = user_with_many_tasks

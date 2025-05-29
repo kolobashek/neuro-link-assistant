@@ -332,7 +332,9 @@ class Win32SystemInfo(AbstractSystemInfo):
                             "adapter_ram": gpu.AdapterRAM,
                             "driver_version": gpu.DriverVersion,
                             "video_processor": gpu.VideoProcessor,
-                            "current_resolution": f"{gpu.CurrentHorizontalResolution}x{gpu.CurrentVerticalResolution}",
+                            "current_resolution": (
+                                f"{gpu.CurrentHorizontalResolution}x{gpu.CurrentVerticalResolution}"
+                            ),
                         }
                     )
 

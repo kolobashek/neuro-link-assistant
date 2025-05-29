@@ -2,23 +2,40 @@ default_stages: [pre-commit]
 fail_fast: false
 
 repos:
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.4.0
-      hooks:
-          - id: trailing-whitespace
-          - id: end-of-file-fixer
-            exclude: ^\.vscode/PythonImportHelper-v2-Completion\.json$
-          - id: check-yaml
-          - id: check-added-large-files
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: ^\.vscode/PythonImportHelper-v2-Completion\.json$
+      - id: check-yaml
+      - id: check-added-large-files
 
-    # Запускаем только базовые проверки стиля кода
-    - repo: https://github.com/pycqa/flake8
-      rev: 6.1.0
-      hooks:
-          - id: flake8
-            args:
-                - --max-line-length=120
-                - --ignore=E203,W503,E501,D100,D101,D102,D103,D200,D400,D107
+  # Добавляем black для автоформатирования
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+        language_version: python3
+        args: ["--config=pyproject.toml"]
+
+  # Добавляем isort для сортировки импортов (совместим с black)
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
+
+  # Обновляем flake8 с совместимыми настройками для black
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        args:
+          - --max-line-length=100
+          - --extend-ignore=E203,W503,E501,D100,D101,D102,D103,D200,D400,D107
+          # E203: конфликтует с black (пробелы вокруг ':')
+          # W503: конфликтует с black (переносы строк перед бинарными операторами)
 # Временно отключаем pytest хуки до решения проблем с зависимостями
 # -   repo: local
 #     hooks:

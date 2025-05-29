@@ -278,6 +278,7 @@ _error_handler = ErrorHandler()
 
 # Глобальные функции для обратной совместимости и удобства
 
+
 def handle_error(exception, context=None, callback=None, log_level="error", module=None):
     """
     Глобальная функция для обработки ошибок с использованием глобального экземпляра ErrorHandler.

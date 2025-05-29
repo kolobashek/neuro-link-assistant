@@ -112,8 +112,7 @@ class TestAnimations:
         driver.get("http://localhost:5000")
 
         # Создаем уведомление с помощью JavaScript
-        driver.execute_script(
-            """
+        driver.execute_script("""
             // Проверяем, существует ли функция showNotification
             if (typeof showNotification === 'function') {
                 showNotification('Тестовое уведомление', 'success');
@@ -132,8 +131,7 @@ class TestAnimations:
                 notification.textContent = 'Тестовое уведомление';
                 container.appendChild(notification);
             }
-        """
-        )
+        """)
 
         # Ждем появления уведомления
         notification = WebDriverWait(driver, 5).until(

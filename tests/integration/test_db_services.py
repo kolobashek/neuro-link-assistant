@@ -9,7 +9,6 @@ from core.services.user_service import UserService
 
 
 class TestUserService:
-
     def test_user_registration(self, db_session):
         """Тест интеграции сервиса регистрации пользователей с БД"""
         user_service = UserService(db_session)
@@ -75,7 +74,6 @@ class TestUserService:
 
 
 class TestTaskService:
-
     @pytest.fixture
     def test_user(self, db_session):
         """Создает тестового пользователя для сервиса задач"""
@@ -145,7 +143,6 @@ class TestTaskService:
 
 
 class TestAIModelService:
-
     def test_model_registration_and_usage(self, db_session):
         """Тест регистрации и использования моделей ИИ"""
         ai_service = AIModelService(db_session)

@@ -32,12 +32,10 @@ class ScreenCapture:
 
             if hasattr(screenshot, "__array__") and callable(getattr(screenshot, "__array__")):
                 try:
-
                     img = np.asarray(
                         screenshot
                     )  # Используем np.asarray вместо прямого вызова __array__
                 except TypeError:
-
                     # Если возникает ошибка, используем стандартный способ
                     img = np.array(screenshot)
             else:

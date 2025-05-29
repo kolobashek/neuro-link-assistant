@@ -47,7 +47,8 @@ class TestBaseLayout:
 
         # Получение примененных стилей для проверки CSS-переменных
         primary_color = driver.execute_script(
-            "return window.getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim()"
+            "return"
+            " window.getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim()"
         )
         assert primary_color == "#4285f4"
 

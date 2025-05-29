@@ -21,7 +21,6 @@ def mock_subprocess_popen():
 
 
 class TestDockerScripts:
-
     def test_run_command_success(self, mock_subprocess_popen):
         """Тест успешного выполнения команды"""
         mock_popen, process_mock = mock_subprocess_popen

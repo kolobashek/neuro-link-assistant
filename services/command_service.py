@@ -50,7 +50,10 @@ def is_command_feasible(command_text):
             if keyword in ["удали", "delete", "format", "форматир", "rm -rf"]:
                 return {
                     "feasible": False,
-                    "reason": f"Команда '{keyword}' потенциально опасна и не может быть выполнена автоматически",
+                    "reason": (
+                        f"Команда '{keyword}' потенциально опасна и не может быть выполнена"
+                        " автоматически"
+                    ),
                 }
 
     # Проверяем на сложность и длительность выполнения
@@ -70,7 +73,10 @@ def is_command_feasible(command_text):
             return {
                 "feasible": True,
                 "requires_confirmation": True,
-                "reason": f"Команда '{keyword}' может занять продолжительное время. Требуется подтверждение.",
+                "reason": (
+                    f"Команда '{keyword}' может занять продолжительное время. Требуется"
+                    " подтверждение."
+                ),
             }
 
     # По умолчанию считаем команду выполнимой

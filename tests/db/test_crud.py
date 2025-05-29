@@ -23,7 +23,6 @@ from core.db.models import AIModel, Task, User, Workflow  # noqa: F401
 
 
 class TestUserCRUD:
-
     def test_create_user(self, db_session):
         """Тест создания пользователя"""
         user_data = {
@@ -87,7 +86,6 @@ class TestUserCRUD:
 
 
 class TestAIModelCRUD:
-
     def test_create_ai_model(self, db_session):
         """Тест создания модели ИИ"""
         model_data = {
@@ -129,7 +127,6 @@ class TestAIModelCRUD:
 
 
 class TestTaskCRUD:
-
     @pytest.fixture
     def test_user(self, db_session):
         """Создает тестового пользователя"""

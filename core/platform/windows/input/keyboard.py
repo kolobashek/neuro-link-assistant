@@ -168,7 +168,6 @@ class WindowsKeyboard(AbstractKeyboard):
             bool: True если успешно, иначе False.
         """
         try:
-
             # Получаем код клавиши
             key_code = self._get_code(key)
 
@@ -197,7 +196,6 @@ class WindowsKeyboard(AbstractKeyboard):
             bool: True если успешно, иначе False.
         """
         try:
-
             # Получаем коды клавиш
             key_codes = [self._get_code(key) for key in keys]
 
@@ -230,7 +228,6 @@ class WindowsKeyboard(AbstractKeyboard):
             bool: True если успешно, иначе False.
         """
         try:
-
             # Получаем код клавиши
             key_code = self._get_code(key)
 
@@ -253,7 +250,6 @@ class WindowsKeyboard(AbstractKeyboard):
             bool: True если успешно, иначе False.
         """
         try:
-
             # Получаем код клавиши
             key_code = self._get_code(key)
 

@@ -16,7 +16,6 @@ class TestInputIntegration:
         ) as mock_press_key, patch(
             "core.platform.windows.input.mouse.WindowsMouse.click"
         ) as mock_click:
-
             # Получаем контроллер ввода
             controller = get_input_controller()
 

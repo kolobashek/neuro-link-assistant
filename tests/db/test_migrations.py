@@ -11,7 +11,6 @@ from core.db.connection import DATABASE_URL
 
 
 class TestMigrations:
-
     @pytest.fixture
     def alembic_config(self):
         """Создает конфигурацию Alembic"""
@@ -133,9 +132,10 @@ class TestMigrations:
                 with test_engine.connect() as conn:
                     context = MigrationContext.configure(conn)
                     current_rev = context.get_current_revision()
-                    assert (
-                        current_rev == target_revision
-                    ), f"Откат не удался. Текущая ревизия: {current_rev}, ожидалась: {target_revision}"
+                    assert current_rev == target_revision, (
+                        f"Откат не удался. Текущая ревизия: {current_rev}, ожидалась:"
+                        f" {target_revision}"
+                    )
 
         finally:
             # Удаляем тестовую БД

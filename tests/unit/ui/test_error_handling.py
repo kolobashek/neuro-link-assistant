@@ -82,8 +82,7 @@ class TestErrorHandling:
         input_field.send_keys("Тестовая команда")
 
         # Имитируем отключение сети с помощью JavaScript
-        driver.execute_script(
-            """
+        driver.execute_script("""
             // Сохраняем оригинальный fetch
             window._originalFetch = window.fetch;
 
@@ -91,8 +90,7 @@ class TestErrorHandling:
             window.fetch = function() {
                 return Promise.reject(new Error('Сетевая ошибка (тест)'));
             };
-        """
-        )
+        """)
 
         # Отправляем команду
         submit_button.click()
@@ -110,14 +108,12 @@ class TestErrorHandling:
         )
 
         # Восстанавливаем оригинальный fetch
-        driver.execute_script(
-            """
+        driver.execute_script("""
             if (window._originalFetch) {
                 window.fetch = window._originalFetch;
                 delete window._originalFetch;
             }
-        """
-        )
+        """)
 
     def test_timeout_handling(self, driver):
         """Тест обработки таймаута запроса"""
@@ -132,8 +128,7 @@ class TestErrorHandling:
         input_field.send_keys("Тестовая команда")
 
         # Имитируем таймаут с помощью JavaScript
-        driver.execute_script(
-            """
+        driver.execute_script("""
             // Сохраняем оригинальный fetch
             window._originalFetch = window.fetch;
 
@@ -143,8 +138,7 @@ class TestErrorHandling:
                     // Никогда не вызываем resolve или reject
                 });
             };
-        """
-        )
+        """)
 
         # Отправляем команду
         submit_button.click()
@@ -158,14 +152,12 @@ class TestErrorHandling:
         assert loading_indicator.is_displayed(), "Индикатор загрузки не отображается"
 
         # Восстанавливаем оригинальный fetch
-        driver.execute_script(
-            """
+        driver.execute_script("""
             if (window._originalFetch) {
                 window.fetch = window._originalFetch;
                 delete window._originalFetch;
             }
-        """
-        )
+        """)
 
     def test_invalid_response_handling(self, driver):
         """Тест обработки некорректного ответа сервера"""
@@ -180,8 +172,7 @@ class TestErrorHandling:
         input_field.send_keys("Тестовая команда")
 
         # Имитируем некорректный ответ сервера с помощью JavaScript
-        driver.execute_script(
-            """
+        driver.execute_script("""
             // Сохраняем оригинальный fetch
             window._originalFetch = window.fetch;
 
@@ -197,8 +188,7 @@ class TestErrorHandling:
                     }
                 });
             };
-        """
-        )
+        """)
 
         # Отправляем команду
         submit_button.click()
@@ -223,14 +213,12 @@ class TestErrorHandling:
             )
 
         # Восстанавливаем оригинальный fetch
-        driver.execute_script(
-            """
+        driver.execute_script("""
             if (window._originalFetch) {
                 window.fetch = window._originalFetch;
                 delete window._originalFetch;
             }
-        """
-        )
+        """)
 
     def test_error_message_display(self, driver):
         """Тест отображения сообщения об ошибке"""
@@ -245,8 +233,7 @@ class TestErrorHandling:
         input_field.send_keys("Тестовая команда")
 
         # Имитируем ошибку с помощью JavaScript
-        driver.execute_script(
-            """
+        driver.execute_script("""
             // Добавляем сообщение об ошибке в интерфейс
             if (window.commandFormModule && window.commandFormModule.addMessage) {
                 window.commandFormModule.addMessage('Тестовая ошибка для проверки отображения', 'error');
@@ -267,8 +254,7 @@ class TestErrorHandling:
                     responseContainer.appendChild(messageDiv);
                 }
             }
-        """
-        )
+        """)
 
         # Проверяем, что сообщение об ошибке отображается корректно
         error_message = WebDriverWait(driver, 5).until(

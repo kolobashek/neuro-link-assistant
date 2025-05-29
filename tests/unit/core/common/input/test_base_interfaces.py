@@ -36,9 +36,10 @@ class TestInputBaseInterfaces:
             "press_ctrl_c",
         }
 
-        assert required_methods.issubset(
-            abstract_methods
-        ), f"Не все необходимые абстрактные методы определены. Отсутствуют: {required_methods - abstract_methods}"
+        assert required_methods.issubset(abstract_methods), (
+            "Не все необходимые абстрактные методы определены. Отсутствуют:"
+            f" {required_methods - abstract_methods}"
+        )
 
     def test_mouse_controller_base_exists(self):
         """Проверка существования и структуры базового класса для контроллера мыши."""
@@ -70,9 +71,10 @@ class TestInputBaseInterfaces:
             "click_element",
         }
 
-        assert required_methods.issubset(
-            abstract_methods
-        ), f"Не все необходимые абстрактные методы определены. Отсутствуют: {required_methods - abstract_methods}"
+        assert required_methods.issubset(abstract_methods), (
+            "Не все необходимые абстрактные методы определены. Отсутствуют:"
+            f" {required_methods - abstract_methods}"
+        )
 
     def test_input_controller_exists(self):
         """Проверка существования и структуры класса InputController."""
@@ -109,7 +111,9 @@ class TestInputBaseInterfaces:
                 "drag_to": lambda self, x, y, button="left", duration=None: True,
                 "scroll": lambda self, clicks, direction="down": True,
                 "get_position": lambda self: (0, 0),
-                "move_to_element": lambda self, element, offset_x=0, offset_y=0, duration=None: True,
+                "move_to_element": (
+                    lambda self, element, offset_x=0, offset_y=0, duration=None: True
+                ),
                 "click_element": lambda self, element, button="left", offset_x=0, offset_y=0: True,
             },
         )()
@@ -126,11 +130,7 @@ class TestInputBaseInterfaces:
         """Проверка корректности интеграции контроллеров ввода."""
         from unittest.mock import MagicMock
 
-        from core.common.input.base import (
-            AbstractKeyboard,
-            AbstractMouse,
-            InputController,
-        )
+        from core.common.input.base import AbstractKeyboard, AbstractMouse, InputController
 
         # Создаем моки для контроллеров
 

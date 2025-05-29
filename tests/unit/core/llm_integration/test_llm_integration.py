@@ -257,10 +257,7 @@ class TestActionPlanning:
         """Тест планирования действий на основе запроса пользователя"""
         # Создаем моки для зависимостей
         llm_client = MagicMock()
-        llm_client.send_request.return_value = {
-            "choices": [
-                {
-                    "text": """
+        llm_client.send_request.return_value = {"choices": [{"text": """
                     I'll help you install Python. Here's a plan:
 
                     {
@@ -270,10 +267,7 @@ class TestActionPlanning:
                             {"type": "verify_installation", "command": "python --version"}
                         ]
                     }
-                    """
-                }
-            ]
-        }
+                    """}]}
 
         prompt_processor = MagicMock()
         prompt_processor.process_prompt.return_value = "Plan actions for: install Python"

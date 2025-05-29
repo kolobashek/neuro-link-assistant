@@ -63,7 +63,6 @@ class TestInputFactory:
         with patch("core.common.input.factory.registry") as mock_registry, patch(
             "platform.system", return_value="Windows"
         ):
-
             # Создаем моки для класса мыши
             mock_mouse_class = MagicMock()
             mock_mouse = MagicMock()
@@ -103,7 +102,6 @@ class TestInputFactory:
         ) as mock_get_mouse_class, patch(
             "core.common.input.factory.InputController"  # Патчим в модуле factory
         ) as mock_controller_class:
-
             # Создаем моки
             mock_keyboard_class = MagicMock()
             mock_mouse_class = MagicMock()
@@ -121,6 +119,7 @@ class TestInputFactory:
 
             # Импортируем функцию get_input_controller
             from core.common.input.factory import get_input_controller
+
             # Получаем контроллер ввода
             controller = get_input_controller(human_like=True)
 
