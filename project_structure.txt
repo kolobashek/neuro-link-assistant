@@ -61,6 +61,7 @@
 |   |   |-- action_planner.py
 |   |   |-- api_client.py
 |   |   |-- api_connector.py
+|   |   |-- error_handler.py
 |   |   |-- prompt_processor.py
 |   |   |-- response_parser.py
 |   |   |-- __init__.py
@@ -90,6 +91,28 @@
 |   |   |   |   |-- pygetwindow_manager.py
 |   |   |   |   |-- win32_window_manager.py
 |   |   |   |   |-- __init__.py
+|   |-- security
+|   |   |-- jwt_handler.py
+|   |   |-- password.py
+|   |   |-- __init__.py
+|   |-- services
+|   |   |-- ai_model_service.py
+|   |   |-- auth_service.py
+|   |   |-- permission_service.py
+|   |   |-- task_service.py
+|   |   |-- user_service.py
+|   |   |-- __init__.py
+|   |-- task
+|   |   |-- auth_operations.py
+|   |   |-- base.py
+|   |   |-- file_operations.py
+|   |   |-- model_orchestration_operations.py
+|   |   |-- protocols.py
+|   |   |-- result.py
+|   |   |-- vision_operations.py
+|   |   |-- web_operations.py
+|   |   |-- windows_operations.py
+|   |   |-- __init__.py
 |   |-- utils
 |   |   |-- __init__.py
 |   |-- vision
@@ -103,11 +126,12 @@
 |   |   |-- browser_controller.py
 |   |   |-- element_finder.py
 |   |   |-- __init__.py
+|   |-- windows
+|   |   |-- __init__.py
 |   |-- component_registry.py
 |   |-- plugin_manager.py
 |   |-- system.py
 |   |-- system_initializer.py
-|   |-- task.py
 |   |-- task_manager.py
 |   |-- __init__.py
 |-- data
@@ -251,11 +275,11 @@
 |   |   |   |-- llm
 |   |   |   |   |-- test_action_planner.py
 |   |   |   |   |-- test_api_connector.py
-|   |   |   |   |-- test_error_handling.py
+|   |   |   |   |-- test_llm_error_handling.py
 |   |   |   |   |-- test_prompt_processor.py
 |   |   |   |   |-- test_response_parser.py
 |   |   |   |-- llm_integration
-|   |   |   |   |-- test_llm_integration.py
+|   |   |   |   |-- test_llm_unit.py
 |   |   |   |-- platform
 |   |   |   |   |-- windows
 |   |   |   |   |   |-- filesystem
@@ -296,16 +320,16 @@
 |   |   |   |-- test_base_layout.py
 |   |   |   |-- test_command_form.py
 |   |   |   |-- test_command_history.py
-|   |   |   |-- test_error_handling.py
 |   |   |   |-- test_logs_display.py
 |   |   |   |-- test_mobile_ui.py
 |   |   |   |-- test_modals.py
 |   |   |   |-- test_navigation.py
-|   |   |   |-- test_performance.py
 |   |   |   |-- test_responsive.py
 |   |   |   |-- test_routing.py
 |   |   |   |-- test_settings.py
 |   |   |   |-- test_theme_system.py
+|   |   |   |-- test_ui_error_handling.py
+|   |   |   |-- test_ui_performance.py
 |   |-- conftest.py
 |-- utils
 |   |-- helpers.py
@@ -339,4 +363,5 @@
 |-- run.bat
 |-- setup.cfg
 |-- Show-DirTree.ps1
+|-- test_results.txt
 |-- tree.ps1

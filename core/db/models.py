@@ -18,6 +18,8 @@ class User(Base):
     username = Column(String(100), unique=True, index=True, nullable=False)
     email = Column(String(255), unique=True, index=True, nullable=False)
     password_hash = Column(String(255), nullable=False)
+    salt = Column(String(255))  # Добавляем поле для соли
+    role = Column(String(50), default="user")  # Добавляем поле для роли
     display_name = Column(String(100))
     bio = Column(Text)
     avatar_url = Column(String(255))

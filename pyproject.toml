@@ -15,7 +15,7 @@ classifiers = [
 keywords = ["neurolink", "assistant", "ai"]
 
 [tool.poetry.dependencies]
-python = ">=3.8.1"
+python = ">=3.9"
 flask = ">=2.2.3"
 werkzeug = ">=2.2.3"
 selenium = ">=4.1.0"
@@ -40,6 +40,7 @@ sqlalchemy = "^2.0.0"
 psycopg2-binary = "^2.9.5"
 alembic = "^1.10.0"
 pydantic = "^2.0.0"
+pyjwt = "^2.10.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.0.0"

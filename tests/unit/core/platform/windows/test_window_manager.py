@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from core.windows import WindowManager
+from core.platform.windows.window.win32_window_manager import Win32WindowManager as WindowManager
 
 
 class TestWindowManager:

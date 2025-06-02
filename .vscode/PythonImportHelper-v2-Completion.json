@@ -205,6 +205,14 @@
         "documentation": {}
     },
     {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -214,6 +222,14 @@
     },
     {
         "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -1428,6 +1444,94 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "TYPE_CHECKING",
         "importPath": "typing",
         "description": "typing",
@@ -2135,6 +2239,14 @@
         "documentation": {}
     },
     {
+        "label": "select",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "desc",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -2311,6 +2423,14 @@
         "documentation": {}
     },
     {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -2391,7 +2511,39 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
         "importPath": "core.db.models",
         "description": "core.db.models",
         "isExtraImport": true,
@@ -2455,6 +2607,22 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "importPath": "core.db.models",
         "description": "core.db.models",
@@ -2528,6 +2696,22 @@
     },
     {
         "label": "Task",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
         "importPath": "core.db.models",
         "description": "core.db.models",
         "isExtraImport": true,
@@ -2796,11 +2980,150 @@
         "documentation": {}
     },
     {
-        "label": "TaskResult",
-        "importPath": "core.task.result",
-        "description": "core.task.result",
+        "label": "hashlib",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "core.task.result",
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jwt",
+        "description": "jwt",
+        "detail": "jwt",
+        "documentation": {}
+    },
+    {
+        "label": "secrets",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "secrets",
+        "description": "secrets",
+        "detail": "secrets",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "UserRepository",
+        "importPath": "core.db.repository.user_repository",
+        "description": "core.db.repository.user_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.user_repository",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "decode_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "isExtraImport": true,
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "hash_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "hash_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "isExtraImport": true,
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "isExtraImport": true,
+        "detail": "core.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "isExtraImport": true,
+        "detail": "core.services.auth_service",
         "documentation": {}
     },
     {
@@ -2833,6 +3156,38 @@
         "description": "core.task.result",
         "isExtraImport": true,
         "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "TaskResult",
+        "importPath": "core.task.result",
+        "description": "core.task.result",
+        "isExtraImport": true,
+        "detail": "core.task.result",
+        "documentation": {}
+    },
+    {
+        "label": "AuthOperationsMixin",
+        "importPath": "core.task.auth_operations",
+        "description": "core.task.auth_operations",
+        "isExtraImport": true,
+        "detail": "core.task.auth_operations",
         "documentation": {}
     },
     {
@@ -2841,6 +3196,14 @@
         "description": "core.task.file_operations",
         "isExtraImport": true,
         "detail": "core.task.file_operations",
+        "documentation": {}
+    },
+    {
+        "label": "ModelOrchestrationOperationsMixin",
+        "importPath": "core.task.model_orchestration_operations",
+        "description": "core.task.model_orchestration_operations",
+        "isExtraImport": true,
+        "detail": "core.task.model_orchestration_operations",
         "documentation": {}
     },
     {
@@ -2865,22 +3228,6 @@
         "description": "core.task.windows_operations",
         "isExtraImport": true,
         "detail": "core.task.windows_operations",
-        "documentation": {}
-    },
-    {
-        "label": "TaskResult",
-        "importPath": "core.task.base",
-        "description": "core.task.base",
-        "isExtraImport": true,
-        "detail": "core.task.base",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "importPath": "core.task.base",
-        "description": "core.task.base",
-        "isExtraImport": true,
-        "detail": "core.task.base",
         "documentation": {}
     },
     {
@@ -4381,100 +4728,11 @@
         "documentation": {}
     },
     {
-        "label": "TaskRepository",
-        "importPath": "core.db.repository.task_repository",
-        "description": "core.db.repository.task_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.task_repository",
-        "documentation": {}
-    },
-    {
-        "label": "UserRepository",
-        "importPath": "core.db.repository.user_repository",
-        "description": "core.db.repository.user_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.user_repository",
-        "documentation": {}
-    },
-    {
-        "label": "UserRepository",
-        "importPath": "core.db.repository.user_repository",
-        "description": "core.db.repository.user_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.user_repository",
-        "documentation": {}
-    },
-    {
-        "label": "UserRepository",
-        "importPath": "core.db.repository.user_repository",
-        "description": "core.db.repository.user_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.user_repository",
-        "documentation": {}
-    },
-    {
         "label": "WorkflowRepository",
         "importPath": "core.db.repository.workflow_repository",
         "description": "core.db.repository.workflow_repository",
         "isExtraImport": true,
         "detail": "core.db.repository.workflow_repository",
-        "documentation": {}
-    },
-    {
-        "label": "jwt",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "jwt",
-        "description": "jwt",
-        "detail": "jwt",
-        "documentation": {}
-    },
-    {
-        "label": "create_access_token",
-        "importPath": "core.security.jwt_handler",
-        "description": "core.security.jwt_handler",
-        "isExtraImport": true,
-        "detail": "core.security.jwt_handler",
-        "documentation": {}
-    },
-    {
-        "label": "decode_token",
-        "importPath": "core.security.jwt_handler",
-        "description": "core.security.jwt_handler",
-        "isExtraImport": true,
-        "detail": "core.security.jwt_handler",
-        "documentation": {}
-    },
-    {
-        "label": "verify_token",
-        "importPath": "core.security.jwt_handler",
-        "description": "core.security.jwt_handler",
-        "isExtraImport": true,
-        "detail": "core.security.jwt_handler",
-        "documentation": {}
-    },
-    {
-        "label": "hash_password",
-        "importPath": "core.security.password",
-        "description": "core.security.password",
-        "isExtraImport": true,
-        "detail": "core.security.password",
-        "documentation": {}
-    },
-    {
-        "label": "verify_password",
-        "importPath": "core.security.password",
-        "description": "core.security.password",
-        "isExtraImport": true,
-        "detail": "core.security.password",
-        "documentation": {}
-    },
-    {
-        "label": "AuthService",
-        "importPath": "core.services.auth_service",
-        "description": "core.services.auth_service",
-        "isExtraImport": true,
-        "detail": "core.services.auth_service",
         "documentation": {}
     },
     {
@@ -8157,7 +8415,7 @@
         "kind": 6,
         "importPath": "core.db.repository.task_repository",
         "description": "core.db.repository.task_repository",
-        "peekOfCode": "class TaskRepository:\n    \"\"\"Класс для работы с задачами в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий задач.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def create(",
+        "peekOfCode": "class TaskRepository:\n    \"\"\"Класс для работы с задачами в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий задач.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def _user_exists(self, user_id: int) -> bool:",
         "detail": "core.db.repository.task_repository",
         "documentation": {}
     },
@@ -8166,7 +8424,7 @@
         "kind": 6,
         "importPath": "core.db.repository.user_repository",
         "description": "core.db.repository.user_repository",
-        "peekOfCode": "class UserRepository:\n    \"\"\"Класс для работы с пользователями в базе данных.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует репозиторий пользователей.\n        Args:\n            db_session (Session): Сессия SQLAlchemy для работы с БД.\n        \"\"\"\n        self.db = db_session\n    def create(",
+        "peekOfCode": "class UserRepository:\n    \"\"\"Репозиторий для работы с пользователями.\"\"\"\n    def __init__(self, db_session: Session):\n        self.db = db_session  # Добавляем инициализацию атрибута db\n    def get_by_username(self, username: str) -> Optional[User]:\n        \"\"\"\n        Получает пользователя по имени пользователя.\n        Args:\n            username: Имя пользователя\n        Returns:",
         "detail": "core.db.repository.user_repository",
         "documentation": {}
     },
@@ -8409,7 +8667,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class User(Base):\n    \"\"\"Модель пользователя.\"\"\"\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    display_name = Column(String(100))\n    bio = Column(Text)\n    avatar_url = Column(String(255))",
+        "peekOfCode": "class User(Base):\n    \"\"\"Модель пользователя.\"\"\"\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    salt = Column(String(255))  # Добавляем поле для соли\n    role = Column(String(50), default=\"user\")  # Добавляем поле для роли\n    display_name = Column(String(100))",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -8747,6 +9005,132 @@
         "documentation": {}
     },
     {
+        "label": "create_access_token",
+        "kind": 2,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"\n    Создает JWT токен доступа.\n    Args:\n        data: Данные для включения в токен\n        expires_delta: Время жизни токена\n    Returns:\n        str: JWT токен\n    \"\"\"\n    to_encode = data.copy()",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "kind": 2,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "def verify_token(token: str) -> Dict[str, Any]:\n    \"\"\"\n    Проверяет JWT токен.\n    Args:\n        token: JWT токен для проверки\n    Returns:\n        Dict[str, Any]: Декодированные данные из токена\n    Raises:\n        jwt.InvalidTokenError: Если токен невалидный\n        jwt.ExpiredSignatureError: Если токен истек",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "decode_token",
+        "kind": 2,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "def decode_token(token: str) -> Dict[str, Any]:\n    \"\"\"\n    Декодирует JWT токен без проверки.\n    Args:\n        token: JWT токен для декодирования\n    Returns:\n        Dict[str, Any]: Декодированные данные из токена\n    \"\"\"\n    try:\n        # Декодируем без проверки подписи для тестирования",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "create_refresh_token",
+        "kind": 2,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "def create_refresh_token(user_id: int) -> str:\n    \"\"\"\n    Создает refresh токен.\n    Args:\n        user_id: ID пользователя\n    Returns:\n        str: Refresh токен\n    \"\"\"\n    data = {\"user_id\": user_id, \"type\": \"refresh\"}\n    expire = datetime.now(timezone.utc) + timedelta(days=7)  # Refresh токен на 7 дней",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "generate_token_signature",
+        "kind": 2,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "def generate_token_signature(token: str, secret: str) -> str:\n    \"\"\"\n    Генерирует подпись для токена.\n    Args:\n        token: Токен для подписи\n        secret: Секретный ключ\n    Returns:\n        str: Подпись токена\n    \"\"\"\n    return hashlib.sha256(f\"{token}{secret}\".encode()).hexdigest()",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "SECRET_KEY = \"neuro-link-secret-key-change-in-production\"\nALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\ndef create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"\n    Создает JWT токен доступа.\n    Args:\n        data: Данные для включения в токен\n        expires_delta: Время жизни токена\n    Returns:",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ALGORITHM",
+        "kind": 5,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\ndef create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"\n    Создает JWT токен доступа.\n    Args:\n        data: Данные для включения в токен\n        expires_delta: Время жизни токена\n    Returns:\n        str: JWT токен",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "kind": 5,
+        "importPath": "core.security.jwt_handler",
+        "description": "core.security.jwt_handler",
+        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 30\ndef create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:\n    \"\"\"\n    Создает JWT токен доступа.\n    Args:\n        data: Данные для включения в токен\n        expires_delta: Время жизни токена\n    Returns:\n        str: JWT токен\n    \"\"\"",
+        "detail": "core.security.jwt_handler",
+        "documentation": {}
+    },
+    {
+        "label": "hash_password",
+        "kind": 2,
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "peekOfCode": "def hash_password(password: str, salt: Optional[str] = None) -> Tuple[str, str]:\n    \"\"\"\n    Хеширует пароль с солью.\n    Args:\n        password: Пароль для хеширования\n        salt: Соль (если не указана, генерируется автоматически)\n    Returns:\n        Tuple[str, str]: Кортеж (хеш_пароля, соль)\n    \"\"\"\n    salt = salt or secrets.token_hex(16)  # Используем или переданную соль, или генерируем новую",
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "verify_password",
+        "kind": 2,
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "peekOfCode": "def verify_password(password: str, stored_hash: str, salt: str) -> bool:\n    \"\"\"\n    Проверяет пароль против сохраненного хеша.\n    Args:\n        password: Вводимый пароль\n        stored_hash: Сохраненный хеш\n        salt: Соль\n    Returns:\n        bool: True если пароль верный\n    \"\"\"",
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "generate_secure_password",
+        "kind": 2,
+        "importPath": "core.security.password",
+        "description": "core.security.password",
+        "peekOfCode": "def generate_secure_password(length: int = 12) -> str:\n    \"\"\"\n    Генерирует безопасный пароль.\n    Args:\n        length: Длина пароля\n    Returns:\n        str: Сгенерированный пароль\n    \"\"\"\n    import string\n    characters = string.ascii_letters + string.digits + \"!@#$%^&*\"",
+        "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "kind": 6,
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "peekOfCode": "class AuthService:\n    \"\"\"Сервис для работы с аутентификацией и авторизацией.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует сервис аутентификации.\n        Args:\n            db_session: Сессия базы данных\n        \"\"\"\n        self.db = db_session\n        self.user_repo = UserRepository(db_session)",
+        "detail": "core.services.auth_service",
+        "documentation": {}
+    },
+    {
+        "label": "PermissionService",
+        "kind": 6,
+        "importPath": "core.services.permission_service",
+        "description": "core.services.permission_service",
+        "peekOfCode": "class PermissionService:\n    \"\"\"Сервис для работы с правами доступа.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует сервис прав доступа.\n        Args:\n            db_session: Сессия базы данных\n        \"\"\"\n        self.db = db_session\n        self.auth_service = AuthService(db_session)",
+        "detail": "core.services.permission_service",
+        "documentation": {}
+    },
+    {
+        "label": "AuthOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.auth_operations",
+        "description": "core.task.auth_operations",
+        "peekOfCode": "class AuthOperationsMixin:\n    \"\"\"\n    Миксин для операций авторизации пользователей.\n    \"\"\"\n    def _is_auth_operation(self):\n        \"\"\"Проверяет, является ли задача операцией авторизации.\"\"\"\n        auth_keywords = [\n            \"зарегистрировать пользователя\",\n            \"регистрация\",\n            \"создать пользователя\",",
+        "detail": "core.task.auth_operations",
+        "documentation": {}
+    },
+    {
         "label": "BaseTask",
         "kind": 6,
         "importPath": "core.task.base",
@@ -8760,7 +9144,7 @@
         "kind": 6,
         "importPath": "core.task.base",
         "description": "core.task.base",
-        "peekOfCode": "class Task(\n    VisionOperationsMixin, WebOperationsMixin, WindowsOperationsMixin, FileOperationsMixin, BaseTask\n):\n    \"\"\"\n    Финальный класс Task со всеми миксинами.\n    Порядок миксинов важен - VisionOperationsMixin первый для приоритета.\n    \"\"\"\n    pass",
+        "peekOfCode": "class Task(\n    AuthOperationsMixin,\n    ModelOrchestrationOperationsMixin,\n    VisionOperationsMixin,\n    WebOperationsMixin,\n    WindowsOperationsMixin,\n    FileOperationsMixin,\n    BaseTask,\n):\n    \"\"\"",
         "detail": "core.task.base",
         "documentation": {}
     },
@@ -8771,6 +9155,15 @@
         "description": "core.task.file_operations",
         "peekOfCode": "class FileOperationsMixin:\n    \"\"\"\n    Миксин для файловых операций.\n    \"\"\"\n    def _is_file_operation(self: \"Task\") -> bool:\n        \"\"\"\n        Проверяет, является ли задача файловой операцией.\n        Returns:\n            bool: True если это файловая операция\n        \"\"\"",
         "detail": "core.task.file_operations",
+        "documentation": {}
+    },
+    {
+        "label": "ModelOrchestrationOperationsMixin",
+        "kind": 6,
+        "importPath": "core.task.model_orchestration_operations",
+        "description": "core.task.model_orchestration_operations",
+        "peekOfCode": "class ModelOrchestrationOperationsMixin:\n    \"\"\"\n    Миксин для операций оркестрации моделей.\n    \"\"\"\n    def _is_model_orchestration_operation(self):\n        \"\"\"\n        Определяет, является ли задача операцией оркестрации моделей.\n        \"\"\"\n        description_lower = self.description.lower()\n        # Ключевые слова для оркестрации моделей",
+        "detail": "core.task.model_orchestration_operations",
         "documentation": {}
     },
     {
@@ -8942,15 +9335,6 @@
         "description": "core.system_initializer",
         "peekOfCode": "class SystemInitializer:\n    \"\"\"\n    Инициализатор системы.\n    Отвечает за инициализацию и завершение работы системы.\n    \"\"\"\n    def __init__(self, registry=None):\n        \"\"\"\n        Инициализация инициализатора системы.\n        Args:\n            registry (ComponentRegistry, optional): Реестр компонентов системы",
         "detail": "core.system_initializer",
-        "documentation": {}
-    },
-    {
-        "label": "__all__",
-        "kind": 5,
-        "importPath": "core.task",
-        "description": "core.task",
-        "peekOfCode": "__all__ = [\"Task\", \"TaskResult\"]",
-        "detail": "core.task",
         "documentation": {}
     },
     {
@@ -9867,25 +10251,88 @@
         "kind": 6,
         "importPath": "tests.db.test_security",
         "description": "tests.db.test_security",
-        "peekOfCode": "class TestPasswordSecurity:\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования и проверки паролей\"\"\"\n        # Хешируем пароль\n        password = \"secure_password123\"\n        hashed = hash_password(password)\n        # Проверяем, что хеш отличается от исходного пароля\n        assert hashed != password\n        # Проверяем корректный пароль\n        assert verify_password(password, hashed) is True",
+        "peekOfCode": "class TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password\n        assert len(salt) > 0\n        assert verify_password(password, password_hash, salt)\n    def test_password_verification_fail(self):",
         "detail": "tests.db.test_security",
         "documentation": {}
     },
     {
-        "label": "TestJWTTokens",
+        "label": "TestJWTSecurity",
         "kind": 6,
         "importPath": "tests.db.test_security",
         "description": "tests.db.test_security",
-        "peekOfCode": "class TestJWTTokens:\n    def test_jwt_token_creation_and_verification(self):\n        \"\"\"Тест создания и проверки JWT токенов\"\"\"\n        # Создаем JWT токен\n        user_data = {\"user_id\": 123, \"username\": \"testuser\", \"role\": \"user\"}\n        token = create_access_token(user_data)\n        # Проверяем, что токен создан\n        assert token is not None\n        assert isinstance(token, str)\n        # Декодируем токен",
+        "peekOfCode": "class TestJWTSecurity:\n    \"\"\"Тесты безопасности JWT.\"\"\"\n    def test_token_creation_and_verification(self):\n        \"\"\"Тест создания и проверки токена.\"\"\"\n        data = {\"user_id\": 1, \"username\": \"test_user\"}\n        token = create_access_token(data)\n        assert token is not None\n        assert len(token) > 0\n        decoded_data = verify_token(token)\n        assert decoded_data[\"user_id\"] == 1",
         "detail": "tests.db.test_security",
         "documentation": {}
     },
     {
-        "label": "TestAuthorizationSecurity",
+        "label": "TestUserRepository",
         "kind": 6,
         "importPath": "tests.db.test_security",
         "description": "tests.db.test_security",
-        "peekOfCode": "class TestAuthorizationSecurity:\n    @pytest.fixture\n    def auth_service(self, db_session):\n        \"\"\"Создает сервис аутентификации\"\"\"\n        user_repo = UserRepository(db_session)\n        return AuthService(db_session, user_repo)\n    @pytest.fixture\n    def permission_service(self, db_session):\n        \"\"\"Создает сервис управления разрешениями\"\"\"\n        return PermissionService(db_session)",
+        "peekOfCode": "class TestUserRepository:\n    \"\"\"Тесты репозитория пользователей.\"\"\"\n    def test_create_user(self, user_repository):\n        \"\"\"Тест создания пользователя.\"\"\"\n        password_hash, salt = hash_password(\"test_password\")\n        user = user_repository.create(\n            username=\"test_user\",\n            email=\"test@example.com\",\n            password_hash=password_hash,\n            display_name=\"Test User\",",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestAuthService",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestAuthService:\n    \"\"\"Тесты сервиса аутентификации.\"\"\"\n    def test_register_user(self, auth_service):\n        \"\"\"Тест регистрации пользователя.\"\"\"\n        result = auth_service.register_user(\n            username=\"new_user\",\n            email=\"new@example.com\",\n            password=\"secure_password\",\n            display_name=\"New User\",\n        )",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestPermissionService",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestPermissionService:\n    \"\"\"Тесты сервиса прав доступа.\"\"\"\n    def test_check_admin_permissions(self, permission_service, auth_service):\n        \"\"\"Тест прав администратора.\"\"\"\n        # Создаем администратора\n        admin_data = auth_service.register_user(\n            username=\"admin\", email=\"admin@example.com\", password=\"admin_password\", role=\"admin\"\n        )\n        assert admin_data is not None\n        # Проверяем права администратора",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestSecurityIntegration",
+        "kind": 6,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "class TestSecurityIntegration:\n    \"\"\"Интеграционные тесты безопасности.\"\"\"\n    def test_full_auth_workflow(self, auth_service, permission_service):\n        \"\"\"Тест полного цикла аутентификации и авторизации.\"\"\"\n        # Регистрация\n        user_data = auth_service.register_user(\n            username=\"integration_user\",\n            email=\"integration@example.com\",\n            password=\"secure_password\",\n            role=\"user\",",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "def db_session():\n    \"\"\"Создает тестовую сессию базы данных.\"\"\"\n    engine = create_engine(\"sqlite:///:memory:\")\n    Base.metadata.create_all(engine)\n    SessionLocal = sessionmaker(bind=engine)\n    session = SessionLocal()\n    yield session\n    session.close()\n@pytest.fixture\ndef user_repository(db_session):",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "user_repository",
+        "kind": 2,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "def user_repository(db_session):\n    \"\"\"Создает репозиторий пользователей для тестов.\"\"\"\n    return UserRepository(db_session)\n@pytest.fixture\ndef auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "auth_service",
+        "kind": 2,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "def auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):",
+        "detail": "tests.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "permission_service",
+        "kind": 2,
+        "importPath": "tests.db.test_security",
+        "description": "tests.db.test_security",
+        "peekOfCode": "def permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password",
         "detail": "tests.db.test_security",
         "documentation": {}
     },

@@ -29,8 +29,15 @@ class BaseTask:
 
         try:
             # Распознаем тип задачи и выполняем соответствующую операцию
-            # Порядок важен: компьютерное зрение -> веб -> Windows -> файловые операции
-            if self._is_computer_vision_operation():
+
+            # Порядок важен: авторизация -> оркестрация моделей -> компьютерное зрение -> веб -> Windows -> файловые операции
+            if self._is_auth_operation():
+                print("DEBUG: Определена как операция авторизации")
+                return self._execute_auth_operation()
+            elif self._is_model_orchestration_operation():
+                print("DEBUG: Определена как операция оркестрации моделей")
+                return self._execute_model_orchestration_operation()
+            elif self._is_computer_vision_operation():
                 print("DEBUG: Определена как операция компьютерного зрения")
                 return self._execute_computer_vision_operation()
             elif self._is_web_operation():
@@ -52,6 +59,14 @@ class BaseTask:
             return TaskResult(False, f"Ошибка выполнения задачи: {str(e)}")
 
     # Методы будут переопределены в миксинах
+    def _is_auth_operation(self):
+        """Будет переопределен в AuthOperationsMixin"""
+        return False
+
+    def _is_model_orchestration_operation(self):
+        """Будет переопределен в ModelOrchestrationOperationsMixin"""
+        return False
+
     def _is_computer_vision_operation(self):
         """Будет переопределен в VisionOperationsMixin"""
         return False
@@ -67,6 +82,14 @@ class BaseTask:
     def _is_file_operation(self):
         """Будет переопределен в FileOperationsMixin"""
         return False
+
+    def _execute_auth_operation(self):
+        """Будет переопределен в AuthOperationsMixin"""
+        return TaskResult(False, "Операции авторизации не реализованы")
+
+    def _execute_model_orchestration_operation(self):
+        """Будет переопределен в ModelOrchestrationOperationsMixin"""
+        return TaskResult(False, "Операции оркестрации моделей не реализованы")
 
     def _execute_computer_vision_operation(self):
         """Будет переопределен в VisionOperationsMixin"""
@@ -86,7 +109,9 @@ class BaseTask:
 
 
 # Импортируем миксины
+from core.task.auth_operations import AuthOperationsMixin
 from core.task.file_operations import FileOperationsMixin
+from core.task.model_orchestration_operations import ModelOrchestrationOperationsMixin
 from core.task.vision_operations import VisionOperationsMixin
 from core.task.web_operations import WebOperationsMixin
 from core.task.windows_operations import WindowsOperationsMixin
@@ -94,11 +119,18 @@ from core.task.windows_operations import WindowsOperationsMixin
 
 # Создаем финальный класс Task с миксинами
 class Task(
-    VisionOperationsMixin, WebOperationsMixin, WindowsOperationsMixin, FileOperationsMixin, BaseTask
+    AuthOperationsMixin,
+    ModelOrchestrationOperationsMixin,
+    VisionOperationsMixin,
+    WebOperationsMixin,
+    WindowsOperationsMixin,
+    FileOperationsMixin,
+    BaseTask,
 ):
     """
     Финальный класс Task со всеми миксинами.
-    Порядок миксинов важен - VisionOperationsMixin первый для приоритета.
+    Порядок миксинов важен - AuthOperationsMixin первый для обработки авторизации,
+    ModelOrchestrationOperationsMixin второй для оркестрации моделей.
     """
 
     pass

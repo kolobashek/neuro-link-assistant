@@ -416,3 +416,15 @@ class WorkflowRepository:
 
         # Шаги уже загружены через relationship с параметром order_by
         return workflow
+
+    def get_by_id_with_steps(self, workflow_id: int) -> Optional[Workflow]:
+        """
+        Получает рабочий процесс с шагами по ID.
+
+        Args:
+            workflow_id: ID рабочего процесса
+
+        Returns:
+            Optional[Workflow]: Рабочий процесс с шагами или None
+        """
+        return self.get_workflow_with_steps(workflow_id)

@@ -29,6 +29,8 @@ class FileOperationsMixin:
             "удалить файл",
             "удалить",
             "стереть",
+            "открыть файл",
+            "открыть",
             "файл",
             ".txt",
             ".json",
@@ -57,6 +59,10 @@ class FileOperationsMixin:
             # Создание файла
             if any(keyword in description_lower for keyword in ["создать файл", "создать"]):
                 return self._create_file(filesystem)
+
+            # Открытие файла
+            elif any(keyword in description_lower for keyword in ["открыть файл", "открыть"]):
+                return self._open_file(filesystem)
 
             # Чтение файла
             elif any(keyword in description_lower for keyword in ["прочитать", "читать"]):
@@ -91,6 +97,28 @@ class FileOperationsMixin:
             return TaskResult(True, f"Файл {filename} успешно создан с содержимым: {content}")
         else:
             return TaskResult(False, f"Не удалось создать файл {filename}")
+
+    def _open_file(self: "Task", filesystem) -> TaskResult:
+        """Открывает файл (создает если не существует)."""
+        filename = self._extract_filename()
+        if not filename:
+            return TaskResult(False, "Не удалось определить имя файла")
+
+        # Проверяем, существует ли файл
+        if filesystem.file_exists(filename):
+            # Файл существует, читаем его содержимое
+            content = filesystem.read_file(filename)
+            if content is not None:
+                return TaskResult(True, f"Файл {filename} открыт. Содержимое: {content}")
+            else:
+                return TaskResult(False, f"Не удалось прочитать файл {filename}")
+        else:
+            # Файл не существует, создаем его
+            success = filesystem.create_file(filename, "")
+            if success:
+                return TaskResult(True, f"Файл {filename} создан и открыт (был пустым)")
+            else:
+                return TaskResult(False, f"Не удалось создать файл {filename}")
 
     def _read_file(self: "Task", filesystem) -> TaskResult:
         """Читает содержимое файла."""
