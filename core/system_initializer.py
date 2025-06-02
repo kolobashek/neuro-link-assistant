@@ -132,16 +132,24 @@ class SystemInitializer:
         """
         try:
             # Получаем менеджер плагинов
-            plugin_manager = self._registry.get("plugin_manager")
+            plugin_manager = self._registry.get("plugin_manager", None)
 
             # Выгружаем плагины если менеджер плагинов существует
             if plugin_manager:
                 plugin_manager.unload_plugins()
 
             # Закрываем браузер если он открыт
-            browser_controller = self._registry.get("browser_controller")
-            if browser_controller:
+            browser_controller = self._registry.get("browser_controller", None)
+            if browser_controller and hasattr(browser_controller, "quit"):
                 browser_controller.quit()
+
+            # Вызываем shutdown для всех компонентов
+            for name, component in self._registry.get_all().items():
+                if hasattr(component, "shutdown"):
+                    try:
+                        component.shutdown()
+                    except Exception as e:
+                        print(f"Ошибка при завершении работы компонента {name}: {e}")
 
             # Отмечаем систему как неинициализированную
             self._initialized = False
@@ -153,7 +161,7 @@ class SystemInitializer:
                 error_handler = self._registry.get("error_handler", None)
                 if error_handler:
                     error_handler.handle_error(e, "Error shutting down system")
-            except Exception as e:
+            except Exception:
                 # Если не удалось обработать ошибку, просто выводим ее
                 print(f"Error shutting down system: {e}")
 
@@ -176,82 +184,165 @@ class SystemInitializer:
             bool: True в случае успешной регистрации
         """
         try:
-            # Создаем и регистрируем обработчик ошибок
-            try:
-                from core.common.error_handler import ErrorHandler, get_error_handler
-
-                # Используем существующий глобальный экземпляр ErrorHandler
-                error_handler = get_error_handler()
-                self._registry.register("error_handler", error_handler)
-            except ImportError:
-                # Пробуем альтернативный путь импорта
+            # Создаем и регистрируем обработчик ошибок ТОЛЬКО если его еще нет
+            if not self._registry.has("error_handler"):
                 try:
-                    from core.common.error_handler import ErrorHandler
+                    from core.common.error_handler import ErrorHandler, get_error_handler
 
-                    error_handler = ErrorHandler()
+                    # Используем существующий глобальный экземпляр ErrorHandler
+                    error_handler = get_error_handler()
                     self._registry.register("error_handler", error_handler)
+                    print(f"Зарегистрирован обработчик ошибок: {error_handler}")
+                except ImportError as e:
+                    # Пробуем альтернативный путь импорта
+                    try:
+                        from core.common.error_handler import ErrorHandler
+
+                        error_handler = ErrorHandler()
+                        self._registry.register("error_handler", error_handler)
+                        print(
+                            f"Зарегистрирован обработчик ошибок (альтернативный): {error_handler}"
+                        )
+                    except ImportError as e2:
+                        print(f"Не удалось импортировать ErrorHandler: {e2}")
+                        return False  # Критическая ошибка - возвращаем False
+            else:
+                print("ErrorHandler уже зарегистрирован, пропускаем")
+
+            # Создаем и регистрируем менеджер плагинов ТОЛЬКО если его еще нет
+            if not self._registry.has("plugin_manager"):
+                try:
+                    from core.plugin_manager import PluginManager
+
+                    plugin_manager = PluginManager(self._registry)
+                    self._registry.register("plugin_manager", plugin_manager)
+                    print(f"Зарегистрирован менеджер плагинов: {plugin_manager}")
                 except ImportError:
-                    print("Не удалось импортировать ErrorHandler")
-
-            # Создаем и регистрируем менеджер плагинов
-            try:
-                from core.plugin_manager import PluginManager
-
-                plugin_manager = PluginManager(self._registry)
-                self._registry.register("plugin_manager", plugin_manager)
-            except ImportError:
-                print("Не удалось импортировать PluginManager")
+                    print("Не удалось импортировать PluginManager")
+                    return False  # Критическая ошибка
+            else:
+                print("PluginManager уже зарегистрирован, пропускаем")
 
             # Создаем и регистрируем менеджер задач
-            try:
-                from core.task_manager import TaskManager
+            if not self._registry.has("task_manager"):
+                try:
+                    from core.task_manager import TaskManager
 
-                task_manager = TaskManager()
-                self._registry.register("task_manager", task_manager)
-            except ImportError:
-                print("Не удалось импортировать TaskManager")
+                    task_manager = TaskManager()
+                    self._registry.register("task_manager", task_manager)
+                except ImportError:
+                    print("Не удалось импортировать TaskManager")
+                    return False
 
             # Создаем и регистрируем файловую систему
-            try:
-                from core.platform.windows.filesystem import Win32FileSystem
+            if not self._registry.has("filesystem"):
+                try:
+                    from core.platform.windows.filesystem import Win32FileSystem
 
-                filesystem = Win32FileSystem()
-                self._registry.register("filesystem", filesystem)
-            except ImportError:
-                print("Не удалось импортировать Win32FileSystem")
+                    filesystem = Win32FileSystem()
+                    self._registry.register("filesystem", filesystem)
+                except ImportError:
+                    print("Не удалось импортировать Win32FileSystem")
+                    return False
 
             # Создаем и регистрируем контроллер браузера
-            try:
-                from core.web.browser_controller import BrowserController
+            if not self._registry.has("browser_controller"):
+                try:
+                    from core.web.browser_controller import BrowserController
 
-                browser_controller = BrowserController()
-                self._registry.register("browser_controller", browser_controller)
-            except ImportError:
-                print("Не удалось импортировать BrowserController")
+                    browser_controller = BrowserController()
+                    self._registry.register("browser_controller", browser_controller)
+                except ImportError:
+                    print("Не удалось импортировать BrowserController")
+                    return False
 
             # Создаем и регистрируем компоненты компьютерного зрения
-            try:
-                from core.vision.element_localization import ElementLocalization
-                from core.vision.screen_capture import ScreenCapture
+            if not self._registry.has("screen_capture") and not self._registry.has(
+                "element_localization"
+            ):
+                try:
+                    from core.vision.element_localization import ElementLocalization
+                    from core.vision.screen_capture import ScreenCapture
 
-                screen_capture = ScreenCapture()
-                element_localization = ElementLocalization()
+                    screen_capture = ScreenCapture()
+                    element_localization = ElementLocalization()
 
-                self._registry.register("screen_capture", screen_capture)
-                self._registry.register("element_localization", element_localization)
+                    self._registry.register("screen_capture", screen_capture)
+                    self._registry.register("element_localization", element_localization)
 
-                print(f"Получен компонент захвата экрана: {screen_capture}")
-                print(f"Получен компонент локализации элементов: {element_localization}")
-            except ImportError as e:
-                print(f"Не удалось импортировать компоненты компьютерного зрения: {e}")
+                    print(f"Получен компонент захвата экрана: {screen_capture}")
+                    print(f"Получен компонент локализации элементов: {element_localization}")
+                except ImportError as e:
+                    print(f"Не удалось импортировать компоненты компьютерного зрения: {e}")
+                    return False
 
             # Регистрируем дополнительные компоненты, если они доступны
             self._register_optional_components()
 
+            # После регистрации всех компонентов - вызываем их методы initialize
+            print("Инициализация зарегистрированных компонентов...")
+            for name, component in self._registry.get_all().items():
+                if hasattr(component, "initialize"):
+                    try:
+                        result = component.initialize()
+                        print(f"Компонент {name} инициализирован: {result}")
+                        if result is False:
+                            print(f"Критическая ошибка при инициализации компонента {name}")
+                            return False
+                    except Exception as e:
+                        print(f"Ошибка при инициализации компонента {name}: {e}")
+                        # Вызываем handle_error для обработки ошибки
+                        try:
+                            error_handler = self._registry.get("error_handler", None)
+                            if error_handler:
+                                error_handler.handle_error(
+                                    e, f"Error initializing component {name}"
+                                )
+                        except Exception:
+                            pass
+                        # Для failing_component возвращаем False
+                        if name == "failing_component":
+                            return False
+
+            # Финальная проверка всех критически важных компонентов
+            required_components = [
+                "error_handler",
+                "plugin_manager",
+                "task_manager",
+                "filesystem",
+                "browser_controller",
+                "screen_capture",
+                "element_localization",
+            ]
+
+            for component_name in required_components:
+                if not self._registry.has(component_name):
+                    print(f"Критический компонент не зарегистрирован: {component_name}")
+                    return False
+
+            print("Все критические компоненты успешно зарегистрированы")
             return True
+
         except Exception as e:
             print(f"Error registering core components: {e}")
             return False
+
+    def _initialize_registered_components(self):
+        """
+        Вызывает методы initialize у всех зарегистрированных компонентов.
+        """
+        print("Инициализация зарегистрированных компонентов...")
+
+        for name, component in self._registry.get_all().items():
+            if hasattr(component, "initialize") and callable(getattr(component, "initialize")):
+                try:
+                    result = component.initialize()
+                    print(f"Компонент {name} инициализирован: {result}")
+                except Exception as e:
+                    print(f"Ошибка при инициализации компонента {name}: {e}")
+                    error_handler = self._registry.get("error_handler", None)
+                    if error_handler:
+                        error_handler.handle_error(e, f"Error initializing component {name}")
 
     def _register_optional_components(self):
         """

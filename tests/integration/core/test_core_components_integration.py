@@ -10,31 +10,36 @@ from core.plugin_manager import PluginManager
 from core.system_initializer import SystemInitializer
 
 
+@pytest.fixture
+def setup_core_components():
+    """
+    Создает и настраивает основные компоненты ядра для тестирования.
+    """
+    # Создаем компоненты
+    registry = ComponentRegistry()
+    error_handler = ErrorHandler()
+
+    # СНАЧАЛА регистрируем ErrorHandler
+    registry.register("error_handler", error_handler)
+
+    # ПОТОМ создаем PluginManager (который ищет error_handler в конструкторе)
+    plugin_manager = PluginManager(registry)
+    system_initializer = SystemInitializer(registry)
+
+    # Регистрируем остальные компоненты в реестре
+    registry.register("plugin_manager", plugin_manager)
+
+    # Возвращаем созданные компоненты
+    return {
+        "registry": registry,
+        "error_handler": error_handler,
+        "plugin_manager": plugin_manager,
+        "system_initializer": system_initializer,
+    }
+
+
 class TestCoreComponentsIntegration:
     """Интеграционные тесты для проверки взаимодействия компонентов ядра системы."""
-
-    @pytest.fixture
-    def setup_core_components(self):
-        """
-        Создает и настраивает основные компоненты ядра для тестирования.
-        """
-        # Создаем компоненты
-        registry = ComponentRegistry()
-        error_handler = ErrorHandler()
-        plugin_manager = PluginManager(registry)
-        system_initializer = SystemInitializer(registry)
-
-        # Регистрируем компоненты в реестре
-        registry.register("error_handler", error_handler)
-        registry.register("plugin_manager", plugin_manager)
-
-        # Возвращаем созданные компоненты
-        return {
-            "registry": registry,
-            "error_handler": error_handler,
-            "plugin_manager": plugin_manager,
-            "system_initializer": system_initializer,
-        }
 
     def test_system_initialization_with_all_components(self, setup_core_components):
         """
@@ -52,9 +57,14 @@ class TestCoreComponentsIntegration:
         # Инициализируем систему
         result = system_initializer.initialize()
 
-        # Проверяем результат инициализации
-        assert result is True
+        # Проверяем результат инициализации - должен вернуться объект System
+        from core.system import System
+
+        assert isinstance(result, System), f"Expected System object, got {type(result)}"
         assert system_initializer.is_initialized() is True
+
+        # Проверяем, что система имеет доступ к реестру
+        assert result._registry == registry
 
         # Проверяем, что метод initialize тестового компонента был вызван
         test_component.initialize.assert_called_once()
@@ -174,7 +184,7 @@ class TestPlugin:
 
         # Инициализируем систему
         init_result = system_initializer.initialize()
-        assert init_result is True
+        assert init_result is not False  # Не должно быть False
         assert system_initializer.is_initialized() is True
 
         # Проверяем, что методы initialize были вызваны

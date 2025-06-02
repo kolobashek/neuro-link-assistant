@@ -20,11 +20,12 @@ class TestPluginSystemIntegration:
         # Создаем компоненты
         registry = ComponentRegistry()
         error_handler = ErrorHandler()
-        plugin_manager = PluginManager(registry)
 
-        # Регистрируем компоненты в реестре
+        # ВАЖНО: Регистрируем ErrorHandler ПЕРЕД созданием PluginManager
         registry.register("error_handler", error_handler)
-        registry.register("plugin_manager", plugin_manager)
+
+        # Теперь создаем PluginManager (он найдет error_handler в registry)
+        plugin_manager = PluginManager(registry)
 
         # Создаем временную директорию для тестовых плагинов
         temp_dir = tempfile.mkdtemp()

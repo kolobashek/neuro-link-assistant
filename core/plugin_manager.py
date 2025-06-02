@@ -24,7 +24,8 @@ class PluginManager:
         )
 
         # Получаем обработчик ошибок из реестра, если он доступен
-        self.error_handler = registry.get("ErrorHandler") if registry else None
+        # ИСПРАВЛЕНИЕ: используем правильное имя "error_handler" вместо "ErrorHandler"
+        self.error_handler = registry.get("error_handler") if registry else None
 
     def discover_plugins(self):
         """
@@ -59,44 +60,91 @@ class PluginManager:
             object: Экземпляр плагина или None в случае ошибки
         """
         try:
-            # Формируем путь к модулю плагина
-            module_name = f"plugins.{plugin_name}"
+            # Если это временный файл для теста, читаем его напрямую
+            plugin_path = os.path.join(self.plugins_dir, f"{plugin_name}.py")
 
-            # Импортируем модуль плагина
-            module = importlib.import_module(module_name)
+            if os.path.exists(plugin_path):
+                # Читаем и выполняем код плагина
+                with open(plugin_path, "r") as f:
+                    plugin_code = f.read()
 
-            # Ищем класс плагина в модуле
-            plugin_class = None
-            for name, obj in inspect.getmembers(module):
-                if inspect.isclass(obj) and hasattr(obj, "setup"):
-                    plugin_class = obj
-                    break
+                # Создаем пустое пространство имен для выполнения
+                plugin_namespace = {}
 
-            if not plugin_class:
-                if self.error_handler:
-                    self.error_handler.handle_error(
-                        Exception(f"Plugin class not found in {plugin_name}"),
-                        f"Plugin class not found in {plugin_name}",
-                    )
-                return None
+                # Выполняем код плагина
+                exec(plugin_code, plugin_namespace)
 
-            # Создаем экземпляр плагина
-            plugin = plugin_class()
+                # Ищем класс плагина
+                plugin_class = None
+                for name, obj in plugin_namespace.items():
+                    if isinstance(obj, type) and hasattr(obj, "setup") and name != "__builtins__":
+                        plugin_class = obj
+                        break
 
-            # Вызываем метод setup, если он существует
-            if hasattr(plugin, "setup"):
-                plugin.setup()
+                if not plugin_class:
+                    if self.error_handler:
+                        self.error_handler.handle_error(
+                            Exception(f"Plugin class not found in {plugin_name}"),
+                            f"Plugin class not found in {plugin_name}",
+                        )
+                    return None
 
-            # Сохраняем плагин в словаре загруженных плагинов
-            self.plugins[plugin_name] = plugin
+                # Создаем экземпляр плагина
+                plugin = plugin_class()
 
-            return plugin
+                # Вызываем метод setup, если он существует
+                if hasattr(plugin, "setup"):
+                    plugin.setup()
+
+                # Сохраняем плагин в словаре загруженных плагинов
+                self.plugins[plugin_name] = plugin
+
+                return plugin
+            else:
+                # Используем стандартный импорт для обычных плагинов
+                return self._load_plugin_via_import(plugin_name)
+
         except Exception as e:
             if self.error_handler:
                 self.error_handler.handle_error(e, f"Error loading plugin {plugin_name}")
             else:
                 print(f"Error loading plugin {plugin_name}: {e}")
             return None
+
+    def _load_plugin_via_import(self, plugin_name):
+        """Загружает плагин через стандартный импорт."""
+        # Формируем путь к модулю плагина
+        module_name = f"plugins.{plugin_name}"
+
+        # Импортируем модуль плагина
+        module = importlib.import_module(module_name)
+
+        # Ищем класс плагина в модуле
+        plugin_class = None
+        for name, obj in inspect.getmembers(module):
+            if inspect.isclass(obj) and hasattr(obj, "setup"):
+                plugin_class = obj
+                break
+
+        if not plugin_class:
+            if self.error_handler:
+                self.error_handler.handle_error(
+                    Exception(f"Plugin class not found in {plugin_name}"),
+                    f"Plugin class not found in {plugin_name}",
+                )
+            return None
+
+        # Создаем экземпляр плагина
+        plugin = plugin_class()
+
+        # Вызываем метод setup, если он существует
+        if hasattr(plugin, "setup"):
+            plugin.setup()
+
+        # Сохраняем плагин в словаре загруженных плагинов
+        self.plugins[plugin_name] = plugin
+
+        return plugin
 
     def load_plugins(self):
         """
