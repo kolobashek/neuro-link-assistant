@@ -3,7 +3,7 @@
 """
 
 import secrets
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from sqlalchemy.orm import Session
 
@@ -33,33 +33,17 @@ class AuthService:
         password: str,
         display_name: Optional[str] = None,
         role: str = "user",
-    ) -> Optional[User]:  # ✅ Возвращаем User объект
-        """
-        Регистрирует нового пользователя.
-
-        Args:
-            username: Имя пользователя
-            email: Email пользователя
-            password: Пароль пользователя
-            display_name: Отображаемое имя (опционально)
-            role: Роль пользователя
-
-        Returns:
-            User: Созданный пользователь или None при ошибке
-        """
+    ) -> Optional[User]:  # ✅ Возвращаем User
+        """Регистрирует нового пользователя."""
         try:
-            # Проверяем, существует ли пользователь
             if self.user_repo.get_by_username(username):
                 return None
-
             if self.user_repo.get_by_email(email):
                 return None
 
-            # Генерируем соль и хешируем пароль
             salt = secrets.token_hex(16)
             password_hash, _ = hash_password(password, salt)
 
-            # Создаем пользователя
             user = self.user_repo.create(
                 username=username,
                 email=email,
@@ -68,74 +52,49 @@ class AuthService:
                 salt=salt,
                 role=role,
             )
-
-            return user  # ✅ Возвращаем объект User
-
+            return user
         except Exception as e:
             print(f"Ошибка регистрации пользователя: {e}")
             return None
 
-    def authenticate_user(self, username: str, password: str) -> Optional[User]:  # ✅ User объект
-        """
-        Аутентифицирует пользователя.
-
-        Args:
-            username: Имя пользователя
-            password: Пароль
-
-        Returns:
-            User: Объект пользователя или None при ошибке
-        """
+    def authenticate_user(
+        self, username: str, password: str
+    ) -> Optional[User]:  # ✅ Возвращаем User
+        """Аутентифицирует пользователя."""
         try:
             user = self.user_repo.get_by_username(username)
             if not user:
                 return None
 
-            # Проверяем пароль
             salt = getattr(user, "salt", "")
-            stored_hash = str(user.password_hash)  # Приводим к строке
+            stored_hash = str(user.password_hash)
             if not verify_password(password, stored_hash, salt):
                 return None
 
-            return user  # ✅ Возвращаем объект User
+            if not getattr(user, "is_active", True):
+                return None
 
+            return user
         except Exception as e:
             print(f"Ошибка аутентификации пользователя: {e}")
             return None
 
-    def get_current_user(self, token: str) -> Optional[dict]:
-        """
-        Получает текущего пользователя по токену.
-
-        Args:
-            token: JWT токен
-
-        Returns:
-            dict: Информация о пользователе или None при ошибке
-        """
+    def get_current_user(self, token: str) -> Optional[User]:  # ✅ Возвращаем User
+        """Получает текущего пользователя по токену."""
         try:
             payload = verify_token(token)
             user_id = payload.get("user_id")
-
             if not user_id:
                 return None
-
-            user = self.user_repo.db.query(User).filter(User.id == user_id).first()
-            if not user:
-                return None
-
-            return {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-                "display_name": user.display_name,
-                "role": getattr(user, "role", "user"),
-                "is_active": user.is_active,
-            }
-
+            return self.user_repo.get_by_id(user_id)
         except Exception as e:
             print(f"Ошибка получения текущего пользователя: {e}")
             return None
+
+    def create_access_token_for_user(self, user: User) -> str:  # ✅ Новый метод
+        """Создает токен доступа для пользователя."""
+        token_data = {"user_id": user.id, "username": user.username}
+        return create_access_token(token_data)
 
     def change_password(self, user_id: int, old_password: str, new_password: str) -> bool:
         """
@@ -150,13 +109,13 @@ class AuthService:
             bool: True если пароль изменен успешно
         """
         try:
-            user = self.user_repo.db.query(User).filter(User.id == user_id).first()
+            user = self.user_repo.get_by_id(user_id)  # ✅ ИСПРАВЛЕНО: используем репозиторий
             if not user:
                 return False
 
             # Проверяем старый пароль
             salt = getattr(user, "salt", "")
-            stored_hash = str(user.password_hash)  # Приводим к строке
+            stored_hash = str(user.password_hash)
             if not verify_password(old_password, stored_hash, salt):
                 return False
 
@@ -164,25 +123,19 @@ class AuthService:
             new_salt = secrets.token_hex(16)
             new_password_hash, _ = hash_password(new_password, new_salt)
 
-            # Обновляем пароль
+            # Обновляем пароль через репозиторий
             update_data = {"password_hash": new_password_hash}
             if hasattr(user, "salt"):
                 update_data["salt"] = new_salt
 
-                user = self.user_repo.db.query(User).filter(User.id == user_id).first()
-                if user:
-                    for key, value in update_data.items():
-                        setattr(user, key, value)
-                    self.user_repo.db.commit()
-                    updated_user = user
-                else:
-                    updated_user = None
-                    return updated_user is not None
+            updated_user = self.user_repo.update(
+                user_id, **update_data
+            )  # ✅ ИСПРАВЛЕНО: через репозиторий
+            return updated_user is not None
 
         except Exception as e:
             print(f"Ошибка изменения пароля: {e}")
             return False
-        return True  # Добавить в конце функции change_password
 
     def update_user_role(self, user_id: int, new_role: str) -> bool:
         """
@@ -196,13 +149,10 @@ class AuthService:
             bool: True если роль обновлена успешно
         """
         try:
-            user = self.user_repo.db.query(User).filter(User.id == user_id).first()
-            if user:
-                for key, value in {"role": new_role}.items():  # для update_user_role
-                    setattr(user, key, value)
-                self.user_repo.db.commit()
-                return True
-            return False
+            updated_user = self.user_repo.update(
+                user_id, role=new_role
+            )  # ✅ ИСПРАВЛЕНО: через репозиторий
+            return updated_user is not None
         except Exception as e:
             print(f"Ошибка обновления роли пользователя: {e}")
             return False
@@ -218,16 +168,12 @@ class AuthService:
             bool: True если пользователь деактивирован успешно
         """
         try:
-            user = self.user_repo.db.query(User).filter(User.id == user_id).first()
-            if user:
-                setattr(user, "is_active", False)
-                self.user_repo.db.commit()  # Важно: добавить commit
-                self.user_repo.db.refresh(user)  # Обновить объект после commit
-                return True
-            return False
+            updated_user = self.user_repo.update(
+                user_id, is_active=False
+            )  # ✅ ИСПРАВЛЕНО: через репозиторий
+            return updated_user is not None
         except Exception as e:
             print(f"Ошибка деактивации пользователя: {e}")
-            self.user_repo.db.rollback()  # Откатить изменения при ошибке
             return False
 
     def activate_user(self, user_id: int) -> bool:
@@ -241,14 +187,10 @@ class AuthService:
             bool: True если пользователь активирован успешно
         """
         try:
-            user = self.user_repo.db.query(User).filter(User.id == user_id).first()
-            if user:
-                setattr(user, "is_active", True)  # для activate_user
-                self.user_repo.db.commit()
-                self.user_repo.db.refresh(user)
-                return True
-            return False
+            updated_user = self.user_repo.update(
+                user_id, is_active=True
+            )  # ✅ ИСПРАВЛЕНО: через репозиторий
+            return updated_user is not None
         except Exception as e:
             print(f"Ошибка активации пользователя: {e}")
-            self.user_repo.db.rollback()
             return False

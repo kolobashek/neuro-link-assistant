@@ -91,6 +91,8 @@
 |   |   |   |   |-- pygetwindow_manager.py
 |   |   |   |   |-- win32_window_manager.py
 |   |   |   |   |-- __init__.py
+|   |-- process
+|   |   |-- __init__.py
 |   |-- security
 |   |   |-- jwt_handler.py
 |   |   |-- password.py
@@ -172,6 +174,7 @@
 |   |-- system.log
 |-- migrations
 |   |-- versions
+|   |   |-- 52f69517b81e_add_all_missing_tables.py
 |   |   |-- 97eaf3e5639a_manual_initial_migration.py
 |   |-- env.py
 |   |-- README

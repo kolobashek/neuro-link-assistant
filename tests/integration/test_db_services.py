@@ -58,14 +58,14 @@ class TestUserService:
         updated_user = user_service.update_user_profile(
             user_id,
             display_name="Test User",
-            bio="Test biography",
+            bio="Test biography",  # ✅ Консистентно с проверкой
             avatar_url="https://example.com/avatar.jpg",
         )
 
         # Проверяем результат, возвращаемый сервисом
         assert updated_user is not None
         assert getattr(updated_user, "display_name", None) == "Test User"
-        assert getattr(updated_user, "bio", None) == "Test biography"
+        assert getattr(updated_user, "bio", None) == "Test biography"  # ✅ ИСПРАВЛЕНО
         assert getattr(updated_user, "avatar_url", None) == "https://example.com/avatar.jpg"
 
         # Проверяем, что изменения сохранены в БД
@@ -74,7 +74,7 @@ class TestUserService:
 
         assert user_from_db is not None
         assert getattr(user_from_db, "display_name", None) == "Test User"
-        assert getattr(user_from_db, "bio", None) == "Test Biography"
+        assert getattr(user_from_db, "bio", None) == "Test biography"  # ✅ ИСПРАВЛЕНО
         assert getattr(user_from_db, "avatar_url", None) == "https://example.com/avatar.jpg"
 
 

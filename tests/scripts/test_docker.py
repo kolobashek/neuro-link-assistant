@@ -87,21 +87,28 @@ class TestDockerScripts:
         for arg, expected_func in test_cases:
             with patch(expected_func) as mock_func:
                 with patch.object(sys, "argv", ["docker.py", arg]):
-                    # Импортируем модуль заново для запуска __main__
-                    import importlib
+                    # Вызываем main() напрямую
+                    from scripts.docker import main
 
-                    import scripts.docker
-
-                    importlib.reload(scripts.docker)
+                    main()
                     mock_func.assert_called_once()
 
     def test_main_invalid_command(self, mock_subprocess_popen):
         """Тест обработки неверной команды"""
-        with patch.object(sys, "argv", ["docker.py", "invalid"]):
+        with patch.object(sys, "argv", ["docker.py", "invalid_command"]):
             with pytest.raises(SystemExit) as excinfo:
-                import importlib
+                # Вызываем main() напрямую
+                from scripts.docker import main
 
-                import scripts.docker
+                main()
+            assert excinfo.value.code == 1
 
-                importlib.reload(scripts.docker)
+    def test_main_no_arguments(self, mock_subprocess_popen):
+        """Тест обработки случая без аргументов"""
+        with patch.object(sys, "argv", ["docker.py"]):
+            with pytest.raises(SystemExit) as excinfo:
+                # Вызываем main() напрямую
+                from scripts.docker import main
+
+                main()
             assert excinfo.value.code == 1

@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: neurolink
       POSTGRES_PASSWORD: secure_password
-      POSTGRES_DB: neurolink_db
+      POSTGRES_DB: neurolink
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-scripts:/docker-entrypoint-initdb.d

@@ -312,3 +312,29 @@ class TaskRepository:
             List[Task]: Список найденных задач
         """
         return self.search(**filters)
+
+    def get_by_user_sorted(
+        self, user_id: int, sort_by: str = "created_at", sort_order: str = "desc"
+    ) -> List[Task]:
+        """
+        Получает задачи пользователя с сортировкой.
+
+        Args:
+            user_id: ID пользователя
+            sort_by: Поле для сортировки
+            sort_order: Порядок сортировки (asc/desc)
+
+        Returns:
+            List[Task]: Отсортированный список задач
+        """
+        query = self.db.query(Task).filter(Task.user_id == user_id)
+
+        # Получаем атрибут для сортировки
+        sort_attr = getattr(Task, sort_by, Task.created_at)
+
+        if sort_order.lower() == "desc":
+            query = query.order_by(sort_attr.desc())
+        else:
+            query = query.order_by(sort_attr.asc())
+
+        return query.all()

@@ -1,5 +1,5 @@
 -- Создание схемы БД
-\c neurolink_db
+\c neurolink
 
 -- Создание таблиц для пользователей
 CREATE TABLE users (

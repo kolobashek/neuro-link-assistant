@@ -56,8 +56,8 @@ def show_db_logs():
     run_command("docker-compose logs -f")
 
 
-if __name__ == "__main__":
-    # Для возможности запуска напрямую из командной строки
+def main():
+    """Главная функция для обработки аргументов командной строки."""
     if len(sys.argv) > 1:
         command = sys.argv[1]
         if command == "start":
@@ -75,3 +75,7 @@ if __name__ == "__main__":
     else:
         print("Укажите команду: start, stop, restart, logs")
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

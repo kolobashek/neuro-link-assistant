@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional
 
-from sqlalchemy import asc, desc, or_
+from sqlalchemy import and_, asc, desc, or_
 from sqlalchemy.orm import Session
 
 from core.db.models import AIModel, Task, User, Workflow
@@ -233,10 +233,20 @@ def get_tasks_with_pagination(
 
     # Поиск по тексту (в заголовке и описании)
     if search_query:
-        search_term = f"%{search_query}%"
-        query = query.filter(
-            or_(Task.title.ilike(search_term), Task.description.ilike(search_term))
-        )
+        # Разбиваем поисковый запрос на отдельные слова
+        search_words = search_query.strip().split()
+        search_conditions = []
+
+        for word in search_words:
+            if word:  # Пропускаем пустые строки
+                word_pattern = f"%{word}%"
+                search_conditions.append(
+                    or_(Task.title.ilike(word_pattern), Task.description.ilike(word_pattern))
+                )
+
+        if search_conditions:
+            # Все слова должны быть найдены (AND логика)
+            query = query.filter(and_(*search_conditions))
 
     # Определяем общее количество записей до применения пагинации
     total = query.count()

@@ -82,7 +82,7 @@ docker-compose ps
    - Имя: NeuroLink DB
    - Хост: postgres
    - Порт: 5432
-   - База данных: neurolink_db
+   - База данных: neurolink
    - Пользователь: neurolink
    - Пароль: secure_password
 

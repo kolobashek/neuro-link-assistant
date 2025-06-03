@@ -50,12 +50,15 @@ class TestTransactions:
             username="existing_user", email="existing@example.com", password_hash="hash"
         )
 
+        # ✅ ИСПРАВЛЕНИЕ: Сохраняем ID до транзакции
+        existing_user_id = existing_user.id
+
         # Пытаемся создать пользователя с тем же именем в транзакции
         with pytest.raises(IntegrityError):
             with tx.begin():
                 # Эта операция должна пройти успешно
                 _ = task_repo.create(
-                    user_id=existing_user.id,
+                    user_id=existing_user_id,  # ✅ Используем ID вместо объекта
                     title="Task Before Error",
                     description="This task should not be saved",
                 )
@@ -68,7 +71,7 @@ class TestTransactions:
                 )
 
         # Проверяем, что задача не была сохранена (транзакция откатилась)
-        user_tasks = task_repo.get_by_user(existing_user.id)
+        user_tasks = task_repo.get_by_user(existing_user_id)  # ✅ Используем ID
         assert len(user_tasks) == 0
 
     def test_nested_transactions(self, db_session, repositories):

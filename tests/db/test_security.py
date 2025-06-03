@@ -148,31 +148,35 @@ class TestAuthService:
 
     def test_register_user(self, auth_service):
         """Тест регистрации пользователя."""
-        result = auth_service.register_user(
+        user = auth_service.register_user(
             username="new_user",
             email="new@example.com",
             password="secure_password",
             display_name="New User",
         )
 
-        assert result is not None
-        assert result["username"] == "new_user"
-        assert result["email"] == "new@example.com"
-        assert "id" in result
+        assert user is not None
+        assert user.username == "new_user"
+        assert user.email == "new@example.com"
+        assert user.id is not None
 
     def test_authenticate_user(self, auth_service):
         """Тест аутентификации пользователя."""
         # Сначала регистрируем пользователя
-        auth_service.register_user(
+        user = auth_service.register_user(
             username="auth_user", email="auth@example.com", password="secure_password"
         )
+        assert user is not None
 
         # Затем аутентифицируем
-        result = auth_service.authenticate_user("auth_user", "secure_password")
+        auth_user = auth_service.authenticate_user("auth_user", "secure_password")
 
-        assert result is not None
-        assert result["user"]["username"] == "auth_user"
-        assert "access_token" in result
+        assert auth_user is not None
+        assert auth_user.username == "auth_user"
+
+        # ✅ ИСПРАВЛЕНО: создаем токен отдельно
+        access_token = auth_service.create_access_token_for_user(auth_user)
+        assert access_token is not None
 
     def test_authenticate_user_wrong_password(self, auth_service):
         """Тест аутентификации с неверным паролем."""
@@ -189,28 +193,33 @@ class TestAuthService:
     def test_get_current_user(self, auth_service):
         """Тест получения текущего пользователя по токену."""
         # Регистрируем и аутентифицируем пользователя
-        auth_service.register_user(
+        user = auth_service.register_user(
             username="token_user", email="token@example.com", password="secure_password"
         )
+        assert user is not None
 
-        auth_result = auth_service.authenticate_user("token_user", "secure_password")
-        token = auth_result["access_token"]
+        auth_user = auth_service.authenticate_user("token_user", "secure_password")
+        assert auth_user is not None
+
+        # ✅ ИСПРАВЛЕНО: создаем токен отдельно
+        token = auth_service.create_access_token_for_user(auth_user)
 
         # Получаем пользователя по токену
-        user_data = auth_service.get_current_user(token)
+        current_user = auth_service.get_current_user(token)
 
-        assert user_data is not None
-        assert user_data["username"] == "token_user"
+        assert current_user is not None
+        assert current_user.username == "token_user"
 
     def test_change_password(self, auth_service):
         """Тест изменения пароля."""
         # Регистрируем пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(
             username="password_user", email="password@example.com", password="old_password"
         )
+        assert user is not None
 
         # Меняем пароль
-        success = auth_service.change_password(user_data["id"], "old_password", "new_password")
+        success = auth_service.change_password(user.id, "old_password", "new_password")
 
         assert success
 
@@ -229,63 +238,82 @@ class TestPermissionService:
     def test_check_admin_permissions(self, permission_service, auth_service):
         """Тест прав администратора."""
         # Создаем администратора
-        admin_data = auth_service.register_user(
+        admin = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="admin", email="admin@example.com", password="admin_password", role="admin"
         )
-
-        assert admin_data is not None
+        assert admin is not None
 
         # Проверяем права администратора
-        assert permission_service.check_permission(admin_data["id"], "read_all")
-        assert permission_service.check_permission(admin_data["id"], "write_all")
-        assert permission_service.check_permission(admin_data["id"], "delete_all")
-        assert permission_service.check_permission(admin_data["id"], "manage_users")
+        assert permission_service.check_permission(
+            admin.id, "read_all"
+        )  # ✅ ИСПРАВЛЕНО: используем admin.id
+        assert permission_service.check_permission(admin.id, "write_all")
+        assert permission_service.check_permission(admin.id, "delete_all")
+        assert permission_service.check_permission(admin.id, "manage_users")
 
     def test_check_user_permissions(self, permission_service, auth_service):
         """Тест прав обычного пользователя."""
         # Создаем обычного пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="regular_user", email="user@example.com", password="user_password", role="user"
         )
 
-        assert user_data is not None
+        assert user is not None
 
         # Проверяем права пользователя
-        assert permission_service.check_permission(user_data["id"], "read_own")
-        assert permission_service.check_permission(user_data["id"], "write_own")
-        assert permission_service.check_permission(user_data["id"], "delete_own")
+        assert permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert permission_service.check_permission(
+            user.id, "write_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert permission_service.check_permission(
+            user.id, "delete_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         # Проверяем, что нет прав администратора
-        assert not permission_service.check_permission(user_data["id"], "read_all")
-        assert not permission_service.check_permission(user_data["id"], "manage_users")
+        assert not permission_service.check_permission(
+            user.id, "read_all"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert not permission_service.check_permission(
+            user.id, "manage_users"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
     def test_check_guest_permissions(self, permission_service, auth_service):
         """Тест прав гостя."""
         # Создаем гостя
-        guest_data = auth_service.register_user(
+        guest = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="guest_user",
             email="guest@example.com",
             password="guest_password",
             role="guest",
         )
 
-        assert guest_data is not None
+        assert guest is not None
 
         # Проверяем права гостя
-        assert permission_service.check_permission(guest_data["id"], "read_public")
+        assert permission_service.check_permission(
+            guest.id, "read_public"
+        )  # ✅ ИСПРАВЛЕНО: используем guest.id
 
         # Проверяем, что нет других прав
-        assert not permission_service.check_permission(guest_data["id"], "read_own")
-        assert not permission_service.check_permission(guest_data["id"], "write_own")
+        assert not permission_service.check_permission(
+            guest.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем guest.id
+        assert not permission_service.check_permission(
+            guest.id, "write_own"
+        )  # ✅ ИСПРАВЛЕНО: используем guest.id
 
     def test_get_user_permissions(self, permission_service, auth_service):
         """Тест получения списка прав пользователя."""
         # Создаем пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="permissions_user", email="perms@example.com", password="password", role="user"
         )
 
-        permissions = permission_service.get_user_permissions(user_data["id"])
+        permissions = permission_service.get_user_permissions(
+            user.id
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         assert "read_own" in permissions
         assert "write_own" in permissions
@@ -320,7 +348,7 @@ class TestPermissionService:
     def test_resource_access(self, permission_service, auth_service):
         """Тест доступа к ресурсам."""
         # Создаем администратора
-        admin_data = auth_service.register_user(
+        admin = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="admin_resource",
             email="admin_resource@example.com",
             password="password",
@@ -328,7 +356,7 @@ class TestPermissionService:
         )
 
         # Создаем пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="user_resource",
             email="user_resource@example.com",
             password="password",
@@ -336,13 +364,23 @@ class TestPermissionService:
         )
 
         # Проверяем доступ администратора
-        assert permission_service.check_resource_access(admin_data["id"], "task", 1, "read")
-        assert permission_service.check_resource_access(admin_data["id"], "task", 1, "write")
-        assert permission_service.check_resource_access(admin_data["id"], "task", 1, "delete")
+        assert permission_service.check_resource_access(
+            admin.id, "task", 1, "read"
+        )  # ✅ ИСПРАВЛЕНО: используем admin.id
+        assert permission_service.check_resource_access(
+            admin.id, "task", 1, "write"
+        )  # ✅ ИСПРАВЛЕНО: используем admin.id
+        assert permission_service.check_resource_access(
+            admin.id, "task", 1, "delete"
+        )  # ✅ ИСПРАВЛЕНО: используем admin.id
 
         # Проверяем доступ пользователя к собственным ресурсам
-        assert permission_service.check_resource_access(user_data["id"], "task", 1, "read")
-        assert permission_service.check_resource_access(user_data["id"], "task", 1, "write")
+        assert permission_service.check_resource_access(
+            user.id, "task", 1, "read"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert permission_service.check_resource_access(
+            user.id, "task", 1, "write"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
 
 class TestSecurityIntegration:
@@ -351,43 +389,48 @@ class TestSecurityIntegration:
     def test_full_auth_workflow(self, auth_service, permission_service):
         """Тест полного цикла аутентификации и авторизации."""
         # Регистрация
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="integration_user",
             email="integration@example.com",
             password="secure_password",
             role="user",
         )
 
-        assert user_data is not None
+        assert user is not None
 
         # Аутентификация
-        auth_result = auth_service.authenticate_user("integration_user", "secure_password")
+        auth_user = auth_service.authenticate_user("integration_user", "secure_password")
 
-        assert auth_result is not None
-        token = auth_result["access_token"]
+        assert auth_user is not None
+        # ✅ ИСПРАВЛЕНО: создаем токен отдельно
+        token = auth_service.create_access_token_for_user(auth_user)
 
         # Получение пользователя по токену
         current_user = auth_service.get_current_user(token)
         assert current_user is not None
-        assert current_user["username"] == "integration_user"
+        assert (
+            current_user.username == "integration_user"
+        )  # ✅ ИСПРАВЛЕНО: работаем с User объектом
 
         # Проверка прав
-        permissions = permission_service.get_user_permissions(user_data["id"])
+        permissions = permission_service.get_user_permissions(
+            user.id
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
         assert len(permissions) > 0
         assert "read_own" in permissions
 
     def test_security_edge_cases(self, auth_service):
         """Тест граничных случаев безопасности."""
         # Попытка регистрации с существующим именем пользователя
-        auth_service.register_user(
+        user1 = auth_service.register_user(
             username="duplicate_user", email="first@example.com", password="password"
         )
+        assert user1 is not None
 
-        result = auth_service.register_user(
+        user2 = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: ожидаем None
             username="duplicate_user", email="second@example.com", password="password"
         )
-
-        assert result is None  # Должна быть ошибка
+        assert user2 is None  # Должна быть ошибка
 
         # Попытка регистрации с существующим email
         result = auth_service.register_user(
@@ -399,13 +442,17 @@ class TestSecurityIntegration:
     def test_token_security(self, auth_service):
         """Тест безопасности токенов."""
         # Регистрируем пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="token_test_user", email="token_test@example.com", password="password"
         )
+        assert user is not None
 
         # Получаем токен
-        auth_result = auth_service.authenticate_user("token_test_user", "password")
-        token = auth_result["access_token"]
+        auth_user = auth_service.authenticate_user("token_test_user", "password")
+        assert auth_user is not None
+
+        # ✅ ИСПРАВЛЕНО: создаем токен отдельно
+        token = auth_service.create_access_token_for_user(auth_user)
 
         # Проверяем валидный токен
         user = auth_service.get_current_user(token)
@@ -445,31 +492,37 @@ class TestSecurityIntegration:
     def test_user_deactivation(self, auth_service, permission_service):
         """Тест деактивации пользователя."""
         # Создаем пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="deactivation_user", email="deactivation@example.com", password="password"
         )
 
         # Проверяем начальные права
-        assert permission_service.check_permission(user_data["id"], "read_own")
+        assert permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         # Деактивируем пользователя
-        success = auth_service.deactivate_user(user_data["id"])
+        success = auth_service.deactivate_user(user.id)  # ✅ ИСПРАВЛЕНО: используем user.id
         assert success
 
         # Проверяем, что права пропали
-        assert not permission_service.check_permission(user_data["id"], "read_own")
+        assert not permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         # Активируем обратно
-        success = auth_service.activate_user(user_data["id"])
+        success = auth_service.activate_user(user.id)  # ✅ ИСПРАВЛЕНО: используем user.id
         assert success
 
         # Проверяем, что права вернулись
-        assert permission_service.check_permission(user_data["id"], "read_own")
+        assert permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
     def test_role_update(self, auth_service, permission_service):
         """Тест обновления роли пользователя."""
         # Создаем обычного пользователя
-        user_data = auth_service.register_user(
+        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект
             username="role_update_user",
             email="role_update@example.com",
             password="password",
@@ -477,21 +530,37 @@ class TestSecurityIntegration:
         )
 
         # Проверяем начальные права
-        assert permission_service.check_permission(user_data["id"], "read_own")
-        assert not permission_service.check_permission(user_data["id"], "read_all")
+        assert permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert not permission_service.check_permission(
+            user.id, "read_all"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         # Повышаем до администратора
-        success = auth_service.update_user_role(user_data["id"], "admin")
+        success = auth_service.update_user_role(
+            user.id, "admin"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
         assert success
 
         # Проверяем новые права
-        assert permission_service.check_permission(user_data["id"], "read_all")
-        assert permission_service.check_permission(user_data["id"], "manage_users")
+        assert permission_service.check_permission(
+            user.id, "read_all"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert permission_service.check_permission(
+            user.id, "manage_users"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
 
         # Понижаем до гостя
-        success = auth_service.update_user_role(user_data["id"], "guest")
+        success = auth_service.update_user_role(
+            user.id, "guest"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
         assert success
 
         # Проверяем ограниченные права
-        assert permission_service.check_permission(user_data["id"], "read_public")
-        assert not permission_service.check_permission(user_data["id"], "read_own")
+        assert permission_service.check_permission(
+            user.id, "read_public"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id
+        assert not permission_service.check_permission(
+            user.id, "read_own"
+        )  # ✅ ИСПРАВЛЕНО: используем user.id

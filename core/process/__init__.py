@@ -6,4 +6,12 @@
 
 from core.common.process import AbstractProcessManager, ProcessManagerFactory, get_process_manager
 
-__all__ = ["get_process_manager", "AbstractProcessManager", "ProcessManagerFactory"]
+# Добавляем алиас для совместимости с тестами
+ProcessManager = AbstractProcessManager
+
+__all__ = [
+    "get_process_manager",
+    "AbstractProcessManager",
+    "ProcessManagerFactory",
+    "ProcessManager",
+]

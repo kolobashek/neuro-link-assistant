@@ -1,5 +1,6 @@
 import os
 import subprocess
+from urllib.parse import urlparse, urlunparse
 
 import pytest
 from alembic.config import Config
@@ -17,6 +18,17 @@ class TestMigrations:
         config = Config("alembic.ini")
         return config
 
+    def _create_test_db_url(self, test_db_name):
+        """Создает URL для тестовой базы данных с правильным пользователем."""
+        parsed = urlparse(DATABASE_URL)
+
+        # Заменяем только имя базы данных, оставляя пользователя neurolink
+        new_path = f"/{test_db_name}"
+
+        # Пересобираем URL с новым именем БД
+        new_parsed = parsed._replace(path=new_path)
+        return urlunparse(new_parsed)
+
     def test_migrations_history(self, alembic_config):
         """Проверяет, что история миграций непрерывна"""
         script = ScriptDirectory.from_config(alembic_config)
@@ -33,13 +45,20 @@ class TestMigrations:
         """Проверяет, что миграции применяются без ошибок"""
         # Создаем временную БД для тестирования миграций
         test_db_name = f"neurolink_migration_test_{os.getpid()}"
-        test_db_url = DATABASE_URL.replace("/neurolink_db", f"/{test_db_name}")
+        test_db_url = self._create_test_db_url(test_db_name)
 
         # Создаем тестовую БД
-        engine = create_engine(DATABASE_URL.rsplit("/", 1)[0])
+        main_db_url = self._create_test_db_url("neurolink")
+        engine = create_engine(main_db_url)
+
         with engine.connect() as conn:
             conn.execute(text("COMMIT"))  # Закрываем любую открытую транзакцию
-            conn.execute(text(f"CREATE DATABASE {test_db_name}"))
+            # Проверяем, существует ли база данных
+            result = conn.execute(
+                text(f"SELECT 1 FROM pg_database WHERE datname = '{test_db_name}'")
+            )
+            if not result.fetchone():
+                conn.execute(text(f"CREATE DATABASE {test_db_name}"))
 
         try:
             # Применяем миграции
@@ -74,7 +93,13 @@ class TestMigrations:
             # Удаляем тестовую БД
             with engine.connect() as conn:
                 conn.execute(text("COMMIT"))
-                conn.execute(text(f"DROP DATABASE {test_db_name}"))
+                # Сначала завершаем все соединения с тестовой БД
+                conn.execute(text(f"""
+                    SELECT pg_terminate_backend(pid)
+                    FROM pg_stat_activity
+                    WHERE datname = '{test_db_name}' AND pid <> pg_backend_pid()
+                """))
+                conn.execute(text(f"DROP DATABASE IF EXISTS {test_db_name}"))
 
     def test_downgrade_migrations(self, alembic_config):
         """Проверяет, что миграции можно откатить"""
@@ -90,13 +115,20 @@ class TestMigrations:
 
         # Создаем временную БД для тестирования отката миграций
         test_db_name = f"neurolink_downgrade_test_{os.getpid()}"
-        test_db_url = DATABASE_URL.replace("/neurolink_db", f"/{test_db_name}")
+        test_db_url = self._create_test_db_url(test_db_name)
 
         # Создаем тестовую БД
-        engine = create_engine(DATABASE_URL.rsplit("/", 1)[0])
+        main_db_url = self._create_test_db_url("neurolink")
+        engine = create_engine(main_db_url)
+
         with engine.connect() as conn:
             conn.execute(text("COMMIT"))
-            conn.execute(text(f"CREATE DATABASE {test_db_name}"))
+            # Проверяем, существует ли база данных
+            result = conn.execute(
+                text(f"SELECT 1 FROM pg_database WHERE datname = '{test_db_name}'")
+            )
+            if not result.fetchone():
+                conn.execute(text(f"CREATE DATABASE {test_db_name}"))
 
         try:
             env = os.environ.copy()
@@ -141,4 +173,10 @@ class TestMigrations:
             # Удаляем тестовую БД
             with engine.connect() as conn:
                 conn.execute(text("COMMIT"))
-                conn.execute(text(f"DROP DATABASE {test_db_name}"))
+                # Завершаем соединения и удаляем БД
+                conn.execute(text(f"""
+                    SELECT pg_terminate_backend(pid)
+                    FROM pg_stat_activity
+                    WHERE datname = '{test_db_name}' AND pid <> pg_backend_pid()
+                """))
+                conn.execute(text(f"DROP DATABASE IF EXISTS {test_db_name}"))

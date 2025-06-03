@@ -342,7 +342,7 @@ def db_engine():
         password=db_password,
         host=db_host,
         port=db_port,
-        database="neurolink_db",  # Основная БД для начального подключения
+        database="neurolink",  # Основная БД для начального подключения
     )
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cursor = conn.cursor()
