@@ -1,0 +1,118 @@
+﻿|-- contract
+|   |-- api
+|   |-- database
+|-- infrastructure
+|   |-- docker
+|   |   |-- scripts
+|   |   |   |-- test_docker.py
+|   |-- performance
+|-- integration
+|   |-- core
+|   |   |-- common
+|   |   |   |-- input
+|   |   |   |   |-- test_input_integration.py
+|   |   |-- test_core_components_integration.py
+|   |   |-- test_plugin_system_integration.py
+|   |-- llm_integration
+|   |   |-- test_llm_unit.py
+|   |-- services
+|   |-- test_db_services.py
+|-- system
+|   |-- test_application_workflow.py
+|   |-- test_authorization.py
+|   |-- test_computer_vision.py
+|   |-- test_file_operations.py
+|   |-- test_llm_integration.py
+|   |-- test_model_orchestration.py
+|   |-- test_plugin_system.py
+|   |-- test_task_management.py
+|   |-- test_web_automation.py
+|   |-- test_windows_automation.py
+|-- ui
+|   |-- e2e
+|   |   |-- ui
+|   |   |   |-- test_accessibility.py
+|   |   |   |-- test_ai_models.py
+|   |   |   |-- test_animations.py
+|   |   |   |-- test_api_integration.py
+|   |   |   |-- test_base_layout.py
+|   |   |   |-- test_command_form.py
+|   |   |   |-- test_command_history.py
+|   |   |   |-- test_logs_display.py
+|   |   |   |-- test_mobile_ui.py
+|   |   |   |-- test_modals.py
+|   |   |   |-- test_navigation.py
+|   |   |   |-- test_responsive.py
+|   |   |   |-- test_routing.py
+|   |   |   |-- test_settings.py
+|   |   |   |-- test_theme_system.py
+|   |   |   |-- test_ui_error_handling.py
+|   |   |   |-- test_ui_performance.py
+|   |-- integration
+|   |-- unit
+|-- unit
+|   |-- core
+|   |   |-- architecture
+|   |   |   |-- test_architecture.py
+|   |   |   |-- test_directory_structure.py
+|   |   |-- common
+|   |   |   |-- filesystem
+|   |   |   |   |-- test_base_filesystem.py
+|   |   |   |   |-- test_filesystem_factory.py
+|   |   |   |   |-- test_filesystem_registry.py
+|   |   |   |-- input
+|   |   |   |   |-- test_base_classes.py
+|   |   |   |   |-- test_base_interfaces.py
+|   |   |   |   |-- test_factory_and_registry.py
+|   |   |-- llm
+|   |   |   |-- test_action_planner.py
+|   |   |   |-- test_api_connector.py
+|   |   |   |-- test_llm_error_handling.py
+|   |   |   |-- test_prompt_processor.py
+|   |   |   |-- test_response_parser.py
+|   |   |-- platform
+|   |   |   |-- windows
+|   |   |   |   |-- filesystem
+|   |   |   |   |   |-- test_win32_filesystem.py
+|   |   |   |   |-- input
+|   |   |   |   |   |-- test_windows_controllers.py
+|   |   |   |   |-- test_process_manager.py
+|   |   |   |   |-- test_registry_manager.py
+|   |   |   |   |-- test_system_info.py
+|   |   |   |   |-- test_windows_interaction.py
+|   |   |   |   |-- test_window_manager.py
+|   |   |-- vision
+|   |   |   |-- test_element_localization.py
+|   |   |   |-- test_element_recognition.py
+|   |   |   |-- test_image_comparison.py
+|   |   |   |-- test_screen_capture.py
+|   |   |   |-- test_screen_changes.py
+|   |   |   |-- test_vision.py
+|   |   |   |-- __init__.py
+|   |   |-- web
+|   |   |   |-- test_browser_init.py
+|   |   |   |-- test_data_extraction.py
+|   |   |   |-- test_dom_search.py
+|   |   |   |-- test_form_interaction.py
+|   |   |   |-- test_js_events.py
+|   |   |   |-- test_navigation.py
+|   |   |   |-- test_web.py
+|   |   |   |-- __init__.py
+|   |   |-- test_component_registry.py
+|   |   |-- test_error_handler.py
+|   |   |-- test_plugin_manager.py
+|   |   |-- test_system_initializer.py
+|   |-- db
+|   |   |-- conftest.py
+|   |   |-- test_connection.py
+|   |   |-- test_crud.py
+|   |   |-- test_migrations.py
+|   |   |-- test_pagination.py
+|   |   |-- test_performance.py
+|   |   |-- test_repository.py
+|   |   |-- test_security.py
+|   |   |-- test_transactions.py
+|   |   |-- test_validation.py
+|   |-- services
+|   |-- utils
+|-- conftest.py

@@ -173,8 +173,10 @@ class TestSystemInitialization:
         initializer = SystemInitializer(registry)
         result = initializer.initialize()
 
-        # Проверяем результат инициализации
-        assert result is True
+        # Проверяем результат инициализации - должен быть объект System, а не True
+        assert result is not None
+        assert hasattr(result, "__class__")
+        assert "System" in result.__class__.__name__
         assert initializer.is_initialized() is True
 
     @patch.object(SystemInitializer, "initialize")
@@ -305,6 +307,9 @@ class TestPlugin:
         registry = ComponentRegistry()
         error_handler = ErrorHandler()
         registry.register("ErrorHandler", error_handler)
+        registry.register(
+            "error_handler", error_handler
+        )  # Добавляем регистрацию с правильным именем
 
         # Создаем менеджер плагинов
         plugin_manager = PluginManager(registry)
@@ -329,6 +334,9 @@ class TestPlugin:
         registry = ComponentRegistry()
         error_handler = ErrorHandler()
         registry.register("ErrorHandler", error_handler)
+        registry.register(
+            "error_handler", error_handler
+        )  # Добавляем регистрацию с правильным именем
 
         plugin_manager = PluginManager(registry)
 
@@ -358,6 +366,9 @@ class IntegrationPlugin:
         registry = ComponentRegistry()
         error_handler = ErrorHandler()
         registry.register("ErrorHandler", error_handler)
+        registry.register(
+            "error_handler", error_handler
+        )  # Добавляем регистрацию с правильным именем
 
         # Создаем менеджер плагинов
         plugin_manager = PluginManager(registry)

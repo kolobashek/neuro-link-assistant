@@ -36,7 +36,10 @@ class TestSystemInitializer:
         # Инициализируем систему
         result = initializer.initialize()
 
-        assert result is True
+        # ИСПРАВЛЕНИЕ: Проверяем, что возвращается объект System
+        from core.system import System
+
+        assert isinstance(result, System), f"Expected System object, got {type(result)}"
 
         # Проверяем, что компоненты были получены из реестра
         registry.get.assert_any_call("error_handler")
@@ -91,6 +94,7 @@ class TestSystemInitializer:
         # Завершаем работу системы
         result = initializer.shutdown()
 
+        # ИСПРАВЛЕНИЕ: Проверяем результат (True для успеха остается правильным)
         assert result is True
 
         # Проверяем, что плагины были выгружены
