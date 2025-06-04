@@ -23,6 +23,10 @@ class Win32FileSystem(AbstractFileSystem):
     Предоставляет методы для работы с файлами и директориями.
     """
 
+    def __init__(self):
+        """Инициализация файловой системы Windows"""
+        super().__init__()
+
     def file_exists(self, path: str) -> bool:
         """
         Проверяет существование файла.
@@ -35,32 +39,58 @@ class Win32FileSystem(AbstractFileSystem):
         """
         return os.path.isfile(path)
 
-    def list_directory(self, path: str, pattern: str = "*", recursive: bool = False) -> List[str]:
+    def is_file_exists(self, path: str) -> bool:
+        """
+        Проверяет существование файла (алиас для file_exists).
+        Более наглядное название метода.
+
+        Args:
+            path (str): Путь к файлу
+
+        Returns:
+            bool: True, если файл существует, иначе False
+        """
+        return self.file_exists(path)
+
+    def list_directory(
+        self, directory_path: str, pattern: str = "*", recursive: bool = False
+    ) -> List[str]:
         """
         Получить список файлов в директории.
 
         Args:
-            path (str): Путь к директории.
-            pattern (str, optional): Шаблон для фильтрации файлов. По умолчанию "*".
-            recursive (bool, optional): Флаг рекурсивного поиска. По умолчанию False.
+            directory_path (str): Путь к директории
+            pattern (str, optional): Шаблон для фильтрации. По умолчанию "*"
+            recursive (bool, optional): Рекурсивный поиск. По умолчанию False
 
         Returns:
-            List[str]: Список путей к файлам.
+            List[str]: Список имен файлов (только имена, не полные пути)
         """
         try:
-            if not os.path.exists(path):
+            if not os.path.exists(directory_path):
                 return []
 
-            if recursive:
-                search_pattern = os.path.join(path, "**", pattern)
-                files = glob.glob(search_pattern, recursive=True)
+            if pattern == "*" and not recursive:
+                # Простой случай - все файлы в директории
+                items = os.listdir(directory_path)
+                # Фильтруем только файлы и возвращаем имена
+                return [
+                    item for item in items if os.path.isfile(os.path.join(directory_path, item))
+                ]
             else:
-                search_pattern = os.path.join(path, pattern)
-                files = glob.glob(search_pattern)
+                # Сложный случай - с шаблоном и/или рекурсией
+                if recursive:
+                    search_pattern = os.path.join(directory_path, "**", pattern)
+                    all_items = glob.glob(search_pattern, recursive=True)
+                else:
+                    search_pattern = os.path.join(directory_path, pattern)
+                    all_items = glob.glob(search_pattern)
 
-            return files
+                # Возвращаем только имена файлов, не полные пути
+                return [os.path.basename(item) for item in all_items if os.path.isfile(item)]
+
         except Exception as e:
-            handle_error(f"Error listing directory {path}: {e}", e, module="filesystem")
+            handle_error(f"Error listing directory {directory_path}: {e}", e, module="filesystem")
             return []
 
     def list_directory_names(self, path: str, pattern: str = "*") -> List[str]:
@@ -84,7 +114,7 @@ class Win32FileSystem(AbstractFileSystem):
             # Фильтруем только директории
             return [os.path.basename(item) for item in all_items if os.path.isdir(item)]
         except Exception as e:
-            print(f"Error listing directory names: {e}")
+            handle_error(f"Error listing directory names: {e}", e, module="filesystem")
             return []
 
     def create_directory(self, path: str) -> bool:
@@ -149,7 +179,7 @@ class Win32FileSystem(AbstractFileSystem):
 
             return True
         except Exception as e:
-            print(f"Error writing to file {path}: {e}")
+            handle_error(f"Error writing to file {path}: {e}", e, module="filesystem")
             return False
 
     def delete_file(self, path: str) -> bool:
@@ -356,7 +386,7 @@ class Win32FileSystem(AbstractFileSystem):
 
         Args:
             path (str): Путь к файлу.
-                    Returns:
+        Returns:
             Optional[Dict[str, Any]]: Информация о файле или None в случае ошибки.
         """
         try:
@@ -397,6 +427,11 @@ class Win32FileSystem(AbstractFileSystem):
         """
         return os.path.isdir(path)
 
+    # Добавляем алиас для единообразия
+    def directory_exists(self, path: str) -> bool:
+        """Алиас для is_directory_exists"""
+        return self.is_directory_exists(path)
+
     def get_file_extension(self, path: str) -> str:
         """
         Получить расширение файла.
@@ -421,9 +456,66 @@ class Win32FileSystem(AbstractFileSystem):
             recursive (bool, optional): Флаг рекурсивного поиска. По умолчанию False.
 
         Returns:
-            List[str]: Список путей к найденным файлам.
+            List[str]: Список ПОЛНЫХ путей к найденным файлам.
         """
-        return self.list_directory(directory, pattern, recursive)
+        try:
+            if not os.path.exists(directory):
+                return []
+
+            if pattern == "*" and not recursive:
+                # Простой случай - все файлы в директории
+                items = os.listdir(directory)
+                # Возвращаем полные пути для файлов
+                return [
+                    os.path.join(directory, item)
+                    for item in items
+                    if os.path.isfile(os.path.join(directory, item))
+                ]
+            else:
+                # Сложный случай - с шаблоном и/или рекурсией
+                if recursive:
+                    search_pattern = os.path.join(directory, "**", pattern)
+                    all_items = glob.glob(search_pattern, recursive=True)
+                else:
+                    search_pattern = os.path.join(directory, pattern)
+                    all_items = glob.glob(search_pattern)
+
+                # Возвращаем полные пути к файлам
+                return [item for item in all_items if os.path.isfile(item)]
+
+        except Exception as e:
+            handle_error(f"Error searching files in {directory}: {e}", e, module="filesystem")
+            return []
+
+    def get_drive_info(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Получить информацию о дисках (Windows-специфичная функция).
+
+        Returns:
+            Dict[str, Dict[str, Any]]: Информация о дисках
+        """
+        try:
+            import psutil
+
+            drives = {}
+            for disk in psutil.disk_partitions():
+                try:
+                    usage = psutil.disk_usage(disk.mountpoint)
+                    drives[disk.device] = {
+                        "mountpoint": disk.mountpoint,
+                        "total": usage.total,
+                        "used": usage.used,
+                        "free": usage.free,
+                        "percent": round((usage.used / usage.total) * 100, 2),
+                    }
+                except (PermissionError, OSError):
+                    # Некоторые диски могут быть недоступны
+                    continue
+
+            return drives
+        except Exception as e:
+            handle_error(f"Error getting drive info: {e}", e, module="filesystem")
+            return {}
 
     def zip_files(self, file_paths: List[str], zip_path: str) -> bool:
         """
@@ -516,7 +608,7 @@ class Win32FileSystem(AbstractFileSystem):
                 os.makedirs(directory, exist_ok=True)
 
             with open(path, "w", encoding="utf-8") as file:
-                json.dump(data, file, indent=indent)
+                json.dump(data, file, indent=indent, ensure_ascii=False)
 
             return True
         except Exception as e:

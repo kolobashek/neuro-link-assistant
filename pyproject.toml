@@ -72,6 +72,16 @@ db-restart = "scripts.docker:restart_db"
 db-logs = "scripts.docker:show_db_logs"
 db-migrate = "scripts.db:run_migrations"
 db-seed = "scripts.db:seed_database"
+test-ui-headless = "scripts.test:run_ui_headless"
+test-ui-parallel = "scripts.test:run_ui_parallel"
+test-ui = "scripts.test:run_ui_normal"
+port-cleanup = "scripts.port_cleanup:cleanup_port"
+port-check = "scripts.port_cleanup:PortManager.is_port_in_use"
+flask-cleanup = "scripts.port_cleanup:cleanup_all_flask_processes"
+# Добавляем быструю проверку
+app-check = "scripts.quick_check:quick_check"
+# НОВАЯ КОМАНДА для UI тестов
+test-ui-safe = "scripts.ui_test_runner:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -108,10 +118,29 @@ include_trailing_comma = true
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--cov=core --cov=utils --cov=routes --cov-report=term-missing --no-header --tb=native"
-console_output_style = "classic"
+addopts = [
+    "--cov=core",
+    "--cov=utils",
+    "--cov=routes",
+    "--cov-report=term-missing",
+    "--no-header",
+    "--tb=short",
+    "-v",
+    "-s",
+    "--capture=no",
+    "--show-capture=all",
+]
+console_output_style = "progress"
 testpaths = ["tests"]
-markers = ["deprecated: marks tests as deprecated and scheduled for removal"]
+markers = [
+    "deprecated: marks tests as deprecated and scheduled for removal",
+    "slow: marks tests as slow",
+    "ui: marks tests as UI tests",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+log_cli = true
+log_cli_level = "INFO"
 
 [tool.mypy]
 python_version = "3.8"

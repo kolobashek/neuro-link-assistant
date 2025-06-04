@@ -177,8 +177,9 @@ cython_debug/
 venv/
 
 # Кэш Python
-__pycache__/
-*.py[cod]
+
+
+venv/
 
 # Файлы окружения
 .env
@@ -192,3 +193,14 @@ detailed_command_log.txt
 
 # Папки резервных копий
 backup_*/
+
+# Логи тестирования и приложения
+logs/
+logs/*
+*.log
+*.log.*
+test_results.txt
+report.html
+
+# Скриншоты тестов
+screenshots/

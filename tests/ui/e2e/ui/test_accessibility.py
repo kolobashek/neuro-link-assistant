@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -14,11 +16,15 @@ class TestAccessibility:
 
     def test_keyboard_navigation(self, ui_client):
         """Тест навигации по интерфейсу с помощью клавиатуры"""
+        print("\n🔍 [TEST] Начинаем тест навигации с клавиатуры...")
+
         # Открываем главную страницу с полным URL
+        print("📖 [TEST] Открываем главную страницу...")
         ui_client.get("http://localhost:5000/")
 
-        # Отладочный вывод для анализа структуры табуляции был уже выполнен
-        # и теперь мы можем написать конкретные проверки
+        # Ждём загрузки страницы
+        time.sleep(2)
+        print("✅ [TEST] Страница загружена")
 
         # Найдем все фокусируемые элементы
         body = ui_client.find_element(By.TAG_NAME, "body")
@@ -348,15 +354,21 @@ class TestAccessibility:
             f"Элемент {element_id} ({element.tag_name}): контраст {contrast_ratio:.2f} - {status}"
         )
 
-    def test_focus_indicators(self, driver):
+    def test_focus_indicators(self, ui_client):
         """Тест индикаторов фокуса для доступности"""
-        driver.get("http://localhost:5000")
+        print("\n🔍 [TEST] Начинаем тест индикаторов фокуса...")
+
+        print("📖 [TEST] Открываем страницу...")
+        ui_client.get("http://localhost:5000")
+        time.sleep(2)
+        print("✅ [TEST] Страница загружена")
 
         # Находим поле ввода
-        input_field = driver.find_element(By.ID, "user-input")
+        print("🔍 [TEST] Ищем поле ввода...")
+        input_field = ui_client.find_element(By.ID, "user-input")
 
         # Получаем исходные стили
-        initial_outline = driver.execute_script(
+        initial_outline = ui_client.execute_script(
             "return window.getComputedStyle(arguments[0]).outline", input_field
         )
 
@@ -364,30 +376,30 @@ class TestAccessibility:
         input_field.click()
 
         # Получаем стили в фокусе
-        focus_outline = driver.execute_script(
+        focus_outline = ui_client.execute_script(
             "return window.getComputedStyle(arguments[0]).outline", input_field
         )
 
         # Проверяем, что стили изменились при фокусе
         assert initial_outline != focus_outline or focus_outline != "none"
 
-    def test_screen_reader_compatibility(self, driver):
+    def test_screen_reader_compatibility(self, ui_client):
         """Тест совместимости с программами чтения с экрана"""
-        driver.get("http://localhost:5000")
+        ui_client.get("http://localhost:5000")
 
         # Проверяем наличие альтернативного текста для изображений
-        images = driver.find_elements(By.TAG_NAME, "img")
+        images = ui_client.find_elements(By.TAG_NAME, "img")
         for img in images:
             assert img.get_attribute("alt") is not None
 
         # Проверяем наличие подписей для полей ввода
-        input_fields = driver.find_elements(By.TAG_NAME, "input")
+        input_fields = ui_client.find_elements(By.TAG_NAME, "input")
         for field in input_fields:
             # Проверяем наличие либо label, либо aria-label, либо placeholder
             field_id = field.get_attribute("id")
             if field_id:
                 # Ищем связанный label
-                labels = driver.find_elements(By.CSS_SELECTOR, f"label[for='{field_id}']")
+                labels = ui_client.find_elements(By.CSS_SELECTOR, f"label[for='{field_id}']")
                 has_label = len(labels) > 0
             else:
                 has_label = False
@@ -398,18 +410,18 @@ class TestAccessibility:
             # Должен быть хотя бы один способ идентификации поля
             assert has_label or has_aria_label or has_placeholder
 
-    def test_heading_structure(self, driver):
+    def test_heading_structure(self, ui_client):
         """Тест структуры заголовков для доступности"""
-        driver.get("http://localhost:5000")
+        ui_client.get("http://localhost:5000")
 
         # Проверяем наличие заголовка h1
-        h1_elements = driver.find_elements(By.TAG_NAME, "h1")
+        h1_elements = ui_client.find_elements(By.TAG_NAME, "h1")
         assert len(h1_elements) == 1  # Должен быть только один h1 на странице
 
         # Проверяем, что заголовки идут в правильном порядке (без пропусков)
         headings = []
         for i in range(1, 7):  # h1 до h6
-            elements = driver.find_elements(By.TAG_NAME, f"h{i}")
+            elements = ui_client.find_elements(By.TAG_NAME, f"h{i}")
             headings.extend(elements)
 
         # Проверяем, что заголовки идут в правильном порядке
@@ -420,12 +432,12 @@ class TestAccessibility:
             if heading_levels[i + 1] > heading_levels[i]:
                 assert heading_levels[i + 1] - heading_levels[i] <= 1
 
-    def test_language_attribute(self, driver):
+    def test_language_attribute(self, ui_client):
         """Тест атрибута языка для доступности"""
-        driver.get("http://localhost:5000")
+        ui_client.get("http://localhost:5000")
 
         # Проверяем наличие атрибута lang в теге html
-        html = driver.find_element(By.TAG_NAME, "html")
+        html = ui_client.find_element(By.TAG_NAME, "html")
         lang = html.get_attribute("lang")
 
         assert lang is not None and lang != ""

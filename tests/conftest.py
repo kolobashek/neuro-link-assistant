@@ -1,4 +1,6 @@
 import os
+import subprocess  # ← Добавляем импорт
+import sys
 import time
 from typing import Any
 from unittest.mock import MagicMock
@@ -13,14 +15,46 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from scripts.port_cleanup import PortManager
+
 # Глобальная конфигурация для тестов
 TEST_CONFIG = {"base_url": "http://localhost:5000"}
+
+import logging
+
+# Настройка логирования для тестов
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)8s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
+# Добавляем логгер для тестов
+test_logger = logging.getLogger("TEST")
+test_logger.setLevel(logging.INFO)
 
 
 @pytest.fixture
 def mock_component():
     """Фикстура для создания мок-компонента"""
     return MagicMock()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def cleanup_ports():
+    """Автоматически очищает порты перед и после тестов"""
+    port_manager = PortManager(5000)
+
+    # Очистка перед тестами
+    print("🧹 Предварительная очистка портов...")
+    port_manager.smart_cleanup()
+
+    yield
+
+    # Очистка после тестов
+    print("🧹 Финальная очистка портов...")
+    port_manager.smart_cleanup()
 
 
 @pytest.fixture
@@ -142,49 +176,123 @@ class UiTestDriver:
         return getattr(self.driver, name)
 
 
-@pytest.fixture(scope="function")
-def ui_client(base_url):
-    """Фикстура для тестирования UI с Selenium WebDriver"""
+from scripts.app_manager import AppManager
+
+# Добавляем импорт нового менеджера
+from scripts.test_app_manager import TestAppManager
+
+
+# Заменяем фикстуру app_server
+@pytest.fixture(scope="session")
+def app_server():
+    """Фикстура для управления жизненным циклом приложения в UI тестах"""
+    manager = TestAppManager(port=5000, timeout=45)
+
+    print(f" [SESSION] Настройка приложения для UI тестов...")
+
+    # Запускаем приложение
+    if not manager.start_app():
+        pytest.skip("Не удалось запустить приложение для UI тестов")
+
+    # Дополнительная проверка готовности
+    if not manager.health_check():
+        manager.stop_app()
+        pytest.skip("Приложение запустилось, но не прошло проверку здоровья")
+
+    print(f"✅ [SESSION] Приложение готово для UI тестов")
+
+    yield manager
+
+    print(f"🧹 [SESSION] Завершение сессии UI тестов...")
+    # Останавливаем приложение
+    manager.stop_app()
+
+
+def create_chrome_driver(base_url: str) -> webdriver.Chrome:
+    """Создает настроенный Chrome WebDriver"""
     # Создаем опции Chrome
     chrome_options = Options()
 
-    # Добавляем аргументы для запуска Chrome в безголовом режиме при CI/CD
-    if os.environ.get("CI") == "true":
+    if os.environ.get("CI") == "true" or os.environ.get("HEADLESS") == "true":
         chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
 
-    # Дополнительные настройки для стабильности тестов
+    # Подавляем лишние сообщения Chrome
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-popup-blocking")
+    chrome_options.add_argument("--silent")
+    chrome_options.add_argument("--log-level=3")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
+    chrome_options.add_experimental_option("useAutomationExtension", False)
 
-    # Инициализируем драйвер Chrome
-    service = ChromeService()
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    # Создаем сервис
+    service = ChromeService(service_args=["--silent", "--log-level=3"])
 
-    # Устанавливаем окно браузера на максимальный размер
+    # Создаем драйвер с настройками процесса для Windows
+    if os.name == "nt":  # Windows
+        # creationflags применяется к subprocess.Popen внутри webdriver
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        # Для подавления окна консоли используем опции Chrome выше
+    else:
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+
     driver.maximize_window()
+    driver.implicitly_wait(5)
 
-    # Устанавливаем таймаут для неявных ожиданий
-    driver.implicitly_wait(10)
+    return driver
 
-    # Создаем и предоставляем UiTestDriver
+
+# И используем в фикстуре:
+@pytest.fixture(scope="function")
+def ui_client(base_url, request, app_server):
+    """Фикстура для UI тестов"""
+    test_file = str(request.fspath)
+    if not ("ui" in test_file or "e2e" in test_file):
+        pytest.skip("ui_client фикстура только для UI тестов")
+
+    if not app_server.is_app_running():
+        pytest.skip("Приложение не доступно для UI теста")
+
+    # Создаем драйвер
+    driver = create_chrome_driver(base_url)
     ui_driver = UiTestDriver(driver, base_url)
 
     yield ui_driver
 
-    # Закрываем браузер после теста
     driver.quit()
 
 
-@pytest.fixture
+# Добавить фикстуру для очистки состояния между тестами
+@pytest.fixture(autouse=True)
+def smart_cleanup_browser_state(request):
+    """Условная очистка состояния браузера только для UI тестов"""
+    # Проверяем, является ли это UI тестом
+    if "ui" in str(request.fspath) or "e2e" in str(request.fspath):
+        # Для UI тестов запрашиваем ui_client
+        ui_client = request.getfixturevalue("ui_client")
+
+        yield
+
+        # Очищаем после UI теста
+        try:
+            ui_client.driver.delete_all_cookies()
+            ui_client.execute_script("window.localStorage.clear();")
+            ui_client.execute_script("window.sessionStorage.clear();")
+        except Exception:
+            pass
+    else:
+        # Для не-UI тестов просто пропускаем
+        yield
+
+
+@pytest.fixture(scope="session")  # Только для base_url
 def base_url():
     """Фикстура, возвращающая базовый URL для тестов."""
     return TEST_CONFIG["base_url"]
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")  # Для ui_client
 def authenticated_ui_client(ui_client):
     """
     Фикстура для UI-тестов, требующих аутентификации.
@@ -399,3 +507,35 @@ def test_user(db_session):
     db_session.commit()  # Важно: делаем commit, чтобы пользователь был доступен в БД
 
     return user
+
+
+# UI тесты конфигурация
+def pytest_configure(config):
+    """Конфигурация для всех тестов"""
+    # Для UI тестов включаем verbose режим
+    if hasattr(config.option, "verbose"):
+        config.option.verbose = max(config.option.verbose, 1)
+
+
+def pytest_runtest_setup(item):
+    """Настройка перед каждым тестом"""
+    # Проверяем, является ли это UI тестом
+    test_file = str(item.fspath)
+    if "ui" in test_file or "e2e" in test_file:
+        print(f"\n🚀 [UI-TEST] Запуск теста: {item.name}")
+
+
+def pytest_runtest_teardown(item):
+    """Очистка после каждого теста"""
+    test_file = str(item.fspath)
+    if "ui" in test_file or "e2e" in test_file:
+        print(f"🏁 [UI-TEST] Завершение теста: {item.name}")
+
+
+def pytest_collection_modifyitems(config, items):
+    """Модификация собранных тестов"""
+    for item in items:
+        # Добавляем маркер ui для UI тестов
+        test_file = str(item.fspath)
+        if "ui" in test_file or "e2e" in test_file:
+            item.add_marker(pytest.mark.ui)
