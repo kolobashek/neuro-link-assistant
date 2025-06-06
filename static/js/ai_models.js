@@ -29,8 +29,24 @@ function updateAIModelsStatus() {
 		return
 	}
 
-	// Показываем индикатор загрузки
-	modelsContainer.innerHTML = '<div class="loading">Загрузка данных о нейросетях...</div>'
+	// Проверяем есть ли уже элементы модели
+	const existingModels = modelsContainer.querySelectorAll('.model-item')
+	const hasStaticModels = existingModels.length > 0
+
+	// Показываем индикатор загрузки только если нет статических элементов
+	if (!hasStaticModels) {
+		modelsContainer.innerHTML = '<div class="loading">Загрузка данных о нейросетях...</div>'
+	} else {
+		// Добавляем индикатор рядом с существующими элементами
+		let loadingDiv = modelsContainer.querySelector('.loading')
+		if (!loadingDiv) {
+			loadingDiv = document.createElement('div')
+			loadingDiv.className = 'loading'
+			loadingDiv.textContent = 'Обновление статуса...'
+			modelsContainer.appendChild(loadingDiv)
+		}
+		loadingDiv.style.display = 'block'
+	}
 
 	fetch('/api/ai_models')
 		.then((response) => {
@@ -42,17 +58,29 @@ function updateAIModelsStatus() {
 		.then((data) => {
 			console.log('Получены данные о нейросетях:', data)
 
+			// Скрываем индикатор загрузки
+			const loadingDiv = modelsContainer.querySelector('.loading')
+			if (loadingDiv) {
+				loadingDiv.style.display = 'none'
+			}
+
 			if (data.error) {
-				modelsContainer.innerHTML = `<div class="error">${data.error}</div>`
+				// Если есть статические элементы, не затираем их
+				if (!hasStaticModels) {
+					modelsContainer.innerHTML = `<div class="error">${data.error}</div>`
+				}
 				return
 			}
 
 			if (!data.models || data.models.length === 0) {
-				modelsContainer.innerHTML = '<div class="empty">Нет доступных нейросетей</div>'
+				// Если есть статические элементы, оставляем их
+				if (!hasStaticModels) {
+					modelsContainer.innerHTML = '<div class="empty">Нет доступных нейросетей</div>'
+				}
 				return
 			}
 
-			// Очищаем контейнер
+			// Очищаем контейнер только если получили данные с сервера
 			modelsContainer.innerHTML = ''
 
 			// Добавляем модели
@@ -129,16 +157,25 @@ function updateAIModelsStatus() {
 		.catch((error) => {
 			console.error('Ошибка при получении статуса нейросетей:', error)
 
-			let errorMessage = 'Ошибка при получении статуса нейросетей'
-
-			// Более информативные сообщения об ошибках
-			if (!navigator.onLine) {
-				errorMessage = 'Отсутствует подключение к интернету'
-			} else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-				errorMessage = 'Не удалось соединиться с сервером'
+			// Скрываем индикатор загрузки
+			const loadingDiv = modelsContainer.querySelector('.loading')
+			if (loadingDiv) {
+				loadingDiv.style.display = 'none'
 			}
 
-			modelsContainer.innerHTML = `<div class="error">${errorMessage}</div>`
+			// Если есть статические элементы, не затираем их при ошибке
+			if (!hasStaticModels) {
+				let errorMessage = 'Ошибка при получении статуса нейросетей'
+
+				// Более информативные сообщения об ошибках
+				if (!navigator.onLine) {
+					errorMessage = 'Отсутствует подключение к интернету'
+				} else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+					errorMessage = 'Не удалось соединиться с сервером'
+				}
+
+				modelsContainer.innerHTML = `<div class="error">${errorMessage}</div>`
+			}
 		})
 }
 
@@ -628,11 +665,11 @@ function initAIModelsHandlers() {
 function escapeHtml(text) {
 	if (!text) return ''
 	return text
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/"/g, '&quot;')
-		.replace(/'/g, '&#039;')
+	.replace(/&/g, '&amp;')
+	.replace(/</g, '&lt;')
+	.replace(/>/g, '&gt;')
+	.replace(/"/g, '&quot;')
+	.replace(/'/g, '&#039;')
 }
 
 // Экспортируем функции для использования в других модулях

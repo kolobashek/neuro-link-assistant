@@ -54,19 +54,43 @@ class TestAppManager:
         except:
             return False
 
+    def is_port_occupied(self) -> bool:
+        """Проверяет, занят ли порт"""
+        try:
+            import socket
+
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                sock.settimeout(1)
+                result = sock.connect_ex(("localhost", self.port))
+                return result == 0
+        except:
+            return False
+
     def start_app(self) -> bool:
         """Запускает приложение для тестов"""
+        start_time = time.perf_counter()  # Высокая точность
         print(f"🚀 [APP] Запуск приложения для UI тестов...")
 
         # Проверяем, не запущено ли уже
         if self.is_app_running():
-            print(f"✅ [APP] Приложение уже работает на {self.app_url}")
+            elapsed = time.perf_counter() - start_time
+            print(f"✅ [APP] Приложение уже работает на {self.app_url} (проверка: {elapsed:.2f}с)")
             return True
 
-        # Очищаем порт
-        self.cleanup_port()
+        # Очистка порта (исправленная логика)
+        cleanup_start = time.perf_counter()
+        if self.is_port_occupied():
+            print(f"🧹 [APP] Порт {self.port} занят, требуется очистка...")
+            self.cleanup_port()
+            cleanup_time = time.perf_counter() - cleanup_start
+            print(f"🧹 [APP] Очистка завершена за {cleanup_time:.2f}с")
+        else:
+            print(f"✅ [APP] Порт {self.port} свободен, очистка не нужна")
 
         try:
+            launch_start = time.perf_counter()
+            print(f"⏳ [APP] Запуск Flask приложения...")
+
             # Переходим в директорию проекта
             os.chdir(self.app_dir)
 
@@ -91,8 +115,6 @@ class TestAppManager:
                 }
             )
 
-            print(f"⏳ [APP] Запуск Flask приложения...")
-
             # Запускаем приложение
             self.process = subprocess.Popen(
                 [sys.executable, "app.py"],
@@ -106,67 +128,106 @@ class TestAppManager:
                 cwd=self.app_dir,
             )
 
+            launch_time = time.perf_counter() - launch_start
+            print(f"⚡ [APP] Процесс запущен за {launch_time:.2f}с (PID: {self.process.pid})")
+
+            # Ожидание готовности
+            wait_start = time.perf_counter()
             print(f"⏱️ [APP] Ожидание готовности (до {self.timeout}с)...")
 
-            # Ждем готовности с прогресс-баром
-            for i in range(self.timeout * 2):  # Проверяем каждые 0.5 сек
-                if self.is_app_running():
-                    print(f"✅ [APP] Приложение готово на {self.app_url} за {(i+1)*0.5:.1f}с")
+            def _wait_for_ready_internal(self) -> bool:
+                """Ожидание готовности приложения"""
+                start_time = time.perf_counter()
 
-                    # Дополнительная проверка стабильности
-                    time.sleep(1)
+                while (time.perf_counter() - start_time) < self.timeout:
                     if self.is_app_running():
-                        print(f"✅ [APP] Приложение стабильно работает")
+                        total_time = time.perf_counter() - start_time
+                        print(f"✅ [READY] Приложение готово за {total_time:.3f}с")
                         return True
+                    time.sleep(0.5)
 
-                # Показываем прогресс каждые 5 секунд
-                if (i + 1) % 10 == 0:
-                    print(f"⏳ [APP] Ожидание... {(i+1)*0.5:.0f}с/{self.timeout}с")
+                total_time = time.perf_counter() - start_time
+                print(f"❌ [READY] Таймаут после {total_time:.3f}с")
+                return False
 
-                time.sleep(0.5)
+            if self._wait_for_ready_internal():
+                wait_time = time.perf_counter() - wait_start
+                total_time = time.perf_counter() - start_time
+                print(f"✅ [APP] Приложение готово на {self.app_url}")
+                print(f"📊 [APP] Время ожидания: {wait_time:.2f}с, общее время: {total_time:.2f}с")
 
-            print(f"❌ [APP] Приложение не запустилось за {self.timeout}с")
-            self._show_process_output()
+                # Проверка стабильности
+                stability_start = time.perf_counter()
+                if self.health_check():
+                    stability_time = time.perf_counter() - stability_start
+                    print(
+                        f"✅ [APP] Приложение стабильно работает (проверка: {stability_time:.2f}с)"
+                    )
+                    return True
+                else:
+                    print(f"❌ [APP] Приложение нестабильно")
+                    self.stop_app()
+                    return False
+            else:
+                total_time = time.perf_counter() - start_time
+                print(f"❌ [APP] Таймаут ожидания готовности ({total_time:.2f}с)")
+                self.stop_app()
+                return False
+
+        except Exception as e:
+            total_time = time.perf_counter() - start_time
+            print(f"❌ [APP] Ошибка запуска за {total_time:.2f}с: {e}")
             self.stop_app()
             return False
 
-        except Exception as e:
-            print(f"❌ [APP] Ошибка запуска: {e}")
-            self._show_process_output()
-            return False
-
-    def stop_app(self):
-        """Останавливает приложение"""
+    def stop_app(self) -> bool:
+        """Корректно останавливает приложение"""
+        stop_start = time.perf_counter()
         print(f"🛑 [APP] Остановка приложения...")
 
-        if self.process:
-            try:
-                if os.name == "nt":  # Windows
+        if not hasattr(self, "process") or self.process is None:
+            print(f"ℹ️ [APP] Процесс не найден или уже завершен")
+            return True
+
+        try:
+            # Проверяем, работает ли еще процесс
+            if self.process.poll() is None:
+                print(f"🔄 [APP] Корректное завершение процесса (PID: {self.process.pid})")
+
+                # Сначала пытаемся мягко завершить
+                if os.name == "nt":
                     self.process.send_signal(signal.CTRL_BREAK_EVENT)
-                else:  # Unix
+                else:
                     self.process.terminate()
 
                 # Ждем завершения
                 try:
-                    self.process.wait(timeout=5)
-                    print(f"✅ [APP] Процесс завершен корректно")
+                    self.process.wait(timeout=10)
+                    terminate_time = time.perf_counter() - stop_start
+                    print(f"✅ [APP] Процесс завершен корректно за {terminate_time:.2f}с")
                 except subprocess.TimeoutExpired:
-                    print(f"⚠️ [APP] Принудительное завершение процесса")
+                    print(f"⚠️ [APP] Мягкое завершение не сработало, принудительное...")
                     self.process.kill()
                     self.process.wait()
+                    kill_time = time.perf_counter() - stop_start
+                    print(f"🔪 [APP] Процесс принудительно завершен за {kill_time:.2f}с")
+            else:
+                print(f"✅ [APP] Процесс уже завершен (код: {self.process.returncode})")
 
-            except Exception as e:
-                print(f"⚠️ [APP] Ошибка при остановке: {e}")
+            self.process = None
 
-        # Дополнительная очистка порта
-        self.cleanup_port()
+            # ИСПРАВЛЕНО: НЕ очищаем порт сразу после корректного завершения
+            # Даем время процессу полностью освободить ресурсы
+            time.sleep(1)
 
-        # Проверяем что остановлено
-        time.sleep(1)
-        if not self.is_app_running():
-            print(f"✅ [APP] Приложение полностью остановлено")
-        else:
-            print(f"⚠️ [APP] Приложение все еще отвечает")
+            total_stop_time = time.perf_counter() - stop_start
+            print(f"✅ [APP] Приложение полностью остановлено за {total_stop_time:.2f}с")
+            return True
+
+        except Exception as e:
+            error_time = time.perf_counter() - stop_start
+            print(f"❌ [APP] Ошибка при остановке за {error_time:.2f}с: {e}")
+            return False
 
     def _show_process_output(self):
         """Показывает вывод процесса для диагностики"""
@@ -205,6 +266,21 @@ class TestAppManager:
             return True
         except:
             return False
+
+    def _wait_for_ready_internal(self) -> bool:
+        """Ожидание готовности приложения"""
+        start_time = time.perf_counter()
+
+        while (time.perf_counter() - start_time) < self.timeout:
+            if self.is_app_running():
+                total_time = time.perf_counter() - start_time
+                print(f"✅ [READY] Приложение готово за {total_time:.3f}с")
+                return True
+            time.sleep(0.5)
+
+        total_time = time.perf_counter() - start_time
+        print(f"❌ [READY] Таймаут после {total_time:.3f}с")
+        return False
 
 
 def main():

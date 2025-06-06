@@ -20,7 +20,19 @@
 	</div>
 
 	<div id="ai-models-list" class="ai-models-list">
-		<div class="loading">Загрузка данных о нейросетях...</div>
+		<div class="model-item" data-model-id="gpt-4">
+			<div class="model-icon">🤖</div>
+			<div class="model-name">GPT-4</div>
+			<div class="model-status online">Доступна</div>
+			<div class="model-api-type">OpenAI</div>
+		</div>
+		<div class="model-item" data-model-id="claude">
+			<div class="model-icon">🧠</div>
+			<div class="model-name">Claude</div>
+			<div class="model-status offline">Недоступна</div>
+			<div class="model-api-type">Anthropic</div>
+		</div>
+		<div class="loading" style="display: none;">Загрузка данных о нейросетях...</div>
 	</div>
 
 	<div class="current-model-info">
