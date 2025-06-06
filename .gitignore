@@ -204,3 +204,25 @@ report.html
 
 # Скриншоты тестов
 screenshots/
+
+# === ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ ===
+
+# Python кэш (дополнительно)
+*.pyc
+*.pyo
+*.pyd
+**/__pycache__/
+.Python
+
+# IDE кэши
+.vscode/.ropeproject/
+.idea/
+
+# Временные файлы VSCode
+.vscode/settings.json.bak
+.vscode/launch.json.bak
+
+# Большие файлы данных
+*.dump
+*.sql.gz
+*.db-journal

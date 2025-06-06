@@ -26,14 +26,10 @@ class TestAppManager:
         print(f"🧹 [APP] Очистка порта {self.port}...")
 
         killed_count = 0
-        for proc in psutil.process_iter(["pid", "name", "connections"]):
+        for proc in psutil.process_iter(["pid", "name", "net_connections"]):
             try:
-                connections = proc.info.get("connections", [])
-                if not connections:
-                    continue
-
-                for conn in connections:
-                    if hasattr(conn, "laddr") and conn.laddr.port == self.port:
+                for conn in proc.info.get("net_connections", []):
+                    if conn.laddr.port == self.port:
                         print(
                             f"🔪 [APP] Завершаем процесс {proc.info['name']} (PID:"
                             f" {proc.info['pid']})"

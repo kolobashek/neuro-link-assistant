@@ -128,8 +128,6 @@
 |   |   |-- browser_controller.py
 |   |   |-- element_finder.py
 |   |   |-- __init__.py
-|   |-- windows
-|   |   |-- __init__.py
 |   |-- component_registry.py
 |   |-- plugin_manager.py
 |   |-- system.py
@@ -163,15 +161,28 @@
 |-- init-scripts
 |   |-- 01-init.sql
 |-- logs
-|   |-- app_20250506_183535.log
-|   |-- app_20250506_183759.log
-|   |-- app_20250506_183800.log
-|   |-- app_20250506_190245.log
 |   |-- command_history.log
-|   |-- command_summary.txt
 |   |-- detailed_command.log
-|   |-- detailed_command_log.txt
 |   |-- system.log
+|   |-- ui_parallel_20250603_154742.json
+|   |-- ui_parallel_20250603_154742.log
+|   |-- ui_parallel_20250603_154742_junit.xml
+|   |-- ui_parallel_20250603_155619.json
+|   |-- ui_parallel_20250603_155619.log
+|   |-- ui_parallel_20250603_155619_junit.xml
+|   |-- ui_parallel_20250603_161220.json
+|   |-- ui_parallel_20250603_161220.log
+|   |-- ui_parallel_20250603_192612.json
+|   |-- ui_parallel_20250603_192612.log
+|   |-- ui_parallel_20250603_192612_junit.xml
+|   |-- ui_parallel_20250604_093546.log
+|   |-- ui_parallel_20250604_093546_junit.xml
+|   |-- ui_parallel_20250604_104035.log
+|   |-- ui_parallel_20250604_104035_junit.xml
+|   |-- ui_parallel_20250604_104209.log
+|   |-- ui_parallel_20250604_104209_junit.xml
+|   |-- ui_parallel_20250605_174138.log
+|   |-- ui_parallel_20250605_174138_junit.xml
 |-- migrations
 |   |-- versions
 |   |   |-- 52f69517b81e_add_all_missing_tables.py
@@ -194,9 +205,18 @@
 |   |-- main_routes.py
 |   |-- __init__.py
 |-- scripts
+|   |-- app_manager.py
+|   |-- base_test_runner.py
+|   |-- cleanup-ports.ps1
 |   |-- db.py
 |   |-- docker.py
+|   |-- port_cleanup.py
+|   |-- quick_check.py
 |   |-- run_affected_tests.py
+|   |-- test.py
+|   |-- test_app_manager.py
+|   |-- ui_test_runner.py
+|   |-- __init__.py
 |-- services
 |   |-- ai_service.py
 |   |-- browser_service.py
@@ -229,17 +249,14 @@
 |   |-- base.html
 |   |-- index.html
 |-- tests
-|   |-- db
-|   |   |-- conftest.py
-|   |   |-- test_connection.py
-|   |   |-- test_crud.py
-|   |   |-- test_migrations.py
-|   |   |-- test_pagination.py
-|   |   |-- test_performance.py
-|   |   |-- test_repository.py
-|   |   |-- test_security.py
-|   |   |-- test_transactions.py
-|   |   |-- test_validation.py
+|   |-- contract
+|   |   |-- api
+|   |   |-- database
+|   |-- infrastructure
+|   |   |-- docker
+|   |   |   |-- scripts
+|   |   |   |   |-- test_docker.py
+|   |   |-- performance
 |   |-- integration
 |   |   |-- core
 |   |   |   |-- common
@@ -247,9 +264,10 @@
 |   |   |   |   |   |-- test_input_integration.py
 |   |   |   |-- test_core_components_integration.py
 |   |   |   |-- test_plugin_system_integration.py
+|   |   |-- llm_integration
+|   |   |   |-- test_llm_unit.py
+|   |   |-- services
 |   |   |-- test_db_services.py
-|   |-- scripts
-|   |   |-- test_docker.py
 |   |-- system
 |   |   |-- test_application_workflow.py
 |   |   |-- test_authorization.py
@@ -261,6 +279,29 @@
 |   |   |-- test_task_management.py
 |   |   |-- test_web_automation.py
 |   |   |-- test_windows_automation.py
+|   |-- ui
+|   |   |-- e2e
+|   |   |   |-- ui
+|   |   |   |   |-- test_accessibility.py
+|   |   |   |   |-- test_ai_models.py
+|   |   |   |   |-- test_animations.py
+|   |   |   |   |-- test_api_integration.py
+|   |   |   |   |-- test_base_layout.py
+|   |   |   |   |-- test_command_form.py
+|   |   |   |   |-- test_command_history.py
+|   |   |   |   |-- test_logs_display.py
+|   |   |   |   |-- test_mobile_ui.py
+|   |   |   |   |-- test_modals.py
+|   |   |   |   |-- test_navigation.py
+|   |   |   |   |-- test_responsive.py
+|   |   |   |   |-- test_routing.py
+|   |   |   |   |-- test_settings.py
+|   |   |   |   |-- test_theme_system.py
+|   |   |   |   |-- test_ui_error_handling.py
+|   |   |   |   |-- test_ui_performance.py
+|   |   |   |-- simple_ui_test.py
+|   |   |-- integration
+|   |   |-- unit
 |   |-- unit
 |   |   |-- core
 |   |   |   |-- architecture
@@ -281,8 +322,6 @@
 |   |   |   |   |-- test_llm_error_handling.py
 |   |   |   |   |-- test_prompt_processor.py
 |   |   |   |   |-- test_response_parser.py
-|   |   |   |-- llm_integration
-|   |   |   |   |-- test_llm_unit.py
 |   |   |   |-- platform
 |   |   |   |   |-- windows
 |   |   |   |   |   |-- filesystem
@@ -315,24 +354,19 @@
 |   |   |   |-- test_error_handler.py
 |   |   |   |-- test_plugin_manager.py
 |   |   |   |-- test_system_initializer.py
-|   |   |-- ui
-|   |   |   |-- test_accessibility.py
-|   |   |   |-- test_ai_models.py
-|   |   |   |-- test_animations.py
-|   |   |   |-- test_api_integration.py
-|   |   |   |-- test_base_layout.py
-|   |   |   |-- test_command_form.py
-|   |   |   |-- test_command_history.py
-|   |   |   |-- test_logs_display.py
-|   |   |   |-- test_mobile_ui.py
-|   |   |   |-- test_modals.py
-|   |   |   |-- test_navigation.py
-|   |   |   |-- test_responsive.py
-|   |   |   |-- test_routing.py
-|   |   |   |-- test_settings.py
-|   |   |   |-- test_theme_system.py
-|   |   |   |-- test_ui_error_handling.py
-|   |   |   |-- test_ui_performance.py
+|   |   |-- db
+|   |   |   |-- conftest.py
+|   |   |   |-- test_connection.py
+|   |   |   |-- test_crud.py
+|   |   |   |-- test_migrations.py
+|   |   |   |-- test_pagination.py
+|   |   |   |-- test_performance.py
+|   |   |   |-- test_repository.py
+|   |   |   |-- test_security.py
+|   |   |   |-- test_transactions.py
+|   |   |   |-- test_validation.py
+|   |   |-- services
+|   |   |-- utils
 |   |-- conftest.py
 |-- utils
 |   |-- helpers.py
@@ -365,6 +399,8 @@
 |-- requirements.txt
 |-- run.bat
 |-- setup.cfg
+|-- Show-DirTree-tests.ps1
 |-- Show-DirTree.ps1
+|-- tests_structure.txt
 |-- test_results.txt
 |-- tree.ps1

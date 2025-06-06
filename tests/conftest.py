@@ -7,6 +7,7 @@ from unittest.mock import MagicMock
 
 import pytest
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
@@ -57,6 +58,30 @@ def cleanup_ports():
     port_manager.smart_cleanup()
 
 
+def cleanup_port(port: int) -> bool:
+    """Улучшенная очистка порта"""
+    import subprocess
+    import time
+
+    try:
+        # Найти процесс на порту
+        result = subprocess.run(["netstat", "-ano"], capture_output=True, text=True)
+
+        for line in result.stdout.split("\n"):
+            if f":{port}" in line and "LISTENING" in line:
+                pid = line.strip().split()[-1]
+                print(f"🔧 Завершаем процесс {pid} на порту {port}")
+
+                # Принудительное завершение
+                subprocess.run(["taskkill", "/PID", pid, "/F"], capture_output=True)
+                time.sleep(2)
+
+        return True
+    except Exception as e:
+        print(f"❌ Ошибка очистки порта: {e}")
+        return False
+
+
 @pytest.fixture
 def empty_registry():
     """Фикстура для создания пустого реестра компонентов"""
@@ -104,11 +129,22 @@ class UiTestDriver:
         """Поиск элементов."""
         return self.driver.find_elements(by, value)
 
-    def wait_for_element(self, by, value, timeout=10):
-        """Ожидание появления элемента."""
-        return WebDriverWait(self.driver, timeout).until(
-            EC.presence_of_element_located((by, value))
-        )
+    def wait_for_element(self, by, value, timeout=5):
+        """Ожидание элемента с улучшенной отладкой."""
+        print(f"🔍 Поиск элемента: {by}={value}")
+        try:
+            element = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located((by, value))
+            )
+            print(f"✅ Найден: {by}={value}")
+            return element
+        except Exception as e:
+            print(f"❌ Не найден за {timeout}с: {by}={value}")
+            # Отладочная информация
+            print(f"📄 Текущий URL: {self.driver.current_url}")
+            print(f"📋 Заголовок: {self.driver.title}")
+            self.take_screenshot(f"debug_timeout_{value.replace('/', '_')[:20]}.png")
+            raise TimeoutException(f"Элемент не найден: {by}={value}")
 
     def wait_for_clickable(self, by, value, timeout=10):
         """Ожидание кликабельности элемента."""
@@ -209,47 +245,54 @@ def app_server():
 
 
 def create_chrome_driver(base_url: str) -> webdriver.Chrome:
-    """Создает настроенный Chrome WebDriver"""
-    # Создаем опции Chrome
+    """Создание Chrome WebDriver с оптимизированными опциями для старых GPU"""
     chrome_options = Options()
 
-    if os.environ.get("CI") == "true" or os.environ.get("HEADLESS") == "true":
-        chrome_options.add_argument("--headless")
-
-    # Подавляем лишние сообщения Chrome
+    # Минимальный стабильный набор для Windows + старая GPU
+    chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--silent")
+    chrome_options.add_argument("--use-gl=swiftshader")  # Программный рендеринг
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--window-size=1280,720")
+    chrome_options.add_argument("--disable-web-security")
+    chrome_options.add_argument(
+        "--disable-features=VizDisplayCompositor,AudioServiceOutOfProcess,TranslateUI"
+    )
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-logging")
     chrome_options.add_argument("--log-level=3")
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    chrome_options.add_experimental_option("useAutomationExtension", False)
+    chrome_options.add_argument("--silent")
 
-    # Создаем сервис
-    service = ChromeService(service_args=["--silent", "--log-level=3"])
+    chrome_options.binary_location = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
 
-    # Создаем драйвер с настройками процесса для Windows
-    if os.name == "nt":  # Windows
-        # creationflags применяется к subprocess.Popen внутри webdriver
+    try:
+        from webdriver_manager.chrome import ChromeDriverManager
+
+        service = ChromeService(ChromeDriverManager().install())
+
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        # Для подавления окна консоли используем опции Chrome выше
-    else:
-        driver = webdriver.Chrome(service=service, options=chrome_options)
+        # Короткие таймауты для быстрого обнаружения проблем
+        driver.set_page_load_timeout(15)
+        driver.implicitly_wait(5)
 
-    driver.maximize_window()
-    driver.implicitly_wait(5)
+        print("✅ Chrome WebDriver оптимизирован для Windows + старая GPU")
+        return driver
 
-    return driver
+    except Exception as e:
+        print(f"❌ Ошибка Chrome WebDriver: {e}")
+        pytest.skip(f"Chrome WebDriver недоступен: {e}")
 
 
 # И используем в фикстуре:
-@pytest.fixture(scope="function")
-def ui_client(base_url, request, app_server):
+@pytest.fixture(scope="session")  # было: function
+def ui_client(base_url, app_server):  # Убрать request из параметров
     """Фикстура для UI тестов"""
-    test_file = str(request.fspath)
-    if not ("ui" in test_file or "e2e" in test_file):
-        pytest.skip("ui_client фикстура только для UI тестов")
+    # Убрать эти 2 строчки:
+    # test_file = str(request.fspath)
+    # if not ("ui" in test_file or "e2e" in test_file):
+    #     pytest.skip("ui_client фикстура только для UI тестов")
 
     if not app_server.is_app_running():
         pytest.skip("Приложение не доступно для UI теста")

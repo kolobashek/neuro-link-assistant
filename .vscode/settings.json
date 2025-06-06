@@ -1,26 +1,63 @@
 {
-	"cody.codebase": "https://github.com/kolobashek/neuro-link-assistant",
-	"python.testing.pytestEnabled": true,
-	"python.testing.unittestEnabled": false,
-	"python.testing.pytestArgs": [
-			"tests",
-			"--no-header",
-			"--tb=native"
-	],
-	"python.envFile": "${workspaceFolder}/.env",
-	"editor.formatOnSave": true,
-	"python.terminal.activateEnvironment": true,
-	"terminal.integrated.env.windows": {
-			"PYTHONPATH": "${workspaceFolder}"
-	},
-	"[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
-    },
-  },
-  "isort.args":["--profile", "black"],
-	"python.analysis.typeCheckingMode": "basic",
-	"python.defaultInterpreterPath": "./venv/Scripts/python.exe"
+		"cody.codebase": "https://github.com/kolobashek/neuro-link-assistant",
+		"python.testing.pytestEnabled": true,
+		"python.testing.unittestEnabled": false,
+		"python.testing.pytestArgs": [
+				"tests",
+				"--no-header",
+				"--tb=native"
+		],
+		"python.envFile": "${workspaceFolder}/.env",
+		"editor.formatOnSave": true,
+		"python.terminal.activateEnvironment": true,
+		"terminal.integrated.env.windows": {
+				"PYTHONPATH": "${workspaceFolder}"
+		},
+		"[python]": {
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+									"source.organizeImports": "explicit"
+					},
+			},
+			"isort.args":["--profile", "black"],
+		"python.analysis.typeCheckingMode": "basic",
+		"python.defaultInterpreterPath": "./venv/Scripts/python.exe",
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/node_modules/**": true,
+			"**/.venv/**": true,
+			"**/venv/**": true,
+			"**/__pycache__/**": true,
+			"**/*.pyc": true,
+			"**/.pytest_cache/**": true,
+			"**/logs/**": true,
+			"**/htmlcov/**": true,
+			"**/.coverage": true,
+			"**/neuro_link_assistant.egg-info/**": true,
+			"**/migrations/versions/**": true
+		},
+		"search.exclude": {
+			"**/.venv": true,
+			"**/venv": true,
+			"**/__pycache__": true,
+			"**/*.pyc": true,
+			"**/logs": true,
+			"**/htmlcov": true,
+			"**/.pytest_cache": true,
+			"**/neuro_link_assistant.egg-info": true
+		},
+		"files.exclude": {
+			"**/__pycache__": true,
+			"**/*.pyc": true,
+			"**/.pytest_cache": true
+		},
+		"telemetry.telemetryLevel": "off",
+		"git.autorefresh": false,
+		"git.autofetch": false,
+		"editor.minimap.enabled": true,
+		"breadcrumbs.enabled": false,
+		"python.analysis.autoImportCompletions": false,
+		"files.autoSave": "off"
 }

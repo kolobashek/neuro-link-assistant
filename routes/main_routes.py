@@ -47,3 +47,24 @@ def index():
     ]
 
     return render_template("index.html", commands=commands)
+
+
+# Добавить новые маршруты:
+@main_bp.route("/ai_models")
+def ai_models():
+    return render_template("ai_models.html")
+
+
+@main_bp.route("/history")
+def history():
+    return render_template("history.html")
+
+
+@main_bp.route("/settings")
+def settings():
+    return render_template("settings.html")
+
+
+@main_bp.route("/logs")
+def logs():
+    return render_template("logs.html")

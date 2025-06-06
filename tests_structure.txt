@@ -48,6 +48,7 @@
 |   |   |   |-- test_theme_system.py
 |   |   |   |-- test_ui_error_handling.py
 |   |   |   |-- test_ui_performance.py
+|   |   |-- simple_ui_test.py
 |   |-- integration
 |   |-- unit
 |-- unit

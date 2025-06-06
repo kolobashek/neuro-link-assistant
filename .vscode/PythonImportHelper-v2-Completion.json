@@ -221,6 +221,70 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "timedelta",
         "importPath": "datetime",
         "description": "datetime",
@@ -254,38 +318,6 @@
     },
     {
         "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
         "isExtraImport": true,
@@ -561,6 +593,22 @@
         "description": "config",
         "isExtraImport": true,
         "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
         "documentation": {}
     },
     {
@@ -1484,6 +1532,54 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -1516,6 +1612,30 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Dict",
         "importPath": "typing",
         "description": "typing",
@@ -1533,6 +1653,22 @@
     },
     {
         "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Protocol",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "runtime_checkable",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -1620,7 +1756,63 @@
         "documentation": {}
     },
     {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -1997,6 +2189,14 @@
         "documentation": {}
     },
     {
+        "label": "handle_llm_error",
+        "importPath": "core.common.error_handler",
+        "description": "core.common.error_handler",
+        "isExtraImport": true,
+        "detail": "core.common.error_handler",
+        "documentation": {}
+    },
+    {
         "label": "handle_error",
         "importPath": "core.common.error_handler",
         "description": "core.common.error_handler",
@@ -2239,6 +2439,14 @@
         "documentation": {}
     },
     {
+        "label": "or_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "select",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -2256,6 +2464,14 @@
     },
     {
         "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "and_",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -2431,6 +2647,14 @@
         "documentation": {}
     },
     {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -2527,7 +2751,39 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -2607,7 +2863,31 @@
         "documentation": {}
     },
     {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Task",
         "importPath": "core.db.models",
         "description": "core.db.models",
         "isExtraImport": true,
@@ -2624,6 +2904,14 @@
     },
     {
         "label": "Base",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
         "importPath": "core.db.models",
         "description": "core.db.models",
         "isExtraImport": true,
@@ -2751,11 +3039,35 @@
         "documentation": {}
     },
     {
-        "label": "User",
+        "label": "Base",
         "importPath": "core.db.models",
         "description": "core.db.models",
         "isExtraImport": true,
         "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -2873,6 +3185,30 @@
         "importPath": "zipfile",
         "description": "zipfile",
         "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -3108,6 +3444,14 @@
         "description": "core.security.password",
         "isExtraImport": true,
         "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "isExtraImport": true,
+        "detail": "core.services.auth_service",
         "documentation": {}
     },
     {
@@ -3762,6 +4106,14 @@
         "documentation": {}
     },
     {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
         "label": "expected_conditions",
         "importPath": "selenium.webdriver.support",
         "description": "selenium.webdriver.support",
@@ -4044,6 +4396,14 @@
         "documentation": {}
     },
     {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
         "label": "context",
         "importPath": "alembic",
         "description": "alembic",
@@ -4292,6 +4652,15 @@
         "documentation": {}
     },
     {
+        "label": "signal",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "signal",
+        "description": "signal",
+        "detail": "signal",
+        "documentation": {}
+    },
+    {
         "label": "HfApi",
         "importPath": "huggingface_hub",
         "description": "huggingface_hub",
@@ -4470,293 +4839,19 @@
         "documentation": {}
     },
     {
-        "label": "psycopg2",
-        "kind": 6,
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
         "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
+        "detail": "unittest.mock",
         "documentation": {}
     },
     {
-        "label": "pytest",
-        "kind": 6,
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
         "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
-        "documentation": {}
-    },
-    {
-        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
-        "importPath": "psycopg2.extensions",
-        "description": "psycopg2.extensions",
-        "isExtraImport": true,
-        "detail": "psycopg2.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
-        "importPath": "psycopg2.extensions",
-        "description": "psycopg2.extensions",
-        "isExtraImport": true,
-        "detail": "psycopg2.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_ai_model",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_task",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_ai_model_by_id",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_ai_models",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_tasks_by_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_by_id",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_by_username",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "update_task_status",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_task",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "get_tasks_with_pagination",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_ai_model",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_task",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_ai_model",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_task",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "core.db.crud",
-        "description": "core.db.crud",
-        "isExtraImport": true,
-        "detail": "core.db.crud",
-        "documentation": {}
-    },
-    {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
-        "label": "DataError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
-        "label": "IntegrityError",
-        "importPath": "sqlalchemy.exc",
-        "description": "sqlalchemy.exc",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.exc",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "alembic.config",
-        "description": "alembic.config",
-        "isExtraImport": true,
-        "detail": "alembic.config",
-        "documentation": {}
-    },
-    {
-        "label": "MigrationContext",
-        "importPath": "alembic.runtime.migration",
-        "description": "alembic.runtime.migration",
-        "isExtraImport": true,
-        "detail": "alembic.runtime.migration",
-        "documentation": {}
-    },
-    {
-        "label": "ScriptDirectory",
-        "importPath": "alembic.script",
-        "description": "alembic.script",
-        "isExtraImport": true,
-        "detail": "alembic.script",
-        "documentation": {}
-    },
-    {
-        "label": "TaskRepository",
-        "importPath": "core.db.repository.task_repository",
-        "description": "core.db.repository.task_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.task_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TaskRepository",
-        "importPath": "core.db.repository.task_repository",
-        "description": "core.db.repository.task_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.task_repository",
-        "documentation": {}
-    },
-    {
-        "label": "WorkflowRepository",
-        "importPath": "core.db.repository.workflow_repository",
-        "description": "core.db.repository.workflow_repository",
-        "isExtraImport": true,
-        "detail": "core.db.repository.workflow_repository",
-        "documentation": {}
-    },
-    {
-        "label": "PermissionService",
-        "importPath": "core.services.permission_service",
-        "description": "core.services.permission_service",
-        "isExtraImport": true,
-        "detail": "core.services.permission_service",
-        "documentation": {}
-    },
-    {
-        "label": "TransactionManager",
-        "importPath": "core.db.transaction",
-        "description": "core.db.transaction",
-        "isExtraImport": true,
-        "detail": "core.db.transaction",
-        "documentation": {}
-    },
-    {
-        "label": "transaction",
-        "importPath": "core.db.transaction",
-        "description": "core.db.transaction",
-        "isExtraImport": true,
-        "detail": "core.db.transaction",
+        "detail": "unittest.mock",
         "documentation": {}
     },
     {
@@ -4905,22 +5000,6 @@
     },
     {
         "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "MagicMock",
-        "importPath": "unittest.mock",
-        "description": "unittest.mock",
-        "isExtraImport": true,
-        "detail": "unittest.mock",
-        "documentation": {}
-    },
-    {
-        "label": "patch",
         "importPath": "unittest.mock",
         "description": "unittest.mock",
         "isExtraImport": true,
@@ -5216,6 +5295,55 @@
         "documentation": {}
     },
     {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "restart_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "run_command",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "show_db_logs",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "start_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "stop_db",
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "isExtraImport": true,
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
         "label": "ComponentRegistry",
         "importPath": "core.component_registry",
         "description": "core.component_registry",
@@ -5368,46 +5496,6 @@
         "documentation": {}
     },
     {
-        "label": "restart_db",
-        "importPath": "scripts.docker",
-        "description": "scripts.docker",
-        "isExtraImport": true,
-        "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
-        "label": "run_command",
-        "importPath": "scripts.docker",
-        "description": "scripts.docker",
-        "isExtraImport": true,
-        "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
-        "label": "show_db_logs",
-        "importPath": "scripts.docker",
-        "description": "scripts.docker",
-        "isExtraImport": true,
-        "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
-        "label": "start_db",
-        "importPath": "scripts.docker",
-        "description": "scripts.docker",
-        "isExtraImport": true,
-        "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
-        "label": "stop_db",
-        "importPath": "scripts.docker",
-        "description": "scripts.docker",
-        "isExtraImport": true,
-        "detail": "scripts.docker",
-        "documentation": {}
-    },
-    {
         "label": "get_file_system",
         "importPath": "core.common.filesystem",
         "description": "core.common.filesystem",
@@ -5504,11 +5592,11 @@
         "documentation": {}
     },
     {
-        "label": "WindowManager",
-        "importPath": "core.windows",
-        "description": "core.windows",
+        "label": "Win32WindowManager",
+        "importPath": "core.platform.windows.window.win32_window_manager",
+        "description": "core.platform.windows.window.win32_window_manager",
         "isExtraImport": true,
-        "detail": "core.windows",
+        "detail": "core.platform.windows.window.win32_window_manager",
         "documentation": {}
     },
     {
@@ -5525,6 +5613,343 @@
         "description": "core.vision.screen_changes",
         "isExtraImport": true,
         "detail": "core.vision.screen_changes",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
+        "isExtraImport": true,
+        "detail": "psycopg2.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
+        "isExtraImport": true,
+        "detail": "psycopg2.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "ISOLATION_LEVEL_AUTOCOMMIT",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
+        "isExtraImport": true,
+        "detail": "psycopg2.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_model_by_id",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_models",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_by_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_id",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_username",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "update_task_status",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks_with_pagination",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_ai_model",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "core.db.crud",
+        "description": "core.db.crud",
+        "isExtraImport": true,
+        "detail": "core.db.crud",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "DataError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urlunparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "alembic.config",
+        "description": "alembic.config",
+        "isExtraImport": true,
+        "detail": "alembic.config",
+        "documentation": {}
+    },
+    {
+        "label": "MigrationContext",
+        "importPath": "alembic.runtime.migration",
+        "description": "alembic.runtime.migration",
+        "isExtraImport": true,
+        "detail": "alembic.runtime.migration",
+        "documentation": {}
+    },
+    {
+        "label": "ScriptDirectory",
+        "importPath": "alembic.script",
+        "description": "alembic.script",
+        "isExtraImport": true,
+        "detail": "alembic.script",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "TaskRepository",
+        "importPath": "core.db.repository.task_repository",
+        "description": "core.db.repository.task_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.task_repository",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowRepository",
+        "importPath": "core.db.repository.workflow_repository",
+        "description": "core.db.repository.workflow_repository",
+        "isExtraImport": true,
+        "detail": "core.db.repository.workflow_repository",
+        "documentation": {}
+    },
+    {
+        "label": "PermissionService",
+        "importPath": "core.services.permission_service",
+        "description": "core.services.permission_service",
+        "isExtraImport": true,
+        "detail": "core.services.permission_service",
+        "documentation": {}
+    },
+    {
+        "label": "TransactionManager",
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "isExtraImport": true,
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "transaction",
+        "importPath": "core.db.transaction",
+        "description": "core.db.transaction",
+        "isExtraImport": true,
+        "detail": "core.db.transaction",
+        "documentation": {}
+    },
+    {
+        "label": "PortManager",
+        "importPath": "scripts.port_cleanup",
+        "description": "scripts.port_cleanup",
+        "isExtraImport": true,
+        "detail": "scripts.port_cleanup",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "importPath": "scripts.app_manager",
+        "description": "scripts.app_manager",
+        "isExtraImport": true,
+        "detail": "scripts.app_manager",
+        "documentation": {}
+    },
+    {
+        "label": "TestAppManager",
+        "importPath": "scripts.test_app_manager",
+        "description": "scripts.test_app_manager",
+        "isExtraImport": true,
+        "detail": "scripts.test_app_manager",
         "documentation": {}
     },
     {
@@ -5565,14 +5990,6 @@
         "description": "core.web.element_finder",
         "isExtraImport": true,
         "detail": "core.web.element_finder",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -8424,7 +8841,7 @@
         "kind": 6,
         "importPath": "core.db.repository.user_repository",
         "description": "core.db.repository.user_repository",
-        "peekOfCode": "class UserRepository:\n    \"\"\"Репозиторий для работы с пользователями.\"\"\"\n    def __init__(self, db_session: Session):\n        self.db = db_session  # Добавляем инициализацию атрибута db\n    def get_by_username(self, username: str) -> Optional[User]:\n        \"\"\"\n        Получает пользователя по имени пользователя.\n        Args:\n            username: Имя пользователя\n        Returns:",
+        "peekOfCode": "class UserRepository:\n    \"\"\"Репозиторий для работы с пользователями.\"\"\"\n    def __init__(self, db_session: Session):\n        self.db = db_session\n    def get_by_username(self, username: str) -> Optional[User]:\n        \"\"\"\n        Получает пользователя по имени пользователя.\n        Args:\n            username: Имя пользователя\n        Returns:",
         "detail": "core.db.repository.user_repository",
         "documentation": {}
     },
@@ -8460,7 +8877,7 @@
         "kind": 5,
         "importPath": "core.db.connection",
         "description": "core.db.connection",
-        "peekOfCode": "DATABASE_URL = os.environ.get(\n    \"DATABASE_URL\", \"postgresql://postgres:postgres@localhost/neurolink_db\"\n)\n# Создаем движок SQLAlchemy\nengine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass Base(DeclarativeBase):\n    pass\ndef get_db():",
+        "peekOfCode": "DATABASE_URL = os.environ.get(\"DATABASE_URL\", \"postgresql://postgres:postgres@localhost/neurolink\")\nprint(f\"Using DATABASE_URL: {DATABASE_URL}\")  # Отладочный вывод\n# Создаем движок SQLAlchemy\nengine = create_engine(DATABASE_URL)\n# Создаем фабрику сессий\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass Base(DeclarativeBase):\n    pass\ndef get_db():\n    \"\"\"",
         "detail": "core.db.connection",
         "documentation": {}
     },
@@ -8780,6 +9197,24 @@
         "documentation": {}
     },
     {
+        "label": "handle_error",
+        "kind": 2,
+        "importPath": "core.llm.error_handler",
+        "description": "core.llm.error_handler",
+        "peekOfCode": "def handle_error(exception, context=None, callback=None, log_level=\"error\"):\n    \"\"\"\n    Обработка ошибок для LLM модуля.\n    Args:\n        exception: Исключение\n        context: Контекст ошибки\n        callback: Функция обратного вызова\n        log_level: Уровень логирования\n    Returns:\n        bool: True если ошибка обработана",
+        "detail": "core.llm.error_handler",
+        "documentation": {}
+    },
+    {
+        "label": "handle_llm_error",
+        "kind": 2,
+        "importPath": "core.llm.error_handler",
+        "description": "core.llm.error_handler",
+        "peekOfCode": "def handle_llm_error(message, exception=None, model=None, prompt=None):\n    \"\"\"\n    Специализированный обработчик ошибок LLM.\n    Args:\n        message: Сообщение об ошибке\n        exception: Исключение\n        model: Модель LLM\n        prompt: Промпт\n    Returns:\n        bool: True если ошибка обработана",
+        "detail": "core.llm.error_handler",
+        "documentation": {}
+    },
+    {
         "label": "PromptProcessor",
         "kind": 6,
         "importPath": "core.llm.prompt_processor",
@@ -8820,7 +9255,7 @@
         "kind": 6,
         "importPath": "core.platform.windows.filesystem.win32_file_system",
         "description": "core.platform.windows.filesystem.win32_file_system",
-        "peekOfCode": "class Win32FileSystem(AbstractFileSystem):\n    \"\"\"\n    Реализация работы с файловой системой для Windows.\n    Предоставляет методы для работы с файлами и директориями.\n    \"\"\"\n    def file_exists(self, path: str) -> bool:\n        \"\"\"\n        Проверяет существование файла.\n        Args:\n            path (str): Путь к файлу",
+        "peekOfCode": "class Win32FileSystem(AbstractFileSystem):\n    \"\"\"\n    Реализация работы с файловой системой для Windows.\n    Предоставляет методы для работы с файлами и директориями.\n    \"\"\"\n    def __init__(self):\n        \"\"\"Инициализация файловой системы Windows\"\"\"\n        super().__init__()\n    def file_exists(self, path: str) -> bool:\n        \"\"\"",
         "detail": "core.platform.windows.filesystem.win32_file_system",
         "documentation": {}
     },
@@ -8964,7 +9399,7 @@
         "kind": 6,
         "importPath": "core.platform.windows.process.win32_process_manager",
         "description": "core.platform.windows.process.win32_process_manager",
-        "peekOfCode": "class Win32ProcessManager(AbstractProcessManager):\n    \"\"\"\n    Менеджер процессов Windows, основанный на psutil и subprocess.\n    \"\"\"\n    def start_process(\n        self,\n        executable: str,\n        args: Optional[List[str]] = None,\n        cwd: Optional[str] = None,\n        wait: bool = False,",
+        "peekOfCode": "class Win32ProcessManager(AbstractProcessManager):\n    \"\"\"\n    Windows-реализация менеджера процессов.\n    Реализует AbstractProcessManager для Windows-платформы.\n    \"\"\"\n    def __init__(self):\n        \"\"\"Инициализация менеджера процессов Windows.\"\"\"\n        pass\n    def start_process(\n        self,",
         "detail": "core.platform.windows.process.win32_process_manager",
         "documentation": {}
     },
@@ -9104,6 +9539,24 @@
         "documentation": {}
     },
     {
+        "label": "AIModelService",
+        "kind": 6,
+        "importPath": "core.services.ai_model_service",
+        "description": "core.services.ai_model_service",
+        "peekOfCode": "class AIModelService:\n    \"\"\"Сервис управления AI моделями.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует сервис AI моделей.\n        Args:\n            db_session: Сессия базы данных\n        \"\"\"\n        self.db = db_session\n    def create_model(",
+        "detail": "core.services.ai_model_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.services.ai_model_service",
+        "description": "core.services.ai_model_service",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass AIModelService:\n    \"\"\"Сервис управления AI моделями.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует сервис AI моделей.\n        Args:\n            db_session: Сессия базы данных\n        \"\"\"\n        self.db = db_session",
+        "detail": "core.services.ai_model_service",
+        "documentation": {}
+    },
+    {
         "label": "AuthService",
         "kind": 6,
         "importPath": "core.services.auth_service",
@@ -9119,6 +9572,24 @@
         "description": "core.services.permission_service",
         "peekOfCode": "class PermissionService:\n    \"\"\"Сервис для работы с правами доступа.\"\"\"\n    def __init__(self, db_session: Session):\n        \"\"\"\n        Инициализирует сервис прав доступа.\n        Args:\n            db_session: Сессия базы данных\n        \"\"\"\n        self.db = db_session\n        self.auth_service = AuthService(db_session)",
         "detail": "core.services.permission_service",
+        "documentation": {}
+    },
+    {
+        "label": "TaskService",
+        "kind": 6,
+        "importPath": "core.services.task_service",
+        "description": "core.services.task_service",
+        "peekOfCode": "class TaskService:\n    \"\"\"Сервис управления задачами.\"\"\"\n    def __init__(self, db_session: Session):\n        self.db = db_session\n    def create_task(\n        self,\n        user_id: int,\n        title: str,\n        description: Optional[str] = None,\n        priority: int = 1,",
+        "detail": "core.services.task_service",
+        "documentation": {}
+    },
+    {
+        "label": "UserService",
+        "kind": 6,
+        "importPath": "core.services.user_service",
+        "description": "core.services.user_service",
+        "peekOfCode": "class UserService(AuthService):\n    \"\"\"Расширенный сервис пользователей.\"\"\"\n    def update_user_profile(\n        self,\n        user_id: int,\n        display_name: Optional[str] = None,\n        bio: Optional[str] = None,\n        avatar_url: Optional[str] = None,\n    ) -> Optional[User]:\n        \"\"\"Обновление профиля пользователя.\"\"\"",
+        "detail": "core.services.user_service",
         "documentation": {}
     },
     {
@@ -9158,11 +9629,20 @@
         "documentation": {}
     },
     {
+        "label": "HasDescription",
+        "kind": 6,
+        "importPath": "core.task.model_orchestration_operations",
+        "description": "core.task.model_orchestration_operations",
+        "peekOfCode": "class HasDescription(Protocol):\n    \"\"\"Протокол для объектов с описанием.\"\"\"\n    description: str\nclass ModelOrchestrationOperationsMixin:\n    \"\"\"\n    Миксин для операций оркестрации моделей.\n    \"\"\"\n    def _is_model_orchestration_operation(self) -> bool:\n        \"\"\"\n        Определяет, является ли задача операцией оркестрации моделей.",
+        "detail": "core.task.model_orchestration_operations",
+        "documentation": {}
+    },
+    {
         "label": "ModelOrchestrationOperationsMixin",
         "kind": 6,
         "importPath": "core.task.model_orchestration_operations",
         "description": "core.task.model_orchestration_operations",
-        "peekOfCode": "class ModelOrchestrationOperationsMixin:\n    \"\"\"\n    Миксин для операций оркестрации моделей.\n    \"\"\"\n    def _is_model_orchestration_operation(self):\n        \"\"\"\n        Определяет, является ли задача операцией оркестрации моделей.\n        \"\"\"\n        description_lower = self.description.lower()\n        # Ключевые слова для оркестрации моделей",
+        "peekOfCode": "class ModelOrchestrationOperationsMixin:\n    \"\"\"\n    Миксин для операций оркестрации моделей.\n    \"\"\"\n    def _is_model_orchestration_operation(self) -> bool:\n        \"\"\"\n        Определяет, является ли задача операцией оркестрации моделей.\n        \"\"\"\n        # Проверяем, что объект имеет атрибут description\n        description = getattr(self, \"description\", \"\")",
         "detail": "core.task.model_orchestration_operations",
         "documentation": {}
     },
@@ -9347,6 +9827,24 @@
         "documentation": {}
     },
     {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "description": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Upgrade schema.\"\"\"\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table(\n        \"ai_models\",\n        sa.Column(\"id\", sa.Integer(), nullable=False),\n        sa.Column(\"name\", sa.String(length=100), nullable=False),\n        sa.Column(\"provider\", sa.String(length=100), nullable=False),\n        sa.Column(\"is_api\", sa.Boolean(), nullable=True),\n        sa.Column(\"base_url\", sa.String(length=255), nullable=True),",
+        "detail": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "description": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Downgrade schema.\"\"\"\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table(\"users\", schema=None) as batch_op:\n        batch_op.alter_column(\n            \"email\",\n            existing_type=sa.String(length=255),\n            type_=sa.VARCHAR(length=100),\n            existing_nullable=False,\n        )",
+        "detail": "migrations.versions.52f69517b81e_add_all_missing_tables",
+        "documentation": {}
+    },
+    {
         "label": "drop_constraint_if_exists",
         "kind": 2,
         "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
@@ -9383,11 +9881,20 @@
         "documentation": {}
     },
     {
+        "label": "get_url",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def get_url():\n    \"\"\"Получаем URL базы данных из переменных окружения\"\"\"\n    db_url = os.environ.get(\n        \"DATABASE_URL\", \"postgresql://neurolink:secure_password@localhost:5432/neurolink\"\n    )\n    print(f\"Using DATABASE_URL: {db_url}\")  # Отладочный вывод\n    return db_url\ndef run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
         "label": "run_migrations_offline",
         "kind": 2,
         "importPath": "migrations.env",
         "description": "migrations.env",
-        "peekOfCode": "def run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n    Calls to context.execute() here emit the given string to the\n    script output.\n    \"\"\"\n    url = config.get_main_option(\"sqlalchemy.url\")",
+        "peekOfCode": "def run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n    Calls to context.execute() here emit the given string to the\n    script output.\n    \"\"\"\n    url = get_url()",
         "detail": "migrations.env",
         "documentation": {}
     },
@@ -9396,7 +9903,7 @@
         "kind": 2,
         "importPath": "migrations.env",
         "description": "migrations.env",
-        "peekOfCode": "def run_migrations_online() -> None:\n    \"\"\"Run migrations in 'online' mode.\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n    \"\"\"\n    connectable = engine_from_config(\n        config.get_section(config.config_ini_section, {}),\n        prefix=\"sqlalchemy.\",\n        poolclass=pool.NullPool,\n    )",
+        "peekOfCode": "def run_migrations_online() -> None:\n    \"\"\"Run migrations in 'online' mode.\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n    \"\"\"\n    # Получаем секцию конфигурации\n    configuration = config.get_section(config.config_ini_section, {})\n    # Переопределяем URL базы данных из переменных окружения\n    configuration[\"sqlalchemy.url\"] = get_url()\n    connectable = engine_from_config(",
         "detail": "migrations.env",
         "documentation": {}
     },
@@ -9414,7 +9921,7 @@
         "kind": 5,
         "importPath": "migrations.env",
         "description": "migrations.env",
-        "peekOfCode": "target_metadata = Base.metadata\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation",
+        "peekOfCode": "target_metadata = Base.metadata\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef get_url():\n    \"\"\"Получаем URL базы данных из переменных окружения\"\"\"\n    db_url = os.environ.get(\n        \"DATABASE_URL\", \"postgresql://neurolink:secure_password@localhost:5432/neurolink\"\n    )",
         "detail": "migrations.env",
         "documentation": {}
     },
@@ -9635,12 +10142,66 @@
         "documentation": {}
     },
     {
+        "label": "ai_models",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def ai_models():\n    return render_template(\"ai_models.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "history",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():\n    return render_template(\"logs.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():\n    return render_template(\"logs.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logs",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def logs():\n    return render_template(\"logs.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
         "label": "main_bp",
         "kind": 5,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
         "peekOfCode": "main_bp = Blueprint(\"main\", __name__)\n@main_bp.route(\"/\")\ndef index():\n    # Список доступных команд с иконками и описаниями\n    commands = [\n        {\n            \"main\": \"открой\",\n            \"alternatives\": [\"запусти\", \"открыть\"],\n            \"description\": \"Открывает программу или файл\",\n            \"icon\": \"folder-open\",",
         "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "kind": 6,
+        "importPath": "scripts.app_manager",
+        "description": "scripts.app_manager",
+        "peekOfCode": "class AppManager:\n    def __init__(self, app_url=\"http://localhost:5000\", timeout=45):  # Увеличили timeout\n        self.app_url = app_url\n        self.timeout = timeout\n        self.process: Optional[subprocess.Popen] = None\n    def start_app(self) -> bool:\n        \"\"\"Запускает приложение и ждет готовности\"\"\"\n        print(f\"🔍 [APP] Проверяем, не запущено ли приложение...\")\n        # СНАЧАЛА быстро проверяем, не запущено ли уже\n        if self.is_app_running():",
+        "detail": "scripts.app_manager",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTestRunner",
+        "kind": 6,
+        "importPath": "scripts.base_test_runner",
+        "description": "scripts.base_test_runner",
+        "peekOfCode": "class BaseTestRunner(ABC):\n    \"\"\"Базовый класс для всех test runners\"\"\"\n    def __init__(self, test_type: str = \"generic\"):\n        self.test_type = test_type\n        self.session_id = f\"{test_type}_{datetime.now().strftime('%Y%m%d_%H%M%S')}\"\n        self.logs_dir = Path(\"logs\")\n        self.logs_dir.mkdir(exist_ok=True)\n    @abstractmethod\n    def setup(self) -> bool:\n        \"\"\"Настройка перед запуском тестов\"\"\"",
+        "detail": "scripts.base_test_runner",
         "documentation": {}
     },
     {
@@ -9711,7 +10272,7 @@
         "kind": 2,
         "importPath": "scripts.docker",
         "description": "scripts.docker",
-        "peekOfCode": "def restart_db():\n    \"\"\"Перезапускает контейнеры базы данных\"\"\"\n    stop_db()\n    start_db()\ndef show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\nif __name__ == \"__main__\":\n    # Для возможности запуска напрямую из командной строки\n    if len(sys.argv) > 1:",
+        "peekOfCode": "def restart_db():\n    \"\"\"Перезапускает контейнеры базы данных\"\"\"\n    stop_db()\n    start_db()\ndef show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\ndef main():\n    \"\"\"Главная функция для обработки аргументов командной строки.\"\"\"\n    if len(sys.argv) > 1:",
         "detail": "scripts.docker",
         "documentation": {}
     },
@@ -9720,7 +10281,16 @@
         "kind": 2,
         "importPath": "scripts.docker",
         "description": "scripts.docker",
-        "peekOfCode": "def show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\nif __name__ == \"__main__\":\n    # Для возможности запуска напрямую из командной строки\n    if len(sys.argv) > 1:\n        command = sys.argv[1]\n        if command == \"start\":\n            start_db()\n        elif command == \"stop\":",
+        "peekOfCode": "def show_db_logs():\n    \"\"\"Показывает логи базы данных\"\"\"\n    run_command(\"docker-compose logs -f\")\ndef main():\n    \"\"\"Главная функция для обработки аргументов командной строки.\"\"\"\n    if len(sys.argv) > 1:\n        command = sys.argv[1]\n        if command == \"start\":\n            start_db()\n        elif command == \"stop\":",
+        "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.docker",
+        "description": "scripts.docker",
+        "peekOfCode": "def main():\n    \"\"\"Главная функция для обработки аргументов командной строки.\"\"\"\n    if len(sys.argv) > 1:\n        command = sys.argv[1]\n        if command == \"start\":\n            start_db()\n        elif command == \"stop\":\n            stop_db()\n        elif command == \"restart\":\n            restart_db()",
         "detail": "scripts.docker",
         "documentation": {}
     },
@@ -9731,6 +10301,42 @@
         "description": "scripts.docker",
         "peekOfCode": "PROJECT_ROOT = Path(__file__).parent.parent\ndef run_command(command, cwd=PROJECT_ROOT):\n    \"\"\"Запускает shell-команду и выводит результат\"\"\"\n    print(f\"Выполняем: {command}\")\n    process = subprocess.Popen(\n        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd\n    )\n    # Выводим вывод команды в реальном времени\n    if process.stdout:  # Проверяем, что stdout не None\n        for line in process.stdout:",
         "detail": "scripts.docker",
+        "documentation": {}
+    },
+    {
+        "label": "PortManager",
+        "kind": 6,
+        "importPath": "scripts.port_cleanup",
+        "description": "scripts.port_cleanup",
+        "peekOfCode": "class PortManager:\n    def __init__(self, port: int = 5000):\n        self.port = port\n        self.app_process = None\n    def is_port_in_use(self) -> bool:\n        \"\"\"Проверяет, используется ли порт\"\"\"\n        for conn in psutil.net_connections():\n            try:\n                # Обрабатываем разные типы соединений\n                if hasattr(conn, \"laddr\") and conn.laddr:",
+        "detail": "scripts.port_cleanup",
+        "documentation": {}
+    },
+    {
+        "label": "cleanup_port",
+        "kind": 2,
+        "importPath": "scripts.port_cleanup",
+        "description": "scripts.port_cleanup",
+        "peekOfCode": "def cleanup_port(port: int = 5000) -> bool:\n    \"\"\"Функция для быстрой очистки порта\"\"\"\n    manager = PortManager(port)\n    return manager.smart_cleanup()\ndef cleanup_all_flask_processes():\n    \"\"\"Завершает все Flask процессы\"\"\"\n    killed_count = 0\n    for proc in psutil.process_iter([\"pid\", \"name\", \"cmdline\"]):\n        try:\n            cmdline = \" \".join(proc.info[\"cmdline\"] or [])",
+        "detail": "scripts.port_cleanup",
+        "documentation": {}
+    },
+    {
+        "label": "cleanup_all_flask_processes",
+        "kind": 2,
+        "importPath": "scripts.port_cleanup",
+        "description": "scripts.port_cleanup",
+        "peekOfCode": "def cleanup_all_flask_processes():\n    \"\"\"Завершает все Flask процессы\"\"\"\n    killed_count = 0\n    for proc in psutil.process_iter([\"pid\", \"name\", \"cmdline\"]):\n        try:\n            cmdline = \" \".join(proc.info[\"cmdline\"] or [])\n            if \"python\" in proc.info[\"name\"].lower() and (\n                \"app.py\" in cmdline or \"flask\" in cmdline.lower()\n            ):\n                print(f\"🔧 Завершаем Flask процесс: {proc.info['pid']}\")",
+        "detail": "scripts.port_cleanup",
+        "documentation": {}
+    },
+    {
+        "label": "quick_check",
+        "kind": 2,
+        "importPath": "scripts.quick_check",
+        "description": "scripts.quick_check",
+        "peekOfCode": "def quick_check(url=\"http://localhost:5000\", timeout=1):\n    \"\"\"Быстрая проверка приложения\"\"\"\n    try:\n        response = requests.get(url, timeout=timeout)\n        if response.status_code == 200:\n            print(f\"✅ Приложение работает на {url}\")\n            return True\n        else:\n            print(f\"⚠️ Приложение отвечает с кодом {response.status_code}\")\n            return False",
+        "detail": "scripts.quick_check",
         "documentation": {}
     },
     {
@@ -9749,6 +10355,69 @@
         "description": "scripts.run_affected_tests",
         "peekOfCode": "def main():\n    changed_files = sys.argv[1:]\n    test_paths = set()\n    for file_path in changed_files:\n        # Обрабатываем только Python файлы\n        if file_path.endswith(\".py\") and \"core/\" in file_path:\n            test_path = get_test_path(file_path)\n            if test_path:\n                test_paths.add(test_path)\n    if test_paths:",
         "detail": "scripts.run_affected_tests",
+        "documentation": {}
+    },
+    {
+        "label": "run_ui_parallel",
+        "kind": 2,
+        "importPath": "scripts.test",
+        "description": "scripts.test",
+        "peekOfCode": "def run_ui_parallel():\n    \"\"\"Структурированное логирование с управлением приложением\"\"\"\n    from scripts.app_manager import AppManager\n    os.environ[\"HEADLESS\"] = \"true\"\n    os.makedirs(\"logs\", exist_ok=True)\n    # Инициализация менеджера приложения\n    app_manager = AppManager()\n    start_time = time.time()\n    # Метаданные сессии\n    session_info = {",
+        "detail": "scripts.test",
+        "documentation": {}
+    },
+    {
+        "label": "run_ui_headless",
+        "kind": 2,
+        "importPath": "scripts.test",
+        "description": "scripts.test",
+        "peekOfCode": "def run_ui_headless():\n    \"\"\"Структурированное логирование обычных UI тестов\"\"\"\n    os.environ[\"HEADLESS\"] = \"true\"\n    # Аналогично parallel, но без -n флага\n    os.makedirs(\"logs\", exist_ok=True)\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    log_file = f\"logs/ui_headless_{timestamp}.log\"\n    json_file = f\"logs/ui_headless_{timestamp}.json\"\n    print(f\"🧪 [UI TESTS] Starting headless execution...\")\n    print(f\"📝 [LOGGING] Structured logs: {log_file}, {json_file}\")",
+        "detail": "scripts.test",
+        "documentation": {}
+    },
+    {
+        "label": "run_ui_normal",
+        "kind": 2,
+        "importPath": "scripts.test",
+        "description": "scripts.test",
+        "peekOfCode": "def run_ui_normal():\n    \"\"\"Запуск UI тестов в обычном режиме\"\"\"\n    os.environ.pop(\"HEADLESS\", None)\n    result = subprocess.run([sys.executable, \"-m\", \"pytest\", \"tests/ui/e2e/\", \"-v\"])\n    sys.exit(result.returncode)",
+        "detail": "scripts.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestAppManager",
+        "kind": 6,
+        "importPath": "scripts.test_app_manager",
+        "description": "scripts.test_app_manager",
+        "peekOfCode": "class TestAppManager:\n    def __init__(self, port=5000, timeout=45):\n        self.port = port\n        self.app_url = f\"http://localhost:{port}\"\n        self.timeout = timeout\n        self.process: Optional[subprocess.Popen] = None\n        self.app_dir = Path(__file__).parent.parent\n    def cleanup_port(self) -> bool:\n        \"\"\"Очищает порт от зависших процессов\"\"\"\n        print(f\"🧹 [APP] Очистка порта {self.port}...\")",
+        "detail": "scripts.test_app_manager",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.test_app_manager",
+        "description": "scripts.test_app_manager",
+        "peekOfCode": "def main():\n    \"\"\"Утилита для ручного запуска/остановки приложения\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Управление тестовым приложением\")\n    parser.add_argument(\"action\", choices=[\"start\", \"stop\", \"restart\", \"status\"])\n    parser.add_argument(\"--port\", type=int, default=5000, help=\"Порт приложения\")\n    parser.add_argument(\"--timeout\", type=int, default=45, help=\"Таймаут запуска\")\n    args = parser.parse_args()\n    manager = TestAppManager(port=args.port, timeout=args.timeout)\n    if args.action == \"start\":",
+        "detail": "scripts.test_app_manager",
+        "documentation": {}
+    },
+    {
+        "label": "UITestRunner",
+        "kind": 6,
+        "importPath": "scripts.ui_test_runner",
+        "description": "scripts.ui_test_runner",
+        "peekOfCode": "class UITestRunner(BaseTestRunner):\n    def __init__(self):\n        super().__init__(\"ui_parallel\")\n        self.app_manager = TestAppManager()\n    def setup(self) -> bool:\n        \"\"\"Настройка и запуск приложения для тестов\"\"\"\n        print(f\"🔧 [SETUP] Подготовка приложения для UI тестов...\")\n        return self.app_manager.start_app()\n    def cleanup(self) -> None:\n        \"\"\"Очистка после тестов\"\"\"",
+        "detail": "scripts.ui_test_runner",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.ui_test_runner",
+        "description": "scripts.ui_test_runner",
+        "peekOfCode": "def main():\n    runner = UITestRunner()\n    # Параметры из командной строки\n    test_path = sys.argv[1] if len(sys.argv) > 1 else \"tests/ui/\"\n    parallel = \"--no-parallel\" not in sys.argv\n    workers = 4\n    if \"--workers\" in sys.argv:\n        idx = sys.argv.index(\"--workers\")\n        if idx + 1 < len(sys.argv):\n            workers = int(sys.argv[idx + 1])",
+        "detail": "scripts.ui_test_runner",
         "documentation": {}
     },
     {
@@ -10103,255 +10772,21 @@
         "documentation": {}
     },
     {
-        "label": "db_engine",
+        "label": "TestDockerScripts",
+        "kind": 6,
+        "importPath": "tests.infrastructure.docker.scripts.test_docker",
+        "description": "tests.infrastructure.docker.scripts.test_docker",
+        "peekOfCode": "class TestDockerScripts:\n    def test_run_command_success(self, mock_subprocess_popen):\n        \"\"\"Тест успешного выполнения команды\"\"\"\n        mock_popen, process_mock = mock_subprocess_popen\n        # Вызов функции\n        run_command(\"docker-compose up -d\")\n        # Проверка, что Popen был вызван с правильными аргументами\n        mock_popen.assert_called_once()\n        args, kwargs = mock_popen.call_args\n        assert \"docker-compose up -d\" in args[0]",
+        "detail": "tests.infrastructure.docker.scripts.test_docker",
+        "documentation": {}
+    },
+    {
+        "label": "mock_subprocess_popen",
         "kind": 2,
-        "importPath": "tests.db.conftest",
-        "description": "tests.db.conftest",
-        "peekOfCode": "def db_engine():\n    \"\"\"\n    Создает тестовый движок БД с изолированной тестовой базой данных.\n    Эта фикстура:\n    1. Подключается к PostgreSQL\n    2. Создает отдельную тестовую БД, если она не существует\n    3. Настраивает схему таблиц\n    4. Очищает таблицы после всех тестов\n    \"\"\"\n    # Настройки подключения",
-        "detail": "tests.db.conftest",
-        "documentation": {}
-    },
-    {
-        "label": "db_session",
-        "kind": 2,
-        "importPath": "tests.db.conftest",
-        "description": "tests.db.conftest",
-        "peekOfCode": "def db_session(db_engine):\n    \"\"\"\n    Создает изолированную сессию БД для каждого теста.\n    Каждый тест получает \"чистую\" транзакцию, которая откатывается после\n    завершения теста, обеспечивая изоляцию между тестами.\n    \"\"\"\n    connection = db_engine.connect()\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session",
-        "detail": "tests.db.conftest",
-        "documentation": {}
-    },
-    {
-        "label": "test_user",
-        "kind": 2,
-        "importPath": "tests.db.conftest",
-        "description": "tests.db.conftest",
-        "peekOfCode": "def test_user(db_session):\n    \"\"\"\n    Создает тестового пользователя для использования в тестах.\n    Внимание: если тесту нужно видеть этого пользователя в БД,\n    необходимо сделать commit в фикстуре.\n    \"\"\"\n    user_data = {\n        \"username\": \"test_user\",\n        \"email\": \"test@example.com\",\n        \"password_hash\": \"hashed_password\",",
-        "detail": "tests.db.conftest",
-        "documentation": {}
-    },
-    {
-        "label": "TestDatabaseConnection",
-        "kind": 6,
-        "importPath": "tests.db.test_connection",
-        "description": "tests.db.test_connection",
-        "peekOfCode": "class TestDatabaseConnection:\n    def test_connection(self, db_engine):\n        \"\"\"Проверяем подключение к БД\"\"\"\n        connection = db_engine.connect()\n        assert connection is not None\n        connection.close()\n    def test_tables_exist(self, db_engine):\n        \"\"\"Проверяем, что все необходимые таблицы созданы\"\"\"\n        inspector = inspect(db_engine)\n        tables = inspector.get_table_names()",
-        "detail": "tests.db.test_connection",
-        "documentation": {}
-    },
-    {
-        "label": "db_engine",
-        "kind": 2,
-        "importPath": "tests.db.test_connection",
-        "description": "tests.db.test_connection",
-        "peekOfCode": "def db_engine():\n    \"\"\"Создает тестовый движок БД\"\"\"\n    # Формируем строку подключения с правильными учетными данными\n    # но сохраняем логику использования отдельной тестовой БД\n    db_user = \"neurolink\"\n    db_password = \"secure_password\"\n    db_host = \"localhost\"\n    db_port = \"5432\"\n    # Используем тестовую БД с тем же именем, что и в исходном коде\n    test_db_name = \"neurolink_test_db\"",
-        "detail": "tests.db.test_connection",
-        "documentation": {}
-    },
-    {
-        "label": "db_session",
-        "kind": 2,
-        "importPath": "tests.db.test_connection",
-        "description": "tests.db.test_connection",
-        "peekOfCode": "def db_session(db_engine):\n    \"\"\"Создает сессию БД для тестов\"\"\"\n    connection = db_engine.connect()\n    # Запускаем транзакцию\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session\n    # Откатываем изменения после теста\n    session.close()\n    transaction.rollback()",
-        "detail": "tests.db.test_connection",
-        "documentation": {}
-    },
-    {
-        "label": "TestUserCRUD",
-        "kind": 6,
-        "importPath": "tests.db.test_crud",
-        "description": "tests.db.test_crud",
-        "peekOfCode": "class TestUserCRUD:\n    def test_create_user(self, db_session):\n        \"\"\"Тест создания пользователя\"\"\"\n        user_data = {\n            \"username\": \"testuser\",\n            \"email\": \"test@example.com\",\n            \"password_hash\": \"hashed_password\",\n        }\n        user = create_user(db_session, **user_data)\n        assert user.id is not None",
-        "detail": "tests.db.test_crud",
-        "documentation": {}
-    },
-    {
-        "label": "TestAIModelCRUD",
-        "kind": 6,
-        "importPath": "tests.db.test_crud",
-        "description": "tests.db.test_crud",
-        "peekOfCode": "class TestAIModelCRUD:\n    def test_create_ai_model(self, db_session):\n        \"\"\"Тест создания модели ИИ\"\"\"\n        model_data = {\n            \"name\": \"Test GPT\",\n            \"provider\": \"OpenAI\",\n            \"is_api\": True,\n            \"base_url\": \"https://api.example.com\",\n            \"configuration\": {\"model\": \"test-model\"},\n        }",
-        "detail": "tests.db.test_crud",
-        "documentation": {}
-    },
-    {
-        "label": "TestTaskCRUD",
-        "kind": 6,
-        "importPath": "tests.db.test_crud",
-        "description": "tests.db.test_crud",
-        "peekOfCode": "class TestTaskCRUD:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя\"\"\"\n        user = create_user(\n            db_session, username=\"taskuser\", email=\"task@example.com\", password_hash=\"hash\"\n        )\n        return user\n    def test_create_task(self, db_session, test_user):\n        \"\"\"Тест создания задачи\"\"\"",
-        "detail": "tests.db.test_crud",
-        "documentation": {}
-    },
-    {
-        "label": "TestMigrations",
-        "kind": 6,
-        "importPath": "tests.db.test_migrations",
-        "description": "tests.db.test_migrations",
-        "peekOfCode": "class TestMigrations:\n    @pytest.fixture\n    def alembic_config(self):\n        \"\"\"Создает конфигурацию Alembic\"\"\"\n        config = Config(\"alembic.ini\")\n        return config\n    def test_migrations_history(self, alembic_config):\n        \"\"\"Проверяет, что история миграций непрерывна\"\"\"\n        script = ScriptDirectory.from_config(alembic_config)\n        # Получаем все ревизии",
-        "detail": "tests.db.test_migrations",
-        "documentation": {}
-    },
-    {
-        "label": "TestPaginationAndFiltering",
-        "kind": 6,
-        "importPath": "tests.db.test_pagination",
-        "description": "tests.db.test_pagination",
-        "peekOfCode": "class TestPaginationAndFiltering:\n    def test_basic_pagination(self, db_session, user_with_many_tasks):\n        \"\"\"Тест базовой пагинации\"\"\"\n        user = user_with_many_tasks\n        # Первая страница (10 элементов)\n        page1 = get_tasks_with_pagination(db_session, user_id=user.id, page=1, per_page=10)\n        assert len(page1.items) == 10\n        assert page1.total == 50\n        assert page1.pages == 5\n        assert page1.has_next is True  # Исправлено: == True -> is True",
-        "detail": "tests.db.test_pagination",
-        "documentation": {}
-    },
-    {
-        "label": "user_with_many_tasks",
-        "kind": 2,
-        "importPath": "tests.db.test_pagination",
-        "description": "tests.db.test_pagination",
-        "peekOfCode": "def user_with_many_tasks(db_session):\n    \"\"\"Создает пользователя с большим количеством задач для тестов пагинации\"\"\"\n    user = create_user(\n        db_session, username=\"pageuser\", email=\"page@example.com\", password_hash=\"hash\"\n    )\n    # Создаем 50 задач разных типов\n    for i in range(50):\n        status = \"completed\" if i % 5 == 0 else \"in_progress\" if i % 3 == 0 else \"created\"\n        priority = (i % 3) + 1  # приоритеты 1, 2, 3\n        create_task(",
-        "detail": "tests.db.test_pagination",
-        "documentation": {}
-    },
-    {
-        "label": "TestDatabasePerformance",
-        "kind": 6,
-        "importPath": "tests.db.test_performance",
-        "description": "tests.db.test_performance",
-        "peekOfCode": "class TestDatabasePerformance:\n    @pytest.fixture\n    def populated_db(self, db_session):\n        \"\"\"Создает набор тестовых данных\"\"\"\n        # Создаем пользователя\n        user = create_user(\n            db_session, username=\"perftest\", email=\"perf@example.com\", password_hash=\"hash\"\n        )\n        # Создаем моделb ИИ\n        model = create_ai_model(db_session, name=\"Perf Model\", provider=\"Test\", is_api=True)",
-        "detail": "tests.db.test_performance",
-        "documentation": {}
-    },
-    {
-        "label": "TestUserRepository",
-        "kind": 6,
-        "importPath": "tests.db.test_repository",
-        "description": "tests.db.test_repository",
-        "peekOfCode": "class TestUserRepository:\n    def test_user_repository_operations(self, db_session):\n        \"\"\"Тест операций репозитория пользователей\"\"\"\n        user_repo = UserRepository(db_session)\n        # Создаем пользователя\n        user = user_repo.create(\n            username=\"repo_user\",\n            email=\"repo@example.com\",\n            password_hash=\"hashed_password\",\n            display_name=\"Repository Test User\",",
-        "detail": "tests.db.test_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TestTaskRepository",
-        "kind": 6,
-        "importPath": "tests.db.test_repository",
-        "description": "tests.db.test_repository",
-        "peekOfCode": "class TestTaskRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для задач\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"task_repo_user\", email=\"taskrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_task_repository_basic_operations(self, db_session, test_user):\n        \"\"\"Тест основных операций репозитория задач\"\"\"",
-        "detail": "tests.db.test_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TestWorkflowRepository",
-        "kind": 6,
-        "importPath": "tests.db.test_repository",
-        "description": "tests.db.test_repository",
-        "peekOfCode": "class TestWorkflowRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для рабочих процессов\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"workflow_repo_user\", email=\"workflowrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_workflow_repository_operations(self, db_session, test_user):\n        \"\"\"Тест операций репозитория рабочих процессов\"\"\"",
-        "detail": "tests.db.test_repository",
-        "documentation": {}
-    },
-    {
-        "label": "TestPasswordSecurity",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password\n        assert len(salt) > 0\n        assert verify_password(password, password_hash, salt)\n    def test_password_verification_fail(self):",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestJWTSecurity",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestJWTSecurity:\n    \"\"\"Тесты безопасности JWT.\"\"\"\n    def test_token_creation_and_verification(self):\n        \"\"\"Тест создания и проверки токена.\"\"\"\n        data = {\"user_id\": 1, \"username\": \"test_user\"}\n        token = create_access_token(data)\n        assert token is not None\n        assert len(token) > 0\n        decoded_data = verify_token(token)\n        assert decoded_data[\"user_id\"] == 1",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestUserRepository",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestUserRepository:\n    \"\"\"Тесты репозитория пользователей.\"\"\"\n    def test_create_user(self, user_repository):\n        \"\"\"Тест создания пользователя.\"\"\"\n        password_hash, salt = hash_password(\"test_password\")\n        user = user_repository.create(\n            username=\"test_user\",\n            email=\"test@example.com\",\n            password_hash=password_hash,\n            display_name=\"Test User\",",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestAuthService",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestAuthService:\n    \"\"\"Тесты сервиса аутентификации.\"\"\"\n    def test_register_user(self, auth_service):\n        \"\"\"Тест регистрации пользователя.\"\"\"\n        result = auth_service.register_user(\n            username=\"new_user\",\n            email=\"new@example.com\",\n            password=\"secure_password\",\n            display_name=\"New User\",\n        )",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestPermissionService",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestPermissionService:\n    \"\"\"Тесты сервиса прав доступа.\"\"\"\n    def test_check_admin_permissions(self, permission_service, auth_service):\n        \"\"\"Тест прав администратора.\"\"\"\n        # Создаем администратора\n        admin_data = auth_service.register_user(\n            username=\"admin\", email=\"admin@example.com\", password=\"admin_password\", role=\"admin\"\n        )\n        assert admin_data is not None\n        # Проверяем права администратора",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestSecurityIntegration",
-        "kind": 6,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "class TestSecurityIntegration:\n    \"\"\"Интеграционные тесты безопасности.\"\"\"\n    def test_full_auth_workflow(self, auth_service, permission_service):\n        \"\"\"Тест полного цикла аутентификации и авторизации.\"\"\"\n        # Регистрация\n        user_data = auth_service.register_user(\n            username=\"integration_user\",\n            email=\"integration@example.com\",\n            password=\"secure_password\",\n            role=\"user\",",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "db_session",
-        "kind": 2,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "def db_session():\n    \"\"\"Создает тестовую сессию базы данных.\"\"\"\n    engine = create_engine(\"sqlite:///:memory:\")\n    Base.metadata.create_all(engine)\n    SessionLocal = sessionmaker(bind=engine)\n    session = SessionLocal()\n    yield session\n    session.close()\n@pytest.fixture\ndef user_repository(db_session):",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "user_repository",
-        "kind": 2,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "def user_repository(db_session):\n    \"\"\"Создает репозиторий пользователей для тестов.\"\"\"\n    return UserRepository(db_session)\n@pytest.fixture\ndef auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "auth_service",
-        "kind": 2,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "def auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "permission_service",
-        "kind": 2,
-        "importPath": "tests.db.test_security",
-        "description": "tests.db.test_security",
-        "peekOfCode": "def permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password",
-        "detail": "tests.db.test_security",
-        "documentation": {}
-    },
-    {
-        "label": "TestTransactions",
-        "kind": 6,
-        "importPath": "tests.db.test_transactions",
-        "description": "tests.db.test_transactions",
-        "peekOfCode": "class TestTransactions:\n    @pytest.fixture\n    def repositories(self, db_session):\n        \"\"\"Создает репозитории для тестирования\"\"\"\n        return {\n            \"user_repo\": UserRepository(db_session),\n            \"task_repo\": TaskRepository(db_session),\n            \"transaction\": TransactionManager(db_session),\n        }\n    def test_successful_transaction(self, db_session, repositories):",
-        "detail": "tests.db.test_transactions",
-        "documentation": {}
-    },
-    {
-        "label": "TestDataValidation",
-        "kind": 6,
-        "importPath": "tests.db.test_validation",
-        "description": "tests.db.test_validation",
-        "peekOfCode": "class TestDataValidation:\n    def test_required_fields(self, db_session):\n        \"\"\"Тест обязательных полей\"\"\"\n        # Проверка пользователя без обязательного поля\n        with pytest.raises(IntegrityError):\n            db_session.add(User(email=\"missing_username@example.com\", password_hash=\"hash\"))\n            db_session.flush()\n        db_session.rollback()\n        # Проверка задачи без обязательного поля\n        with pytest.raises(IntegrityError):",
-        "detail": "tests.db.test_validation",
+        "importPath": "tests.infrastructure.docker.scripts.test_docker",
+        "description": "tests.infrastructure.docker.scripts.test_docker",
+        "peekOfCode": "def mock_subprocess_popen():\n    \"\"\"Фикстура для мокирования subprocess.Popen\"\"\"\n    with patch(\"subprocess.Popen\") as mock_popen:\n        # Настройка мок-объекта\n        process_mock = MagicMock()\n        process_mock.stdout = [\"Output line 1\\n\", \"Output line 2\\n\"]\n        process_mock.stderr = MagicMock()\n        process_mock.stderr.read.return_value = \"Error message\"\n        process_mock.wait.return_value = 0  # Успешное завершение по умолчанию\n        mock_popen.return_value = process_mock",
+        "detail": "tests.infrastructure.docker.scripts.test_docker",
         "documentation": {}
     },
     {
@@ -10368,7 +10803,7 @@
         "kind": 6,
         "importPath": "tests.integration.core.test_core_components_integration",
         "description": "tests.integration.core.test_core_components_integration",
-        "peekOfCode": "class TestCoreComponentsIntegration:\n    \"\"\"Интеграционные тесты для проверки взаимодействия компонентов ядра системы.\"\"\"\n    @pytest.fixture\n    def setup_core_components(self):\n        \"\"\"\n        Создает и настраивает основные компоненты ядра для тестирования.\n        \"\"\"\n        # Создаем компоненты\n        registry = ComponentRegistry()\n        error_handler = ErrorHandler()",
+        "peekOfCode": "class TestCoreComponentsIntegration:\n    \"\"\"Интеграционные тесты для проверки взаимодействия компонентов ядра системы.\"\"\"\n    def test_system_initialization_with_all_components(self, setup_core_components):\n        \"\"\"\n        Тест полной инициализации системы со всеми компонентами.\n        \"\"\"\n        components = setup_core_components\n        registry = components[\"registry\"]\n        system_initializer = components[\"system_initializer\"]\n        # Создаем и регистрируем тестовый компонент",
         "detail": "tests.integration.core.test_core_components_integration",
         "documentation": {}
     },
@@ -10378,6 +10813,15 @@
         "importPath": "tests.integration.core.test_core_components_integration",
         "description": "tests.integration.core.test_core_components_integration",
         "peekOfCode": "class TestPlugin:\n    def __init__(self):\n        self.initialized = False\n    def setup(self):\n        self.initialized = True\n        return True\n\"\"\"\n            plugin_path = os.path.join(temp_dir, \"test_plugin.py\")\n            with open(plugin_path, \"w\") as f:\n                f.write(plugin_code)",
+        "detail": "tests.integration.core.test_core_components_integration",
+        "documentation": {}
+    },
+    {
+        "label": "setup_core_components",
+        "kind": 2,
+        "importPath": "tests.integration.core.test_core_components_integration",
+        "description": "tests.integration.core.test_core_components_integration",
+        "peekOfCode": "def setup_core_components():\n    \"\"\"\n    Создает и настраивает основные компоненты ядра для тестирования.\n    \"\"\"\n    # Создаем компоненты\n    registry = ComponentRegistry()\n    error_handler = ErrorHandler()\n    # СНАЧАЛА регистрируем ErrorHandler\n    registry.register(\"error_handler\", error_handler)\n    # ПОТОМ создаем PluginManager (который ищет error_handler в конструкторе)",
         "detail": "tests.integration.core.test_core_components_integration",
         "documentation": {}
     },
@@ -10445,11 +10889,101 @@
         "documentation": {}
     },
     {
+        "label": "LLMApiClient",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class LLMApiClient:\n    def __init__(self, api_key=None, base_url=None):\n        self.api_key = api_key or \"test_api_key\"\n        self.base_url = base_url or \"https://api.example.com/v1\"\n        self.session = requests.Session()\n    def connect(self):\n        return True\n    def send_request(self, prompt, options=None):\n        # Имитация ответа от API\n        return {",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "PromptProcessor",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class PromptProcessor:\n    def __init__(self):\n        self.templates = {}\n    def add_template(self, name, template):\n        self.templates[name] = template\n        return True\n    def process_prompt(self, template_name, variables=None):\n        if template_name not in self.templates:\n            raise ValueError(f\"Template {template_name} not found\")\n        template = self.templates[template_name]",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "ResponseParser",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class ResponseParser:\n    def parse_response(self, response):\n        if \"choices\" in response and len(response[\"choices\"]) > 0:\n            return response[\"choices\"][0][\"text\"]\n        return None\n    def extract_json(self, text):\n        try:\n            # Ищем JSON в тексте между фигурными скобками\n            start = text.find(\"{\")\n            end = text.rfind(\"}\") + 1",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "ActionPlanner",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class ActionPlanner:\n    def __init__(self, llm_client, prompt_processor, response_parser):\n        self.llm_client = llm_client\n        self.prompt_processor = prompt_processor\n        self.response_parser = response_parser\n    def plan_actions(self, user_request):\n        # Создаем промпт для планирования действий\n        prompt = self.prompt_processor.process_prompt(\n            \"action_planning\", {\"user_request\": user_request}\n        )",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "LLMErrorHandler",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class LLMErrorHandler:\n    def handle_api_error(self, error):\n        error_type = type(error).__name__\n        error_message = str(error)\n        if isinstance(error, requests.exceptions.ConnectionError):\n            return {\"error\": \"connection_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.Timeout):\n            return {\"error\": \"timeout_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.RequestException):\n            return {\"error\": \"request_error\", \"message\": error_message}",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "TestLLMApiConnection",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class TestLLMApiConnection:\n    \"\"\"Тесты подключения к LLM API\"\"\"\n    def test_successful_connection(self):\n        \"\"\"Тест успешного подключения к API\"\"\"\n        # Используем мок вместо реального объекта для ускорения теста\n        client = MagicMock()\n        client.connect.return_value = True\n        result = client.connect()\n        assert result is True\n    @patch(\"requests.Session.get\")",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "TestPromptProcessing",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class TestPromptProcessing:\n    \"\"\"Тесты обработки промптов\"\"\"\n    def test_add_template(self):\n        \"\"\"Тест добавления шаблона промпта\"\"\"\n        processor = PromptProcessor()\n        template = \"Hello, {name}! How can I help you today?\"\n        result = processor.add_template(\"greeting\", template)\n        assert result is True\n        assert \"greeting\" in processor.templates\n        assert processor.templates[\"greeting\"] == template",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "TestResponseParsing",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class TestResponseParsing:\n    \"\"\"Тесты парсинга ответов модели\"\"\"\n    def test_parse_simple_response(self):\n        \"\"\"Тест парсинга простого ответа\"\"\"\n        parser = ResponseParser()\n        response = {\n            \"id\": \"test-id\",\n            \"choices\": [{\"text\": \"This is a test response\", \"finish_reason\": \"stop\"}],\n        }\n        result = parser.parse_response(response)",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "TestActionPlanning",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class TestActionPlanning:\n    \"\"\"Тесты планирования действий на основе запросов\"\"\"\n    def test_plan_actions(self):\n        \"\"\"Тест планирования действий на основе запроса пользователя\"\"\"\n        # Создаем моки для зависимостей\n        llm_client = MagicMock()\n        llm_client.send_request.return_value = {\"choices\": [{\"text\": \"\"\"\n                    I'll help you install Python. Here's a plan:\n                    {\n                        \"actions\": [",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
+        "label": "TestLLMErrorHandling",
+        "kind": 6,
+        "importPath": "tests.integration.llm_integration.test_llm_unit",
+        "description": "tests.integration.llm_integration.test_llm_unit",
+        "peekOfCode": "class TestLLMErrorHandling:\n    \"\"\"Тесты обработки ошибок API\"\"\"\n    def test_handle_connection_error(self):\n        \"\"\"Тест обработки ошибки соединения\"\"\"\n        handler = LLMErrorHandler()\n        # Создаем объект исключения вместо вызова реального исключения\n        error = requests.exceptions.ConnectionError(\"Failed to establish connection\")\n        result = handler.handle_api_error(error)\n        assert result[\"error\"] == \"connection_error\"\n        assert \"Failed to establish connection\" in result[\"message\"]",
+        "detail": "tests.integration.llm_integration.test_llm_unit",
+        "documentation": {}
+    },
+    {
         "label": "TestUserService",
         "kind": 6,
         "importPath": "tests.integration.test_db_services",
         "description": "tests.integration.test_db_services",
-        "peekOfCode": "class TestUserService:\n    def test_user_registration(self, db_session):\n        \"\"\"Тест интеграции сервиса регистрации пользователей с БД\"\"\"\n        user_service = UserService(db_session)\n        user_data = {\n            \"username\": \"integration_user\",\n            \"email\": \"integration@example.com\",\n            \"password\": \"secure_password123\",  # Будет хешироваться в сервисе\n        }\n        # Регистрируем пользователя",
+        "peekOfCode": "class TestUserService:\n    def test_user_registration(self, db_session):\n        \"\"\"Тест интеграции сервиса регистрации пользователей с БД\"\"\"\n        user_service = UserService(db_session)\n        user_data = {\n            \"username\": \"integration_user\",\n            \"email\": \"integration@example.com\",\n            \"password\": \"secure_password123\",\n        }\n        # Регистрируем пользователя",
         "detail": "tests.integration.test_db_services",
         "documentation": {}
     },
@@ -10469,24 +11003,6 @@
         "description": "tests.integration.test_db_services",
         "peekOfCode": "class TestAIModelService:\n    def test_model_registration_and_usage(self, db_session):\n        \"\"\"Тест регистрации и использования моделей ИИ\"\"\"\n        ai_service = AIModelService(db_session)\n        # Регистрируем модель\n        model = ai_service.register_model(\n            name=\"GPT-3.5-Turbo\",\n            provider=\"OpenAI\",\n            is_api=True,\n            base_url=\"https://api.openai.com/v1\",",
         "detail": "tests.integration.test_db_services",
-        "documentation": {}
-    },
-    {
-        "label": "TestDockerScripts",
-        "kind": 6,
-        "importPath": "tests.scripts.test_docker",
-        "description": "tests.scripts.test_docker",
-        "peekOfCode": "class TestDockerScripts:\n    def test_run_command_success(self, mock_subprocess_popen):\n        \"\"\"Тест успешного выполнения команды\"\"\"\n        mock_popen, process_mock = mock_subprocess_popen\n        # Вызов функции\n        run_command(\"docker-compose up -d\")\n        # Проверка, что Popen был вызван с правильными аргументами\n        mock_popen.assert_called_once()\n        args, kwargs = mock_popen.call_args\n        assert \"docker-compose up -d\" in args[0]",
-        "detail": "tests.scripts.test_docker",
-        "documentation": {}
-    },
-    {
-        "label": "mock_subprocess_popen",
-        "kind": 2,
-        "importPath": "tests.scripts.test_docker",
-        "description": "tests.scripts.test_docker",
-        "peekOfCode": "def mock_subprocess_popen():\n    \"\"\"Фикстура для мокирования subprocess.Popen\"\"\"\n    with patch(\"subprocess.Popen\") as mock_popen:\n        # Настройка мок-объекта\n        process_mock = MagicMock()\n        process_mock.stdout = [\"Output line 1\\n\", \"Output line 2\\n\"]\n        process_mock.stderr = MagicMock()\n        process_mock.stderr.read.return_value = \"Error message\"\n        process_mock.wait.return_value = 0  # Успешное завершение по умолчанию\n        mock_popen.return_value = process_mock",
-        "detail": "tests.scripts.test_docker",
         "documentation": {}
     },
     {
@@ -10577,6 +11093,168 @@
         "description": "tests.system.test_windows_automation",
         "peekOfCode": "class TestWindowsAutomation:\n    def test_windows_application_automation(self):\n        \"\"\"Проверяет автоматизацию работы с приложениями Windows.\"\"\"\n        system_initializer = SystemInitializer()\n        system = system_initializer.initialize()\n        assert system is not False, \"Не удалось инициализировать систему\"\n        # Создание задачи для работы с калькулятором\n        task = system.create_task(\"Открыть калькулятор, выполнить операцию 2+2 и вернуть результат\")\n        result = task.execute()\n        assert result.success",
         "detail": "tests.system.test_windows_automation",
+        "documentation": {}
+    },
+    {
+        "label": "TestAccessibility",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_accessibility",
+        "description": "tests.ui.e2e.ui.test_accessibility",
+        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, ui_client):\n        \"\"\"Тест навигации по интерфейсу с помощью клавиатуры\"\"\"\n        print(\"\\n🔍 [TEST] Начинаем тест навигации с клавиатуры...\")",
+        "detail": "tests.ui.e2e.ui.test_accessibility",
+        "documentation": {}
+    },
+    {
+        "label": "TestAIModels",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_ai_models",
+        "description": "tests.ui.e2e.ui.test_ai_models",
+        "peekOfCode": "class TestAIModels:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера моделей ИИ\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_ai_models",
+        "documentation": {}
+    },
+    {
+        "label": "TestAnimations",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_animations",
+        "description": "tests.ui.e2e.ui.test_animations",
+        "peekOfCode": "class TestAnimations:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_modal_animations(self, driver):\n        \"\"\"Тест анимаций модальных окон\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_animations",
+        "documentation": {}
+    },
+    {
+        "label": "TestAPIIntegration",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_api_integration",
+        "description": "tests.ui.e2e.ui.test_api_integration",
+        "peekOfCode": "class TestAPIIntegration:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_submission_api_call(self, driver):\n        \"\"\"Тест отправки команды через API\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_api_integration",
+        "documentation": {}
+    },
+    {
+        "label": "TestBaseLayout",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_base_layout",
+        "description": "tests.ui.e2e.ui.test_base_layout",
+        "peekOfCode": "class TestBaseLayout:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        # Инициализация драйвера\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_header_elements(self, driver):\n        \"\"\"Тест наличия и корректности элементов заголовка\"\"\"",
+        "detail": "tests.ui.e2e.ui.test_base_layout",
+        "documentation": {}
+    },
+    {
+        "label": "TestCommandForm",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_command_form",
+        "description": "tests.ui.e2e.ui.test_command_form",
+        "peekOfCode": "class TestCommandForm:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_form_elements(self, driver):\n        \"\"\"Тест наличия всех элементов формы команд\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_command_form",
+        "documentation": {}
+    },
+    {
+        "label": "TestCommandHistory",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_command_history",
+        "description": "tests.ui.e2e.ui.test_command_history",
+        "peekOfCode": "class TestCommandHistory:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_history_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера истории команд\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_command_history",
+        "documentation": {}
+    },
+    {
+        "label": "TestLogsDisplay",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_logs_display",
+        "description": "tests.ui.e2e.ui.test_logs_display",
+        "peekOfCode": "class TestLogsDisplay:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_logs_page_structure(self, driver):\n        \"\"\"Тест структуры страницы логов\"\"\"\n        # Переходим на страницу логов",
+        "detail": "tests.ui.e2e.ui.test_logs_display",
+        "documentation": {}
+    },
+    {
+        "label": "TestMobileUI",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_mobile_ui",
+        "description": "tests.ui.e2e.ui.test_mobile_ui",
+        "peekOfCode": "class TestMobileUI:\n    @pytest.fixture(scope=\"function\")\n    def mobile_driver(self):\n        # Настройка мобильной эмуляции\n        mobile_emulation = {\"deviceName\": \"iPhone X\"}\n        chrome_options = webdriver.ChromeOptions()\n        chrome_options.add_experimental_option(\"mobileEmulation\", mobile_emulation)\n        driver = webdriver.Chrome(options=chrome_options)\n        yield driver\n        driver.quit()",
+        "detail": "tests.ui.e2e.ui.test_mobile_ui",
+        "documentation": {}
+    },
+    {
+        "label": "TestModals",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_modals",
+        "description": "tests.ui.e2e.ui.test_modals",
+        "peekOfCode": "class TestModals:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_confirm_modal_structure(self, driver):\n        \"\"\"Тест структуры модального окна подтверждения\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_modals",
+        "documentation": {}
+    },
+    {
+        "label": "TestNavigation",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_navigation",
+        "description": "tests.ui.e2e.ui.test_navigation",
+        "peekOfCode": "class TestNavigation:\n    \"\"\"Тесты для навигационных элементов и переходов между страницами.\"\"\"\n    def test_main_navigation_links(self, ui_client):\n        \"\"\"Тест основных навигационных ссылок.\"\"\"\n        # Открываем главную страницу\n        ui_client.get(\"http://localhost:5000/\")\n        # Находим все основные навигационные ссылки\n        nav_links = ui_client.find_elements(By.CSS_SELECTOR, \"nav a\")\n        # Проверяем наличие ожидаемых ссылок\n        expected_links = [\"Модели\", \"История\", \"Настройки\", \"Помощь\"]",
+        "detail": "tests.ui.e2e.ui.test_navigation",
+        "documentation": {}
+    },
+    {
+        "label": "TestResponsiveDesign",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_responsive",
+        "description": "tests.ui.e2e.ui.test_responsive",
+        "peekOfCode": "class TestResponsiveDesign:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        # Начинаем с большого размера окна\n        driver.set_window_size(1200, 800)\n        yield driver\n        driver.quit()\n    def test_desktop_layout(self, driver):\n        \"\"\"Тест макета для настольных компьютеров\"\"\"",
+        "detail": "tests.ui.e2e.ui.test_responsive",
+        "documentation": {}
+    },
+    {
+        "label": "TestRouting",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_routing",
+        "description": "tests.ui.e2e.ui.test_routing",
+        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(\"http://localhost:5000/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
+        "detail": "tests.ui.e2e.ui.test_routing",
+        "documentation": {}
+    },
+    {
+        "label": "TestSettings",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_settings",
+        "description": "tests.ui.e2e.ui.test_settings",
+        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_settings(self, driver):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(\"http://localhost:5000/ai_models\")",
+        "detail": "tests.ui.e2e.ui.test_settings",
+        "documentation": {}
+    },
+    {
+        "label": "TestThemeSystem",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_theme_system",
+        "description": "tests.ui.e2e.ui.test_theme_system",
+        "peekOfCode": "class TestThemeSystem:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_theme_toggle_presence(self, driver):\n        \"\"\"Тест наличия переключателя темы\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_theme_system",
+        "documentation": {}
+    },
+    {
+        "label": "TestErrorHandling",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_ui_error_handling",
+        "description": "tests.ui.e2e.ui.test_ui_error_handling",
+        "peekOfCode": "class TestErrorHandling:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_empty_command_handling(self, driver):\n        \"\"\"Тест обработки пустой команды\"\"\"\n        driver.get(\"http://localhost:5000\")",
+        "detail": "tests.ui.e2e.ui.test_ui_error_handling",
+        "documentation": {}
+    },
+    {
+        "label": "TestPerformance",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.ui.test_ui_performance",
+        "description": "tests.ui.e2e.ui.test_ui_performance",
+        "peekOfCode": "class TestPerformance:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_page_load_time(self, driver):\n        \"\"\"Тест времени загрузки страницы\"\"\"\n        # Измеряем время загрузки страницы",
+        "detail": "tests.ui.e2e.ui.test_ui_performance",
+        "documentation": {}
+    },
+    {
+        "label": "TestSimpleUI",
+        "kind": 6,
+        "importPath": "tests.ui.e2e.simple_ui_test",
+        "description": "tests.ui.e2e.simple_ui_test",
+        "peekOfCode": "class TestSimpleUI:\n    def test_homepage_opens(self, ui_client):\n        \"\"\"Простейший тест - открытие главной страницы\"\"\"\n        print(\"🔍 Открываем главную страницу...\")\n        ui_client.get(\"http://localhost:5000/\")\n        print(\"🔍 Получаем заголовок...\")\n        title = ui_client.driver.title\n        print(f\"📋 Заголовок: {title}\")\n        assert title is not None\n        assert len(title) > 0",
+        "detail": "tests.ui.e2e.simple_ui_test",
         "documentation": {}
     },
     {
@@ -10852,19 +11530,19 @@
     {
         "label": "TestErrorHandling",
         "kind": 6,
-        "importPath": "tests.unit.core.llm.test_error_handling",
-        "description": "tests.unit.core.llm.test_error_handling",
+        "importPath": "tests.unit.core.llm.test_llm_error_handling",
+        "description": "tests.unit.core.llm.test_llm_error_handling",
         "peekOfCode": "class TestErrorHandling:\n    \"\"\"Тесты для обработки ошибок LLM API\"\"\"\n    @pytest.fixture\n    def error_handler(self):\n        \"\"\"Фикстура для создания мока обработчика ошибок\"\"\"\n        return MagicMock()\n    def test_handle_api_error(self, error_handler):\n        \"\"\"Тест обработки ошибки API\"\"\"\n        # Создаем тестовое исключение\n        response = MagicMock()",
-        "detail": "tests.unit.core.llm.test_error_handling",
+        "detail": "tests.unit.core.llm.test_llm_error_handling",
         "documentation": {}
     },
     {
         "label": "pytestmark",
         "kind": 5,
-        "importPath": "tests.unit.core.llm.test_error_handling",
-        "description": "tests.unit.core.llm.test_error_handling",
+        "importPath": "tests.unit.core.llm.test_llm_error_handling",
+        "description": "tests.unit.core.llm.test_llm_error_handling",
         "peekOfCode": "pytestmark = pytest.mark.skipif(\n    not HAS_ERROR_HANDLING, reason=\"LLM error handling not implemented yet\"\n)\nclass TestErrorHandling:\n    \"\"\"Тесты для обработки ошибок LLM API\"\"\"\n    @pytest.fixture\n    def error_handler(self):\n        \"\"\"Фикстура для создания мока обработчика ошибок\"\"\"\n        return MagicMock()\n    def test_handle_api_error(self, error_handler):",
-        "detail": "tests.unit.core.llm.test_error_handling",
+        "detail": "tests.unit.core.llm.test_llm_error_handling",
         "documentation": {}
     },
     {
@@ -10892,96 +11570,6 @@
         "description": "tests.unit.core.llm.test_response_parser",
         "peekOfCode": "class TestResponseParser:\n    \"\"\"Тесты для парсера ответов нейросети\"\"\"\n    @pytest.fixture\n    def response_parser(self):\n        \"\"\"Фикстура для создания экземпляра ResponseParser\"\"\"\n        # Создаем мок для обработчика ошибок\n        error_handler = MagicMock()\n        # Создаем парсер ответов\n        parser = ResponseParser(error_handler=error_handler)\n        return parser",
         "detail": "tests.unit.core.llm.test_response_parser",
-        "documentation": {}
-    },
-    {
-        "label": "LLMApiClient",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class LLMApiClient:\n    def __init__(self, api_key=None, base_url=None):\n        self.api_key = api_key or \"test_api_key\"\n        self.base_url = base_url or \"https://api.example.com/v1\"\n        self.session = requests.Session()\n    def connect(self):\n        return True\n    def send_request(self, prompt, options=None):\n        # Имитация ответа от API\n        return {",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "PromptProcessor",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class PromptProcessor:\n    def __init__(self):\n        self.templates = {}\n    def add_template(self, name, template):\n        self.templates[name] = template\n        return True\n    def process_prompt(self, template_name, variables=None):\n        if template_name not in self.templates:\n            raise ValueError(f\"Template {template_name} not found\")\n        template = self.templates[template_name]",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "ResponseParser",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class ResponseParser:\n    def parse_response(self, response):\n        if \"choices\" in response and len(response[\"choices\"]) > 0:\n            return response[\"choices\"][0][\"text\"]\n        return None\n    def extract_json(self, text):\n        try:\n            # Ищем JSON в тексте между фигурными скобками\n            start = text.find(\"{\")\n            end = text.rfind(\"}\") + 1",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "ActionPlanner",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class ActionPlanner:\n    def __init__(self, llm_client, prompt_processor, response_parser):\n        self.llm_client = llm_client\n        self.prompt_processor = prompt_processor\n        self.response_parser = response_parser\n    def plan_actions(self, user_request):\n        # Создаем промпт для планирования действий\n        prompt = self.prompt_processor.process_prompt(\n            \"action_planning\", {\"user_request\": user_request}\n        )",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "LLMErrorHandler",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class LLMErrorHandler:\n    def handle_api_error(self, error):\n        error_type = type(error).__name__\n        error_message = str(error)\n        if isinstance(error, requests.exceptions.ConnectionError):\n            return {\"error\": \"connection_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.Timeout):\n            return {\"error\": \"timeout_error\", \"message\": error_message}\n        elif isinstance(error, requests.exceptions.RequestException):\n            return {\"error\": \"request_error\", \"message\": error_message}",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "TestLLMApiConnection",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestLLMApiConnection:\n    \"\"\"Тесты подключения к LLM API\"\"\"\n    def test_successful_connection(self):\n        \"\"\"Тест успешного подключения к API\"\"\"\n        # Используем мок вместо реального объекта для ускорения теста\n        client = MagicMock()\n        client.connect.return_value = True\n        result = client.connect()\n        assert result is True\n    @patch(\"requests.Session.get\")",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "TestPromptProcessing",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestPromptProcessing:\n    \"\"\"Тесты обработки промптов\"\"\"\n    def test_add_template(self):\n        \"\"\"Тест добавления шаблона промпта\"\"\"\n        processor = PromptProcessor()\n        template = \"Hello, {name}! How can I help you today?\"\n        result = processor.add_template(\"greeting\", template)\n        assert result is True\n        assert \"greeting\" in processor.templates\n        assert processor.templates[\"greeting\"] == template",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "TestResponseParsing",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestResponseParsing:\n    \"\"\"Тесты парсинга ответов модели\"\"\"\n    def test_parse_simple_response(self):\n        \"\"\"Тест парсинга простого ответа\"\"\"\n        parser = ResponseParser()\n        response = {\n            \"id\": \"test-id\",\n            \"choices\": [{\"text\": \"This is a test response\", \"finish_reason\": \"stop\"}],\n        }\n        result = parser.parse_response(response)",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "TestActionPlanning",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestActionPlanning:\n    \"\"\"Тесты планирования действий на основе запросов\"\"\"\n    def test_plan_actions(self):\n        \"\"\"Тест планирования действий на основе запроса пользователя\"\"\"\n        # Создаем моки для зависимостей\n        llm_client = MagicMock()\n        llm_client.send_request.return_value = {\"choices\": [{\"text\": \"\"\"\n                    I'll help you install Python. Here's a plan:\n                    {\n                        \"actions\": [",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
-        "documentation": {}
-    },
-    {
-        "label": "TestLLMErrorHandling",
-        "kind": 6,
-        "importPath": "tests.unit.core.llm_integration.test_llm_integration",
-        "description": "tests.unit.core.llm_integration.test_llm_integration",
-        "peekOfCode": "class TestLLMErrorHandling:\n    \"\"\"Тесты обработки ошибок API\"\"\"\n    def test_handle_connection_error(self):\n        \"\"\"Тест обработки ошибки соединения\"\"\"\n        handler = LLMErrorHandler()\n        # Создаем объект исключения вместо вызова реального исключения\n        error = requests.exceptions.ConnectionError(\"Failed to establish connection\")\n        result = handler.handle_api_error(error)\n        assert result[\"error\"] == \"connection_error\"\n        assert \"Failed to establish connection\" in result[\"message\"]",
-        "detail": "tests.unit.core.llm_integration.test_llm_integration",
         "documentation": {}
     },
     {
@@ -11462,156 +12050,255 @@
         "documentation": {}
     },
     {
-        "label": "TestAccessibility",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_accessibility",
-        "description": "tests.unit.ui.test_accessibility",
-        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, ui_client):\n        \"\"\"Тест навигации по интерфейсу с помощью клавиатуры\"\"\"\n        # Открываем главную страницу с полным URL",
-        "detail": "tests.unit.ui.test_accessibility",
+        "label": "db_engine",
+        "kind": 2,
+        "importPath": "tests.unit.db.conftest",
+        "description": "tests.unit.db.conftest",
+        "peekOfCode": "def db_engine():\n    \"\"\"\n    Создает тестовый движок БД с изолированной тестовой базой данных.\n    Эта фикстура:\n    1. Подключается к PostgreSQL\n    2. Создает отдельную тестовую БД, если она не существует\n    3. Настраивает схему таблиц\n    4. Очищает таблицы после всех тестов\n    \"\"\"\n    # Настройки подключения",
+        "detail": "tests.unit.db.conftest",
         "documentation": {}
     },
     {
-        "label": "TestAIModels",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_ai_models",
-        "description": "tests.unit.ui.test_ai_models",
-        "peekOfCode": "class TestAIModels:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера моделей ИИ\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_ai_models",
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.unit.db.conftest",
+        "description": "tests.unit.db.conftest",
+        "peekOfCode": "def db_session(db_engine):\n    \"\"\"\n    Создает изолированную сессию БД для каждого теста.\n    Каждый тест получает \"чистую\" транзакцию, которая откатывается после\n    завершения теста, обеспечивая изоляцию между тестами.\n    \"\"\"\n    connection = db_engine.connect()\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session",
+        "detail": "tests.unit.db.conftest",
         "documentation": {}
     },
     {
-        "label": "TestAnimations",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_animations",
-        "description": "tests.unit.ui.test_animations",
-        "peekOfCode": "class TestAnimations:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_modal_animations(self, driver):\n        \"\"\"Тест анимаций модальных окон\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_animations",
+        "label": "test_user",
+        "kind": 2,
+        "importPath": "tests.unit.db.conftest",
+        "description": "tests.unit.db.conftest",
+        "peekOfCode": "def test_user(db_session):\n    \"\"\"\n    Создает тестового пользователя для использования в тестах.\n    Внимание: если тесту нужно видеть этого пользователя в БД,\n    необходимо сделать commit в фикстуре.\n    \"\"\"\n    user_data = {\n        \"username\": \"test_user\",\n        \"email\": \"test@example.com\",\n        \"password_hash\": \"hashed_password\",",
+        "detail": "tests.unit.db.conftest",
         "documentation": {}
     },
     {
-        "label": "TestAPIIntegration",
+        "label": "TestDatabaseConnection",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_api_integration",
-        "description": "tests.unit.ui.test_api_integration",
-        "peekOfCode": "class TestAPIIntegration:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_submission_api_call(self, driver):\n        \"\"\"Тест отправки команды через API\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_api_integration",
+        "importPath": "tests.unit.db.test_connection",
+        "description": "tests.unit.db.test_connection",
+        "peekOfCode": "class TestDatabaseConnection:\n    def test_connection(self, db_engine):\n        \"\"\"Проверяем подключение к БД\"\"\"\n        connection = db_engine.connect()\n        assert connection is not None\n        connection.close()\n    def test_tables_exist(self, db_engine):\n        \"\"\"Проверяем, что все необходимые таблицы созданы\"\"\"\n        inspector = inspect(db_engine)\n        tables = inspector.get_table_names()",
+        "detail": "tests.unit.db.test_connection",
         "documentation": {}
     },
     {
-        "label": "TestBaseLayout",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_base_layout",
-        "description": "tests.unit.ui.test_base_layout",
-        "peekOfCode": "class TestBaseLayout:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        # Инициализация драйвера\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_header_elements(self, driver):\n        \"\"\"Тест наличия и корректности элементов заголовка\"\"\"",
-        "detail": "tests.unit.ui.test_base_layout",
+        "label": "db_engine",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_connection",
+        "description": "tests.unit.db.test_connection",
+        "peekOfCode": "def db_engine():\n    \"\"\"Создает тестовый движок БД\"\"\"\n    # Формируем строку подключения с правильными учетными данными\n    # но сохраняем логику использования отдельной тестовой БД\n    db_user = \"neurolink\"\n    db_password = \"secure_password\"\n    db_host = \"localhost\"\n    db_port = \"5432\"\n    # Используем тестовую БД с тем же именем, что и в исходном коде\n    test_db_name = \"neurolink_test_db\"",
+        "detail": "tests.unit.db.test_connection",
         "documentation": {}
     },
     {
-        "label": "TestCommandForm",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_command_form",
-        "description": "tests.unit.ui.test_command_form",
-        "peekOfCode": "class TestCommandForm:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_form_elements(self, driver):\n        \"\"\"Тест наличия всех элементов формы команд\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_command_form",
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_connection",
+        "description": "tests.unit.db.test_connection",
+        "peekOfCode": "def db_session(db_engine):\n    \"\"\"Создает сессию БД для тестов\"\"\"\n    connection = db_engine.connect()\n    # Запускаем транзакцию\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session\n    # Откатываем изменения после теста\n    session.close()\n    transaction.rollback()",
+        "detail": "tests.unit.db.test_connection",
         "documentation": {}
     },
     {
-        "label": "TestCommandHistory",
+        "label": "TestUserCRUD",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_command_history",
-        "description": "tests.unit.ui.test_command_history",
-        "peekOfCode": "class TestCommandHistory:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_history_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера истории команд\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_command_history",
+        "importPath": "tests.unit.db.test_crud",
+        "description": "tests.unit.db.test_crud",
+        "peekOfCode": "class TestUserCRUD:\n    def test_create_user(self, db_session):\n        \"\"\"Тест создания пользователя\"\"\"\n        user_data = {\n            \"username\": \"testuser\",\n            \"email\": \"test@example.com\",\n            \"password_hash\": \"hashed_password\",\n        }\n        user = create_user(db_session, **user_data)\n        assert user.id is not None",
+        "detail": "tests.unit.db.test_crud",
         "documentation": {}
     },
     {
-        "label": "TestErrorHandling",
+        "label": "TestAIModelCRUD",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_error_handling",
-        "description": "tests.unit.ui.test_error_handling",
-        "peekOfCode": "class TestErrorHandling:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_empty_command_handling(self, driver):\n        \"\"\"Тест обработки пустой команды\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_error_handling",
+        "importPath": "tests.unit.db.test_crud",
+        "description": "tests.unit.db.test_crud",
+        "peekOfCode": "class TestAIModelCRUD:\n    def test_create_ai_model(self, db_session):\n        \"\"\"Тест создания модели ИИ\"\"\"\n        model_data = {\n            \"name\": \"Test GPT\",\n            \"provider\": \"OpenAI\",\n            \"is_api\": True,\n            \"base_url\": \"https://api.example.com\",\n            \"configuration\": {\"model\": \"test-model\"},\n        }",
+        "detail": "tests.unit.db.test_crud",
         "documentation": {}
     },
     {
-        "label": "TestLogsDisplay",
+        "label": "TestTaskCRUD",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_logs_display",
-        "description": "tests.unit.ui.test_logs_display",
-        "peekOfCode": "class TestLogsDisplay:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_logs_page_structure(self, driver):\n        \"\"\"Тест структуры страницы логов\"\"\"\n        # Переходим на страницу логов",
-        "detail": "tests.unit.ui.test_logs_display",
+        "importPath": "tests.unit.db.test_crud",
+        "description": "tests.unit.db.test_crud",
+        "peekOfCode": "class TestTaskCRUD:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя\"\"\"\n        user = create_user(\n            db_session, username=\"taskuser\", email=\"task@example.com\", password_hash=\"hash\"\n        )\n        return user\n    def test_create_task(self, db_session, test_user):\n        \"\"\"Тест создания задачи\"\"\"",
+        "detail": "tests.unit.db.test_crud",
         "documentation": {}
     },
     {
-        "label": "TestMobileUI",
+        "label": "TestMigrations",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_mobile_ui",
-        "description": "tests.unit.ui.test_mobile_ui",
-        "peekOfCode": "class TestMobileUI:\n    @pytest.fixture(scope=\"function\")\n    def mobile_driver(self):\n        # Настройка мобильной эмуляции\n        mobile_emulation = {\"deviceName\": \"iPhone X\"}\n        chrome_options = webdriver.ChromeOptions()\n        chrome_options.add_experimental_option(\"mobileEmulation\", mobile_emulation)\n        driver = webdriver.Chrome(options=chrome_options)\n        yield driver\n        driver.quit()",
-        "detail": "tests.unit.ui.test_mobile_ui",
+        "importPath": "tests.unit.db.test_migrations",
+        "description": "tests.unit.db.test_migrations",
+        "peekOfCode": "class TestMigrations:\n    @pytest.fixture\n    def alembic_config(self):\n        \"\"\"Создает конфигурацию Alembic\"\"\"\n        config = Config(\"alembic.ini\")\n        return config\n    def _create_test_db_url(self, test_db_name):\n        \"\"\"Создает URL для тестовой базы данных с правильным пользователем.\"\"\"\n        parsed = urlparse(DATABASE_URL)\n        # Заменяем только имя базы данных, оставляя пользователя neurolink",
+        "detail": "tests.unit.db.test_migrations",
         "documentation": {}
     },
     {
-        "label": "TestModals",
+        "label": "TestPaginationAndFiltering",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_modals",
-        "description": "tests.unit.ui.test_modals",
-        "peekOfCode": "class TestModals:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_confirm_modal_structure(self, driver):\n        \"\"\"Тест структуры модального окна подтверждения\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_modals",
+        "importPath": "tests.unit.db.test_pagination",
+        "description": "tests.unit.db.test_pagination",
+        "peekOfCode": "class TestPaginationAndFiltering:\n    def test_basic_pagination(self, db_session, user_with_many_tasks):\n        \"\"\"Тест базовой пагинации\"\"\"\n        user = user_with_many_tasks\n        # Первая страница (10 элементов)\n        page1 = get_tasks_with_pagination(db_session, user_id=user.id, page=1, per_page=10)\n        assert len(page1.items) == 10\n        assert page1.total == 50\n        assert page1.pages == 5\n        assert page1.has_next is True  # Исправлено: == True -> is True",
+        "detail": "tests.unit.db.test_pagination",
         "documentation": {}
     },
     {
-        "label": "TestNavigation",
-        "kind": 6,
-        "importPath": "tests.unit.ui.test_navigation",
-        "description": "tests.unit.ui.test_navigation",
-        "peekOfCode": "class TestNavigation:\n    \"\"\"Тесты для навигационных элементов и переходов между страницами.\"\"\"\n    def test_main_navigation_links(self, ui_client):\n        \"\"\"Тест основных навигационных ссылок.\"\"\"\n        # Открываем главную страницу\n        ui_client.get(\"http://localhost:5000/\")\n        # Находим все основные навигационные ссылки\n        nav_links = ui_client.find_elements(By.CSS_SELECTOR, \"nav a\")\n        # Проверяем наличие ожидаемых ссылок\n        expected_links = [\"Модели\", \"История\", \"Настройки\", \"Помощь\"]",
-        "detail": "tests.unit.ui.test_navigation",
+        "label": "user_with_many_tasks",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_pagination",
+        "description": "tests.unit.db.test_pagination",
+        "peekOfCode": "def user_with_many_tasks(db_session):\n    \"\"\"Создает пользователя с большим количеством задач для тестов пагинации\"\"\"\n    user = create_user(\n        db_session, username=\"pageuser\", email=\"page@example.com\", password_hash=\"hash\"\n    )\n    # Создаем 50 задач разных типов\n    for i in range(50):\n        status = \"completed\" if i % 5 == 0 else \"in_progress\" if i % 3 == 0 else \"created\"\n        priority = (i % 3) + 1  # приоритеты 1, 2, 3\n        create_task(",
+        "detail": "tests.unit.db.test_pagination",
         "documentation": {}
     },
     {
-        "label": "TestPerformance",
+        "label": "TestDatabasePerformance",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_performance",
-        "description": "tests.unit.ui.test_performance",
-        "peekOfCode": "class TestPerformance:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_page_load_time(self, driver):\n        \"\"\"Тест времени загрузки страницы\"\"\"\n        # Измеряем время загрузки страницы",
-        "detail": "tests.unit.ui.test_performance",
+        "importPath": "tests.unit.db.test_performance",
+        "description": "tests.unit.db.test_performance",
+        "peekOfCode": "class TestDatabasePerformance:\n    @pytest.fixture\n    def populated_db(self, db_session):\n        \"\"\"Создает набор тестовых данных\"\"\"\n        # Создаем пользователя\n        user = create_user(\n            db_session, username=\"perftest\", email=\"perf@example.com\", password_hash=\"hash\"\n        )\n        # Создаем моделb ИИ\n        model = create_ai_model(db_session, name=\"Perf Model\", provider=\"Test\", is_api=True)",
+        "detail": "tests.unit.db.test_performance",
         "documentation": {}
     },
     {
-        "label": "TestResponsiveDesign",
+        "label": "TestUserRepository",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_responsive",
-        "description": "tests.unit.ui.test_responsive",
-        "peekOfCode": "class TestResponsiveDesign:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        # Начинаем с большого размера окна\n        driver.set_window_size(1200, 800)\n        yield driver\n        driver.quit()\n    def test_desktop_layout(self, driver):\n        \"\"\"Тест макета для настольных компьютеров\"\"\"",
-        "detail": "tests.unit.ui.test_responsive",
+        "importPath": "tests.unit.db.test_repository",
+        "description": "tests.unit.db.test_repository",
+        "peekOfCode": "class TestUserRepository:\n    def test_user_repository_operations(self, db_session):\n        \"\"\"Тест операций репозитория пользователей\"\"\"\n        user_repo = UserRepository(db_session)\n        # Создаем пользователя\n        user = user_repo.create(\n            username=\"repo_user\",\n            email=\"repo@example.com\",\n            password_hash=\"hashed_password\",\n            display_name=\"Repository Test User\",",
+        "detail": "tests.unit.db.test_repository",
         "documentation": {}
     },
     {
-        "label": "TestRouting",
+        "label": "TestTaskRepository",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_routing",
-        "description": "tests.unit.ui.test_routing",
-        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(\"http://localhost:5000/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
-        "detail": "tests.unit.ui.test_routing",
+        "importPath": "tests.unit.db.test_repository",
+        "description": "tests.unit.db.test_repository",
+        "peekOfCode": "class TestTaskRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для задач\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"task_repo_user\", email=\"taskrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_task_repository_basic_operations(self, db_session, test_user):\n        \"\"\"Тест основных операций репозитория задач\"\"\"",
+        "detail": "tests.unit.db.test_repository",
         "documentation": {}
     },
     {
-        "label": "TestSettings",
+        "label": "TestWorkflowRepository",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_settings",
-        "description": "tests.unit.ui.test_settings",
-        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_settings(self, driver):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(\"http://localhost:5000/ai_models\")",
-        "detail": "tests.unit.ui.test_settings",
+        "importPath": "tests.unit.db.test_repository",
+        "description": "tests.unit.db.test_repository",
+        "peekOfCode": "class TestWorkflowRepository:\n    @pytest.fixture\n    def test_user(self, db_session):\n        \"\"\"Создает тестового пользователя для рабочих процессов\"\"\"\n        user_repo = UserRepository(db_session)\n        return user_repo.create(\n            username=\"workflow_repo_user\", email=\"workflowrepo@example.com\", password_hash=\"hash\"\n        )\n    def test_workflow_repository_operations(self, db_session, test_user):\n        \"\"\"Тест операций репозитория рабочих процессов\"\"\"",
+        "detail": "tests.unit.db.test_repository",
         "documentation": {}
     },
     {
-        "label": "TestThemeSystem",
+        "label": "TestPasswordSecurity",
         "kind": 6,
-        "importPath": "tests.unit.ui.test_theme_system",
-        "description": "tests.unit.ui.test_theme_system",
-        "peekOfCode": "class TestThemeSystem:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_theme_toggle_presence(self, driver):\n        \"\"\"Тест наличия переключателя темы\"\"\"\n        driver.get(\"http://localhost:5000\")",
-        "detail": "tests.unit.ui.test_theme_system",
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password\n        assert len(salt) > 0\n        assert verify_password(password, password_hash, salt)\n    def test_password_verification_fail(self):",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestJWTSecurity",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestJWTSecurity:\n    \"\"\"Тесты безопасности JWT.\"\"\"\n    def test_token_creation_and_verification(self):\n        \"\"\"Тест создания и проверки токена.\"\"\"\n        data = {\"user_id\": 1, \"username\": \"test_user\"}\n        token = create_access_token(data)\n        assert token is not None\n        assert len(token) > 0\n        decoded_data = verify_token(token)\n        assert decoded_data[\"user_id\"] == 1",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserRepository",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestUserRepository:\n    \"\"\"Тесты репозитория пользователей.\"\"\"\n    def test_create_user(self, user_repository):\n        \"\"\"Тест создания пользователя.\"\"\"\n        password_hash, salt = hash_password(\"test_password\")\n        user = user_repository.create(\n            username=\"test_user\",\n            email=\"test@example.com\",\n            password_hash=password_hash,\n            display_name=\"Test User\",",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestAuthService",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestAuthService:\n    \"\"\"Тесты сервиса аутентификации.\"\"\"\n    def test_register_user(self, auth_service):\n        \"\"\"Тест регистрации пользователя.\"\"\"\n        user = auth_service.register_user(\n            username=\"new_user\",\n            email=\"new@example.com\",\n            password=\"secure_password\",\n            display_name=\"New User\",\n        )",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestPermissionService",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestPermissionService:\n    \"\"\"Тесты сервиса прав доступа.\"\"\"\n    def test_check_admin_permissions(self, permission_service, auth_service):\n        \"\"\"Тест прав администратора.\"\"\"\n        # Создаем администратора\n        admin = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект\n            username=\"admin\", email=\"admin@example.com\", password=\"admin_password\", role=\"admin\"\n        )\n        assert admin is not None\n        # Проверяем права администратора",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestSecurityIntegration",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "class TestSecurityIntegration:\n    \"\"\"Интеграционные тесты безопасности.\"\"\"\n    def test_full_auth_workflow(self, auth_service, permission_service):\n        \"\"\"Тест полного цикла аутентификации и авторизации.\"\"\"\n        # Регистрация\n        user = auth_service.register_user(  # ✅ ИСПРАВЛЕНО: получаем User объект\n            username=\"integration_user\",\n            email=\"integration@example.com\",\n            password=\"secure_password\",\n            role=\"user\",",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "def db_session():\n    \"\"\"Создает тестовую сессию базы данных.\"\"\"\n    engine = create_engine(\"sqlite:///:memory:\")\n    Base.metadata.create_all(engine)\n    SessionLocal = sessionmaker(bind=engine)\n    session = SessionLocal()\n    yield session\n    session.close()\n@pytest.fixture\ndef user_repository(db_session):",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "user_repository",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "def user_repository(db_session):\n    \"\"\"Создает репозиторий пользователей для тестов.\"\"\"\n    return UserRepository(db_session)\n@pytest.fixture\ndef auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "auth_service",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "def auth_service(db_session):\n    \"\"\"Создает сервис аутентификации для тестов.\"\"\"\n    return AuthService(db_session)\n@pytest.fixture\ndef permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "permission_service",
+        "kind": 2,
+        "importPath": "tests.unit.db.test_security",
+        "description": "tests.unit.db.test_security",
+        "peekOfCode": "def permission_service(db_session):\n    \"\"\"Создает сервис прав доступа для тестов.\"\"\"\n    return PermissionService(db_session)\nclass TestPasswordSecurity:\n    \"\"\"Тесты безопасности паролей.\"\"\"\n    def test_password_hashing(self):\n        \"\"\"Тест хеширования пароля.\"\"\"\n        password = \"test_password_123\"\n        password_hash, salt = hash_password(password)\n        assert password_hash != password",
+        "detail": "tests.unit.db.test_security",
+        "documentation": {}
+    },
+    {
+        "label": "TestTransactions",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_transactions",
+        "description": "tests.unit.db.test_transactions",
+        "peekOfCode": "class TestTransactions:\n    @pytest.fixture\n    def repositories(self, db_session):\n        \"\"\"Создает репозитории для тестирования\"\"\"\n        return {\n            \"user_repo\": UserRepository(db_session),\n            \"task_repo\": TaskRepository(db_session),\n            \"transaction\": TransactionManager(db_session),\n        }\n    def test_successful_transaction(self, db_session, repositories):",
+        "detail": "tests.unit.db.test_transactions",
+        "documentation": {}
+    },
+    {
+        "label": "TestDataValidation",
+        "kind": 6,
+        "importPath": "tests.unit.db.test_validation",
+        "description": "tests.unit.db.test_validation",
+        "peekOfCode": "class TestDataValidation:\n    def test_required_fields(self, db_session):\n        \"\"\"Тест обязательных полей\"\"\"\n        # Проверка пользователя без обязательного поля\n        with pytest.raises(IntegrityError):\n            db_session.add(User(email=\"missing_username@example.com\", password_hash=\"hash\"))\n            db_session.flush()\n        db_session.rollback()\n        # Проверка задачи без обязательного поля\n        with pytest.raises(IntegrityError):",
+        "detail": "tests.unit.db.test_validation",
         "documentation": {}
     },
     {
@@ -11628,7 +12315,16 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture\ndef empty_registry():\n    \"\"\"Фикстура для создания пустого реестра компонентов\"\"\"\n    try:\n        from core.component_registry import ComponentRegistry\n        return ComponentRegistry()\n    except ImportError:",
+        "peekOfCode": "def mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)\n    # Очистка перед тестами\n    print(\"🧹 Предварительная очистка портов...\")\n    port_manager.smart_cleanup()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "cleanup_ports",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)\n    # Очистка перед тестами\n    print(\"🧹 Предварительная очистка портов...\")\n    port_manager.smart_cleanup()\n    yield\n    # Очистка после тестов\n    print(\"🧹 Финальная очистка портов...\")\n    port_manager.smart_cleanup()",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -11642,11 +12338,38 @@
         "documentation": {}
     },
     {
+        "label": "app_server",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    manager = TestAppManager(port=5000, timeout=45)\n    print(f\" [SESSION] Настройка приложения для UI тестов...\")\n    # Запускаем приложение\n    if not manager.start_app():\n        pytest.skip(\"Не удалось запустить приложение для UI тестов\")\n    # Дополнительная проверка готовности\n    if not manager.health_check():\n        manager.stop_app()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "create_chrome_driver",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def create_chrome_driver(base_url: str) -> webdriver.Chrome:\n    \"\"\"Создание Chrome WebDriver с упрощенными опциями\"\"\"\n    chrome_options = Options()\n    # Минимальный набор опций\n    chrome_options.add_argument(\"--headless\")\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n    chrome_options.add_argument(\"--disable-gpu\")\n    chrome_options.add_argument(\"--window-size=1280,720\")\n    chrome_options.add_argument(\"--remote-debugging-port=9223\")  # Изменим порт",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
         "label": "ui_client",
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def ui_client(base_url):\n    \"\"\"Фикстура для тестирования UI с Selenium WebDriver\"\"\"\n    # Создаем опции Chrome\n    chrome_options = Options()\n    # Добавляем аргументы для запуска Chrome в безголовом режиме при CI/CD\n    if os.environ.get(\"CI\") == \"true\":\n        chrome_options.add_argument(\"--headless\")\n        chrome_options.add_argument(\"--no-sandbox\")\n        chrome_options.add_argument(\"--disable-dev-shm-usage\")\n    # Дополнительные настройки для стабильности тестов",
+        "peekOfCode": "def ui_client(base_url, request, app_server):\n    \"\"\"Фикстура для UI тестов\"\"\"\n    test_file = str(request.fspath)\n    if not (\"ui\" in test_file or \"e2e\" in test_file):\n        pytest.skip(\"ui_client фикстура только для UI тестов\")\n    if not app_server.is_app_running():\n        pytest.skip(\"Приложение не доступно для UI теста\")\n    # Создаем драйвер\n    driver = create_chrome_driver(base_url)\n    ui_driver = UiTestDriver(driver, base_url)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "smart_cleanup_browser_state",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def smart_cleanup_browser_state(request):\n    \"\"\"Условная очистка состояния браузера только для UI тестов\"\"\"\n    # Проверяем, является ли это UI тестом\n    if \"ui\" in str(request.fspath) or \"e2e\" in str(request.fspath):\n        # Для UI тестов запрашиваем ui_client\n        ui_client = request.getfixturevalue(\"ui_client\")\n        yield\n        # Очищаем после UI теста\n        try:\n            ui_client.driver.delete_all_cookies()",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -11655,7 +12378,7 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]\n@pytest.fixture(scope=\"function\")\ndef authenticated_ui_client(ui_client):\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина",
+        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]\n@pytest.fixture(scope=\"class\")  # Для ui_client\ndef authenticated_ui_client(ui_client):\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -11705,11 +12428,83 @@
         "documentation": {}
     },
     {
+        "label": "db_engine",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def db_engine():\n    \"\"\"\n    Создает тестовый движок БД с изолированной тестовой базой данных.\n    \"\"\"\n    # Настройки подключения\n    db_user = \"neurolink\"\n    db_password = \"secure_password\"\n    db_host = \"localhost\"\n    db_port = \"5432\"\n    test_db_name = \"neurolink_test_db\"",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def db_session(db_engine):\n    \"\"\"\n    Создает изолированную сессию БД для каждого теста.\n    \"\"\"\n    connection = db_engine.connect()\n    transaction = connection.begin()\n    session = Session(bind=connection)\n    yield session\n    # Правильный порядок закрытия ресурсов\n    session.close()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_user",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def test_user(db_session):\n    \"\"\"\n    Создает тестового пользователя для использования в тестах.\n    \"\"\"\n    user_data = {\n        \"username\": \"test_user\",\n        \"email\": \"test@example.com\",\n        \"password_hash\": \"hashed_password\",\n    }\n    user = create_user(db_session, **user_data)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_configure",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_configure(config):\n    \"\"\"Конфигурация для всех тестов\"\"\"\n    # Для UI тестов включаем verbose режим\n    if hasattr(config.option, \"verbose\"):\n        config.option.verbose = max(config.option.verbose, 1)\ndef pytest_runtest_setup(item):\n    \"\"\"Настройка перед каждым тестом\"\"\"\n    # Проверяем, является ли это UI тестом\n    test_file = str(item.fspath)\n    if \"ui\" in test_file or \"e2e\" in test_file:",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_runtest_setup",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_runtest_setup(item):\n    \"\"\"Настройка перед каждым тестом\"\"\"\n    # Проверяем, является ли это UI тестом\n    test_file = str(item.fspath)\n    if \"ui\" in test_file or \"e2e\" in test_file:\n        print(f\"\\n🚀 [UI-TEST] Запуск теста: {item.name}\")\ndef pytest_runtest_teardown(item):\n    \"\"\"Очистка после каждого теста\"\"\"\n    test_file = str(item.fspath)\n    if \"ui\" in test_file or \"e2e\" in test_file:",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_runtest_teardown",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_runtest_teardown(item):\n    \"\"\"Очистка после каждого теста\"\"\"\n    test_file = str(item.fspath)\n    if \"ui\" in test_file or \"e2e\" in test_file:\n        print(f\"🏁 [UI-TEST] Завершение теста: {item.name}\")\ndef pytest_collection_modifyitems(config, items):\n    \"\"\"Модификация собранных тестов\"\"\"\n    for item in items:\n        # Добавляем маркер ui для UI тестов\n        test_file = str(item.fspath)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_collection_modifyitems",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_collection_modifyitems(config, items):\n    \"\"\"Модификация собранных тестов\"\"\"\n    for item in items:\n        # Добавляем маркер ui для UI тестов\n        test_file = str(item.fspath)\n        if \"ui\" in test_file or \"e2e\" in test_file:\n            item.add_marker(pytest.mark.ui)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
         "label": "TEST_CONFIG",
         "kind": 5,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "TEST_CONFIG = {\"base_url\": \"http://localhost:5000\"}\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture\ndef empty_registry():\n    \"\"\"Фикстура для создания пустого реестра компонентов\"\"\"\n    try:\n        from core.component_registry import ComponentRegistry",
+        "peekOfCode": "TEST_CONFIG = {\"base_url\": \"http://localhost:5000\"}\nimport logging\n# Настройка логирования для тестов\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(levelname)8s] %(name)s: %(message)s\",\n    datefmt=\"%Y-%m-%d %H:%M:%S\",\n)\n# Добавляем логгер для тестов\ntest_logger = logging.getLogger(\"TEST\")",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_logger",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "test_logger = logging.getLogger(\"TEST\")\ntest_logger.setLevel(logging.INFO)\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)",
         "detail": "tests.conftest",
         "documentation": {}
     },
