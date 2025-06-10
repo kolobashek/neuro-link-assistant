@@ -20,7 +20,7 @@ class TestAccessibility:
 
         # Открываем главную страницу с полным URL
         print("📖 [TEST] Открываем главную страницу...")
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ждём загрузки страницы
         time.sleep(2)
@@ -74,7 +74,7 @@ class TestAccessibility:
     def test_aria_attributes(self, ui_client):
         """Тест атрибутов ARIA для обеспечения доступности"""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Найдем элементы с ID, которые точно есть на странице
         important_elements = [
@@ -171,7 +171,7 @@ class TestAccessibility:
     def test_color_contrast(self, ui_client):
         """Тест контрастности цветов для обеспечения доступности"""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Список элементов для проверки контрастности
         important_elements = [
@@ -359,7 +359,7 @@ class TestAccessibility:
         print("\n🔍 [TEST] Начинаем тест индикаторов фокуса...")
 
         print("📖 [TEST] Открываем страницу...")
-        ui_client.get("http://localhost:5000")
+        ui_client.get("http://localhost:5001")
         time.sleep(2)
         print("✅ [TEST] Страница загружена")
 
@@ -385,7 +385,7 @@ class TestAccessibility:
 
     def test_screen_reader_compatibility(self, ui_client):
         """Тест совместимости с программами чтения с экрана"""
-        ui_client.get("http://localhost:5000")
+        ui_client.get("http://localhost:5001")
 
         # Проверяем наличие альтернативного текста для изображений
         images = ui_client.find_elements(By.TAG_NAME, "img")
@@ -412,7 +412,7 @@ class TestAccessibility:
 
     def test_heading_structure(self, ui_client):
         """Тест структуры заголовков для доступности"""
-        ui_client.get("http://localhost:5000")
+        ui_client.get("http://localhost:5001")
 
         # Проверяем наличие заголовка h1
         h1_elements = ui_client.find_elements(By.TAG_NAME, "h1")
@@ -434,7 +434,7 @@ class TestAccessibility:
 
     def test_language_attribute(self, ui_client):
         """Тест атрибута языка для доступности"""
-        ui_client.get("http://localhost:5000")
+        ui_client.get("http://localhost:5001")
 
         # Проверяем наличие атрибута lang в теге html
         html = ui_client.find_element(By.TAG_NAME, "html")

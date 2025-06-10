@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Базовый класс для всех test runners"""
 
 import subprocess

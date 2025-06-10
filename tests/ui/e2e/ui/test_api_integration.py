@@ -18,7 +18,7 @@ class TestAPIIntegration:
 
     def test_command_submission_api_call(self, driver):
         """Тест отправки команды через API"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -58,13 +58,13 @@ class TestAPIIntegration:
         """Тест интеграции истории команд с API"""
         # Сначала получаем историю напрямую через API
         try:
-            api_response = requests.get("http://localhost:5000/api/history")
+            api_response = requests.get("http://localhost:5001/api/history")
             api_history = api_response.json()
         except Exception as e:
             pytest.skip(f"Не удалось получить историю через API: {e}")
 
         # Загружаем страницу
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Ждем загрузки таблицы истории
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "history-table")))
@@ -96,13 +96,13 @@ class TestAPIIntegration:
         """Тест интеграции статуса нейросетей с API"""
         # Сначала получаем статус нейросетей напрямую через API
         try:
-            api_response = requests.get("http://localhost:5000/api/ai_models")
+            api_response = requests.get("http://localhost:5001/api/ai_models")
             api_models = api_response.json()
         except Exception as e:
             pytest.skip(f"Не удалось получить статус нейросетей через API: {e}")
 
         # Загружаем страницу
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Ждем загрузки списка нейросетей
         WebDriverWait(driver, 10).until(
@@ -147,7 +147,7 @@ class TestAPIIntegration:
 
     def test_interrupt_command_api_call(self, driver):
         """Тест прерывания команды через API"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -207,7 +207,7 @@ class TestAPIIntegration:
         driver.execute_cdp_cmd("Network.clearBrowserCookies", {})
 
         # Загружаем страницу
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Ждем завершения загрузки страницы
         WebDriverWait(driver, 10).until(

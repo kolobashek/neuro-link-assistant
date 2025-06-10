@@ -19,7 +19,7 @@ class TestPerformance:
         """Тест времени загрузки страницы"""
         # Измеряем время загрузки страницы
         start_time = time.time()
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Ждем, пока страница полностью загрузится
         WebDriverWait(driver, 10).until(
@@ -36,7 +36,7 @@ class TestPerformance:
 
     def test_command_response_time(self, driver):
         """Тест времени отклика на команду"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -66,7 +66,7 @@ class TestPerformance:
 
     def test_history_load_time(self, driver):
         """Тест времени загрузки истории команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Измеряем время загрузки истории
         start_time = time.time()
@@ -84,7 +84,7 @@ class TestPerformance:
 
     def test_ui_responsiveness(self, driver):
         """Тест отзывчивости пользовательского интерфейса"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода
         input_field = driver.find_element(By.ID, "user-input")
@@ -107,7 +107,7 @@ class TestPerformance:
 
     def test_modal_open_close_performance(self, driver):
         """Тест производительности открытия и закрытия модальных окон"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -153,7 +153,7 @@ class TestPerformance:
 
     def test_scroll_performance(self, driver):
         """Тест производительности прокрутки"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Добавляем много контента с помощью JavaScript для тестирования прокрутки
         driver.execute_script("""
@@ -195,7 +195,7 @@ class TestPerformance:
 
     def test_memory_usage(self, driver):
         """Тест использования памяти"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Получаем начальное использование памяти
         initial_memory = driver.execute_script(

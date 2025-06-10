@@ -15,7 +15,7 @@ class TestErrorHandling:
 
     def test_empty_command_handling(self, driver):
         """Тест обработки пустой команды"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -40,7 +40,7 @@ class TestErrorHandling:
 
     def test_server_error_handling(self, driver):
         """Тест обработки ошибки сервера"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -71,7 +71,7 @@ class TestErrorHandling:
 
     def test_network_error_handling(self, driver):
         """Тест обработки сетевой ошибки"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -117,7 +117,7 @@ class TestErrorHandling:
 
     def test_timeout_handling(self, driver):
         """Тест обработки таймаута запроса"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -161,7 +161,7 @@ class TestErrorHandling:
 
     def test_invalid_response_handling(self, driver):
         """Тест обработки некорректного ответа сервера"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -222,7 +222,7 @@ class TestErrorHandling:
 
     def test_error_message_display(self, driver):
         """Тест отображения сообщения об ошибке"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")

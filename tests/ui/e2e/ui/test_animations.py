@@ -17,7 +17,7 @@ class TestAnimations:
 
     def test_modal_animations(self, driver):
         """Тест анимаций модальных окон"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -49,7 +49,7 @@ class TestAnimations:
 
     def test_button_hover_effects(self, driver):
         """Тест эффектов наведения на кнопки"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим кнопку отправки
         submit_button = driver.find_element(By.ID, "submit-command")
@@ -76,7 +76,7 @@ class TestAnimations:
 
     def test_progress_bar_animation(self, driver):
         """Тест анимации индикатора прогресса"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -109,7 +109,7 @@ class TestAnimations:
 
     def test_notification_animations(self, driver):
         """Тест анимаций уведомлений"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Создаем уведомление с помощью JavaScript
         driver.execute_script("""
@@ -148,7 +148,7 @@ class TestAnimations:
 
     def test_spinner_animation(self, driver):
         """Тест анимации спиннера загрузки"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -182,7 +182,7 @@ class TestAnimations:
 
     def test_message_appearance_animation(self, driver):
         """Тест анимации появления сообщений"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")

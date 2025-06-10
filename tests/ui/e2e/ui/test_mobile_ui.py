@@ -21,7 +21,7 @@ class TestMobileUI:
 
     def test_responsive_layout(self, mobile_driver):
         """Тест адаптивной верстки для мобильных устройств"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем, что страница загрузилась
         WebDriverWait(mobile_driver, 10).until(
@@ -47,7 +47,7 @@ class TestMobileUI:
 
     def test_mobile_input_usability(self, mobile_driver):
         """Тест удобства ввода на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Находим поле ввода
         input_field = mobile_driver.find_element(By.ID, "user-input")
@@ -97,7 +97,7 @@ class TestMobileUI:
 
     def test_touch_targets(self, mobile_driver):
         """Тест размеров целей для касания на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Находим все интерактивные элементы
         interactive_elements = mobile_driver.find_elements(
@@ -119,7 +119,7 @@ class TestMobileUI:
 
     def test_mobile_scrolling(self, mobile_driver):
         """Тест прокрутки на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Ждем загрузки страницы
         WebDriverWait(mobile_driver, 10).until(
@@ -154,7 +154,7 @@ class TestMobileUI:
 
     def test_mobile_font_size(self, mobile_driver):
         """Тест размера шрифта на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Находим основные текстовые элементы
         text_elements = mobile_driver.find_elements(
@@ -178,7 +178,7 @@ class TestMobileUI:
 
     def test_mobile_orientation(self, mobile_driver):
         """Тест поддержки различных ориентаций экрана"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем отображение в портретной ориентации
         # Получаем размеры контейнера
@@ -206,7 +206,7 @@ class TestMobileUI:
 
     def test_mobile_menu(self, mobile_driver):
         """Тест мобильного меню (если есть)"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем наличие мобильного меню или кнопки меню
         menu_buttons = mobile_driver.find_elements(
@@ -260,7 +260,7 @@ class TestMobileUI:
 
     def test_hamburger_menu_navigation(self, mobile_driver):
         """Тест навигации через меню-гамбургер на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем наличие кнопки гамбургер-меню
         hamburger_buttons = mobile_driver.find_elements(
@@ -337,7 +337,7 @@ class TestMobileUI:
 
     def test_mobile_navigation_adapts(self, mobile_driver):
         """Тест адаптации навигации для мобильных устройств"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем, что десктопная навигация скрыта на мобильном устройстве
         desktop_navs = mobile_driver.find_elements(
@@ -371,7 +371,7 @@ class TestMobileUI:
 
     def test_mobile_bottom_navigation(self, mobile_driver):
         """Тест нижней панели навигации на мобильных устройствах (если есть)"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Ищем нижнюю панель навигации, которая часто используется в мобильных интерфейсах
         bottom_navs = mobile_driver.find_elements(
@@ -404,7 +404,7 @@ class TestMobileUI:
 
     def test_swipe_navigation(self, mobile_driver):
         """Тест навигации жестами свайпа (если поддерживается)"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Проверяем наличие слайдера или карусели, которые могут поддерживать свайп
         swipeable_elements = mobile_driver.find_elements(
@@ -452,7 +452,7 @@ class TestMobileUI:
 
     def test_mobile_search_usability(self, mobile_driver):
         """Тест удобства использования поиска на мобильных устройствах"""
-        mobile_driver.get("http://localhost:5000")
+        mobile_driver.get("http://localhost:5001")
 
         # Ищем поле поиска
         search_fields = mobile_driver.find_elements(

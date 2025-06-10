@@ -129,6 +129,7 @@
 |   |   |-- element_finder.py
 |   |   |-- __init__.py
 |   |-- component_registry.py
+|   |-- globals.py
 |   |-- plugin_manager.py
 |   |-- system.py
 |   |-- system_initializer.py
@@ -146,6 +147,8 @@
 |   |   |-- overview.md
 |   |   |-- subsystems.md
 |   |-- development
+|   |   |-- instructions UI.md
+|   |   |-- instructions.md
 |   |   |-- methodology.md
 |   |   |-- standards.md
 |   |   |-- testing.md
@@ -164,6 +167,7 @@
 |   |-- command_history.log
 |   |-- detailed_command.log
 |   |-- system.log
+|   |-- test_results.txt
 |   |-- ui_parallel_20250603_154742.json
 |   |-- ui_parallel_20250603_154742.log
 |   |-- ui_parallel_20250603_154742_junit.xml
@@ -205,17 +209,26 @@
 |   |-- main_routes.py
 |   |-- __init__.py
 |-- scripts
-|   |-- app_manager.py
-|   |-- base_test_runner.py
-|   |-- cleanup-ports.ps1
+|   |-- app
+|   |   |-- health_check.py
+|   |   |-- manager.py
+|   |   |-- __init__.py
+|   |-- network
+|   |   |-- connection_debugger.py
+|   |   |-- port_manager.py
+|   |   |-- __init__.py
+|   |-- testing
+|   |   |-- affected_tests.py
+|   |   |-- base_runner.py
+|   |   |-- ui_runner.py
+|   |   |-- __init__.py
+|   |-- utils
+|   |   |-- analyze_dependencies.py
+|   |   |-- Show-DirTree-tests.ps1
+|   |   |-- Show-DirTree.ps1
 |   |-- db.py
 |   |-- docker.py
-|   |-- port_cleanup.py
-|   |-- quick_check.py
-|   |-- run_affected_tests.py
-|   |-- test.py
-|   |-- test_app_manager.py
-|   |-- ui_test_runner.py
+|   |-- run.bat
 |   |-- __init__.py
 |-- services
 |   |-- ai_service.py
@@ -268,9 +281,9 @@
 |   |   |   |-- test_llm_unit.py
 |   |   |-- services
 |   |   |-- test_db_services.py
+|   |   |-- test_system_initializer_auth.py
 |   |-- system
 |   |   |-- test_application_workflow.py
-|   |   |-- test_authorization.py
 |   |   |-- test_computer_vision.py
 |   |   |-- test_file_operations.py
 |   |   |-- test_llm_integration.py
@@ -367,27 +380,24 @@
 |   |   |   |-- test_validation.py
 |   |   |-- services
 |   |   |-- utils
+|   |-- utils
+|   |   |-- check_element_finder.py
+|   |   |-- chrome_fixed_function.py
+|   |   |-- chrome_patch.txt
 |   |-- conftest.py
 |-- utils
 |   |-- helpers.py
 |   |-- logging_utils.py
 |   |-- log_maintenance.py
 |   |-- __init__.py
-|-- .coverage
 |-- .env
 |-- .gitignore
 |-- .pre-commit-config.yaml
-|-- AGENT.md
 |-- alembic.ini
-|-- analyze_dependencies.py
 |-- app.py
-|-- check_element_finder.py
-|-- commands__init__.py
 |-- config.py
 |-- conftest.py
 |-- docker-compose.yml
-|-- globals.py
-|-- instructions.md
 |-- LICENSE
 |-- poetry.lock
 |-- project_structure.txt
@@ -397,10 +407,4 @@
 |-- requirements-dev.txt
 |-- requirements-optional.txt
 |-- requirements.txt
-|-- run.bat
-|-- setup.cfg
-|-- Show-DirTree-tests.ps1
-|-- Show-DirTree.ps1
 |-- tests_structure.txt
-|-- test_results.txt
-|-- tree.ps1

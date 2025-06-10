@@ -14,7 +14,7 @@ class TestRouting:
     def test_model_selection_routing(self, ui_client):
         """Тест маршрутизации при выборе модели."""
         # Открываем страницу выбора моделей
-        ui_client.get("http://localhost:5000/models")
+        ui_client.get("http://localhost:5001/models")
 
         # Ждем загрузки карточек моделей
         WebDriverWait(ui_client, 10).until(
@@ -51,7 +51,7 @@ class TestRouting:
     def test_history_item_routing(self, ui_client):
         """Тест маршрутизации к элементу истории взаимодействий."""
         # Открываем страницу истории
-        ui_client.get("http://localhost:5000/history")
+        ui_client.get("http://localhost:5001/history")
 
         # Ждем загрузки элементов истории
         try:
@@ -94,7 +94,7 @@ class TestRouting:
 
         for url in urls_to_check:
             # Открываем URL напрямую
-            ui_client.get(f"http://localhost:5000{url}")
+            ui_client.get(f"http://localhost:5001{url}")
 
             # Проверяем, что страница загрузилась корректно
             assert url in ui_client.current_url, f"URL {url} не доступен для прямого доступа"
@@ -106,7 +106,7 @@ class TestRouting:
     def test_404_page(self, ui_client):
         """Тест страницы 404 (не найдено)."""
         # Открываем несуществующий URL
-        ui_client.get("http://localhost:5000/this-page-does-not-exist")
+        ui_client.get("http://localhost:5001/this-page-does-not-exist")
 
         # Проверяем, что отображается страница 404
         # Это может быть элемент с соответствующим классом или текстом
@@ -126,7 +126,7 @@ class TestRouting:
     def test_query_parameters(self, ui_client):
         """Тест обработки параметров запроса в URL."""
         # Открываем страницу моделей с параметром фильтрации
-        ui_client.get("http://localhost:5000/models?category=text")
+        ui_client.get("http://localhost:5001/models?category=text")
 
         # Ждем загрузки элементов
         WebDriverWait(ui_client, 10).until(
@@ -152,7 +152,7 @@ class TestRouting:
     def test_hash_fragment_navigation(self, ui_client):
         """Тест навигации с использованием хэш-фрагментов URL."""
         # Открываем страницу с длинным содержимым и якорными ссылками
-        ui_client.get("http://localhost:5000/help")
+        ui_client.get("http://localhost:5001/help")
 
         # Ищем якорные ссылки
         anchor_links = ui_client.find_elements(By.CSS_SELECTOR, "a[href^='#']")
@@ -189,7 +189,7 @@ class TestRouting:
     def test_task_center_routing(self, ui_client):
         """Тест доступа к центру задач и подстраницам."""
         # Открываем страницу центра задач
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки элементов страницы с задачами
         WebDriverWait(ui_client, 10).until(
@@ -236,7 +236,7 @@ class TestRouting:
     def test_task_creation_routing(self, ui_client):
         """Тест страницы создания новой задачи."""
         # Открываем страницу центра задач
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -266,7 +266,7 @@ class TestRouting:
     def test_model_management_routing(self, ui_client):
         """Тест страниц управления моделями."""
         # Открываем страницу управления моделями
-        ui_client.get("http://localhost:5000/ai_models")
+        ui_client.get("http://localhost:5001/ai_models")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -322,7 +322,7 @@ class TestRouting:
     def test_browser_models_routing(self, ui_client):
         """Тест страницы управления браузерными моделями."""
         # Открываем страницу браузерных моделей
-        ui_client.get("http://localhost:5000/ai_models/browser")
+        ui_client.get("http://localhost:5001/ai_models/browser")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -341,7 +341,7 @@ class TestRouting:
     def test_orchestrator_routing(self, ui_client):
         """Тест страницы оркестратора моделей."""
         # Открываем страницу оркестратора
-        ui_client.get("http://localhost:5000/orchestrator")
+        ui_client.get("http://localhost:5001/orchestrator")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -367,7 +367,7 @@ class TestRouting:
     def test_workflows_routing(self, ui_client):
         """Тест страницы шаблонов и рабочих процессов."""
         # Открываем страницу рабочих процессов
-        ui_client.get("http://localhost:5000/workflows")
+        ui_client.get("http://localhost:5001/workflows")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -397,7 +397,7 @@ class TestRouting:
     def test_analytics_routing(self, ui_client):
         """Тест страницы центра аналитики."""
         # Открываем страницу аналитики
-        ui_client.get("http://localhost:5000/analytics")
+        ui_client.get("http://localhost:5001/analytics")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -424,7 +424,7 @@ class TestRouting:
     def test_task_execution_routing(self, ui_client):
         """Тест маршрутизации во время выполнения задачи."""
         # Открываем страницу создания задачи
-        ui_client.get("http://localhost:5000/tasks/create")
+        ui_client.get("http://localhost:5001/tasks/create")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -469,7 +469,7 @@ class TestRouting:
     def test_settings_routing(self, ui_client):
         """Тест маршрутизации в разделе настроек."""
         # Открываем страницу настроек
-        ui_client.get("http://localhost:5000/settings")
+        ui_client.get("http://localhost:5001/settings")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -514,7 +514,7 @@ class TestRouting:
     def test_direct_task_url_access(self, ui_client):
         """Тест прямого доступа к задаче по URL."""
         # Сначала переходим на страницу задач, чтобы найти идентификатор существующей задачи
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -534,7 +534,7 @@ class TestRouting:
             pytest.skip("Не удалось получить ID задачи")
 
         # Переходим напрямую по URL задачи
-        ui_client.get(f"http://localhost:5000/tasks/{task_id}")
+        ui_client.get(f"http://localhost:5001/tasks/{task_id}")
 
         # Ждем загрузки страницы деталей задачи
         WebDriverWait(ui_client, 10).until(
@@ -548,7 +548,7 @@ class TestRouting:
     def test_direct_model_url_access(self, ui_client):
         """Тест прямого доступа к модели по URL."""
         # Сначала переходим на страницу моделей, чтобы найти идентификатор существующей модели
-        ui_client.get("http://localhost:5000/ai_models")
+        ui_client.get("http://localhost:5001/ai_models")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -568,7 +568,7 @@ class TestRouting:
             pytest.skip("Не удалось получить ID модели")
 
         # Переходим напрямую по URL настроек модели
-        ui_client.get(f"http://localhost:5000/ai_models/{model_id}/settings")
+        ui_client.get(f"http://localhost:5001/ai_models/{model_id}/settings")
 
         # Ждем загрузки страницы настроек модели
         WebDriverWait(ui_client, 10).until(
@@ -582,7 +582,7 @@ class TestRouting:
     def test_404_page_routing(self, ui_client):
         """Тест маршрутизации на несуществующую страницу."""
         # Переходим на несуществующую страницу
-        ui_client.get("http://localhost:5000/non_existent_page")
+        ui_client.get("http://localhost:5001/non_existent_page")
 
         # Проверяем, что отображается страница 404
         WebDriverWait(ui_client, 10).until(
@@ -614,7 +614,7 @@ class TestRouting:
     def test_authenticated_routes(self, ui_client):
         """Тест доступа к маршрутам, требующим аутентификации."""
         # Проверяем, есть ли кнопка входа на главной странице
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         login_buttons = ui_client.find_elements(By.CSS_SELECTOR, ".login-button, a[href='/login']")
 
@@ -623,7 +623,7 @@ class TestRouting:
             pytest.skip("Аутентификация, возможно, не реализована в приложении")
 
         # Пытаемся получить доступ к защищенному маршруту
-        ui_client.get("http://localhost:5000/profile")
+        ui_client.get("http://localhost:5001/profile")
 
         # Проверяем, перенаправлены ли мы на страницу входа
         WebDriverWait(ui_client, 10).until(

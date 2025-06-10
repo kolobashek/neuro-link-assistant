@@ -6,7 +6,7 @@ class TestSimpleUI:
     def test_homepage_opens(self, ui_client):
         """Простейший тест - открытие главной страницы"""
         print("🔍 Открываем главную страницу...")
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         print("🔍 Получаем заголовок...")
         title = ui_client.driver.title
@@ -17,7 +17,7 @@ class TestSimpleUI:
 
     def test_user_input_exists(self, ui_client):
         """Проверяем наличие поля ввода"""
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ищем поле ввода пользователя
         user_input = ui_client.find_element(By.ID, "user-input")
@@ -26,7 +26,7 @@ class TestSimpleUI:
 
     def test_page_has_content(self, ui_client):
         """Проверяем что страница содержит контент"""
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         body = ui_client.find_element(By.TAG_NAME, "body")
         content = body.text

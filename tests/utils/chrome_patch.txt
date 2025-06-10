@@ -1,0 +1,7 @@
+﻿    chrome_options.add_argument("--disable-gpu-sandbox")
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--disable-background-timer-throttling")
+    chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+    chrome_options.add_argument("--disable-renderer-backgrounding")
+    chrome_options.add_argument("--disable-features=TranslateUI,BlinkGenPropertyTrees,VizDisplayCompositor,AudioServiceOutOfProcess")
+    chrome_options.add_argument("--enable-unsafe-swiftshader")

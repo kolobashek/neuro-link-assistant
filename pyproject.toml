@@ -65,24 +65,36 @@ transformers = ">=4.28.1"
 [tool.poetry.scripts]
 neuro-assistant = "app:run_app"
 test = "pytest:main"
-# Добавляем скрипты для работы с Docker
+
+# Database scripts
 db-up = "scripts.docker:start_db"
 db-down = "scripts.docker:stop_db"
 db-restart = "scripts.docker:restart_db"
 db-logs = "scripts.docker:show_db_logs"
 db-migrate = "scripts.db:run_migrations"
 db-seed = "scripts.db:seed_database"
-# Унифицируем UI тесты на единый раннер
-test-ui-headless = "scripts.ui_test_runner:main"
-test-ui-parallel = "scripts.ui_test_runner:main"
-test-ui = "scripts.ui_test_runner:main"
-port-cleanup = "scripts.port_cleanup:cleanup_port"
-port-check = "scripts.port_cleanup:PortManager.is_port_in_use"
-flask-cleanup = "scripts.port_cleanup:cleanup_all_flask_processes"
-# Добавляем быструю проверку
-app-check = "scripts.quick_check:quick_check"
-# НОВАЯ КОМАНДА для UI тестов
-test-ui-safe = "scripts.ui_test_runner:main"
+
+# Унифицированные команды приложения
+app-start = "scripts.app.manager:main"
+app-check = "scripts.app.health_check:main"
+
+# Управление сетью
+port-cleanup = "scripts.network.port_manager:main"
+port-debug = "scripts.network.connection_debugger:main"
+
+# UI тестирование (унифицировано)
+test-ui = "scripts.testing.ui_runner:main"
+test-ui-headless = "scripts.testing.ui_runner:main"
+test-ui-parallel = "scripts.testing.ui_runner:main"
+test-ui-gentle = "scripts.testing.ui_runner:main"
+test-ui-direct = "scripts.testing.ui_runner:main"
+
+# Тестирование
+test-affected = "scripts.testing.affected_tests:main"
+
+# Обновить команды:
+analyze-deps = "scripts.utils.analyze_dependencies:main"
+show-tree = "scripts.utils.Show-DirTree:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

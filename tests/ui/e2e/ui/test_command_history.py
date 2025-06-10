@@ -17,7 +17,7 @@ class TestCommandHistory:
 
     def test_history_container_elements(self, driver):
         """Тест наличия всех элементов контейнера истории команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка контейнера истории
         history_container = driver.find_element(By.CLASS_NAME, "command-history-container")
@@ -41,7 +41,7 @@ class TestCommandHistory:
 
     def test_history_search_functionality(self, driver):
         """Тест функциональности поиска в истории"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка наличия поля поиска
         history_search = driver.find_element(By.ID, "history-search")
@@ -74,7 +74,7 @@ class TestCommandHistory:
 
     def test_history_item_reuse(self, driver):
         """Тест повторного использования команды из истории"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -93,7 +93,7 @@ class TestCommandHistory:
 
     def test_history_item_details(self, driver):
         """Тест просмотра деталей команды из истории"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -136,7 +136,7 @@ class TestCommandHistory:
 
     def test_clear_history_functionality(self, driver):
         """Тест функциональности очистки истории"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")

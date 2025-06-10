@@ -14,7 +14,7 @@ class TestBaseLayout:
 
     def test_header_elements(self, driver):
         """Тест наличия и корректности элементов заголовка"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка заголовка
         header = driver.find_element(By.TAG_NAME, "header")
@@ -30,7 +30,7 @@ class TestBaseLayout:
 
     def test_container_structure(self, driver):
         """Тест структуры основного контейнера"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка основного контейнера
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -43,7 +43,7 @@ class TestBaseLayout:
 
     def test_css_variables_applied(self, driver):
         """Тест применения CSS-переменных"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Получение примененных стилей для проверки CSS-переменных
         primary_color = driver.execute_script(
@@ -62,7 +62,7 @@ class TestBaseLayout:
 
     def test_theme_toggle_presence(self, driver):
         """Тест наличия переключателя темы"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка наличия переключателя темы
         theme_toggle = driver.find_elements(By.ID, "theme-toggle")

@@ -226,3 +226,7 @@ screenshots/
 *.dump
 *.sql.gz
 *.db-journal
+
+# Скриншоты тестов
+static/screenshots/*.png
+error_*.png

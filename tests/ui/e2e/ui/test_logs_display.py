@@ -16,7 +16,7 @@ class TestLogsDisplay:
     def test_logs_page_structure(self, driver):
         """Тест структуры страницы логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Проверяем наличие контейнера логов
         logs_container = driver.find_element(By.CLASS_NAME, "logs-container")
@@ -47,7 +47,7 @@ class TestLogsDisplay:
     def test_logs_tabs_switching(self, driver):
         """Тест переключения между вкладками логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Находим все кнопки вкладок
         tab_buttons = driver.find_elements(By.CLASS_NAME, "tab-button")
@@ -82,7 +82,7 @@ class TestLogsDisplay:
     def test_logs_refresh_functionality(self, driver):
         """Тест функциональности обновления логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Находим кнопку обновления логов
         refresh_button = driver.find_element(By.ID, "refresh-logs")
@@ -109,7 +109,7 @@ class TestLogsDisplay:
     def test_logs_search_functionality(self, driver):
         """Тест функциональности поиска в логах"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Находим поле поиска
         search_input = driver.find_element(By.ID, "logs-search")
@@ -141,7 +141,7 @@ class TestLogsDisplay:
     def test_logs_download_functionality(self, driver):
         """Тест функциональности скачивания логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Находим кнопку скачивания логов
         download_button = driver.find_element(By.ID, "download-logs")
@@ -157,7 +157,7 @@ class TestLogsDisplay:
     def test_logs_styling(self, driver):
         """Тест стилизации логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Проверяем стилизацию контейнера логов
         logs_container = driver.find_element(By.CLASS_NAME, "logs-container")
@@ -193,7 +193,7 @@ class TestLogsDisplay:
     def test_logs_error_highlighting(self, driver):
         """Тест подсветки ошибок в логах"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5000/logs")
+        driver.get("http://localhost:5001/logs")
 
         # Находим все строки логов
         log_lines = driver.find_elements(By.CSS_SELECTOR, ".log-display .log-line")

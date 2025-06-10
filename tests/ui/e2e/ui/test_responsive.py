@@ -18,7 +18,7 @@ class TestResponsiveDesign:
 
     def test_desktop_layout(self, driver):
         """Тест макета для настольных компьютеров"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, что контейнер имеет правильную ширину
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -52,7 +52,7 @@ class TestResponsiveDesign:
         """Тест макета для планшетов"""
         # Устанавливаем размер окна как у планшета
         driver.set_window_size(768, 1024)
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, что контейнер адаптировался
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -84,7 +84,7 @@ class TestResponsiveDesign:
         """Тест макета для мобильных устройств"""
         # Устанавливаем размер окна как у мобильного устройства
         driver.set_window_size(375, 667)
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, что контейнер адаптировался
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -112,7 +112,7 @@ class TestResponsiveDesign:
 
     def test_modal_responsive_behavior(self, driver):
         """Тест адаптивного поведения модальных окон"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -158,7 +158,7 @@ class TestResponsiveDesign:
     def test_font_size_responsiveness(self, driver):
         """Тест адаптивности размера шрифта"""
         # Проверяем размер шрифта на десктопе
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         header = driver.find_element(By.TAG_NAME, "h1")
         desktop_font_size = driver.execute_script(
@@ -193,7 +193,7 @@ class TestResponsiveDesign:
     def test_input_field_responsiveness(self, driver):
         """Тест адаптивности полей ввода"""
         # Проверяем поле ввода на десктопе
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         input_field = driver.find_element(By.ID, "user-input")
         desktop_width = input_field.size["width"]

@@ -1,5 +1,5 @@
-import os
-import subprocess  # ← Добавляем импорт
+﻿import os
+import subprocess  # < Добавляем импорт
 import sys
 import time
 from typing import Any
@@ -20,7 +20,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from scripts.port_cleanup import PortManager
 
 # Глобальная конфигурация для тестов
-TEST_CONFIG = {"base_url": "http://localhost:5000"}
+TEST_CONFIG = {"base_url": "http://localhost:5001"}
 
 import logging
 
@@ -48,21 +48,21 @@ def cleanup_ports():
     port_manager = PortManager(5000)
 
     # Очистка перед тестами
-    print("🧹 Предварительная очистка портов...")
+    print("?? Предварительная очистка портов...")
     port_manager.smart_cleanup()
 
     yield
 
     # ИСПРАВЛЕНО: Даем время приложению корректно завершиться
-    print("⏳ Ожидание завершения всех процессов...")
+    print("? Ожидание завершения всех процессов...")
     time.sleep(3)  # Даем время процессам завершиться
 
     # Финальная проверка и очистка только если нужно
     if port_manager.is_port_in_use():
-        print("🧹 Финальная очистка портов...")
+        print("?? Финальная очистка портов...")
         port_manager.smart_cleanup()
     else:
-        print("✅ Все порты уже свободны, очистка не нужна")
+        print("? Все порты уже свободны, очистка не нужна")
 
 
 def cleanup_port(port: int) -> bool:
@@ -77,7 +77,7 @@ def cleanup_port(port: int) -> bool:
         for line in result.stdout.split("\n"):
             if f":{port}" in line and "LISTENING" in line:
                 pid = line.strip().split()[-1]
-                print(f"🔧 Завершаем процесс {pid} на порту {port}")
+                print(f"?? Завершаем процесс {pid} на порту {port}")
 
                 # Принудительное завершение
                 subprocess.run(["taskkill", "/PID", pid, "/F"], capture_output=True)
@@ -85,7 +85,7 @@ def cleanup_port(port: int) -> bool:
 
         return True
     except Exception as e:
-        print(f"❌ Ошибка очистки порта: {e}")
+        print(f"? Ошибка очистки порта: {e}")
         return False
 
 
@@ -138,18 +138,18 @@ class UiTestDriver:
 
     def wait_for_element(self, by, value, timeout=5):
         """Ожидание элемента с улучшенной отладкой."""
-        print(f"🔍 Поиск элемента: {by}={value}")
+        print(f"?? Поиск элемента: {by}={value}")
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_element_located((by, value))
             )
-            print(f"✅ Найден: {by}={value}")
+            print(f"? Найден: {by}={value}")
             return element
         except Exception as e:
-            print(f"❌ Не найден за {timeout}с: {by}={value}")
+            print(f"? Не найден за {timeout}с: {by}={value}")
             # Отладочная информация
-            print(f"📄 Текущий URL: {self.driver.current_url}")
-            print(f"📋 Заголовок: {self.driver.title}")
+            print(f"?? Текущий URL: {self.driver.current_url}")
+            print(f"?? Заголовок: {self.driver.title}")
             self.take_screenshot(f"debug_timeout_{value.replace('/', '_')[:20]}.png")
             raise TimeoutException(f"Элемент не найден: {by}={value}")
 
@@ -222,14 +222,14 @@ class UiTestDriver:
 from scripts.app_manager import AppManager
 
 # Добавляем импорт нового менеджера
-from scripts.test_app_manager import TestAppManager
+from scripts.external_app_manager import ExternalAppManager as TestAppManager
 
 
 # Заменяем фикстуру app_server
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def app_server():
     """Фикстура для управления жизненным циклом приложения в UI тестах"""
-    manager = TestAppManager(port=5000, timeout=45)
+    manager = TestAppManager(port=5001)
 
     print(f" [SESSION] Настройка приложения для UI тестов...")
 
@@ -242,11 +242,11 @@ def app_server():
         manager.stop_app()
         pytest.skip("Приложение запустилось, но не прошло проверку здоровья")
 
-    print(f"✅ [SESSION] Приложение готово для UI тестов")
+    print(f"? [SESSION] Приложение готово для UI тестов")
 
     yield manager
 
-    print(f"🧹 [SESSION] Завершение сессии UI тестов...")
+    print(f"?? [SESSION] Завершение сессии UI тестов...")
     # Останавливаем приложение
     manager.stop_app()
 
@@ -260,7 +260,7 @@ def create_chrome_driver(base_url: str) -> webdriver.Chrome:
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--use-gl=swiftshader")  # Программный рендеринг
+    chrome_options.add_argument("--use-gl=disabled")  # Программный рендеринг
     chrome_options.add_argument("--disable-software-rasterizer")
     chrome_options.add_argument("--window-size=1280,720")
     chrome_options.add_argument("--disable-web-security")
@@ -272,6 +272,16 @@ def create_chrome_driver(base_url: str) -> webdriver.Chrome:
     chrome_options.add_argument("--log-level=3")
     chrome_options.add_argument("--silent")
 
+    chrome_options.add_argument("--disable-gpu-sandbox")
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--disable-background-timer-throttling")
+    chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+    chrome_options.add_argument("--disable-renderer-backgrounding")
+    chrome_options.add_argument(
+        "--disable-features=TranslateUI,BlinkGenPropertyTrees,VizDisplayCompositor,AudioServiceOutOfProcess"
+    )
+    chrome_options.add_argument("--enable-unsafe-swiftshader")
+
     chrome_options.binary_location = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
 
     try:
@@ -281,35 +291,26 @@ def create_chrome_driver(base_url: str) -> webdriver.Chrome:
 
         driver = webdriver.Chrome(service=service, options=chrome_options)
         # Короткие таймауты для быстрого обнаружения проблем
-        driver.set_page_load_timeout(15)
-        driver.implicitly_wait(5)
+        driver.set_page_load_timeout(120)
+        driver.implicitly_wait(30)
 
-        print("✅ Chrome WebDriver оптимизирован для Windows + старая GPU")
+        print("? Chrome WebDriver оптимизирован для Windows + старая GPU")
         return driver
 
     except Exception as e:
-        print(f"❌ Ошибка Chrome WebDriver: {e}")
+        print(f"? Ошибка Chrome WebDriver: {e}")
         pytest.skip(f"Chrome WebDriver недоступен: {e}")
 
 
 # И используем в фикстуре:
-@pytest.fixture(scope="session")  # было: function
-def ui_client(base_url, app_server):  # Убрать request из параметров
-    """Фикстура для UI тестов"""
-    # Убрать эти 2 строчки:
-    # test_file = str(request.fspath)
-    # if not ("ui" in test_file or "e2e" in test_file):
-    #     pytest.skip("ui_client фикстура только для UI тестов")
-
-    if not app_server.is_app_running():
+@pytest.fixture(scope="function")  # ИЗМЕНИТЬ НА "function"
+def ui_client(base_url, app_server):
+    if not app_server.is_app_running():  # app_server теперь будет свежим для каждого теста
         pytest.skip("Приложение не доступно для UI теста")
 
-    # Создаем драйвер
     driver = create_chrome_driver(base_url)
     ui_driver = UiTestDriver(driver, base_url)
-
     yield ui_driver
-
     driver.quit()
 
 
@@ -342,8 +343,11 @@ def base_url():
     return TEST_CONFIG["base_url"]
 
 
-@pytest.fixture(scope="class")  # Для ui_client
-def authenticated_ui_client(ui_client):
+@pytest.fixture(scope="function")  # ИЗМЕНИТЬ НА "function" (если используется ui_client)
+# или scope="class", если authenticated_ui_client используется на уровне класса
+# и вы хотите, чтобы логин происходил один раз для класса.
+# Но для начала лучше "function" для максимальной изоляции.
+def authenticated_ui_client(ui_client):  # ui_client теперь function-scoped
     """
     Фикстура для UI-тестов, требующих аутентификации.
 
@@ -398,7 +402,7 @@ def authenticated_ui_client(ui_client):
         pass
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def mobile_ui_client(ui_client):
     """
     Фикстура для мобильного вида UI-тестирования.
@@ -419,7 +423,7 @@ def mobile_ui_client(ui_client):
     ui_client.set_window_size(original_size["width"], original_size["height"])
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")  # ИЗМЕНИТЬ НА "function"
 def take_screenshot_on_failure(ui_client, request):
     """
     Фикстура для создания скриншотов при падении тестов.
@@ -572,14 +576,14 @@ def pytest_runtest_setup(item):
     # Проверяем, является ли это UI тестом
     test_file = str(item.fspath)
     if "ui" in test_file or "e2e" in test_file:
-        print(f"\n🚀 [UI-TEST] Запуск теста: {item.name}")
+        print(f"\n?? [UI-TEST] Запуск теста: {item.name}")
 
 
 def pytest_runtest_teardown(item):
     """Очистка после каждого теста"""
     test_file = str(item.fspath)
     if "ui" in test_file or "e2e" in test_file:
-        print(f"🏁 [UI-TEST] Завершение теста: {item.name}")
+        print(f"?? [UI-TEST] Завершение теста: {item.name}")
 
 
 def pytest_collection_modifyitems(config, items):

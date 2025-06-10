@@ -16,7 +16,7 @@ class TestNavigation:
     def test_main_navigation_links(self, ui_client):
         """Тест основных навигационных ссылок."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Находим все основные навигационные ссылки
         nav_links = ui_client.find_elements(By.CSS_SELECTOR, "nav a")
@@ -33,7 +33,7 @@ class TestNavigation:
     def test_url_changes_on_navigation(self, ui_client):
         """Тест изменения URL при навигации."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Находим и кликаем по ссылке на раздел моделей
         models_link = ui_client.find_element(By.XPATH, "//a[contains(text(), 'Модели')]")
@@ -48,7 +48,7 @@ class TestNavigation:
     def test_browser_history_navigation(self, ui_client):
         """Тест навигации с использованием истории браузера."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
         initial_url = ui_client.current_url
 
         # Переходим в раздел настроек
@@ -99,7 +99,7 @@ class TestNavigation:
     def test_footer_navigation_links(self, ui_client):
         """Тест навигационных ссылок в футере."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Прокручиваем страницу до футера
         footer = ui_client.find_element(By.CSS_SELECTOR, "footer")
@@ -126,7 +126,7 @@ class TestNavigation:
     def test_navigation_breadcrumbs(self, ui_client):
         """Тест навигации с использованием хлебных крошек."""
         # Открываем страницу, которая имеет достаточную глубину для хлебных крошек
-        ui_client.get("http://localhost:5000/models/categories")
+        ui_client.get("http://localhost:5001/models/categories")
 
         # Проверяем наличие элемента хлебных крошек
         breadcrumbs = ui_client.find_elements(By.CSS_SELECTOR, ".breadcrumbs")
@@ -154,7 +154,7 @@ class TestNavigation:
     def test_main_navigation_structure(self, ui_client):
         """Тест структуры основной навигации, включая все новые разделы."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Находим все основные навигационные ссылки
         nav_links = ui_client.find_elements(By.CSS_SELECTOR, "nav a, .main-navigation a")
@@ -189,7 +189,7 @@ class TestNavigation:
     def test_task_navigation(self, ui_client):
         """Тест навигации в разделе задач."""
         # Открываем страницу задач
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -251,7 +251,7 @@ class TestNavigation:
     def test_model_navigation(self, ui_client):
         """Тест навигации в разделе моделей."""
         # Открываем страницу моделей
-        ui_client.get("http://localhost:5000/ai_models")
+        ui_client.get("http://localhost:5001/ai_models")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -285,7 +285,7 @@ class TestNavigation:
     def test_orchestrator_navigation(self, ui_client):
         """Тест навигации в разделе оркестратора."""
         # Открываем страницу оркестратора
-        ui_client.get("http://localhost:5000/orchestrator")
+        ui_client.get("http://localhost:5001/orchestrator")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -322,7 +322,7 @@ class TestNavigation:
     def test_workflows_navigation(self, ui_client):
         """Тест навигации в разделе рабочих процессов."""
         # Открываем страницу рабочих процессов
-        ui_client.get("http://localhost:5000/workflows")
+        ui_client.get("http://localhost:5001/workflows")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -375,7 +375,7 @@ class TestNavigation:
     def test_analytics_navigation(self, ui_client):
         """Тест навигации в разделе аналитики."""
         # Открываем страницу аналитики
-        ui_client.get("http://localhost:5000/analytics")
+        ui_client.get("http://localhost:5001/analytics")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -410,7 +410,7 @@ class TestNavigation:
     def test_breadcrumb_navigation(self, ui_client):
         """Тест навигации с использованием хлебных крошек."""
         # Открываем страницу с достаточной глубиной вложенности
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -462,7 +462,7 @@ class TestNavigation:
     def test_sidebar_navigation(self, ui_client):
         """Тест навигации через боковое меню."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -511,7 +511,7 @@ class TestNavigation:
     def test_task_details_navigation(self, ui_client):
         """Тест навигации внутри деталей задачи."""
         # Открываем страницу задач
-        ui_client.get("http://localhost:5000/tasks")
+        ui_client.get("http://localhost:5001/tasks")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -563,7 +563,7 @@ class TestNavigation:
     def test_model_details_navigation(self, ui_client):
         """Тест навигации внутри деталей модели."""
         # Открываем страницу моделей
-        ui_client.get("http://localhost:5000/ai_models")
+        ui_client.get("http://localhost:5001/ai_models")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(
@@ -613,7 +613,7 @@ class TestNavigation:
         ui_client.set_window_size(375, 667)  # Размер iPhone 6/7/8
 
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
@@ -673,7 +673,7 @@ class TestNavigation:
     def test_notifications_navigation(self, ui_client):
         """Тест навигации через уведомления."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
@@ -709,18 +709,18 @@ class TestNavigation:
 
         # Ждем перехода на соответствующую страницу
         WebDriverWait(ui_client, 10).until(
-            lambda driver: driver.current_url != "http://localhost:5000/"
+            lambda driver: driver.current_url != "http://localhost:5001/"
         )
 
         # Проверяем, что URL изменился
         assert (
-            ui_client.current_url != "http://localhost:5000/"
+            ui_client.current_url != "http://localhost:5001/"
         ), "URL не изменился после клика по уведомлению"
 
     def test_footer_links_navigation(self, ui_client):
         """Тест навигации через ссылки в футере."""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5000/")
+        ui_client.get("http://localhost:5001/")
 
         # Ждем загрузки страницы
         WebDriverWait(ui_client, 10).until(EC.presence_of_element_located((By.TAG_NAME, "footer")))

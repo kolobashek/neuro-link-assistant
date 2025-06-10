@@ -17,9 +17,9 @@
 |   |   |-- test_llm_unit.py
 |   |-- services
 |   |-- test_db_services.py
+|   |-- test_system_initializer_auth.py
 |-- system
 |   |-- test_application_workflow.py
-|   |-- test_authorization.py
 |   |-- test_computer_vision.py
 |   |-- test_file_operations.py
 |   |-- test_llm_integration.py

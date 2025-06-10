@@ -18,7 +18,7 @@ class TestCommandForm:
 
     def test_command_form_elements(self, driver):
         """Тест наличия всех элементов формы команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверка контейнера формы
         form_container = driver.find_element(By.CLASS_NAME, "command-form-container")
@@ -47,7 +47,7 @@ class TestCommandForm:
 
     def test_command_input_and_submission(self, driver):
         """Тест ввода и отправки команды"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и вводим команду
         user_input = driver.find_element(By.ID, "user-input")
@@ -90,7 +90,7 @@ class TestCommandForm:
 
     def test_command_autocomplete(self, driver):
         """Тест автодополнения команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим поле ввода и вводим часть команды
         user_input = driver.find_element(By.ID, "user-input")
@@ -116,7 +116,7 @@ class TestCommandForm:
 
     def test_available_commands_display(self, driver):
         """Тест отображения доступных команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие секции доступных команд
         available_commands = driver.find_element(By.CLASS_NAME, "available-commands")
@@ -140,7 +140,7 @@ class TestCommandForm:
 
     def test_command_filter_functionality(self, driver):
         """Тест функциональности фильтра команд"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Находим фильтр команд
         command_filter = driver.find_element(By.ID, "command-filter")

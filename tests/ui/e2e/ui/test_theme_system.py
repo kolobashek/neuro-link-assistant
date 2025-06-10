@@ -15,7 +15,7 @@ class TestThemeSystem:
 
     def test_theme_toggle_presence(self, driver):
         """Тест наличия переключателя темы"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -28,7 +28,7 @@ class TestThemeSystem:
 
     def test_theme_switching(self, driver):
         """Тест переключения между светлой и темной темами"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -59,7 +59,7 @@ class TestThemeSystem:
 
     def test_theme_persistence(self, driver):
         """Тест сохранения выбранной темы при перезагрузке страницы"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -96,7 +96,7 @@ class TestThemeSystem:
 
     def test_theme_css_variables(self, driver):
         """Тест применения CSS-переменных темы"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -139,7 +139,7 @@ class TestThemeSystem:
 
     def test_theme_component_styling(self, driver):
         """Тест применения стилей темы к компонентам"""
-        driver.get("http://localhost:5000")
+        driver.get("http://localhost:5001")
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
