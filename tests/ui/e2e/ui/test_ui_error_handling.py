@@ -13,9 +13,9 @@ class TestErrorHandling:
         yield driver
         driver.quit()
 
-    def test_empty_command_handling(self, driver):
+    def test_empty_command_handling(self, driver, base_url):
         """Тест обработки пустой команды"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -38,9 +38,9 @@ class TestErrorHandling:
             or "не может быть пустым" in error_message.text.lower()
         )
 
-    def test_server_error_handling(self, driver):
+    def test_server_error_handling(self, driver, base_url):
         """Тест обработки ошибки сервера"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -69,9 +69,9 @@ class TestErrorHandling:
                 EC.visibility_of_element_located((By.CLASS_NAME, "message"))
             )
 
-    def test_network_error_handling(self, driver):
+    def test_network_error_handling(self, driver, base_url):
         """Тест обработки сетевой ошибки"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -115,9 +115,9 @@ class TestErrorHandling:
             }
         """)
 
-    def test_timeout_handling(self, driver):
+    def test_timeout_handling(self, driver, base_url):
         """Тест обработки таймаута запроса"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -159,9 +159,9 @@ class TestErrorHandling:
             }
         """)
 
-    def test_invalid_response_handling(self, driver):
+    def test_invalid_response_handling(self, driver, base_url):
         """Тест обработки некорректного ответа сервера"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -220,9 +220,9 @@ class TestErrorHandling:
             }
         """)
 
-    def test_error_message_display(self, driver):
+    def test_error_message_display(self, driver, base_url):
         """Тест отображения сообщения об ошибке"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")

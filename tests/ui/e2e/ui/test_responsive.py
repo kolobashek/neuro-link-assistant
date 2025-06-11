@@ -16,9 +16,9 @@ class TestResponsiveDesign:
         yield driver
         driver.quit()
 
-    def test_desktop_layout(self, driver):
+    def test_desktop_layout(self, driver, base_url):
         """Тест макета для настольных компьютеров"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, что контейнер имеет правильную ширину
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -48,11 +48,11 @@ class TestResponsiveDesign:
             # Проверяем, что используется многоколоночный макет
             assert "1fr" in grid_template and grid_template.count("fr") > 1
 
-    def test_tablet_layout(self, driver):
+    def test_tablet_layout(self, driver, base_url):
         """Тест макета для планшетов"""
         # Устанавливаем размер окна как у планшета
         driver.set_window_size(768, 1024)
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, что контейнер адаптировался
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -80,11 +80,11 @@ class TestResponsiveDesign:
         assert ai_models.is_displayed()
         assert history.is_displayed()
 
-    def test_mobile_layout(self, driver):
+    def test_mobile_layout(self, driver, base_url):
         """Тест макета для мобильных устройств"""
         # Устанавливаем размер окна как у мобильного устройства
         driver.set_window_size(375, 667)
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, что контейнер адаптировался
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -110,9 +110,9 @@ class TestResponsiveDesign:
         # На мобильном устройстве некоторые компоненты могут быть скрыты или отображаться по-другому
         # Например, через выпадающие меню или вкладки
 
-    def test_modal_responsive_behavior(self, driver):
+    def test_modal_responsive_behavior(self, driver, base_url):
         """Тест адаптивного поведения модальных окон"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -155,10 +155,10 @@ class TestResponsiveDesign:
             close_btn = modal.find_element(By.CLASS_NAME, "close-modal")
             close_btn.click()
 
-    def test_font_size_responsiveness(self, driver):
+    def test_font_size_responsiveness(self, driver, base_url):
         """Тест адаптивности размера шрифта"""
         # Проверяем размер шрифта на десктопе
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         header = driver.find_element(By.TAG_NAME, "h1")
         desktop_font_size = driver.execute_script(
@@ -190,10 +190,10 @@ class TestResponsiveDesign:
         # Размер может уменьшаться или оставаться тем же, но не должен быть слишком маленьким
         assert mobile_font_size >= 16  # Минимальный размер для читабельности
 
-    def test_input_field_responsiveness(self, driver):
+    def test_input_field_responsiveness(self, driver, base_url):
         """Тест адаптивности полей ввода"""
         # Проверяем поле ввода на десктопе
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         input_field = driver.find_element(By.ID, "user-input")
         desktop_width = input_field.size["width"]

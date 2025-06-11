@@ -4933,6 +4933,94 @@
         "documentation": {}
     },
     {
+        "label": "PortConfig",
+        "importPath": "scripts.network.port_manager",
+        "description": "scripts.network.port_manager",
+        "isExtraImport": true,
+        "detail": "scripts.network.port_manager",
+        "documentation": {}
+    },
+    {
+        "label": "PortManager",
+        "importPath": "scripts.network.port_manager",
+        "description": "scripts.network.port_manager",
+        "isExtraImport": true,
+        "detail": "scripts.network.port_manager",
+        "documentation": {}
+    },
+    {
+        "label": "PortManager",
+        "importPath": "scripts.network.port_manager",
+        "description": "scripts.network.port_manager",
+        "isExtraImport": true,
+        "detail": "scripts.network.port_manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppMode",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppMode",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AppManager",
+        "importPath": "scripts.app.manager",
+        "description": "scripts.app.manager",
+        "isExtraImport": true,
+        "detail": "scripts.app.manager",
+        "documentation": {}
+    },
+    {
         "label": "defaultdict",
         "importPath": "collections",
         "description": "collections",
@@ -6214,30 +6302,6 @@
         "description": "core.web.element_finder",
         "isExtraImport": true,
         "detail": "core.web.element_finder",
-        "documentation": {}
-    },
-    {
-        "label": "PortManager",
-        "importPath": "scripts.port_cleanup",
-        "description": "scripts.port_cleanup",
-        "isExtraImport": true,
-        "detail": "scripts.port_cleanup",
-        "documentation": {}
-    },
-    {
-        "label": "AppManager",
-        "importPath": "scripts.app_manager",
-        "description": "scripts.app_manager",
-        "isExtraImport": true,
-        "detail": "scripts.app_manager",
-        "documentation": {}
-    },
-    {
-        "label": "ExternalAppManager",
-        "importPath": "scripts.external_app_manager",
-        "description": "scripts.external_app_manager",
-        "isExtraImport": true,
-        "detail": "scripts.external_app_manager",
         "documentation": {}
     },
     {
@@ -10472,7 +10536,7 @@
         "kind": 2,
         "importPath": "scripts.app.health_check",
         "description": "scripts.app.health_check",
-        "peekOfCode": "def quick_check(url: str = \"http://localhost:5001\", timeout: int = 3) -> bool:\n    \"\"\"Быстрая проверка приложения\"\"\"\n    try:\n        response = requests.get(url, timeout=timeout)\n        if response.status_code == 200:\n            print(f\"✅ Приложение работает на {url}\")\n            return True\n        else:\n            print(f\"⚠️ Приложение отвечает с кодом {response.status_code}\")\n            return False",
+        "peekOfCode": "def quick_check(url: str = \"http://localhost:5000\", timeout: int = 3) -> bool:\n    \"\"\"Быстрая проверка приложения\"\"\"\n    try:\n        response = requests.get(url, timeout=timeout)\n        if response.status_code == 200:\n            print(f\"✅ Приложение работает на {url}\")\n            return True\n        else:\n            print(f\"⚠️ Приложение отвечает с кодом {response.status_code}\")\n            return False",
         "detail": "scripts.app.health_check",
         "documentation": {}
     },
@@ -10481,7 +10545,7 @@
         "kind": 2,
         "importPath": "scripts.app.health_check",
         "description": "scripts.app.health_check",
-        "peekOfCode": "def main():\n    \"\"\"CLI для быстрой проверки\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Быстрая проверка приложения\")\n    parser.add_argument(\"--url\", default=\"http://localhost:5001\", help=\"URL приложения\")\n    parser.add_argument(\"--timeout\", type=int, default=3, help=\"Таймаут в секундах\")\n    args = parser.parse_args()\n    success = quick_check(args.url, args.timeout)\n    sys.exit(0 if success else 1)\nif __name__ == \"__main__\":",
+        "peekOfCode": "def main():\n    \"\"\"CLI для быстрой проверки\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Быстрая проверка приложения\")\n    parser.add_argument(\"--url\", default=\"http://localhost:5000\", help=\"URL приложения\")\n    parser.add_argument(\"--timeout\", type=int, default=3, help=\"Таймаут в секундах\")\n    args = parser.parse_args()\n    success = quick_check(args.url, args.timeout)\n    sys.exit(0 if success else 1)\nif __name__ == \"__main__\":",
         "detail": "scripts.app.health_check",
         "documentation": {}
     },
@@ -10490,7 +10554,7 @@
         "kind": 6,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "class AppMode(Enum):\n    \"\"\"Режимы работы приложения\"\"\"\n    PRODUCTION = \"production\"\n    TESTING = \"testing\"\n    DEVELOPMENT = \"development\"\n    EXTERNAL = \"external\"\n@dataclass\nclass AppConfig:\n    \"\"\"Конфигурация приложения\"\"\"\n    port: int = 5001",
+        "peekOfCode": "class AppMode(Enum):\n    \"\"\"Режимы работы приложения\"\"\"\n    PRODUCTION = \"production\"\n    TESTING = \"testing\"\n    DEVELOPMENT = \"development\"\n    EXTERNAL = \"external\"\n@dataclass\nclass AppConfig:\n    \"\"\"Конфигурация приложения\"\"\"\n    port: int = 5000  # ← Изменили с 5001 на 5000",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10499,7 +10563,7 @@
         "kind": 6,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "class AppConfig:\n    \"\"\"Конфигурация приложения\"\"\"\n    port: int = 5001\n    host: str = \"127.0.0.1\"\n    timeout: int = 45\n    mode: AppMode = AppMode.TESTING\n    debug: bool = False\n    auto_cleanup: bool = True\n    health_endpoints: List[str] = field(default_factory=lambda: [\"/\", \"/health\"])\n    def __post_init__(self):",
+        "peekOfCode": "class AppConfig:\n    \"\"\"Конфигурация приложения\"\"\"\n    port: int = 5000  # ← Изменили с 5001 на 5000\n    host: str = \"127.0.0.1\"\n    timeout: int = 45\n    mode: AppMode = AppMode.TESTING\n    debug: bool = False\n    auto_cleanup: bool = True\n    health_endpoints: List[str] = field(default_factory=lambda: [\"/\", \"/health\"])\n    # НОВОЕ: Настройки для PortManager",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10508,7 +10572,7 @@
         "kind": 6,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "class AppManager:\n    \"\"\"Универсальный менеджер приложений\"\"\"\n    def __init__(self, config: Optional[AppConfig] = None):\n        self.config = config or AppConfig()\n        self.app_url = f\"http://{self.config.host}:{self.config.port}\"\n        self.process: Optional[subprocess.Popen] = None\n        self.app_dir = Path(__file__).parent.parent.parent\n        self._start_time: Optional[float] = None\n        self._metrics: Dict[str, Any] = {}\n    # === ОСНОВНЫЕ МЕТОДЫ ===",
+        "peekOfCode": "class AppManager:\n    \"\"\"Универсальный менеджер приложений\"\"\"\n    def __init__(self, config: Optional[AppConfig] = None):\n        self.config = config or AppConfig()\n        self.app_url = f\"http://{self.config.host}:{self.config.port}\"\n        self.process: Optional[subprocess.Popen] = None\n        self.app_dir = Path(__file__).parent.parent.parent\n        self._start_time: Optional[float] = None\n        self._metrics: Dict[str, Any] = {}\n        # НОВОЕ: Используем PortManager",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10517,7 +10581,7 @@
         "kind": 2,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "def create_test_manager(port: int = 5001, debug: bool = True) -> AppManager:\n    \"\"\"Создает менеджер для тестирования\"\"\"\n    config = AppConfig(port=port, mode=AppMode.TESTING, debug=debug, timeout=45, auto_cleanup=True)\n    return AppManager(config)\ndef create_production_manager(port: int = 5000, debug: bool = False) -> AppManager:\n    \"\"\"Создает менеджер для продакшена\"\"\"\n    config = AppConfig(\n        port=port, mode=AppMode.PRODUCTION, debug=debug, timeout=30, auto_cleanup=False\n    )\n    return AppManager(config)",
+        "peekOfCode": "def create_test_manager(port: int = 5000, debug: bool = True) -> AppManager:\n    \"\"\"Создает менеджер для тестирования\"\"\"\n    config = AppConfig(\n        port=port,\n        mode=AppMode.TESTING,\n        debug=debug,\n        timeout=45,\n        auto_cleanup=True,\n        force_kill=True,  # ← ДОБАВИТЬ для тестов\n    )",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10526,7 +10590,7 @@
         "kind": 2,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "def create_production_manager(port: int = 5000, debug: bool = False) -> AppManager:\n    \"\"\"Создает менеджер для продакшена\"\"\"\n    config = AppConfig(\n        port=port, mode=AppMode.PRODUCTION, debug=debug, timeout=30, auto_cleanup=False\n    )\n    return AppManager(config)\ndef create_external_manager(port: int = 5001) -> AppManager:\n    \"\"\"Создает менеджер для внешнего приложения\"\"\"\n    config = AppConfig(port=port, mode=AppMode.EXTERNAL, debug=False, timeout=5, auto_cleanup=False)\n    return AppManager(config)",
+        "peekOfCode": "def create_production_manager(port: int = 5000, debug: bool = False) -> AppManager:\n    \"\"\"Создает менеджер для продакшена\"\"\"\n    config = AppConfig(\n        port=port, mode=AppMode.PRODUCTION, debug=debug, timeout=30, auto_cleanup=False\n    )\n    return AppManager(config)\ndef create_external_manager(port: int = 5000) -> AppManager:\n    \"\"\"Создает менеджер для внешнего приложения\"\"\"\n    config = AppConfig(port=port, mode=AppMode.EXTERNAL, debug=False, timeout=5, auto_cleanup=False)\n    return AppManager(config)",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10535,7 +10599,7 @@
         "kind": 2,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "def create_external_manager(port: int = 5001) -> AppManager:\n    \"\"\"Создает менеджер для внешнего приложения\"\"\"\n    config = AppConfig(port=port, mode=AppMode.EXTERNAL, debug=False, timeout=5, auto_cleanup=False)\n    return AppManager(config)\n# === CLI УТИЛИТА ===\ndef main():\n    \"\"\"CLI для управления приложением\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Управление приложением\")\n    parser.add_argument(\"action\", choices=[\"start\", \"stop\", \"restart\", \"status\"])",
+        "peekOfCode": "def create_external_manager(port: int = 5000) -> AppManager:\n    \"\"\"Создает менеджер для внешнего приложения\"\"\"\n    config = AppConfig(port=port, mode=AppMode.EXTERNAL, debug=False, timeout=5, auto_cleanup=False)\n    return AppManager(config)\n# === CLI УТИЛИТА ===\ndef main():\n    \"\"\"CLI для управления приложением\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Управление приложением\")\n    parser.add_argument(\"action\", choices=[\"start\", \"stop\", \"restart\", \"status\"])",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10544,7 +10608,7 @@
         "kind": 2,
         "importPath": "scripts.app.manager",
         "description": "scripts.app.manager",
-        "peekOfCode": "def main():\n    \"\"\"CLI для управления приложением\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Управление приложением\")\n    parser.add_argument(\"action\", choices=[\"start\", \"stop\", \"restart\", \"status\"])\n    parser.add_argument(\"--port\", type=int, default=5001, help=\"Порт приложения\")\n    parser.add_argument(\n        \"--mode\",\n        choices=[\"testing\", \"production\", \"external\"],\n        default=\"testing\",",
+        "peekOfCode": "def main():\n    \"\"\"CLI для управления приложением\"\"\"\n    import argparse\n    parser = argparse.ArgumentParser(description=\"Управление приложением\")\n    parser.add_argument(\"action\", choices=[\"start\", \"stop\", \"restart\", \"status\"])\n    parser.add_argument(\"--port\", type=int, default=5000, help=\"Порт приложения\")\n    parser.add_argument(\n        \"--mode\",\n        choices=[\"testing\", \"production\", \"external\"],\n        default=\"testing\",",
         "detail": "scripts.app.manager",
         "documentation": {}
     },
@@ -10580,7 +10644,7 @@
         "kind": 6,
         "importPath": "scripts.network.port_manager",
         "description": "scripts.network.port_manager",
-        "peekOfCode": "class PortConfig:\n    \"\"\"Конфигурация для работы с портами\"\"\"\n    port: int = 5000\n    host: str = \"localhost\"\n    timeout: int = 30\n    force_kill: bool = False\n    safe_pids: List[int] = field(default_factory=lambda: [0, 4])  # Системные процессы Windows\nclass PortManager:\n    \"\"\"Универсальный менеджер портов\"\"\"\n    def __init__(self, config: Optional[PortConfig] = None):",
+        "peekOfCode": "class PortConfig:\n    \"\"\"Конфигурация для работы с портами\"\"\"\n    port: int = 5000  # ← Изменили с 5001 на 5000\n    host: str = \"localhost\"\n    timeout: int = 30\n    force_kill: bool = False\n    safe_pids: List[int] = field(default_factory=lambda: [0, 4])  # Системные процессы Windows\nclass PortManager:\n    \"\"\"Универсальный менеджер портов\"\"\"\n    def __init__(self, config: Optional[PortConfig] = None):",
         "detail": "scripts.network.port_manager",
         "documentation": {}
     },
@@ -10688,7 +10752,7 @@
         "kind": 6,
         "importPath": "scripts.testing.ui_runner",
         "description": "scripts.testing.ui_runner",
-        "peekOfCode": "class UITestConfig:\n    \"\"\"Конфигурация UI тестов\"\"\"\n    mode: UITestMode = UITestMode.HEADLESS\n    parallel_workers: int = 2\n    timeout: int = 30\n    app_port: int = 5001\n    headless: bool = True\n    test_path: str = \"tests/ui/e2e/\"\n    save_screenshots: bool = True\n    detailed_logging: bool = True",
+        "peekOfCode": "class UITestConfig:\n    \"\"\"Конфигурация UI тестов\"\"\"\n    mode: UITestMode = UITestMode.HEADLESS\n    parallel_workers: int = 2\n    timeout: int = 30\n    app_port: Optional[int] = None  # ← Изменили на None для автопоиска\n    headless: bool = True\n    test_path: str = \"tests/ui/e2e/\"\n    save_screenshots: bool = True\n    detailed_logging: bool = True",
         "detail": "scripts.testing.ui_runner",
         "documentation": {}
     },
@@ -10697,7 +10761,7 @@
         "kind": 6,
         "importPath": "scripts.testing.ui_runner",
         "description": "scripts.testing.ui_runner",
-        "peekOfCode": "class UITestRunner(BaseTestRunner):\n    \"\"\"Универсальный UI Test Runner\"\"\"\n    def __init__(self, config: Optional[UITestConfig] = None):\n        super().__init__(\"ui_tests\")\n        self.config = config if config is not None else UITestConfig()\n        self.app_manager: Optional[AppManager] = None\n        self.driver: Optional[webdriver.Chrome] = None\n        self.test_results: Dict[str, Any] = {}\n    def setup(self) -> bool:\n        \"\"\"Настройка перед UI тестами\"\"\"",
+        "peekOfCode": "class UITestRunner(BaseTestRunner):\n    \"\"\"Универсальный UI Test Runner\"\"\"\n    def __init__(self, config: Optional[UITestConfig] = None):\n        super().__init__(\"ui_tests\")\n        self.config = config if config is not None else UITestConfig()\n        # Автоматический поиск свободного порта\n        if self.config.app_port is None:\n            from scripts.network.port_manager import PortManager\n            try:\n                self.config.app_port = PortManager.find_any_free_port(5000)  # ← Начинаем с 5000",
         "detail": "scripts.testing.ui_runner",
         "documentation": {}
     },
@@ -11570,7 +11634,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_accessibility",
         "description": "tests.ui.e2e.ui.test_accessibility",
-        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, ui_client):\n        \"\"\"Тест навигации по интерфейсу с помощью клавиатуры\"\"\"\n        print(\"\\n🔍 [TEST] Начинаем тест навигации с клавиатуры...\")",
+        "peekOfCode": "class TestAccessibility:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_keyboard_navigation(self, ui_client, base_url):\n        \"\"\"Тест навигации по интерфейсу с помощью клавиатуры\"\"\"\n        print(\"\\n🔍 [TEST] Начинаем тест навигации с клавиатуры...\")",
         "detail": "tests.ui.e2e.ui.test_accessibility",
         "documentation": {}
     },
@@ -11579,7 +11643,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_ai_models",
         "description": "tests.ui.e2e.ui.test_ai_models",
-        "peekOfCode": "class TestAIModels:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера моделей ИИ\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestAIModels:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_container_elements(self, driver, base_url):\n        \"\"\"Тест наличия всех элементов контейнера моделей ИИ\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_ai_models",
         "documentation": {}
     },
@@ -11588,7 +11652,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_animations",
         "description": "tests.ui.e2e.ui.test_animations",
-        "peekOfCode": "class TestAnimations:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_modal_animations(self, driver):\n        \"\"\"Тест анимаций модальных окон\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestAnimations:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_modal_animations(self, driver, base_url):\n        \"\"\"Тест анимаций модальных окон\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_animations",
         "documentation": {}
     },
@@ -11597,7 +11661,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_api_integration",
         "description": "tests.ui.e2e.ui.test_api_integration",
-        "peekOfCode": "class TestAPIIntegration:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_submission_api_call(self, driver):\n        \"\"\"Тест отправки команды через API\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestAPIIntegration:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_submission_api_call(self, driver, base_url):\n        \"\"\"Тест отправки команды через API\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_api_integration",
         "documentation": {}
     },
@@ -11606,7 +11670,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_base_layout",
         "description": "tests.ui.e2e.ui.test_base_layout",
-        "peekOfCode": "class TestBaseLayout:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        # Инициализация драйвера\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_header_elements(self, driver):\n        \"\"\"Тест наличия и корректности элементов заголовка\"\"\"",
+        "peekOfCode": "class TestBaseLayout:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        # Инициализация драйвера\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_header_elements(self, driver, base_url):\n        \"\"\"Тест наличия и корректности элементов заголовка\"\"\"",
         "detail": "tests.ui.e2e.ui.test_base_layout",
         "documentation": {}
     },
@@ -11615,7 +11679,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_command_form",
         "description": "tests.ui.e2e.ui.test_command_form",
-        "peekOfCode": "class TestCommandForm:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_form_elements(self, driver):\n        \"\"\"Тест наличия всех элементов формы команд\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestCommandForm:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_command_form_elements(self, driver, base_url):\n        \"\"\"Тест наличия всех элементов формы команд\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_command_form",
         "documentation": {}
     },
@@ -11624,7 +11688,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_command_history",
         "description": "tests.ui.e2e.ui.test_command_history",
-        "peekOfCode": "class TestCommandHistory:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_history_container_elements(self, driver):\n        \"\"\"Тест наличия всех элементов контейнера истории команд\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestCommandHistory:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_history_container_elements(self, driver, base_url):\n        \"\"\"Тест наличия всех элементов контейнера истории команд\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_command_history",
         "documentation": {}
     },
@@ -11633,7 +11697,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_logs_display",
         "description": "tests.ui.e2e.ui.test_logs_display",
-        "peekOfCode": "class TestLogsDisplay:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_logs_page_structure(self, driver):\n        \"\"\"Тест структуры страницы логов\"\"\"\n        # Переходим на страницу логов",
+        "peekOfCode": "class TestLogsDisplay:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_logs_page_structure(self, driver, base_url):\n        \"\"\"Тест структуры страницы логов\"\"\"\n        # Переходим на страницу логов",
         "detail": "tests.ui.e2e.ui.test_logs_display",
         "documentation": {}
     },
@@ -11651,7 +11715,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_modals",
         "description": "tests.ui.e2e.ui.test_modals",
-        "peekOfCode": "class TestModals:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_confirm_modal_structure(self, driver):\n        \"\"\"Тест структуры модального окна подтверждения\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestModals:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_confirm_modal_structure(self, driver, base_url):\n        \"\"\"Тест структуры модального окна подтверждения\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_modals",
         "documentation": {}
     },
@@ -11660,7 +11724,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_navigation",
         "description": "tests.ui.e2e.ui.test_navigation",
-        "peekOfCode": "class TestNavigation:\n    \"\"\"Тесты для навигационных элементов и переходов между страницами.\"\"\"\n    def test_main_navigation_links(self, ui_client):\n        \"\"\"Тест основных навигационных ссылок.\"\"\"\n        # Открываем главную страницу\n        ui_client.get(\"http://localhost:5001/\")\n        # Находим все основные навигационные ссылки\n        nav_links = ui_client.find_elements(By.CSS_SELECTOR, \"nav a\")\n        # Проверяем наличие ожидаемых ссылок\n        expected_links = [\"Модели\", \"История\", \"Настройки\", \"Помощь\"]",
+        "peekOfCode": "class TestNavigation:\n    \"\"\"Тесты для навигационных элементов и переходов между страницами.\"\"\"\n    def test_main_navigation_links(self, ui_client, base_url):\n        \"\"\"Тест основных навигационных ссылок.\"\"\"\n        # Открываем главную страницу\n        ui_client.get(f\"{base_url}/\")\n        # Находим все основные навигационные ссылки\n        nav_links = ui_client.find_elements(By.CSS_SELECTOR, \"nav a\")\n        # Проверяем наличие ожидаемых ссылок\n        expected_links = [\"Модели\", \"История\", \"Настройки\", \"Помощь\"]",
         "detail": "tests.ui.e2e.ui.test_navigation",
         "documentation": {}
     },
@@ -11669,7 +11733,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_responsive",
         "description": "tests.ui.e2e.ui.test_responsive",
-        "peekOfCode": "class TestResponsiveDesign:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        # Начинаем с большого размера окна\n        driver.set_window_size(1200, 800)\n        yield driver\n        driver.quit()\n    def test_desktop_layout(self, driver):\n        \"\"\"Тест макета для настольных компьютеров\"\"\"",
+        "peekOfCode": "class TestResponsiveDesign:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        # Начинаем с большого размера окна\n        driver.set_window_size(1200, 800)\n        yield driver\n        driver.quit()\n    def test_desktop_layout(self, driver, base_url):\n        \"\"\"Тест макета для настольных компьютеров\"\"\"",
         "detail": "tests.ui.e2e.ui.test_responsive",
         "documentation": {}
     },
@@ -11678,7 +11742,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_routing",
         "description": "tests.ui.e2e.ui.test_routing",
-        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(\"http://localhost:5001/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
+        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client, base_url):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(f\"{base_url}/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
         "detail": "tests.ui.e2e.ui.test_routing",
         "documentation": {}
     },
@@ -11687,7 +11751,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_settings",
         "description": "tests.ui.e2e.ui.test_settings",
-        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_settings(self, driver):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(\"http://localhost:5001/ai_models\")",
+        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_settings(self, driver, base_url):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(f\"{base_url}/ai_models\")",
         "detail": "tests.ui.e2e.ui.test_settings",
         "documentation": {}
     },
@@ -11696,7 +11760,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_theme_system",
         "description": "tests.ui.e2e.ui.test_theme_system",
-        "peekOfCode": "class TestThemeSystem:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_theme_toggle_presence(self, driver):\n        \"\"\"Тест наличия переключателя темы\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestThemeSystem:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_theme_toggle_presence(self, driver, base_url):\n        \"\"\"Тест наличия переключателя темы\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_theme_system",
         "documentation": {}
     },
@@ -11705,7 +11769,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_ui_error_handling",
         "description": "tests.ui.e2e.ui.test_ui_error_handling",
-        "peekOfCode": "class TestErrorHandling:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_empty_command_handling(self, driver):\n        \"\"\"Тест обработки пустой команды\"\"\"\n        driver.get(\"http://localhost:5001\")",
+        "peekOfCode": "class TestErrorHandling:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_empty_command_handling(self, driver, base_url):\n        \"\"\"Тест обработки пустой команды\"\"\"\n        driver.get(base_url)",
         "detail": "tests.ui.e2e.ui.test_ui_error_handling",
         "documentation": {}
     },
@@ -11714,7 +11778,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_ui_performance",
         "description": "tests.ui.e2e.ui.test_ui_performance",
-        "peekOfCode": "class TestPerformance:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_page_load_time(self, driver):\n        \"\"\"Тест времени загрузки страницы\"\"\"\n        # Измеряем время загрузки страницы",
+        "peekOfCode": "class TestPerformance:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_page_load_time(self, driver, base_url):\n        \"\"\"Тест времени загрузки страницы\"\"\"\n        # Измеряем время загрузки страницы",
         "detail": "tests.ui.e2e.ui.test_ui_performance",
         "documentation": {}
     },
@@ -11723,7 +11787,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.simple_ui_test",
         "description": "tests.ui.e2e.simple_ui_test",
-        "peekOfCode": "class TestSimpleUI:\n    def test_homepage_opens(self, ui_client):\n        \"\"\"Простейший тест - открытие главной страницы\"\"\"\n        print(\"🔍 Открываем главную страницу...\")\n        ui_client.get(\"http://localhost:5001/\")\n        print(\"🔍 Получаем заголовок...\")\n        title = ui_client.driver.title\n        print(f\"📋 Заголовок: {title}\")\n        assert title is not None\n        assert len(title) > 0",
+        "peekOfCode": "class TestSimpleUI:\n    def test_homepage_opens(self, ui_client, base_url):\n        \"\"\"Простейший тест - открытие главной страницы\"\"\"\n        print(\"🔍 Открываем главную страницу...\")\n        ui_client.get(base_url)\n        print(\"🔍 Получаем заголовок...\")\n        title = ui_client.driver.title\n        print(f\"📋 Заголовок: {title}\")\n        assert title is not None\n        assert len(title) > 0",
         "detail": "tests.ui.e2e.simple_ui_test",
         "documentation": {}
     },
@@ -12799,11 +12863,47 @@
         "documentation": {}
     },
     {
+        "label": "find_free_port",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def find_free_port(start_port: int = 5000, max_attempts: int = 20) -> int:  # < Изменили на 5000\n    \"\"\"Находит свободный порт для тестов\"\"\"\n    for port in range(start_port, start_port + max_attempts):\n        try:\n            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:\n                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)\n                sock.bind((\"127.0.0.1\", port))\n                return port\n        except OSError:\n            continue",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "app_manager",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def app_manager():\n    \"\"\"Фикстура для управления приложением в тестах\"\"\"\n    config = AppConfig(\n        port=TEST_PORT,  # < Используем динамический порт\n        mode=AppMode.TESTING,\n        debug=True,\n        auto_cleanup=True,\n        force_kill=True,\n    )\n    manager = AppManager(config)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "base_url",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def base_url():\n    \"\"\"URL приложения для тестов\"\"\"\n    return f\"http://localhost:{TEST_PORT}\"\n@pytest.fixture(scope=\"session\")\ndef test_port():\n    \"\"\"Порт приложения для тестов\"\"\"\n    return TEST_PORT\nimport logging\n# Настройка логирования для тестов\nlogging.basicConfig(",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_port",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def test_port():\n    \"\"\"Порт приложения для тестов\"\"\"\n    return TEST_PORT\nimport logging\n# Настройка логирования для тестов\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(levelname)8s] %(name)s: %(message)s\",\n    datefmt=\"%Y-%m-%d %H:%M:%S\",\n)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
         "label": "mock_component",
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)\n    # Очистка перед тестами\n    print(\"?? Предварительная очистка портов...\")\n    port_manager.smart_cleanup()",
+        "peekOfCode": "def mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager()\n    # Очистка перед тестами\n    print(\"?? Предварительная очистка портов...\")\n    port_manager.smart_cleanup()",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -12812,7 +12912,7 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)\n    # Очистка перед тестами\n    print(\"?? Предварительная очистка портов...\")\n    port_manager.smart_cleanup()\n    yield\n    # ИСПРАВЛЕНО: Даем время приложению корректно завершиться\n    print(\"? Ожидание завершения всех процессов...\")\n    time.sleep(3)  # Даем время процессам завершиться",
+        "peekOfCode": "def cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager()\n    # Очистка перед тестами\n    print(\"?? Предварительная очистка портов...\")\n    port_manager.smart_cleanup()\n    yield\n    # ИСПРАВЛЕНО: Даем время приложению корректно завершиться\n    print(\"? Ожидание завершения всех процессов...\")\n    time.sleep(3)  # Даем время процессам завершиться",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -12839,7 +12939,7 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    manager = TestAppManager(port=5001)\n    print(f\" [SESSION] Настройка приложения для UI тестов...\")\n    # Запускаем приложение\n    if not manager.start_app():\n        pytest.skip(\"Не удалось запустить приложение для UI тестов\")\n    # Дополнительная проверка готовности\n    if not manager.health_check():\n        manager.stop_app()",
+        "peekOfCode": "def app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    from scripts.app.manager import create_test_manager\n    manager = create_test_manager(port=5001)\n    print(f\" [SESSION] Настройка приложения для UI тестов...\")\n    # Запускаем приложение\n    if not manager.start_app():\n        pytest.skip(\"Не удалось запустить приложение для UI тестов\")\n    # Дополнительная проверка готовности\n    if not manager.health_check():",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -12871,20 +12971,11 @@
         "documentation": {}
     },
     {
-        "label": "base_url",
-        "kind": 2,
-        "importPath": "tests.conftest",
-        "description": "tests.conftest",
-        "peekOfCode": "def base_url():\n    \"\"\"Фикстура, возвращающая базовый URL для тестов.\"\"\"\n    return TEST_CONFIG[\"base_url\"]\n@pytest.fixture(scope=\"function\")  # ИЗМЕНИТЬ НА \"function\" (если используется ui_client)\n# или scope=\"class\", если authenticated_ui_client используется на уровне класса\n# и вы хотите, чтобы логин происходил один раз для класса.\n# Но для начала лучше \"function\" для максимальной изоляции.\ndef authenticated_ui_client(ui_client):  # ui_client теперь function-scoped\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.",
-        "detail": "tests.conftest",
-        "documentation": {}
-    },
-    {
         "label": "authenticated_ui_client",
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def authenticated_ui_client(ui_client):  # ui_client теперь function-scoped\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина\n    ui_client.get(\"http://localhost:5000/login\")\n    try:\n        # Ожидаем загрузки формы логина\n        WebDriverWait(ui_client.driver, 10).until(",
+        "peekOfCode": "def authenticated_ui_client(ui_client):  # ui_client теперь function-scoped\n    \"\"\"\n    Фикстура для UI-тестов, требующих аутентификации.\n    Выполняет вход в систему перед запуском теста и выход после завершения.\n    \"\"\"\n    # Открываем страницу логина\n    ui_client.get(\"{base_url}/login\")\n    try:\n        # Ожидаем загрузки формы логина\n        WebDriverWait(ui_client.driver, 10).until(",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -12988,11 +13079,20 @@
         "documentation": {}
     },
     {
+        "label": "TEST_PORT",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "TEST_PORT = find_free_port()\nTEST_CONFIG = {\"base_url\": f\"http://localhost:{TEST_PORT}\"}\nprint(f\"?? [TESTS] Используем динамический порт: {TEST_PORT}\")\n@pytest.fixture(scope=\"session\")\ndef app_manager():\n    \"\"\"Фикстура для управления приложением в тестах\"\"\"\n    config = AppConfig(\n        port=TEST_PORT,  # < Используем динамический порт\n        mode=AppMode.TESTING,\n        debug=True,",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
         "label": "TEST_CONFIG",
         "kind": 5,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "TEST_CONFIG = {\"base_url\": \"http://localhost:5001\"}\nimport logging\n# Настройка логирования для тестов\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(levelname)8s] %(name)s: %(message)s\",\n    datefmt=\"%Y-%m-%d %H:%M:%S\",\n)\n# Добавляем логгер для тестов\ntest_logger = logging.getLogger(\"TEST\")",
+        "peekOfCode": "TEST_CONFIG = {\"base_url\": f\"http://localhost:{TEST_PORT}\"}\nprint(f\"?? [TESTS] Используем динамический порт: {TEST_PORT}\")\n@pytest.fixture(scope=\"session\")\ndef app_manager():\n    \"\"\"Фикстура для управления приложением в тестах\"\"\"\n    config = AppConfig(\n        port=TEST_PORT,  # < Используем динамический порт\n        mode=AppMode.TESTING,\n        debug=True,\n        auto_cleanup=True,",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -13001,7 +13101,7 @@
         "kind": 5,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "test_logger = logging.getLogger(\"TEST\")\ntest_logger.setLevel(logging.INFO)\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager(5000)",
+        "peekOfCode": "test_logger = logging.getLogger(\"TEST\")\ntest_logger.setLevel(logging.INFO)\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager()",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -13757,7 +13857,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def run_app():\n    \"\"\"Запускает приложение Flask\"\"\"\n    init_app()\n    app.run(host=\"127.0.0.1\", port=5001, debug=True)\nif __name__ == \"__main__\":\n    run_app()",
+        "peekOfCode": "def run_app(port: int = None):\n    \"\"\"Запускает приложение Flask\"\"\"\n    init_app()\n    # Если порт не указан, ищем свободный начиная с 5000\n    if port is None:\n        from scripts.network.port_manager import PortManager\n        try:\n            port = PortManager.find_any_free_port(5000)\n            print(f\"🔍 Используем свободный порт: {port}\")\n        except Exception:",
         "detail": "app",
         "documentation": {}
     },

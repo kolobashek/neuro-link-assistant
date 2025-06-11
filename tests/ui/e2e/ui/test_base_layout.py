@@ -12,9 +12,9 @@ class TestBaseLayout:
         yield driver
         driver.quit()
 
-    def test_header_elements(self, driver):
+    def test_header_elements(self, driver, base_url):
         """Тест наличия и корректности элементов заголовка"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка заголовка
         header = driver.find_element(By.TAG_NAME, "header")
@@ -28,9 +28,9 @@ class TestBaseLayout:
         app_description = header.find_element(By.TAG_NAME, "p")
         assert "Интеллектуальный помощник" in app_description.text
 
-    def test_container_structure(self, driver):
+    def test_container_structure(self, driver, base_url):
         """Тест структуры основного контейнера"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка основного контейнера
         container = driver.find_element(By.CLASS_NAME, "container")
@@ -41,9 +41,9 @@ class TestBaseLayout:
         assert len(driver.find_elements(By.CLASS_NAME, "ai-models-container")) > 0
         assert len(driver.find_elements(By.CLASS_NAME, "command-history-container")) > 0
 
-    def test_css_variables_applied(self, driver):
+    def test_css_variables_applied(self, driver, base_url):
         """Тест применения CSS-переменных"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Получение примененных стилей для проверки CSS-переменных
         primary_color = driver.execute_script(
@@ -60,9 +60,9 @@ class TestBaseLayout:
         # Преобразуем RGB в hex для сравнения или проверяем RGB напрямую
         assert "rgb" in header_bg_color
 
-    def test_theme_toggle_presence(self, driver):
+    def test_theme_toggle_presence(self, driver, base_url):
         """Тест наличия переключателя темы"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка наличия переключателя темы
         theme_toggle = driver.find_elements(By.ID, "theme-toggle")

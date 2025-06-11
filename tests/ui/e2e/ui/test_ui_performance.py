@@ -15,11 +15,11 @@ class TestPerformance:
         yield driver
         driver.quit()
 
-    def test_page_load_time(self, driver):
+    def test_page_load_time(self, driver, base_url):
         """Тест времени загрузки страницы"""
         # Измеряем время загрузки страницы
         start_time = time.time()
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Ждем, пока страница полностью загрузится
         WebDriverWait(driver, 10).until(
@@ -34,9 +34,9 @@ class TestPerformance:
             load_time < 3
         ), f"Время загрузки страницы ({load_time:.2f} с) превышает допустимое значение"
 
-    def test_command_response_time(self, driver):
+    def test_command_response_time(self, driver, base_url):
         """Тест времени отклика на команду"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -64,9 +64,9 @@ class TestPerformance:
             response_time < 5
         ), f"Время отклика на команду ({response_time:.2f} с) превышает допустимое значение"
 
-    def test_history_load_time(self, driver):
+    def test_history_load_time(self, driver, base_url):
         """Тест времени загрузки истории команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Измеряем время загрузки истории
         start_time = time.time()
@@ -82,9 +82,9 @@ class TestPerformance:
             load_time < 2
         ), f"Время загрузки истории ({load_time:.2f} с) превышает допустимое значение"
 
-    def test_ui_responsiveness(self, driver):
+    def test_ui_responsiveness(self, driver, base_url):
         """Тест отзывчивости пользовательского интерфейса"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода
         input_field = driver.find_element(By.ID, "user-input")
@@ -105,9 +105,9 @@ class TestPerformance:
             response_time < 1
         ), f"Время отклика интерфейса ({response_time:.2f} с) превышает допустимое значение"
 
-    def test_modal_open_close_performance(self, driver):
+    def test_modal_open_close_performance(self, driver, base_url):
         """Тест производительности открытия и закрытия модальных окон"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -151,9 +151,9 @@ class TestPerformance:
                 close_time < 0.5
             ), f"Время закрытия модального окна ({close_time:.2f} с) превышает допустимое значение"
 
-    def test_scroll_performance(self, driver):
+    def test_scroll_performance(self, driver, base_url):
         """Тест производительности прокрутки"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Добавляем много контента с помощью JavaScript для тестирования прокрутки
         driver.execute_script("""
@@ -193,9 +193,9 @@ class TestPerformance:
             }
         """)
 
-    def test_memory_usage(self, driver):
+    def test_memory_usage(self, driver, base_url):
         """Тест использования памяти"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Получаем начальное использование памяти
         initial_memory = driver.execute_script(

@@ -1,4 +1,4 @@
-"""Объединенный UI Test Runner с полным функционалом"""
+﻿"""Объединенный UI Test Runner с полным функционалом"""
 
 import json
 import os
@@ -20,7 +20,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from ..app import AppConfig, AppManager, AppMode
+from scripts.app.manager import AppConfig, AppManager, AppMode
+
 from .base_runner import BaseTestRunner
 
 
@@ -41,7 +42,7 @@ class UITestConfig:
     mode: UITestMode = UITestMode.HEADLESS
     parallel_workers: int = 2
     timeout: int = 30
-    app_port: int = 5001
+    app_port: Optional[int] = None  # ← Изменили на None для автопоиска
     headless: bool = True
     test_path: str = "tests/ui/e2e/"
     save_screenshots: bool = True
@@ -55,6 +56,17 @@ class UITestRunner(BaseTestRunner):
     def __init__(self, config: Optional[UITestConfig] = None):
         super().__init__("ui_tests")
         self.config = config if config is not None else UITestConfig()
+
+        # Автоматический поиск свободного порта
+        if self.config.app_port is None:
+            from scripts.network.port_manager import PortManager
+
+            try:
+                self.config.app_port = PortManager.find_any_free_port(5000)  # ← Начинаем с 5000
+                print(f"🔍 [UI] Используем свободный порт: {self.config.app_port}")
+            except Exception:
+                self.config.app_port = 5000  # Fallback
+
         self.app_manager: Optional[AppManager] = None
         self.driver: Optional[webdriver.Chrome] = None
         self.test_results: Dict[str, Any] = {}
@@ -79,7 +91,7 @@ class UITestRunner(BaseTestRunner):
 
         # Настройка приложения
         if not self.config.use_external_app:
-            app_config = AppConfig(port=self.config.app_port, mode=AppMode.TESTING)
+            app_config = AppConfig(port=self.config.app_port or 5000, mode=AppMode.TESTING)
             self.app_manager = AppManager(app_config)
 
             if not self.app_manager.start_app():

@@ -16,9 +16,9 @@ class TestCommandForm:
         yield driver
         driver.quit()
 
-    def test_command_form_elements(self, driver):
+    def test_command_form_elements(self, driver, base_url):
         """Тест наличия всех элементов формы команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка контейнера формы
         form_container = driver.find_element(By.CLASS_NAME, "command-form-container")
@@ -45,9 +45,9 @@ class TestCommandForm:
         submit_btn = query_form.find_element(By.CLASS_NAME, "submit-btn")
         assert submit_btn is not None
 
-    def test_command_input_and_submission(self, driver):
+    def test_command_input_and_submission(self, driver, base_url):
         """Тест ввода и отправки команды"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и вводим команду
         user_input = driver.find_element(By.ID, "user-input")
@@ -88,9 +88,9 @@ class TestCommandForm:
         assistant_messages = driver.find_elements(By.CLASS_NAME, "assistant-message")
         assert len(assistant_messages) > 0
 
-    def test_command_autocomplete(self, driver):
+    def test_command_autocomplete(self, driver, base_url):
         """Тест автодополнения команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и вводим часть команды
         user_input = driver.find_element(By.ID, "user-input")
@@ -114,9 +114,9 @@ class TestCommandForm:
                 "value"
             ) or "открыть" in user_input.get_attribute("value")
 
-    def test_available_commands_display(self, driver):
+    def test_available_commands_display(self, driver, base_url):
         """Тест отображения доступных команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие секции доступных команд
         available_commands = driver.find_element(By.CLASS_NAME, "available-commands")
@@ -138,9 +138,9 @@ class TestCommandForm:
         command_buttons = commands_grid.find_elements(By.CLASS_NAME, "command-button")
         assert len(command_buttons) > 0
 
-    def test_command_filter_functionality(self, driver):
+    def test_command_filter_functionality(self, driver, base_url):
         """Тест функциональности фильтра команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим фильтр команд
         command_filter = driver.find_element(By.ID, "command-filter")

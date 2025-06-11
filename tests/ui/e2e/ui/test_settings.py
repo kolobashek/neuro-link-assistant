@@ -15,9 +15,9 @@ class TestSettings:
         yield driver
         driver.quit()
 
-    def test_ai_models_settings(self, driver):
+    def test_ai_models_settings(self, driver, base_url):
         """Тест настроек нейросетей"""
-        driver.get("http://localhost:5001/ai_models")
+        driver.get(f"{base_url}/ai_models")
 
         # Проверяем, что страница настроек нейросетей загрузилась
         WebDriverWait(driver, 10).until(
@@ -42,9 +42,9 @@ class TestSettings:
                 control_buttons = model.find_elements(By.CSS_SELECTOR, "button")
                 assert len(control_buttons) > 0, "Отсутствуют кнопки управления моделью"
 
-    def test_theme_settings(self, driver):
+    def test_theme_settings(self, driver, base_url):
         """Тест настроек темы оформления (если есть)"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(
@@ -100,9 +100,9 @@ class TestSettings:
                 final_theme == initial_theme
             ), "Тема не вернулась к исходной после повторного нажатия на переключатель"
 
-    def test_language_settings(self, driver):
+    def test_language_settings(self, driver, base_url):
         """Тест языковых настроек (если есть)"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя языка
         language_selectors = driver.find_elements(
@@ -146,9 +146,9 @@ class TestSettings:
                     != initial_language
                 ), "Язык не изменился после выбора нового языка"
 
-    def test_notification_settings(self, driver):
+    def test_notification_settings(self, driver, base_url):
         """Тест настроек уведомлений (если есть)"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие настроек уведомлений
         notification_settings = driver.find_elements(
@@ -190,9 +190,9 @@ class TestSettings:
                 else:
                     notification_toggles[0].click()
 
-    def test_user_preferences(self, driver):
+    def test_user_preferences(self, driver, base_url):
         """Тест пользовательских настроек (если есть)"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие кнопки настроек пользователя
         settings_buttons = driver.find_elements(
@@ -238,9 +238,9 @@ class TestSettings:
                     )
                 )
 
-    def test_api_key_settings(self, driver):
+    def test_api_key_settings(self, driver, base_url):
         """Тест настроек API-ключей (если есть)"""
-        driver.get("http://localhost:5001/ai_models")
+        driver.get(f"{base_url}/ai_models")
 
         # Проверяем наличие полей для API-ключей
         api_key_fields = driver.find_elements(
@@ -294,9 +294,9 @@ class TestSettings:
                     # Если сообщение не появилось, возможно, сохранение происходит без уведомления
                     pass
 
-    def test_history_settings(self, driver):
+    def test_history_settings(self, driver, base_url):
         """Тест настроек истории команд (если есть)"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие кнопки очистки истории
         clear_history_buttons = driver.find_elements(

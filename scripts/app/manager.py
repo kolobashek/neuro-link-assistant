@@ -2,7 +2,6 @@
 
 import os
 import signal
-import socket
 import subprocess
 import sys
 import time
@@ -11,8 +10,10 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import psutil
 import requests
+
+# НОВЫЙ ИМПОРТ
+from scripts.network.port_manager import PortConfig, PortManager
 
 
 class AppMode(Enum):
@@ -28,13 +29,27 @@ class AppMode(Enum):
 class AppConfig:
     """Конфигурация приложения"""
 
-    port: int = 5001
+    port: int = 5000  # ← Изменили с 5001 на 5000
     host: str = "127.0.0.1"
     timeout: int = 45
     mode: AppMode = AppMode.TESTING
     debug: bool = False
     auto_cleanup: bool = True
     health_endpoints: List[str] = field(default_factory=lambda: ["/", "/health"])
+
+    # НОВОЕ: Настройки для PortManager
+    force_kill: bool = False
+    safe_pids: List[int] = field(default_factory=lambda: [0, 4])
+
+    def get_port_config(self) -> PortConfig:
+        """Создает PortConfig из AppConfig"""
+        return PortConfig(
+            port=self.port,
+            host=self.host,
+            timeout=self.timeout,
+            force_kill=self.force_kill,
+            safe_pids=self.safe_pids,
+        )
 
     def __post_init__(self):
         if self.health_endpoints is None:
@@ -51,6 +66,9 @@ class AppManager:
         self.app_dir = Path(__file__).parent.parent.parent
         self._start_time: Optional[float] = None
         self._metrics: Dict[str, Any] = {}
+
+        # НОВОЕ: Используем PortManager
+        self.port_manager = PortManager(self.config.get_port_config())
 
     # === ОСНОВНЫЕ МЕТОДЫ ===
 
@@ -71,19 +89,35 @@ class AppManager:
         if self.config.mode == AppMode.EXTERNAL:
             return self._handle_external_app()
 
-        # Очистка порта если нужно
-        if self.config.auto_cleanup and self._is_port_occupied():
+        # ЗАМЕНЯЕМ: Используем PortManager для очистки
+        if self.config.auto_cleanup and self.port_manager.is_port_in_use():
             self._log("🧹 Очистка порта", {"port": self.config.port})
-            if not self._cleanup_port():
-                self._log("❌ Не удалось очистить порт")
-                return False
+
+            # НОВОЕ: Если очистка не удалась, ищем свободный порт
+            if not self.port_manager.smart_cleanup():
+                self._log("❌ Не удалось очистить порт, ищем свободный...")
+                try:
+                    new_port = self.port_manager.find_free_port()
+                    self._log("✅ Найден свободный порт", {"new_port": new_port})
+
+                    # Обновляем конфигурацию
+                    self.config.port = new_port
+                    self.port_manager = PortManager(self.config.get_port_config())
+                    self.app_url = f"http://{self.config.host}:{self.config.port}"
+
+                except Exception as e:
+                    self._log("❌ Не найден свободный порт", {"error": str(e)})
+                    return False
 
         # Запуск приложения
         try:
             if not self._launch_subprocess():
                 return False
 
-            # Ожидание готовности
+            # ЗАМЕНЯЕМ: Используем PortManager для ожидания
+            if not self.port_manager.wait_for_port_free(timeout=2):  # Ждем освобождения
+                time.sleep(1)  # Небольшая задержка
+
             if not self._wait_for_ready():
                 self.stop_app()
                 return False
@@ -148,12 +182,12 @@ class AppManager:
 
         self.process = None
 
-        # Дополнительная очистка порта если нужно
+        # ЗАМЕНЯЕМ: Используем PortManager для дополнительной очистки
         if self.config.auto_cleanup:
             time.sleep(1)  # Даем время на освобождение ресурсов
-            if self._is_port_occupied():
+            if self.port_manager.is_port_in_use():
                 self._log("🧹 Дополнительная очистка порта")
-                self._cleanup_port()
+                self.port_manager.smart_cleanup()
 
         stop_time = time.perf_counter() - stop_start
         self._log("✅ Остановка завершена", {"time": f"{stop_time:.3f}s"})
@@ -195,7 +229,7 @@ class AppManager:
         return {
             "running": self.is_app_running(),
             "healthy": self.health_check(),
-            "port_occupied": self._is_port_occupied(),
+            "port_occupied": self.port_manager.is_port_in_use(),  # ЗАМЕНЯЕМ
             "process_alive": self.process and self.process.poll() is None,
             "config": {
                 "port": self.config.port,
@@ -282,55 +316,6 @@ class AppManager:
         self._log("❌ Таймаут ожидания", {"wait_time": f"{wait_time:.3f}s"})
         return False
 
-    def _is_port_occupied(self) -> bool:
-        """Проверяет, занят ли порт"""
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-                sock.settimeout(1)
-                result = sock.connect_ex((self.config.host, self.config.port))
-                return result == 0
-        except:
-            return False
-
-    def _cleanup_port(self) -> bool:
-        """Очищает порт от зависших процессов"""
-        killed_count = 0
-
-        try:
-            for proc in psutil.process_iter(["pid", "name", "connections"]):
-                try:
-                    for conn in proc.info.get("connections", []) or []:
-                        if (
-                            hasattr(conn, "laddr")
-                            and conn.laddr
-                            and conn.laddr.port == self.config.port
-                        ):
-                            # Не убиваем системные процессы
-                            if proc.info["pid"] <= 4:
-                                continue
-
-                            self._log(
-                                "🔪 Завершаем процесс",
-                                {"name": proc.info["name"], "pid": proc.info["pid"]},
-                            )
-
-                            psutil.Process(proc.info["pid"]).terminate()
-                            killed_count += 1
-                            break
-
-                except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    continue
-
-            if killed_count > 0:
-                self._log("✅ Процессы завершены", {"count": killed_count})
-                time.sleep(2)  # Даем время на освобождение
-
-            return True
-
-        except Exception as e:
-            self._log("❌ Ошибка очистки порта", {"error": str(e)})
-            return False
-
     def _log(self, message: str, data: Optional[Dict[str, Any]] = None):
         """Логирование с метаданными"""
         if self.config.debug:
@@ -346,9 +331,16 @@ class AppManager:
 # === ФАБРИЧНЫЕ МЕТОДЫ ===
 
 
-def create_test_manager(port: int = 5001, debug: bool = True) -> AppManager:
+def create_test_manager(port: int = 5000, debug: bool = True) -> AppManager:
     """Создает менеджер для тестирования"""
-    config = AppConfig(port=port, mode=AppMode.TESTING, debug=debug, timeout=45, auto_cleanup=True)
+    config = AppConfig(
+        port=port,
+        mode=AppMode.TESTING,
+        debug=debug,
+        timeout=45,
+        auto_cleanup=True,
+        force_kill=True,  # ← ДОБАВИТЬ для тестов
+    )
     return AppManager(config)
 
 
@@ -360,7 +352,7 @@ def create_production_manager(port: int = 5000, debug: bool = False) -> AppManag
     return AppManager(config)
 
 
-def create_external_manager(port: int = 5001) -> AppManager:
+def create_external_manager(port: int = 5000) -> AppManager:
     """Создает менеджер для внешнего приложения"""
     config = AppConfig(port=port, mode=AppMode.EXTERNAL, debug=False, timeout=5, auto_cleanup=False)
     return AppManager(config)
@@ -375,7 +367,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Управление приложением")
     parser.add_argument("action", choices=["start", "stop", "restart", "status"])
-    parser.add_argument("--port", type=int, default=5001, help="Порт приложения")
+    parser.add_argument("--port", type=int, default=5000, help="Порт приложения")
     parser.add_argument(
         "--mode",
         choices=["testing", "production", "external"],

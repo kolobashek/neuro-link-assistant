@@ -14,13 +14,13 @@ class TestAccessibility:
         yield driver
         driver.quit()
 
-    def test_keyboard_navigation(self, ui_client):
+    def test_keyboard_navigation(self, ui_client, base_url):
         """Тест навигации по интерфейсу с помощью клавиатуры"""
         print("\n🔍 [TEST] Начинаем тест навигации с клавиатуры...")
 
         # Открываем главную страницу с полным URL
         print("📖 [TEST] Открываем главную страницу...")
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(f"{base_url}/")
 
         # Ждём загрузки страницы
         time.sleep(2)
@@ -71,10 +71,10 @@ class TestAccessibility:
         # Тест успешно пройден
         assert True
 
-    def test_aria_attributes(self, ui_client):
+    def test_aria_attributes(self, ui_client, base_url):
         """Тест атрибутов ARIA для обеспечения доступности"""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(f"{base_url}/")
 
         # Найдем элементы с ID, которые точно есть на странице
         important_elements = [
@@ -168,10 +168,10 @@ class TestAccessibility:
         # Для начала выведем общую информацию о доступности
         assert True, "Тест запущен в режиме анализа ARIA-атрибутов. Проверьте выводы в консоли."
 
-    def test_color_contrast(self, ui_client):
+    def test_color_contrast(self, ui_client, base_url):
         """Тест контрастности цветов для обеспечения доступности"""
         # Открываем главную страницу
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(f"{base_url}/")
 
         # Список элементов для проверки контрастности
         important_elements = [
@@ -354,12 +354,12 @@ class TestAccessibility:
             f"Элемент {element_id} ({element.tag_name}): контраст {contrast_ratio:.2f} - {status}"
         )
 
-    def test_focus_indicators(self, ui_client):
+    def test_focus_indicators(self, ui_client, base_url):
         """Тест индикаторов фокуса для доступности"""
         print("\n🔍 [TEST] Начинаем тест индикаторов фокуса...")
 
         print("📖 [TEST] Открываем страницу...")
-        ui_client.get("http://localhost:5001")
+        ui_client.get(base_url)
         time.sleep(2)
         print("✅ [TEST] Страница загружена")
 
@@ -383,9 +383,9 @@ class TestAccessibility:
         # Проверяем, что стили изменились при фокусе
         assert initial_outline != focus_outline or focus_outline != "none"
 
-    def test_screen_reader_compatibility(self, ui_client):
+    def test_screen_reader_compatibility(self, ui_client, base_url):
         """Тест совместимости с программами чтения с экрана"""
-        ui_client.get("http://localhost:5001")
+        ui_client.get(base_url)
 
         # Проверяем наличие альтернативного текста для изображений
         images = ui_client.find_elements(By.TAG_NAME, "img")
@@ -410,9 +410,9 @@ class TestAccessibility:
             # Должен быть хотя бы один способ идентификации поля
             assert has_label or has_aria_label or has_placeholder
 
-    def test_heading_structure(self, ui_client):
+    def test_heading_structure(self, ui_client, base_url):
         """Тест структуры заголовков для доступности"""
-        ui_client.get("http://localhost:5001")
+        ui_client.get(base_url)
 
         # Проверяем наличие заголовка h1
         h1_elements = ui_client.find_elements(By.TAG_NAME, "h1")
@@ -432,9 +432,9 @@ class TestAccessibility:
             if heading_levels[i + 1] > heading_levels[i]:
                 assert heading_levels[i + 1] - heading_levels[i] <= 1
 
-    def test_language_attribute(self, ui_client):
+    def test_language_attribute(self, ui_client, base_url):
         """Тест атрибута языка для доступности"""
-        ui_client.get("http://localhost:5001")
+        ui_client.get(base_url)
 
         # Проверяем наличие атрибута lang в теге html
         html = ui_client.find_element(By.TAG_NAME, "html")

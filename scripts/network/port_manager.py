@@ -17,7 +17,7 @@ import requests
 class PortConfig:
     """Конфигурация для работы с портами"""
 
-    port: int = 5000
+    port: int = 5000  # ← Изменили с 5001 на 5000
     host: str = "localhost"
     timeout: int = 30
     force_kill: bool = False
@@ -113,9 +113,18 @@ class PortManager:
             print(f"⚠️ [PORT] Пропускаем системный процесс (PID: {pid})")
             return False
 
-        # Проверяем тип процесса
+        # УЛУЧШАЕМ: Проверяем тип процесса с учетом ACCESS_DENIED
         cmdline = process_info["cmdline"].lower()
-        if not any(keyword in cmdline for keyword in ["python", "flask", "app.py", "node"]):
+        name = process_info["name"].lower()
+
+        # Если ACCESS_DENIED, но это может быть Python процесс - разрешаем с force_kill
+        is_likely_web_process = (
+            any(keyword in cmdline for keyword in ["python", "flask", "app.py", "node"])
+            or any(keyword in name for keyword in ["python", "pythonw"])
+            or (cmdline == "access_denied" and self.config.force_kill)  # ← НОВОЕ
+        )
+
+        if not is_likely_web_process:
             if not self.config.force_kill:
                 print(f"⚠️ [PORT] Процесс не похож на веб-приложение: {process_info['name']}")
                 print(f"     Командная строка: {process_info['cmdline'][:100]}...")
@@ -135,14 +144,10 @@ class PortManager:
                 print(f"✅ [PORT] Процесс завершен корректно")
                 return True
             except psutil.TimeoutExpired:
-                if self.config.force_kill:
-                    print(f"🔪 [PORT] Принудительное завершение")
-                    process.kill()
-                    process.wait(timeout=3)
-                    return True
-                else:
-                    print(f"⚠️ [PORT] Процесс не завершился, требуется force_kill")
-                    return False
+                print(f"🔪 [PORT] Принудительное завершение")
+                process.kill()
+                process.wait(timeout=3)
+                return True
 
         except psutil.NoSuchProcess:
             print(f"✅ [PORT] Процесс уже завершен")
@@ -211,17 +216,32 @@ class PortManager:
         actual_start_port = start_port or (self.config.port + 1)
 
         for port in range(actual_start_port, actual_start_port + max_attempts):
-            try:
-                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                    sock.bind((self.config.host, port))
-                    return port
-            except OSError:
-                continue
+            temp_config = PortConfig(port=port, host=self.config.host)
+            temp_manager = PortManager(temp_config)
+
+            if not temp_manager.is_port_in_use():
+                return port
 
         raise Exception(
             "Не найден свободный порт в диапазоне"
             f" {actual_start_port}-{actual_start_port + max_attempts}"
+        )
+
+    @staticmethod
+    def find_any_free_port(start_port: int = 5000, max_attempts: int = 20) -> int:
+        """Статический метод для поиска любого свободного порта"""
+        import socket
+
+        for port in range(start_port, start_port + max_attempts):
+            try:
+                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                    sock.bind(("127.0.0.1", port))
+                    return port
+            except OSError:
+                continue
+        raise Exception(
+            f"Не найден свободный порт в диапазоне {start_port}-{start_port + max_attempts}"
         )
 
     def get_port_info(self) -> Dict[str, Any]:

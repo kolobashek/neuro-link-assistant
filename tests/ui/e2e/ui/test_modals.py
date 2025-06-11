@@ -13,9 +13,9 @@ class TestModals:
         yield driver
         driver.quit()
 
-    def test_confirm_modal_structure(self, driver):
+    def test_confirm_modal_structure(self, driver, base_url):
         """Тест структуры модального окна подтверждения"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Открываем модальное окно подтверждения через очистку истории
         clear_history_btn = driver.find_element(By.ID, "clear-history")
@@ -54,9 +54,9 @@ class TestModals:
             EC.visibility_of_element_located((By.ID, "confirm-modal"))
         )
 
-    def test_details_modal_structure(self, driver):
+    def test_details_modal_structure(self, driver, base_url):
         """Тест структуры модального окна деталей"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -95,9 +95,9 @@ class TestModals:
                 EC.visibility_of_element_located((By.ID, "command-details-modal"))
             )
 
-    def test_modal_animations(self, driver):
+    def test_modal_animations(self, driver, base_url):
         """Тест анимаций модальных окон"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Открываем модальное окно подтверждения
         clear_history_btn = driver.find_element(By.ID, "clear-history")
@@ -122,9 +122,9 @@ class TestModals:
             EC.visibility_of_element_located((By.ID, "confirm-modal"))
         )
 
-    def test_modal_backdrop_click(self, driver):
+    def test_modal_backdrop_click(self, driver, base_url):
         """Тест закрытия модального окна при клике на фон"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Открываем модальное окно подтверждения
         clear_history_btn = driver.find_element(By.ID, "clear-history")

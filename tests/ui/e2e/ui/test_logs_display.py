@@ -13,10 +13,10 @@ class TestLogsDisplay:
         yield driver
         driver.quit()
 
-    def test_logs_page_structure(self, driver):
+    def test_logs_page_structure(self, driver, base_url):
         """Тест структуры страницы логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Проверяем наличие контейнера логов
         logs_container = driver.find_element(By.CLASS_NAME, "logs-container")
@@ -44,10 +44,10 @@ class TestLogsDisplay:
         log_display = logs_content.find_element(By.CLASS_NAME, "log-display")
         assert log_display is not None
 
-    def test_logs_tabs_switching(self, driver):
+    def test_logs_tabs_switching(self, driver, base_url):
         """Тест переключения между вкладками логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Находим все кнопки вкладок
         tab_buttons = driver.find_elements(By.CLASS_NAME, "tab-button")
@@ -79,10 +79,10 @@ class TestLogsDisplay:
         # Содержимое разных вкладок должно отличаться
         assert first_tab_content != third_tab_content
 
-    def test_logs_refresh_functionality(self, driver):
+    def test_logs_refresh_functionality(self, driver, base_url):
         """Тест функциональности обновления логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Находим кнопку обновления логов
         refresh_button = driver.find_element(By.ID, "refresh-logs")
@@ -106,10 +106,10 @@ class TestLogsDisplay:
         # Поэтому проверяем только, что содержимое не пустое
         assert updated_content != ""
 
-    def test_logs_search_functionality(self, driver):
+    def test_logs_search_functionality(self, driver, base_url):
         """Тест функциональности поиска в логах"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Находим поле поиска
         search_input = driver.find_element(By.ID, "logs-search")
@@ -138,10 +138,10 @@ class TestLogsDisplay:
             filtered_content = driver.find_element(By.CLASS_NAME, "log-display").text
             assert search_term in filtered_content
 
-    def test_logs_download_functionality(self, driver):
+    def test_logs_download_functionality(self, driver, base_url):
         """Тест функциональности скачивания логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Находим кнопку скачивания логов
         download_button = driver.find_element(By.ID, "download-logs")
@@ -154,10 +154,10 @@ class TestLogsDisplay:
         # Проверяем, что кнопка кликабельна
         assert download_button.is_enabled()
 
-    def test_logs_styling(self, driver):
+    def test_logs_styling(self, driver, base_url):
         """Тест стилизации логов"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Проверяем стилизацию контейнера логов
         logs_container = driver.find_element(By.CLASS_NAME, "logs-container")
@@ -190,10 +190,10 @@ class TestLogsDisplay:
         assert tab_style.getPropertyValue("cursor") == "pointer"
         assert tab_style.getPropertyValue("border") != "none"
 
-    def test_logs_error_highlighting(self, driver):
+    def test_logs_error_highlighting(self, driver, base_url):
         """Тест подсветки ошибок в логах"""
         # Переходим на страницу логов
-        driver.get("http://localhost:5001/logs")
+        driver.get(f"{base_url}/logs")
 
         # Находим все строки логов
         log_lines = driver.find_elements(By.CSS_SELECTOR, ".log-display .log-line")

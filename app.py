@@ -48,11 +48,32 @@ def init_app():
     system_logger.info("Приложение запущено")
 
 
-def run_app():
+def run_app(port: int = None):
     """Запускает приложение Flask"""
     init_app()
-    app.run(host="127.0.0.1", port=5001, debug=True)
+
+    # Если порт не указан, ищем свободный начиная с 5000
+    if port is None:
+        from scripts.network.port_manager import PortManager
+
+        try:
+            port = PortManager.find_any_free_port(5000)
+            print(f"🔍 Используем свободный порт: {port}")
+        except Exception:
+            port = 5000  # Fallback
+
+    app.run(host="127.0.0.1", port=port, debug=True)
 
 
 if __name__ == "__main__":
-    run_app()
+    import sys
+
+    # Позволяем передать порт как аргумент
+    port = None
+    if len(sys.argv) > 1:
+        try:
+            port = int(sys.argv[1])
+        except ValueError:
+            print("⚠️ Неверный формат порта, используем автопоиск")
+
+    run_app(port)

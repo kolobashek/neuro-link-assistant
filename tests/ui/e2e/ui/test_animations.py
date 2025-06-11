@@ -15,9 +15,9 @@ class TestAnimations:
         yield driver
         driver.quit()
 
-    def test_modal_animations(self, driver):
+    def test_modal_animations(self, driver, base_url):
         """Тест анимаций модальных окон"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -47,9 +47,9 @@ class TestAnimations:
             close_btn = driver.find_element(By.CSS_SELECTOR, "#command-details-modal .close-modal")
             close_btn.click()
 
-    def test_button_hover_effects(self, driver):
+    def test_button_hover_effects(self, driver, base_url):
         """Тест эффектов наведения на кнопки"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим кнопку отправки
         submit_button = driver.find_element(By.ID, "submit-command")
@@ -74,9 +74,9 @@ class TestAnimations:
         # Проверяем, что цвет изменился при наведении
         assert initial_bg_color != hover_bg_color
 
-    def test_progress_bar_animation(self, driver):
+    def test_progress_bar_animation(self, driver, base_url):
         """Тест анимации индикатора прогресса"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -107,9 +107,9 @@ class TestAnimations:
             EC.text_to_be_present_in_element((By.CLASS_NAME, "message-content"), "Привет")
         )
 
-    def test_notification_animations(self, driver):
+    def test_notification_animations(self, driver, base_url):
         """Тест анимаций уведомлений"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Создаем уведомление с помощью JavaScript
         driver.execute_script("""
@@ -146,9 +146,9 @@ class TestAnimations:
         # Проверяем, что анимация применена
         assert animation != "none" and animation != ""
 
-    def test_spinner_animation(self, driver):
+    def test_spinner_animation(self, driver, base_url):
         """Тест анимации спиннера загрузки"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -180,9 +180,9 @@ class TestAnimations:
             # Проверяем, что анимация содержит вращение
             assert "spin" in animation or "rotate" in animation
 
-    def test_message_appearance_animation(self, driver):
+    def test_message_appearance_animation(self, driver, base_url):
         """Тест анимации появления сообщений"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")

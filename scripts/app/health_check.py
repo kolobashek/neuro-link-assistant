@@ -6,7 +6,7 @@ from typing import Optional
 import requests
 
 
-def quick_check(url: str = "http://localhost:5001", timeout: int = 3) -> bool:
+def quick_check(url: str = "http://localhost:5000", timeout: int = 3) -> bool:
     """Быстрая проверка приложения"""
     try:
         response = requests.get(url, timeout=timeout)
@@ -32,7 +32,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Быстрая проверка приложения")
-    parser.add_argument("--url", default="http://localhost:5001", help="URL приложения")
+    parser.add_argument("--url", default="http://localhost:5000", help="URL приложения")
     parser.add_argument("--timeout", type=int, default=3, help="Таймаут в секундах")
 
     args = parser.parse_args()

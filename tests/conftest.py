@@ -1,4 +1,4 @@
-﻿import os
+import os
 import subprocess  # < Добавляем импорт
 import sys
 import time
@@ -17,10 +17,71 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from scripts.port_cleanup import PortManager
-
 # Глобальная конфигурация для тестов
-TEST_CONFIG = {"base_url": "http://localhost:5001"}
+import socket
+
+import pytest
+
+from scripts.app.manager import AppConfig, AppManager, AppMode
+from scripts.network.port_manager import PortManager
+
+
+def find_free_port(start_port: int = 5000, max_attempts: int = 20) -> int:  # < Изменили на 5000
+    """Находит свободный порт для тестов"""
+    for port in range(start_port, start_port + max_attempts):
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                sock.bind(("127.0.0.1", port))
+                return port
+        except OSError:
+            continue
+    raise Exception(
+        f"Не найден свободный порт в диапазоне {start_port}-{start_port + max_attempts}"
+    )
+
+
+# Динамический порт для всех тестов
+TEST_PORT = find_free_port()
+TEST_CONFIG = {"base_url": f"http://localhost:{TEST_PORT}"}
+
+print(f"?? [TESTS] Используем динамический порт: {TEST_PORT}")
+
+
+@pytest.fixture(scope="session")
+def app_manager():
+    """Фикстура для управления приложением в тестах"""
+    config = AppConfig(
+        port=TEST_PORT,  # < Используем динамический порт
+        mode=AppMode.TESTING,
+        debug=True,
+        auto_cleanup=True,
+        force_kill=True,
+    )
+
+    manager = AppManager(config)
+
+    # Запускаем приложение один раз для всей сессии
+    if not manager.start_app():
+        pytest.skip("Не удалось запустить тестовое приложение")
+
+    yield manager
+
+    # Останавливаем после всех тестов
+    manager.stop_app()
+
+
+@pytest.fixture(scope="session")
+def base_url():
+    """URL приложения для тестов"""
+    return f"http://localhost:{TEST_PORT}"
+
+
+@pytest.fixture(scope="session")
+def test_port():
+    """Порт приложения для тестов"""
+    return TEST_PORT
+
 
 import logging
 
@@ -45,7 +106,7 @@ def mock_component():
 @pytest.fixture(scope="session", autouse=True)
 def cleanup_ports():
     """Автоматически очищает порты перед и после тестов"""
-    port_manager = PortManager(5000)
+    port_manager = PortManager()
 
     # Очистка перед тестами
     print("?? Предварительная очистка портов...")
@@ -219,17 +280,18 @@ class UiTestDriver:
         return getattr(self.driver, name)
 
 
-from scripts.app_manager import AppManager
-
 # Добавляем импорт нового менеджера
-from scripts.external_app_manager import ExternalAppManager as TestAppManager
+from scripts.app.manager import AppManager
+from scripts.app.manager import AppManager as TestAppManager
 
 
 # Заменяем фикстуру app_server
 @pytest.fixture(scope="function")
 def app_server():
     """Фикстура для управления жизненным циклом приложения в UI тестах"""
-    manager = TestAppManager(port=5001)
+    from scripts.app.manager import create_test_manager
+
+    manager = create_test_manager(port=5001)
 
     print(f" [SESSION] Настройка приложения для UI тестов...")
 
@@ -337,10 +399,10 @@ def smart_cleanup_browser_state(request):
         yield
 
 
-@pytest.fixture(scope="session")  # Только для base_url
-def base_url():
-    """Фикстура, возвращающая базовый URL для тестов."""
-    return TEST_CONFIG["base_url"]
+# @pytest.fixture(scope="session")  # Только для base_url
+# def base_url():
+#     """Фикстура, возвращающая базовый URL для тестов."""
+#     return TEST_CONFIG["base_url"]
 
 
 @pytest.fixture(scope="function")  # ИЗМЕНИТЬ НА "function" (если используется ui_client)
@@ -354,7 +416,7 @@ def authenticated_ui_client(ui_client):  # ui_client теперь function-scope
     Выполняет вход в систему перед запуском теста и выход после завершения.
     """
     # Открываем страницу логина
-    ui_client.get("http://localhost:5000/login")
+    ui_client.get("{base_url}/login")
 
     try:
         # Ожидаем загрузки формы логина
@@ -395,7 +457,7 @@ def authenticated_ui_client(ui_client):  # ui_client теперь function-scope
 
     # После теста - выходим из системы
     try:
-        ui_client.get("http://localhost:5000/logout")
+        ui_client.get("{base_url}/logout")
         time.sleep(1)  # Даем время на обработку выхода
     except Exception:
         # Игнорируем ошибки при выходе

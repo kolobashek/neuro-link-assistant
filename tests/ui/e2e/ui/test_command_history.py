@@ -15,9 +15,9 @@ class TestCommandHistory:
         yield driver
         driver.quit()
 
-    def test_history_container_elements(self, driver):
+    def test_history_container_elements(self, driver, base_url):
         """Тест наличия всех элементов контейнера истории команд"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка контейнера истории
         history_container = driver.find_element(By.CLASS_NAME, "command-history-container")
@@ -39,9 +39,9 @@ class TestCommandHistory:
         clear_history_btn = history_container.find_element(By.ID, "clear-history")
         assert clear_history_btn is not None
 
-    def test_history_search_functionality(self, driver):
+    def test_history_search_functionality(self, driver, base_url):
         """Тест функциональности поиска в истории"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверка наличия поля поиска
         history_search = driver.find_element(By.ID, "history-search")
@@ -72,9 +72,9 @@ class TestCommandHistory:
                 command_cell = row.find_element(By.CSS_SELECTOR, "td:nth-child(2)")
                 assert search_term.lower() in command_cell.text.lower()
 
-    def test_history_item_reuse(self, driver):
+    def test_history_item_reuse(self, driver, base_url):
         """Тест повторного использования команды из истории"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -91,9 +91,9 @@ class TestCommandHistory:
             user_input = driver.find_element(By.ID, "user-input")
             assert user_input.get_attribute("value") == first_command
 
-    def test_history_item_details(self, driver):
+    def test_history_item_details(self, driver, base_url):
         """Тест просмотра деталей команды из истории"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")
@@ -134,9 +134,9 @@ class TestCommandHistory:
             # Проверяем, что модальное окно закрыто
             assert not modal.is_displayed()
 
-    def test_clear_history_functionality(self, driver):
+    def test_clear_history_functionality(self, driver, base_url):
         """Тест функциональности очистки истории"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем, есть ли записи в истории
         history_rows = driver.find_elements(By.CSS_SELECTOR, "#history-table tbody tr")

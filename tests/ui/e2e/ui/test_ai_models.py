@@ -15,9 +15,9 @@ class TestAIModels:
         yield driver
         driver.quit()
 
-    def test_ai_models_container_elements(self, driver):
+    def test_ai_models_container_elements(self, driver, base_url):
         """Тест наличия всех элементов контейнера моделей ИИ"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
         wait = WebDriverWait(driver, 10)
 
         # Проверка контейнера моделей ИИ
@@ -59,9 +59,9 @@ class TestAIModels:
 
         assert len(model_items) > 0, f"Ожидались ai-model-item элементы, найдено {len(model_items)}"
 
-    def test_model_item_structure(self, driver):
+    def test_model_item_structure(self, driver, base_url):
         """Тест структуры элемента модели"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
         wait = WebDriverWait(driver, 10)
 
         # Ожидаем появления хотя бы одного элемента модели
@@ -78,9 +78,9 @@ class TestAIModels:
         assert model_status is not None
         print(f"✅ Модель: {model_name.text}, Статус: {model_status.text}")
 
-    def test_model_status_indicator(self, driver):
+    def test_model_status_indicator(self, driver, base_url):
         """Тест индикатора статуса модели"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
         wait = WebDriverWait(driver, 10)
 
         try:
@@ -128,9 +128,9 @@ class TestAIModels:
                     f" '{status_classes}'"
                 )
 
-    def test_refresh_models_button(self, driver):
+    def test_refresh_models_button(self, driver, base_url):
         """Тест кнопки обновления статуса моделей"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
         wait = WebDriverWait(driver, 10)
 
         refresh_button = wait.until(EC.element_to_be_clickable((By.ID, "check-ai-models-btn")))
@@ -155,9 +155,9 @@ class TestAIModels:
             )
             pytest.fail(f"Статусы моделей не обновились: {e}")
 
-    def test_model_selection(self, driver):
+    def test_model_selection(self, driver, base_url):
         """Тест выбора модели"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
         wait = WebDriverWait(driver, 20)
 
         try:

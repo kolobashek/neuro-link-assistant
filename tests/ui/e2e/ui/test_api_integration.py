@@ -16,9 +16,9 @@ class TestAPIIntegration:
         yield driver
         driver.quit()
 
-    def test_command_submission_api_call(self, driver):
+    def test_command_submission_api_call(self, driver, base_url):
         """Тест отправки команды через API"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -54,17 +54,17 @@ class TestAPIIntegration:
 
         assert api_call_found, "Запрос к API не был отправлен при отправке команды"
 
-    def test_history_api_integration(self, driver):
+    def test_history_api_integration(self, driver, base_url):
         """Тест интеграции истории команд с API"""
         # Сначала получаем историю напрямую через API
         try:
-            api_response = requests.get("http://localhost:5001/api/history")
+            api_response = requests.get(f"{base_url}/api/history")
             api_history = api_response.json()
         except Exception as e:
             pytest.skip(f"Не удалось получить историю через API: {e}")
 
         # Загружаем страницу
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Ждем загрузки таблицы истории
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "history-table")))
@@ -92,17 +92,17 @@ class TestAPIIntegration:
                 first_row_command == first_api_command
             ), "Текст команды в таблице не соответствует тексту команды в API"
 
-    def test_ai_models_api_integration(self, driver):
+    def test_ai_models_api_integration(self, driver, base_url):
         """Тест интеграции статуса нейросетей с API"""
         # Сначала получаем статус нейросетей напрямую через API
         try:
-            api_response = requests.get("http://localhost:5001/api/ai_models")
+            api_response = requests.get(f"{base_url}/api/ai_models")
             api_models = api_response.json()
         except Exception as e:
             pytest.skip(f"Не удалось получить статус нейросетей через API: {e}")
 
         # Загружаем страницу
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Ждем загрузки списка нейросетей
         WebDriverWait(driver, 10).until(
@@ -145,9 +145,9 @@ class TestAPIIntegration:
                 first_model_status == first_api_model_status
             ), "Статус модели в интерфейсе не соответствует статусу модели в API"
 
-    def test_interrupt_command_api_call(self, driver):
+    def test_interrupt_command_api_call(self, driver, base_url):
         """Тест прерывания команды через API"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Находим поле ввода и кнопку отправки
         input_field = driver.find_element(By.ID, "user-input")
@@ -197,7 +197,7 @@ class TestAPIIntegration:
             interrupt_call_found
         ), "Запрос на прерывание не был отправлен при нажатии кнопки прерывания"
 
-    def test_ensure_log_files_api_call(self, driver):
+    def test_ensure_log_files_api_call(self, driver, base_url):
         """Тест вызова API для проверки файлов журнала"""
         # Перехватываем сетевые запросы с помощью Selenium CDP
         driver.execute_cdp_cmd("Network.enable", {})
@@ -207,7 +207,7 @@ class TestAPIIntegration:
         driver.execute_cdp_cmd("Network.clearBrowserCookies", {})
 
         # Загружаем страницу
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Ждем завершения загрузки страницы
         WebDriverWait(driver, 10).until(

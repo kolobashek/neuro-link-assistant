@@ -13,9 +13,9 @@ class TestThemeSystem:
         yield driver
         driver.quit()
 
-    def test_theme_toggle_presence(self, driver):
+    def test_theme_toggle_presence(self, driver, base_url):
         """Тест наличия переключателя темы"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -26,9 +26,9 @@ class TestThemeSystem:
             assert theme_toggle.is_displayed()
             assert theme_toggle.is_enabled()
 
-    def test_theme_switching(self, driver):
+    def test_theme_switching(self, driver, base_url):
         """Тест переключения между светлой и темной темами"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -57,9 +57,9 @@ class TestThemeSystem:
             theme_in_storage = driver.execute_script("return localStorage.getItem('theme')")
             assert theme_in_storage == new_theme
 
-    def test_theme_persistence(self, driver):
+    def test_theme_persistence(self, driver, base_url):
         """Тест сохранения выбранной темы при перезагрузке страницы"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -94,9 +94,9 @@ class TestThemeSystem:
 
             assert theme_after_refresh == new_theme
 
-    def test_theme_css_variables(self, driver):
+    def test_theme_css_variables(self, driver, base_url):
         """Тест применения CSS-переменных темы"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")
@@ -137,9 +137,9 @@ class TestThemeSystem:
             # Проверяем, что значение CSS-переменной изменилось
             assert initial_bg_color != new_bg_color
 
-    def test_theme_component_styling(self, driver):
+    def test_theme_component_styling(self, driver, base_url):
         """Тест применения стилей темы к компонентам"""
-        driver.get("http://localhost:5001")
+        driver.get(base_url)
 
         # Проверяем наличие переключателя темы
         theme_toggles = driver.find_elements(By.ID, "theme-toggle")

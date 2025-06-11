@@ -3,10 +3,10 @@ from selenium.webdriver.common.by import By
 
 
 class TestSimpleUI:
-    def test_homepage_opens(self, ui_client):
+    def test_homepage_opens(self, ui_client, base_url):
         """Простейший тест - открытие главной страницы"""
         print("🔍 Открываем главную страницу...")
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(base_url)
 
         print("🔍 Получаем заголовок...")
         title = ui_client.driver.title
@@ -15,18 +15,18 @@ class TestSimpleUI:
         assert title is not None
         assert len(title) > 0
 
-    def test_user_input_exists(self, ui_client):
+    def test_user_input_exists(self, ui_client, base_url):
         """Проверяем наличие поля ввода"""
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(base_url)
 
         # Ищем поле ввода пользователя
         user_input = ui_client.find_element(By.ID, "user-input")
         assert user_input is not None
         assert user_input.is_displayed()
 
-    def test_page_has_content(self, ui_client):
+    def test_page_has_content(self, ui_client, base_url):
         """Проверяем что страница содержит контент"""
-        ui_client.get("http://localhost:5001/")
+        ui_client.get(base_url)
 
         body = ui_client.find_element(By.TAG_NAME, "body")
         content = body.text
