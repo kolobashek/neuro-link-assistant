@@ -4772,6 +4772,14 @@
         "documentation": {}
     },
     {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "CommandExecution",
         "importPath": "models.command_models",
         "description": "models.command_models",
@@ -12939,7 +12947,7 @@
         "kind": 2,
         "importPath": "tests.conftest",
         "description": "tests.conftest",
-        "peekOfCode": "def app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    from scripts.app.manager import create_test_manager\n    manager = create_test_manager(port=5001)\n    print(f\" [SESSION] Настройка приложения для UI тестов...\")\n    # Запускаем приложение\n    if not manager.start_app():\n        pytest.skip(\"Не удалось запустить приложение для UI тестов\")\n    # Дополнительная проверка готовности\n    if not manager.health_check():",
+        "peekOfCode": "def app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    from scripts.app.manager import create_external_manager, create_test_manager\n    # ВСЕГДА сначала проверяем уже запущенное приложение\n    external_manager = create_external_manager(port=TEST_PORT)\n    if external_manager.is_app_running() and external_manager.health_check():\n        print(f\"♻️ [SESSION] Переиспользуем приложение на порту {TEST_PORT}\")\n        yield external_manager\n        return\n    # Только если нет - запускаем новое",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -13102,6 +13110,15 @@
         "importPath": "tests.conftest",
         "description": "tests.conftest",
         "peekOfCode": "test_logger = logging.getLogger(\"TEST\")\ntest_logger.setLevel(logging.INFO)\n@pytest.fixture\ndef mock_component():\n    \"\"\"Фикстура для создания мок-компонента\"\"\"\n    return MagicMock()\n@pytest.fixture(scope=\"session\", autouse=True)\ndef cleanup_ports():\n    \"\"\"Автоматически очищает порты перед и после тестов\"\"\"\n    port_manager = PortManager()",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "REUSE_APP",
+        "kind": 5,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "REUSE_APP = os.environ.get(\"REUSE_APP\", \"true\").lower() == \"true\"\n@pytest.fixture(scope=\"function\")\ndef app_server():\n    \"\"\"Фикстура для управления жизненным циклом приложения в UI тестах\"\"\"\n    from scripts.app.manager import create_external_manager, create_test_manager\n    # ВСЕГДА сначала проверяем уже запущенное приложение\n    external_manager = create_external_manager(port=TEST_PORT)\n    if external_manager.is_app_running() and external_manager.health_check():\n        print(f\"♻️ [SESSION] Переиспользуем приложение на порту {TEST_PORT}\")\n        yield external_manager",
         "detail": "tests.conftest",
         "documentation": {}
     },
@@ -13839,7 +13856,25 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    # Инициализация системы логирования\n    from utils.logging_utils import init_logging_system\n    init_logging_system()\n    # Регистрация маршрутов",
+        "peekOfCode": "def ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\n@app.route(\"/health\")\ndef health_check():\n    \"\"\"Health check для мониторинга и UI тестов\"\"\"\n    import time\n    print(f\"🔍 Health check called at {time.time()}\")\n    return {\"status\": \"ok\", \"timestamp\": time.time()}, 200\n@app.route(\"/\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def health_check():\n    \"\"\"Health check для мониторинга и UI тестов\"\"\"\n    import time\n    print(f\"🔍 Health check called at {time.time()}\")\n    return {\"status\": \"ok\", \"timestamp\": time.time()}, 200\n@app.route(\"/\")\ndef index():\n    \"\"\"Главная страница - тоже нужна для health check\"\"\"\n    print(f\"🔍 Index page called\")\n    return render_template(\"index.html\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    \"\"\"Главная страница - тоже нужна для health check\"\"\"\n    print(f\"🔍 Index page called\")\n    return render_template(\"index.html\")\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    print(\"🔍 Начало init_app()\")\n    try:\n        # Инициализация системы логирования",
         "detail": "app",
         "documentation": {}
     },
@@ -13848,7 +13883,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    # Инициализация системы логирования\n    from utils.logging_utils import init_logging_system\n    init_logging_system()\n    # Регистрация маршрутов\n    app.register_blueprint(main_bp)\n    app.register_blueprint(api_bp, url_prefix=\"/api\")\n    # Настройка логирования",
+        "peekOfCode": "def init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    print(\"🔍 Начало init_app()\")\n    try:\n        # Инициализация системы логирования\n        from utils.logging_utils import init_logging_system\n        print(\"🔍 Инициализация логирования...\")\n        init_logging_system()\n        print(\"✅ Логирование инициализировано\")",
         "detail": "app",
         "documentation": {}
     },
@@ -13857,7 +13892,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def run_app(port: int = None):\n    \"\"\"Запускает приложение Flask\"\"\"\n    init_app()\n    # Если порт не указан, ищем свободный начиная с 5000\n    if port is None:\n        from scripts.network.port_manager import PortManager\n        try:\n            port = PortManager.find_any_free_port(5000)\n            print(f\"🔍 Используем свободный порт: {port}\")\n        except Exception:",
+        "peekOfCode": "def run_app(port: int | None = None):\n    \"\"\"Запускает приложение Flask\"\"\"\n    print(f\"🚀 Начало run_app(), port={port}\")\n    try:\n        init_app()\n        print(\"✅ init_app() завершена\")\n    except Exception as e:\n        print(f\"❌ Ошибка в init_app(): {e}\")\n        return\n    # Если порт не указан, ищем свободный начиная с 5000",
         "detail": "app",
         "documentation": {}
     },
@@ -13866,7 +13901,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "command_interrupt_flag = False\n# Создание приложения Flask\napp = Flask(__name__)\n@app.route(\"/ai_models\")\ndef ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag",
+        "peekOfCode": "command_interrupt_flag = False\n# Создание приложения Flask\napp = Flask(__name__)\n@app.route(\"/ai_models\")\ndef ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\n@app.route(\"/health\")\ndef health_check():\n    \"\"\"Health check для мониторинга и UI тестов\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -13875,7 +13910,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/ai_models\")\ndef ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    # Инициализация системы логирования\n    from utils.logging_utils import init_logging_system",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/ai_models\")\ndef ai_models_page():\n    \"\"\"Страница управления нейросетями\"\"\"\n    return render_template(\"ai_models.html\")\n@app.route(\"/health\")\ndef health_check():\n    \"\"\"Health check для мониторинга и UI тестов\"\"\"\n    import time\n    print(f\"🔍 Health check called at {time.time()}\")",
         "detail": "app",
         "documentation": {}
     },

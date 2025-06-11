@@ -280,36 +280,44 @@ class UiTestDriver:
         return getattr(self.driver, name)
 
 
+# Заменяем фикстуру app_server
+import os
+
 # Добавляем импорт нового менеджера
 from scripts.app.manager import AppManager
 from scripts.app.manager import AppManager as TestAppManager
 
+# В начале файла
+REUSE_APP = os.environ.get("REUSE_APP", "true").lower() == "true"
 
-# Заменяем фикстуру app_server
+
 @pytest.fixture(scope="function")
 def app_server():
     """Фикстура для управления жизненным циклом приложения в UI тестах"""
-    from scripts.app.manager import create_test_manager
+    from scripts.app.manager import create_external_manager, create_test_manager
 
-    manager = create_test_manager(port=5001)
+    # ВСЕГДА сначала проверяем уже запущенное приложение
+    external_manager = create_external_manager(port=TEST_PORT)
+    if external_manager.is_app_running() and external_manager.health_check():
+        print(f"♻️ [SESSION] Переиспользуем приложение на порту {TEST_PORT}")
+        yield external_manager
+        return
 
-    print(f" [SESSION] Настройка приложения для UI тестов...")
+    # Только если нет - запускаем новое
+    manager = create_test_manager(port=TEST_PORT)
 
-    # Запускаем приложение
+    print(f"🚀 [SESSION] Настройка нового приложения на порту {TEST_PORT}...")
+
     if not manager.start_app():
         pytest.skip("Не удалось запустить приложение для UI тестов")
-
-    # Дополнительная проверка готовности
     if not manager.health_check():
         manager.stop_app()
         pytest.skip("Приложение запустилось, но не прошло проверку здоровья")
 
-    print(f"? [SESSION] Приложение готово для UI тестов")
-
+    print(f"✅ [SESSION] Новое приложение готово на порту {TEST_PORT}")
     yield manager
 
-    print(f"?? [SESSION] Завершение сессии UI тестов...")
-    # Останавливаем приложение
+    print(f"🛑 [SESSION] Завершение сессии UI тестов...")
     manager.stop_app()
 
 
