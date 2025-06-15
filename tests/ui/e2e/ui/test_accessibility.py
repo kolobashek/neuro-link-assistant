@@ -7,12 +7,13 @@ from selenium.webdriver.common.keys import Keys
 
 
 class TestAccessibility:
-    @pytest.fixture(scope="function")
-    def driver(self):
-        driver = webdriver.Chrome()
-        driver.maximize_window()
-        yield driver
-        driver.quit()
+    # ❌ УДАЛИТЬ эту фикстуру - она конфликтует с conftest.py
+    # @pytest.fixture(scope="function")
+    # def driver(self):
+    #     driver = webdriver.Chrome()
+    #     driver.maximize_window()
+    #     yield driver
+    #     driver.quit()
 
     def test_keyboard_navigation(self, ui_client, base_url):
         """Тест навигации по интерфейсу с помощью клавиатуры"""
@@ -51,8 +52,36 @@ class TestAccessibility:
         assert active_element.tag_name == expected_tab_sequence[0][0]
         assert active_element.get_attribute("id") == expected_tab_sequence[0][1]
 
-        # Пропускаем несколько элементов без ID
-        for _ in range(7):  # пропускаем элементы 3-8
+        # Программно найти позицию check-ai-models-btn в последовательности табуляции
+        focusable_elements = ui_client.find_elements(
+            By.CSS_SELECTOR, "input:not([disabled]), button:not([disabled]), a[href]"
+        )
+        check_btn_index = None
+        for i, el in enumerate(focusable_elements):
+            if el.get_attribute("id") == "check-ai-models-btn":
+                check_btn_index = i
+                break
+
+        assert check_btn_index is not None, "Элемент check-ai-models-btn не найден"
+
+        # Найти текущую позицию активного элемента
+        active_element = ui_client.switch_to.active_element
+        current_element_id = active_element.get_attribute("id")
+
+        # Найти индекс текущего элемента в массиве
+        current_index = None
+        for i, el in enumerate(focusable_elements):
+            if el.get_attribute("id") == current_element_id and current_element_id:
+                current_index = i
+                break
+
+        if current_index is None:
+            # Если не нашли по ID, найдем command-filter как известную точку
+            current_index = 6  # command-filter на позиции 6
+
+        # Делаем нужное количество табуляций
+        tabs_needed = check_btn_index - current_index
+        for i in range(tabs_needed):
             active_element.send_keys(Keys.TAB)
             active_element = ui_client.switch_to.active_element
 
@@ -60,7 +89,7 @@ class TestAccessibility:
         assert active_element.tag_name == expected_tab_sequence[1][0]
         assert active_element.get_attribute("id") == expected_tab_sequence[1][1]
 
-        # Переходим к update-models-btn
+        # Просто один TAB, так как update-models-btn идет сразу после check-ai-models-btn
         active_element.send_keys(Keys.TAB)
         active_element = ui_client.switch_to.active_element
 
@@ -170,6 +199,11 @@ class TestAccessibility:
 
     def test_color_contrast(self, ui_client, base_url):
         """Тест контрастности цветов для обеспечения доступности"""
+        # ОТЛАДКА: выводим актуальные значения
+        print(f"\n🔍 [DEBUG] base_url = {base_url}")
+        print(f"🔍 [DEBUG] ui_client.base_url = {ui_client.base_url}")
+        print(f"🔍 [DEBUG] current_url before get = {ui_client.get_current_url()}")
+
         # Открываем главную страницу
         ui_client.get(f"{base_url}/")
 
@@ -195,28 +229,36 @@ class TestAccessibility:
         def calculate_contrast_ratio(fg_color, bg_color):
             """Вычисляет соотношение контрастности между двумя цветами по формуле WCAG."""
 
-            # Преобразование RGB в относительную яркость (luminance)
             def get_luminance(color):
-                # Преобразование из hex или rgb в компоненты RGB
-                if color.startswith("#"):
+                # Улучшенный парсинг RGB/RGBA цветов
+                if color.startswith("rgb("):
+                    # Убираем 'rgb(' и ')' и разделяем по запятым
+                    rgb_values = color[4:-1].split(",")
+                    r = int(rgb_values[0].strip()) / 255.0
+                    g = int(rgb_values[1].strip()) / 255.0
+                    b = int(rgb_values[2].strip()) / 255.0
+                elif color.startswith("rgba("):
+                    # Убираем 'rgba(' и ')' и разделяем по запятым
+                    rgba_values = color[5:-1].split(",")
+                    r = int(rgba_values[0].strip()) / 255.0
+                    g = int(rgba_values[1].strip()) / 255.0
+                    b = int(rgba_values[2].strip()) / 255.0
+                    # alpha = float(rgba_values[3].strip())  # Можно использовать для прозрачности
+                elif color.startswith("#"):
                     r = int(color[1:3], 16) / 255.0
                     g = int(color[3:5], 16) / 255.0
                     b = int(color[5:7], 16) / 255.0
-                elif color.startswith("rgb"):
-                    # Извлечение значений RGB из строки вида 'rgb(R, G, B)'
-                    parts = color.strip("rgb()").split(",")
-                    r = int(parts[0].strip()) / 255.0
-                    g = int(parts[1].strip()) / 255.0
-                    b = int(parts[2].strip()) / 255.0
-                elif color.startswith("rgba"):
-                    # Извлечение значений RGBA из строки вида 'rgba(R, G, B, A)'
-                    parts = color.strip("rgba()").split(",")
-                    r = int(parts[0].strip()) / 255.0
-                    g = int(parts[1].strip()) / 255.0
-                    b = int(parts[2].strip()) / 255.0
                 else:
-                    # Предполагаем, что это известное цветовое имя или прозрачность
-                    return 0 if color == "transparent" else 0.5
+                    # Обработка известных цветовых имён или прозрачности
+                    color_map = {
+                        "transparent": (0, 0, 0),
+                        "white": (1, 1, 1),
+                        "black": (0, 0, 0),
+                        "red": (1, 0, 0),
+                        "green": (0, 1, 0),
+                        "blue": (0, 0, 1),
+                    }
+                    r, g, b = color_map.get(color.lower(), (0.5, 0.5, 0.5))
 
                 # Преобразование линейных значений RGB в sRGB
                 r = r / 12.92 if r <= 0.03928 else ((r + 0.055) / 1.055) ** 2.4
@@ -230,7 +272,7 @@ class TestAccessibility:
             luminance1 = get_luminance(fg_color)
             luminance2 = get_luminance(bg_color)
 
-            # Вычисляем контрастность (убеждаемся, что яркий цвет всегда делится на темный)
+            # Вычисляем контрастность
             if luminance1 > luminance2:
                 return (luminance1 + 0.05) / (luminance2 + 0.05)
             else:

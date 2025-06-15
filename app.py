@@ -129,14 +129,20 @@ def run_app(port: int | None = None):
 
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    # Позволяем передать порт как аргумент
-    port: int | None = None
-    if len(sys.argv) > 1:
-        try:
-            port = int(sys.argv[1])
-        except ValueError:
-            print("⚠️ Неверный формат порта, используем автопоиск")
+    parser = argparse.ArgumentParser(description="Neuro-Link Assistant")
+    parser.add_argument("--port", type=int, help="Порт для запуска приложения")
+    parser.add_argument("port_positional", nargs="?", type=int, help="Порт (позиционный аргумент)")
+    parser.add_argument("--debug", action="store_true", help="Включить debug режим")
+    parser.add_argument("--host", default="127.0.0.1", help="Хост для привязки")
+
+    args = parser.parse_args()
+
+    # Приоритет: --port > позиционный аргумент > None
+    port = args.port or args.port_positional
+
+    if port is not None:
+        print(f"🔍 Используем указанный порт: {port}")
 
     run_app(port)

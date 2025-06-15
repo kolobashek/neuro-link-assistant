@@ -145,3 +145,39 @@
 .info-value {
     color: var(--text-primary);
 }
+
+/* Добавить в конец файла - дублируем стили model-item для ai-model-item */
+.ai-model-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    background-color: var(--surface-color);
+}
+
+.ai-model-item:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.ai-model-item.selected {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.ai-model-item.unavailable {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-model-item.available {
+    cursor: pointer;
+}

@@ -20,17 +20,33 @@
 	</div>
 
 	<div id="ai-models-list" class="ai-models-list">
-		<div class="model-item" data-model-id="gpt-4">
-			<div class="model-icon">🤖</div>
-			<div class="model-name">GPT-4</div>
-			<div class="model-status online">Доступна</div>
-			<div class="model-api-type">OpenAI</div>
+		<div class="ai-model-item unavailable" data-model-id="gpt-4">
+			<div class="model-info">
+				<div class="model-name">GPT-4</div>
+				<div class="model-status">Недоступна</div>
+				<div class="model-api-type">OpenAI</div>
+			</div>
 		</div>
-		<div class="model-item" data-model-id="claude">
-			<div class="model-icon">🧠</div>
-			<div class="model-name">Claude</div>
-			<div class="model-status offline">Недоступна</div>
-			<div class="model-api-type">Anthropic</div>
+		<div class="ai-model-item unavailable" data-model-id="gpt-3.5-turbo">
+			<div class="model-info">
+				<div class="model-name">GPT-3.5 Turbo</div>
+				<div class="model-status">Недоступна</div>
+				<div class="model-api-type">OpenAI</div>
+			</div>
+		</div>
+		<div class="ai-model-item busy current" data-model-id="claude">
+			<div class="model-info">
+				<div class="model-name">Claude</div>
+				<div class="model-status">Занята</div>
+				<div class="model-api-type">Anthropic</div>
+			</div>
+		</div>
+		<div class="ai-model-item unavailable" data-model-id="gemini">
+			<div class="model-info">
+				<div class="model-name">Gemini</div>
+				<div class="model-status">Недоступна</div>
+				<div class="model-api-type">Google</div>
+			</div>
 		</div>
 		<div class="loading" style="display: none;">Загрузка данных о нейросетях...</div>
 	</div>
@@ -46,7 +62,7 @@
 	<form id="search-models-form" class="search-form">
 		<div class="search-input-group">
 			<input type="text" id="search-query" placeholder="Введите запрос для поиска моделей..." />
-			<button type="submit" class="btn primary">
+			<button type="submit" class="btn primary" aria-label="Найти модели на Hugging Face">
 				<span class="material-icons">search</span> Поиск
 			</button>
 		</div>

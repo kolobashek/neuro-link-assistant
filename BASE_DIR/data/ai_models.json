@@ -1,43 +1,43 @@
 {
-  "models": [
-    {
-      "id": "gpt-3.5-turbo",
-      "name": "GPT-3.5 Turbo",
-      "description": "Модель OpenAI GPT-3.5 Turbo",
-      "huggingface_id": "openai/gpt-3.5-turbo",
-      "type": "chat",
-      "status": "unavailable",
-      "is_current": false,
-      "error": "API ключ OpenAI не найден. Установите переменную окружения OPENAI_API_KEY."
-    },
-    {
-      "id": "llama-2-7b",
-      "name": "Llama 2 (7B)",
-      "description": "Модель Meta Llama 2 (7B параметров)",
-      "huggingface_id": "meta-llama/Llama-2-7b-hf",
-      "type": "completion",
-      "status": "unavailable",
-      "is_current": false,
-      "error": "Ошибка при проверке модели: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/meta-llama/Llama-2-7b-hf.\n403 Client Error. (Request ID: Root=1-68189277-35650c0f3b1b057670c941d6;b227c66c-19da-4146-9883-76e0b409b8a2)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-2-7b-hf/resolve/main/config.json.\nAccess to model meta-llama/Llama-2-7b-hf is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-2-7b-hf to ask for access."
-    },
-    {
-      "id": "mistral-7b",
-      "name": "Mistral 7B",
-      "description": "Модель Mistral AI (7B параметров)",
-      "huggingface_id": "mistralai/Mistral-7B-v0.1",
-      "type": "completion",
-      "status": "busy",
-      "is_current": true
-    },
-    {
-      "id": "gemma-7b",
-      "name": "Gemma 7B",
-      "description": "Модель Google Gemma (7B параметров)",
-      "huggingface_id": "google/gemma-7b",
-      "type": "completion",
-      "status": "unavailable",
-      "is_current": false,
-      "error": "Ошибка при проверке модели: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/gemma-7b.\n403 Client Error. (Request ID: Root=1-6818928a-162a4d077f3e20b426e735b3;613c3348-e43b-4273-b6cd-bf38a1e12289)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-7b/resolve/main/config.json.\nAccess to model google/gemma-7b is restricted and you are not in the authorized list. Visit https://huggingface.co/google/gemma-7b to ask for access."
-    }
-  ]
+    "models": [
+        {
+            "id": "gpt-3.5-turbo",
+            "name": "GPT-3.5 Turbo",
+            "description": "Модель OpenAI GPT-3.5 Turbo",
+            "huggingface_id": "openai/gpt-3.5-turbo",
+            "type": "chat",
+            "status": "unavailable",
+            "is_current": false,
+            "error": "API ключ OpenAI не найден. Установите переменную окружения OPENAI_API_KEY."
+        },
+        {
+            "id": "llama-2-7b",
+            "name": "Llama 2 (7B)",
+            "description": "Модель Meta Llama 2 (7B параметров)",
+            "huggingface_id": "meta-llama/Llama-2-7b-hf",
+            "type": "completion",
+            "status": "unavailable",
+            "is_current": false,
+            "error": "Ошибка при проверке модели: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/meta-llama/Llama-2-7b-hf.\n403 Client Error. (Request ID: Root=1-68189277-35650c0f3b1b057670c941d6;b227c66c-19da-4146-9883-76e0b409b8a2)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-2-7b-hf/resolve/main/config.json.\nAccess to model meta-llama/Llama-2-7b-hf is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-2-7b-hf to ask for access."
+        },
+        {
+            "id": "mistral-7b",
+            "name": "Mistral 7B",
+            "description": "Модель Mistral AI (7B параметров)",
+            "huggingface_id": "mistralai/Mistral-7B-v0.1",
+            "type": "completion",
+            "status": "busy",
+            "is_current": true
+        },
+        {
+            "id": "gemma-7b",
+            "name": "Gemma 7B",
+            "description": "Модель Google Gemma (7B параметров)",
+            "huggingface_id": "google/gemma-7b",
+            "type": "completion",
+            "status": "unavailable",
+            "is_current": false,
+            "error": "Ошибка при проверке модели: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/gemma-7b.\n403 Client Error. (Request ID: Root=1-6818928a-162a4d077f3e20b426e735b3;613c3348-e43b-4273-b6cd-bf38a1e12289)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-7b/resolve/main/config.json.\nAccess to model google/gemma-7b is restricted and you are not in the authorized list. Visit https://huggingface.co/google/gemma-7b to ask for access."
+        }
+    ]
 }

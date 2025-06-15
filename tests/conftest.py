@@ -17,42 +17,32 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 # Глобальная конфигурация для тестов
 import socket
 
 import pytest
 
 from scripts.app.manager import AppConfig, AppManager, AppMode
+
+# Импортируем унифицированный порт-менеджер
 from scripts.network.port_manager import PortManager
 
-
-def find_free_port(start_port: int = 5000, max_attempts: int = 20) -> int:  # < Изменили на 5000
-    """Находит свободный порт для тестов"""
-    for port in range(start_port, start_port + max_attempts):
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                sock.bind(("127.0.0.1", port))
-                return port
-        except OSError:
-            continue
-    raise Exception(
-        f"Не найден свободный порт в диапазоне {start_port}-{start_port + max_attempts}"
-    )
-
-
-# Динамический порт для всех тестов
-TEST_PORT = find_free_port()
+# ✅ АРХИТЕКТУРНО ПРАВИЛЬНО: единый источник истины для портов
+TEST_PORT = PortManager.get_test_port()  # ← Используем унифицированный метод
 TEST_CONFIG = {"base_url": f"http://localhost:{TEST_PORT}"}
 
-print(f"?? [TESTS] Используем динамический порт: {TEST_PORT}")
+print(f"🧪 [TESTS] Используем унифицированный тестовый порт: {TEST_PORT}")
+
+# Устанавливаем в переменные окружения для других компонентов
+os.environ["TEST_PORT"] = str(TEST_PORT)
 
 
 @pytest.fixture(scope="session")
 def app_manager():
     """Фикстура для управления приложением в тестах"""
     config = AppConfig(
-        port=TEST_PORT,  # < Используем динамический порт
+        port=TEST_PORT,  # ← Используем унифицированный порт
         mode=AppMode.TESTING,
         debug=True,
         auto_cleanup=True,
@@ -85,7 +75,7 @@ def test_port():
 
 import logging
 
-# Настройка логирования для тестов
+# Настройка логированияаж для тестов
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)8s] %(name)s: %(message)s",
@@ -106,24 +96,20 @@ def mock_component():
 @pytest.fixture(scope="session", autouse=True)
 def cleanup_ports():
     """Автоматически очищает порты перед и после тестов"""
-    port_manager = PortManager()
+    from scripts.network.port_manager import PortConfig, PortManager
+
+    # ✅ АРХИТЕКТУРНО ПРАВИЛЬНО: используем унифицированный менеджер
+    config = PortConfig(port=TEST_PORT, force_kill=True)
+    port_manager = PortManager(config)
 
     # Очистка перед тестами
-    print("?? Предварительная очистка портов...")
+    print("🔍 Предварительная очистка тестового порта...")
     port_manager.smart_cleanup()
 
     yield
 
-    # ИСПРАВЛЕНО: Даем время приложению корректно завершиться
-    print("? Ожидание завершения всех процессов...")
-    time.sleep(3)  # Даем время процессам завершиться
-
-    # Финальная проверка и очистка только если нужно
-    if port_manager.is_port_in_use():
-        print("?? Финальная очистка портов...")
-        port_manager.smart_cleanup()
-    else:
-        print("? Все порты уже свободны, очистка не нужна")
+    print("✅ Завершение тестовой сессии")
+    # Финальная очистка только после ВСЕХ тестов
 
 
 def cleanup_port(port: int) -> bool:
@@ -173,10 +159,15 @@ def empty_registry():
         return MockComponentRegistry()
 
 
+from typing import Any
+
+from selenium.webdriver.remote.webdriver import WebDriver
+
+
 class UiTestDriver:
     """Обертка над WebDriver с дополнительной функциональностью для тестов UI."""
 
-    def __init__(self, driver: webdriver.Chrome, base_url: str):
+    def __init__(self, driver: WebDriver, base_url: str):
         self.driver = driver
         self.base_url = base_url
 
@@ -291,7 +282,7 @@ from scripts.app.manager import AppManager as TestAppManager
 REUSE_APP = os.environ.get("REUSE_APP", "true").lower() == "true"
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")  # ← МЕНЯЕМ на session
 def app_server():
     """Фикстура для управления жизненным циклом приложения в UI тестах"""
     from scripts.app.manager import create_external_manager, create_test_manager
@@ -306,79 +297,215 @@ def app_server():
     # Только если нет - запускаем новое
     manager = create_test_manager(port=TEST_PORT)
 
-    print(f"🚀 [SESSION] Настройка нового приложения на порту {TEST_PORT}...")
+    print(f"🚀 [SESSION] Настройка СЕССИОННОГО приложения на порту {TEST_PORT}...")
 
     if not manager.start_app():
         pytest.skip("Не удалось запустить приложение для UI тестов")
+
     if not manager.health_check():
         manager.stop_app()
         pytest.skip("Приложение запустилось, но не прошло проверку здоровья")
 
-    print(f"✅ [SESSION] Новое приложение готово на порту {TEST_PORT}")
+    print(f"✅ [SESSION] Сессионное приложение готово на порту {TEST_PORT}")
     yield manager
 
     print(f"🛑 [SESSION] Завершение сессии UI тестов...")
     manager.stop_app()
 
 
-def create_chrome_driver(base_url: str) -> webdriver.Chrome:
-    """Создание Chrome WebDriver с оптимизированными опциями для старых GPU"""
+def create_chrome_driver_debug(base_url: str) -> webdriver.Chrome:
+    """Создание Chrome WebDriver в режиме отладки (с видимым окном)"""
     chrome_options = Options()
 
-    # Минимальный стабильный набор для Windows + старая GPU
-    chrome_options.add_argument("--headless=new")
+    # БЕЗ headless режима для отладки
+    chrome_options.add_argument("--window-size=1280,720")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-web-security")
+    chrome_options.add_argument("--remote-debugging-port=0")
+
+    # Путь к Chrome для debug режима
+    possible_chrome_paths = [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    ]
+
+    chrome_path = None
+    for path in possible_chrome_paths:
+        if os.path.exists(path):
+            chrome_path = path
+            break
+
+    if chrome_path:
+        chrome_options.binary_location = chrome_path
+
+    try:
+        from webdriver_manager.chrome import ChromeDriverManager
+
+        service = ChromeService(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        driver.set_page_load_timeout(30)
+        driver.implicitly_wait(5)
+        print("✅ Debug Chrome WebDriver создан")
+        return driver
+    except Exception as e:
+        print(f"❌ Debug Chrome WebDriver недоступен: {e}")
+        raise
+
+
+def create_chrome_driver(base_url: str) -> webdriver.Chrome:
+    """Создание Chrome WebDriver с исправленными таймаутами для Windows"""
+    chrome_options = Options()
+
+    # 🔥 ИСПРАВЛЯЕМ headless режим для Windows
+    chrome_options.add_argument("--headless")  # ← Убираем =new, используем классический headless
+
+    # Базовые стабильные опции для Windows
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--use-gl=disabled")  # Программный рендеринг
-    chrome_options.add_argument("--disable-software-rasterizer")
-    chrome_options.add_argument("--window-size=1280,720")
-    chrome_options.add_argument("--disable-web-security")
-    chrome_options.add_argument(
-        "--disable-features=VizDisplayCompositor,AudioServiceOutOfProcess,TranslateUI"
-    )
     chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-logging")
-    chrome_options.add_argument("--log-level=3")
-    chrome_options.add_argument("--silent")
 
-    chrome_options.add_argument("--disable-gpu-sandbox")
-    chrome_options.add_argument("--disable-software-rasterizer")
-    chrome_options.add_argument("--disable-background-timer-throttling")
-    chrome_options.add_argument("--disable-backgrounding-occluded-windows")
-    chrome_options.add_argument("--disable-renderer-backgrounding")
-    chrome_options.add_argument(
-        "--disable-features=TranslateUI,BlinkGenPropertyTrees,VizDisplayCompositor,AudioServiceOutOfProcess"
-    )
-    chrome_options.add_argument("--enable-unsafe-swiftshader")
+    # 🔥 КРИТИЧНО: Исправляем проблемы с DevTools на Windows
+    chrome_options.add_argument("--remote-debugging-port=0")  # ← Автоматический порт
+    chrome_options.add_argument("--disable-web-security")
+    chrome_options.add_argument("--disable-features=VizDisplayCompositor")
 
-    chrome_options.binary_location = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    # Размер окна
+    chrome_options.add_argument("--window-size=1280,720")
+
+    # Минимальные безопасные опции
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--ignore-ssl-errors")
+    chrome_options.add_argument("--log-level=3")  # ← Минимальные логи
+
+    # 🔥 ДОБАВЛЯЕМ специфичные для Windows опции
+    if os.name == "nt":  # Windows
+        chrome_options.add_argument("--no-first-run")
+        chrome_options.add_argument("--no-default-browser-check")
+        chrome_options.add_argument("--disable-default-apps")
+
+    # Экспериментальные опции (минимальный набор)
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option("useAutomationExtension", False)
+
+    # Путь к Chrome
+    possible_chrome_paths = [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    ]
+
+    chrome_path = None
+    for path in possible_chrome_paths:
+        if os.path.exists(path):
+            chrome_path = path
+            break
+
+    if chrome_path:
+        chrome_options.binary_location = chrome_path
+        print(f"✅ Найден Chrome: {chrome_path}")
 
     try:
         from webdriver_manager.chrome import ChromeDriverManager
 
         service = ChromeService(ChromeDriverManager().install())
 
+        # Создаем драйвер с уменьшенными таймаутами для отладки
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        # Короткие таймауты для быстрого обнаружения проблем
-        driver.set_page_load_timeout(120)
-        driver.implicitly_wait(30)
 
-        print("? Chrome WebDriver оптимизирован для Windows + старая GPU")
+        # 🔥 КРИТИЧНО: Устанавливаем разумные таймауты
+        driver.set_page_load_timeout(60)  # Уменьшаем с 120 до 60
+        driver.implicitly_wait(10)  # Уменьшаем с 30 до 10
+
+        print("✅ Chrome WebDriver создан")
+
+        # 🔍 Тестируем простую страницу
+        print("🔍 Тестируем загрузку простой страницы...")
+        try:
+            driver.get("data:text/html,<html><body><h1>Test OK</h1></body></html>")
+            print("✅ Простая страница загружена")
+        except Exception as e:
+            print(f"❌ Не удалось загрузить даже простую страницу: {e}")
+            driver.quit()
+            raise
+
         return driver
 
     except Exception as e:
-        print(f"? Ошибка Chrome WebDriver: {e}")
+        print(f"❌ Ошибка создания Chrome WebDriver: {e}")
+
+        # 🔥 ДОБАВЛЯЕМ отладочную информацию
+        if chrome_path:  # ← ИСПРАВЛЯЕМ: проверяем, что путь не None
+            try:
+                import subprocess
+
+                result = subprocess.run(
+                    [chrome_path, "--version"],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,  # ← Добавляем таймаут
+                )
+                print(f"🔍 Версия Chrome: {result.stdout.strip()}")
+            except Exception as version_error:
+                print(f"⚠️ Не удалось определить версию Chrome: {version_error}")
+        else:
+            print("⚠️ Chrome не найден в стандартных путях")
+
         pytest.skip(f"Chrome WebDriver недоступен: {e}")
 
 
+def create_firefox_driver(base_url: str) -> webdriver.Firefox:
+    """Создание Firefox WebDriver как альтернатива Chrome"""
+    from selenium.webdriver.firefox.options import Options as FirefoxOptions
+    from selenium.webdriver.firefox.service import Service as FirefoxService
+
+    firefox_options = FirefoxOptions()
+    firefox_options.add_argument("--headless")
+    firefox_options.add_argument("--width=1280")
+    firefox_options.add_argument("--height=720")
+
+    try:
+        from webdriver_manager.firefox import GeckoDriverManager
+
+        service = FirefoxService(GeckoDriverManager().install())
+
+        driver = webdriver.Firefox(service=service, options=firefox_options)
+        driver.set_page_load_timeout(60)
+        driver.implicitly_wait(20)
+
+        print("✅ Firefox WebDriver настроен")
+        return driver
+
+    except Exception as e:
+        print(f"❌ Firefox WebDriver недоступен: {e}")
+        raise
+
+
 # И используем в фикстуре:
-@pytest.fixture(scope="function")  # ИЗМЕНИТЬ НА "function"
+@pytest.fixture(scope="session")  # ← МЕНЯЕМ на session
 def ui_client(base_url, app_server):
-    if not app_server.is_app_running():  # app_server теперь будет свежим для каждого теста
+    if not app_server.is_app_running():
         pytest.skip("Приложение не доступно для UI теста")
 
-    driver = create_chrome_driver(base_url)
+    # 🔥 ДОБАВЛЯЕМ переменную окружения для отладки
+    debug_mode = os.environ.get("UI_DEBUG", "false").lower() == "true"
+
+    driver = None
+    try:
+        if debug_mode:
+            print("🔧 Режим отладки UI: запуск Chrome с видимым окном")
+            driver = create_chrome_driver_debug(base_url)
+        else:
+            driver = create_chrome_driver(base_url)
+    except Exception as chrome_error:
+        print(f"⚠️ Chrome недоступен: {chrome_error}")
+        try:
+            driver = create_firefox_driver(base_url)
+            print("✅ Переключились на Firefox")
+        except Exception as firefox_error:
+            pytest.skip(
+                f"Ни один браузер недоступен. Chrome: {chrome_error}, Firefox: {firefox_error}"
+            )
+
     ui_driver = UiTestDriver(driver, base_url)
     yield ui_driver
     driver.quit()
@@ -395,13 +522,35 @@ def smart_cleanup_browser_state(request):
 
         yield
 
-        # Очищаем после UI теста
+        # УСИЛЕННАЯ очистка после UI теста
         try:
+            print(f"🧹 [CLEANUP] Очистка состояния после теста: {request.node.name}")
+
+            # Закрываем все лишние окна/вкладки
+            windows = ui_client.driver.window_handles
+            if len(windows) > 1:
+                for window in windows[1:]:  # Оставляем только первое окно
+                    ui_client.driver.switch_to.window(window)
+                    ui_client.driver.close()
+                ui_client.driver.switch_to.window(windows[0])
+
+            # Очищаем состояние
             ui_client.driver.delete_all_cookies()
             ui_client.execute_script("window.localStorage.clear();")
             ui_client.execute_script("window.sessionStorage.clear();")
-        except Exception:
-            pass
+
+            # Принудительно возвращаемся на главную страницу
+            ui_client.get(ui_client.base_url)
+
+            # Небольшая пауза для стабилизации
+            import time
+
+            time.sleep(1)
+
+            print(f"✅ [CLEANUP] Состояние очищено для теста: {request.node.name}")
+
+        except Exception as e:
+            print(f"⚠️ [CLEANUP] Ошибка очистки: {e}")
     else:
         # Для не-UI тестов просто пропускаем
         yield

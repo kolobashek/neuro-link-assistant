@@ -21,6 +21,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from scripts.app.manager import AppConfig, AppManager, AppMode
+from scripts.network.port_manager import PortManager  # ← Добавить импорт
 
 from .base_runner import BaseTestRunner
 
@@ -59,10 +60,10 @@ class UITestRunner(BaseTestRunner):
 
         # Автоматический поиск свободного порта
         if self.config.app_port is None:
-            from scripts.network.port_manager import PortManager
-
             try:
-                self.config.app_port = PortManager.find_any_free_port(5000)  # ← Начинаем с 5000
+                self.config.app_port = PortManager.find_any_free_port(
+                    5000
+                )  # ← Теперь PortManager доступен
                 print(f"🔍 [UI] Используем свободный порт: {self.config.app_port}")
             except Exception:
                 self.config.app_port = 5000  # Fallback
