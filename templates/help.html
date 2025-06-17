@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Справка - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-question-circle"></i> Справка</h1>
+        <p class="page-description">Руководство пользователя</p>
+    </div>
+
+    <div class="help-container">
+        <div class="help-section" id="getting-started">
+            <h3>Начало работы</h3>
+            <p>Основы использования системы...</p>
+        </div>
+
+        <div class="help-section" id="commands">
+            <h3>Команды</h3>
+            <p>Список доступных команд...</p>
+        </div>
+
+        <div class="help-section" id="troubleshooting">
+            <h3>Решение проблем</h3>
+            <p>Часто встречающиеся проблемы...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

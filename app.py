@@ -39,6 +39,22 @@ def index():
     return render_template("index.html")
 
 
+# ✅ НОВОЕ: Обработчик ошибки 404
+@app.errorhandler(404)
+def not_found_error(error):
+    """Обработчик ошибки 404 - страница не найдена"""
+    print(f"🔍 404 error for URL: {request.url}")
+    return render_template("404.html"), 404
+
+
+# ✅ НОВОЕ: Обработчик ошибки 500 (на будущее)
+@app.errorhandler(500)
+def internal_error(error):
+    """Обработчик внутренней ошибки сервера"""
+    print(f"🔍 500 error: {error}")
+    return render_template("500.html"), 500
+
+
 def init_app():
     """Инициализация приложения"""
     global command_interrupt_flag

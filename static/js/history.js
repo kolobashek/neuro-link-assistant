@@ -565,3 +565,59 @@ window.historyModule = {
 	showCommandDetails,
 	initHistoryHandlers,
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔍 History.js загружен');
+    console.log('🔍 Current URL:', window.location.href);
+
+    // Обработчик клика по элементам истории
+    function attachHistoryClickHandlers() {
+        const historyItems = document.querySelectorAll('.history-item');
+        console.log(`🔍 Найдено элементов истории: ${historyItems.length}`);
+
+        historyItems.forEach((item, index) => {
+            // Удаляем предыдущий обработчик если есть
+            item.removeEventListener('click', handleHistoryClick);
+
+            // Добавляем новый обработчик
+            item.addEventListener('click', handleHistoryClick);
+            item.style.cursor = 'pointer'; // Показываем что элемент кликабельный
+
+            const historyId = item.getAttribute('data-history-id');
+            console.log(`✅ Обработчик добавлен к элементу ${index}: ${historyId}`);
+        });
+    }
+
+    function handleHistoryClick(event) {
+        console.log('🔍 Клик по элементу истории');
+        console.log('🔍 Event target:', event.target);
+        console.log('🔍 Current element:', this);
+
+        // Предотвращаем всплытие если клик по кнопке
+        if (event.target.tagName === 'BUTTON') {
+            console.log('🔍 Клик по кнопке, игнорируем');
+            return;
+        }
+
+        const historyId = this.getAttribute('data-history-id');
+        console.log(`🔍 History ID: ${historyId}`);
+
+        if (historyId) {
+            const newUrl = `/history/${historyId}`;
+            console.log(`🔍 Переход к: ${newUrl}`);
+            // Переход к детальной странице истории
+            window.location.href = newUrl;
+        } else {
+            console.warn('⚠️ Не найден data-history-id для элемента');
+        }
+    }
+
+    // Запускаем при загрузке
+    attachHistoryClickHandlers();
+
+    // Переподключаем обработчики при обновлении истории
+    document.addEventListener('historyUpdated', function() {
+        console.log('🔄 История обновлена, переподключаем обработчики');
+        attachHistoryClickHandlers();
+    });
+});

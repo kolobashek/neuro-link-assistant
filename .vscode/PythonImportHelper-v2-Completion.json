@@ -10483,7 +10483,16 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def models():\n    return render_template(\"models.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():",
+        "peekOfCode": "def models():\n    return render_template(\"models.html\")\n@main_bp.route(\"/models/<model_id>/settings\")\ndef model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "model_settings",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")\ndef history_detail(item_id):\n    # Заглушка данных команды (позже заменить на запрос к БД)\n    command = {",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10492,7 +10501,16 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():\n    return render_template(\"logs.html\")",
+        "peekOfCode": "def history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")\ndef history_detail(item_id):\n    # Заглушка данных команды (позже заменить на запрос к БД)\n    command = {\n        \"id\": item_id,\n        \"command\": \"открыть браузер\" if item_id == \"cmd-001\" else f\"команда {item_id}\",\n        \"timestamp\": \"2025-06-17 14:30:15\",",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "history_detail",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def history_detail(item_id):\n    # Заглушка данных команды (позже заменить на запрос к БД)\n    command = {\n        \"id\": item_id,\n        \"command\": \"открыть браузер\" if item_id == \"cmd-001\" else f\"команда {item_id}\",\n        \"timestamp\": \"2025-06-17 14:30:15\",\n        \"status\": \"Выполнено\",\n        \"duration\": \"2.3 сек\",\n        \"result\": f\"Команда {item_id} выполнена успешно. Браузер открыт.\",\n    }",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10501,7 +10519,7 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():\n    return render_template(\"logs.html\")",
+        "peekOfCode": "def settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():\n    return render_template(\"logs.html\")\n@main_bp.route(\"/help\")\ndef help():\n    return render_template(\"help.html\")\n@main_bp.route(\"/tasks\")\ndef tasks():",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10510,7 +10528,43 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def logs():\n    return render_template(\"logs.html\")",
+        "peekOfCode": "def logs():\n    return render_template(\"logs.html\")\n@main_bp.route(\"/help\")\ndef help():\n    return render_template(\"help.html\")\n@main_bp.route(\"/tasks\")\ndef tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "help",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def help():\n    return render_template(\"help.html\")\n@main_bp.route(\"/tasks\")\ndef tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "tasks",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():\n    return render_template(\"task_create.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "task_details",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():\n    return render_template(\"task_create.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "task_create",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def task_create():\n    return render_template(\"task_create.html\")",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -13876,7 +13930,25 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def index():\n    \"\"\"Главная страница - тоже нужна для health check\"\"\"\n    print(f\"🔍 Index page called\")\n    return render_template(\"index.html\")\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    print(\"🔍 Начало init_app()\")\n    try:\n        # Инициализация системы логирования",
+        "peekOfCode": "def index():\n    \"\"\"Главная страница - тоже нужна для health check\"\"\"\n    print(f\"🔍 Index page called\")\n    return render_template(\"index.html\")\n# ✅ НОВОЕ: Обработчик ошибки 404\n@app.errorhandler(404)\ndef not_found_error(error):\n    \"\"\"Обработчик ошибки 404 - страница не найдена\"\"\"\n    print(f\"🔍 404 error for URL: {request.url}\")\n    return render_template(\"404.html\"), 404",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "not_found_error",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def not_found_error(error):\n    \"\"\"Обработчик ошибки 404 - страница не найдена\"\"\"\n    print(f\"🔍 404 error for URL: {request.url}\")\n    return render_template(\"404.html\"), 404\n# ✅ НОВОЕ: Обработчик ошибки 500 (на будущее)\n@app.errorhandler(500)\ndef internal_error(error):\n    \"\"\"Обработчик внутренней ошибки сервера\"\"\"\n    print(f\"🔍 500 error: {error}\")\n    return render_template(\"500.html\"), 500",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "internal_error",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def internal_error(error):\n    \"\"\"Обработчик внутренней ошибки сервера\"\"\"\n    print(f\"🔍 500 error: {error}\")\n    return render_template(\"500.html\"), 500\ndef init_app():\n    \"\"\"Инициализация приложения\"\"\"\n    global command_interrupt_flag\n    print(\"🔍 Начало init_app()\")\n    try:\n        # Инициализация системы логирования",
         "detail": "app",
         "documentation": {}
     },

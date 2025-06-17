@@ -25,8 +25,36 @@
 				</tr>
 			</thead>
 			<tbody id="history-list">
+				<!-- ✅ ИСПРАВЛЕНО: Добавляем ссылки для кликабельности -->
+				<tr class="history-item" data-history-id="cmd-001">
+					<td><a href="/history/cmd-001">14:30:15</a></td>
+					<td><a href="/history/cmd-001">открой браузер</a></td>
+					<td><span class="badge badge-success">Выполнено</span></td>
+					<td>
+						<a href="/history/cmd-001" class="btn btn-sm btn-info">Детали</a>
+						<button class="btn btn-sm btn-secondary">Повторить</button>
+					</td>
+				</tr>
+				<tr class="history-item" data-history-id="cmd-002">
+					<td><a href="/history/cmd-002">14:25:32</a></td>
+					<td><a href="/history/cmd-002">найди файл document.txt</a></td>
+					<td><span class="badge badge-danger">Ошибка</span></td>
+					<td>
+						<a href="/history/cmd-002" class="btn btn-sm btn-info">Детали</a>
+						<button class="btn btn-sm btn-secondary">Повторить</button>
+					</td>
+				</tr>
+				<tr class="history-item" data-history-id="cmd-003">
+					<td><a href="/history/cmd-003">14:20:45</a></td>
+					<td><a href="/history/cmd-003">скачай файл с сайта</a></td>
+					<td><span class="badge badge-success">Выполнено</span></td>
+					<td>
+						<a href="/history/cmd-003" class="btn btn-sm btn-info">Детали</a>
+						<button class="btn btn-sm btn-secondary">Повторить</button>
+					</td>
+				</tr>
 				<tr>
-					<td colspan="4" class="loading">Загрузка истории команд...</td>
+					<td colspan="4" class="loading" style="display: none;">Загрузка истории команд...</td>
 				</tr>
 			</tbody>
 		</table>

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Детали команды {{ command.id }} - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-info-circle"></i> Детали команды</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="/history">История</a></li>
+                <li class="breadcrumb-item active">{{ command.id }}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="command-details">
+        <div class="detail-card">
+            <h3>Основная информация</h3>
+            <table class="details-table">
+                <tr>
+                    <td><strong>ID команды:</strong></td>
+                    <td>{{ command.id }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Команда:</strong></td>
+                    <td>{{ command.command }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Время выполнения:</strong></td>
+                    <td>{{ command.timestamp }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Статус:</strong></td>
+                    <td><span class="badge badge-success">{{ command.status }}</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Длительность:</strong></td>
+                    <td>{{ command.duration }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="result-card">
+            <h3>Результат выполнения</h3>
+            <div class="result-content">
+                {{ command.result }}
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+            <button class="btn btn-secondary" onclick="location.href='/history'">
+                <i class="fas fa-history"></i> К истории
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.detail-card, .result-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.details-table td:first-child {
+    width: 200px;
+}
+
+.result-content {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.actions .btn {
+    margin: 0 10px;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875em;
+}
+</style>
+{% endblock %}

@@ -261,6 +261,7 @@
 |   |   |-- modals.html
 |   |-- base.html
 |   |-- index.html
+|   |-- models.html
 |-- tests
 |   |-- contract
 |   |   |-- api
@@ -399,19 +400,6 @@
 |-- config.py
 |-- conftest.py
 |-- docker-compose.yml
-|-- error_model_selection_20250615-145827.png
-|-- error_model_selection_20250615-152922.png
-|-- error_model_selection_20250615-153055.png
-|-- error_model_selection_20250615-154726.png
-|-- error_model_selection_20250615-163100.png
-|-- error_model_selection_20250615-163718.png
-|-- error_model_selection_20250616-175557.png
-|-- error_model_selection_20250616-181136.png
-|-- error_model_selection_20250616-182545.png
-|-- error_model_selection_20250616-182841.png
-|-- error_model_selection_20250616-183505.png
-|-- error_model_selection_20250616-183806.png
-|-- error_model_selection_20250616-184919.png
 |-- LICENSE
 |-- poetry.lock
 |-- project_structure.txt

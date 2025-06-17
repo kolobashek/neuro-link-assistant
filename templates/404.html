@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Страница не найдена - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="container error-container">
+    <div class="error-content not-found">
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+
+        <h1 class="error-title">404</h1>
+
+        <div class="error-message not-found-message">
+            <h2>Страница не найдена</h2>
+            <p>К сожалению, запрашиваемая страница не существует или была перемещена.</p>
+        </div>
+
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary home-button">
+                <i class="fas fa-home"></i> Вернуться на главную
+            </a>
+            <button onclick="history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+        </div>
+
+        <div class="error-suggestions">
+            <h3>Возможно, вас заинтересует:</h3>
+            <ul>
+                <li><a href="/models">Модели ИИ</a></li>
+                <li><a href="/history">История команд</a></li>
+                <li><a href="/settings">Настройки</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-content {
+    max-width: 600px;
+}
+
+.error-icon {
+    font-size: 4rem;
+    color: #ffc107;
+    margin-bottom: 2rem;
+}
+
+.error-title {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #dc3545;
+    margin: 0;
+    line-height: 1;
+}
+
+.error-message h2 {
+    color: #343a40;
+    margin: 2rem 0 1rem;
+}
+
+.error-message p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.error-actions {
+    margin: 3rem 0;
+}
+
+.error-actions .btn {
+    margin: 0 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+.error-suggestions {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.error-suggestions h3 {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.error-suggestions ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.error-suggestions li a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+    transition: all 0.3s;
+}
+
+.error-suggestions li a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .error-title {
+        font-size: 4rem;
+    }
+
+    .error-actions .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .error-suggestions ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}История команд - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-history"></i> История команд</h1>
+        <p class="page-description">Просмотр и управление историей выполненных команд</p>
+    </div>
+
+    <!-- Подключаем компонент истории команд -->
+    {% include 'components/command_history.html' %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}
