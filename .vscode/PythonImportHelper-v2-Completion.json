@@ -10479,11 +10479,11 @@
         "documentation": {}
     },
     {
-        "label": "ai_models",
+        "label": "models",
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def ai_models():\n    return render_template(\"ai_models.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():",
+        "peekOfCode": "def models():\n    return render_template(\"models.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n@main_bp.route(\"/settings\")\ndef settings():\n    return render_template(\"settings.html\")\n@main_bp.route(\"/logs\")\ndef logs():",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -11734,7 +11734,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_routing",
         "description": "tests.ui.e2e.ui.test_routing",
-        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client, base_url):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # Открываем страницу выбора моделей\n        ui_client.get(f\"{base_url}/models\")\n        # Ждем загрузки карточек моделей\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".model-card\"))\n        )",
+        "peekOfCode": "class TestRouting:\n    \"\"\"Тесты маршрутизации и взаимодействия с URL.\"\"\"\n    def test_model_selection_routing(self, ui_client, base_url):\n        \"\"\"Тест маршрутизации при выборе модели.\"\"\"\n        # ✅ Теперь URL корректный\n        ui_client.get(f\"{base_url}/models\")\n        # ✅ ИСПРАВЛЕНО: Правильный селектор\n        WebDriverWait(ui_client, 10).until(\n            EC.presence_of_element_located((By.CSS_SELECTOR, \".ai-model-item\"))\n        )",
         "detail": "tests.ui.e2e.ui.test_routing",
         "documentation": {}
     },

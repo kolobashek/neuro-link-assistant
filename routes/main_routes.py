@@ -49,10 +49,10 @@ def index():
     return render_template("index.html", commands=commands)
 
 
-# Добавить новые маршруты:
-@main_bp.route("/ai_models")
-def ai_models():
-    return render_template("ai_models.html")
+# ✅ ПЕРЕИМЕНОВАНО: ai_models → models
+@main_bp.route("/models")
+def models():
+    return render_template("models.html")
 
 
 @main_bp.route("/history")

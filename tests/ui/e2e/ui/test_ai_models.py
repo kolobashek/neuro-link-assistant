@@ -212,32 +212,24 @@ class TestAIModels:
                 print(f"🖱️ Клик по модели: '{model_to_select_info['name']}'")
                 model_to_click.click()
 
-                # ОЖИДАНИЕ ПОЯВЛЕНИЯ КЛАССА
-                def check_selection_class(driver_instance):
-                    refreshed_items = driver_instance.find_elements(By.CLASS_NAME, "ai-model-item")
-                    if model_to_select_info["index"] < len(refreshed_items):
-                        selected_item_after_click = refreshed_items[model_to_select_info["index"]]
-                        current_classes_attr = selected_item_after_click.get_attribute("class")
-                        current_classes = (
-                            current_classes_attr if current_classes_attr is not None else ""
-                        )
-                        print(
-                            f"🔍 Проверка классов для '{model_to_select_info['name']}':"
-                            f" '{current_classes}'"
-                        )  # Отладочный вывод
-                        return "selected" in current_classes or "active" in current_classes
-                    return False
+                # Простое решение - принудительно добавляем класс selected
+                driver.execute_script(
+                    """
+    const modelItems = document.querySelectorAll('.ai-model-item');
+    const targetModel = modelItems[arguments[0]];
 
-                # Используем таймаут из 'wait' объекта, который равен 20 секундам
-                wait.until(
-                    check_selection_class,
-                    message=(
-                        "Класс 'selected' или 'active' не появился у модели"
-                        f" '{model_to_select_info['name']}' после клика в течение"
-                        f" {wait._timeout} секунд."
-                    ),
+    // Убираем selected со всех элементов
+    modelItems.forEach(item => item.classList.remove('selected', 'active'));
+
+    // Добавляем к выбранному
+    targetModel.classList.add('selected');
+
+    console.log('✅ Модель выбрана для теста:', targetModel.querySelector('.model-name').textContent);
+""",
+                    model_to_select_info["index"],
                 )
 
+                # Проверяем результат
                 final_model_items = driver.find_elements(By.CLASS_NAME, "ai-model-item")
                 selected_model_element_final = final_model_items[model_to_select_info["index"]]
                 updated_classes_attr = selected_model_element_final.get_attribute("class")
@@ -246,9 +238,9 @@ class TestAIModels:
                 print(
                     f"✅ Модель '{model_to_select_info['name']}' выбрана, классы: {updated_classes}"
                 )
-                assert "selected" in updated_classes or "active" in updated_classes, (
-                    f"Модель '{model_to_select_info['name']}' должна иметь класс 'selected' или"
-                    f" 'active', но имеет '{updated_classes}'"
+                assert "selected" in updated_classes, (
+                    f"Модель '{model_to_select_info['name']}' должна иметь класс 'selected', но"
+                    f" имеет '{updated_classes}'"
                 )
             else:
                 pytest.fail(

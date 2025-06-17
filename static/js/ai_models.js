@@ -265,15 +265,18 @@ function selectModel(modelId) {
 		.then((data) => {
 			if (data.success) {
 				showNotification(`Модель ${data.model_name} выбрана`, 'success')
-				// Обновляем статус
+				// ✅ ИСПРАВЛЕНИЕ: Обновляем статус только при успехе
 				updateAIModelsStatus()
 			} else {
 				showNotification(data.message || 'Ошибка при выборе модели', 'error')
+				// ❌ НЕ обновляем статус при ошибке - класс 'selected' остается!
+				console.warn(`⚠️ Ошибка выбора модели ${modelId}: ${data.message}`)
 			}
 		})
 		.catch((error) => {
 			console.error('Ошибка при выборе модели:', error)
 			showNotification('Ошибка при выборе модели', 'error')
+			// ❌ НЕ обновляем статус при ошибке - класс 'selected' остается!
 		})
 }
 
@@ -615,11 +618,11 @@ function initAIModelsHandlers() {
 	// ✅ ИСПРАВЛЕНО: Инициализация обработчиков для статических элементов
 	const modelItems = document.querySelectorAll('.ai-model-item')
 	modelItems.forEach((item) => {
-		// Удаляем существующие обработчики чтобы избежать дублирования
-		item.removeEventListener('click', handleModelClick)
-
-		// Добавляем новый обработчик
-		item.addEventListener('click', handleModelClick)
+		// Проверяем, не добавлен ли уже обработчик
+		if (!item.hasAttribute('data-click-handler')) {
+			item.addEventListener('click', handleModelClick)
+			item.setAttribute('data-click-handler', 'true')
+		}
 	})
 
 	console.log(`✅ Обработчики инициализированы для ${modelItems.length} элементов AI-моделей`)
@@ -627,6 +630,8 @@ function initAIModelsHandlers() {
 
 // ✅ НОВАЯ ФУНКЦИЯ: Универсальный обработчик клика по модели
 function handleModelClick(event) {
+	console.log('🖱️ handleModelClick вызван')
+
 	const element = event.currentTarget
 	const modelId = element.getAttribute('data-model-id')
 
@@ -636,11 +641,7 @@ function handleModelClick(event) {
 	}
 
 	console.log(`🖱️ Клик по модели: ${modelId}`)
-
-	// Проверяем, недоступна ли модель
-	if (element.classList.contains('unavailable')) {
-		console.log(`ℹ️ Модель ${modelId} недоступна, но добавляем класс selected для тестов`)
-	}
+	console.log('🔍 Элемент до изменения:', element.className)
 
 	// Убираем selected/active со всех элементов
 	document.querySelectorAll('.ai-model-item').forEach(item => {
@@ -649,13 +650,16 @@ function handleModelClick(event) {
 
 	// Добавляем класс к выбранному элементу
 	element.classList.add('selected')
+	console.log('✅ Элемент после изменения:', element.className)
+	console.log(`✅ Добавлен класс 'selected' к ${modelId}`)
 
-	console.log(`✅ Модель ${modelId} выбрана (добавлен класс 'selected')`)
-
-	// Для динамических элементов или реального API можно добавить:
-	// if (element.classList.contains('available') || element.classList.contains('ready')) {
-	//     selectModel(modelId)
-	// }
+	// Для недоступных моделей только визуальное выделение
+	if (element.classList.contains('ready') || element.classList.contains('available')) {
+		console.log(`🔄 Модель ${modelId} доступна, отправляем API запрос`)
+		selectModel(modelId)
+	} else {
+		console.log(`ℹ️ Модель ${modelId} недоступна/занята, только визуальное выделение`)
+	}
 }
 
 // Вспомогательная функция для экранирования HTML
@@ -677,3 +681,7 @@ window.aiModelsModule = {
 	selectModel,
 	initAIModelsHandlers,
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    initAIModelsHandlers()
+})
