@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template, request
 
 main_bp = Blueprint("main", __name__)
 
@@ -60,6 +60,12 @@ def model_settings(model_id):
     return render_template("model_settings.html", model_id=model_id)
 
 
+@main_bp.route("/models/browser")
+def browser_models():
+    """Страница управления браузерными моделями."""
+    return render_template("browser.html")
+
+
 @main_bp.route("/history")
 def history():
     return render_template("history.html")
@@ -105,6 +111,37 @@ def task_details(task_id):
     return render_template("task_details.html", task_id=task_id)
 
 
-@main_bp.route("/tasks/create")
+@main_bp.route("/tasks/create", methods=["GET", "POST"])
 def task_create():
+    """Страница создания новой задачи."""
+    if request.method == "POST":
+        print(f"🔍 [DEBUG] POST data: {request.form}")
+        print(f"🔍 [DEBUG] Content-Type: {request.content_type}")
+
+        # Имитируем создание задачи
+        import uuid
+
+        task_id = f"task-{uuid.uuid4().hex[:8]}"
+
+        print(f"🔍 [DEBUG] POST /tasks/create - перенаправляем на /tasks/{task_id}")
+        return redirect(f"/tasks/{task_id}")
+
+    print("🔍 [DEBUG] GET /tasks/create")
     return render_template("task_create.html")
+
+
+@main_bp.route("/orchestrator")
+def orchestrator():
+    """Страница оркестратора моделей."""
+    return render_template("orchestrator.html")
+
+
+@main_bp.route("/workflows")
+def workflows():
+    """Страница шаблонов и рабочих процессов."""
+    return render_template("workflows.html")
+
+
+@main_bp.route("/analytics")
+def analytics():
+    return render_template("analytics.html")

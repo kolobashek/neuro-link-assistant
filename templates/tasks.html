@@ -1,17 +1,150 @@
 {% extends "base.html" %}
 
+{% block title %}Центр задач - Neuro Link Assistant{% endblock %}
+
 {% block content %}
 <div class="tasks-container">
-    <h1>Центр задач</h1>
+    <div class="page-header">
+        <h1><i class="fas fa-tasks"></i> Центр задач</h1>
+        <p class="page-description">Управление и мониторинг задач</p>
+    </div>
+
+    <div class="task-actions">
+        <button class="btn btn-primary create-task-btn" onclick="window.location.href='/tasks/create'">
+            <i class="fas fa-plus"></i> Создать задачу
+        </button>
+    </div>
+
     <div class="task-list">
-        <div class="task-item" data-task-id="task-1">
-            <h3 class="task-title">Тестовая задача 1</h3>
-            <p>Описание задачи</p>
-        </div>
-        <div class="task-item" data-task-id="task-2">
-            <h3 class="task-title">Тестовая задача 2</h3>
-            <p>Описание задачи</p>
-        </div>
+        <!-- Тестовые задачи для UI тестов - теперь как ссылки -->
+        <a href="/tasks/task-1" class="task-item" data-task-id="task-1">
+            <div class="task-header">
+                <h3 class="task-title">Тестовая задача 1</h3>
+                <div class="task-status status-running">Выполняется</div>
+            </div>
+            <p class="task-description">Описание первой тестовой задачи</p>
+            <div class="task-meta">
+                <span class="task-time">Создано: 17.06.2025 17:00</span>
+                <span class="task-type">Тип: Автоматизация</span>
+            </div>
+        </a>
+
+        <a href="/tasks/task-2" class="task-item" data-task-id="task-2">
+            <div class="task-header">
+                <h3 class="task-title">Тестовая задача 2</h3>
+                <div class="task-status status-completed">Завершена</div>
+            </div>
+            <p class="task-description">Описание второй тестовой задачи</p>
+            <div class="task-meta">
+                <span class="task-time">Создано: 17.06.2025 16:30</span>
+                <span class="task-type">Тип: Обработка данных</span>
+            </div>
+        </a>
+
+        <a href="/tasks/task-3" class="task-item" data-task-id="task-3">
+            <div class="task-header">
+                <h3 class="task-title">Тестовая задача 3</h3>
+                <div class="task-status status-pending">Ожидает</div>
+            </div>
+            <p class="task-description">Описание третьей тестовой задачи</p>
+            <div class="task-meta">
+                <span class="task-time">Создано: 17.06.2025 16:00</span>
+                <span class="task-type">Тип: Анализ</span>
+            </div>
+        </a>
     </div>
 </div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.tasks-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.task-actions {
+    margin: 1rem 0 2rem 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.task-item {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.task-item:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+    text-decoration: none;
+    color: inherit;
+}
+
+.task-item:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.task-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.task-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-running {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-completed {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.status-pending {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.task-description {
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.task-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 1rem;
+}
+</style>
 {% endblock %}

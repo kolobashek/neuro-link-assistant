@@ -57,7 +57,7 @@
 		"git.autorefresh": false,
 		"git.autofetch": false,
 		"editor.minimap.enabled": true,
-		"breadcrumbs.enabled": false,
+		"breadcrumbs.enabled": true,
 		"python.analysis.autoImportCompletions": false,
 		"files.autoSave": "off"
 }

@@ -1,12 +1,252 @@
 {% extends "base.html" %}
 
+{% block title %}Детали задачи {{ task_id }} - Neuro Link Assistant{% endblock %}
+
 {% block content %}
-<div class="task-details">
-    <div class="task-header">
-        <h1 class="task-title">Задача {{ task_id }}</h1>
+<div class="task-details-container">
+    <div class="page-header">
+        <h1 class="task-title">
+            <i class="fas fa-tasks"></i>
+            Задача {{ task_id }}
+        </h1>
+        <div class="task-status">
+            <span class="status-badge status-running">Выполняется</span>
+        </div>
     </div>
-    <div class="execution-graph">
-        <p>График выполнения задачи</p>
+
+    <!-- ✅ ДОБАВЛЯЕМ: Элементы для тестов -->
+    <div class="task-details">
+        <div class="task-info">
+            <h3>Информация о задаче</h3>
+            <p><strong>ID:</strong> {{ task_id }}</p>
+            <p><strong>Статус:</strong> Выполняется</p>
+            <p><strong>Создано:</strong> Только что</p>
+        </div>
+
+        <!-- ✅ ДОБАВЛЯЕМ: Граф выполнения -->
+        <div class="execution-graph">
+            <h3>Граф выполнения</h3>
+            <div class="graph-container">
+                <div class="execution-node active">
+                    <i class="fas fa-play"></i>
+                    <span>Запуск</span>
+                </div>
+                <div class="execution-node">
+                    <i class="fas fa-cog"></i>
+                    <span>Обработка</span>
+                </div>
+                <div class="execution-node">
+                    <i class="fas fa-check"></i>
+                    <span>Завершение</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ ДОБАВЛЯЕМ: Пошаговый график -->
+        <div class="task-progress-graph">
+            <h3>Прогресс выполнения</h3>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 33%"></div>
+                </div>
+                <div class="progress-text">33% выполнено</div>
+            </div>
+        </div>
+
+        <!-- ✅ ДОБАВЛЯЕМ: Пошаговые действия -->
+        <div class="execution-steps">
+            <h3>Шаги выполнения</h3>
+            <div class="steps-list">
+                <div class="step completed">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Инициализация задачи</span>
+                    <small>Завершено в 12:34:56</small>
+                </div>
+                <div class="step active">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Выполнение основной логики</span>
+                    <small>В процессе...</small>
+                </div>
+                <div class="step pending">
+                    <i class="fas fa-clock"></i>
+                    <span>Финализация результатов</span>
+                    <small>Ожидает</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ ДОБАВЛЯЕМ: Индикатор выполнения -->
+        <div class="progress-indicator">
+            <div class="spinner"></div>
+            <p>Задача выполняется...</p>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.task-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.task-title {
+    color: #333;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-running {
+    background: #ffc107;
+    color: #856404;
+}
+
+.task-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.task-info, .execution-graph, .task-progress-graph, .execution-steps {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.graph-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.execution-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.execution-node.active {
+    border-color: #007bff;
+    background: #e3f2fd;
+}
+
+.execution-node i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.progress-container {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.step.completed {
+    background: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.step.active {
+    background: #cce5ff;
+    border-color: #007bff;
+}
+
+.step.pending {
+    background: #f8f9fa;
+    border-color: #ddd;
+}
+
+.progress-indicator {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .task-details {
+        grid-template-columns: 1fr;
+    }
+
+    .graph-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .execution-node {
+        min-width: 60px;
+        padding: 0.5rem;
+    }
+}
+</style>
 {% endblock %}

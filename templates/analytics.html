@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Центр аналитики - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="analytics-dashboard">
+    <div class="page-header">
+        <h1><i class="fas fa-chart-bar"></i> Центр аналитики</h1>
+        <p class="page-description">Статистика и анализ использования системы</p>
+    </div>
+
+    <div class="stats-container">
+        <!-- Статистика использования -->
+        <div class="usage-stats usage-statistics">
+            <h2><i class="fas fa-clock"></i> Статистика использования</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Выполнено задач</h3>
+                    <div class="stat-number">142</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Время работы</h3>
+                    <div class="stat-number">24.5 ч</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Успешность</h3>
+                    <div class="stat-number">94.2%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Анализ стоимости -->
+        <div class="cost-analysis cost-stats">
+            <h2><i class="fas fa-dollar-sign"></i> Анализ стоимости</h2>
+            <div class="cost-breakdown">
+                <div class="cost-item">
+                    <span>API вызовы</span>
+                    <span>$12.45</span>
+                </div>
+                <div class="cost-item">
+                    <span>Локальные вычисления</span>
+                    <span>$0.00</span>
+                </div>
+                <div class="cost-item">
+                    <span>Общая стоимость</span>
+                    <span class="total">$12.45</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Отчеты по задачам -->
+        <div class="task-reports reports-section">
+            <h2><i class="fas fa-file-alt"></i> Отчеты по задачам</h2>
+            <div class="reports-list">
+                <div class="report-item">
+                    <span class="report-name">Ежедневный отчет</span>
+                    <span class="report-date">20.06.2025</span>
+                </div>
+                <div class="report-item">
+                    <span class="report-name">Недельная сводка</span>
+                    <span class="report-date">17-23.06.2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Рекомендации -->
+        <div class="recommendations optimization-tips">
+            <h2><i class="fas fa-lightbulb"></i> Рекомендации по оптимизации</h2>
+            <div class="tips-list">
+                <div class="tip-item">
+                    <i class="fas fa-arrow-up text-success"></i>
+                    <span>Использовать локальные модели для простых задач</span>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-clock text-warning"></i>
+                    <span>Оптимизировать время выполнения задач</span>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-coins text-info"></i>
+                    <span>Снизить стоимость API вызовов на 15%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.analytics-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.stats-container {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.usage-stats, .cost-analysis, .task-reports, .recommendations {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.usage-stats h2, .cost-analysis h2, .task-reports h2, .recommendations h2 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.cost-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cost-item.total {
+    font-weight: bold;
+    border-top: 2px solid #007bff;
+    border-bottom: none;
+}
+
+.reports-list, .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.report-item, .tip-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.tip-item i {
+    margin-right: 0.5rem;
+}
+
+.text-success { color: #28a745; }
+.text-warning { color: #ffc107; }
+.text-info { color: #17a2b8; }
+</style>
+{% endblock %}

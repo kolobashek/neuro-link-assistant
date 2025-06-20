@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Оркестратор моделей - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="orchestrator-dashboard">
+    <div class="page-header">
+        <h1><i class="fas fa-network-wired"></i> Оркестратор моделей</h1>
+        <p class="page-description">Управление маршрутизацией и оптимизацией запросов между моделями</p>
+    </div>
+
+    <!-- Секция правил маршрутизации -->
+    <div class="routing-rules rules-section">
+        <h2><i class="fas fa-route"></i> Правила маршрутизации</h2>
+        <div class="rules-container">
+            <div class="rule-item">
+                <h3>Правило по типу задачи</h3>
+                <p>Текстовая генерация → GPT-4</p>
+            </div>
+            <div class="rule-item">
+                <h3>Правило по нагрузке</h3>
+                <p>При высокой нагрузке → локальная модель</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция стратегий оптимизации -->
+    <div class="optimization-strategy strategy-section">
+        <h2><i class="fas fa-chart-line"></i> Стратегии оптимизации</h2>
+        <div class="strategy-container">
+            <div class="strategy-item">
+                <h3>Балансировка нагрузки</h3>
+                <p>Автоматическое распределение запросов</p>
+            </div>
+            <div class="strategy-item">
+                <h3>Кэширование ответов</h3>
+                <p>Сохранение часто запрашиваемых результатов</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция настроек переключения -->
+    <div class="fallback-settings switching-rules">
+        <h2><i class="fas fa-exchange-alt"></i> Настройки переключения</h2>
+        <div class="fallback-container">
+            <div class="fallback-item">
+                <h3>Резервная модель</h3>
+                <p>При недоступности основной модели → Claude</p>
+            </div>
+            <div class="fallback-item">
+                <h3>Таймаут переключения</h3>
+                <p>30 секунд ожидания перед переключением</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.orchestrator-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.rules-section, .strategy-section, .switching-rules {
+    margin: 2rem 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #f9f9f9;
+}
+
+.rules-section h2, .strategy-section h2, .switching-rules h2 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+.rules-container, .strategy-container, .fallback-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.rule-item, .strategy-item, .fallback-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.rule-item h3, .strategy-item h3, .fallback-item h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.rule-item p, .strategy-item p, .fallback-item p {
+    margin: 0;
+    color: #666;
+}
+</style>
+{% endblock %}

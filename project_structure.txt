@@ -259,9 +259,19 @@
 |   |   |-- command_form.html
 |   |   |-- command_history.html
 |   |   |-- modals.html
+|   |-- 404.html
+|   |-- 500.html
 |   |-- base.html
+|   |-- help.html
+|   |-- history.html
+|   |-- history_details.html
 |   |-- index.html
+|   |-- logs.html
 |   |-- models.html
+|   |-- model_settings.html
+|   |-- settings.html
+|   |-- tasks.html
+|   |-- task_details.html
 |-- tests
 |   |-- contract
 |   |   |-- api

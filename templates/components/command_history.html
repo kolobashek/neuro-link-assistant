@@ -2,61 +2,92 @@
 	<div class="section-header">
 		<h3><i class="fas fa-history"></i> История команд</h3>
 		<div class="section-actions">
-			<button id="refresh-history" class="btn btn-primary btn-sm" title="Обновить историю" aria-label="Обновить историю команд">
-				<i class="fas fa-sync"></i>
-			</button>
-			<button id="export-history" class="btn btn-secondary btn-sm" title="Экспортировать историю" aria-label="Экспортировать историю команд">
-				<i class="fas fa-download"></i>
-			</button>
-			<button id="clear-history-display" class="btn btn-danger btn-sm" title="Очистить отображение" aria-label="Очистить отображение истории">
-				<i class="fas fa-trash"></i>
+			<button id="clear-history-btn" class="btn btn-secondary btn-sm" title="Очистить историю">
+				<i class="fas fa-trash"></i> Очистить
 			</button>
 		</div>
 	</div>
 
-	<div class="history-table-container">
-		<table class="history-table">
-			<thead>
-				<tr>
-					<th>Время</th>
-					<th>Команда</th>
-					<th>Статус</th>
-					<th>Действия</th>
-				</tr>
-			</thead>
-			<tbody id="history-list">
-				<!-- ✅ ИСПРАВЛЕНО: Добавляем ссылки для кликабельности -->
-				<tr class="history-item" data-history-id="cmd-001">
-					<td><a href="/history/cmd-001">14:30:15</a></td>
-					<td><a href="/history/cmd-001">открой браузер</a></td>
-					<td><span class="badge badge-success">Выполнено</span></td>
-					<td>
-						<a href="/history/cmd-001" class="btn btn-sm btn-info">Детали</a>
-						<button class="btn btn-sm btn-secondary">Повторить</button>
-					</td>
-				</tr>
-				<tr class="history-item" data-history-id="cmd-002">
-					<td><a href="/history/cmd-002">14:25:32</a></td>
-					<td><a href="/history/cmd-002">найди файл document.txt</a></td>
-					<td><span class="badge badge-danger">Ошибка</span></td>
-					<td>
-						<a href="/history/cmd-002" class="btn btn-sm btn-info">Детали</a>
-						<button class="btn btn-sm btn-secondary">Повторить</button>
-					</td>
-				</tr>
-				<tr class="history-item" data-history-id="cmd-003">
-					<td><a href="/history/cmd-003">14:20:45</a></td>
-					<td><a href="/history/cmd-003">скачай файл с сайта</a></td>
-					<td><span class="badge badge-success">Выполнено</span></td>
-					<td>
-						<a href="/history/cmd-003" class="btn btn-sm btn-info">Детали</a>
-						<button class="btn btn-sm btn-secondary">Повторить</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" class="loading" style="display: none;">Загрузка истории команд...</td>
-				</tr>
-			</tbody>
-		</table>
+	<div id="history-list" class="history-list">
+		<!-- История команд как ссылки -->
+		<a href="/history/cmd-001" class="history-item" data-history-id="cmd-001">
+			<div class="history-header">
+				<div class="command-text">открыть браузер</div>
+				<div class="command-time">17.06.2025 14:30</div>
+			</div>
+			<div class="command-status status-success">Выполнено</div>
+		</a>
+
+		<a href="/history/cmd-002" class="history-item" data-history-id="cmd-002">
+			<div class="history-header">
+				<div class="command-text">найти файл report.pdf</div>
+				<div class="command-time">17.06.2025 14:25</div>
+			</div>
+			<div class="command-status status-success">Выполнено</div>
+		</a>
+
+		<a href="/history/cmd-003" class="history-item" data-history-id="cmd-003">
+			<div class="history-header">
+				<div class="command-text">создать папку проекты</div>
+				<div class="command-time">17.06.2025 14:20</div>
+			</div>
+			<div class="command-status status-pending">В процессе</div>
+		</a>
 	</div>
 </div>
+
+<style>
+.history-item {
+	display: block;
+	padding: 0.75rem;
+	border: 1px solid #e9ecef;
+	border-radius: 4px;
+	margin-bottom: 0.5rem;
+	background: white;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none;
+	color: inherit;
+}
+
+.history-item:hover {
+	border-color: #007bff;
+	box-shadow: 0 2px 4px rgba(0,123,255,0.1);
+	text-decoration: none;
+	color: inherit;
+}
+
+.history-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.command-text {
+	font-weight: 500;
+	color: #333;
+}
+
+.command-time {
+	font-size: 0.875rem;
+	color: #6c757d;
+}
+
+.command-status {
+	margin-top: 0.25rem;
+	padding: 0.125rem 0.5rem;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	display: inline-block;
+}
+
+.status-success {
+	background: #d4edda;
+	color: #155724;
+}
+
+.status-pending {
+	background: #fff3cd;
+	color: #856404;
+}
+</style>

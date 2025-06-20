@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Рабочие процессы - Neuro Link Assistant{% endblock %}
+
+{% block content %}
+<div class="workflows-container">
+    <div class="page-header">
+        <h1><i class="fas fa-project-diagram"></i> Шаблоны и рабочие процессы</h1>
+        <p class="page-description">Управление автоматизированными процессами и шаблонами</p>
+    </div>
+
+    <div class="workflow-actions">
+        <button class="btn btn-primary create-workflow-btn new-workflow">
+            <i class="fas fa-plus"></i> Создать процесс
+        </button>
+    </div>
+
+    <!-- Библиотека шаблонов -->
+    <div class="templates-section">
+        <h2><i class="fas fa-layer-group"></i> Библиотека шаблонов</h2>
+
+        <div class="templates-library workflow-templates templates-list">
+            <div class="template-item">
+                <div class="template-header">
+                    <h3 class="template-title">Веб-скрапинг</h3>
+                    <div class="template-category">Автоматизация</div>
+                </div>
+                <p class="template-description">Автоматический сбор данных с веб-сайтов</p>
+                <div class="template-actions">
+                    <button class="btn btn-sm btn-outline-primary">Использовать</button>
+                    <button class="btn btn-sm btn-outline-secondary">Просмотр</button>
+                </div>
+            </div>
+
+            <div class="template-item">
+                <div class="template-header">
+                    <h3 class="template-title">Обработка документов</h3>
+                    <div class="template-category">Обработка данных</div>
+                </div>
+                <p class="template-description">Автоматическая обработка и анализ документов</p>
+                <div class="template-actions">
+                    <button class="btn btn-sm btn-outline-primary">Использовать</button>
+                    <button class="btn btn-sm btn-outline-secondary">Просмотр</button>
+                </div>
+            </div>
+
+            <div class="template-item">
+                <div class="template-header">
+                    <h3 class="template-title">Мониторинг системы</h3>
+                    <div class="template-category">Система</div>
+                </div>
+                <p class="template-description">Мониторинг состояния системы и уведомления</p>
+                <div class="template-actions">
+                    <button class="btn btn-sm btn-outline-primary">Использовать</button>
+                    <button class="btn btn-sm btn-outline-secondary">Просмотр</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Пользовательские процессы -->
+    <div class="custom-section">
+        <h2><i class="fas fa-user-cog"></i> Пользовательские процессы</h2>
+
+        <div class="custom-workflows user-workflows">
+            <div class="workflow-item">
+                <div class="workflow-header">
+                    <h3 class="workflow-title">Мой процесс 1</h3>
+                    <div class="workflow-status status-active">Активен</div>
+                </div>
+                <p class="workflow-description">Пользовательский процесс для автоматизации задач</p>
+                <div class="workflow-meta">
+                    <span class="workflow-runs">Запусков: 15</span>
+                    <span class="workflow-modified">Изменен: 20.06.2025</span>
+                </div>
+                <div class="workflow-actions">
+                    <button class="btn btn-sm btn-primary">Запустить</button>
+                    <button class="btn btn-sm btn-outline-secondary">Редактировать</button>
+                </div>
+            </div>
+
+            <div class="workflow-item">
+                <div class="workflow-header">
+                    <h3 class="workflow-title">Мой процесс 2</h3>
+                    <div class="workflow-status status-paused">Приостановлен</div>
+                </div>
+                <p class="workflow-description">Процесс обработки данных с планировщиком</p>
+                <div class="workflow-meta">
+                    <span class="workflow-runs">Запусков: 8</span>
+                    <span class="workflow-modified">Изменен: 18.06.2025</span>
+                </div>
+                <div class="workflow-actions">
+                    <button class="btn btn-sm btn-primary">Запустить</button>
+                    <button class="btn btn-sm btn-outline-secondary">Редактировать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.workflows-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.workflow-actions {
+    margin: 1rem 0 2rem 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.templates-section, .custom-section {
+    margin: 2rem 0;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+}
+
+.templates-section h2, .custom-section h2 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.templates-library, .custom-workflows {
+    display: grid;
+    gap: 1rem;
+}
+
+.template-item, .workflow-item {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    background: #f9f9f9;
+}
+
+.template-header, .workflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.template-title, .workflow-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.template-category, .workflow-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.template-category {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-active {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.status-paused {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.template-description, .workflow-description {
+    color: #666;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.workflow-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0.5rem 0;
+}
+
+.template-actions, .workflow-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background: white;
+}
+
+.btn-outline-primary:hover {
+    background: #007bff;
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+    background: white;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d;
+    color: white;
+}
+</style>
+{% endblock %}

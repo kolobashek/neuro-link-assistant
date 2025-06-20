@@ -1,19 +1,157 @@
 {% extends "base.html" %}
 
-{% block title %}Модели ИИ - Neuro Link Assistant{% endblock %}
+{% block title %}AI Модели - Neuro Link Assistant{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="models-container">
     <div class="page-header">
-        <h1><i class="fas fa-brain"></i> Модели искусственного интеллекта</h1>
-        <p class="page-description">Управление и настройка AI моделей</p>
+        <h1><i class="fas fa-robot"></i> Управление AI моделями</h1>
+        <p class="page-description">Настройка и управление искусственным интеллектом</p>
     </div>
 
-    <!-- Подключаем компонент AI моделей -->
-    {% include 'components/ai_models.html' %}
+    <!-- API Модели -->
+    <div class="model-category model-type-section">
+        <h2><i class="fas fa-cloud"></i> API Модели</h2>
+        <p class="category-description">Модели, работающие через API сервисы</p>
+
+        <div class="ai-models-list">
+            <div class="ai-model-item" data-model-id="gpt-4">
+                <div class="model-info">
+                    <h3 class="model-name">GPT-4</h3>
+                    <p class="model-description">Продвинутая языковая модель OpenAI</p>
+                </div>
+                <div class="model-actions">
+                    <!-- ✅ ЗАМЕНИЛИ button на ссылку -->
+                    <a href="/models/gpt-4/settings" class="btn btn-sm btn-outline-primary model-settings-btn">
+                        <i class="fas fa-cog settings-icon"></i> Настройки
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Локальные модели -->
+    <div class="model-category model-type-section">
+        <h2><i class="fas fa-desktop"></i> Локальные модели</h2>
+        <p class="category-description">Модели, работающие на локальном компьютере</p>
+
+        <div class="ai-models-list">
+            <div class="ai-model-item" data-model-id="llama-local">
+                <div class="model-info">
+                    <h3 class="model-name">LLaMA Local</h3>
+                    <p class="model-description">Локальная версия модели Meta LLaMA</p>
+                </div>
+                <div class="model-actions">
+                    <!-- ✅ ЗАМЕНИЛИ button на ссылку -->
+                    <a href="/models/llama-local/settings" class="btn btn-sm btn-outline-primary model-settings-btn">
+                        <i class="fas fa-cog settings-icon"></i> Настройки
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Бесплатные модели -->
+    <div class="model-category model-type-section">
+        <h2><i class="fas fa-gift"></i> Бесплатные модели</h2>
+        <p class="category-description">Модели с бесплатным доступом</p>
+
+        <div class="ai-models-list">
+            <div class="ai-model-item" data-model-id="huggingface-free">
+                <div class="model-info">
+                    <h3 class="model-name">HuggingFace Free</h3>
+                    <p class="model-description">Бесплатные модели от HuggingFace</p>
+                </div>
+                <div class="model-actions">
+                    <!-- ✅ ЗАМЕНИЛИ button на ссылку -->
+                    <a href="/models/huggingface-free/settings" class="btn btn-sm btn-outline-primary model-settings-btn">
+                        <i class="fas fa-cog settings-icon"></i> Настройки
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/ai_models.js') }}"></script>
+{% block styles %}
+<style>
+.models-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.model-category {
+    margin: 2rem 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #f9f9f9;
+}
+
+.model-category h2 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+.category-description {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.ai-models-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.ai-model-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.model-info h3 {
+    margin: 0 0 0.25rem 0;
+    color: #333;
+}
+
+.model-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.model-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background: white;
+}
+
+.btn-outline-primary:hover {
+    background: #007bff;
+    color: white;
+}
+</style>
 {% endblock %}

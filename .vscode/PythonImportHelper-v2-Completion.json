@@ -4732,7 +4732,23 @@
         "documentation": {}
     },
     {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -10483,7 +10499,7 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def models():\n    return render_template(\"models.html\")\n@main_bp.route(\"/models/<model_id>/settings\")\ndef model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")",
+        "peekOfCode": "def models():\n    return render_template(\"models.html\")\n@main_bp.route(\"/models/<model_id>/settings\")\ndef model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/models/browser\")\ndef browser_models():\n    \"\"\"Страница управления браузерными моделями.\"\"\"\n    return render_template(\"browser.html\")\n@main_bp.route(\"/history\")",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10492,7 +10508,16 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")\ndef history_detail(item_id):\n    # Заглушка данных команды (позже заменить на запрос к БД)\n    command = {",
+        "peekOfCode": "def model_settings(model_id):\n    return render_template(\"model_settings.html\", model_id=model_id)\n@main_bp.route(\"/models/browser\")\ndef browser_models():\n    \"\"\"Страница управления браузерными моделями.\"\"\"\n    return render_template(\"browser.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "browser_models",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def browser_models():\n    \"\"\"Страница управления браузерными моделями.\"\"\"\n    return render_template(\"browser.html\")\n@main_bp.route(\"/history\")\ndef history():\n    return render_template(\"history.html\")\n# ✅ НОВЫЙ РОУТ: Детали элемента истории\n@main_bp.route(\"/history/<item_id>\")\ndef history_detail(item_id):\n    # Заглушка данных команды (позже заменить на запрос к БД)",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10537,7 +10562,7 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def help():\n    return render_template(\"help.html\")\n@main_bp.route(\"/tasks\")\ndef tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():",
+        "peekOfCode": "def help():\n    return render_template(\"help.html\")\n@main_bp.route(\"/tasks\")\ndef tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\", methods=[\"GET\", \"POST\"])\ndef task_create():",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10546,7 +10571,7 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():\n    return render_template(\"task_create.html\")",
+        "peekOfCode": "def tasks():\n    return render_template(\"tasks.html\")\n@main_bp.route(\"/tasks/<task_id>\")\ndef task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\", methods=[\"GET\", \"POST\"])\ndef task_create():\n    \"\"\"Страница создания новой задачи.\"\"\"\n    if request.method == \"POST\":\n        print(f\"🔍 [DEBUG] POST data: {request.form}\")",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10555,7 +10580,7 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\")\ndef task_create():\n    return render_template(\"task_create.html\")",
+        "peekOfCode": "def task_details(task_id):\n    return render_template(\"task_details.html\", task_id=task_id)\n@main_bp.route(\"/tasks/create\", methods=[\"GET\", \"POST\"])\ndef task_create():\n    \"\"\"Страница создания новой задачи.\"\"\"\n    if request.method == \"POST\":\n        print(f\"🔍 [DEBUG] POST data: {request.form}\")\n        print(f\"🔍 [DEBUG] Content-Type: {request.content_type}\")\n        # Имитируем создание задачи\n        import uuid",
         "detail": "routes.main_routes",
         "documentation": {}
     },
@@ -10564,7 +10589,34 @@
         "kind": 2,
         "importPath": "routes.main_routes",
         "description": "routes.main_routes",
-        "peekOfCode": "def task_create():\n    return render_template(\"task_create.html\")",
+        "peekOfCode": "def task_create():\n    \"\"\"Страница создания новой задачи.\"\"\"\n    if request.method == \"POST\":\n        print(f\"🔍 [DEBUG] POST data: {request.form}\")\n        print(f\"🔍 [DEBUG] Content-Type: {request.content_type}\")\n        # Имитируем создание задачи\n        import uuid\n        task_id = f\"task-{uuid.uuid4().hex[:8]}\"\n        print(f\"🔍 [DEBUG] POST /tasks/create - перенаправляем на /tasks/{task_id}\")\n        return redirect(f\"/tasks/{task_id}\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "orchestrator",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def orchestrator():\n    \"\"\"Страница оркестратора моделей.\"\"\"\n    return render_template(\"orchestrator.html\")\n@main_bp.route(\"/workflows\")\ndef workflows():\n    \"\"\"Страница шаблонов и рабочих процессов.\"\"\"\n    return render_template(\"workflows.html\")\n@main_bp.route(\"/analytics\")\ndef analytics():\n    return render_template(\"analytics.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "workflows",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def workflows():\n    \"\"\"Страница шаблонов и рабочих процессов.\"\"\"\n    return render_template(\"workflows.html\")\n@main_bp.route(\"/analytics\")\ndef analytics():\n    return render_template(\"analytics.html\")",
+        "detail": "routes.main_routes",
+        "documentation": {}
+    },
+    {
+        "label": "analytics",
+        "kind": 2,
+        "importPath": "routes.main_routes",
+        "description": "routes.main_routes",
+        "peekOfCode": "def analytics():\n    return render_template(\"analytics.html\")",
         "detail": "routes.main_routes",
         "documentation": {}
     },
