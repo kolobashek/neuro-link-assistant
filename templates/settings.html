@@ -10,10 +10,230 @@
     </div>
 
     <div class="settings-container">
+        <!-- Общие настройки -->
         <div class="settings-section">
-            <h3>Общие настройки</h3>
-            <p>Здесь будут настройки системы...</p>
+            <h3><i class="fas fa-sliders-h"></i> Общие настройки</h3>
+            <div class="setting-item">
+                <label for="app-theme">Тема приложения:</label>
+                <select id="app-theme" name="theme">
+                    <option value="light">Светлая</option>
+                    <option value="dark">Темная</option>
+                    <option value="auto">Автоматическая</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="app-language">Язык интерфейса:</label>
+                <select id="app-language" name="language">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- AI-модели (НОВАЯ СЕКЦИЯ) -->
+        <div class="settings-section">
+            <h3><i class="fas fa-robot"></i> Управление AI-моделями</h3>
+            <div class="ai-models-container">
+                <div class="setting-item">
+                    <label for="current-model">Текущая модель:</label>
+                    <select id="current-model" name="current-model">
+                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        <option value="distilgpt2">DistilGPT-2</option>
+                        <option value="llama-2-7b">Llama 2 (7B)</option>
+                        <option value="mistral-7b">Mistral 7B</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="model-temperature">Температура генерации:</label>
+                    <input type="range" id="model-temperature" min="0.1" max="2.0" step="0.1" value="0.7">
+                    <span class="setting-value">0.7</span>
+                </div>
+                <div class="setting-item">
+                    <label for="max-tokens">Максимум токенов:</label>
+                    <input type="number" id="max-tokens" min="10" max="2000" value="100">
+                </div>
+                <div class="setting-item">
+                    <button type="button" class="btn btn-primary" id="test-model-btn">
+                        🧪 Тестировать модель
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="refresh-models-btn">
+                        🔄 Обновить список моделей
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Уведомления -->
+        <div class="settings-section">
+            <h3><i class="fas fa-bell"></i> Уведомления</h3>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="enable-notifications" checked>
+                    Включить уведомления
+                </label>
+            </div>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="sound-notifications">
+                    Звуковые уведомления
+                </label>
+            </div>
+        </div>
+
+        <!-- API ключи -->
+        <div class="settings-section">
+            <h3><i class="fas fa-key"></i> API ключи</h3>
+            <div class="setting-item">
+                <label for="huggingface-token">HuggingFace Token:</label>
+                <input type="password" id="huggingface-token" name="huggingface-token"
+                       placeholder="Введите HuggingFace токен">
+                <button type="button" class="btn btn-sm btn-secondary" id="toggle-token-visibility">
+                    👁️ Показать
+                </button>
+            </div>
+            <div class="setting-item">
+                <label for="openai-key">OpenAI API Key:</label>
+                <input type="password" id="openai-key" name="openai-key"
+                       placeholder="Введите OpenAI API ключ">
+            </div>
+        </div>
+
+        <!-- История -->
+        <div class="settings-section">
+            <h3><i class="fas fa-history"></i> История и данные</h3>
+            <div class="setting-item">
+                <label for="history-limit">Максимум записей в истории:</label>
+                <input type="number" id="history-limit" min="10" max="1000" value="100">
+            </div>
+            <div class="setting-item">
+                <button type="button" class="btn btn-warning" id="clear-history-btn">
+                    🗑️ Очистить историю
+                </button>
+                <button type="button" class="btn btn-info" id="export-data-btn">
+                    💾 Экспорт данных
+                </button>
+            </div>
+        </div>
+
+        <!-- Пользовательские настройки -->
+        <div class="settings-section">
+            <h3><i class="fas fa-user-cog"></i> Пользовательские настройки</h3>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="auto-save-settings" checked>
+                    Автосохранение настроек
+                </label>
+            </div>
+            <div class="setting-item">
+                <label for="default-timeout">Таймаут команд (сек):</label>
+                <input type="number" id="default-timeout" min="5" max="300" value="30">
+            </div>
+        </div>
+
+        <!-- Кнопки действий -->
+        <div class="settings-actions">
+            <button type="button" class="btn btn-success" id="save-settings-btn">
+                💾 Сохранить настройки
+            </button>
+            <button type="button" class="btn btn-secondary" id="reset-settings-btn">
+                🔄 Сбросить к умолчанию
+            </button>
         </div>
     </div>
 </div>
+
+<style>
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.settings-section {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.settings-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color, #2c3e50);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color, #333);
+}
+
+.setting-item input,
+.setting-item select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.setting-item input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+.setting-item input[type="range"] {
+    width: 200px;
+}
+
+.setting-value {
+    margin-left: 10px;
+    font-weight: bold;
+    color: var(--primary-color, #2c3e50);
+}
+
+.settings-actions {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color, #e0e0e0);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary { background: #007bff; color: white; }
+.btn-secondary { background: #6c757d; color: white; }
+.btn-success { background: #28a745; color: white; }
+.btn-warning { background: #ffc107; color: #212529; }
+.btn-info { background: #17a2b8; color: white; }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+</style>
 {% endblock %}

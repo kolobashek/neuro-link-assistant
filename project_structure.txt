@@ -261,7 +261,9 @@
 |   |   |-- modals.html
 |   |-- 404.html
 |   |-- 500.html
+|   |-- analytics.html
 |   |-- base.html
+|   |-- browser.html
 |   |-- help.html
 |   |-- history.html
 |   |-- history_details.html
@@ -269,9 +271,12 @@
 |   |-- logs.html
 |   |-- models.html
 |   |-- model_settings.html
+|   |-- orchestrator.html
 |   |-- settings.html
 |   |-- tasks.html
+|   |-- task_create.html
 |   |-- task_details.html
+|   |-- workflows.html
 |-- tests
 |   |-- contract
 |   |   |-- api
@@ -419,4 +424,5 @@
 |-- requirements-dev.txt
 |-- requirements-optional.txt
 |-- requirements.txt
+|-- test.txt
 |-- tests_structure.txt

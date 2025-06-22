@@ -15,9 +15,9 @@ class TestSettings:
         yield driver
         driver.quit()
 
-    def test_ai_models_settings(self, driver, base_url):
+    def test_models_settings(self, driver, base_url):
         """Тест настроек нейросетей"""
-        driver.get(f"{base_url}/ai_models")
+        driver.get(f"{base_url}/models")
 
         # Проверяем, что страница настроек нейросетей загрузилась
         WebDriverWait(driver, 10).until(
@@ -240,7 +240,7 @@ class TestSettings:
 
     def test_api_key_settings(self, driver, base_url):
         """Тест настроек API-ключей (если есть)"""
-        driver.get(f"{base_url}/ai_models")
+        driver.get(f"{base_url}/models")
 
         # Проверяем наличие полей для API-ключей
         api_key_fields = driver.find_elements(

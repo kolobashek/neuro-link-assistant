@@ -116,4 +116,8 @@
 |   |   |-- test_validation.py
 |   |-- services
 |   |-- utils
+|-- utils
+|   |-- check_element_finder.py
+|   |-- chrome_fixed_function.py
+|   |-- chrome_patch.txt
 |-- conftest.py

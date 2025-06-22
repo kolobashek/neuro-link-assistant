@@ -4860,6 +4860,22 @@
         "documentation": {}
     },
     {
+        "label": "check_ai_model_availability",
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "isExtraImport": true,
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_models",
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "isExtraImport": true,
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
         "label": "execute_command_with_error_handling",
         "importPath": "services.command_service",
         "description": "services.command_service",
@@ -5069,6 +5085,14 @@
         "documentation": {}
     },
     {
+        "label": "HuggingFaceService",
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "isExtraImport": true,
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
         "label": "webbrowser",
         "kind": 6,
         "isExtraImport": true,
@@ -5191,7 +5215,7 @@
         "documentation": {}
     },
     {
-        "label": "AutoModel",
+        "label": "AutoModelForCausalLM",
         "importPath": "transformers.models.auto.modeling_auto",
         "description": "transformers.models.auto.modeling_auto",
         "isExtraImport": true,
@@ -10454,7 +10478,25 @@
         "kind": 2,
         "importPath": "routes.api_routes",
         "description": "routes.api_routes",
-        "peekOfCode": "def select_ai_model_by_id(model_id):\n    \"\"\"Выбирает нейросеть для использования по ID\"\"\"\n    try:\n        # Выбираем нейросеть\n        result = select_ai_model(model_id)\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при выборе модели {model_id}: {str(e)}\")\n        return jsonify({\"success\": False, \"message\": f\"Ошибка при выборе модели: {str(e)}\"})",
+        "peekOfCode": "def select_ai_model_by_id(model_id):\n    \"\"\"Выбирает нейросеть для использования по ID\"\"\"\n    try:\n        # Выбираем нейросеть\n        result = select_ai_model(model_id)\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при выборе модели {model_id}: {str(e)}\")\n        return jsonify({\"success\": False, \"message\": f\"Ошибка при выборе модели: {str(e)}\"})\n@api_bp.route(\"/ai/test\", methods=[\"POST\"])",
+        "detail": "routes.api_routes",
+        "documentation": {}
+    },
+    {
+        "label": "test_ai",
+        "kind": 2,
+        "importPath": "routes.api_routes",
+        "description": "routes.api_routes",
+        "peekOfCode": "def test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        prompt = data.get(\"prompt\", \"Hello!\")\n        # Получаем ответ от AI\n        from services.ai_service import get_ai_response\n        response = get_ai_response(prompt)\n        return jsonify(\n            {\"success\": True, \"prompt\": prompt, \"response\": response, \"model\": \"DistilGPT-2 Simple\"}",
+        "detail": "routes.api_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_models",
+        "kind": 2,
+        "importPath": "routes.api_routes",
+        "description": "routes.api_routes",
+        "peekOfCode": "def get_models():\n    \"\"\"Получить список AI моделей\"\"\"\n    try:\n        from services.ai_service import get_ai_models\n        models = get_ai_models()\n        return jsonify(models)\n    except Exception as e:\n        return jsonify({\"success\": False, \"error\": str(e)}), 500",
         "detail": "routes.api_routes",
         "documentation": {}
     },
@@ -11111,7 +11153,7 @@
         "kind": 2,
         "importPath": "services.ai_service",
         "description": "services.ai_service",
-        "peekOfCode": "def generate_text(prompt, max_length=1000, model_id=None):\n    \"\"\"\n    Генерирует текст с использованием выбранной модели\n    Args:\n        prompt: Запрос для генерации\n        max_length: Максимальная длина генерируемого текста\n        model_id: Идентификатор модели (если None, используется текущая)\n    Returns:\n        Сгенерированный текст\n    \"\"\"",
+        "peekOfCode": "def generate_text(prompt, max_length=100, model_id=None):\n    \"\"\"\n    Генерирует текст с использованием выбранной модели\n    Args:\n        prompt: Запрос для генерации\n        max_length: Максимальная длина генерируемого текста\n        model_id: Идентификатор модели (если None, используется текущая)\n    Returns:\n        Сгенерированный текст\n    \"\"\"",
         "detail": "services.ai_service",
         "documentation": {}
     },
@@ -11849,7 +11891,7 @@
         "kind": 6,
         "importPath": "tests.ui.e2e.ui.test_settings",
         "description": "tests.ui.e2e.ui.test_settings",
-        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_ai_models_settings(self, driver, base_url):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(f\"{base_url}/ai_models\")",
+        "peekOfCode": "class TestSettings:\n    @pytest.fixture(scope=\"function\")\n    def driver(self):\n        driver = webdriver.Chrome()\n        driver.maximize_window()\n        yield driver\n        driver.quit()\n    def test_models_settings(self, driver, base_url):\n        \"\"\"Тест настроек нейросетей\"\"\"\n        driver.get(f\"{base_url}/models\")",
         "detail": "tests.ui.e2e.ui.test_settings",
         "documentation": {}
     },
@@ -14047,6 +14089,42 @@
         "description": "config",
         "peekOfCode": "class Config:\n    \"\"\"Конфигурация приложения\"\"\"\n    # Основные настройки Flask\n    SECRET_KEY = os.getenv(\"SECRET_KEY\", \"default-secret-key\")\n    DEBUG = os.getenv(\"DEBUG\", \"True\").lower() == \"true\"\n    HOST = os.getenv(\"HOST\", \"127.0.0.1\")\n    PORT = int(os.getenv(\"PORT\", 5000))\n    # Настройки логирования\n    LOGS_DIR = \"logs\"  # Директория для хранения логов\n    SUMMARY_LOG_FILE = os.path.join(",
         "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "test_huggingface_connection",
+        "kind": 2,
+        "importPath": "test_huggingface",
+        "description": "test_huggingface",
+        "peekOfCode": "def test_huggingface_connection():\n    \"\"\"Тестируем подключение к HuggingFace\"\"\"\n    print(\"🤖 Тестирование HuggingFace подключения...\")\n    # Инициализируем сервис\n    hf_service = HuggingFaceService()\n    # Проверяем токен\n    if hf_service.token:\n        print(f\"✅ Токен HuggingFace найден: {hf_service.token[:10]}...\")\n    else:\n        print(\"❌ Токен HuggingFace не найден!\")",
+        "detail": "test_huggingface",
+        "documentation": {}
+    },
+    {
+        "label": "test_ai_models_file",
+        "kind": 2,
+        "importPath": "test_huggingface",
+        "description": "test_huggingface",
+        "peekOfCode": "def test_ai_models_file():\n    \"\"\"Тестируем файл с AI моделями\"\"\"\n    print(\"\\n📋 Проверяем файл с AI моделями...\")\n    try:\n        models = get_ai_models()\n        if \"error\" in models:\n            print(f\"❌ Ошибка: {models['error']}\")\n            return False\n        models_list = models.get(\"models\", [])\n        print(f\"✅ Найдено {len(models_list)} моделей:\")",
+        "detail": "test_huggingface",
+        "documentation": {}
+    },
+    {
+        "label": "test_simple_request",
+        "kind": 2,
+        "importPath": "test_huggingface",
+        "description": "test_huggingface",
+        "peekOfCode": "def test_simple_request():\n    \"\"\"Тестируем простой запрос к AI\"\"\"\n    print(\"\\n🧠 Тестируем простой AI запрос...\")\n    try:\n        # Используем текущую модель из файла\n        from services.ai_service import get_current_ai_model\n        current_model = get_current_ai_model()\n        if not current_model:\n            print(\"❌ Текущая модель не найдена\")\n            return False",
+        "detail": "test_huggingface",
+        "documentation": {}
+    },
+    {
+        "label": "add_simple_test_model",
+        "kind": 2,
+        "importPath": "test_huggingface",
+        "description": "test_huggingface",
+        "peekOfCode": "def add_simple_test_model():\n    \"\"\"Добавляем простую тестовую модель\"\"\"\n    try:\n        from services.ai_service import add_model\n        # Добавляем DistilGPT-2 как простую тестовую модель\n        model_data = {\n            \"id\": \"distilgpt2-test\",\n            \"name\": \"DistilGPT-2 (Test)\",\n            \"description\": \"Легкая модель для тестирования\",\n            \"huggingface_id\": \"distilgpt2\",",
+        "detail": "test_huggingface",
         "documentation": {}
     }
 ]

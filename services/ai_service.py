@@ -412,7 +412,7 @@ def create_default_models_file():
         return False
 
 
-def generate_text(prompt, max_length=1000, model_id=None):
+def generate_text(prompt, max_length=100, model_id=None):
     """
     Генерирует текст с использованием выбранной модели
 
@@ -459,26 +459,39 @@ def generate_text(prompt, max_length=1000, model_id=None):
                     f"Не удалось загрузить модель или токенизатор для {huggingface_id}"
                 )
 
-            # Кодируем запрос
-            inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
+            # Улучшаем форматирование промпта
+            formatted_prompt = f"Q: {prompt}\nA:"
 
-            # Генерируем ответ
+            # Кодируем запрос
+            inputs = tokenizer(formatted_prompt, return_tensors="pt", truncation=True)
+
+            # УЛУЧШЕННЫЕ параметры генерации
             outputs = model.generate(
                 inputs.input_ids,
-                max_length=max_length,
+                max_new_tokens=50,  # Ограничиваем новые токены
                 num_return_sequences=1,
                 do_sample=True,
                 temperature=0.7,
                 top_p=0.9,
+                top_k=50,
+                repetition_penalty=1.2,  # Предотвращаем повторения
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+                early_stopping=True,
             )
 
-            # Декодируем ответ
-            generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+            # Декодируем только новую часть
+            input_length = inputs.input_ids.shape[1]
+            generated_tokens = outputs[0][input_length:]
+            generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=True)
+
+            # Очищаем ответ
+            cleaned_text = generated_text.split("\n")[0].strip()  # Берем только первую строку
 
             # Обновляем статус модели
             update_model_status(model_id, "ready")
 
-            return generated_text
+            return cleaned_text if cleaned_text else "Извините, не могу сгенерировать ответ."
         except Exception as e:
             # В случае ошибки обновляем статус модели
             update_model_status(model_id, "error", str(e))

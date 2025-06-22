@@ -15,6 +15,36 @@
 	</aside>
 </div>
 
+<!-- Добавим в секцию с кнопками быстрых действий: -->
+<div class="quick-actions">
+	<h3>🚀 Быстрые действия</h3>
+	<div class="action-buttons">
+		<a href="/models" class="btn btn-primary">🤖 AI Модели</a>
+		<a href="/tasks" class="btn btn-secondary">📋 Задачи</a>
+		<a href="/history" class="btn btn-info">📚 История</a>
+		<button id="testAiBtn" class="btn btn-success">🧠 Тест AI</button>
+	</div>
+</div>
+
+<!-- Добавим модальное окно для тестирования AI -->
+<div id="aiTestModal" class="modal" style="display: none;">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<h2>🧠 Тест AI Модели</h2>
+		<form id="aiTestForm">
+			<div class="form-group">
+				<label for="aiPrompt">Введите запрос:</label>
+				<textarea id="aiPrompt" name="prompt" placeholder="Привет! Как дела?" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Отправить</button>
+		</form>
+		<div id="aiResponse" style="display: none;">
+			<h3>Ответ AI:</h3>
+			<div id="aiResponseText"></div>
+		</div>
+	</div>
+</div>
+
 {% include "components/modals.html" %} {% endblock %} {% block extra_js %}
 <!-- Правильный порядок подключения скриптов -->
 <!-- 1. Утилиты и базовые функции -->

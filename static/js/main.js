@@ -138,3 +138,90 @@ window.mainModule = {
 	updateProgressBar,
 	interruptCommand,
 }
+
+// AI тестирование - исправленная версия
+document.addEventListener('DOMContentLoaded', function() {
+	const testAiBtn = document.getElementById('testAiBtn')
+	const aiModal = document.getElementById('aiTestModal')
+	const aiForm = document.getElementById('aiTestForm')
+	const closeBtn = aiModal?.querySelector('.close')
+
+	// Открытие модального окна
+	if (testAiBtn && aiModal) {
+		testAiBtn.addEventListener('click', function() {
+			aiModal.style.display = 'block'
+		})
+	}
+
+	// Закрытие модального окна
+	if (closeBtn && aiModal) {
+		closeBtn.addEventListener('click', function() {
+			aiModal.style.display = 'none'
+		})
+	}
+
+	// Обработка формы AI
+	if (aiForm) {
+		aiForm.addEventListener('submit', async function(e) {
+			e.preventDefault()
+
+			const prompt = document.getElementById('aiPrompt').value.trim()
+			const responseDiv = document.getElementById('aiResponse')
+			const responseText = document.getElementById('aiResponseText')
+
+			if (!prompt) {
+				alert('Введите запрос!')
+				return
+			}
+
+			try {
+				// Показываем индикатор загрузки
+				responseText.innerHTML = '🤖 Думаю...'
+				responseDiv.style.display = 'block'
+
+				console.log('Отправляем запрос:', prompt); // Для отладки
+
+				const response = await fetch('/api/ai/test', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ prompt: prompt })
+				})
+
+				console.log('Статус ответа:', response.status); // Для отладки
+
+				if (!response.ok) {
+					throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+				}
+
+				const data = await response.json()
+				console.log('Получен ответ:', data); // Для отладки
+
+				if (data.success) {
+					responseText.innerHTML = `
+						<div class="ai-response success">
+							<div><strong>🤖 Модель:</strong> ${data.model || 'Неизвестно'}</div>
+							<div><strong>💭 Запрос:</strong> ${data.prompt}</div>
+							<div><strong>✨ Ответ:</strong> ${data.response}</div>
+						</div>
+					`
+				} else {
+					responseText.innerHTML = `
+						<div class="ai-response error">
+							❌ <strong>Ошибка:</strong> ${data.error || 'Неизвестная ошибка'}
+						</div>
+					`
+				}
+
+			} catch (error) {
+				console.error('Ошибка запроса:', error); // Для отладки
+				responseText.innerHTML = `
+					<div class="ai-response error">
+						❌ <strong>Ошибка сети:</strong> ${error.message}
+					</div>
+				`
+			}
+		})
+	}
+})

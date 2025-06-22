@@ -1,0 +1,59 @@
+﻿{
+    "models":  [
+                   {
+                       "id":  "gpt-3.5-turbo",
+                       "name":  "GPT-3.5 Turbo",
+                       "description":  "Модель OpenAI GPT-3.5 Turbo (требует API ключ OpenAI)",
+                       "huggingface_id":  "openai/gpt-3.5-turbo",
+                       "type":  "chat",
+                       "status":  "unavailable",
+                       "is_current":  false,
+                       "api_type":  "openai"
+                   },
+                   {
+                       "id":  "microsoft-dialogpt",
+                       "name":  "Microsoft DialoGPT",
+                       "description":  "Модель Microsoft для диалогов (бесплатная)",
+                       "huggingface_id":  "microsoft/DialoGPT-medium",
+                       "type":  "chat",
+                       "status":  "unavailable",
+                       "is_current":  true
+                   },
+                   {
+                       "id":  "distilgpt2",
+                       "name":  "DistilGPT-2",
+                       "description":  "Легкая версия GPT-2 (бесплатная, быстрая)",
+                       "huggingface_id":  "distilgpt2",
+                       "type":  "completion",
+                       "status":  "unavailable",
+                       "is_current":  false
+                   },
+                   {
+                       "id":  "gpt2",
+                       "name":  "GPT-2",
+                       "description":  "Классическая модель GPT-2 (бесплатная)",
+                       "huggingface_id":  "gpt2",
+                       "type":  "completion",
+                       "status":  "unavailable",
+                       "is_current":  false
+                   },
+                   {
+                       "id":  "distilgpt2",
+                       "name":  "DistilGPT-2",
+                       "huggingface_id":  "distilgpt2",
+                       "description":  "Легкая версия GPT-2 (бесплатная, быстрая)",
+                       "type":  "completion",
+                       "is_current":  false,
+                       "status":  "unavailable"
+                   },
+                   {
+                       "id":  "microsoft-dialogpt",
+                       "name":  "Microsoft DialoGPT",
+                       "huggingface_id":  "microsoft/DialoGPT-medium",
+                       "description":  "Модель Microsoft для диалогов (бесплатная)",
+                       "type":  "chat",
+                       "is_current":  false,
+                       "status":  "unavailable"
+                   }
+               ]
+}

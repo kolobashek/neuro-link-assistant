@@ -539,3 +539,35 @@ def select_ai_model_by_id(model_id):
     except Exception as e:
         logger.error(f"Ошибка при выборе модели {model_id}: {str(e)}")
         return jsonify({"success": False, "message": f"Ошибка при выборе модели: {str(e)}"})
+
+
+@api_bp.route("/ai/test", methods=["POST"])
+def test_ai():
+    """Тестовый AI запрос"""
+    try:
+        data = request.get_json()
+        prompt = data.get("prompt", "Hello!")
+
+        # Получаем ответ от AI
+        from services.ai_service import get_ai_response
+
+        response = get_ai_response(prompt)
+
+        return jsonify(
+            {"success": True, "prompt": prompt, "response": response, "model": "DistilGPT-2 Simple"}
+        )
+
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@api_bp.route("/ai/models", methods=["GET"])
+def get_models():
+    """Получить список AI моделей"""
+    try:
+        from services.ai_service import get_ai_models
+
+        models = get_ai_models()
+        return jsonify(models)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500

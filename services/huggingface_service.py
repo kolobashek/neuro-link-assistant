@@ -1,10 +1,10 @@
-import logging
+﻿import logging
 import os
 
 from huggingface_hub import HfApi, HfFolder, Repository
 from huggingface_hub.errors import RepositoryNotFoundError, RevisionNotFoundError
 from transformers.models.auto.configuration_auto import AutoConfig
-from transformers.models.auto.modeling_auto import AutoModel
+from transformers.models.auto.modeling_auto import AutoModelForCausalLM
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 from config import Config
@@ -125,7 +125,7 @@ class HuggingFaceService:
 
             # Загружаем модель
             logger.info(f"Загрузка модели {model_id} с Hugging Face Hub...")
-            model = AutoModel.from_pretrained(model_id, token=self.token)
+            model = AutoModelForCausalLM.from_pretrained(model_id, token=self.token)
 
             # Сохраняем в кеш
             self.models_cache[model_id] = model
@@ -156,6 +156,11 @@ class HuggingFaceService:
             # Загружаем токенизатор
             logger.info(f"Загрузка токенизатора для модели {model_id} с Hugging Face Hub...")
             tokenizer = AutoTokenizer.from_pretrained(model_id, token=self.token)
+
+            # ИСПРАВЛЕНИЕ: Устанавливаем pad_token если его нет
+            if tokenizer.pad_token is None:
+                tokenizer.pad_token = tokenizer.eos_token
+                logger.info(f"Установлен pad_token = eos_token для модели {model_id}")
 
             # Сохраняем в кеш
             self.tokenizers_cache[model_id] = tokenizer
