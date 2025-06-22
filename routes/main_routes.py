@@ -145,3 +145,19 @@ def workflows():
 @main_bp.route("/analytics")
 def analytics():
     return render_template("analytics.html")
+
+
+@main_bp.route("/login")
+def login():
+    return render_template("auth/login.html")
+
+
+@main_bp.route("/register")
+def register():
+    return render_template("auth/register.html")
+
+
+@main_bp.route("/admin/users")
+def admin_users():
+    # проверка admin роли
+    return render_template("admin/users.html")

@@ -225,3 +225,76 @@ document.addEventListener('DOMContentLoaded', function() {
 		})
 	}
 })
+
+/**
+ * Управление бургер-меню
+ */
+class BurgerMenu {
+    constructor() {
+        this.burgerBtn = document.getElementById('burgerMenu');
+        this.nav = document.getElementById('mainNav');
+        this.overlay = document.getElementById('navOverlay');
+        this.closeBtn = document.getElementById('navClose');
+        this.init();
+    }
+
+    init() {
+        if (!this.burgerBtn || !this.nav) return;
+
+        this.burgerBtn.addEventListener('click', () => this.toggle());
+        this.closeBtn?.addEventListener('click', () => this.close());
+        this.overlay?.addEventListener('click', () => this.close());
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.nav.classList.contains('active')) {
+                this.close();
+            }
+        });
+
+        // Закрытие при клике по навигации
+        this.nav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => setTimeout(() => this.close(), 200));
+        });
+    }
+
+    toggle() {
+        this.nav.classList.contains('active') ? this.close() : this.open();
+    }
+
+    open() {
+        this.nav.classList.add('active');
+        this.overlay?.classList.add('active');
+        this.burgerBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    close() {
+        this.nav.classList.remove('active');
+        this.overlay?.classList.remove('active');
+        this.burgerBtn.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Инициализируем бургер-меню при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Существующая инициализация...
+
+    // Добавляем инициализацию бургер-меню
+    window.burgerMenu = new BurgerMenu();
+
+    // Подсветка активной страницы
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (new URL(link.href).pathname === currentPath) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Дополняем экспорт
+window.mainModule = {
+    ...window.mainModule,
+    burgerMenu: () => window.burgerMenu
+};

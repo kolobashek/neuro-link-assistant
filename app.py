@@ -1,5 +1,7 @@
 print("🔍 Импорт Flask...")
-from flask import Flask, render_template, request
+import logging
+
+from flask import Flask, jsonify, render_template, request
 
 print("🔍 Импорт routes...")
 from routes.api_routes import api_bp
@@ -15,6 +17,9 @@ command_interrupt_flag = False
 
 # Создание приложения Flask
 app = Flask(__name__)
+
+# Настройка логирования
+logger = logging.getLogger("neuro_assistant")
 
 
 @app.route("/ai_models")
@@ -53,6 +58,179 @@ def internal_error(error):
     """Обработчик внутренней ошибки сервера"""
     print(f"🔍 500 error: {error}")
     return render_template("500.html"), 500
+
+
+# ✅ НОВОЕ: API endpoints для аутентификации (добавляем здесь для тестов)
+@app.route("/api/auth/register", methods=["POST"])
+def auth_register():
+    """Регистрирует нового пользователя."""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"success": False, "message": "Данные не предоставлены"}), 400
+
+        username = data.get("username")
+        email = data.get("email")
+        password = data.get("password")
+        display_name = data.get("display_name")
+
+        # Базовая валидация
+        if not all([username, email, password]):
+            return jsonify({"success": False, "message": "Обязательные поля не заполнены"}), 400
+
+        if len(username) < 3:
+            return (
+                jsonify(
+                    {
+                        "success": False,
+                        "message": "Имя пользователя должно содержать минимум 3 символа",
+                    }
+                ),
+                400,
+            )
+
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        # Регистрируем пользователя
+        user = auth_service.register_user(
+            username=username, email=email, password=password, display_name=display_name
+        )
+
+        if not user:
+            return (
+                jsonify(
+                    {
+                        "success": False,
+                        "message": "Пользователь с таким именем или email уже существует",
+                    }
+                ),
+                409,
+            )
+
+        # Создаем токен доступа
+        access_token = auth_service.create_access_token_for_user(user)
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "message": "Пользователь успешно зарегистрирован",
+                    "access_token": access_token,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                    },
+                }
+            ),
+            201,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при регистрации: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
+
+
+@app.route("/api/auth/login", methods=["POST"])
+def auth_login():
+    """Аутентифицирует пользователя."""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"success": False, "message": "Данные не предоставлены"}), 400
+
+        username = data.get("username")
+        password = data.get("password")
+
+        if not all([username, password]):
+            return (
+                jsonify({"success": False, "message": "Имя пользователя и пароль обязательны"}),
+                400,
+            )
+
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        # Аутентифицируем пользователя
+        user = auth_service.authenticate_user(username, password)
+
+        if not user:
+            return jsonify({"success": False, "message": "Неверные учетные данные"}), 401
+
+        # Создаем токен доступа
+        access_token = auth_service.create_access_token_for_user(user)
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "message": "Успешная аутентификация",
+                    "access_token": access_token,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                    },
+                }
+            ),
+            200,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при аутентификации: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
+
+
+@app.route("/api/auth/me", methods=["GET"])
+def auth_me():
+    """Получает информацию о текущем пользователе по токену."""
+    try:
+        # Получаем токен из заголовка Authorization
+        auth_header = request.headers.get("Authorization")
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return jsonify({"success": False, "message": "Токен не предоставлен"}), 401
+
+        token = auth_header.split(" ")[1]
+
+        # Проверяем токен и получаем пользователя
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        user = auth_service.get_current_user(token)
+        if not user:
+            return jsonify({"success": False, "message": "Неверный токен"}), 401
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                        "role": getattr(user, "role", "user"),
+                    },
+                }
+            ),
+            200,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при получении текущего пользователя: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
 
 
 def init_app():
@@ -94,71 +272,40 @@ def init_app():
         command_interrupt_flag = False
         print("✅ init_app() завершена успешно")
 
-        # Логируем запуск приложения
-        system_logger.info("Приложение запущено")
+        logger.info("Приложение запущено")
+        return app
 
     except Exception as e:
-        print(f"❌ Ошибка в init_app(): {e}")
-        import traceback
-
-        traceback.print_exc()
+        print(f"❌ Ошибка при инициализации приложения: {e}")
+        logger.error(f"Ошибка при инициализации приложения: {e}")
         raise
 
 
-def run_app(port: int | None = None):
-    """Запускает приложение Flask"""
-    print(f"🚀 Начало run_app(), port={port}")
-
+def run_app():
+    """Запуск приложения"""
     try:
-        init_app()
-        print("✅ init_app() завершена")
+        print("🚀 Запуск Нейро-Линк Ассистента...")
+
+        # Инициализируем приложение
+        flask_app = init_app()
+
+        # Запускаем Flask сервер
+        from config import Config
+
+        flask_app.run(
+            host=Config.HOST,
+            port=Config.PORT,
+            debug=Config.DEBUG,
+            use_reloader=False,  # Отключаем reloader для стабильности
+        )
+
+    except KeyboardInterrupt:
+        print("\n🛑 Приложение остановлено пользователем")
     except Exception as e:
-        print(f"❌ Ошибка в init_app(): {e}")
-        return
-
-    # Если порт не указан, ищем свободный начиная с 5000
-    if port is None:
-        try:
-            from scripts.network.port_manager import PortManager
-
-            port = PortManager.find_any_free_port(5000)
-            print(f"🔍 Используем свободный порт: {port}")
-
-        except Exception as e:
-            print(f"⚠️ Ошибка поиска порта: {e}, используем 5000")
-            port = 5000
-
-    # Определяем режим debug из переменной окружения
-    import os
-
-    debug_mode = os.environ.get("FLASK_ENV") != "testing"
-
-    print(f"🚀 Запуск Flask на порту {port}, debug={debug_mode}")
-
-    try:
-        app.run(host="127.0.0.1", port=port, debug=debug_mode, use_reloader=False)
-    except Exception as e:
-        print(f"❌ Ошибка запуска Flask: {e}")
-        import traceback
-
-        traceback.print_exc()
+        print(f"❌ Критическая ошибка при запуске: {e}")
+        logger.error(f"Критическая ошибка при запуске: {e}")
+        raise
 
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Neuro-Link Assistant")
-    parser.add_argument("--port", type=int, help="Порт для запуска приложения")
-    parser.add_argument("port_positional", nargs="?", type=int, help="Порт (позиционный аргумент)")
-    parser.add_argument("--debug", action="store_true", help="Включить debug режим")
-    parser.add_argument("--host", default="127.0.0.1", help="Хост для привязки")
-
-    args = parser.parse_args()
-
-    # Приоритет: --port > позиционный аргумент > None
-    port = args.port or args.port_positional
-
-    if port is not None:
-        print(f"🔍 Используем указанный порт: {port}")
-
-    run_app(port)
+    run_app()

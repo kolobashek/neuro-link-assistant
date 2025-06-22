@@ -23,6 +23,14 @@ class Base(DeclarativeBase):
     pass
 
 
+def get_engine():
+    """
+    Возвращает движок SQLAlchemy.
+    Полезно для тестов и инициализации.
+    """
+    return engine
+
+
 def get_db():
     """
     Генератор для получения сессии базы данных.
@@ -33,3 +41,19 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def create_tables():
+    """
+    Создает все таблицы в базе данных.
+    Используется для инициализации схемы.
+    """
+    Base.metadata.create_all(bind=engine)
+
+
+def drop_tables():
+    """
+    Удаляет все таблицы из базы данных.
+    Используется для очистки в тестах.
+    """
+    Base.metadata.drop_all(bind=engine)

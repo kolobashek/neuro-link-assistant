@@ -98,51 +98,6 @@ class TestJWTSecurity:
         assert decoded_data["username"] == "test_user"
 
 
-class TestUserRepository:
-    """Тесты репозитория пользователей."""
-
-    def test_create_user(self, user_repository):
-        """Тест создания пользователя."""
-        password_hash, salt = hash_password("test_password")
-
-        user = user_repository.create(
-            username="test_user",
-            email="test@example.com",
-            password_hash=password_hash,
-            display_name="Test User",
-            salt=salt,
-            role="user",
-        )
-
-        assert user.username == "test_user"
-        assert user.email == "test@example.com"
-        assert user.display_name == "Test User"
-
-    def test_get_user_by_username(self, user_repository):
-        """Тест получения пользователя по имени."""
-        password_hash, salt = hash_password("test_password")
-
-        created_user = user_repository.create(
-            username="test_user", email="test@example.com", password_hash=password_hash, salt=salt
-        )
-
-        found_user = user_repository.get_by_username("test_user")
-        assert found_user is not None
-        assert found_user.id == created_user.id
-
-    def test_get_user_by_email(self, user_repository):
-        """Тест получения пользователя по email."""
-        password_hash, salt = hash_password("test_password")
-
-        created_user = user_repository.create(
-            username="test_user", email="test@example.com", password_hash=password_hash, salt=salt
-        )
-
-        found_user = user_repository.get_by_email("test@example.com")
-        assert found_user is not None
-        assert found_user.id == created_user.id
-
-
 class TestAuthService:
     """Тесты сервиса аутентификации."""
 

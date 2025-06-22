@@ -2,7 +2,7 @@ import datetime
 import logging
 import os
 
-from flask import Blueprint, jsonify, make_response, request
+from flask import Blueprint, g, jsonify, make_response, request  # добавить g
 
 from config import Config
 from models.command_models import CommandExecution, CommandStep
@@ -24,6 +24,40 @@ from utils.logging_utils import log_execution_summary
 api_bp = Blueprint("api", __name__)
 logger = logging.getLogger("neuro_assistant")
 detailed_logger = logging.getLogger("detailed_log")
+
+
+# Добавить функцию для middleware
+from functools import wraps
+
+
+def require_auth(f):
+    """Декоратор для проверки авторизации"""
+
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        token = request.headers.get("Authorization")
+        if not token:
+            return jsonify({"success": False, "message": "Требуется авторизация"}), 401
+
+        if token.startswith("Bearer "):
+            token = token[7:]
+
+        try:
+            db_session = next(get_db())
+            auth_service = AuthService(db_session)
+            user = auth_service.get_current_user(token)
+
+            if not user:
+                return jsonify({"success": False, "message": "Недействительный токен"}), 401
+
+            # Добавляем пользователя в контекст запроса
+            g.current_user = user
+            return f(*args, **kwargs)
+
+        except Exception as e:
+            return jsonify({"success": False, "message": "Ошибка проверки токена"}), 401
+
+    return decorated_function
 
 
 @api_bp.route("/query", methods=["POST"])
@@ -571,3 +605,167 @@ def get_models():
         return jsonify(models)
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+
+
+from core.db.connection import get_db
+from core.services.auth_service import AuthService
+
+
+@api_bp.route("/auth/register", methods=["POST"])
+def register():
+    """Регистрирует нового пользователя."""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"success": False, "message": "Данные не предоставлены"}), 400
+
+        username = data.get("username")
+        email = data.get("email")
+        password = data.get("password")
+        display_name = data.get("display_name")
+
+        if not all([username, email, password]):
+            return jsonify({"success": False, "message": "Обязательные поля не заполнены"}), 400
+
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        # Регистрируем пользователя
+        user = auth_service.register_user(
+            username=username, email=email, password=password, display_name=display_name
+        )
+
+        if not user:
+            return (
+                jsonify(
+                    {
+                        "success": False,
+                        "message": "Пользователь с таким именем или email уже существует",
+                    }
+                ),
+                409,
+            )
+
+        # Создаем токен доступа
+        access_token = auth_service.create_access_token_for_user(user)
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "message": "Пользователь успешно зарегистрирован",
+                    "access_token": access_token,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                    },
+                }
+            ),
+            201,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при регистрации: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
+
+
+@api_bp.route("/auth/login", methods=["POST"])
+def login():
+    """Аутентифицирует пользователя."""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"success": False, "message": "Данные не предоставлены"}), 400
+
+        username = data.get("username")
+        password = data.get("password")
+
+        if not all([username, password]):
+            return (
+                jsonify({"success": False, "message": "Имя пользователя и пароль обязательны"}),
+                400,
+            )
+
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        # Аутентифицируем пользователя
+        user = auth_service.authenticate_user(username, password)
+
+        if not user:
+            return jsonify({"success": False, "message": "Неверные учетные данные"}), 401
+
+        # Создаем токен доступа
+        access_token = auth_service.create_access_token_for_user(user)
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "message": "Успешная аутентификация",
+                    "access_token": access_token,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                    },
+                }
+            ),
+            200,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при аутентификации: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
+
+
+@api_bp.route("/auth/me", methods=["GET"])
+def get_current_user():
+    """Получает информацию о текущем пользователе по токену."""
+    try:
+        # Получаем токен из заголовка Authorization
+        auth_header = request.headers.get("Authorization")
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return jsonify({"success": False, "message": "Токен не предоставлен"}), 401
+
+        token = auth_header.split(" ")[1]
+
+        # Проверяем токен и получаем пользователя
+        from core.db.connection import get_db
+        from core.services.auth_service import AuthService
+
+        db_session = next(get_db())
+        auth_service = AuthService(db_session)
+
+        user = auth_service.get_current_user(token)
+        if not user:
+            return jsonify({"success": False, "message": "Неверный токен"}), 401
+
+        return (
+            jsonify(
+                {
+                    "success": True,
+                    "user": {
+                        "id": user.id,
+                        "username": user.username,
+                        "email": user.email,
+                        "display_name": user.display_name,
+                        "role": getattr(user, "role", "user"),
+                    },
+                }
+            ),
+            200,
+        )
+
+    except Exception as e:
+        logger.error(f"Ошибка при получении текущего пользователя: {str(e)}")
+        return jsonify({"success": False, "message": "Внутренняя ошибка сервера"}), 500
