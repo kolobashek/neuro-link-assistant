@@ -1,0 +1,73 @@
+<div class="quick-chat-container">
+  <div class="chat-header">
+    <h3><i class="fas fa-comments"></i> Быстрые команды</h3>
+    <div class="chat-mode-toggle">
+      <button id="simple-mode" class="mode-btn active">Простой</button>
+      <button id="advanced-mode" class="mode-btn">Детальный</button>
+    </div>
+  </div>
+
+  <!-- Упрощенная форма для быстрых команд -->
+  <form id="quick-chat-form" class="quick-chat-form">
+    <div class="chat-input-group">
+      <div class="input-container">
+        <input type="text" id="quick-input" class="quick-input" placeholder="Что нужно сделать?" autocomplete="off"
+          autocapitalize="off" />
+        <div class="input-suggestions" id="input-suggestions" style="display: none;">
+          <!-- Автодополнение будет добавляться через JS -->
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" title="Выполнить команду">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </form>
+
+  <!-- Быстрые действия -->
+  <div class="quick-actions-grid">
+    <button class="quick-action-btn" data-command="открой браузер">
+      <i class="fas fa-globe"></i>
+      <span>Браузер</span>
+    </button>
+    <button class="quick-action-btn" data-command="покажи файлы">
+      <i class="fas fa-folder"></i>
+      <span>Файлы</span>
+    </button>
+    <button class="quick-action-btn" data-command="системная информация">
+      <i class="fas fa-info-circle"></i>
+      <span>Система</span>
+    </button>
+    <button class="quick-action-btn" data-command="создай задачу">
+      <i class="fas fa-plus"></i>
+      <span>Новая задача</span>
+    </button>
+  </div>
+
+  <!-- Мини-история последних команд -->
+  <div class="recent-commands" id="recent-commands">
+    <div class="recent-header">
+      <span class="recent-title">Недавние команды</span>
+      <a href="/history" class="view-all-link">Показать все</a>
+    </div>
+    <div class="recent-list" id="recent-commands-list">
+      <!-- Команды будут загружаться через JS -->
+      <div class="recent-item loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        Загрузка истории...
+      </div>
+    </div>
+  </div>
+
+  <!-- Индикатор выполнения (скрыт по умолчанию) -->
+  <div class="execution-status" id="quick-execution-status" style="display: none;">
+    <div class="status-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="quick-progress-fill" style="width: 0%"></div>
+      </div>
+      <span class="progress-text" id="quick-progress-text">Выполнение...</span>
+    </div>
+    <button class="cancel-btn" id="quick-cancel-btn" title="Отменить выполнение">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>

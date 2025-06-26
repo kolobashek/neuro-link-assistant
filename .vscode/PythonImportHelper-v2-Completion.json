@@ -277,6 +277,30 @@
         "documentation": {}
     },
     {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -545,6 +569,14 @@
         "importPath": "pyttsx3",
         "description": "pyttsx3",
         "detail": "pyttsx3",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
         "documentation": {}
     },
     {
@@ -1804,6 +1836,86 @@
         "documentation": {}
     },
     {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -1989,6 +2101,102 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -2695,6 +2903,14 @@
         "documentation": {}
     },
     {
+        "label": "Float",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "ForeignKey",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -2727,7 +2943,31 @@
         "documentation": {}
     },
     {
+        "label": "Index",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "inspect",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "text",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -2975,6 +3215,14 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "sessionmaker",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -3103,6 +3351,22 @@
         "documentation": {}
     },
     {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "AIModel",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "User",
         "importPath": "core.db.models",
         "description": "core.db.models",
@@ -3271,6 +3535,30 @@
         "documentation": {}
     },
     {
+        "label": "postgresql",
+        "importPath": "sqlalchemy.dialects",
+        "description": "sqlalchemy.dialects",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects",
+        "documentation": {}
+    },
+    {
+        "label": "postgresql",
+        "importPath": "sqlalchemy.dialects",
+        "description": "sqlalchemy.dialects",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects",
+        "documentation": {}
+    },
+    {
+        "label": "postgresql",
+        "importPath": "sqlalchemy.dialects",
+        "description": "sqlalchemy.dialects",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects",
+        "documentation": {}
+    },
+    {
         "label": "func",
         "importPath": "sqlalchemy.sql",
         "description": "sqlalchemy.sql",
@@ -3280,6 +3568,22 @@
     },
     {
         "label": "Base",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
         "importPath": "core.db.connection",
         "description": "core.db.connection",
         "isExtraImport": true,
@@ -3316,14 +3620,6 @@
         "description": "contextlib",
         "isExtraImport": true,
         "detail": "contextlib",
-        "documentation": {}
-    },
-    {
-        "label": "wraps",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
         "documentation": {}
     },
     {
@@ -3401,6 +3697,14 @@
         "importPath": "zipfile",
         "description": "zipfile",
         "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -4708,6 +5012,46 @@
         "documentation": {}
     },
     {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
         "label": "context",
         "importPath": "alembic",
         "description": "alembic",
@@ -4780,6 +5124,14 @@
         "documentation": {}
     },
     {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
         "label": "Blueprint",
         "importPath": "flask",
         "description": "flask",
@@ -4788,7 +5140,71 @@
         "documentation": {}
     },
     {
-        "label": "g",
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -4805,6 +5221,30 @@
     },
     {
         "label": "make_response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -4884,46 +5324,6 @@
         "documentation": {}
     },
     {
-        "label": "CommandExecution",
-        "importPath": "models.command_models",
-        "description": "models.command_models",
-        "isExtraImport": true,
-        "detail": "models.command_models",
-        "documentation": {}
-    },
-    {
-        "label": "CommandStep",
-        "importPath": "models.command_models",
-        "description": "models.command_models",
-        "isExtraImport": true,
-        "detail": "models.command_models",
-        "documentation": {}
-    },
-    {
-        "label": "CommandExecution",
-        "importPath": "models.command_models",
-        "description": "models.command_models",
-        "isExtraImport": true,
-        "detail": "models.command_models",
-        "documentation": {}
-    },
-    {
-        "label": "CommandStep",
-        "importPath": "models.command_models",
-        "description": "models.command_models",
-        "isExtraImport": true,
-        "detail": "models.command_models",
-        "documentation": {}
-    },
-    {
-        "label": "update_models_from_huggingface",
-        "importPath": "services.ai_service",
-        "description": "services.ai_service",
-        "isExtraImport": true,
-        "detail": "services.ai_service",
-        "documentation": {}
-    },
-    {
         "label": "check_ai_model_availability",
         "importPath": "services.ai_service",
         "description": "services.ai_service",
@@ -4940,6 +5340,14 @@
         "documentation": {}
     },
     {
+        "label": "get_simple_ai_response",
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "isExtraImport": true,
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
         "label": "search_models",
         "importPath": "services.ai_service",
         "description": "services.ai_service",
@@ -4949,6 +5357,14 @@
     },
     {
         "label": "select_ai_model",
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "isExtraImport": true,
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "update_models_from_huggingface",
         "importPath": "services.ai_service",
         "description": "services.ai_service",
         "isExtraImport": true,
@@ -4977,6 +5393,38 @@
         "description": "services.ai_service",
         "isExtraImport": true,
         "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "CommandExecution",
+        "importPath": "models.command_models",
+        "description": "models.command_models",
+        "isExtraImport": true,
+        "detail": "models.command_models",
+        "documentation": {}
+    },
+    {
+        "label": "CommandStep",
+        "importPath": "models.command_models",
+        "description": "models.command_models",
+        "isExtraImport": true,
+        "detail": "models.command_models",
+        "documentation": {}
+    },
+    {
+        "label": "CommandExecution",
+        "importPath": "models.command_models",
+        "description": "models.command_models",
+        "isExtraImport": true,
+        "detail": "models.command_models",
+        "documentation": {}
+    },
+    {
+        "label": "CommandStep",
+        "importPath": "models.command_models",
+        "description": "models.command_models",
+        "isExtraImport": true,
+        "detail": "models.command_models",
         "documentation": {}
     },
     {
@@ -5109,30 +5557,6 @@
         "documentation": {}
     },
     {
-        "label": "HfApi",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
-        "label": "HfFolder",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
-        "label": "Repository",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
         "label": "HuggingFaceService",
         "importPath": "services.huggingface_service",
         "description": "services.huggingface_service",
@@ -5247,43 +5671,12 @@
         "documentation": {}
     },
     {
-        "label": "RepositoryNotFoundError",
-        "importPath": "huggingface_hub.errors",
-        "description": "huggingface_hub.errors",
+        "label": "asyncio",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "huggingface_hub.errors",
-        "documentation": {}
-    },
-    {
-        "label": "RevisionNotFoundError",
-        "importPath": "huggingface_hub.errors",
-        "description": "huggingface_hub.errors",
-        "isExtraImport": true,
-        "detail": "huggingface_hub.errors",
-        "documentation": {}
-    },
-    {
-        "label": "AutoConfig",
-        "importPath": "transformers.models.auto.configuration_auto",
-        "description": "transformers.models.auto.configuration_auto",
-        "isExtraImport": true,
-        "detail": "transformers.models.auto.configuration_auto",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers.models.auto.modeling_auto",
-        "description": "transformers.models.auto.modeling_auto",
-        "isExtraImport": true,
-        "detail": "transformers.models.auto.modeling_auto",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers.models.auto.tokenization_auto",
-        "description": "transformers.models.auto.tokenization_auto",
-        "isExtraImport": true,
-        "detail": "transformers.models.auto.tokenization_auto",
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
         "documentation": {}
     },
     {
@@ -6386,11 +6779,11 @@
         "documentation": {}
     },
     {
-        "label": "api_bp",
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
+        "label": "register_api_blueprints",
+        "importPath": "routes.api",
+        "description": "routes.api",
         "isExtraImport": true,
-        "detail": "routes.api_routes",
+        "detail": "routes.api",
         "documentation": {}
     },
     {
@@ -9520,7 +9913,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class User(Base):\n    \"\"\"Модель пользователя.\"\"\"\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    salt = Column(String(255))  # Добавляем поле для соли\n    role = Column(String(50), default=\"user\")  # Добавляем поле для роли\n    display_name = Column(String(100))",
+        "peekOfCode": "class User(Base):\n    \"\"\"Расширенная модель пользователя.\"\"\"\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True, index=True)\n    username = Column(String(100), unique=True, index=True, nullable=False)\n    email = Column(String(255), unique=True, index=True, nullable=False)\n    password_hash = Column(String(255), nullable=False)\n    salt = Column(String(255))\n    role = Column(String(50), default=\"user\")\n    display_name = Column(String(100))",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -9529,7 +9922,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class AIModel(Base):\n    \"\"\"Модель для AI моделей.\"\"\"\n    __tablename__ = \"ai_models\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(100), nullable=False)\n    provider = Column(String(100), nullable=False)\n    is_api = Column(Boolean, default=True)\n    base_url = Column(String(255))\n    api_key_name = Column(String(100))\n    is_active = Column(Boolean, default=True)",
+        "peekOfCode": "class AIModel(Base):\n    \"\"\"Модель для AI моделей.\"\"\"\n    __tablename__ = \"ai_models\"\n    # Основные поля\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(255), nullable=False)\n    model_type_id = Column(Integer)\n    provider = Column(String(100), nullable=False)\n    # API настройки\n    is_api = Column(Boolean, default=True)",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -9538,7 +9931,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class Task(Base):\n    \"\"\"Модель задачи.\"\"\"\n    __tablename__ = \"tasks\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(255), nullable=False)\n    description = Column(Text)\n    status = Column(String(50), default=\"created\")  # created, in_progress, completed\n    priority = Column(Integer, default=1)  # 1 - низкий, 2 - средний, 3 - высокий\n    due_date = Column(DateTime(timezone=True))",
+        "peekOfCode": "class Task(Base):\n    \"\"\"Модель задачи.\"\"\"\n    __tablename__ = \"tasks\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(255), nullable=False)\n    description = Column(Text)\n    status = Column(String(50), default=\"created\")\n    priority = Column(Integer, default=1)\n    due_date = Column(DateTime(timezone=True))",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -9556,7 +9949,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class Workflow(Base):\n    \"\"\"Модель рабочего процесса (workflow).\"\"\"\n    __tablename__ = \"workflows\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    is_active = Column(Boolean, default=True)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())\n    updated_at = Column(DateTime(timezone=True), onupdate=func.now())",
+        "peekOfCode": "class Workflow(Base):\n    \"\"\"Модель рабочего процесса.\"\"\"\n    __tablename__ = \"workflows\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    is_active = Column(Boolean, default=True)\n    # ✅ ИСПРАВЛЕНО: server_default добавлен\n    created_at = Column(DateTime(timezone=True), server_default=func.now())",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -9565,7 +9958,7 @@
         "kind": 6,
         "importPath": "core.db.models",
         "description": "core.db.models",
-        "peekOfCode": "class WorkflowStep(Base):\n    \"\"\"Модель шага рабочего процесса.\"\"\"\n    __tablename__ = \"workflow_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    workflow_id = Column(Integer, ForeignKey(\"workflows.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    order = Column(Integer, nullable=False)\n    configuration = Column(JSON)\n    created_at = Column(DateTime(timezone=True), server_default=func.now())",
+        "peekOfCode": "class WorkflowStep(Base):\n    \"\"\"Модель шага рабочего процесса.\"\"\"\n    __tablename__ = \"workflow_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    workflow_id = Column(Integer, ForeignKey(\"workflows.id\"), nullable=False)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    order = Column(Integer, nullable=False)\n    configuration = Column(JSON)\n    # ✅ ИСПРАВЛЕНО: server_default добавлен",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -9575,6 +9968,69 @@
         "importPath": "core.db.models",
         "description": "core.db.models",
         "peekOfCode": "class RoutingRule(Base):\n    \"\"\"Модель правила маршрутизации.\"\"\"\n    __tablename__ = \"routing_rules\"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(255), nullable=False)\n    description = Column(Text)\n    rule_type = Column(String(50), nullable=False)\n    pattern = Column(String(255), nullable=False)\n    target_model_id = Column(Integer, ForeignKey(\"ai_models.id\"))\n    priority = Column(Integer, default=0)",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Command",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class Command(Base):\n    \"\"\"Модель для хранения команд пользователей.\"\"\"\n    __tablename__ = \"commands\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=True)\n    # Основная информация команды\n    command_text = Column(Text, nullable=False)\n    command_type = Column(String(100))\n    category = Column(String(100))\n    # Статус выполнения",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "CommandStep",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class CommandStep(Base):\n    \"\"\"Модель для шагов выполнения команды.\"\"\"\n    __tablename__ = \"command_steps\"\n    id = Column(Integer, primary_key=True, index=True)\n    command_id = Column(Integer, ForeignKey(\"commands.id\"), nullable=False)\n    # Информация о шаге\n    step_number = Column(Integer, nullable=False)\n    step_type = Column(String(100))\n    description = Column(Text)\n    # Код и результат",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "CommandExecution",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class CommandExecution(Base):\n    \"\"\"Модель для выполнения команд с AI моделями.\"\"\"\n    __tablename__ = \"command_executions\"\n    id = Column(Integer, primary_key=True, index=True)\n    command_id = Column(Integer, ForeignKey(\"commands.id\"), nullable=False)\n    ai_model_id = Column(Integer, ForeignKey(\"ai_models.id\"), nullable=True)\n    # Параметры выполнения\n    input_prompt = Column(Text)\n    model_response = Column(Text)\n    processed_result = Column(Text)",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "SystemLog",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class SystemLog(Base):\n    \"\"\"Модель для системных логов.\"\"\"\n    __tablename__ = \"system_logs\"\n    id = Column(Integer, primary_key=True, index=True)\n    # Основная информация лога\n    level = Column(String(20), nullable=False)  # INFO, DEBUG, WARNING, ERROR, CRITICAL\n    message = Column(Text, nullable=False)\n    source = Column(String(100))  # Источник лога (модуль/функция)\n    category = Column(String(50))  # Категория (auth, api, db, etc.)\n    # Контекст",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "ModelPerformance",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class ModelPerformance(Base):\n    \"\"\"Модель для отслеживания производительности AI моделей.\"\"\"\n    __tablename__ = \"model_performance\"\n    id = Column(Integer, primary_key=True, index=True)\n    model_id = Column(Integer, ForeignKey(\"ai_models.id\"), nullable=False)\n    # Метрики производительности\n    total_requests = Column(Integer, default=0)\n    successful_requests = Column(Integer, default=0)\n    failed_requests = Column(Integer, default=0)\n    # Временные метрики",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "UserSession",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class UserSession(Base):\n    \"\"\"Модель для пользовательских сессий.\"\"\"\n    __tablename__ = \"user_sessions\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    # Данные сессии\n    session_token = Column(String(255), unique=True, nullable=False, index=True)\n    is_active = Column(Boolean, default=True)\n    # Информация о клиенте\n    user_agent = Column(String(500))",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "APIKey",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class APIKey(Base):\n    \"\"\"Модель для хранения API ключей.\"\"\"\n    __tablename__ = \"api_keys\"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    # Информация о ключе\n    name = Column(String(100), nullable=False)  # Название/назначение ключа\n    provider = Column(String(100), nullable=False)  # openai, anthropic, huggingface, etc.\n    key_value = Column(String(255), nullable=False)  # Зашифрованный ключ\n    # Статус",
         "detail": "core.db.models",
         "documentation": {}
     },
@@ -10274,6 +10730,24 @@
     {
         "label": "upgrade",
         "kind": 2,
+        "importPath": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "description": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Увеличиваем размеры полей для HuggingFace данных.\"\"\"\n    # Увеличиваем model_size с 50 до 200 символов\n    op.alter_column(\n        \"ai_models\",\n        \"model_size\",\n        existing_type=sa.String(50),\n        type_=sa.String(200),\n        existing_nullable=True,\n    )",
+        "detail": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "description": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Откатываем изменения.\"\"\"\n    op.alter_column(\n        \"ai_models\",\n        \"model_size\",\n        existing_type=sa.String(200),\n        type_=sa.String(50),\n        existing_nullable=True,\n    )\n    op.alter_column(",
+        "detail": "migrations.versions.001f5f096665_increase_model_field_sizes",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
         "importPath": "migrations.versions.13ee2f4ed3bb_add_salt_column_to_users",
         "description": "migrations.versions.13ee2f4ed3bb_add_salt_column_to_users",
         "peekOfCode": "def upgrade() -> None:\n    \"\"\"Upgrade schema.\"\"\"\n    # Добавляем столбец salt в таблицу users если его еще нет\n    conn = op.get_bind()\n    inspector = sa.inspect(conn)\n    columns = [c[\"name\"] for c in inspector.get_columns(\"users\")]\n    if \"salt\" not in columns:\n        op.add_column(\"users\", sa.Column(\"salt\", sa.String(255), nullable=True))\n        print(\"✅ Столбец salt добавлен в таблицу users\")\n    else:",
@@ -10287,6 +10761,42 @@
         "description": "migrations.versions.13ee2f4ed3bb_add_salt_column_to_users",
         "peekOfCode": "def downgrade() -> None:\n    \"\"\"Downgrade schema.\"\"\"\n    # Удаляем столбец salt из таблицы users\n    conn = op.get_bind()\n    inspector = sa.inspect(conn)\n    columns = [c[\"name\"] for c in inspector.get_columns(\"users\")]\n    if \"salt\" in columns:\n        op.drop_column(\"users\", \"salt\")\n        print(\"✅ Столбец salt удален из таблицы users\")\n    else:",
         "detail": "migrations.versions.13ee2f4ed3bb_add_salt_column_to_users",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "description": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Добавляем поля для HuggingFace интеграции.\"\"\"\n    connection = op.get_bind()\n    inspector = inspect(connection)\n    try:\n        # Получаем существующие столбцы\n        columns = [c[\"name\"] for c in inspector.get_columns(\"ai_models\")]\n        # Добавляем недостающие столбцы\n        fields_to_add = [\n            (\"full_name\", sa.String(255)),",
+        "detail": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "description": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Удаляем поля HuggingFace интеграции.\"\"\"\n    connection = op.get_bind()\n    inspector = inspect(connection)\n    try:\n        # Удаляем индексы\n        existing_indexes = [idx[\"name\"] for idx in inspector.get_indexes(\"ai_models\")]\n        if \"ix_ai_models_hf_model_id\" in existing_indexes:\n            op.drop_index(\"ix_ai_models_hf_model_id\", \"ai_models\")\n        # Удаляем столбцы",
+        "detail": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
+        "description": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Добавляем поле language.\"\"\"\n    # Проверяем есть ли уже поле\n    from sqlalchemy import inspect\n    connection = op.get_bind()\n    inspector = inspect(connection)\n    existing_columns = [c[\"name\"] for c in inspector.get_columns(\"ai_models\")]\n    if \"language\" not in existing_columns:\n        op.add_column(\n            \"ai_models\", sa.Column(\"language\", postgresql.ARRAY(sa.String()), nullable=True)",
+        "detail": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
+        "description": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Удаляем добавленные поля.\"\"\"\n    try:\n        op.drop_column(\"ai_models\", \"is_active\")\n        op.drop_column(\"ai_models\", \"api_key_required\")\n        op.drop_column(\"ai_models\", \"language\")\n    except:\n        pass",
+        "detail": "migrations.versions.39c9f485f3ee_add_language_field_to_ai_models",
         "documentation": {}
     },
     {
@@ -10362,6 +10872,24 @@
         "documentation": {}
     },
     {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "description": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Исправляем constraint для updated_at.\"\"\"\n    # Устанавливаем значение по умолчанию для updated_at\n    op.execute(\n        \"UPDATE ai_models SET updated_at = COALESCE(updated_at, NOW()) WHERE updated_at IS NULL\"\n    )\n    # ✅ ИСПРАВЛЕНО: используем text() для SQL выражения\n    op.alter_column(\n        \"ai_models\",\n        \"updated_at\",",
+        "detail": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "description": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Откатываем изменения.\"\"\"\n    # ✅ ИСПРАВЛЕНО: убираем server_default полностью\n    op.alter_column(\n        \"ai_models\",\n        \"updated_at\",\n        existing_type=sa.DateTime(timezone=True),\n        # server_default убран - это и есть способ удалить default\n    )",
+        "detail": "migrations.versions.9409f9926cd0_fix_updated_at_constraint",
+        "documentation": {}
+    },
+    {
         "label": "drop_constraint_if_exists",
         "kind": 2,
         "importPath": "migrations.versions.97eaf3e5639a_manual_initial_migration",
@@ -10395,6 +10923,24 @@
         "description": "migrations.versions.97eaf3e5639a_manual_initial_migration",
         "peekOfCode": "def downgrade() -> None:\n    \"\"\"Downgrade schema.\"\"\"\n    # Удаляем внешние ключи\n    try:\n        op.drop_constraint(\n            \"routing_rules_target_model_id_fkey\", \"routing_rules\", type_=\"foreignkey\"\n        )\n    except Exception:\n        pass\n    try:",
         "detail": "migrations.versions.97eaf3e5639a_manual_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
+        "description": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Добавляем недостающие поля.\"\"\"\n    # Проверяем какие поля уже есть\n    from sqlalchemy import inspect\n    connection = op.get_bind()\n    inspector = inspect(connection)\n    existing_columns = [c[\"name\"] for c in inspector.get_columns(\"ai_models\")]\n    print(f\"🔍 Существующие поля: {existing_columns}\")\n    # Добавляем недостающие поля\n    if \"language\" not in existing_columns:",
+        "detail": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
+        "description": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Удаляем добавленные поля.\"\"\"\n    try:\n        op.drop_column(\"ai_models\", \"is_active\")\n        op.drop_column(\"ai_models\", \"api_key_required\")\n        op.drop_column(\"ai_models\", \"language\")\n    except:\n        pass  # Поля могут не существовать",
+        "detail": "migrations.versions.ab8cfc8817f6_add_missing_fields_to_ai_models",
         "documentation": {}
     },
     {
@@ -10533,246 +11079,381 @@
         "documentation": {}
     },
     {
-        "label": "require_auth",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def require_auth(f):\n    \"\"\"Декоратор для проверки авторизации\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        token = request.headers.get(\"Authorization\")\n        if not token:\n            return jsonify({\"success\": False, \"message\": \"Требуется авторизация\"}), 401\n        if token.startswith(\"Bearer \"):\n            token = token[7:]\n        try:",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "query",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def query():\n    # Проверяем, что request.json не None\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\").lower()\n    # Проверяем, является ли команда составной\n    if any(sep in user_input for sep in [\" и \", \" затем \", \" после этого \", \" потом \", \", \"]):\n        # Обрабатываем составную команду\n        execution_result = execute_command_with_steps(user_input)\n        # Формируем ответ для пользователя",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "clarify",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def clarify():\n    \"\"\"\n    Обрабатывает запросы на уточнение информации от пользователя\n    \"\"\"\n    # Проверяем, что request.json не None\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\")\n    original_command = request.json.get(\"original_command\", \"\")\n    error_context = request.json.get(\"error_context\", {})",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "confirm_action",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def confirm_action():\n    \"\"\"\n    Обрабатывает подтверждение действия от пользователя\n    \"\"\"\n    # Проверяем, что request.json не None\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_confirmation = request.json.get(\"confirmation\", False)\n    command = request.json.get(\"command\", \"\")\n    code = request.json.get(\"code\", \"\")",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "interrupt_command",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def interrupt_command():\n    \"\"\"\n    Прерывает выполнение текущей команды\n    \"\"\"\n    global command_interrupt_flag\n    # Устанавливаем флаг прерывания\n    command_interrupt_flag = True\n    logger.info(\"Получен запрос на прерывание команды\")\n    detailed_logger.info(\"Получен запрос на прерывание команды\")\n    return jsonify(",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "get_history",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_history():\n    \"\"\"Возвращает историю выполненных команд\"\"\"\n    try:\n        # Проверяем, существует ли файл журнала\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"history\": [], \"count\": 0, \"message\": \"История команд пуста\"})\n        # Пробуем различные кодировки для чтения файла\n        encodings = [\"utf-8\", \"cp1251\", \"latin-1\"]\n        summary_content = None\n        for encoding in encodings:",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "get_detailed_history",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_detailed_history(command_timestamp):\n    \"\"\"Возвращает подробную информацию о выполнении команды\"\"\"\n    try:\n        # Проверяем, существует ли файл журнала\n        if not os.path.exists(Config.DETAILED_LOG_FILE):\n            return jsonify(\n                {\n                    \"command_timestamp\": command_timestamp,\n                    \"details\": [],\n                    \"message\": \"Детальная история команд пуста\",",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "check_ai_models",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def check_ai_models():\n    \"\"\"Проверяет доступность нейросетей\"\"\"\n    # Получаем ID модели из запроса (если есть)\n    model_id = request.json.get(\"model_id\", None) if request.json else None\n    # Проверяем доступность\n    results = check_ai_model_availability(model_id)\n    return jsonify(results)\n@api_bp.route(\"/ai_models/select\", methods=[\"POST\"])\ndef select_ai_model_route():\n    \"\"\"Выбирает нейросеть для использования\"\"\"",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "select_ai_model_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def select_ai_model_route():\n    \"\"\"Выбирает нейросеть для использования\"\"\"\n    # Получаем ID модели из запроса\n    model_id = request.json.get(\"model_id\", None) if request.json else None\n    if not model_id:\n        return jsonify({\"success\": False, \"message\": \"Не указан ID нейросети\"})\n    # Выбираем нейросеть\n    result = select_ai_model(model_id)\n    return jsonify(result)\n@api_bp.route(\"/ensure_log_files_exist\", methods=[\"POST\"])",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "ensure_log_files_exist_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def ensure_log_files_exist_route():\n    \"\"\"Создает необходимые файлы логов, если они не существуют\"\"\"\n    try:\n        from utils.log_maintenance import ensure_log_files_exist\n        ensure_log_files_exist()\n        return jsonify({\"success\": True, \"message\": \"Проверка файлов логов выполнена\"})\n    except Exception as e:\n        logger.error(f\"Ошибка при создании файлов логов: {str(e)}\")\n        return jsonify({\"success\": False, \"error\": f\"Ошибка при создании файлов логов: {str(e)}\"})\n@api_bp.route(\"/clean_old_logs\", methods=[\"POST\"])",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "clean_old_logs_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def clean_old_logs_route():\n    \"\"\"Удаляет старые файлы логов\"\"\"\n    try:\n        from utils.log_maintenance import clean_old_logs\n        # Получаем максимальный возраст файлов из запроса или используем значение по умолчанию\n        max_age_days = request.json.get(\"max_age_days\", 30) if request.json else 30\n        clean_old_logs(max_age_days)\n        return jsonify({\"success\": True, \"message\": f\"Удалены логи старше {max_age_days} дней\"})\n    except Exception as e:\n        logger.error(f\"Ошибка при удалении старых логов: {str(e)}\")",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "get_ai_models_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_ai_models_route():\n    \"\"\"Возвращает список доступных нейросетей и их статус\"\"\"\n    try:\n        # Получаем данные о моделях из сервиса\n        models_data = get_ai_models()\n        return jsonify(models_data)\n    except Exception as e:\n        logger.error(f\"Ошибка при получении списка нейросетей: {str(e)}\")\n        return jsonify({\"error\": f\"Ошибка при получении списка нейросетей: {str(e)}\", \"models\": []})\n@api_bp.route(\"/export_history_logs\", methods=[\"GET\"])",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "export_history_logs",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def export_history_logs():\n    \"\"\"Экспортирует историю команд в файл\"\"\"\n    try:\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"error\": \"Файл истории команд не найден\"}), 404\n        # Читаем содержимое файла\n        with open(Config.SUMMARY_LOG_FILE, \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        # Создаем ответ с файлом\n        response = make_response(content)",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "export_detailed_logs",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def export_detailed_logs():\n    \"\"\"Экспортирует детальные логи в файл\"\"\"\n    try:\n        if not os.path.exists(Config.DETAILED_LOG_FILE):\n            return jsonify({\"error\": \"Файл детальных логов не найден\"}), 404\n        # Читаем содержимое файла\n        with open(Config.DETAILED_LOG_FILE, \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        # Создаем ответ с файлом\n        response = make_response(content)",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "get_system_logs",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_system_logs():\n    \"\"\"\n    Возвращает системные логи (только для разработчиков)\n    Требует аутентификации разработчика\n    \"\"\"\n    # Проверка, является ли пользователь разработчиком\n    developer_mode = request.args.get(\"developer_mode\") == \"true\"\n    developer_key = request.args.get(\"developer_key\", \"\")\n    # Простая проверка ключа разработчика (в реальном приложении нужна более надежная аутентификация)\n    if not developer_mode or developer_key != Config.DEVELOPER_KEY:",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "check_single_ai_model",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def check_single_ai_model(model_id):\n    \"\"\"Проверяет доступность конкретной нейросети\"\"\"\n    try:\n        # Проверяем доступность\n        result = check_ai_model_availability(model_id)\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при проверке модели {model_id}: {str(e)}\")\n        return jsonify({\"success\": False, \"message\": f\"Ошибка при проверке модели: {str(e)}\"})\n@api_bp.route(\"/ai_models/update_from_huggingface\", methods=[\"POST\"])",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "update_models_from_huggingface_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def update_models_from_huggingface_route():\n    \"\"\"Обновляет список моделей, добавляя популярные модели с Hugging Face Hub\"\"\"\n    try:\n        # Вызываем функцию обновления моделей\n        result = update_models_from_huggingface()\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при обновлении списка моделей: {str(e)}\")\n        return jsonify(\n            {\"success\": False, \"message\": f\"Ошибка при обновлении списка моделей: {str(e)}\"}",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "search_models_route",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def search_models_route():\n    \"\"\"Поиск моделей на Hugging Face Hub\"\"\"\n    try:\n        # Получаем параметр запроса\n        query = request.args.get(\"query\", \"\")\n        if not query:\n            return jsonify({\"success\": False, \"message\": \"Не указан поисковый запрос\"})\n        # Вызываем функцию поиска моделей\n        # Предполагается, что функция search_models определена в services/ai_service.py\n        models = search_models(query)",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
-        "label": "select_ai_model_by_id",
-        "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def select_ai_model_by_id(model_id):\n    \"\"\"Выбирает нейросеть для использования по ID\"\"\"\n    try:\n        # Выбираем нейросеть\n        result = select_ai_model(model_id)\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при выборе модели {model_id}: {str(e)}\")\n        return jsonify({\"success\": False, \"message\": f\"Ошибка при выборе модели: {str(e)}\"})\n@api_bp.route(\"/ai/test\", methods=[\"POST\"])",
-        "detail": "routes.api_routes",
-        "documentation": {}
-    },
-    {
         "label": "test_ai",
         "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        prompt = data.get(\"prompt\", \"Hello!\")\n        # Получаем ответ от AI\n        from services.ai_service import get_ai_response\n        response = get_ai_response(prompt)\n        return jsonify(\n            {\"success\": True, \"prompt\": prompt, \"response\": response, \"model\": \"DistilGPT-2 Simple\"}",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400\n        prompt = data.get(\"prompt\", \"\").strip()\n        if not prompt:\n            return jsonify({\"success\": False, \"error\": \"Пустой запрос\"}), 400\n        logger.info(f\"AI тест запрос: {prompt}\")",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
         "label": "get_models",
         "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_models():\n    \"\"\"Получить список AI моделей\"\"\"\n    try:\n        from services.ai_service import get_ai_models\n        models = get_ai_models()\n        return jsonify(models)\n    except Exception as e:\n        return jsonify({\"success\": False, \"error\": str(e)}), 500\nfrom core.db.connection import get_db\nfrom core.services.auth_service import AuthService",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def get_models():\n    \"\"\"Получить список AI моделей\"\"\"\n    try:\n        models = get_ai_models()\n        return jsonify(models)\n    except Exception as e:\n        return jsonify({\"success\": False, \"error\": str(e)}), 500\n@ai_bp.route(\"/models/check\", methods=[\"POST\"])\ndef check_ai_models():\n    \"\"\"Проверяет доступность нейросетей\"\"\"",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
-        "label": "register",
+        "label": "check_ai_models",
         "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def register():\n    \"\"\"Регистрирует нового пользователя.\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        email = data.get(\"email\")\n        password = data.get(\"password\")\n        display_name = data.get(\"display_name\")",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def check_ai_models():\n    \"\"\"Проверяет доступность нейросетей\"\"\"\n    model_id = request.json.get(\"model_id\", None) if request.json else None\n    results = check_ai_model_availability(model_id)\n    return jsonify(results)\n@ai_bp.route(\"/models/select\", methods=[\"POST\"])\ndef select_ai_model_route():\n    \"\"\"Выбирает нейросеть для использования\"\"\"\n    model_id = request.json.get(\"model_id\", None) if request.json else None\n    if not model_id:",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
-        "label": "login",
+        "label": "select_ai_model_route",
         "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def login():\n    \"\"\"Аутентифицирует пользователя.\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        password = data.get(\"password\")\n        if not all([username, password]):\n            return (",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def select_ai_model_route():\n    \"\"\"Выбирает нейросеть для использования\"\"\"\n    model_id = request.json.get(\"model_id\", None) if request.json else None\n    if not model_id:\n        return jsonify({\"success\": False, \"message\": \"Не указан ID нейросети\"})\n    result = select_ai_model(model_id)\n    return jsonify(result)\n@ai_bp.route(\"/models/active\", methods=[\"GET\"])\ndef get_active_models():\n    \"\"\"Получить список активных моделей\"\"\"",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
-        "label": "get_current_user",
+        "label": "get_active_models",
         "kind": 2,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "def get_current_user():\n    \"\"\"Получает информацию о текущем пользователе по токену.\"\"\"\n    try:\n        # Получаем токен из заголовка Authorization\n        auth_header = request.headers.get(\"Authorization\")\n        if not auth_header or not auth_header.startswith(\"Bearer \"):\n            return jsonify({\"success\": False, \"message\": \"Токен не предоставлен\"}), 401\n        token = auth_header.split(\" \")[1]\n        # Проверяем токен и получаем пользователя\n        from core.db.connection import get_db",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def get_active_models():\n    \"\"\"Получить список активных моделей\"\"\"\n    try:\n        db = next(get_db())\n        try:\n            models = db.query(AIModel).filter(AIModel.is_active.is_(True)).all()\n            models_data = []\n            for model in models:\n                models_data.append(\n                    {",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
-        "label": "api_bp",
+        "label": "get_catalog_models",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def get_catalog_models():\n    \"\"\"Получить каталог всех доступных моделей\"\"\"\n    try:\n        db = next(get_db())\n        try:\n            models = db.query(AIModel).order_by(AIModel.downloads.desc()).all()\n            models_data = []\n            for model in models:\n                models_data.append(\n                    {",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_model_config",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def get_model_config(model_id):\n    \"\"\"Получить конфигурацию модели\"\"\"\n    try:\n        db = next(get_db())\n        try:\n            model = db.query(AIModel).filter(AIModel.id == model_id).first()\n            if not model:\n                return jsonify({\"success\": False, \"error\": \"Модель не найдена\"}), 404\n            config = model.configuration or {}\n            return jsonify(",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "update_model_config",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def update_model_config(model_id):\n    \"\"\"Обновить конфигурацию модели\"\"\"\n    try:\n        data = request.get_json()\n        db = next(get_db())\n        try:\n            model = db.query(AIModel).filter(AIModel.id == model_id).first()\n            if not model:\n                return jsonify({\"success\": False, \"error\": \"Модель не найдена\"}), 404\n            config = model.configuration or {}",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "check_all_models",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def check_all_models():\n    \"\"\"Проверить доступность всех моделей\"\"\"\n    try:\n        db = next(get_db())\n        try:\n            models = db.query(AIModel).all()\n            available = 0\n            unavailable = 0\n            for model in models:\n                try:",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "update_models_from_huggingface_route",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def update_models_from_huggingface_route():\n    \"\"\"Обновляет список моделей с HuggingFace Hub\"\"\"\n    try:\n        result = update_models_from_huggingface()\n        return jsonify(result)\n    except Exception as e:\n        logger.error(f\"Ошибка при обновлении списка моделей: {str(e)}\")\n        return jsonify(\n            {\"success\": False, \"message\": f\"Ошибка при обновлении списка моделей: {str(e)}\"}\n        )",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "search_hf_models",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def search_hf_models():\n    \"\"\"Поиск моделей на HuggingFace\"\"\"\n    query = request.args.get(\"q\", \"\")\n    limit = min(int(request.args.get(\"limit\", 20)), 50)\n    if not query or len(query) < 2:\n        return jsonify({\"success\": False, \"error\": \"Запрос должен содержать минимум 2 символа\"})\n    from services.huggingface_service import search_models_for_ui\n    result = search_models_for_ui(query, limit)\n    return jsonify(result)\n@ai_bp.route(\"/models/add\", methods=[\"POST\"])",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "add_hf_model",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def add_hf_model():\n    \"\"\"Добавляет модель HuggingFace в базу\"\"\"\n    data = request.get_json()\n    model_id = data.get(\"model_id\")\n    if not model_id:\n        return jsonify({\"success\": False, \"error\": \"model_id обязателен\"})\n    from services.huggingface_service import add_single_model_to_db\n    result = add_single_model_to_db(model_id)\n    return jsonify(result)",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "ai_bp",
         "kind": 5,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "api_bp = Blueprint(\"api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\ndetailed_logger = logging.getLogger(\"detailed_log\")\n# Добавить функцию для middleware\nfrom functools import wraps\ndef require_auth(f):\n    \"\"\"Декоратор для проверки авторизации\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        token = request.headers.get(\"Authorization\")",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "ai_bp = Blueprint(\"ai_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
         "label": "logger",
         "kind": 5,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\ndetailed_logger = logging.getLogger(\"detailed_log\")\n# Добавить функцию для middleware\nfrom functools import wraps\ndef require_auth(f):\n    \"\"\"Декоратор для проверки авторизации\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        token = request.headers.get(\"Authorization\")\n        if not token:",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400\n        prompt = data.get(\"prompt\", \"\").strip()",
+        "detail": "routes.api.ai_routes",
         "documentation": {}
     },
     {
-        "label": "detailed_logger",
+        "label": "get_dashboard_analytics",
+        "kind": 2,
+        "importPath": "routes.api.analytics_routes",
+        "description": "routes.api.analytics_routes",
+        "peekOfCode": "def get_dashboard_analytics():\n    \"\"\"Возвращает аналитические данные для dashboard\"\"\"\n    try:\n        # Мок-данные для демонстрации\n        analytics_data = {\n            \"commands_today\": 15,\n            \"success_rate\": 87.5,\n            \"avg_response_time\": 1.2,\n            \"active_models\": 3,\n            \"chart_data\": {",
+        "detail": "routes.api.analytics_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_reports",
+        "kind": 2,
+        "importPath": "routes.api.analytics_routes",
+        "description": "routes.api.analytics_routes",
+        "peekOfCode": "def get_reports():\n    \"\"\"Возвращает отчеты по использованию\"\"\"\n    try:\n        period = request.args.get(\"period\", \"week\")  # day, week, month\n        # Мок-данные отчетов\n        reports_data = {\n            \"period\": period,\n            \"total_commands\": 156,\n            \"successful_commands\": 143,\n            \"failed_commands\": 13,",
+        "detail": "routes.api.analytics_routes",
+        "documentation": {}
+    },
+    {
+        "label": "analytics_bp",
         "kind": 5,
-        "importPath": "routes.api_routes",
-        "description": "routes.api_routes",
-        "peekOfCode": "detailed_logger = logging.getLogger(\"detailed_log\")\n# Добавить функцию для middleware\nfrom functools import wraps\ndef require_auth(f):\n    \"\"\"Декоратор для проверки авторизации\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        token = request.headers.get(\"Authorization\")\n        if not token:\n            return jsonify({\"success\": False, \"message\": \"Требуется авторизация\"}), 401",
-        "detail": "routes.api_routes",
+        "importPath": "routes.api.analytics_routes",
+        "description": "routes.api.analytics_routes",
+        "peekOfCode": "analytics_bp = Blueprint(\"analytics_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n@analytics_bp.route(\"/dashboard\", methods=[\"GET\"])\ndef get_dashboard_analytics():\n    \"\"\"Возвращает аналитические данные для dashboard\"\"\"\n    try:\n        # Мок-данные для демонстрации\n        analytics_data = {\n            \"commands_today\": 15,\n            \"success_rate\": 87.5,",
+        "detail": "routes.api.analytics_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.analytics_routes",
+        "description": "routes.api.analytics_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@analytics_bp.route(\"/dashboard\", methods=[\"GET\"])\ndef get_dashboard_analytics():\n    \"\"\"Возвращает аналитические данные для dashboard\"\"\"\n    try:\n        # Мок-данные для демонстрации\n        analytics_data = {\n            \"commands_today\": 15,\n            \"success_rate\": 87.5,\n            \"avg_response_time\": 1.2,",
+        "detail": "routes.api.analytics_routes",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "routes.api.auth_routes",
+        "description": "routes.api.auth_routes",
+        "peekOfCode": "def register():\n    \"\"\"Регистрирует нового пользователя\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        email = data.get(\"email\")\n        password = data.get(\"password\")\n        display_name = data.get(\"display_name\")",
+        "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "routes.api.auth_routes",
+        "description": "routes.api.auth_routes",
+        "peekOfCode": "def login():\n    \"\"\"Аутентифицирует пользователя\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        password = data.get(\"password\")\n        if not all([username, password]):\n            return (",
+        "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "kind": 2,
+        "importPath": "routes.api.auth_routes",
+        "description": "routes.api.auth_routes",
+        "peekOfCode": "def get_current_user():\n    \"\"\"Получает информацию о текущем пользователе\"\"\"\n    try:\n        auth_header = request.headers.get(\"Authorization\")\n        if not auth_header or not auth_header.startswith(\"Bearer \"):\n            return jsonify({\"success\": False, \"message\": \"Токен не предоставлен\"}), 401\n        token = auth_header.split(\" \")[1]\n        db_session = next(get_db())\n        auth_service = AuthService(db_session)\n        user = auth_service.get_current_user(token)",
+        "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "kind": 5,
+        "importPath": "routes.api.auth_routes",
+        "description": "routes.api.auth_routes",
+        "peekOfCode": "auth_bp = Blueprint(\"auth_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n@auth_bp.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"Регистрирует нового пользователя\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")",
+        "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.auth_routes",
+        "description": "routes.api.auth_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@auth_bp.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"Регистрирует нового пользователя\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        email = data.get(\"email\")",
+        "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_history",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def get_history():\n    \"\"\"Возвращает историю выполненных команд\"\"\"\n    try:\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"history\": [], \"count\": 0, \"message\": \"История команд пуста\"})\n        # Пробуем различные кодировки для чтения файла\n        encodings = [\"utf-8\", \"cp1251\", \"latin-1\"]\n        summary_content = None\n        for encoding in encodings:\n            try:",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_detailed_history",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def get_detailed_history(command_timestamp):\n    \"\"\"Возвращает подробную информацию о выполнении команды\"\"\"\n    try:\n        if not os.path.exists(Config.DETAILED_LOG_FILE):\n            return jsonify(\n                {\n                    \"command_timestamp\": command_timestamp,\n                    \"details\": [],\n                    \"message\": \"Детальная история команд пуста\",\n                }",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_logs",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def get_system_logs():\n    \"\"\"Возвращает системные логи (только для разработчиков)\"\"\"\n    developer_mode = request.args.get(\"developer_mode\") == \"true\"\n    developer_key = request.args.get(\"developer_key\", \"\")\n    if not developer_mode or developer_key != Config.DEVELOPER_KEY:\n        return jsonify({\"error\": \"Доступ запрещен. Требуется ключ разработчика.\"}), 403\n    try:\n        if not os.path.exists(Config.SYSTEM_LOG_FILE):\n            return jsonify({\"logs\": [], \"message\": \"Системные логи пусты\"})\n        max_lines = int(request.args.get(\"max_lines\", 100))",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "export_history_logs",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def export_history_logs():\n    \"\"\"Экспортирует историю команд в файл\"\"\"\n    try:\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"error\": \"Файл истории команд не найден\"}), 404\n        with open(Config.SUMMARY_LOG_FILE, \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        response = make_response(content)\n        response.headers[\"Content-Type\"] = \"text/plain\"\n        response.headers[\"Content-Disposition\"] = \"attachment; filename=command_history.txt\"",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "export_detailed_logs",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def export_detailed_logs():\n    \"\"\"Экспортирует детальные логи в файл\"\"\"\n    try:\n        if not os.path.exists(Config.DETAILED_LOG_FILE):\n            return jsonify({\"error\": \"Файл детальных логов не найден\"}), 404\n        with open(Config.DETAILED_LOG_FILE, \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        response = make_response(content)\n        response.headers[\"Content-Type\"] = \"text/plain\"\n        response.headers[\"Content-Disposition\"] = \"attachment; filename=detailed_logs.txt\"",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "ensure_log_files_exist_route",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def ensure_log_files_exist_route():\n    \"\"\"Создает необходимые файлы логов, если они не существуют\"\"\"\n    try:\n        from utils.log_maintenance import ensure_log_files_exist\n        ensure_log_files_exist()\n        return jsonify({\"success\": True, \"message\": \"Проверка файлов логов выполнена\"})\n    except Exception as e:\n        logger.error(f\"Ошибка при создании файлов логов: {str(e)}\")\n        return jsonify({\"success\": False, \"error\": f\"Ошибка при создании файлов логов: {str(e)}\"})\n@system_bp.route(\"/maintenance/clean_logs\", methods=[\"POST\"])",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "clean_old_logs_route",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def clean_old_logs_route():\n    \"\"\"Удаляет старые файлы логов\"\"\"\n    try:\n        from utils.log_maintenance import clean_old_logs\n        max_age_days = request.json.get(\"max_age_days\", 30) if request.json else 30\n        clean_old_logs(max_age_days)\n        return jsonify({\"success\": True, \"message\": f\"Удалены логи старше {max_age_days} дней\"})\n    except Exception as e:\n        logger.error(f\"Ошибка при удалении старых логов: {str(e)}\")\n        return jsonify({\"success\": False, \"error\": f\"Ошибка при удалении старых логов: {str(e)}\"})",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_monitor",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def get_system_monitor():\n    \"\"\"Возвращает детальную системную информацию\"\"\"\n    try:\n        system_info = {\n            \"os\": {\n                \"name\": platform.system(),\n                \"version\": platform.version(),\n                \"machine\": platform.machine(),\n                \"processor\": platform.processor(),\n            },",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_dashboard_status",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def get_dashboard_status():\n    \"\"\"Возвращает общий статус системы для главной страницы\"\"\"\n    try:\n        from services.ai_service import get_ai_models\n        models_data = get_ai_models()\n        current_model = None\n        if models_data.get(\"success\") and models_data.get(\"models\"):\n            for model in models_data[\"models\"]:\n                if model.get(\"is_active\"):\n                    current_model = {",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "toggle_system_monitoring",
+        "kind": 2,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "def toggle_system_monitoring():\n    \"\"\"Включение/выключение системного мониторинга\"\"\"\n    try:\n        from services.system_monitor_service import SystemMonitorService\n        data = request.get_json()\n        enabled = data.get(\"enabled\", True)\n        service = SystemMonitorService()\n        result = service.toggle_monitoring(enabled)\n        return jsonify(\n            {",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "system_bp",
+        "kind": 5,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "system_bp = Blueprint(\"system_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n@system_bp.route(\"/history\", methods=[\"GET\"])\ndef get_history():\n    \"\"\"Возвращает историю выполненных команд\"\"\"\n    try:\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"history\": [], \"count\": 0, \"message\": \"История команд пуста\"})\n        # Пробуем различные кодировки для чтения файла\n        encodings = [\"utf-8\", \"cp1251\", \"latin-1\"]",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.system_routes",
+        "description": "routes.api.system_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@system_bp.route(\"/history\", methods=[\"GET\"])\ndef get_history():\n    \"\"\"Возвращает историю выполненных команд\"\"\"\n    try:\n        if not os.path.exists(Config.SUMMARY_LOG_FILE):\n            return jsonify({\"history\": [], \"count\": 0, \"message\": \"История команд пуста\"})\n        # Пробуем различные кодировки для чтения файла\n        encodings = [\"utf-8\", \"cp1251\", \"latin-1\"]\n        summary_content = None",
+        "detail": "routes.api.system_routes",
+        "documentation": {}
+    },
+    {
+        "label": "query",
+        "kind": 2,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "def query():\n    \"\"\"Основной эндпоинт для выполнения команд\"\"\"\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\").lower()\n    # Проверяем составную команду\n    if any(sep in user_input for sep in [\" и \", \" затем \", \" после этого \", \" потом \", \", \"]):\n        execution_result = execute_command_with_steps(user_input)\n        steps_info = []\n        for step in execution_result.steps:",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "clarify",
+        "kind": 2,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "def clarify():\n    \"\"\"Обрабатывает запросы на уточнение\"\"\"\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\")\n    original_command = request.json.get(\"original_command\", \"\")\n    error_context = request.json.get(\"error_context\", {})\n    logger.debug(f\"Получен контекст ошибки: {error_context}\")\n    logger.info(f\"Получено уточнение от пользователя: {user_input}\")\n    new_command = f\"{original_command} ({user_input})\"",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "confirm_action",
+        "kind": 2,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "def confirm_action():\n    \"\"\"Обрабатывает подтверждение действия\"\"\"\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_confirmation = request.json.get(\"confirmation\", False)\n    command = request.json.get(\"command\", \"\")\n    code = request.json.get(\"code\", \"\")\n    if not user_confirmation:\n        return jsonify(\n            {",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "interrupt_command",
+        "kind": 2,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "def interrupt_command():\n    \"\"\"Прерывает выполнение текущей команды\"\"\"\n    global command_interrupt_flag\n    command_interrupt_flag = True\n    logger.info(\"Получен запрос на прерывание команды\")\n    return jsonify(\n        {\n            \"success\": True,\n            \"message\": (\n                \"Запрос на прерывание команды получен. Выполнение будет остановлено при первой\"",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_recent_tasks",
+        "kind": 2,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "def get_recent_tasks():\n    \"\"\"Возвращает последние задачи для Dashboard\"\"\"\n    try:\n        count = int(request.args.get(\"count\", 5))\n        # Мок-данные для демонстрации\n        mock_activities = [\n            {\n                \"id\": 1,\n                \"description\": \"Открытие браузера\",\n                \"time\": (datetime.datetime.now() - datetime.timedelta(minutes=5)).isoformat(),",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "task_bp",
+        "kind": 5,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "task_bp = Blueprint(\"task_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n@task_bp.route(\"/query\", methods=[\"POST\"])\ndef query():\n    \"\"\"Основной эндпоинт для выполнения команд\"\"\"\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\").lower()\n    # Проверяем составную команду\n    if any(sep in user_input for sep in [\" и \", \" затем \", \" после этого \", \" потом \", \", \"]):",
+        "detail": "routes.api.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.task_routes",
+        "description": "routes.api.task_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@task_bp.route(\"/query\", methods=[\"POST\"])\ndef query():\n    \"\"\"Основной эндпоинт для выполнения команд\"\"\"\n    if request.json is None:\n        return jsonify({\"error\": \"Ожидался JSON в теле запроса\"}), 400\n    user_input = request.json.get(\"input\", \"\").lower()\n    # Проверяем составную команду\n    if any(sep in user_input for sep in [\" и \", \" затем \", \" после этого \", \" потом \", \", \"]):\n        execution_result = execute_command_with_steps(user_input)",
+        "detail": "routes.api.task_routes",
         "documentation": {}
     },
     {
@@ -11370,6 +12051,15 @@
         "documentation": {}
     },
     {
+        "label": "get_model_inference_service",
+        "kind": 2,
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "peekOfCode": "def get_model_inference_service():\n    \"\"\"Получить глобальный экземпляр сервиса инференса\"\"\"\n    global _model_inference_service\n    if _model_inference_service is None:\n        _model_inference_service = ModelInferenceService()\n    return _model_inference_service\nlogger = logging.getLogger(\"neuro_assistant\")\n# Инициализируем сервис Hugging Face\nhf_service = HuggingFaceService()\n# Путь к файлу с информацией о моделях",
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
         "label": "get_ai_models",
         "kind": 2,
         "importPath": "services.ai_service",
@@ -11473,7 +12163,25 @@
         "kind": 2,
         "importPath": "services.ai_service",
         "description": "services.ai_service",
-        "peekOfCode": "def get_ai_response(prompt, system_message=None):\n    \"\"\"\n    Получает ответ от AI-модели\n    Args:\n        prompt: Запрос пользователя\n        system_message: Системное сообщение (опционально)\n    Returns:\n        Ответ от AI-модели\n    \"\"\"\n    try:",
+        "peekOfCode": "def get_ai_response(prompt, system_message=None):\n    \"\"\"\n    Получает ответ от AI-модели через HuggingFace Inference API\n    Args:\n        prompt: Запрос пользователя\n        system_message: Системное сообщение (опционально)\n    Returns:\n        Ответ от AI-модели\n    \"\"\"\n    try:",
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_huggingface_response",
+        "kind": 2,
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "peekOfCode": "def get_huggingface_response(prompt: str, system_message: Optional[str] = None) -> Optional[str]:\n    \"\"\"\n    Получить ответ через HuggingFace Inference API\n    Args:\n        prompt: Запрос пользователя\n        system_message: Системное сообщение\n    Returns:\n        Ответ от модели или None при ошибке\n    \"\"\"\n    try:",
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_simple_ai_response",
+        "kind": 2,
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "peekOfCode": "def get_simple_ai_response(prompt: str) -> str:\n    \"\"\"\n    Упрощенная функция для быстрого тестирования AI\n    Args:\n        prompt: Запрос пользователя\n    Returns:\n        Ответ от AI или заглушка\n    \"\"\"\n    try:\n        # Сначала пробуем HuggingFace",
         "detail": "services.ai_service",
         "documentation": {}
     },
@@ -11505,6 +12213,15 @@
         "documentation": {}
     },
     {
+        "label": "_model_inference_service",
+        "kind": 5,
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "peekOfCode": "_model_inference_service = None\ndef get_model_inference_service():\n    \"\"\"Получить глобальный экземпляр сервиса инференса\"\"\"\n    global _model_inference_service\n    if _model_inference_service is None:\n        _model_inference_service = ModelInferenceService()\n    return _model_inference_service\nlogger = logging.getLogger(\"neuro_assistant\")\n# Инициализируем сервис Hugging Face\nhf_service = HuggingFaceService()",
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
         "label": "logger",
         "kind": 5,
         "importPath": "services.ai_service",
@@ -11529,6 +12246,24 @@
         "description": "services.ai_service",
         "peekOfCode": "MODELS_INFO_FILE = os.path.join(Config.DATA_DIR, \"ai_models.json\")\ndef get_ai_models():\n    \"\"\"\n    Получает список доступных AI-моделей\n    Returns:\n        Словарь с информацией о моделях\n    \"\"\"\n    try:\n        # Проверяем существование файла с информацией о моделях\n        if not os.path.exists(MODELS_INFO_FILE):",
         "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "AnalyticsService",
+        "kind": 6,
+        "importPath": "services.analytics_service",
+        "description": "services.analytics_service",
+        "peekOfCode": "class AnalyticsService:\n    \"\"\"Сервис аналитики для различных типов данных\"\"\"\n    def __init__(self):\n        self.config = Config\n    def get_app_analytics(self):\n        \"\"\"Получить аналитику работы приложения\"\"\"\n        try:\n            # Статистика команд\n            commands_stats = self._get_commands_statistics()\n            # Использование моделей",
+        "detail": "services.analytics_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "services.analytics_service",
+        "description": "services.analytics_service",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\nclass AnalyticsService:\n    \"\"\"Сервис аналитики для различных типов данных\"\"\"\n    def __init__(self):\n        self.config = Config\n    def get_app_analytics(self):\n        \"\"\"Получить аналитику работы приложения\"\"\"\n        try:\n            # Статистика команд\n            commands_stats = self._get_commands_statistics()",
+        "detail": "services.analytics_service",
         "documentation": {}
     },
     {
@@ -11703,11 +12438,101 @@
         "documentation": {}
     },
     {
+        "label": "HFModelInfo",
+        "kind": 6,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "class HFModelInfo:\n    \"\"\"Информация о модели с HuggingFace.\"\"\"\n    id: str\n    author: str\n    sha: str\n    created_at: str\n    last_modified: str\n    pipeline_tag: Optional[str]\n    tags: List[str]\n    downloads: int",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
         "label": "HuggingFaceService",
         "kind": 6,
         "importPath": "services.huggingface_service",
         "description": "services.huggingface_service",
-        "peekOfCode": "class HuggingFaceService:\n    def __init__(self):\n        self.api = HfApi()\n        self.token = os.environ.get(\"HUGGINGFACE_TOKEN\") or Config.HUGGINGFACE_TOKEN\n        self.models_cache = {}\n        self.tokenizers_cache = {}\n        # Установка токена для доступа к приватным моделям\n        if self.token:\n            HfFolder.save_token(self.token)\n            logger.info(\"Hugging Face токен установлен\")",
+        "peekOfCode": "class HuggingFaceService:\n    \"\"\"Сервис для работы с HuggingFace Hub API.\"\"\"\n    def __init__(self, api_token: Optional[str] = None):\n        self.api_token = api_token or getattr(Config, \"HUGGINGFACE_API_TOKEN\", None)\n        self.base_url = \"https://huggingface.co/api\"\n        self.headers = {\"User-Agent\": \"Neuro-Link-Assistant/1.0\"}\n        if self.api_token:\n            self.headers[\"Authorization\"] = f\"Bearer {self.api_token}\"\n        # ✅ НОВОЕ: Используем официальную библиотеку если доступна\n        if HF_API_AVAILABLE:",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "ModelSyncService",
+        "kind": 6,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "class ModelSyncService:\n    \"\"\"Сервис для синхронизации моделей с базой данных.\"\"\"\n    def __init__(self, hf_service: HuggingFaceService):\n        self.hf_service = hf_service\n    def sync_popular_models(self, limit: int = 200) -> Dict[str, Any]:\n        \"\"\"Синхронизирует популярные модели с базой данных.\"\"\"\n        try:\n            # ✅ ИСПРАВЛЕНИЕ: Используем правильный контекстный менеджер\n            db = next(get_db())\n            try:",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_hf_service",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def get_hf_service() -> HuggingFaceService:\n    \"\"\"Возвращает экземпляр HuggingFace сервиса.\"\"\"\n    return HuggingFaceService()\ndef sync_models_from_hf(limit: int = 200) -> Dict[str, Any]:\n    \"\"\"Синхронизирует модели с HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    sync_service = ModelSyncService(hf_service)\n    return sync_service.sync_popular_models(limit)\ndef get_model_details_from_hf(model_id: str) -> Optional[HFModelInfo]:\n    \"\"\"Получает детали модели с HuggingFace Hub.\"\"\"",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "sync_models_from_hf",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def sync_models_from_hf(limit: int = 200) -> Dict[str, Any]:\n    \"\"\"Синхронизирует модели с HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    sync_service = ModelSyncService(hf_service)\n    return sync_service.sync_popular_models(limit)\ndef get_model_details_from_hf(model_id: str) -> Optional[HFModelInfo]:\n    \"\"\"Получает детали модели с HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    return hf_service.get_model_details(model_id)\ndef search_hf_models(query: str, limit: int = 50) -> List[HFModelInfo]:",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_model_details_from_hf",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def get_model_details_from_hf(model_id: str) -> Optional[HFModelInfo]:\n    \"\"\"Получает детали модели с HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    return hf_service.get_model_details(model_id)\ndef search_hf_models(query: str, limit: int = 50) -> List[HFModelInfo]:\n    \"\"\"Поиск моделей на HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    return hf_service.search_models(query, limit)\ndef search_models_for_ui(query: str, limit: int = 20) -> Dict[str, Any]:\n    \"\"\"Поиск моделей для отображения в UI.\"\"\"",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "search_hf_models",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def search_hf_models(query: str, limit: int = 50) -> List[HFModelInfo]:\n    \"\"\"Поиск моделей на HuggingFace Hub.\"\"\"\n    hf_service = get_hf_service()\n    return hf_service.search_models(query, limit)\ndef search_models_for_ui(query: str, limit: int = 20) -> Dict[str, Any]:\n    \"\"\"Поиск моделей для отображения в UI.\"\"\"\n    try:\n        hf_service = get_hf_service()\n        models = hf_service.search_models(query, limit)\n        # Форматируем для UI",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "search_models_for_ui",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def search_models_for_ui(query: str, limit: int = 20) -> Dict[str, Any]:\n    \"\"\"Поиск моделей для отображения в UI.\"\"\"\n    try:\n        hf_service = get_hf_service()\n        models = hf_service.search_models(query, limit)\n        # Форматируем для UI\n        formatted_models = []\n        for model in models[:limit]:  # Дополнительная защита\n            formatted_models.append(\n                {",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_simple_ai_response",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def get_simple_ai_response(prompt: str, max_length: int = 100) -> str:\n    \"\"\"\n    Простой AI ответ без сложных зависимостей.\n    Args:\n        prompt: Входной промпт\n        max_length: Максимальная длина ответа\n    Returns:\n        Сгенерированный ответ\n    \"\"\"\n    try:",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "test_hf_connection",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def test_hf_connection() -> Dict[str, Any]:\n    \"\"\"Тестирует соединение с HuggingFace Hub.\"\"\"\n    try:\n        hf_service = get_hf_service()\n        # Пробуем получить одну популярную модель\n        models = hf_service.get_models(limit=1, sort=\"downloads\")\n        if models:\n            return {\n                \"success\": True,\n                \"message\": \"Соединение с HuggingFace Hub работает\",",
+        "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "add_single_model_to_db",
+        "kind": 2,
+        "importPath": "services.huggingface_service",
+        "description": "services.huggingface_service",
+        "peekOfCode": "def add_single_model_to_db(model_id: str) -> Dict[str, Any]:\n    \"\"\"Добавляет одну конкретную модель в базу данных по её ID.\"\"\"\n    try:\n        hf_service = get_hf_service()\n        # Получаем детали модели\n        model_info = hf_service.get_model_details(model_id)\n        if not model_info:\n            return {\"success\": False, \"error\": f\"Модель {model_id} не найдена на HuggingFace\"}\n        db = next(get_db())\n        try:",
         "detail": "services.huggingface_service",
         "documentation": {}
     },
@@ -11716,8 +12541,44 @@
         "kind": 5,
         "importPath": "services.huggingface_service",
         "description": "services.huggingface_service",
-        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\nclass HuggingFaceService:\n    def __init__(self):\n        self.api = HfApi()\n        self.token = os.environ.get(\"HUGGINGFACE_TOKEN\") or Config.HUGGINGFACE_TOKEN\n        self.models_cache = {}\n        self.tokenizers_cache = {}\n        # Установка токена для доступа к приватным моделям\n        if self.token:\n            HfFolder.save_token(self.token)",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@dataclass\nclass HFModelInfo:\n    \"\"\"Информация о модели с HuggingFace.\"\"\"\n    id: str\n    author: str\n    sha: str\n    created_at: str\n    last_modified: str\n    pipeline_tag: Optional[str]",
         "detail": "services.huggingface_service",
+        "documentation": {}
+    },
+    {
+        "label": "ModelInferenceService",
+        "kind": 6,
+        "importPath": "services.model_inference_service",
+        "description": "services.model_inference_service",
+        "peekOfCode": "class ModelInferenceService:\n    \"\"\"Сервис для загрузки и выполнения инференса моделей\"\"\"\n    def __init__(self):\n        self.loaded_models = {}\n        self.loaded_tokenizers = {}\n        self.model_cache = {}\n    def check_model_availability(self, model_id: str) -> Dict[str, Any]:\n        \"\"\"Проверяет доступность модели для инференса\"\"\"\n        try:\n            # Проверка OpenAI моделей",
+        "detail": "services.model_inference_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "services.model_inference_service",
+        "description": "services.model_inference_service",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n# Опциональные импорты для ML библиотек\ntry:\n    import torch\n    from transformers.models.auto.modeling_auto import AutoModelForCausalLM\n    from transformers.models.auto.tokenization_auto import AutoTokenizer\n    from transformers.pipelines import pipeline\n    HF_TRANSFORMERS_AVAILABLE = True\nexcept ImportError:\n    HF_TRANSFORMERS_AVAILABLE = False",
+        "detail": "services.model_inference_service",
+        "documentation": {}
+    },
+    {
+        "label": "SystemMonitorService",
+        "kind": 6,
+        "importPath": "services.system_monitor_service",
+        "description": "services.system_monitor_service",
+        "peekOfCode": "class SystemMonitorService:\n    \"\"\"Сервис мониторинга системы\"\"\"\n    def __init__(self):\n        self.monitoring_enabled = False\n        self.monitoring_thread = None\n        self.monitoring_data = {}\n        self.lock = threading.Lock()\n    def toggle_monitoring(self, enabled):\n        \"\"\"Включение/выключение мониторинга\"\"\"\n        try:",
+        "detail": "services.system_monitor_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "services.system_monitor_service",
+        "description": "services.system_monitor_service",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\nclass SystemMonitorService:\n    \"\"\"Сервис мониторинга системы\"\"\"\n    def __init__(self):\n        self.monitoring_enabled = False\n        self.monitoring_thread = None\n        self.monitoring_data = {}\n        self.lock = threading.Lock()\n    def toggle_monitoring(self, enabled):\n        \"\"\"Включение/выключение мониторинга\"\"\"",
+        "detail": "services.system_monitor_service",
         "documentation": {}
     },
     {

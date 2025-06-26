@@ -1,226 +1,225 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{% block title %}Нейро-Линк Ассистент{% endblock %}</title>
 
-		<!-- Шрифты и иконки -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-		/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{% block title %}Нейро-Линк Ассистент{% endblock %}</title>
 
-		<!-- Основные стили -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+	<!-- Шрифты и иконки -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-		{% block extra_css %}{% endblock %}
-	</head>
-	<body>
-		<div class="app-container">
-			<header class="app-header">
-				<div class="header-content">
-					<!-- Логотип -->
-					<div class="logo-container">
-						<i class="fas fa-robot logo-icon"></i>
-						<h1>Нейро-Ассистент</h1>
+	<!-- Основные стили -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+
+	{% block extra_css %}{% endblock %}
+</head>
+
+<body>
+	<div class="app-container">
+		<header class="app-header">
+			<div class="header-content">
+				<!-- Логотип -->
+				<div class="logo-container">
+					<i class="fas fa-robot logo-icon"></i>
+					<h1>Нейро-Ассистент</h1>
+				</div>
+
+				<!-- Бургер-меню -->
+				<button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
+					<span class="burger-line"></span>
+					<span class="burger-line"></span>
+					<span class="burger-line"></span>
+				</button>
+
+				<!-- Навигационное меню (скрыто по умолчанию) -->
+				<nav class="main-nav" id="mainNav">
+					<div class="nav-header">
+						<h3>Навигация</h3>
+						<button class="nav-close" id="navClose" aria-label="Закрыть меню">
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
 
-					<!-- Бургер-меню -->
-					<button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
-						<span class="burger-line"></span>
-						<span class="burger-line"></span>
-						<span class="burger-line"></span>
-					</button>
+					<ul class="nav-list">
+						<li>
+							<a href="/" class="nav-link">
+								<i class="fas fa-home"></i>
+								<span>Главная</span>
+							</a>
+						</li>
+						<li>
+							<a href="/models" class="nav-link">
+								<i class="fas fa-brain"></i>
+								<span>Модели ИИ</span>
+							</a>
+						</li>
+						<li>
+							<a href="/tasks" class="nav-link">
+								<i class="fas fa-tasks"></i>
+								<span>Задачи</span>
+							</a>
+						</li>
+						<li>
+							<a href="/history" class="nav-link">
+								<i class="fas fa-history"></i>
+								<span>История</span>
+							</a>
+						</li>
+						<li>
+							<a href="/workflows" class="nav-link">
+								<i class="fas fa-project-diagram"></i>
+								<span>Процессы</span>
+							</a>
+						</li>
+						<li>
+							<a href="/analytics" class="nav-link">
+								<i class="fas fa-chart-bar"></i>
+								<span>Аналитика</span>
+							</a>
+						</li>
+						<li>
+							<a href="/settings" class="nav-link">
+								<i class="fas fa-cog"></i>
+								<span>Настройки</span>
+							</a>
+						</li>
+						<li>
+							<a href="/help" class="nav-link">
+								<i class="fas fa-question-circle"></i>
+								<span>Справка</span>
+							</a>
+						</li>
+					</ul>
 
-					<!-- Навигационное меню (скрыто по умолчанию) -->
-					<nav class="main-nav" id="mainNav">
-						<div class="nav-header">
-							<h3>Навигация</h3>
-							<button class="nav-close" id="navClose" aria-label="Закрыть меню">
-								<i class="fas fa-times"></i>
+					<!-- Секция авторизации -->
+					<div class="auth-section">
+						<div class="auth-user-info" id="authUserInfo" style="display: none;">
+							<div class="user-avatar">
+								<i class="fas fa-user-circle"></i>
+							</div>
+							<div class="user-details">
+								<span class="user-name" id="userName">Пользователь</span>
+								<span class="user-role" id="userRole">user</span>
+							</div>
+							<button class="btn btn-sm btn-outline logout-btn" id="logoutBtn">
+								<i class="fas fa-sign-out-alt"></i> Выйти
 							</button>
 						</div>
 
-						<ul class="nav-list">
-							<li>
-								<a href="/" class="nav-link">
-									<i class="fas fa-home"></i>
-									<span>Главная</span>
-								</a>
-							</li>
-							<li>
-								<a href="/models" class="nav-link">
-									<i class="fas fa-brain"></i>
-									<span>Модели ИИ</span>
-								</a>
-							</li>
-							<li>
-								<a href="/tasks" class="nav-link">
-									<i class="fas fa-tasks"></i>
-									<span>Задачи</span>
-								</a>
-							</li>
-							<li>
-								<a href="/history" class="nav-link">
-									<i class="fas fa-history"></i>
-									<span>История</span>
-								</a>
-							</li>
-							<li>
-								<a href="/workflows" class="nav-link">
-									<i class="fas fa-project-diagram"></i>
-									<span>Процессы</span>
-								</a>
-							</li>
-							<li>
-								<a href="/analytics" class="nav-link">
-									<i class="fas fa-chart-bar"></i>
-									<span>Аналитика</span>
-								</a>
-							</li>
-							<li>
-								<a href="/settings" class="nav-link">
-									<i class="fas fa-cog"></i>
-									<span>Настройки</span>
-								</a>
-							</li>
-							<li>
-								<a href="/help" class="nav-link">
-									<i class="fas fa-question-circle"></i>
-									<span>Справка</span>
-								</a>
-							</li>
-						</ul>
-
-						<!-- Секция авторизации -->
-						<div class="auth-section">
-							<div class="auth-user-info" id="authUserInfo" style="display: none;">
-								<div class="user-avatar">
-									<i class="fas fa-user-circle"></i>
-								</div>
-								<div class="user-details">
-									<span class="user-name" id="userName">Пользователь</span>
-									<span class="user-role" id="userRole">user</span>
-								</div>
-								<button class="btn btn-sm btn-outline logout-btn" id="logoutBtn">
-									<i class="fas fa-sign-out-alt"></i> Выйти
-								</button>
-							</div>
-
-							<div class="auth-buttons" id="authButtons">
-								<button class="btn btn-primary login-btn" id="loginBtn">
-									<i class="fas fa-sign-in-alt"></i> Войти
-								</button>
-								<button class="btn btn-outline register-btn" id="registerBtn">
-									<i class="fas fa-user-plus"></i> Регистрация
-								</button>
-							</div>
+						<div class="auth-buttons" id="authButtons">
+							<button class="btn btn-primary login-btn" id="loginBtn">
+								<i class="fas fa-sign-in-alt"></i> Войти
+							</button>
+							<button class="btn btn-outline register-btn" id="registerBtn">
+								<i class="fas fa-user-plus"></i> Регистрация
+							</button>
 						</div>
-					</nav>
+					</div>
+				</nav>
 
-					<!-- Overlay для закрытия меню -->
-					<div class="nav-overlay" id="navOverlay"></div>
+				<!-- Overlay для закрытия меню -->
+				<div class="nav-overlay" id="navOverlay"></div>
+			</div>
+
+			<!-- Описание приложения (только на главной) -->
+			{% if request.endpoint == 'main.index' %}
+			<div class="app-description">
+				<p>Интеллектуальный помощник для управления компьютером</p>
+			</div>
+			{% endif %}
+		</header>
+
+		<main class="app-content">{% block content %}{% endblock %}</main>
+
+		<footer class="app-footer">
+			<p>
+				&copy; 2025 Нейро Ассистент |
+				<a href="https://github.com/kolobashek/neuro-link-assistant" target="_blank">GitHub</a>
+			</p>
+		</footer>
+	</div>
+
+	<!-- Модальные окна для авторизации -->
+	<div class="modal" id="loginModal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Вход в систему</h2>
+				<button class="modal-close" data-modal-close="loginModal">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<form class="auth-form" id="loginForm">
+				<div class="form-group">
+					<label for="loginUsername">Имя пользователя:</label>
+					<input type="text" id="loginUsername" name="username" autocomplete="username" required>
 				</div>
-
-				<!-- Описание приложения (только на главной) -->
-				{% if request.endpoint == 'main.index' %}
-				<div class="app-description">
-					<p>Интеллектуальный помощник для управления компьютером</p>
+				<div class="form-group">
+					<label for="loginPassword">Пароль:</label>
+					<input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
 				</div>
-				{% endif %}
-			</header>
-
-			<main class="app-content">{% block content %}{% endblock %}</main>
-
-			<footer class="app-footer">
-				<p>
-					&copy; 2023 Нейро-Линк Ассистент |
-					<a href="https://github.com/kolobashek/neuro-link-assistant" target="_blank">GitHub</a>
-				</p>
-			</footer>
-		</div>
-
-		<!-- Модальные окна для авторизации -->
-		<div class="modal" id="loginModal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2>Вход в систему</h2>
-					<button class="modal-close" data-modal="loginModal">
-						<i class="fas fa-times"></i>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-sign-in-alt"></i> Войти
+					</button>
+					<button type="button" class="btn btn-outline" data-modal-close="loginModal">
+						Отмена
 					</button>
 				</div>
-				<form class="auth-form" id="loginForm">
-					<div class="form-group">
-						<label for="loginUsername">Имя пользователя:</label>
-						<input type="text" id="loginUsername" name="username" required>
-					</div>
-					<div class="form-group">
-						<label for="loginPassword">Пароль:</label>
-						<input type="password" id="loginPassword" name="password" required>
-					</div>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">
-							<i class="fas fa-sign-in-alt"></i> Войти
-						</button>
-						<button type="button" class="btn btn-outline" data-modal="loginModal">
-							Отмена
-						</button>
-					</div>
-				</form>
-			</div>
+			</form>
 		</div>
+	</div>
 
-		<div class="modal" id="registerModal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2>Регистрация</h2>
-					<button class="modal-close" data-modal="registerModal">
-						<i class="fas fa-times"></i>
+	<div class="modal" id="registerModal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Регистрация</h2>
+				<button class="modal-close" data-modal-close="registerModal">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<form class="auth-form" id="registerForm">
+				<div class="form-group">
+					<label for="registerUsername">Имя пользователя:</label>
+					<input type="text" id="registerUsername" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="registerEmail">Email:</label>
+					<input type="email" id="registerEmail" name="email" autocomplete="email" required>
+				</div>
+				<div class="form-group">
+					<label for="registerPassword">Пароль:</label>
+					<input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
+				</div>
+				<div class="form-group">
+					<label for="registerConfirmPassword">Подтвердите пароль:</label>
+					<input type="password" id="registerConfirmPassword" name="confirmPassword" autocomplete="new-password"
+						required>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-user-plus"></i> Зарегистрироваться
+					</button>
+					<button type="button" class="btn btn-outline" data-modal-close="registerModal">
+						Отмена
 					</button>
 				</div>
-				<form class="auth-form" id="registerForm">
-					<div class="form-group">
-						<label for="registerUsername">Имя пользователя:</label>
-						<input type="text" id="registerUsername" name="username" required>
-					</div>
-					<div class="form-group">
-						<label for="registerEmail">Email:</label>
-						<input type="email" id="registerEmail" name="email" required>
-					</div>
-					<div class="form-group">
-						<label for="registerPassword">Пароль:</label>
-						<input type="password" id="registerPassword" name="password" required>
-					</div>
-					<div class="form-group">
-						<label for="registerConfirmPassword">Подтвердите пароль:</label>
-						<input type="password" id="registerConfirmPassword" name="confirmPassword" required>
-					</div>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">
-							<i class="fas fa-user-plus"></i> Зарегистрироваться
-						</button>
-						<button type="button" class="btn btn-outline" data-modal="registerModal">
-							Отмена
-						</button>
-					</div>
-				</form>
-			</div>
+			</form>
 		</div>
+	</div>
 
-		<!-- Уведомления -->
-		<div id="notification-container"></div>
+	<!-- Уведомления -->
+	<div id="notification-container"></div>
 
-		<!-- Базовые скрипты -->
-		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
-		{% block extra_js %}{% endblock %}
-	</body>
+	<!-- Базовые скрипты -->
+	<script src="{{ url_for('static', filename='js/modal-manager.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+	{% block extra_js %}{% endblock %}
+</body>
+
 </html>

@@ -136,6 +136,7 @@
 |   |-- task_manager.py
 |   |-- __init__.py
 |-- data
+|   |-- ai_models.json
 |-- docs
 |   |-- api
 |   |   |-- components.md
@@ -161,6 +162,7 @@
 |   |   |-- milestones.md
 |   |   |-- roadmap.md
 |   |-- architecture.md
+|   |-- new_interface_24062025.md
 |-- init-scripts
 |   |-- 01-init.sql
 |-- logs
@@ -189,8 +191,17 @@
 |   |-- ui_parallel_20250605_174138_junit.xml
 |-- migrations
 |   |-- versions
+|   |   |-- 001f5f096665_increase_model_field_sizes.py
+|   |   |-- 13ee2f4ed3bb_add_salt_column_to_users.py
+|   |   |-- 343ecf78d9bf_add_huggingface_fields_to_ai_models.py
+|   |   |-- 39c9f485f3ee_add_language_field_to_ai_models.py
 |   |   |-- 52f69517b81e_add_all_missing_tables.py
+|   |   |-- 5308b4d57cde_add_role_column_to_users.py
+|   |   |-- 9409f9926cd0_fix_updated_at_constraint.py
 |   |   |-- 97eaf3e5639a_manual_initial_migration.py
+|   |   |-- ab8cfc8817f6_add_missing_fields_to_ai_models.py
+|   |   |-- b0afe86a69c1_add_salt_column_only.py
+|   |   |-- d09550ca714f_add_role_column_to_users_fix.py
 |   |-- env.py
 |   |-- README
 |   |-- script.py.mako
@@ -240,25 +251,38 @@
 |   |-- css
 |   |   |-- ai_models.css
 |   |   |-- command_form.css
+|   |   |-- dashboard.css
 |   |   |-- history.css
 |   |   |-- logs.css
 |   |   |-- main.css
 |   |   |-- modals.css
+|   |   |-- models_new.css
 |   |   |-- style.css
 |   |-- js
 |   |   |-- ai_models.js
+|   |   |-- auth.js
 |   |   |-- command_form.js
+|   |   |-- dashboard.js
 |   |   |-- fixes.js
+|   |   |-- hf_search.js
 |   |   |-- history.js
 |   |   |-- main.js
+|   |   |-- models_new.js
 |   |   |-- utils.js
 |   |-- screenshots
 |-- templates
 |   |-- components
 |   |   |-- ai_models.html
+|   |   |-- analytics_tabs.html
 |   |   |-- command_form.html
 |   |   |-- command_history.html
+|   |   |-- dashboard_status.html
+|   |   |-- hf_model_search.html
 |   |   |-- modals.html
+|   |   |-- quick_chat.html
+|   |   |-- recent_activities.html
+|   |   |-- system_monitor.html
+|   |   |-- task_results_analytics.html
 |   |-- 404.html
 |   |-- 500.html
 |   |-- analytics.html
@@ -415,14 +439,15 @@
 |-- config.py
 |-- conftest.py
 |-- docker-compose.yml
+|-- fix_migration.py
 |-- LICENSE
 |-- poetry.lock
 |-- project_structure.txt
 |-- pyproject.toml
 |-- readme.md
-|-- report.html
 |-- requirements-dev.txt
 |-- requirements-optional.txt
 |-- requirements.txt
-|-- test.txt
+|-- reset_migrations.py
 |-- tests_structure.txt
+|-- test_huggingface.py

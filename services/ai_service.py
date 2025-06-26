@@ -1,11 +1,28 @@
 import json
 import logging
 import os
+import time
+from typing import Any, Dict, Optional
 
+import requests
 from huggingface_hub import HfApi
 
 from config import Config
 from services.huggingface_service import HuggingFaceService
+
+from .model_inference_service import ModelInferenceService
+
+# Глобальный экземпляр сервиса инференса
+_model_inference_service = None
+
+
+def get_model_inference_service():
+    """Получить глобальный экземпляр сервиса инференса"""
+    global _model_inference_service
+    if _model_inference_service is None:
+        _model_inference_service = ModelInferenceService()
+    return _model_inference_service
+
 
 logger = logging.getLogger("neuro_assistant")
 
@@ -262,7 +279,8 @@ def select_ai_model(model_id):
             return {"success": False, "message": f"Модель с ID {model_id} не найдена"}
 
         # Проверяем доступность модели
-        availability = hf_service.check_model_availability(model["huggingface_id"])
+        model_inference = get_model_inference_service()
+        availability = model_inference.check_model_availability(model_id)
 
         if not availability["available"]:
             return {
@@ -284,8 +302,9 @@ def select_ai_model(model_id):
 
         # Предзагружаем модель и токенизатор
         try:
-            hf_service.load_model(model["huggingface_id"])
-            hf_service.load_tokenizer(model["huggingface_id"])
+            model_inference = get_model_inference_service()
+            model_inference.load_model(model["huggingface_id"])
+            model_inference.load_tokenizer(model["huggingface_id"])
         except Exception as e:
             logger.warning(f"Предзагрузка модели {model['name']} не удалась: {str(e)}")
 
@@ -450,52 +469,27 @@ def generate_text(prompt, max_length=100, model_id=None):
         update_model_status(model_id, "busy")
 
         try:
-            # Загружаем модель и токенизатор
-            model = hf_service.load_model(huggingface_id)
-            tokenizer = hf_service.load_tokenizer(huggingface_id)
+            # ✅ ИСПОЛЬЗУЕМ ModelInferenceService для генерации
+            model_inference = get_model_inference_service()
 
-            if not model or not tokenizer:
-                raise ValueError(
-                    f"Не удалось загрузить модель или токенизатор для {huggingface_id}"
-                )
-
-            # Улучшаем форматирование промпта
-            formatted_prompt = f"Q: {prompt}\nA:"
-
-            # Кодируем запрос
-            inputs = tokenizer(formatted_prompt, return_tensors="pt", truncation=True)
-
-            # УЛУЧШЕННЫЕ параметры генерации
-            outputs = model.generate(
-                inputs.input_ids,
-                max_new_tokens=50,  # Ограничиваем новые токены
-                num_return_sequences=1,
-                do_sample=True,
+            generated_text = model_inference.generate_text(
+                model_id=huggingface_id,
+                prompt=prompt,
+                max_length=max_length,
                 temperature=0.7,
                 top_p=0.9,
-                top_k=50,
-                repetition_penalty=1.2,  # Предотвращаем повторения
-                pad_token_id=tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
-                early_stopping=True,
             )
-
-            # Декодируем только новую часть
-            input_length = inputs.input_ids.shape[1]
-            generated_tokens = outputs[0][input_length:]
-            generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=True)
-
-            # Очищаем ответ
-            cleaned_text = generated_text.split("\n")[0].strip()  # Берем только первую строку
 
             # Обновляем статус модели
             update_model_status(model_id, "ready")
 
-            return cleaned_text if cleaned_text else "Извините, не могу сгенерировать ответ."
+            return generated_text if generated_text else "Извините, не могу сгенерировать ответ."
+
         except Exception as e:
             # В случае ошибки обновляем статус модели
             update_model_status(model_id, "error", str(e))
             raise
+
     except Exception as e:
         logger.error(f"Ошибка при генерации текста: {str(e)}")
         return f"Ошибка при генерации текста: {str(e)}"
@@ -539,16 +533,7 @@ def generate_chat_response(messages, max_length=1000, model_id=None):
         update_model_status(model_id, "busy")
 
         try:
-            # Загружаем модель и токенизатор
-            model = hf_service.load_model(huggingface_id)
-            tokenizer = hf_service.load_tokenizer(huggingface_id)
-
-            if not model or not tokenizer:
-                raise ValueError(
-                    f"Не удалось загрузить модель или токенизатор для {huggingface_id}"
-                )
-
-            # Форматируем сообщения в текстовый запрос
+            # ✅ Формируем промпт из сообщений
             prompt = ""
             for message in messages:
                 role = message.get("role", "user")
@@ -563,33 +548,26 @@ def generate_chat_response(messages, max_length=1000, model_id=None):
 
             prompt += "Assistant: "
 
-            # Кодируем запрос
-            inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
-
-            # Генерируем ответ
-            outputs = model.generate(
-                inputs.input_ids,
+            # ✅ ИСПОЛЬЗУЕМ ModelInferenceService для генерации
+            model_inference = get_model_inference_service()
+            generated_text = model_inference.generate_text(
+                model_id=huggingface_id,
+                prompt=prompt,
                 max_length=max_length,
-                num_return_sequences=1,
-                do_sample=True,
                 temperature=0.7,
                 top_p=0.9,
             )
 
-            # Декодируем ответ
-            generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-            # Извлекаем только ответ ассистента
-            assistant_response = generated_text.split("Assistant: ")[-1].strip()
-
             # Обновляем статус модели
             update_model_status(model_id, "ready")
 
-            return assistant_response
+            return generated_text
+
         except Exception as e:
             # В случае ошибки обновляем статус модели
             update_model_status(model_id, "error", str(e))
             raise
+
     except Exception as e:
         logger.error(f"Ошибка при генерации ответа в чате: {str(e)}")
         return f"Ошибка при генерации ответа: {str(e)}"
@@ -674,7 +652,8 @@ def add_model(model_data):
             return {"success": False, "message": f"Модель с ID {model_data['id']} уже существует"}
 
         # Проверяем доступность модели на Hugging Face
-        availability = hf_service.check_model_availability(model_data["huggingface_id"])
+        model_inference = get_model_inference_service()
+        availability = model_inference.check_model_availability(model_data.model_id)
 
         # Создаем новую модель
         new_model = {
@@ -760,7 +739,7 @@ def remove_model(model_id):
 
 def get_ai_response(prompt, system_message=None):
     """
-    Получает ответ от AI-модели
+    Получает ответ от AI-модели через HuggingFace Inference API
 
     Args:
         prompt: Запрос пользователя
@@ -770,18 +749,20 @@ def get_ai_response(prompt, system_message=None):
         Ответ от AI-модели
     """
     try:
-        # Получаем текущую модель
-        current_model = get_current_ai_model()
+        # Сначала пробуем HuggingFace Inference API
+        hf_response = get_huggingface_response(prompt, system_message)
+        if hf_response:
+            return hf_response
 
+        # Если HF не работает, используем текущую модель
+        current_model = get_current_ai_model()
         if not current_model:
             return "Ошибка: Не выбрана модель AI. Пожалуйста, выберите модель в настройках."
 
         # Формируем сообщения для чата
         messages = []
-
         if system_message:
             messages.append({"role": "system", "content": system_message})
-
         messages.append({"role": "user", "content": prompt})
 
         # Определяем тип модели и вызываем соответствующую функцию
@@ -793,11 +774,226 @@ def get_ai_response(prompt, system_message=None):
             if system_message:
                 full_prompt += f"{system_message}\n\n"
             full_prompt += f"User: {prompt}\nAssistant: "
-
             return generate_text(full_prompt)
+
     except Exception as e:
         logger.error(f"Ошибка при получении ответа от AI: {str(e)}")
         return f"Ошибка при получении ответа от AI: {str(e)}"
+
+
+def get_huggingface_response(prompt: str, system_message: Optional[str] = None) -> Optional[str]:
+    """
+    Получить ответ через HuggingFace Inference API
+
+    Args:
+        prompt: Запрос пользователя
+        system_message: Системное сообщение
+
+    Returns:
+        Ответ от модели или None при ошибке
+    """
+    try:
+        # Список бесплатных моделей для тестирования
+        models_to_try = [
+            "microsoft/DialoGPT-medium",
+            "facebook/blenderbot-400M-distill",
+            "microsoft/DialoGPT-small",
+            "gpt2",
+        ]
+
+        # Формируем финальный промпт
+        if system_message:
+            full_prompt = f"System: {system_message}\nUser: {prompt}\nAssistant:"
+        else:
+            full_prompt = f"User: {prompt}\nAssistant:"
+
+        # Пробуем модели по очереди
+        for model_name in models_to_try:
+            try:
+                response = _call_huggingface_api(model_name, full_prompt)
+                if response:
+                    logger.info(f"Успешный ответ от модели {model_name}")
+                    return response
+            except Exception as e:
+                logger.warning(f"Модель {model_name} недоступна: {e}")
+                continue
+
+        # Если все модели недоступны
+        logger.warning("Все HuggingFace модели недоступны")
+        return None
+
+    except Exception as e:
+        logger.error(f"Общая ошибка HuggingFace API: {e}")
+        return None
+
+
+def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) -> Optional[str]:
+    """
+    Вызов HuggingFace Inference API для конкретной модели
+
+    Args:
+        model_name: Имя модели на HuggingFace
+        prompt: Промпт для модели
+        max_retries: Максимальное количество попыток
+
+    Returns:
+        Ответ модели или None
+    """
+    api_url = f"https://api-inference.huggingface.co/models/{model_name}"
+
+    headers = {}
+    # Используем токен если он есть
+    if Config.HUGGINGFACE_TOKEN:
+        headers["Authorization"] = f"Bearer {Config.HUGGINGFACE_TOKEN}"
+
+    # Параметры запроса
+    payload = {
+        "inputs": prompt,
+        "parameters": {
+            "max_length": 150,
+            "temperature": 0.7,
+            "do_sample": True,
+            "top_p": 0.9,
+            "repetition_penalty": 1.1,
+        },
+        "options": {"wait_for_model": True, "use_cache": False},
+    }
+
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(api_url, headers=headers, json=payload, timeout=30)
+
+            if response.status_code == 200:
+                result = response.json()
+
+                # Обработка разных форматов ответов
+                if isinstance(result, list) and len(result) > 0:
+                    if "generated_text" in result[0]:
+                        generated = result[0]["generated_text"]
+                        # Убираем исходный промпт из ответа
+                        if generated.startswith(prompt):
+                            generated = generated[len(prompt) :].strip()
+                        return generated[:500]  # Ограничиваем длину
+                    elif "text" in result[0]:
+                        return result[0]["text"][:500]
+                elif isinstance(result, dict):
+                    if "generated_text" in result:
+                        return result["generated_text"][:500]
+                    elif "text" in result:
+                        return result["text"][:500]
+
+                return "Модель вернула некорректный формат ответа"
+
+            elif response.status_code == 503:
+                # Модель загружается
+                logger.info(f"Модель {model_name} загружается, ждем...")
+                time.sleep(5)
+                continue
+
+            elif response.status_code == 429:
+                # Превышен лимит запросов
+                logger.warning(f"Превышен лимит для модели {model_name}")
+                time.sleep(2)
+                continue
+
+            else:
+                logger.error(f"HuggingFace API ошибка {response.status_code}: {response.text}")
+                return None
+
+        except requests.exceptions.Timeout:
+            logger.warning(f"Таймаут для модели {model_name}, попытка {attempt + 1}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
+                continue
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Ошибка запроса к {model_name}: {e}")
+            return None
+
+    return None
+
+
+def get_simple_ai_response(prompt: str) -> str:
+    """
+    Упрощенная функция для быстрого тестирования AI
+
+    Args:
+        prompt: Запрос пользователя
+
+    Returns:
+        Ответ от AI или заглушка
+    """
+    try:
+        # Сначала пробуем HuggingFace
+        hf_response = get_huggingface_response(prompt)
+        if hf_response:
+            return hf_response
+
+        # Если HF недоступен, возвращаем умную заглушку
+        return _get_smart_fallback_response(prompt)
+
+    except Exception as e:
+        logger.error(f"Ошибка в get_simple_ai_response: {e}")
+        return f"Извините, произошла ошибка при обработке запроса: {str(e)}"
+
+
+def _get_smart_fallback_response(prompt: str) -> str:
+    """Умная заглушка с базовыми ответами"""
+    prompt_lower = prompt.lower()
+
+    # Приветствие
+    if any(word in prompt_lower for word in ["привет", "hello", "hi", "здравствуй"]):
+        return "Привет! Я ваш AI ассистент. Как дела? Чем могу помочь?"
+
+    # Математика
+    if any(word in prompt_lower for word in ["сколько", "+", "-", "*", "/", "="]):
+        import re
+
+        # Простые арифметические операции
+        math_match = re.search(r"(\d+)\s*([+\-*/])\s*(\d+)", prompt)
+        if math_match:
+            a, op, b = math_match.groups()
+            a, b = int(a), int(b)
+            if op == "+":
+                result = a + b
+            elif op == "-":
+                result = a - b
+            elif op == "*":
+                result = a * b
+            elif op == "/":
+                result = a / b if b != 0 else "деление на ноль"
+            else:
+                result = "неизвестная операция"
+            return f"{a} {op} {b} = {result}"
+
+    # Вопросы о себе
+    if any(word in prompt_lower for word in ["кто ты", "что ты", "представься"]):
+        return (
+            "Я AI ассистент, созданный для помощи с различными задачами. Могу отвечать на вопросы,"
+            " помогать с вычислениями и общаться."
+        )
+
+    # Вопросы об AI
+    if any(
+        word in prompt_lower
+        for word in ["искусственный интеллект", "машинное обучение", "нейросеть"]
+    ):
+        return (
+            "Искусственный интеллект - это область компьютерных наук, занимающаяся созданием"
+            " систем, способных выполнять задачи, обычно требующие человеческого интеллекта."
+        )
+
+    # Стихи
+    if any(word in prompt_lower for word in ["стих", "стихотворение", "поэзия"]):
+        return (
+            "Технологии идут вперёд,\nИскусственный разум растёт,\nВ будущем светлом нас ждёт\nЭра"
+            " цифровых высот."
+        )
+
+    # Общий ответ
+    return (
+        f"Вы спросили: '{prompt}'. Это интересный вопрос! К сожалению, сейчас AI модели недоступны,"
+        " но я стараюсь помочь. Система работает в тестовом режиме."
+    )
 
 
 def get_available_huggingface_models(filter_criteria=None, limit=20):

@@ -1,0 +1,256 @@
+<div class="task-analytics-container">
+  <div class="analytics-header">
+    <h3><i class="fas fa-chart-pie"></i> Аналитика результатов задач</h3>
+    <div class="analytics-controls">
+      <select id="analytics-period" class="period-selector">
+        <option value="1d">За день</option>
+        <option value="7d" selected>За неделю</option>
+        <option value="30d">За месяц</option>
+        <option value="all">За все время</option>
+      </select>
+      <button id="export-task-analytics" class="btn btn-sm btn-primary">
+        <i class="fas fa-download"></i> Экспорт
+      </button>
+    </div>
+  </div>
+
+  <div class="analytics-summary">
+    <div class="summary-card success">
+      <div class="summary-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="success-count">0</div>
+        <div class="summary-label">Успешно</div>
+        <div class="summary-percent" id="success-percent">0%</div>
+      </div>
+    </div>
+
+    <div class="summary-card warning">
+      <div class="summary-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="pending-count">0</div>
+        <div class="summary-label">В процессе</div>
+        <div class="summary-percent" id="pending-percent">0%</div>
+      </div>
+    </div>
+
+    <div class="summary-card error">
+      <div class="summary-icon">
+        <i class="fas fa-exclamation-circle"></i>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="failed-count">0</div>
+        <div class="summary-label">Неудачно</div>
+        <div class="summary-percent" id="failed-percent">0%</div>
+      </div>
+    </div>
+
+    <div class="summary-card info">
+      <div class="summary-icon">
+        <i class="fas fa-chart-bar"></i>
+      </div>
+      <div class="summary-content">
+        <div class="summary-value" id="total-count">0</div>
+        <div class="summary-label">Всего</div>
+        <div class="summary-percent" id="accuracy-rate">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-charts">
+    <!-- График распределения результатов -->
+    <div class="chart-card">
+      <div class="card-header">
+        <h4><i class="fas fa-pie-chart"></i> Распределение результатов</h4>
+        <button class="chart-toggle" data-chart="pie">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="chart-container">
+          <canvas id="results-pie-chart"></canvas>
+        </div>
+        <div class="chart-legend" id="pie-legend"></div>
+      </div>
+    </div>
+
+    <!-- График активности по времени -->
+    <div class="chart-card">
+      <div class="card-header">
+        <h4><i class="fas fa-chart-line"></i> Активность по времени</h4>
+        <div class="chart-controls">
+          <select id="time-granularity">
+            <option value="hour">По часам</option>
+            <option value="day" selected>По дням</option>
+            <option value="week">По неделям</option>
+          </select>
+          <button class="chart-toggle" data-chart="timeline">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="chart-container">
+          <canvas id="activity-timeline-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-details">
+    <!-- Топ задач по типам -->
+    <div class="detail-card">
+      <div class="card-header">
+        <h4><i class="fas fa-star"></i> Популярные типы задач</h4>
+        <select id="task-type-sort">
+          <option value="count">По количеству</option>
+          <option value="success">По успешности</option>
+          <option value="avg_time">По времени</option>
+        </select>
+      </div>
+      <div class="card-content">
+        <div class="task-types-list" id="popular-task-types">
+          <div class="loading">Загрузка данных...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Статистика времени выполнения -->
+    <div class="detail-card">
+      <div class="card-header">
+        <h4><i class="fas fa-stopwatch"></i> Время выполнения</h4>
+      </div>
+      <div class="card-content">
+        <div class="execution-stats">
+          <div class="stat-row">
+            <span class="stat-label">Среднее время:</span>
+            <span class="stat-value" id="avg-execution">-- сек</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Медианное время:</span>
+            <span class="stat-value" id="median-execution">-- сек</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Минимальное:</span>
+            <span class="stat-value" id="min-execution">-- сек</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Максимальное:</span>
+            <span class="stat-value" id="max-execution">-- сек</span>
+          </div>
+        </div>
+        <div class="execution-histogram">
+          <canvas id="execution-time-histogram"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Анализ ошибок -->
+    <div class="detail-card">
+      <div class="card-header">
+        <h4><i class="fas fa-bug"></i> Анализ ошибок</h4>
+        <button id="show-error-details" class="btn btn-sm btn-outline">
+          Подробности
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="error-summary">
+          <div class="error-types" id="error-types-list">
+            <div class="loading">Анализ ошибок...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Тренды и рекомендации -->
+    <div class="detail-card recommendations-card">
+      <div class="card-header">
+        <h4><i class="fas fa-lightbulb"></i> Рекомендации</h4>
+        <button id="refresh-recommendations" class="btn btn-sm btn-outline">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="recommendations" id="task-recommendations">
+          <div class="recommendation-item">
+            <div class="recommendation-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="recommendation-text">
+              Анализ рекомендаций...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Детальная таблица задач -->
+  <div class="task-details-section">
+    <div class="section-header">
+      <h4><i class="fas fa-table"></i> Детальная статистика</h4>
+      <div class="section-controls">
+        <input type="text" id="task-search" placeholder="Поиск задач..." class="search-input">
+        <select id="status-filter" class="filter-select">
+          <option value="">Все статусы</option>
+          <option value="success">Успешные</option>
+          <option value="failed">Неудачные</option>
+          <option value="pending">В процессе</option>
+        </select>
+        <button id="clear-filters" class="btn btn-sm btn-outline">
+          <i class="fas fa-times"></i> Очистить
+        </button>
+      </div>
+    </div>
+    <div class="task-table-container">
+      <table class="task-table" id="detailed-task-table">
+        <thead>
+          <tr>
+            <th class="sortable" data-column="date">
+              <i class="fas fa-calendar"></i> Дата
+              <i class="fas fa-sort sort-icon"></i>
+            </th>
+            <th class="sortable" data-column="command">
+              <i class="fas fa-terminal"></i> Команда
+              <i class="fas fa-sort sort-icon"></i>
+            </th>
+            <th class="sortable" data-column="status">
+              <i class="fas fa-flag"></i> Статус
+              <i class="fas fa-sort sort-icon"></i>
+            </th>
+            <th class="sortable" data-column="execution_time">
+              <i class="fas fa-clock"></i> Время
+              <i class="fas fa-sort sort-icon"></i>
+            </th>
+            <th class="sortable" data-column="accuracy">
+              <i class="fas fa-percentage"></i> Точность
+              <i class="fas fa-sort sort-icon"></i>
+            </th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody id="task-table-body">
+          <tr class="loading-row">
+            <td colspan="6">
+              <div class="loading">Загрузка данных...</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-pagination" id="table-pagination">
+      <button id="prev-page" class="btn btn-sm btn-outline" disabled>
+        <i class="fas fa-chevron-left"></i> Назад
+      </button>
+      <span class="pagination-info">
+        Страница <span id="current-page">1</span> из <span id="total-pages">1</span>
+      </span>
+      <button id="next-page" class="btn btn-sm btn-outline" disabled>
+        Вперед <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

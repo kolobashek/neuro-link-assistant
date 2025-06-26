@@ -181,3 +181,68 @@
 .ai-model-item.available {
     cursor: pointer;
 }
+
+/* HuggingFace Search Integration */
+.hf-search-container {
+    margin-top: 20px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.results-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.hf-model-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+}
+
+.model-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.hf-model-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #666;
+    margin: 8px 0;
+}
+
+.add-model-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.add-model-btn:hover:not(:disabled) {
+    background: #218838;
+}
+
+.add-model-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}

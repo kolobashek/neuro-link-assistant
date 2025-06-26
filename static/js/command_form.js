@@ -115,9 +115,9 @@ function displayCompoundCommandProgress(data) {
 	const stepsHeader = document.createElement('div')
 	stepsHeader.className = 'steps-header'
 	stepsHeader.innerHTML = `
-		<h4>Выполнение команды (${data.completion_percentage.toFixed(1)}% завершено)</h4>
+		<h4>Выполнение команды (${ data.completion_percentage.toFixed(1) }% завершено)</h4>
 		<div class="progress-bar">
-			<div class="progress-bar-fill" style="width: ${data.completion_percentage}%;"></div>
+			<div class="progress-bar-fill" style="width: ${ data.completion_percentage }%;"></div>
 		</div>
 	`
 	stepsContainer.appendChild(stepsHeader)
@@ -128,7 +128,7 @@ function displayCompoundCommandProgress(data) {
 
 	data.steps.forEach((step) => {
 		const stepItem = document.createElement('div')
-		stepItem.className = `step-item step-${step.status}`
+		stepItem.className = `step-item step-${ step.status }`
 
 		// Определяем иконку для статуса
 		let statusIcon = ''
@@ -147,13 +147,13 @@ function displayCompoundCommandProgress(data) {
 		// Формируем содержимое элемента шага
 		stepItem.innerHTML = `
 			<div class="step-header">
-				${statusIcon}
-				<span class="step-number">Шаг ${step.number}:</span>
-				<span class="step-description">${step.description}</span>
+				${ statusIcon }
+				<span class="step-number">Шаг ${ step.number }:</span>
+				<span class="step-description">${ step.description }</span>
 			</div>
 			<div class="step-details">
-				${step.result ? `<div class="step-result">${step.result}</div>` : ''}
-				${step.error ? `<div class="step-error">${step.error}</div>` : ''}
+				${ step.result ? `<div class="step-result">${ step.result }</div>` : '' }
+				${ step.error ? `<div class="step-error">${ step.error }</div>` : '' }
 			</div>
 		`
 
@@ -169,15 +169,15 @@ function displayCompoundCommandProgress(data) {
 		<div class="steps-stats">
 			<div class="stat-item">
 				<span class="stat-label">Статус:</span>
-				<span class="stat-value status-${data.overall_status}">${getStatusText(data.overall_status)}</span>
+				<span class="stat-value status-${ data.overall_status }">${ getStatusText(data.overall_status) }</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-label">Выполнение:</span>
-				<span class="stat-value">${data.completion_percentage.toFixed(1)}%</span>
+				<span class="stat-value">${ data.completion_percentage.toFixed(1) }%</span>
 			</div>
 			<div class="stat-item">
 				<span class="stat-label">Точность:</span>
-				<span class="stat-value">${data.accuracy_percentage.toFixed(1)}%</span>
+				<span class="stat-value">${ data.accuracy_percentage.toFixed(1) }%</span>
 			</div>
 		</div>
 	`
@@ -211,7 +211,7 @@ function addMessage(message, type) {
 	}
 
 	const messageElement = document.createElement('div')
-	messageElement.className = `message ${type}-message`
+	messageElement.className = `message ${ type }-message`
 
 	// Определяем иконку для типа сообщения
 	let iconHtml = ''
@@ -231,18 +231,18 @@ function addMessage(message, type) {
 
 	// Если это составная команда, отображаем прогресс выполнения
 	if (type === 'assistant' && data && data.is_compound) {
-		messageContent.innerHTML = `<p>${message}</p>`
+		messageContent.innerHTML = `<p>${ message }</p>`
 		messageContent.appendChild(displayCompoundCommandProgress(data))
 	} else {
-		messageContent.innerHTML = `<p>${message}</p>`
+		messageContent.innerHTML = `<p>${ message }</p>`
 	}
 
 	// Собираем сообщение
 	messageElement.innerHTML = `
 		<div class="message-header">
-			${iconHtml}
-			<span class="message-type">${getMessageTypeText(type)}</span>
-			<span class="message-time">${getCurrentTime()}</span>
+			${ iconHtml }
+			<span class="message-type">${ getMessageTypeText(type) }</span>
+			<span class="message-time">${ getCurrentTime() }</span>
 		</div>
 	`
 	messageElement.appendChild(messageContent)
@@ -280,7 +280,8 @@ function handleCommandSubmit(e) {
 	showCommandControls()
 
 	// Отправляем запрос на сервер
-	fetch('/api/query', {
+	// ✅ ИСПРАВЛЕНО: /api/query → /api/tasks/query
+	fetch('/api/tasks/query', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -289,7 +290,7 @@ function handleCommandSubmit(e) {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`)
+				throw new Error(`HTTP error! Status: ${ response.status }`)
 			}
 			return response.json()
 		})
@@ -327,7 +328,7 @@ function handleCommandSubmit(e) {
 		})
 		.catch((error) => {
 			console.error('Ошибка при отправке запроса:', error)
-			addMessage(`Ошибка при отправке запроса: ${error.message}`, 'error')
+			addMessage(`Ошибка при отправке запроса: ${ error.message }`, 'error')
 
 			// Скрываем элементы управления
 			hideCommandControls()

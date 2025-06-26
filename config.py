@@ -49,8 +49,21 @@ class Config:
     # Ключ для доступа к функциям разработчика
     DEVELOPER_KEY = os.environ.get("DEVELOPER_KEY", "dev_key_12345")
 
-    # Настройки Hugging Face
+    # HuggingFace настройки (улучшенные)
+    HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "")
     HUGGINGFACE_TOKEN = os.environ.get("HUGGINGFACE_TOKEN", "")
+
+    # Резервные модели для тестирования (бесплатные)
+    HUGGINGFACE_TEST_MODELS = [
+        "microsoft/DialoGPT-medium",
+        "facebook/blenderbot-400M-distill",
+        "microsoft/DialoGPT-small",
+        "gpt2",
+    ]
+
+    # Таймауты для AI запросов
+    AI_REQUEST_TIMEOUT = int(os.getenv("AI_REQUEST_TIMEOUT", 30))
+    AI_MAX_RETRIES = int(os.getenv("AI_MAX_RETRIES", 3))
 
     # Директория для хранения моделей
     MODELS_DIR = os.path.join("BASE_DIR", "models")

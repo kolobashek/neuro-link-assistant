@@ -179,6 +179,7 @@ body {
     padding: 1rem;
     border-top: 1px solid #f0f0f0;
     margin-top: auto;
+    overflow: hidden;
 }
 
 .auth-user-info {
@@ -189,6 +190,7 @@ body {
     background: #f8f9fa;
     border-radius: 8px;
     text-align: center;
+    overflow: hidden;
 }
 
 .user-avatar i {
@@ -211,6 +213,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    overflow: hidden;
 }
 
 .auth-buttons .btn {
@@ -220,6 +223,19 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.auth-buttons .btn:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.logout-btn:hover {
+    background: #dc3545 !important;
+    color: white !important;
+    border-color: #dc3545 !important;
 }
 
 /* ========== МОДАЛЬНЫЕ ОКНА ========== */
@@ -319,7 +335,7 @@ body {
 .main-nav {
     position: fixed;
     top: 0;
-    right: -400px; /* Скрыто справа */
+    right: -400px;
     width: 350px;
     height: 100vh;
     background: white;
@@ -327,11 +343,14 @@ body {
     transition: right 0.3s ease;
     z-index: 1002;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-nav.active {
-    right: 0; /* Показать меню */
+    right: 0;
 }
 
 .nav-header {
@@ -342,11 +361,13 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
 }
 
 .nav-header h3 {
     margin: 0;
     font-size: 1.2rem;
+    color: white;
 }
 
 .nav-close {
@@ -358,20 +379,24 @@ body {
     padding: 0.5rem;
     border-radius: 50%;
     transition: background 0.3s ease;
+    flex-shrink: 0;
 }
 
 .nav-close:hover {
     background: rgba(255,255,255,0.1);
+    transform: rotate(90deg);
 }
 
 .nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .nav-list li {
     border-bottom: 1px solid #f0f0f0;
+    overflow: hidden;
 }
 
 .nav-link {
@@ -383,24 +408,57 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
+    position: relative;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.nav-link:hover::before {
+    width: 100%;
 }
 
 .nav-link:hover {
     background: #f8f9fa;
     color: #667eea;
-    transform: translateX(5px);
+    padding-left: 1.5rem;
 }
 
 .nav-link i {
     width: 20px;
     text-align: center;
     font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 .nav-link.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: var(--primary-color);
-    font-weight: 500;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link.active::before {
+    display: none;
+}
+
+.nav-link.active:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    color: white !important;
+    padding-left: 1rem;
+}
+
+.nav-link.active i {
+    color: white !important;
 }
 
 .app-content {
@@ -602,9 +660,27 @@ body {
 }
 
 @media (max-width: 768px) {
-    .main-nav ul {
-        flex-wrap: wrap;
+    .main-nav {
+        width: 100%;
+        right: -100%;
+    }
+
+    .nav-link {
+        padding: 1rem 0.75rem;
+    }
+
+    .nav-link:hover {
+        padding-left: 1rem;
     }
 }
 
-body.modal-open { overflow: hidden; }
+@media (max-width: 480px) {
+    .auth-section {
+        padding: 0.75rem;
+    }
+
+    .auth-buttons .btn {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,63 +1,295 @@
-{% extends "base.html" %} {% block title %}Нейро-Линк Ассистент{% endblock %} {% block extra_css %}
+{% extends "base.html" %}
+{% block title %}Нейро Ассистент{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/command_form.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/ai_models.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/modals.css') }}" />
-{% endblock %} {% block content %}
-<div class="dashboard-layout">
-	<!-- Левая панель - Ввод команд и ответы -->
-	<section class="dashboard-main">{% include "components/command_form.html" %}</section>
+{% endblock %}
 
-	<!-- Правая панель - Модели и история -->
+{% block content %}
+<div class="dashboard-layout">
+	<!-- Статус панель -->
+	<section class="dashboard-status">
+		{% include "components/dashboard_status.html" %}
+	</section>
+
+	<!-- Основная область - быстрый чат -->
+	<section class="dashboard-main">
+		{% include "components/quick_chat.html" %}
+	</section>
+
+	<!-- Боковая панель - последние действия -->
 	<aside class="dashboard-sidebar">
-		<div class="sidebar-section">{% include "components/ai_models.html" %}</div>
-		<div class="sidebar-section">{% include "components/command_history.html" %}</div>
+		{% include "components/recent_activities.html" %}
 	</aside>
 </div>
 
-<!-- Добавим в секцию с кнопками быстрых действий: -->
+<!-- Быстрые действия -->
 <div class="quick-actions">
 	<h3>🚀 Быстрые действия</h3>
 	<div class="action-buttons">
 		<a href="/models" class="btn btn-primary">🤖 AI Модели</a>
 		<a href="/tasks" class="btn btn-secondary">📋 Задачи</a>
 		<a href="/history" class="btn btn-info">📚 История</a>
-		<button id="testAiBtn" class="btn btn-success">🧠 Тест AI</button>
+		<button class="btn btn-success" data-modal-open="aiTestModal">
+			🧠 Тест AI
+		</button>
 	</div>
 </div>
 
-<!-- Добавим модальное окно для тестирования AI -->
-<div id="aiTestModal" class="modal" style="display: none;">
+<!-- Модальное окно для тестирования AI (исправлено - убран display: block) -->
+<div id="aiTestModal" class="modal ai-test-modal">
 	<div class="modal-content">
-		<span class="close">&times;</span>
-		<h2>🧠 Тест AI Модели</h2>
-		<form id="aiTestForm">
-			<div class="form-group">
-				<label for="aiPrompt">Введите запрос:</label>
-				<textarea id="aiPrompt" name="prompt" placeholder="Привет! Как дела?" required></textarea>
+		<div class="modal-header">
+			<h2>🧠 Быстрый тест AI</h2>
+			<button class="modal-close" data-modal-close="aiTestModal">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
+
+		<div class="modal-body">
+			<!-- Информация о текущей модели -->
+			<div class="current-model-info">
+				<strong>🤖 Активная модель:</strong>
+				<span id="testCurrentModel">Загрузка...</span>
 			</div>
-			<button type="submit" class="btn btn-primary">Отправить</button>
-		</form>
-		<div id="aiResponse" style="display: none;">
-			<h3>Ответ AI:</h3>
-			<div id="aiResponseText"></div>
+
+			<!-- Быстрые тесты -->
+			<div class="quick-tests">
+				<h3>🚀 Быстрые тесты:</h3>
+				<div class="test-buttons">
+					<button class="btn btn-outline quick-test-btn" data-test="👋 Привет! Как дела?">
+						👋 Приветствие
+					</button>
+					<button class="btn btn-outline quick-test-btn" data-test="Сколько будет 15 * 7 + 23?">
+						🧮 Математика
+					</button>
+					<button class="btn btn-outline quick-test-btn" data-test="Расскажи интересный факт о космосе">
+						🧠 Знания
+					</button>
+					<button class="btn btn-outline quick-test-btn" data-test="Напиши короткое стихотворение о коте">
+						✨ Творчество
+					</button>
+				</div>
+			</div>
+
+			<!-- Форма тестирования -->
+			<form id="aiTestForm">
+				<div class="form-group">
+					<label for="aiPrompt">💬 Или введите свой запрос:</label>
+					<textarea id="aiPrompt" name="prompt" placeholder="Ваш вопрос для AI..." required></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Отправить тест</button>
+			</form>
+
+			<!-- Результат теста -->
+			<div id="aiResponse" class="test-result" style="display: none;">
+				<h3>Ответ AI:</h3>
+				<div id="aiResponseText"></div>
+				<div class="test-metrics">
+					<span id="responseTime">⏱️ Время: 0мс</span>
+					<span id="tokenCount">🔢 Токены: 0</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-{% include "components/modals.html" %} {% endblock %} {% block extra_js %}
-<!-- Правильный порядок подключения скриптов -->
-<!-- 1. Утилиты и базовые функции -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- ❌ УДАЛЕН ДУБЛИРУЮЩИЙСЯ main.js - уже подключается в base.html -->
+
+<!-- Подключаем dashboard.js для главной страницы -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<!-- Остальные скрипты -->
 <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
-
-<!-- 2. Основной файл с определениями функций -->
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-<!-- 3. Модули, которые могут зависеть от main.js -->
-<script src="{{ url_for('static', filename='js/history.js') }}"></script>
-<script src="{{ url_for('static', filename='js/ai_models.js') }}"></script>
-<script src="{{ url_for('static', filename='js/command_form.js') }}"></script>
-
-<!-- 4. Исправления и дополнения -->
 <script src="{{ url_for('static', filename='js/fixes.js') }}"></script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const aiTestForm = document.getElementById('aiTestForm');
+		const aiPromptInput = document.getElementById('aiPrompt');
+		const aiResponse = document.getElementById('aiResponse');
+		const aiResponseText = document.getElementById('aiResponseText');
+		const responseTime = document.getElementById('responseTime');
+		const tokenCount = document.getElementById('tokenCount');
+
+		// ✅ Обработчик кнопок быстрых тестов
+		document.addEventListener('click', function (e) {
+			if (e.target.classList.contains('quick-test-btn')) {
+				const testPrompt = e.target.getAttribute('data-test');
+				if (testPrompt && aiPromptInput) {
+					aiPromptInput.value = testPrompt;
+					aiPromptInput.focus();
+
+					// Автоматически отправляем тест
+					if (aiTestForm) {
+						aiTestForm.dispatchEvent(new Event('submit'));
+					}
+				}
+			}
+		});
+
+		// ✅ Обработчик формы с очисткой и метриками
+		if (aiTestForm) {
+			aiTestForm.addEventListener('submit', async function (e) {
+				e.preventDefault();
+
+				const prompt = aiPromptInput.value.trim();
+				if (!prompt) {
+					alert('Введите запрос!');
+					return;
+				}
+
+				const startTime = performance.now();
+
+				try {
+					// Показываем состояние загрузки
+					if (aiResponseText) {
+						aiResponseText.innerHTML = '🤖 <em>Думаю...</em>';
+						aiResponse.style.display = 'block';
+					}
+
+					// Обновляем активную модель
+					updateCurrentModel();
+
+					const response = await fetch('/api/ai/test', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ prompt })
+					});
+
+					const endTime = performance.now();
+					const duration = Math.round(endTime - startTime);
+
+					if (!response.ok) {
+						throw new Error(`HTTP ${ response.status }: ${ response.statusText }`);
+					}
+
+					const data = await response.json();
+
+					if (data.success && aiResponseText) {
+						// ✅ Отображаем результат
+						aiResponseText.innerHTML = `
+						<div class="ai-response-content">
+							<div class="response-text">${ data.response }</div>
+							<div class="response-meta">
+								<small>🤖 Модель: ${ data.model || 'Неизвестно' }</small>
+							</div>
+						</div>
+					`;
+
+						// ✅ Обновляем метрики
+						if (responseTime) {
+							responseTime.textContent = `⏱️ Время: ${ duration }мс`;
+						}
+						if (tokenCount) {
+							const estimatedTokens = Math.ceil((prompt.length + data.response.length) / 4);
+							tokenCount.textContent = `🔢 Токены: ${ estimatedTokens }`;
+						}
+
+						// ✅ ОЧИЩАЕМ ПОЛЕ ВВОДА
+						aiPromptInput.value = '';
+
+					} else {
+						throw new Error(data.error || 'Неизвестная ошибка');
+					}
+
+				} catch (error) {
+					console.error('❌ Ошибка AI запроса:', error);
+
+					if (aiResponseText) {
+						aiResponseText.innerHTML = `
+						<div class="ai-response-error">
+							❌ <strong>Ошибка:</strong> ${ error.message }
+						</div>
+					`;
+					}
+
+					if (responseTime) responseTime.textContent = `⏱️ Время: ${ Math.round(performance.now() - startTime) }мс`;
+					if (tokenCount) tokenCount.textContent = '🔢 Токены: 0';
+				}
+			});
+		}
+
+		// ✅ Функция обновления текущей модели
+		function updateCurrentModel() {
+			const currentModelEl = document.getElementById('current-model-name');
+			if (currentModelEl) {
+				currentModelEl.textContent = 'DistilGPT-2 Simple';
+			}
+		}
+	});
+</script>
+
+<!-- ✅ Стили для улучшенного отображения -->
+<style>
+	.quick-tests {
+		margin-bottom: 1.5rem;
+	}
+
+	.test-buttons {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.quick-test-btn {
+		padding: 0.5rem;
+		font-size: 0.9rem;
+		text-align: center;
+		transition: all 0.2s ease;
+	}
+
+	.quick-test-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.test-result {
+		margin-top: 1rem;
+		padding: 1rem;
+		background-color: #f8f9fa;
+		border-radius: 8px;
+		border-left: 4px solid #007bff;
+	}
+
+	.ai-response-content {
+		margin-bottom: 0.5rem;
+	}
+
+	.response-text {
+		font-size: 1rem;
+		line-height: 1.5;
+		margin-bottom: 0.5rem;
+	}
+
+	.response-meta {
+		opacity: 0.7;
+	}
+
+	.ai-response-error {
+		color: #dc3545;
+		font-weight: 500;
+	}
+
+	.test-metrics {
+		display: flex;
+		gap: 1rem;
+		margin-top: 0.5rem;
+		font-size: 0.9rem;
+		color: #6c757d;
+	}
+
+	@media (max-width: 768px) {
+		.test-buttons {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>
 {% endblock %}

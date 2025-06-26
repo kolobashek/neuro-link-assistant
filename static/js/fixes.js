@@ -8,7 +8,7 @@
  */
 function createEmptyLogFileIfNeeded() {
 	// Отправляем запрос на создание пустого файла журнала, если он не существует
-	fetch('/api/ensure_log_files_exist', {
+	fetch('/api/system/maintenance/ensure_logs', {
 		method: 'POST',
 	})
 		.then((response) => response.json())

@@ -4,7 +4,7 @@ import logging
 from flask import Flask, jsonify, render_template, request
 
 print("🔍 Импорт routes...")
-from routes.api_routes import api_bp
+from routes.api import register_api_blueprints
 from routes.main_routes import main_bp
 
 print("🔍 Импорт utils...")
@@ -249,8 +249,10 @@ def init_app():
         # Регистрация маршрутов
         print("🔍 Регистрация маршрутов...")
         app.register_blueprint(main_bp)
-        app.register_blueprint(api_bp, url_prefix="/api")
-        print("✅ Маршруты зарегистрированы")
+
+        # ✅ НОВОЕ: Используем доменную регистрацию
+        register_api_blueprints(app)
+        print("✅ Доменные API маршруты зарегистрированы")
 
         # Настройка логирования
         print("🔍 Настройка логирования...")
