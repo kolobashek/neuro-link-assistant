@@ -246,3 +246,13 @@
     background: #6c757d;
     cursor: not-allowed;
 }
+
+.error-message {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    color: #c62828;
+}
+
+.error-message .message-header {
+    color: #d32f2f;
+}

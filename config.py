@@ -50,8 +50,19 @@ class Config:
     DEVELOPER_KEY = os.environ.get("DEVELOPER_KEY", "dev_key_12345")
 
     # HuggingFace настройки (улучшенные)
-    HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "")
-    HUGGINGFACE_TOKEN = os.environ.get("HUGGINGFACE_TOKEN", "")
+    @staticmethod
+    def debug_env_loading():
+        import os
+
+        return {
+            "env_file_exists": os.path.exists(".env"),
+            "HUGGINGFACE_TOKEN_raw": repr(os.getenv("HUGGINGFACE_TOKEN")),
+            "HUGGINGFACE_API_KEY_raw": repr(os.getenv("HUGGINGFACE_API_KEY")),
+        }
+
+    # Основные настройки
+    HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN", "").strip()
+    HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "").strip()
 
     # Резервные модели для тестирования (бесплатные)
     HUGGINGFACE_TEST_MODELS = [

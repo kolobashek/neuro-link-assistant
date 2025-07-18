@@ -3,8 +3,9 @@
 """
 
 import logging
+from functools import wraps  # ✅ ДОБАВИТЬ
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, g, jsonify, request  # ✅ ДОБАВИТЬ g
 
 from core.db.connection import get_db
 from core.services.auth_service import AuthService

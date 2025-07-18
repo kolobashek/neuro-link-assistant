@@ -15,6 +15,7 @@
 
 	<!-- Основные стили -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/modals.css') }}" />
 
 	{% block extra_css %}{% endblock %}
 </head>
@@ -144,6 +145,7 @@
 		</footer>
 	</div>
 
+	{% block modals %}
 	<!-- Модальные окна для авторизации -->
 	<div class="modal" id="loginModal">
 		<div class="modal-content">
@@ -211,6 +213,7 @@
 			</form>
 		</div>
 	</div>
+	{% endblock %}
 
 	<!-- Уведомления -->
 	<div id="notification-container"></div>

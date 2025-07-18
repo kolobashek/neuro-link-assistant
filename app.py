@@ -5,6 +5,7 @@ from flask import Flask, jsonify, render_template, request
 
 print("🔍 Импорт routes...")
 from routes.api import register_api_blueprints
+from routes.api.chat_routes import chat_bp
 from routes.main_routes import main_bp
 
 print("🔍 Импорт utils...")

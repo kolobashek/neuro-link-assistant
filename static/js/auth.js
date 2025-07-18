@@ -1,164 +1,151 @@
 /**
- * Скрипт для обработки авторизации
+ * Скрипт для обработки авторизации с персистентной сессией
  */
-
 class AuthManager {
     constructor() {
         this.currentUser = null;
+        this.token = localStorage.getItem('accessToken') || null;
         this.init();
     }
 
-    init() {
+    async init() {
         console.log('🔐 Инициализация системы авторизации...');
-
-        // Привязываем обработчики событий
         this.bindEvents();
-
-        // Проверяем текущего пользователя
-        this.checkCurrentUser();
+        // Проверяем сессию при загрузке страницы
+        await this.checkCurrentUser();
     }
 
     bindEvents() {
-        // Кнопки открытия модальных окон
         const loginBtn = document.getElementById('loginBtn');
         const registerBtn = document.getElementById('registerBtn');
         const logoutBtn = document.getElementById('logoutBtn');
-
-        if (loginBtn) {
-            loginBtn.addEventListener('click', () => this.openModal('loginModal'));
-        }
-
-        if (registerBtn) {
-            registerBtn.addEventListener('click', () => this.openModal('registerModal'));
-        }
-
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => this.logout());
-        }
-
-        // Закрытие модальных окон
-        document.querySelectorAll('.modal-close, [data-modal]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const modalId = btn.getAttribute('data-modal');
-                if (modalId) {
-                    this.closeModal(modalId);
-                }
-            });
-        });
-
-        // Закрытие по клику вне модального окна
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    this.closeModal(modal.id);
-                }
-            });
-        });
-
-        // Обработка форм
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
 
-        if (loginForm) {
-            loginForm.addEventListener('submit', (e) => this.handleLogin(e));
-        }
-
-        if (registerForm) {
-            registerForm.addEventListener('submit', (e) => this.handleRegister(e));
-        }
+        loginBtn?.addEventListener('click', () => window.modalManager.open('loginModal'));
+        registerBtn?.addEventListener('click', () => window.modalManager.open('registerModal'));
+        logoutBtn?.addEventListener('click', () => this.logout());
+        loginForm?.addEventListener('submit', (e) => this.handleLogin(e));
+        registerForm?.addEventListener('submit', (e) => this.handleRegister(e));
     }
 
-    openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('active');
-            document.body.classList.add('modal-open');
-        }
-    }
-
-    closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.classList.remove('modal-open');
-        }
-    }
+    // --- ОСНОВНЫЕ МЕТОДЫ АВТОРИЗАЦИИ ---
 
     async handleLogin(e) {
         e.preventDefault();
-
         const formData = new FormData(e.target);
-        const username = formData.get('username');
-        const password = formData.get('password');
+        const data = Object.fromEntries(formData.entries());
 
         try {
-            // Здесь будет реальный API запрос
-            console.log('🔐 Попытка входа:', username);
-
-            // Временная заглушка
-            this.setCurrentUser({
-                username: username,
-                role: 'user',
-                email: 'user@example.com'
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
 
-            this.closeModal('loginModal');
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.message || 'Ошибка входа');
+            }
+
+            // ✅ Сохраняем токен и данные пользователя
+            this.setSession(result.access_token, result.user);
+
+            window.modalManager.close('loginModal');
             this.showNotification('Вход выполнен успешно!', 'success');
+            e.target.reset();
 
         } catch (error) {
             console.error('❌ Ошибка входа:', error);
-            this.showNotification('Ошибка входа. Проверьте данные.', 'error');
+            this.showNotification(error.message, 'error');
         }
     }
 
     async handleRegister(e) {
         e.preventDefault();
-
         const formData = new FormData(e.target);
-        const username = formData.get('username');
-        const email = formData.get('email');
-        const password = formData.get('password');
-        const confirmPassword = formData.get('confirmPassword');
+        const data = Object.fromEntries(formData.entries());
 
-        if (password !== confirmPassword) {
+        if (data.password !== data.confirmPassword) {
             this.showNotification('Пароли не совпадают!', 'error');
             return;
         }
 
         try {
-            // Здесь будет реальный API запрос
-            console.log('📝 Попытка регистрации:', username, email);
-
-            // Временная заглушка
-            this.setCurrentUser({
-                username: username,
-                role: 'user',
-                email: email
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
 
-            this.closeModal('registerModal');
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.message || 'Ошибка регистрации');
+            }
+
+            // ✅ Сохраняем токен и данные пользователя
+            this.setSession(result.access_token, result.user);
+
+            window.modalManager.close('registerModal');
             this.showNotification('Регистрация прошла успешно!', 'success');
+            e.target.reset();
 
         } catch (error) {
             console.error('❌ Ошибка регистрации:', error);
-            this.showNotification('Ошибка регистрации. Попробуйте позже.', 'error');
+            this.showNotification(error.message, 'error');
+        }
+    }
+
+    /**
+     * ✅ Проверяет токен при загрузке страницы для восстановления сессии
+     */
+    async checkCurrentUser() {
+        if (!this.token) {
+            this.updateAuthUI(); // Просто обновляем UI, если токена нет
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/auth/me', {
+                headers: { 'Authorization': `Bearer ${ this.token }` }
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                this.setSession(this.token, result.user); // Обновляем сессию
+            } else {
+                // Если токен невалидный (истек, неверный), выходим из системы
+                this.logout();
+            }
+        } catch (error) {
+            console.error('❌ Ошибка проверки сессии:', error);
+            this.logout(); // В случае ошибки сети и т.д. - выходим
         }
     }
 
     logout() {
         this.currentUser = null;
+        this.token = null;
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('currentUser');
+
         this.updateAuthUI();
         this.showNotification('Вы вышли из системы', 'info');
 
-        // Закрываем меню после выхода
-        const nav = document.getElementById('mainNav');
-        if (nav) {
-            nav.classList.remove('active');
-        }
+        // Закрываем меню, если оно было открыто
+        window.burgerMenu?.close();
+
+        // Перезагружаем страницу, чтобы сбросить состояние других компонентов
+        // window.location.reload(); // Раскомментируйте для принудительной перезагрузки
     }
 
-    setCurrentUser(user) {
+    // --- УПРАВЛЕНИЕ СЕССИЕЙ И UI ---
+
+    setSession(token, user) {
+        this.token = token;
         this.currentUser = user;
+        localStorage.setItem('accessToken', token);
+        localStorage.setItem('currentUser', JSON.stringify(user));
         this.updateAuthUI();
     }
 
@@ -169,30 +156,13 @@ class AuthManager {
         const userRole = document.getElementById('userRole');
 
         if (this.currentUser) {
-            // Показываем информацию о пользователе
-            if (authUserInfo) authUserInfo.style.display = 'block';
-            if (authButtons) authButtons.style.display = 'none';
-
-            if (userName) userName.textContent = this.currentUser.username;
-            if (userRole) userRole.textContent = this.currentUser.role;
+            authUserInfo.style.display = 'block';
+            authButtons.style.display = 'none';
+            userName.textContent = this.currentUser.display_name || this.currentUser.username;
+            userRole.textContent = this.currentUser.role || 'user';
         } else {
-            // Показываем кнопки входа/регистрации
-            if (authUserInfo) authUserInfo.style.display = 'none';
-            if (authButtons) authButtons.style.display = 'block';
-        }
-    }
-
-    checkCurrentUser() {
-        // Здесь можно проверить токен из localStorage или cookies
-        // Пока используем заглушку
-        const savedUser = localStorage.getItem('currentUser');
-        if (savedUser) {
-            try {
-                this.currentUser = JSON.parse(savedUser);
-                this.updateAuthUI();
-            } catch (e) {
-                localStorage.removeItem('currentUser');
-            }
+            authUserInfo.style.display = 'none';
+            authButtons.style.display = 'block';
         }
     }
 
@@ -201,27 +171,15 @@ class AuthManager {
         if (!container) return;
 
         const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <span>${message}</span>
-            <button class="notification-close">&times;</button>
-        `;
-
+        notification.className = `notification notification-${ type }`;
+        notification.innerHTML = `<span>${ message }</span><button class="notification-close">&times;</button>`;
         container.appendChild(notification);
 
-        // Автоматическое закрытие через 5 секунд
-        setTimeout(() => {
-            notification.remove();
-        }, 5000);
-
-        // Закрытие по клику
-        notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.remove();
-        });
+        setTimeout(() => notification.remove(), 5000);
+        notification.querySelector('.notification-close').addEventListener('click', () => notification.remove());
     }
 }
 
-// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     window.authManager = new AuthManager();
 });

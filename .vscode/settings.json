@@ -59,5 +59,7 @@
 		"editor.minimap.enabled": true,
 		"breadcrumbs.enabled": true,
 		"python.analysis.autoImportCompletions": false,
-		"files.autoSave": "off"
+		"files.autoSave": "off",
+		"cursorpyright.analysis.autoImportCompletions": false,
+		"cursorpyright.analysis.typeCheckingMode": "basic"
 }

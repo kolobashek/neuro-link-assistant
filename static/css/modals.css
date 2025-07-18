@@ -1,344 +1,138 @@
-/* ✅ ЕДИНАЯ СИСТЕМА МОДАЛЬНЫХ ОКОН */
-
+/* === 1. БАЗА МОДАЛЬНЫХ ОКОН (без изменений) === */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center; align-items: center; opacity: 0;
+    visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+.modal.active { display: flex; opacity: 1; visibility: visible; }
+body.modal-open { overflow: hidden; }
 
-/* ✅ Единое активное состояние */
-.modal.active {
+/* === 2. НОВЫЙ КОНТЕЙНЕР ЧАТА (Flexbox) === */
+.chat-modal-container {
     display: flex;
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
+    width: 90vw;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 800px;
     background-color: var(--surface-color);
-    margin: 0;
-    width: 90%;
-    max-width: 600px;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
-    transform: scale(0.8);
+    overflow: hidden;
+    transform: scale(0.95);
     transition: transform 0.3s ease;
 }
+.modal.active .chat-modal-container { transform: scale(1); }
 
-.modal.active .modal-content {
-    transform: scale(1);
+/* === 3. БОКОВАЯ ПАНЕЛЬ (Sidebar) === */
+.chat-sidebar {
+    width: 240px;
+    background-color: var(--background-color);
+    border-right: 1px solid var(--divider-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
 }
-
-/* ✅ Сохранить все остальные существующие стили */
-/* (modal-header, modal-body, form-group, анимации, адаптивность) */
-
-/* ✅ Специализированные модальные окна */
-.ai-test-modal .modal-content {
-    max-width: 700px;
-}
-
-.confirm-modal .modal-content {
-    max-width: 400px;
-    text-align: center;
-}
-
-body.modal-open {
-    overflow: hidden;
-}
-
-/* Стили для модальных окон */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-content {
-    background-color: var(--surface-color);
-    margin: 10% auto;
-    width: 90%;
-    max-width: 600px;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-lg);
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-header {
+.sidebar-header {
     padding: var(--spacing-md);
     border-bottom: 1px solid var(--divider-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-light);
-    border-top-left-radius: var(--border-radius-md);
-    border-top-right-radius: var(--border-radius-md);
 }
-
-.modal-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--primary-dark);
-}
-
-.close-modal {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.close-modal:hover {
-    color: var(--accent-color);
-}
-
-.modal-body {
-    padding: var(--spacing-lg);
-    max-height: 60vh;
-    overflow-y: auto;
-}
-
-.modal-footer {
-    padding: var(--spacing-md);
-    border-top: 1px solid var(--divider-color);
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--spacing-md);
-}
-
-/* Стили для лога в модальном окне */
-.log-container {
-    background-color: var(--background-color);
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-sm);
-    font-family: monospace;
-    white-space: pre-wrap;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-/* Стили для форм в модальных окнах */
-.form-group {
-    margin-bottom: var(--spacing-md);
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group select,
-.form-group textarea {
+.sidebar-header .btn {
     width: 100%;
-    padding: var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    font-size: 1rem;
-    transition: border-color 0.2s ease;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
-}
-
-.form-group input[type="range"] {
-    width: 100%;
-    margin-right: var(--spacing-sm);
-}
-
-.form-group .range-container {
     display: flex;
-    align-items: center;
-}
-
-.form-group .range-value {
-    min-width: 40px;
-    text-align: center;
-    font-weight: 500;
-}
-
-/* Стили для подтверждения */
-#confirm-message {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-}
-
-/* Анимация для модальных окон */
-.modal.fade-out {
-    animation: fadeOut 0.3s ease forwards;
-}
-
-.modal-content.slide-up {
-    animation: slideUp 0.3s ease forwards;
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-50px); opacity: 0; }
-}
-
-/* Адаптивность для модальных окон */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 5% auto;
-    }
-
-    .modal-body {
-        padding: var(--spacing-md);
-    }
-}
-
-/* Исправление отображения модала */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
+    gap: var(--spacing-sm);
 }
-
-/* Когда модал активен */
-.modal.active {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    animation: fadeIn 0.3s ease;
-}
-
-/* ДОБАВИТЬ новые стили для AI теста */
-.ai-test-modal .modal-content {
-    max-width: 600px;
-    width: 90%;
-}
-
-.current-model-info {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    border-left: 4px solid var(--primary-color);
-}
-
-.quick-tests {
-    margin: 1rem 0;
-}
-
-.quick-tests h4 {
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.quick-test-buttons {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-.quick-test-btn {
-    background: #e9ecef;
-    border: 1px solid #ced4da;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-}
-
-.quick-test-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.test-result {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 6px;
-    display: none;
-}
-
-.test-result.show {
-    display: block;
-}
-
-.result-metrics {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-.result-text {
-    background: white;
-    padding: 1rem;
-    border-radius: 4px;
-    border-left: 4px solid var(--primary-color);
-    white-space: pre-wrap;
-    max-height: 200px;
+.chat-list-nav {
     overflow-y: auto;
+    flex-grow: 1;
+}
+.chat-list {
+    list-style: none;
+    padding: var(--spacing-sm) 0;
+    margin: 0;
+}
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chat-list-item:hover {
+    background-color: var(--primary-light);
+}
+.chat-list-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+.chat-list-item .chat-title {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.delete-chat-btn {
+    background: none; border: none; color: var(--text-secondary);
+    cursor: pointer; padding: 4px; border-radius: 50%;
+    opacity: 0; transition: opacity 0.2s ease, color 0.2s ease;
+}
+.chat-list-item:hover .delete-chat-btn,
+.chat-list-item.active .delete-chat-btn {
+    opacity: 1;
+    color: var(--accent-color);
+}
+.chat-list-item.active .delete-chat-btn {
+    color: white;
+}
+.delete-chat-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 768px) {
-    .quick-test-buttons {
-        flex-direction: column;
-    }
-
-    .result-metrics {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+/* === 4. ОСНОВНОЕ ОКНО ЧАТА (Main) === */
+.chat-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Важно для прижатия футера */
 }
+.modal-header {
+    padding: var(--spacing-md); border-bottom: 1px solid var(--divider-color);
+    display: flex; justify-content: space-between; align-items: center;
+}
+.modal-header h2 { margin: 0; font-size: 1.1rem; }
+.modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+.chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+/* Стили для сообщений (user/ai) остаются такими же, как в предыдущем ответе */
+.message { display: flex; align-items: flex-start; gap: var(--spacing-sm); max-width: 85%; }
+.bot-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.message-content { padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--border-radius-lg); line-height: 1.5; }
+.ai-message { align-self: flex-start; }
+.ai-message .bot-avatar { background-color: var(--primary-light); }
+.ai-message .message-content { background-color: var(--surface-color); border: 1px solid var(--divider-color); }
+.user-message { align-self: flex-end; flex-direction: row-reverse; }
+.user-message .bot-avatar { background-color: var(--secondary-color); color: white; }
+.user-message .message-content { background-color: var(--primary-color); color: white; }
+
+.modal-footer {
+    padding: var(--spacing-md); border-top: 1px solid var(--divider-color);
+}
+.chat-form .input-wrapper {
+    display: flex; align-items: center; gap: var(--spacing-sm);
+    border: 1px solid var(--border-color); border-radius: var(--border-radius-md);
+    padding: 4px;
+}
+.chat-form textarea { flex-grow: 1; border: none; outline: none; resize: none; font-size: 1rem; padding: 6px; background: transparent; }
+.chat-form .send-btn { width: 36px; height: 36px; border-radius: 50%; border: none; background-color: var(--primary-color); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; }

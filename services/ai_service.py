@@ -781,50 +781,52 @@ def get_ai_response(prompt, system_message=None):
         return f"Ошибка при получении ответа от AI: {str(e)}"
 
 
-def get_huggingface_response(prompt: str, system_message: Optional[str] = None) -> Optional[str]:
-    """
-    Получить ответ через HuggingFace Inference API
+def get_huggingface_response(messages: list, debug_info: dict | None = None) -> Optional[str]:
+    """Inference API с правильным endpoint из документации"""
+    if debug_info is None:
+        debug_info = {}
 
-    Args:
-        prompt: Запрос пользователя
-        system_message: Системное сообщение
-
-    Returns:
-        Ответ от модели или None при ошибке
-    """
     try:
-        # Список бесплатных моделей для тестирования
-        models_to_try = [
-            "microsoft/DialoGPT-medium",
-            "facebook/blenderbot-400M-distill",
-            "microsoft/DialoGPT-small",
-            "gpt2",
-        ]
+        api_key = Config.HUGGINGFACE_TOKEN
+        debug_info["api_key_check"] = "PRESENT" if api_key else "MISSING"
 
-        # Формируем финальный промпт
-        if system_message:
-            full_prompt = f"System: {system_message}\nUser: {prompt}\nAssistant:"
-        else:
-            full_prompt = f"User: {prompt}\nAssistant:"
+        if not api_key:
+            debug_info["errors"] = debug_info.get("errors", [])
+            debug_info["errors"].append("HUGGINGFACE_TOKEN отсутствует")
+            return None
 
-        # Пробуем модели по очереди
-        for model_name in models_to_try:
-            try:
-                response = _call_huggingface_api(model_name, full_prompt)
-                if response:
-                    logger.info(f"Успешный ответ от модели {model_name}")
-                    return response
-            except Exception as e:
-                logger.warning(f"Модель {model_name} недоступна: {e}")
-                continue
+        # Правильный endpoint из документации
+        api_url = "https://router.huggingface.co/novita/v3/openai/chat/completions"
+        headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
-        # Если все модели недоступны
-        logger.warning("Все HuggingFace модели недоступны")
-        return None
+        payload = {"messages": messages, "model": "deepseek/deepseek-v3-0324", "stream": False}
+
+        debug_info["request"] = {
+            "url": api_url,
+            "model": payload["model"],
+            "messages_count": len(messages),
+        }
+
+        response = requests.post(api_url, headers=headers, json=payload, timeout=30)
+
+        debug_info["response"] = {
+            "status": response.status_code,
+            "text_preview": response.text[:200],
+        }
+
+        if response.status_code == 200:
+            result = response.json()
+            if "choices" in result and len(result["choices"]) > 0:
+                debug_info["success"] = True
+                return result["choices"][0]["message"]["content"]
+
+        debug_info["errors"] = debug_info.get("errors", [])
+        debug_info["errors"].append(f"HTTP {response.status_code}: {response.text}")
 
     except Exception as e:
-        logger.error(f"Общая ошибка HuggingFace API: {e}")
-        return None
+        debug_info["exception"] = str(e)
+
+    return None
 
 
 def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) -> Optional[str]:
@@ -840,11 +842,15 @@ def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) ->
         Ответ модели или None
     """
     api_url = f"https://api-inference.huggingface.co/models/{model_name}"
+    logger.info(f"🌐 URL запроса: {api_url}")
 
     headers = {}
     # Используем токен если он есть
     if Config.HUGGINGFACE_TOKEN:
         headers["Authorization"] = f"Bearer {Config.HUGGINGFACE_TOKEN}"
+        logger.info("🔑 Заголовок авторизации добавлен")
+    else:
+        logger.warning("⚠️ Токен авторизации отсутствует")
 
     # Параметры запроса
     payload = {
@@ -859,12 +865,20 @@ def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) ->
         "options": {"wait_for_model": True, "use_cache": False},
     }
 
+    logger.info(f"📦 Payload: {payload}")
+
     for attempt in range(max_retries):
         try:
+            logger.info(f"🔄 Попытка {attempt + 1}/{max_retries}")
+
             response = requests.post(api_url, headers=headers, json=payload, timeout=30)
+
+            logger.info(f"📊 Статус ответа: {response.status_code}")
+            logger.info(f"📋 Заголовки ответа: {dict(response.headers)}")
 
             if response.status_code == 200:
                 result = response.json()
+                logger.info(f"✅ Успешный JSON ответ: {result}")
 
                 # Обработка разных форматов ответов
                 if isinstance(result, list) and len(result) > 0:
@@ -873,6 +887,7 @@ def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) ->
                         # Убираем исходный промпт из ответа
                         if generated.startswith(prompt):
                             generated = generated[len(prompt) :].strip()
+                        logger.info(f"🎯 Финальный ответ: {generated}")
                         return generated[:500]  # Ограничиваем длину
                     elif "text" in result[0]:
                         return result[0]["text"][:500]
@@ -882,118 +897,119 @@ def _call_huggingface_api(model_name: str, prompt: str, max_retries: int = 3) ->
                     elif "text" in result:
                         return result["text"][:500]
 
+                logger.warning("⚠️ Неизвестный формат ответа")
                 return "Модель вернула некорректный формат ответа"
 
             elif response.status_code == 503:
-                # Модель загружается
-                logger.info(f"Модель {model_name} загружается, ждем...")
+                logger.info(f"⏳ Модель {model_name} загружается, ждем...")
                 time.sleep(5)
                 continue
 
             elif response.status_code == 429:
-                # Превышен лимит запросов
-                logger.warning(f"Превышен лимит для модели {model_name}")
+                logger.warning(f"⚠️ Превышен лимит для модели {model_name}")
                 time.sleep(2)
                 continue
 
             else:
-                logger.error(f"HuggingFace API ошибка {response.status_code}: {response.text}")
+                error_text = response.text
+                logger.error(f"❌ HuggingFace API ошибка {response.status_code}: {error_text}")
                 return None
 
         except requests.exceptions.Timeout:
-            logger.warning(f"Таймаут для модели {model_name}, попытка {attempt + 1}")
+            logger.warning(f"⏰ Таймаут для модели {model_name}, попытка {attempt + 1}")
             if attempt < max_retries - 1:
                 time.sleep(2)
                 continue
         except requests.exceptions.RequestException as e:
-            logger.error(f"Ошибка запроса к {model_name}: {e}")
+            logger.error(f"🌐 Ошибка сети для {model_name}: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"❌ Неожиданная ошибка для {model_name}: {e}")
             return None
 
+    logger.error(f"❌ Все попытки исчерпаны для модели {model_name}")
     return None
 
 
-def get_simple_ai_response(prompt: str) -> str:
-    """
-    Упрощенная функция для быстрого тестирования AI
+def get_simple_ai_response(
+    messages: list, model_name: str | None = None, debug_info: dict | None = None
+) -> str:
+    """Упрощенная функция без fallback ответов"""
+    if debug_info is None:
+        debug_info = {"errors": []}
 
-    Args:
-        prompt: Запрос пользователя
-
-    Returns:
-        Ответ от AI или заглушка
-    """
     try:
-        # Сначала пробуем HuggingFace
-        hf_response = get_huggingface_response(prompt)
-        if hf_response:
+        api_key = Config.HUGGINGFACE_TOKEN
+        if not api_key:
+            debug_info["errors"].append("HUGGINGFACE_TOKEN не настроен")
+            return "❌ AI сервис недоступен: токен не настроен"
+
+        # Проверка активной модели
+        current_model = get_current_ai_model()
+        if not current_model:
+            debug_info["errors"].append("Активная модель не выбрана")
+            return "❌ AI сервис недоступен: модель не выбрана"
+
+        if current_model.get("status") != "ready":
+            debug_info["errors"].append(f"Модель недоступна: {current_model.get('status')}")
+            return f"❌ AI сервис недоступен: модель '{current_model.get('name')}' недоступна"
+
+        # Основной запрос к HuggingFace
+        hf_response = get_huggingface_response(messages, debug_info=debug_info)
+        if hf_response and hf_response.strip():
+            debug_info["success"] = True
             return hf_response
 
-        # Если HF недоступен, возвращаем умную заглушку
-        return _get_smart_fallback_response(prompt)
+        debug_info["errors"].append("Пустой ответ от AI")
+        return "❌ AI сервис временно недоступен"
 
     except Exception as e:
-        logger.error(f"Ошибка в get_simple_ai_response: {e}")
-        return f"Извините, произошла ошибка при обработке запроса: {str(e)}"
+        debug_info["errors"].append(f"Исключение: {str(e)}")
+        return f"❌ Ошибка AI сервиса: {str(e)}"
 
 
-def _get_smart_fallback_response(prompt: str) -> str:
-    """Умная заглушка с базовыми ответами"""
-    prompt_lower = prompt.lower()
+def get_fallback_response(messages: list) -> str:
+    """
+    Генерирует простой резервный ответ когда AI недоступен
+    """
+    try:
+        # Получаем последнее сообщение пользователя
+        user_message = ""
+        for msg in reversed(messages):
+            if msg.get("role") == "user":
+                user_message = msg.get("content", "").lower()
+                break
 
-    # Приветствие
-    if any(word in prompt_lower for word in ["привет", "hello", "hi", "здравствуй"]):
-        return "Привет! Я ваш AI ассистент. Как дела? Чем могу помочь?"
+        # Простые шаблонные ответы
+        responses = {
+            "привет": "Привет! Как дела?",
+            "как дела": "Всё хорошо, спасибо! А у тебя как?",
+            "что умеешь": (
+                "Я могу помочь с различными вопросами. AI сервис временно недоступен, но я стараюсь"
+                " отвечать!"
+            ),
+            "спасибо": "Пожалуйста! Всегда рад помочь.",
+            "пока": "До свидания! Удачного дня!",
+        }
 
-    # Математика
-    if any(word in prompt_lower for word in ["сколько", "+", "-", "*", "/", "="]):
-        import re
+        # Ищем подходящий ответ
+        for key, response in responses.items():
+            if key in user_message:
+                return (
+                    f"🤖 {response}\n\n*Примечание: AI сервис временно недоступен, используется"
+                    " базовый режим.*"
+                )
 
-        # Простые арифметические операции
-        math_match = re.search(r"(\d+)\s*([+\-*/])\s*(\d+)", prompt)
-        if math_match:
-            a, op, b = math_match.groups()
-            a, b = int(a), int(b)
-            if op == "+":
-                result = a + b
-            elif op == "-":
-                result = a - b
-            elif op == "*":
-                result = a * b
-            elif op == "/":
-                result = a / b if b != 0 else "деление на ноль"
-            else:
-                result = "неизвестная операция"
-            return f"{a} {op} {b} = {result}"
-
-    # Вопросы о себе
-    if any(word in prompt_lower for word in ["кто ты", "что ты", "представься"]):
+        # Если не нашли подходящий ответ
         return (
-            "Я AI ассистент, созданный для помощи с различными задачами. Могу отвечать на вопросы,"
-            " помогать с вычислениями и общаться."
+            f"🤖 Понял ваш вопрос про '{user_message[:50]}...'. К сожалению, AI сервис временно"
+            " недоступен, но я обязательно отвечу, когда он заработает!\n\n*Попробуйте"
+            " перефразировать вопрос или обратитесь позже.*"
         )
 
-    # Вопросы об AI
-    if any(
-        word in prompt_lower
-        for word in ["искусственный интеллект", "машинное обучение", "нейросеть"]
-    ):
-        return (
-            "Искусственный интеллект - это область компьютерных наук, занимающаяся созданием"
-            " систем, способных выполнять задачи, обычно требующие человеческого интеллекта."
-        )
-
-    # Стихи
-    if any(word in prompt_lower for word in ["стих", "стихотворение", "поэзия"]):
-        return (
-            "Технологии идут вперёд,\nИскусственный разум растёт,\nВ будущем светлом нас ждёт\nЭра"
-            " цифровых высот."
-        )
-
-    # Общий ответ
-    return (
-        f"Вы спросили: '{prompt}'. Это интересный вопрос! К сожалению, сейчас AI модели недоступны,"
-        " но я стараюсь помочь. Система работает в тестовом режиме."
-    )
+    except Exception as e:
+        logger.error(f"Ошибка в get_fallback_response: {str(e)}")
+        return "🤖 Извините, временные технические неполадки. Попробуйте позже!"
 
 
 def get_available_huggingface_models(filter_criteria=None, limit=20):

@@ -628,6 +628,22 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
         "label": "ABC",
         "importPath": "abc",
         "description": "abc",
@@ -1765,6 +1781,22 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -3359,6 +3391,22 @@
         "documentation": {}
     },
     {
+        "label": "ChatMessage",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "ChatSession",
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "isExtraImport": true,
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "AIModel",
         "importPath": "core.db.models",
         "description": "core.db.models",
@@ -3535,6 +3583,30 @@
         "documentation": {}
     },
     {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "postgresql",
+        "importPath": "sqlalchemy.dialects",
+        "description": "sqlalchemy.dialects",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects",
+        "documentation": {}
+    },
+    {
         "label": "postgresql",
         "importPath": "sqlalchemy.dialects",
         "description": "sqlalchemy.dialects",
@@ -3607,6 +3679,22 @@
         "documentation": {}
     },
     {
+        "label": "get_db",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "core.db.connection",
+        "description": "core.db.connection",
+        "isExtraImport": true,
+        "detail": "core.db.connection",
+        "documentation": {}
+    },
+    {
         "label": "DATABASE_URL",
         "importPath": "core.db.connection",
         "description": "core.db.connection",
@@ -3620,6 +3708,22 @@
         "description": "contextlib",
         "isExtraImport": true,
         "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
         "documentation": {}
     },
     {
@@ -3697,6 +3801,14 @@
         "importPath": "zipfile",
         "description": "zipfile",
         "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -3988,6 +4100,14 @@
         "description": "core.security.password",
         "isExtraImport": true,
         "detail": "core.security.password",
+        "documentation": {}
+    },
+    {
+        "label": "AuthService",
+        "importPath": "core.services.auth_service",
+        "description": "core.services.auth_service",
+        "isExtraImport": true,
+        "detail": "core.services.auth_service",
         "documentation": {}
     },
     {
@@ -5052,6 +5172,14 @@
         "documentation": {}
     },
     {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
         "label": "context",
         "importPath": "alembic",
         "description": "alembic",
@@ -5181,6 +5309,70 @@
     },
     {
         "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "g",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -5372,6 +5564,14 @@
         "documentation": {}
     },
     {
+        "label": "get_simple_ai_response",
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "isExtraImport": true,
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
         "label": "get_ai_response",
         "importPath": "services.ai_service",
         "description": "services.ai_service",
@@ -5393,6 +5593,14 @@
         "description": "services.ai_service",
         "isExtraImport": true,
         "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "require_auth",
+        "importPath": "routes.api.dependencies",
+        "description": "routes.api.dependencies",
+        "isExtraImport": true,
+        "detail": "routes.api.dependencies",
         "documentation": {}
     },
     {
@@ -6784,6 +6992,14 @@
         "description": "routes.api",
         "isExtraImport": true,
         "detail": "routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "chat_bp",
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "isExtraImport": true,
+        "detail": "routes.api.chat_routes",
         "documentation": {}
     },
     {
@@ -10035,6 +10251,24 @@
         "documentation": {}
     },
     {
+        "label": "ChatSession",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class ChatSession(Base):\n    \"\"\"Модель для сессии (диалога) чата.\"\"\"\n    __tablename__ = \"chat_sessions\"\n    id = Column(Integer, primary_key=True)\n    user_id = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    title = Column(String(200), nullable=False, default=\"Новый чат\")\n    created_at = Column(DateTime, default=datetime.datetime.utcnow)\n    updated_at = Column(\n        DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow\n    )",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMessage",
+        "kind": 6,
+        "importPath": "core.db.models",
+        "description": "core.db.models",
+        "peekOfCode": "class ChatMessage(Base):\n    \"\"\"Модель для одного сообщения в чате.\"\"\"\n    __tablename__ = \"chat_messages\"\n    id = Column(Integer, primary_key=True)\n    session_id = Column(Integer, ForeignKey(\"chat_sessions.id\"), nullable=False)\n    role = Column(String(50), nullable=False)  # 'user' или 'assistant'\n    content = Column(Text, nullable=False)\n    timestamp = Column(DateTime, default=datetime.datetime.now(datetime.timezone.utc))\n    session = relationship(\"ChatSession\", back_populates=\"messages\")\n# ✅ ИНДЕКСЫ для производительности",
+        "detail": "core.db.models",
+        "documentation": {}
+    },
+    {
         "label": "TransactionManager",
         "kind": 6,
         "importPath": "core.db.transaction",
@@ -10766,6 +11000,24 @@
     {
         "label": "upgrade",
         "kind": 2,
+        "importPath": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "description": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "peekOfCode": "def upgrade() -> None:\n    \"\"\"Upgrade schema.\"\"\"\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table(\n        \"api_keys\",\n        sa.Column(\"id\", sa.Integer(), nullable=False),\n        sa.Column(\"user_id\", sa.Integer(), nullable=False),\n        sa.Column(\"name\", sa.String(length=100), nullable=False),\n        sa.Column(\"provider\", sa.String(length=100), nullable=False),\n        sa.Column(\"key_value\", sa.String(length=255), nullable=False),",
+        "detail": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "description": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "peekOfCode": "def downgrade() -> None:\n    \"\"\"Downgrade schema.\"\"\"\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table(\"workflows\", schema=None) as batch_op:\n        batch_op.add_column(\n            sa.Column(\n                \"is_template\",\n                sa.BOOLEAN(),\n                server_default=sa.text(\"false\"),\n                autoincrement=False,",
+        "detail": "migrations.versions.23f71567fb29_add_chat_session_and_message_tables",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
         "importPath": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
         "description": "migrations.versions.343ecf78d9bf_add_huggingface_fields_to_ai_models",
         "peekOfCode": "def upgrade() -> None:\n    \"\"\"Добавляем поля для HuggingFace интеграции.\"\"\"\n    connection = op.get_bind()\n    inspector = inspect(connection)\n    try:\n        # Получаем существующие столбцы\n        columns = [c[\"name\"] for c in inspector.get_columns(\"ai_models\")]\n        # Добавляем недостающие столбцы\n        fields_to_add = [\n            (\"full_name\", sa.String(255)),",
@@ -11083,7 +11335,7 @@
         "kind": 2,
         "importPath": "routes.api.ai_routes",
         "description": "routes.api.ai_routes",
-        "peekOfCode": "def test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400\n        prompt = data.get(\"prompt\", \"\").strip()\n        if not prompt:\n            return jsonify({\"success\": False, \"error\": \"Пустой запрос\"}), 400\n        logger.info(f\"AI тест запрос: {prompt}\")",
+        "peekOfCode": "def test_ai():\n    try:\n        data = request.get_json()\n        # ✅ ИЗМЕНЕНО: Получаем всю историю сообщений\n        messages = data.get(\"messages\", [])\n        if not messages:\n            return jsonify({\"success\": False, \"error\": \"Сообщения не предоставлены\"}), 400\n        # Последнее сообщение пользователя для логгирования\n        prompt = messages[-1].get(\"content\", \"\") if messages else \"\"\n        # ✅ ИЗМЕНЕНО: Определяем модель, которую будем использовать",
         "detail": "routes.api.ai_routes",
         "documentation": {}
     },
@@ -11182,7 +11434,43 @@
         "kind": 2,
         "importPath": "routes.api.ai_routes",
         "description": "routes.api.ai_routes",
-        "peekOfCode": "def add_hf_model():\n    \"\"\"Добавляет модель HuggingFace в базу\"\"\"\n    data = request.get_json()\n    model_id = data.get(\"model_id\")\n    if not model_id:\n        return jsonify({\"success\": False, \"error\": \"model_id обязателен\"})\n    from services.huggingface_service import add_single_model_to_db\n    result = add_single_model_to_db(model_id)\n    return jsonify(result)",
+        "peekOfCode": "def add_hf_model():\n    \"\"\"Добавляет модель HuggingFace в базу\"\"\"\n    data = request.get_json()\n    model_id = data.get(\"model_id\")\n    if not model_id:\n        return jsonify({\"success\": False, \"error\": \"model_id обязателен\"})\n    from services.huggingface_service import add_single_model_to_db\n    result = add_single_model_to_db(model_id)\n    return jsonify(result)\n@ai_bp.route(\"/current-model\", methods=[\"GET\"])",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_model",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def get_current_model():\n    \"\"\"Получить информацию о текущей активной модели\"\"\"\n    try:\n        from services.ai_service import get_current_ai_model\n        current_model = get_current_ai_model()\n        if current_model:\n            return jsonify(\n                {\n                    \"success\": True,\n                    \"model\": {",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "check_api_key",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def check_api_key():\n    \"\"\"Проверяет валидность HuggingFace API ключа\"\"\"\n    try:\n        import requests\n        # Проверяем через whoami endpoint\n        whoami_url = \"https://huggingface.co/api/whoami\"\n        headers = {\"Authorization\": f\"Bearer {Config.HUGGINGFACE_TOKEN}\"}\n        response = requests.get(whoami_url, headers=headers, timeout=10)\n        if response.status_code == 200:\n            user_info = response.json()",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "debug_config",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def debug_config():\n    \"\"\"Отладка конфигурации API ключей\"\"\"\n    try:\n        import os\n        from config import Config\n        debug_info = {\n            \"env_HUGGINGFACE_API_KEY\": os.getenv(\"HUGGINGFACE_API_KEY\", \"NOT_SET\"),\n            \"env_HUGGINGFACE_TOKEN\": os.getenv(\"HUGGINGFACE_TOKEN\", \"NOT_SET\"),\n            \"config_HUGGINGFACE_TOKEN\": getattr(Config, \"HUGGINGFACE_TOKEN\", \"NOT_SET\"),\n        }",
+        "detail": "routes.api.ai_routes",
+        "documentation": {}
+    },
+    {
+        "label": "debug_bearer",
+        "kind": 2,
+        "importPath": "routes.api.ai_routes",
+        "description": "routes.api.ai_routes",
+        "peekOfCode": "def debug_bearer():\n    \"\"\"Отладка Bearer токена\"\"\"\n    try:\n        import os\n        from config import Config\n        # Прямая проверка переменных окружения\n        raw_token = os.getenv(\"HUGGINGFACE_TOKEN\")\n        raw_api_key = os.getenv(\"HUGGINGFACE_API_KEY\")\n        debug_data = {\n            \"raw_env_vars\": {",
         "detail": "routes.api.ai_routes",
         "documentation": {}
     },
@@ -11191,7 +11479,7 @@
         "kind": 5,
         "importPath": "routes.api.ai_routes",
         "description": "routes.api.ai_routes",
-        "peekOfCode": "ai_bp = Blueprint(\"ai_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400",
+        "peekOfCode": "ai_bp = Blueprint(\"ai_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    try:\n        data = request.get_json()\n        # ✅ ИЗМЕНЕНО: Получаем всю историю сообщений\n        messages = data.get(\"messages\", [])\n        if not messages:",
         "detail": "routes.api.ai_routes",
         "documentation": {}
     },
@@ -11200,7 +11488,7 @@
         "kind": 5,
         "importPath": "routes.api.ai_routes",
         "description": "routes.api.ai_routes",
-        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    \"\"\"Тестовый AI запрос\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"error\": \"Данные не предоставлены\"}), 400\n        prompt = data.get(\"prompt\", \"\").strip()",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n# ============= AI ТЕСТИРОВАНИЕ =============\n@ai_bp.route(\"/test\", methods=[\"POST\"])\ndef test_ai():\n    try:\n        data = request.get_json()\n        # ✅ ИЗМЕНЕНО: Получаем всю историю сообщений\n        messages = data.get(\"messages\", [])\n        if not messages:\n            return jsonify({\"success\": False, \"error\": \"Сообщения не предоставлены\"}), 400",
         "detail": "routes.api.ai_routes",
         "documentation": {}
     },
@@ -11283,6 +11571,87 @@
         "description": "routes.api.auth_routes",
         "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@auth_bp.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"Регистрирует нового пользователя\"\"\"\n    try:\n        data = request.get_json()\n        if not data:\n            return jsonify({\"success\": False, \"message\": \"Данные не предоставлены\"}), 400\n        username = data.get(\"username\")\n        email = data.get(\"email\")",
         "detail": "routes.api.auth_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_chat_list",
+        "kind": 2,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "def get_chat_list():\n    \"\"\"Получить список чатов для текущего пользователя.\"\"\"\n    db = next(get_db())\n    # g.current_user устанавливается в декораторе require_auth\n    sessions = (\n        db.query(ChatSession)\n        .filter(ChatSession.user_id == g.current_user.id)\n        .order_by(ChatSession.updated_at.desc())\n        .all()\n    )",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "create_chat",
+        "kind": 2,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "def create_chat():\n    \"\"\"Создать новый чат.\"\"\"\n    db = next(get_db())\n    new_session = ChatSession(user_id=g.current_user.id, title=\"Новый чат\")\n    db.add(new_session)\n    db.commit()\n    db.refresh(new_session)\n    return jsonify({\"id\": new_session.id, \"title\": new_session.title}), 201\n@chat_bp.route(\"/chats/<int:session_id>/messages\", methods=[\"GET\"])\n@require_auth",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_chat_messages",
+        "kind": 2,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "def get_chat_messages(session_id):\n    \"\"\"Получить все сообщения для конкретного чата.\"\"\"\n    db = next(get_db())\n    messages = (\n        db.query(ChatMessage)\n        .filter(ChatMessage.session_id == session_id)\n        .order_by(ChatMessage.timestamp.asc())\n        .all()\n    )\n    # Убедимся, что пользователь имеет доступ к этому чату",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "delete_chat",
+        "kind": 2,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "def delete_chat(session_id):\n    \"\"\"Удалить чат и все его сообщения.\"\"\"\n    db = next(get_db())\n    session = (\n        db.query(ChatSession)\n        .filter(ChatSession.id == session_id, ChatSession.user_id == g.current_user.id)\n        .first()\n    )\n    if session:\n        db.delete(session)",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "post_message",
+        "kind": 2,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "def post_message(session_id):\n    \"\"\"Отправить сообщение в чат и получить ответ AI.\"\"\"\n    db = next(get_db())\n    data = request.get_json()\n    user_prompt = data.get(\"prompt\")\n    if not user_prompt:\n        return jsonify({\"error\": \"Prompt не может быть пустым\"}), 400\n    # 1. Сохраняем сообщение пользователя в базу НЕМЕДЛЕННО.\n    # Это гарантирует, что оно не потеряется, даже если AI сервис упадет.\n    user_message = ChatMessage(session_id=session_id, role=\"user\", content=user_prompt)",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "chat_bp",
+        "kind": 5,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "chat_bp = Blueprint(\"chat_api\", __name__)\nlogger = logging.getLogger(\"neuro_assistant\")\n@chat_bp.route(\"/chats\", methods=[\"GET\"])\n@require_auth\ndef get_chat_list():\n    \"\"\"Получить список чатов для текущего пользователя.\"\"\"\n    db = next(get_db())\n    # g.current_user устанавливается в декораторе require_auth\n    sessions = (\n        db.query(ChatSession)",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.chat_routes",
+        "description": "routes.api.chat_routes",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\n@chat_bp.route(\"/chats\", methods=[\"GET\"])\n@require_auth\ndef get_chat_list():\n    \"\"\"Получить список чатов для текущего пользователя.\"\"\"\n    db = next(get_db())\n    # g.current_user устанавливается в декораторе require_auth\n    sessions = (\n        db.query(ChatSession)\n        .filter(ChatSession.user_id == g.current_user.id)",
+        "detail": "routes.api.chat_routes",
+        "documentation": {}
+    },
+    {
+        "label": "require_auth",
+        "kind": 2,
+        "importPath": "routes.api.dependencies",
+        "description": "routes.api.dependencies",
+        "peekOfCode": "def require_auth(f):\n    \"\"\"\n    Декоратор для проверки JWT токена и добавления пользователя в контекст g.current_user.\n    \"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        auth_header = request.headers.get(\"Authorization\")\n        if not auth_header or not auth_header.startswith(\"Bearer \"):\n            return jsonify({\"success\": False, \"message\": \"Токен авторизации не предоставлен\"}), 401\n        token = auth_header.split(\" \")[1]",
+        "detail": "routes.api.dependencies",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "routes.api.dependencies",
+        "description": "routes.api.dependencies",
+        "peekOfCode": "logger = logging.getLogger(\"neuro_assistant\")\ndef require_auth(f):\n    \"\"\"\n    Декоратор для проверки JWT токена и добавления пользователя в контекст g.current_user.\n    \"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        auth_header = request.headers.get(\"Authorization\")\n        if not auth_header or not auth_header.startswith(\"Bearer \"):\n            return jsonify({\"success\": False, \"message\": \"Токен авторизации не предоставлен\"}), 401",
+        "detail": "routes.api.dependencies",
         "documentation": {}
     },
     {
@@ -12172,7 +12541,7 @@
         "kind": 2,
         "importPath": "services.ai_service",
         "description": "services.ai_service",
-        "peekOfCode": "def get_huggingface_response(prompt: str, system_message: Optional[str] = None) -> Optional[str]:\n    \"\"\"\n    Получить ответ через HuggingFace Inference API\n    Args:\n        prompt: Запрос пользователя\n        system_message: Системное сообщение\n    Returns:\n        Ответ от модели или None при ошибке\n    \"\"\"\n    try:",
+        "peekOfCode": "def get_huggingface_response(messages: list, debug_info: dict | None = None) -> Optional[str]:\n    \"\"\"Inference API с правильным endpoint из документации\"\"\"\n    if debug_info is None:\n        debug_info = {}\n    try:\n        api_key = Config.HUGGINGFACE_TOKEN\n        debug_info[\"api_key_check\"] = \"PRESENT\" if api_key else \"MISSING\"\n        if not api_key:\n            debug_info[\"errors\"] = debug_info.get(\"errors\", [])\n            debug_info[\"errors\"].append(\"HUGGINGFACE_TOKEN отсутствует\")",
         "detail": "services.ai_service",
         "documentation": {}
     },
@@ -12181,7 +12550,16 @@
         "kind": 2,
         "importPath": "services.ai_service",
         "description": "services.ai_service",
-        "peekOfCode": "def get_simple_ai_response(prompt: str) -> str:\n    \"\"\"\n    Упрощенная функция для быстрого тестирования AI\n    Args:\n        prompt: Запрос пользователя\n    Returns:\n        Ответ от AI или заглушка\n    \"\"\"\n    try:\n        # Сначала пробуем HuggingFace",
+        "peekOfCode": "def get_simple_ai_response(\n    messages: list, model_name: str | None = None, debug_info: dict | None = None\n) -> str:\n    \"\"\"Упрощенная функция без fallback ответов\"\"\"\n    if debug_info is None:\n        debug_info = {\"errors\": []}\n    try:\n        api_key = Config.HUGGINGFACE_TOKEN\n        if not api_key:\n            debug_info[\"errors\"].append(\"HUGGINGFACE_TOKEN не настроен\")",
+        "detail": "services.ai_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_fallback_response",
+        "kind": 2,
+        "importPath": "services.ai_service",
+        "description": "services.ai_service",
+        "peekOfCode": "def get_fallback_response(messages: list) -> str:\n    \"\"\"\n    Генерирует простой резервный ответ когда AI недоступен\n    \"\"\"\n    try:\n        # Получаем последнее сообщение пользователя\n        user_message = \"\"\n        for msg in reversed(messages):\n            if msg.get(\"role\") == \"user\":\n                user_message = msg.get(\"content\", \"\").lower()",
         "detail": "services.ai_service",
         "documentation": {}
     },
@@ -15282,6 +15660,15 @@
         "documentation": {}
     },
     {
+        "label": "main",
+        "kind": 2,
+        "importPath": "fix_token",
+        "description": "fix_token",
+        "peekOfCode": "def main():\n    print(\"🔧 Исправление проблемы с токеном HuggingFace...\")\n    # Загружаем .env файл\n    env_path = Path(\".env\")\n    if not env_path.exists():\n        print(\"❌ Файл .env не найден!\")\n        return False\n    print(\"📄 Загружаем .env файл...\")\n    load_dotenv(env_path)\n    # Проверяем токен",
+        "detail": "fix_token",
+        "documentation": {}
+    },
+    {
         "label": "DATABASE_URL",
         "kind": 5,
         "importPath": "reset_migrations",
@@ -15297,6 +15684,24 @@
         "description": "reset_migrations",
         "peekOfCode": "engine = create_engine(DATABASE_URL)\ntry:\n    with engine.connect() as conn:\n        # Удаляем таблицу версий\n        conn.execute(text(\"DROP TABLE IF EXISTS alembic_version;\"))\n        conn.commit()\n        print(\"✅ Таблица alembic_version удалена\")\nexcept Exception as e:\n    print(f\"Ошибка: {e}\")",
         "detail": "reset_migrations",
+        "documentation": {}
+    },
+    {
+        "label": "test_manual_request",
+        "kind": 2,
+        "importPath": "test_comparison",
+        "description": "test_comparison",
+        "peekOfCode": "def test_manual_request():\n    \"\"\"Тест как в документации (рабочий)\"\"\"\n    token = os.getenv(\"HUGGINGFACE_TOKEN\")\n    headers = {\"Authorization\": f\"Bearer {token}\"}\n    payload = {\n        \"messages\": [{\"role\": \"user\", \"content\": \"Test manual\"}],\n        \"model\": \"deepseek/deepseek-v3-0324\",\n        \"stream\": False,\n    }\n    response = requests.post(",
+        "detail": "test_comparison",
+        "documentation": {}
+    },
+    {
+        "label": "test_config_request",
+        "kind": 2,
+        "importPath": "test_comparison",
+        "description": "test_comparison",
+        "peekOfCode": "def test_config_request():\n    \"\"\"Тест через Config (не рабочий?)\"\"\"\n    api_key = Config.HUGGINGFACE_TOKEN\n    headers = {\"Authorization\": f\"Bearer {api_key}\", \"Content-Type\": \"application/json\"}\n    payload = {\n        \"messages\": [{\"role\": \"user\", \"content\": \"Test config\"}],\n        \"model\": \"deepseek/deepseek-v3-0324\",\n        \"stream\": False,\n    }\n    response = requests.post(",
+        "detail": "test_comparison",
         "documentation": {}
     },
     {

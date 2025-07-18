@@ -2,6 +2,8 @@
 Расширенные модели данных для работы с базой данных.
 """
 
+import datetime
+
 from sqlalchemy import JSON, Boolean, Column, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.orm import relationship
@@ -489,6 +491,37 @@ class APIKey(Base):
 
     def __repr__(self):
         return f"<APIKey {self.name} ({self.provider}) for User {self.user_id}>"
+
+
+class ChatSession(Base):
+    """Модель для сессии (диалога) чата."""
+
+    __tablename__ = "chat_sessions"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    title = Column(String(200), nullable=False, default="Новый чат")
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    updated_at = Column(
+        DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow
+    )
+
+    user = relationship("User")
+    messages = relationship("ChatMessage", back_populates="session", cascade="all, delete-orphan")
+
+
+class ChatMessage(Base):
+    """Модель для одного сообщения в чате."""
+
+    __tablename__ = "chat_messages"
+
+    id = Column(Integer, primary_key=True)
+    session_id = Column(Integer, ForeignKey("chat_sessions.id"), nullable=False)
+    role = Column(String(50), nullable=False)  # 'user' или 'assistant'
+    content = Column(Text, nullable=False)
+    timestamp = Column(DateTime, default=datetime.datetime.now(datetime.timezone.utc))
+
+    session = relationship("ChatSession", back_populates="messages")
 
 
 # ✅ ИНДЕКСЫ для производительности
